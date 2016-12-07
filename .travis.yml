@@ -17,4 +17,4 @@ script:
   - gulp deploy --host $FTP_HOST --user $FTP_USER --password $FTP_PASSWORD
 branches:
   only:
-  - master
+  - develop
