@@ -1,0 +1,18 @@
+html {
+  height: 100%;
+  overflow: auto;
+}
+
+body {
+  @extend html;
+  color: $color-type;
+  font-size: $base-font-size;
+  line-height: $base-line-height;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: $color-type;
+  color: $color-background-stop1;
+}

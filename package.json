@@ -1,0 +1,39 @@
+{
+  "name": "short.is",
+  "version": "1.0.0",
+  "description": "Jekyll powered personal website",
+  "main": "gulpfile.js",
+  "scripts": {
+    "start": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alanshortis/short.is.git"
+  },
+  "author": "Aln Shortis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alanshortis/short.is/issues"
+  },
+  "homepage": "https://github.com/alanshortis/short.is#readme",
+  "devDependencies": {
+    "browser-sync": "^2.18.2",
+    "browserify": "^13.1.1",
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-cssnano": "^2.1.2",
+    "gulp-header": "^1.8.8",
+    "gulp-rename": "^1.2.2",
+    "gulp-run": "^1.7.1",
+    "gulp-sass": "^2.3.2",
+    "gulp-sourcemaps": "^1.9.1",
+    "gulp-uglify": "^2.0.0",
+    "gulp-util": "^3.0.7",
+    "minimist": "^1.2.0",
+    "node-notifier": "^4.6.1",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-ftp": "^0.5.0",
+    "vinyl-source-stream": "^1.1.0"
+  }
+}
