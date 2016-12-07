@@ -1,0 +1,25 @@
+title: Alan Shortis
+version: 1.0
+email: alan@short.is
+description: "Alan Shortis is a Web Developer."
+baseurl: ""
+url: "http://short.is"
+markdown: kramdown
+incremental: true
+permalink: /:title
+include:
+  - .htaccess
+  - fonts
+  - favicon.ico
+exclude:
+  - _src
+  - README.md
+  - package.json
+  - node_modules
+  - gulpfile.js
+keep_files:
+  - css
+  - js
+collections:
+  playlists:
+    output: true
