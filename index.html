@@ -2,11 +2,17 @@
 layout: default
 ---
 
+<nav>
+  <button class="js-filter" data-category="development">Development</button>
+  <button class="js-filter" data-category="music">Music</button>
+  <button class="js-filter" id="js-clear" data-category="all" hidden>X</button>
+</nav>
+
 <ul>
   {% for post in site.posts %}
-    <li>
+    <li class="js-post" data-section="{{post.section}}">
       {{ post.date | date: "%B %d, %Y" }}
-      <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+      <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a> {{post.section}} | {{post.categories | join: ", "}}
     </li>
   {% endfor %}
 </ul>
