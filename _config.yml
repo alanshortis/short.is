@@ -11,6 +11,7 @@ include:
   - .htaccess
   - fonts
   - favicon.ico
+  - _pages
 exclude:
   - _src
   - README.md
@@ -20,6 +21,3 @@ exclude:
 keep_files:
   - css
   - js
-collections:
-  playlists:
-    output: true

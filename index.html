@@ -1,18 +1,23 @@
 ---
 layout: default
+title: home
 ---
 
-<nav>
-  <button class="js-filter" data-category="development">Development</button>
-  <button class="js-filter" data-category="music">Music</button>
-  <button class="js-filter" id="js-clear" data-category="all" hidden>X</button>
-</nav>
-
+<h2>Recent writing</h2>
 <ul>
-  {% for post in site.posts %}
+  {% for post in site.posts limit:3 %}
     <li class="js-post" data-section="{{post.section}}">
       {{ post.date | date: "%B %d, %Y" }}
       <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a> {{post.section}} | {{post.categories | join: ", "}}
+    </li>
+  {% endfor %}
+</ul>
+
+<h2>Recent reading</h2>
+<ul>
+  {% for article in site.data.reading limit:3 %}
+    <li class="js-post" data-section="{{post.section}}">
+      <a href="{{ article.url }}">{{ article.title }}</a> {{article.type}} by {{article.author}}
     </li>
   {% endfor %}
 </ul>

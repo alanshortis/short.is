@@ -1,0 +1,19 @@
+---
+layout: default
+title: reading
+permalink: "/reading"
+---
+
+<nav>
+  <button class="js-filter" data-category="article">Articles</button>
+  <button class="js-filter" data-category="book">Books</button>
+  <button class="js-filter" id="js-clear" data-category="all" hidden>X</button>
+</nav>
+
+<ul>
+  {% for article in site.data.reading %}
+    <li class="js-post" data-section="{{article.type}}">
+      <a href="{{ article.url }}">{{ article.title }}</a> {{article.type}} by {{article.author}}
+    </li>
+  {% endfor %}
+</ul>
