@@ -21,3 +21,7 @@ exclude:
 keep_files:
   - css
   - js
+collections:
+  listening:
+    output: true
+    permalink: /:path
