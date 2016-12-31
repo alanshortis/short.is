@@ -5,10 +5,10 @@ title: Home
 
 <h2>Recent writing</h2>
 <ul>
-  {% for post in site.categories.writing limit:3 %}
-    <li class="js-post" data-section="{{post.section}}">
+  {% for post in site.posts limit:3 %}
+    <li>
       {{ post.date | date: "%B %d, %Y" }}
-      <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a> {{post.section}} | {{post.categories | join: ", "}}
+      <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a> {{post.categories | join: ", "}}
     </li>
   {% endfor %}
 </ul>
@@ -16,7 +16,7 @@ title: Home
 <h2>Recent reading</h2>
 <ul>
   {% for article in site.data.reading limit:3 %}
-    <li class="js-post" data-section="{{post.section}}">
+    <li>
       <a href="{{ article.url }}">{{ article.title }}</a> {{article.type}} by {{article.author}}
     </li>
   {% endfor %}
