@@ -1,14 +1,8 @@
 ---
 layout: default
-title: reading
+title: Reading
 permalink: "/reading"
 ---
-
-<nav>
-  <button class="js-filter" data-category="article">Articles</button>
-  <button class="js-filter" data-category="book">Books</button>
-  <button class="js-filter" id="js-clear" data-category="all" hidden>X</button>
-</nav>
 
 <ul>
   {% for article in site.data.reading %}
