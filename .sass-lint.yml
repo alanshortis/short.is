@@ -27,7 +27,7 @@ rules:
   no-trailing-whitespace: 0
   no-trailing-zero: 1
   no-transition-all: 1
-  no-universal-selectors: 0
+  no-universal-selectors: 2
   no-url-protocols: 0
   url-quotes: 0
   no-ids: 2
@@ -166,7 +166,7 @@ rules:
       allow-rgba: false
       allow-variable-identifiers: true
   no-vendor-prefixes:
-    - 1
+    - 2
     -
       ignore-non-standard: true
   quotes:
