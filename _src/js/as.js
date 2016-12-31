@@ -1,5 +1,3 @@
-var analytics = require('./modules/_analytics'),
-    filter = require('./modules/_filter');
+var analytics = require('./modules/_analytics');
 
 analytics.goog();
-filter.listen();
