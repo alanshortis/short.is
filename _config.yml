@@ -16,6 +16,7 @@ exclude:
   - _src
   - README.md
   - package.json
+  - yarn.lock
   - node_modules
   - gulpfile.js
 keep_files:
