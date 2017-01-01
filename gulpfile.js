@@ -11,6 +11,9 @@ const pkg = require('./package.json'),
       sassLint = require('gulp-sass-lint'),
       header = require('gulp-header'),
       rename = require('gulp-rename'),
+      svgmin = require('gulp-svgmin'),
+      svgstore = require('gulp-svgstore'),
+      cheerio = require('gulp-cheerio'),
       cssnano = require('gulp-cssnano'),
       run = require('gulp-run'),
       uglify = require('gulp-uglify'),
@@ -24,21 +27,19 @@ const fileHeader = `/* ${pkg.name} | ${new Date()} */\n`;
 const path = {
   "src": {
     "sass": "_src/sass/**/*.scss",
-    "js": "_src/js"
+    "js": "_src/js",
+    "icons": "_src/icons/**/*.svg"
   },
   "dest" : {
     "site": "_site",
     "css": "_site/css",
-    "js": "_site/js"
+    "js": "_site/js",
+    "icons": "_includes"
   }
 };
 
-function reportError() {
-  console.log('ERROR');
-}
 
-
-gulp.task('serve', ['clean', 'jekyll', 'css', 'js'], () => {
+gulp.task('serve', ['clean', 'svg', 'jekyll', 'css', 'js'], () => {
   browserSync.init({
     server: {
       baseDir: './_site',
@@ -136,6 +137,24 @@ gulp.task('uglify', ['js'], () => {
     .pipe(uglify())
     .pipe(header(fileHeader))
     .pipe(gulp.dest(path.dest.js));
+});
+
+
+gulp.task('svg', () => {
+  return gulp.src(path.src.icons)
+  .pipe(svgmin())
+  .pipe(cheerio({
+    run: function ($) {
+      $('[fill]').removeAttr('fill');
+      $('style').remove();
+    },
+    parserOptions: { xmlMode: true }
+  }))
+  .pipe(rename({
+    prefix: 'icon-'
+  }))
+  .pipe(svgstore())
+  .pipe(gulp.dest(path.dest.icons));
 });
 
 
