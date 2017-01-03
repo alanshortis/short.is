@@ -33,7 +33,7 @@ rules:
   no-ids: 2
   no-important: 2
   pseudo-element: 2
-  single-line-per-selector: 0
+  single-line-per-selector: 2
   indentation:
     - 2
     -
@@ -52,7 +52,7 @@ rules:
       style: '1tbs'
       allow-single-line: false
   empty-line-between-blocks:
-    - 2
+    - 0
     -
       include: true
       allow-single-line-rulesets: false
@@ -184,4 +184,3 @@ rules:
       properties:
         - color
         - font-family
-        - font-size

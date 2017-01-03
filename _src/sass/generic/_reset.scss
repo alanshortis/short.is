@@ -1,6 +1,40 @@
-html, body, div, span, iframe, h1, p, a, aside, section {
-  margin: 0;
-  padding: 0;
+// This is the only place we should use a universal selector.
+// sass-lint:disable-block no-universal-selectors
+*,
+::before,
+::after {
+  box-sizing: inherit;
+  position: relative;
   border: 0;
-  vertical-align: baseline;
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  font-weight: normal;
+  line-height: 1;
+  &:focus {
+    outline: 0;
+  }
+}
+
+img {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+blockquote {
+  quotes: none;
+  &::before,
+  &::after {
+    content: '';
+  }
+}
+
+ul,
+ol {
+  list-style: none;
 }

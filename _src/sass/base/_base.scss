@@ -1,19 +1,16 @@
 html {
+  box-sizing: border-box;
   height: 100%;
-  overflow: auto;
 }
 
 body {
   // font-smoothing is regarded as standard by the linter: https://github.com/sasstools/sass-lint/issues/824
   // sass-lint:disable-block no-vendor-prefixes
-  color: $color-type;
-  font-size: $base-font-size;
-  line-height: $base-line-height;
+  box-sizing: border-box;
+  min-height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-::selection {
-  background: $color-type;
-  color: $color-background-stop1;
 }
