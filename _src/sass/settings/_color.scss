@@ -1,0 +1,8 @@
+$color: (
+  'background': #efefef,
+  'type': #333333
+);
+
+@function color($value) {
+  @return map-get($color, $value);
+}

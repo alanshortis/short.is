@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Jekyll powered personal website",
   "main": "gulpfile.js",
+  "private": true,
   "scripts": {
     "start": "gulp"
   },

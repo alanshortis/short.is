@@ -1,10 +1,17 @@
 @import 'tools/functions';
+
 @import 'settings/color';
+@import 'settings/transition';
 @import 'settings/type';
+
 @import 'tools/mixins';
+
 @import 'generic/reset';
 @import 'generic/form-reset';
+
 @import 'base/base';
 @import 'base/type';
+
 @import 'components/layout';
+
 @import 'trumps/helpers';

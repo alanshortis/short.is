@@ -179,7 +179,7 @@ rules:
       global: ['em', 'rem', 'px']
       per-property: {width: ['em', 'rem', 'vw'], height: ['em', 'rem', 'vh']}
   variable-for-property:
-    - 2
+    - 0
     -
       properties:
         - color
