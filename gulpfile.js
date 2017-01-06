@@ -172,7 +172,7 @@ gulp.task('deploy', () => {
     password: args.password,
     log: gutil.log
   });
-  gulp.src('./_site/**/*.*', {buffer: false})
+  gulp.src('./_site/**/*', {buffer: false, dot: true})
     .pipe(conn.newer(remotePath))
     .pipe(conn.dest(remotePath));
 });
