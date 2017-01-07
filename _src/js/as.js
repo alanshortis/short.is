@@ -1,3 +1,4 @@
-var analytics = require('./modules/_analytics');
+var analytics = require('./modules/_analytics'),
+    prism = require('prismjs');
 
 analytics.goog();
