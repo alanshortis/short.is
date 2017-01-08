@@ -4,9 +4,14 @@ email: alan@short.is
 description: "Alan Shortis is a Web Developer."
 baseurl: ""
 url: "http://short.is"
-markdown: kramdown
 incremental: true
 permalink: /:title
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+  syntax_highlighter_opts:
+    disable: true
 include:
   - .htaccess
   - fonts
