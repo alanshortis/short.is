@@ -1,5 +1,6 @@
 $color: (
-  'background': #efefef,
+  'background--body': linear-gradient(135deg, #1d4350, #7d2b25),
+  'background--main': #efefef,
   'type': #333333,
 
   'code__background': #333333,
@@ -13,7 +14,7 @@ $color: (
   'code__syntax--atrule': #ff0000,
   'code__syntax--function': #ffa500,
   'code__syntax--variable': #ffa500,
-  'code__comment': #666666
+  'code__comment': rgba(#efefef, .5)
 );
 
 @function color($value) {
