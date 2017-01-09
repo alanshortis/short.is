@@ -2,8 +2,13 @@
 <html>
   {% include head.html %}
   <body {% if page.layout == 'post' %}class="post"{% elsif page.layout == 'playlist' %}class="playlist"{% endif %}>
-    {% include header.html %}
-    {{ content }}
+    <div class="visually-hidden">
+      {% include icons.svg %}
+    </div>
+    <main>
+      {% include header.html %}
+      {{ content }}
+    </main>
     <script type="text/javascript" src="{{ "/js/as.js" | prepend: site.baseurl | append: '?v=' | append: site.version }}"></script>
   </body>
 </html>
