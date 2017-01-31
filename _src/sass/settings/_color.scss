@@ -1,5 +1,5 @@
 $color: (
-  'background--body': linear-gradient(135deg, #1d4350, #7d2b25),
+  'background--body': #333333,
   'background--main': #efefef,
   'type': #333333,
 
@@ -18,5 +18,8 @@ $color: (
 );
 
 @function color($value) {
-  @return map-get($color, $value);
+  @if map-has-key($color, $value) {
+    @return map-get($color, $value);
+  }
+  @warn 'Requested colour is not included in the $color map.';
 }
