@@ -1,57 +1,42 @@
-const pkg = require('./package.json'),
-      browserify = require('browserify'),
-      buffer = require('vinyl-buffer'),
-      source = require('vinyl-source-stream'),
-      del = require('del'),
-      gulp = require('gulp'),
-      eslint = require('gulp-eslint'),
-      autoprefixer = require('gulp-autoprefixer'),
-      sourcemaps = require('gulp-sourcemaps'),
-      sass = require('gulp-sass'),
-      sassLint = require('gulp-sass-lint'),
-      header = require('gulp-header'),
-      rename = require('gulp-rename'),
-      svgmin = require('gulp-svgmin'),
-      svgstore = require('gulp-svgstore'),
-      cheerio = require('gulp-cheerio'),
-      cssnano = require('gulp-cssnano'),
-      run = require('gulp-run'),
-      uglify = require('gulp-uglify'),
-      gutil = require('gulp-util'),
-      ftp = require('vinyl-ftp'),
-      notifier = require('node-notifier'),
-      browserSync = require('browser-sync').create();
+const pkg = require('./package.json');
+const browserify = require('browserify');
+const buffer = require('vinyl-buffer');
+const source = require('vinyl-source-stream');
+const del = require('del');
+const gulp = require('gulp');
+const eslint = require('gulp-eslint');
+const autoprefixer = require('gulp-autoprefixer');
+const sourcemaps = require('gulp-sourcemaps');
+const sass = require('gulp-sass');
+const sassLint = require('gulp-sass-lint');
+const header = require('gulp-header');
+const rename = require('gulp-rename');
+const svgmin = require('gulp-svgmin');
+const svgstore = require('gulp-svgstore');
+const cheerio = require('gulp-cheerio');
+const cssnano = require('gulp-cssnano');
+const run = require('gulp-run');
+const uglify = require('gulp-uglify');
+const gutil = require('gulp-util');
+const ftp = require('vinyl-ftp');
+const notifier = require('node-notifier');
+const browserSync = require('browser-sync').create();
 
 const fileHeader = `/* ${pkg.name} | ${new Date()} */\n`;
 
 const path = {
-  "src": {
-    "sass": "_src/sass/**/*.scss",
-    "js": "_src/js",
-    "icons": "_src/icons/**/*.svg"
+  src: {
+    sass: "_src/sass/**/*.scss",
+    js: "_src/js",
+    icons: "_src/icons/**/*.svg"
   },
-  "dest" : {
-    "site": "_site",
-    "css": "_site/css",
-    "js": "_site/js",
-    "icons": "_includes"
+  dest : {
+    site: "_site",
+    css: "_site/css",
+    js: "_site/js",
+    icons: "_includes"
   }
 };
-
-
-gulp.task('serve', ['clean', 'svg', 'jekyll', 'css', 'js'], () => {
-  browserSync.init({
-    server: {
-      baseDir: './_site',
-      serveStaticOptions: {
-        extensions: ['html']
-      }
-    }
-  });
-  gulp.watch(path.src.sass, ['css']);
-  gulp.watch(`${path.src.js}/**/*.js`, ['js']);
-  gulp.watch(['**/*.html', '**/*.md'], ['jekyll']);
-});
 
 
 gulp.task('jekyll', () => {
@@ -178,4 +163,19 @@ gulp.task('deploy', () => {
 });
 
 
-gulp.task('default', ['minify', 'uglify']);
+gulp.task('watch', ['default'], () => {
+  browserSync.init({
+    server: {
+      baseDir: './_site',
+      serveStaticOptions: {
+        extensions: ['html']
+      }
+    }
+  });
+  gulp.watch(path.src.sass, ['css']);
+  gulp.watch(`${path.src.js}/**/*.js`, ['js']);
+  gulp.watch(['**/*.html', '**/*.md'], ['jekyll']);
+});
+
+
+gulp.task('default', ['clean', 'svg', 'jekyll', 'minify', 'uglify']);
