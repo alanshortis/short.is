@@ -1,8 +1,8 @@
 .code {
   display: block;
-  background-color: color(code__background);
-  color: color(code__syntax);
-  font-family: 'Fira Mono', monospace;
+  background-color: $code__background;
+  color: $code__syntax;
+  font-family: $font__mono;
   line-height: 1.5;
   overflow-x: auto;
   white-space: pre;
@@ -12,17 +12,17 @@
 }
 
 code:not(.code) {
-  background: color(code__background--inline);
-  color: color(code__syntax--inline);
+  background: $code__background--inline;
+  color: $code__syntax--inline;
 }
 
 .token {
   &.comment {
-    color: color(code__comment);
+    color: $code__comment;
     font-style: italic;
   }
   &.punctuation {
-    color: color(code__syntax);
+    color: $code__syntax;
   }
   &.property,
   &.tag,
@@ -31,7 +31,7 @@ code:not(.code) {
   &.constant,
   &.symbol,
   &.deleted {
-    color: color(code__syntax--property);
+    color: $code__syntax--property;
   }
   &.selector,
   &.attr-name,
@@ -39,28 +39,28 @@ code:not(.code) {
   &.char,
   &.builtin,
   &.inserted {
-    color: color(code__syntax--selector);
+    color: $code__syntax--selector;
   }
   &.operator,
   &.entity,
   &.url {
-    color: color(code__syntax--operator);
+    color: $code__syntax--operator;
   }
   &.string {
-    color: color(code__syntax--string);
+    color: $code__syntax--string;
   }
   &.atrule,
   &.attr-value,
   &.keyword {
-    color: color(code__syntax--atrule);
+    color: $code__syntax--atrule;
   }
   &.function {
-    color: color(code__syntax--function);
+    color: $code__syntax--function;
   }
   &.regex,
   &.important,
   &.variable {
-    color: color(code__syntax--variable);
+    color: $code__syntax--variable;
   }
 
 }

@@ -1,25 +1,16 @@
-$color: (
-  'background--body': #333333,
-  'background--main': #efefef,
-  'type': #333333,
+$background--body: #333333;
+$background--main: #ffffff;
+$type: #333333;
 
-  'code__background': #333333,
-  'code__background--inline': #666666,
-  'code__syntax': #efefef,
-  'code__syntax--inline': #ff0000,
-  'code__syntax--property': #efefef,
-  'code__syntax--selector': #ffa500,
-  'code__syntax--operator': #551a8b,
-  'code__syntax--string': #00ff00,
-  'code__syntax--atrule': #ff0000,
-  'code__syntax--function': #ffa500,
-  'code__syntax--variable': #ffa500,
-  'code__comment': rgba(#efefef, .5)
-);
-
-@function color($value) {
-  @if map-has-key($color, $value) {
-    @return map-get($color, $value);
-  }
-  @warn 'Requested colour is not included in the $color map.';
-}
+$code__background: #333333;
+$code__background--inline: #666666;
+$code__syntax: #efefef;
+$code__syntax--inline: #ff0000;
+$code__syntax--property: #efefef;
+$code__syntax--selector: #ffa500;
+$code__syntax--operator: #551a8b;
+$code__syntax--string: #00ff00;
+$code__syntax--atrule: #ff0000;
+$code__syntax--function: #ffa500;
+$code__syntax--variable: #ffa500;
+$code__comment: #efefef;
