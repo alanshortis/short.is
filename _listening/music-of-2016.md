@@ -4,4 +4,18 @@ title: "Music of 2016"
 date: 2016-12-31 00:00:00 +0000
 categories: listening
 spotify_url: "https://open.spotify.com/user/overview/playlist/0CimVYe8ZuDk8legFdJhGC"
+track_count: 59
 ---
+
+1. 
+
+
+### Dissapointment
+
+**The Claypool/Lennon Delirium**. To be honest, I'm not sure why I still expect good things from Les Claypool recordings. It's been almost 20 years since The Brown Album which is the last consistently great studio album (despite a glimmer of hope in the shape of Purple Onion and Oysterhead).  This album suffers from the same issues as the last few solo Claypool albums - the recording quality isn't great, and where Les/Sean have decided to handle the drums themselves, the playing isn't at the same standard as the other instruments.
+
+You can rely on Les Claypool for something else, though. No matter how poor the studio album, the live shows that follow will be _exceptional_. I've not been able to see any of this album performed live (with Paulo Baldi behind the kit, who should be recruited for recording too) but the recordings I have seen and heard have been excellent. The album tracks take a whole new shape and some exceptional covers (King Crimson, Yes) just put the cherry on top.
+
+### Surprise
+
+**Childish Gambino**. The track I have picked (Have Some Love) in particular sounds like Parliment/Funkadelic at their absolute best. I love it. I almost didn't listen to this album at all.
