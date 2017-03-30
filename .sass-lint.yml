@@ -69,7 +69,7 @@ rules:
     - 2
     -
       allow-leading-underscore: true
-      convention: strictbem
+      convention: hyphenatedbem
   mixin-name-format:
     - 2
     -
