@@ -3,21 +3,11 @@ layout: default
 title: Home
 ---
 
-<h2>Recent writing</h2>
 <ul>
-  {% for post in site.posts limit:3 %}
+  {% for post in site.posts %}
     <li>
       {{ post.date | date: "%B %d, %Y" }}
       <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a> {{post.categories | join: ", "}}
-    </li>
-  {% endfor %}
-</ul>
-
-<h2>Recent reading</h2>
-<ul>
-  {% for article in site.data.reading limit:3 %}
-    <li>
-      <a href="{{ article.url }}">{{ article.title }}</a> {{article.type}} by {{article.author}}
     </li>
   {% endfor %}
 </ul>
