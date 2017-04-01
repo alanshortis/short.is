@@ -1,0 +1,16 @@
+.cover {
+  @include gradient-bg;
+  position: fixed;
+  min-height: 100%;
+  width: 50%;
+  padding: ($content-margin * 2);
+  color: $type--light;
+  &__logo {
+    display: block;
+    height: 3rem;
+    margin-bottom: ($content-margin * 2);
+    path {
+      fill: $type--light;
+    }
+  }
+}

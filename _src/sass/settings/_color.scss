@@ -1,6 +1,10 @@
 $background--body: #333333;
 $background--main: #ffffff;
+$gradient__stop1: #1d4350;
+$gradient__stop2: #7d2b25;
+$gradient: linear-gradient(135deg, $gradient__stop2, $gradient__stop1, $gradient__stop2);
 $type: #333333;
+$type--light: #ffffff;
 
 $code__background: #333333;
 $code__background--inline: #666666;

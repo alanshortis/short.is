@@ -7,13 +7,16 @@
 
 @import 'tools/mixins';
 
+@import 'generic/font-imports';
 @import 'generic/reset';
 @import 'generic/form-reset';
+@import 'generic/animations';
 
 @import 'base/base';
 @import 'base/type';
 
-@import 'components/layout';
+@import 'components/cover';
+@import 'components/latest';
 @import 'components/prism';
 
 @import 'trumps/helpers';
