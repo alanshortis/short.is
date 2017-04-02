@@ -1,7 +1,30 @@
 .latest {
   position: relative;
-  min-height: 100%;
   width: 50%;
-  padding: ($content-margin * 2);
   left: 50%;
+  &__item {
+    border-bottom: 1px solid $divider;
+    &:last-child {
+      border: 0;
+    }
+  }
+  &__post {
+    @include transition(color);
+    display: block;
+    padding: $content-margin;
+    text-decoration: none;
+    color: $type;
+    background-size: cover;
+    &:hover {
+      color: $highlight;
+    }
+  }
+  &__title {
+    @include text-overflow();
+    font-family: $font__serif;
+  }
+  &__meta {
+    @include text-overflow();
+    display: block;
+  }
 }

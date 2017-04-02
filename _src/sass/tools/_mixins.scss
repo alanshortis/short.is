@@ -4,3 +4,13 @@
   background-position: fixed;
   animation: background 30s $transition__timing infinite;
 }
+
+@mixin text-overflow {
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin transition($property: all) {
+  transition: $property $transition__timing $transition__speed;
+}

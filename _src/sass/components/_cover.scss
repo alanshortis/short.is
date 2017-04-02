@@ -1,7 +1,7 @@
 .cover {
-  @include gradient-bg;
+  @include gradient-bg();
   position: fixed;
-  min-height: 100%;
+  height: 100vh;
   width: 50%;
   padding: ($content-margin * 2);
   color: $type--light;

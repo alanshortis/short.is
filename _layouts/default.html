@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% if page.title %}{% unless page.title == 'Home' %}{{ page.title | append: ' &middot; ' | append: site.title }}{% else %}{{ site.title }}{% endunless %}{% endif %}</title>
     <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+    <link rel="icon" href="{{ "/favicon.ico" | prepend: site.baseurl | append: '?v=' | append: site.version }}">
     <link rel="stylesheet" href="{{ "/css/as.css" | prepend: site.baseurl | append: '?v=' | append: site.version }}">
   </head>
   <body {% if page.layout == 'post' %}class="post"{% elsif page.layout == 'playlist' %}class="playlist"{% endif %}>

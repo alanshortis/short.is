@@ -2,7 +2,7 @@
 layout: post
 title:  "Handling z-index with SASS"
 date:   2017-01-31 08:50:00 +0000
-categories: sass
+categories: development
 ---
 
 In the wide range of CSS features, `z-index` is something that we don't really consider very often. It's entirely possible to make a fairly large website without using it at all, but once you introduce vendor CSS or use sticky elements or modals it becomes essential.
