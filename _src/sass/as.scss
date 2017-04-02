@@ -4,6 +4,7 @@
 @import 'settings/color';
 @import 'settings/transition';
 @import 'settings/type';
+@import 'settings/media-queries';
 
 @import 'tools/mixins';
 
@@ -17,6 +18,7 @@
 
 @import 'components/cover';
 @import 'components/latest';
+@import 'components/icons';
 @import 'components/prism';
 
 @import 'trumps/helpers';

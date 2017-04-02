@@ -1,7 +1,10 @@
 .latest {
   position: relative;
-  width: 50%;
-  left: 50%;
+  width: 100%;
+  @include mq(columns) {
+    width: 50%;
+    left: 50%;
+  }
   &__item {
     border-bottom: 1px solid $divider;
     &:last-child {

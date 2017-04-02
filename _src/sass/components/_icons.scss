@@ -1,0 +1,11 @@
+.icon {
+  @include transition(transform);
+  display: inline;
+  fill: $type--light;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-left: ($content-margin / 2);
+  &:hover {
+    transform: scale(1.25);
+  }
+}
