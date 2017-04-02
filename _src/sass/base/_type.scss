@@ -3,7 +3,10 @@ a {
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: 1.5rem;
+  @include mq(small) {
+    font-size: 2rem;
+  }
 }
 
 h2 {
