@@ -16,8 +16,11 @@
 @import 'base/base';
 @import 'base/type';
 
+@import 'objects/containers';
+
 @import 'components/cover';
 @import 'components/latest';
+@import 'components/post';
 @import 'components/icons';
 @import 'components/prism';
 

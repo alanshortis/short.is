@@ -6,15 +6,12 @@ html {
 body {
   // font-smoothing is regarded as standard by the linter: https://github.com/sasstools/sass-lint/issues/824
   // sass-lint:disable-block no-vendor-prefixes
-  display: flex;
-  flex-wrap: wrap;
-  position: relative;
   box-sizing: border-box;
   overflow: auto;
   min-height: 100%;
   background: $background--main;
   color: $type;
-  font-family: $font__sans;
+  font-family: $font__serif;
   font-size: 16px;
   line-height: 1.5;
   text-rendering: optimizeLegibility;
@@ -22,9 +19,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
-  @include mq(columns) {
-    flex-wrap: nowrap;
-  }
 }
 
 ::selection {

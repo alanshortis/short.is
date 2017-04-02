@@ -24,7 +24,6 @@
   }
   &__title {
     @include text-overflow();
-    font-family: $font__serif;
   }
   &__meta {
     @include text-overflow();

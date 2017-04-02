@@ -1,0 +1,12 @@
+.post {
+  padding: $content-margin;
+  &__body {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    margin: 0 auto;
+    @include mq(columns) {
+      max-width: 75%;
+    }
+  }
+}
