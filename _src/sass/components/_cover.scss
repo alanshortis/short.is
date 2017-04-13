@@ -17,30 +17,30 @@
   }
   &__logo {
     display: block;
-    height: 1.5rem;
-    margin-bottom: ($content-margin * 2);
+    margin-bottom: $content-margin;
+    svg {
+      height: 1.5rem;
+    }
     path {
       fill: $type--light;
     }
   }
   &__intro {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
-  }
-  &__text {
-    animation: reveal $transition__speed--slow ease $transition__speed 1 forwards;
     opacity: 0;
+    animation: reveal $transition__speed--slow ease $transition__speed 1 forwards;
   }
-  &__follow {
-    line-height: $icon__height;
-  }
-  &__social {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    height: $icon__height;
-    line-height: $icon__height;
+}
+
+.cover-footer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  line-height: 30px;
+  margin-top: auto;
+  &__item {
+    padding-top: ($content-margin / 2);
+    &--left {
+      padding-right: ($content-margin * 2);
+    }
   }
 }

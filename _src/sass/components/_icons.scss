@@ -1,12 +1,13 @@
 .icon {
   @include transition(transform);
-  display: inline;
+  display: inline-block;
+  box-sizing: content-box;
   fill: $type--light;
   width: $icon__height;
   height: $icon__height;
-  margin-left: $content-margin;
-  vertical-align: top;
+  margin-left: ($content-margin / 2);
+  vertical-align: middle;
   &:hover {
-    transform: scale(1.25);
+    transform: scale(0.85);
   }
 }

@@ -28,5 +28,6 @@
   &__meta {
     @include text-overflow();
     display: block;
+    color: $highlight;
   }
 }
