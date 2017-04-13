@@ -2,9 +2,10 @@
   @include transition(transform);
   display: inline;
   fill: $type--light;
-  width: 1.5rem;
-  height: 1.5rem;
-  margin-left: ($content-margin / 2);
+  width: $icon__height;
+  height: $icon__height;
+  margin-left: $content-margin;
+  vertical-align: top;
   &:hover {
     transform: scale(1.25);
   }

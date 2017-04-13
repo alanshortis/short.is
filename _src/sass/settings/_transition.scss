@@ -1,14 +1,3 @@
-$transition: (
-  'duration': 200ms,
-  'duration--short': 100ms,
-  'duration--long': 400ms,
-
-  'timing': 'ease'
-);
-
-@function transition($value) {
-  @if map-has-key($transition, $value) {
-    @return map-get($transition, $value);
-  }
-  @warn 'Requested colour is not included in the $transition map.';
-}
+$transition__speed: 200ms;
+$transition__speed--slow: 1s;
+$transition__timing: cubic-bezier(.16, 0, .84, 1);
