@@ -15,7 +15,7 @@ While SASS cannot alter the behaviour of `z-index`, it can be used to make it th
 
 ## Solution 1
 
-<pre><code class="language-scss">
+{% highlight scss linenos %}
 // Apply values to variables.
 $z-menu: 10;
 $z-header: 20;
@@ -26,7 +26,10 @@ $z-modal: 30;
 .header {
   z-index: $z-header; // 20
 }
-</code></pre>
+{% endhighlight %}
+
+
+
 
 This is the simplest way to use SASS to manage `z-index`. It's quick and easy to read and write, very clear as to what's going on and allows you to match values by setting new variables with those previously defined.
 
@@ -35,7 +38,7 @@ I like to set the values in multiples of 10 as this allows you to set a new vari
 
 ## Solution 2
 
-<pre><code class="language-scss">
+{% highlight scss linenos %}
 // Create a map to contain elements and values.
 $z: (
   'modal': 30,
@@ -56,7 +59,7 @@ $z: (
 .header {
   z-index: z(header); // 20
 }
-</code></pre>
+{% endhighlight %}
 
 Moving in to some slightly more advanced SASS, this solution uses a map and a function to retrieve the values.
 
@@ -68,7 +71,7 @@ Another issue with this solution and with Solution 3 is that if you are trying t
 
 ## Solution 3
 
-<pre><code class="language-scss">
+{% highlight scss linenos %}
 // Create a list of elements that need a z-index value.
 $z: (
   'menu',
@@ -88,7 +91,7 @@ $z: (
 .header {
   z-index: z(header); // 2
 }
-</code></pre>
+{% endhighlight %}
 
 By using a list, we can remove the need to add values at all.
 
@@ -98,7 +101,7 @@ For a developer working alone or someone who has a high level of understanding o
 
 This has the same disadvantages as Solution 2, with an extra one thrown in: The values returned are going to be small numbers, so if you're fighting against some vendor CSS with typically massive `z-index` values you'll need to add to your function:
 
-<pre><code class="language-scss">
+{% highlight scss linenos %}
 @function z($value) {
   @if index($z, $value) {
     // Return a larger number by multiplying the index.
@@ -106,7 +109,7 @@ This has the same disadvantages as Solution 2, with an extra one thrown in: The 
   }
   @warn 'The element defined is not included in the $z list.';
 }
-</code></pre>
+{% endhighlight %}
 
 ## Which one?
 
