@@ -15,7 +15,7 @@ While SASS cannot alter the behaviour of `z-index`, it can be used to make it th
 
 ## Solution 1
 
-{% highlight scss linenos %}
+{% highlight scss %}
 // Apply values to variables.
 $z-menu: 10;
 $z-header: 20;
@@ -38,7 +38,7 @@ I like to set the values in multiples of 10 as this allows you to set a new vari
 
 ## Solution 2
 
-{% highlight scss linenos %}
+{% highlight scss %}
 // Create a map to contain elements and values.
 $z: (
   'modal': 30,
@@ -71,7 +71,7 @@ Another issue with this solution and with Solution 3 is that if you are trying t
 
 ## Solution 3
 
-{% highlight scss linenos %}
+{% highlight scss %}
 // Create a list of elements that need a z-index value.
 $z: (
   'menu',
@@ -101,7 +101,7 @@ For a developer working alone or someone who has a high level of understanding o
 
 This has the same disadvantages as Solution 2, with an extra one thrown in: The values returned are going to be small numbers, so if you're fighting against some vendor CSS with typically massive `z-index` values you'll need to add to your function:
 
-{% highlight scss linenos %}
+{% highlight scss %}
 @function z($value) {
   @if index($z, $value) {
     // Return a larger number by multiplying the index.
