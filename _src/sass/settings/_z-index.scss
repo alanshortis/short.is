@@ -1,0 +1,10 @@
+$z: (
+  'post-header'
+);
+
+@function z($value) {
+  @if index($z, $value) {
+    @return index($z, $value);
+  }
+  @warn '"#{$value}" is not included in the z-index list.';
+}
