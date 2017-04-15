@@ -4,6 +4,7 @@ $type: #444444;
 $type--light: #ffffff;
 $divider: #efefef;
 $highlight: #ff6666;
+$highlight--link-hover: rgba($highlight, .75);
 $gradient__stop1: #1d4350;
 $gradient__stop2: #7d2b25;
 $gradient: linear-gradient(135deg, $gradient__stop2, $gradient__stop1, $gradient__stop2);

@@ -1,6 +1,23 @@
 p {
   font-size: 1.2rem;
   margin-bottom: 1.2rem;
+  > a {
+    @include transition();
+    color: currentColor;
+    text-decoration: none;
+    box-shadow: inset 0 -5px 0 $highlight--link-hover;
+    &:hover {
+      color: $type--light;
+      box-shadow: inset 0 ($leading * -1) 0 $highlight--link-hover;
+    }
+  }
+  > code {
+    background: $code__background;
+    color: $code__syntax--inline;
+    padding: 0 ($content-margin / 3);
+    border-radius: $radius;
+    font-size: .9rem;
+  }
 }
 
 a {
