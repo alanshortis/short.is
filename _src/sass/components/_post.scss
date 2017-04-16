@@ -1,13 +1,3 @@
-.post {
-  padding: $content-margin;
-  &__body {
-    width: 100%;
-    max-width: 100%;
-    overflow: hidden;
-    margin: 0 auto;
-    @include mq(columns) {
-      max-width: 75%;
-    }
 .post-header {
   @include gradient-bg();
   position: fixed;
@@ -25,5 +15,14 @@
   }
   path {
     fill: $type--light;
+  }
+}
+
+.post-container {
+  @include content-column();
+  margin-top: $post-header-height;
+  &__meta {
+    display: block;
+    margin-bottom: $base-font-size;
   }
 }

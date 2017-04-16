@@ -24,3 +24,13 @@
     @warn '#{$mq} is not a valid breakpoint.';
   }
 }
+
+@mixin content-column() {
+  width: 100%;
+  max-width: 75ch;
+  padding: ($content-margin / 2);
+  margin: 0 auto;
+  @include mq(small) {
+    padding: $content-margin;
+  }
+}
