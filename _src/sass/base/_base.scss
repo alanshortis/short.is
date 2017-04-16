@@ -12,8 +12,8 @@ body {
   background: $background--main;
   color: $type;
   font-family: $font__serif;
-  font-size: 16px;
-  line-height: 1.5;
+  font-size: $base-font-size;
+  line-height: $base-line-height;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

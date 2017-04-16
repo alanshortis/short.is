@@ -1,3 +1,7 @@
+$base-font-size: 16px;
+$base-line-height: 1.5;
+$leading: ($base-font-size * $base-line-height);
+
 $font__sans: 'geomanist-web';
 $font__serif: 'calandas-web';
 $font__mono: 'Fira Mono', monospace;

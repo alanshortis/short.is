@@ -7,4 +7,13 @@
   height: $icon__height;
   margin-left: ($content-margin / 2);
   vertical-align: middle;
+  &--dark {
+    fill: $type;
+  }
+  &--individual {
+    width: 1em;
+    height: 1em;
+    margin-left: 0;
+    margin-right: ($content-margin / 4);
+  }
 }
