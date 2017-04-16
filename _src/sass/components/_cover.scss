@@ -30,17 +30,3 @@
     animation: reveal $transition__speed--slow ease $transition__speed 1 forwards;
   }
 }
-
-.cover-footer {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  line-height: 30px;
-  margin-top: auto;
-  &__item {
-    padding-top: ($content-margin / 2);
-    &--left {
-      padding-right: ($content-margin * 2);
-    }
-  }
-}
