@@ -12,11 +12,13 @@ p {
     }
   }
   > code {
-    background: $code__background;
+    background: $code__background--inline;
     color: $code__syntax--inline;
     padding: 0 ($content-margin / 3);
+    border: 1px solid $divider;
     border-radius: $radius;
     font-size: .9rem;
+    white-space: nowrap;
   }
 }
 
