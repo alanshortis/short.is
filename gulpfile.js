@@ -1,10 +1,8 @@
 const pkg = require('./package.json');
-const browserify = require('browserify');
-const buffer = require('vinyl-buffer');
-const source = require('vinyl-source-stream');
+const path = pkg.path;
+
 const del = require('del');
 const gulp = require('gulp');
-const eslint = require('gulp-eslint');
 const autoprefixer = require('gulp-autoprefixer');
 const sourcemaps = require('gulp-sourcemaps');
 const sass = require('gulp-sass');
@@ -16,27 +14,12 @@ const svgstore = require('gulp-svgstore');
 const cheerio = require('gulp-cheerio');
 const cssnano = require('gulp-cssnano');
 const run = require('gulp-run');
-const uglify = require('gulp-uglify');
 const gutil = require('gulp-util');
 const ftp = require('vinyl-ftp');
 const notifier = require('node-notifier');
 const browserSync = require('browser-sync').create();
 
 const fileHeader = `/* ${pkg.name} | ${new Date()} */\n`;
-
-const path = {
-  src: {
-    sass: "_src/sass/**/*.scss",
-    js: "_src/js",
-    icons: "_src/icons/**/*.svg"
-  },
-  dest : {
-    site: "_site",
-    css: "_site/css",
-    js: "_site/js",
-    icons: "_includes"
-  }
-};
 
 
 gulp.task('jekyll', () => {
@@ -90,41 +73,6 @@ gulp.task('minify', ['css'], () => {
 });
 
 
-gulp.task('js', ['eslint'], () => {
-  return browserify({entries: `${path.src.js}/as.js`, extensions: ['.js'], debug: true})
-    .bundle()
-    .pipe(source('as.js'))
-    .pipe(buffer())
-    .pipe(sourcemaps.write())
-    .pipe(gulp.dest(`${path.dest.js}/`));
-});
-
-
-gulp.task('eslint', () => {
-  return gulp.src(['gulpfile.js', `${path.src.js}/*.js`])
-    .pipe(eslint())
-    .pipe(eslint.format())
-    .pipe(eslint.failAfterError())
-    .on('error', () => {
-      notifier.notify({
-        title: 'Gulp',
-        message: 'JS liniting failed'
-      });
-    });
-});
-
-
-gulp.task('uglify', ['js'], () => {
-  return gulp.src([`${path.dest.js}/*.js`, `!${path.dest.js}/**/*.min.js`])
-    .pipe(rename({
-      suffix: '.min'
-    }))
-    .pipe(uglify())
-    .pipe(header(fileHeader))
-    .pipe(gulp.dest(path.dest.js));
-});
-
-
 gulp.task('svg', () => {
   return gulp.src(path.src.icons)
   .pipe(svgmin())
@@ -173,9 +121,8 @@ gulp.task('watch', ['default'], () => {
     }
   });
   gulp.watch(path.src.sass, ['css']);
-  gulp.watch(`${path.src.js}/**/*.js`, ['js']);
   gulp.watch(['**/*.html', '**/*.md'], ['jekyll']);
 });
 
 
-gulp.task('default', ['clean', 'svg', 'jekyll', 'minify', 'uglify']);
+gulp.task('default', ['clean', 'svg', 'jekyll', 'minify']);
