@@ -1,6 +1,6 @@
 $media-queries: (
-  columns: (min-width: 850px),
-  related: (min-width: 650px),
-  small: (min-width: 550px),
-  short: (min-height: 650px)
+  columns: (min-width: px-to-em(850px)),
+  related: (min-width: px-to-em(650px)),
+  small: (min-width: px-to-em(550px)),
+  short: (min-height: px-to-em(660px))
 );
