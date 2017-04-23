@@ -10,10 +10,11 @@
     <meta property="og:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
     <meta property="og:site_name" content="short.is">
     <meta property="og:image" content="{{site.image}}">
-    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="short.is">
     <meta name="twitter:title" content="{% if page.title %}{% unless page.title == 'Home' %}{{ page.title | append: ' &middot; ' | append: site.title }}{% else %}{{ site.title }}{% endunless %}{% endif %}">
     <meta name="twitter:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+    <meta name="twitter:creator" content="@alanshortis">
     <meta name="twitter:image" content="{{site.image}}">
     <link rel="icon" href="{{ "/favicon.ico" | prepend: site.baseurl | append: '?v=' | append: site.version }}">
     <link rel="stylesheet" href="{{ "/css/as.css" | prepend: site.baseurl | append: '?v=' | append: site.version }}">
@@ -23,6 +24,5 @@
       {% include icons.svg %}
     </div>
     {{ content }}
-    <script type="text/javascript" src="{{ "/js/as.js" | prepend: site.baseurl | append: '?v=' | append: site.version }}"></script>
   </body>
 </html>
