@@ -1,5 +1,5 @@
 title: Alan Shortis
-version: 0.1
+version: 0.2
 email: alan@short.is
 description: "Alan Shortis is a web developer, occasional designer and music nerd based in Nottingham."
 baseurl: ""
@@ -18,6 +18,7 @@ include:
   - fonts
   - img
   - favicon.ico
+  - favicon-152.png
   - _pages
 exclude:
   - _src
