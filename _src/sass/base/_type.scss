@@ -1,14 +1,16 @@
 p {
-  font-size: 1.2rem;
-  margin-bottom: 1.2rem;
+  margin-bottom: $content-margin;
+  font-size: 1em;
   > a {
     @include transition();
     color: currentColor;
-    text-decoration: none;
-    box-shadow: inset 0 -5px 0 $highlight--link-hover;
+    background: linear-gradient($type--light, $type--light), linear-gradient($type--light, $type--light), linear-gradient($highlight, $highlight);
+    background-size: 1px;
+    background-repeat: no-repeat, no-repeat, repeat-x;
+    text-shadow: .03em 0 $type--light, -.03em 0 $type--light, 0 .03em $type--light, 0 -.03em $type--light, .06em 0 $type--light, -.06em 0 $type--light, .09em 0 $type--light, -.09em 0 $type--light, .12em 0 $type--light, -.12em 0 $type--light, .15em 0 $type--light, -.15em 0 $type--light;
+    background-position: 0 95%, 100% 95%, 0 95%;
     &:hover {
-      color: $type--light;
-      box-shadow: inset 0 ($leading * -1) 0 $highlight--link-hover;
+      color: $highlight;
     }
   }
   > code {
@@ -17,6 +19,7 @@ p {
     padding: 0 ($content-margin / 3);
     border: 1px solid $divider;
     border-radius: $radius;
+    font-family: $font__mono;
     font-size: .9rem;
     white-space: nowrap;
   }
@@ -28,22 +31,96 @@ a {
 }
 
 h1 {
-  font-size: 1.25rem;
-  @include mq(short) {
-    font-size: 1.5rem;
-  }
-  @include mq(small) {
-    font-size: 2rem;
-  }
+  font-size: 2.074em;
+  font-weight: 600;
 }
 
 h2 {
-  font-size: 1.5rem;
+  font-size: 1.728em;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 1.44em;
+  font-weight: 600;
+}
+
+h4 {
+  font-size: 1.2em;
+}
+
+h5 {
+  font-size: 1em;
+}
+
+h6 {
+  font-size: .833em;
 }
 
 small {
-  font-size: .75rem;
+  font-size: .694em;
   letter-spacing: 1px;
   text-transform: uppercase;
   font-family: $font__sans;
+}
+
+strong {
+  font-weight: 500;
+}
+
+em {
+  font-style: italic;
+}
+
+del {
+  text-decoration: line-through;
+}
+
+abbr {
+  cursor: help;
+}
+
+blockquote {
+  margin: ($content-margin * 2);
+  padding: $content-margin;
+  border-left: 3px solid $highlight;
+  font-size: 1.5rem;
+  > p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+ul,
+ol {
+  margin-left: 3ch;
+  margin-bottom: $content-margin;
+  ul,
+  ol {
+    margin-left: $content-margin;
+    margin-bottom: 0;
+  }
+}
+
+ul > li {
+  list-style-type: disc;
+}
+
+ul ul > li {
+  list-style-type: circle;
+}
+
+ul ul ul > li {
+  list-style-type: square;
+}
+
+ol > li {
+  list-style-type: decimal;
+}
+
+ol ol > li {
+  list-style-type: lower-latin;
+}
+
+ol ol ol > li {
+  list-style-type: lower-roman;
 }

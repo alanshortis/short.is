@@ -27,10 +27,16 @@
 
 @mixin content-column() {
   width: 100%;
-  max-width: 75ch;
+  max-width: 850px;
   padding: ($content-margin / 2);
   margin: 0 auto;
   @include mq(small) {
     padding: $content-margin;
   }
+}
+
+@mixin full-bleed() {
+  position: relative;
+  width: 100vw;
+  left: calc(-50vw + 50%);
 }

@@ -5,8 +5,12 @@
     width: 50%;
     left: 50%;
   }
+  ul {
+    margin: 0;
+  }
   &__item {
     border-bottom: 1px solid $divider;
+    margin: 0;
     &:last-child {
       border: 0;
     }
@@ -24,6 +28,8 @@
   }
   &__title {
     @include text-overflow();
+    font-weight: 300;
+    line-height: 1.25;
   }
   &__meta {
     @include text-overflow();

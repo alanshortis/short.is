@@ -28,5 +28,13 @@
   &__intro {
     opacity: 0;
     animation: reveal $transition__speed--slow ease $transition__speed 1 forwards;
+    font-size: 1.25rem;
+    line-height: 1.25;
+    @include mq(short) {
+      font-size: 1.5rem;
+    }
+    @include mq(small) {
+      font-size: 2.074rem;
+    }
   }
 }

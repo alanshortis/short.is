@@ -23,6 +23,9 @@
   @include mq(related) {
     border-bottom: 0;
   }
+  &__title {
+    line-height: 1.25;
+  }
   &__meta {
     display: block;
     margin-bottom: $base-font-size;
@@ -37,6 +40,7 @@
   width: 100%;
   height: auto;
   padding: $content-margin;
+  padding-top: ($content-margin / 2);
   @include mq(columns) {
     padding: ($content-margin * 2);
   }

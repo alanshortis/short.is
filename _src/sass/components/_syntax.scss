@@ -1,14 +1,13 @@
 .highlight {
-  position: relative;
-  left: 50%;
-  width: 100vw;
+  @include full-bleed();
   margin: $content-margin 0;
-  margin-left: -50vw;
   background: $code__background;
   color: $code__syntax;
   pre {
     @include content-column();
     overflow-x: auto;
+    font-family: $font__mono;
+    font-size: .9rem;
   }
   .ch,
   .cm,

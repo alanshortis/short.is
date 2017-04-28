@@ -4,7 +4,7 @@
     {% if post.url != page.url %}
       {% if forloop.index < 4 or found %}
         <a class="related__item" href="{{post.url}}">
-          <h3 class="related__title">{{post.title}}</h3>
+          <h4 class="related__title">{{post.title}}</h4>
           <small class="related__meta"><time datetime="{{post.date}}">{{post.date | date_to_long_string}}</time></small>
         </a>
       {% endif %}

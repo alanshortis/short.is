@@ -16,7 +16,7 @@ title: Home
       {% for post in site.posts %}
         <li class="latest__item" data-category="{{post.categories}}">
           <a class="latest__post" href="{{ post.url | prepend: site.baseurl }}">
-            <h2 class="latest__title">{{post.title}}</h2>
+            <h3 class="latest__title">{{post.title}}</h3>
             <small class="latest__meta"><time datetime="{{post.date}}">{{post.date | date_to_long_string}}</time> / {{post.categories}}</small>
           </a>
         </li>

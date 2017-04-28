@@ -13,6 +13,7 @@ body {
   color: $type;
   font-family: $font__serif;
   font-size: $base-font-size;
+  font-weight: 300;
   line-height: $base-line-height;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -26,8 +27,9 @@ body {
 }
 
 ::selection {
-  background: $highlight;
-  color: $type;
+  background: $type;
+  color: $type--light;
+  text-shadow: none;
 }
 
 table {
