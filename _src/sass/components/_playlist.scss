@@ -1,0 +1,26 @@
+.playlist {
+  margin-left: 0;
+  margin-bottom: $content-margin;
+  &__item {
+    @include text-overflow();
+    list-style: none;
+    font-family: $font__sans;
+    text-transform: uppercase;
+    font-size: .833em;
+  }
+  &__link {
+    @include transition(color);
+    color: currentColor;
+    &:hover {
+      color: $highlight;
+    }
+  }
+  &__icon {
+    position: relative;
+    top: -2px;
+  }
+  &__explicit {
+    position: relative;
+    top: -2px;
+  }
+}

@@ -10,6 +10,9 @@
   &--dark {
     fill: $type;
   }
+  &--highlight {
+    fill: $highlight;
+  }
   &--individual {
     width: 1em;
     height: 1em;

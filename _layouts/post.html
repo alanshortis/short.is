@@ -16,16 +16,10 @@ layout: default
         {{ words | divided_by: 135 }} minutes
       {% endif %}
     </small>
-    {% if page.spotify_url %}
-      <a class="post-container__meta" href="{{page.spotify_url}}">
-        <svg class="icon icon--dark icon--individual" role="presentation">
-          <use xlink:href="#icon-spotify">
-        </svg>
-        <small>Listen on Spotify</small>
-      </a>
-    {% endif %}
+    {% include listen.html %}
   </div>
   {{content}}
+  {% include listen.html %}
 </article>
 
 {% include post-footer.html %}
