@@ -1,18 +1,37 @@
 <h3>Full Track List</h3>
-<ul class="playlist">
-  {% for item in site.data.[page.playlist_data].tracks.items %}
-    <li class="playlist__item">
-      <a class="playlist__link" target="_blank" href="{{item.track.external_urls.spotify}}">
-        <svg class="icon icon--dark icon--individual playlist__icon" role="presentation">
-          <use xlink:href="#icon-play"></use>
-        </svg>
-        {{item.track.artists[0].name}} - {{item.track.name}}
-      </a>
-      {% if item.track.explicit %}
-        <svg class="icon icon--highlight icon--individual playlist__explicit" role="presentation">
-          <use xlink:href="#icon-explicit"></use>
-        </svg>
-      {% endif %}
-    </li>
-  {% endfor %}
-</ul>
+<table class="playlist">
+  <thead>
+    <tr>
+      <th class="playlist__fluid">Artist</th>
+      <th class="playlist__fluid">Title</th>
+      <th class="playlist__fixed"></th>
+      <th class="playlist__fixed">
+        <a target="_blank" href="{{page.spotify_url}}">
+          <svg class="icon icon--dark icon--individual" role="presentation">
+            <use xlink:href="#icon-spotify"></use>
+          </svg>
+        </a>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in site.data.[page.playlist_data].tracks.items %}
+      <tr>
+        <td>{{item.track.artists[0].name}}</td>
+        <td>{{item.track.name}}</td>
+        <td>{% if item.track.explicit %}
+          <svg class="icon icon--explicit icon--individual" role="presentation">
+            <use xlink:href="#icon-explicit"></use>
+          </svg>
+        {% endif %}</td>
+        <td>
+          <a target="_blank" href="{{item.track.external_urls.spotify}}">
+            <svg class="icon icon--dark icon--individual" role="presentation">
+              <use xlink:href="#icon-play"></use>
+            </svg>
+          </a>
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>

@@ -10,13 +10,14 @@
   &--dark {
     fill: $type;
   }
-  &--highlight {
-    fill: $highlight;
-  }
   &--individual {
     width: 1em;
     height: 1em;
     margin-left: 0;
     margin-right: ($content-margin / 4);
+  }
+  &--explicit {
+    fill: $highlight;
+    margin-right: 0;
   }
 }
