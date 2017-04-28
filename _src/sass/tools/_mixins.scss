@@ -27,7 +27,7 @@
 
 @mixin content-column() {
   width: 100%;
-  max-width: 850px;
+  max-width: 750px;
   padding: ($content-margin / 2);
   margin: 0 auto;
   @include mq(small) {
