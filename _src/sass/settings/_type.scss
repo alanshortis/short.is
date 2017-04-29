@@ -2,8 +2,10 @@ $base-font-size: 18px;
 $base-line-height: 1.75;
 $leading: ($base-font-size * $base-line-height);
 
-$font__sans: 'geomanist-web';
-$font__serif: 'calandas-web';
+$sans: 'geomanist-web';
+$font__sans: 'geomanist-web', sans-serif;
+$serif: 'calandas-web';
+$font__serif: 'calandas-web', serif;
 $font__mono: 'Fira Mono', monospace;
 
 $weight--regular: 300;
