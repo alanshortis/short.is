@@ -29,6 +29,7 @@
   &__title {
     @include text-overflow();
     display: block;
+    font-weight: 300;
   }
   &__meta {
     color: $highlight;

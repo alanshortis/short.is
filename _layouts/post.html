@@ -16,10 +16,24 @@ layout: default
         {{ words | divided_by: 135 }} minutes
       {% endif %}
     </small>
-    {% include listen.html %}
+    {% if page.spotify_url %}
+      <a class="post-container__meta" target="_blank" href="{{page.spotify_url}}">
+        <svg class="icon icon--dark icon--individual" role="presentation">
+          <use xlink:href="#icon-spotify"></use>
+        </svg>
+        <small>Listen on Spotify</small>
+      </a>
+    {% endif %}
+    {% if page.github_url %}
+      <a class="post-container__meta" target="_blank" href="{{page.github_url}}">
+        <svg class="icon icon--dark icon--individual" role="presentation">
+          <use xlink:href="#icon-github"></use>
+        </svg>
+        <small>Fork on Github</small>
+      </a>
+    {% endif %}
   </div>
   {{content}}
-  {% include listen.html %}
 </article>
 
 {% include post-footer.html %}
