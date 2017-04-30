@@ -1,6 +1,7 @@
 <table class="playlist">
   <thead>
     <tr>
+      <th class="playlist__cover"></th>
       <th class="playlist__fixed">
         <a target="_blank" href="{{page.spotify_url}}">
           <svg class="icon icon--dark icon--individual" role="presentation">
@@ -16,6 +17,11 @@
   <tbody>
     {% for item in site.data.[page.playlist_data].tracks.items %}
       <tr>
+        <td class="playlist__cover">
+          <a target="_blank" href="{{item.track.external_urls.spotify}}">
+            <img width="32" height="32" src="{{item.track.album.images[2].url}}" alt="{{item.track.album.name | escape}}">
+          </a>
+        </td>
         <td>
           <a target="_blank" href="{{item.track.external_urls.spotify}}">
             <svg class="icon icon--dark icon--individual" role="presentation">
