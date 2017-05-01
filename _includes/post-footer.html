@@ -1,0 +1,19 @@
+<div class="related">
+  {% assign category = page.categories[0] %}
+  {% for post in site.categories[category] limit: 4 %}
+    {% if post.url != page.url %}
+      {% if forloop.index < 4 or found %}
+        <a class="related__item" href="{{post.url}}">
+          <h4 class="related__title">{{post.title}}</h4>
+          <small class="related__meta"><time datetime="{{post.date}}">{{post.date | date_to_long_string}}</time></small>
+        </a>
+      {% endif %}
+    {% else %}
+      {% assign found = true %}
+    {% endif %}
+  {% endfor %}
+</div>
+
+<footer class="post-footer">
+  {% include footer-links.html %}
+</footer>

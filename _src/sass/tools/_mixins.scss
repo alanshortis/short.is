@@ -1,0 +1,42 @@
+@mixin gradient-bg() {
+  background: $gradient;
+  background-size: 200% 200%;
+  background-position: fixed;
+  animation: background 30s $transition__timing infinite;
+}
+
+@mixin text-overflow() {
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin transition($property: all) {
+  transition: $property $transition__timing $transition__speed;
+}
+
+@mixin mq($mq) {
+  @if map-has-key($media-queries, $mq) {
+    @media #{inspect(map-get($media-queries, $mq))} {
+      @content;
+    }
+  } @else {
+    @warn '#{$mq} is not a valid breakpoint.';
+  }
+}
+
+@mixin content-column() {
+  width: 100%;
+  max-width: 750px;
+  padding: ($content-margin / 2);
+  margin: 0 auto;
+  @include mq(small) {
+    padding: $content-margin;
+  }
+}
+
+@mixin full-bleed() {
+  position: relative;
+  width: 100vw;
+  left: calc(-50vw + 50%);
+}

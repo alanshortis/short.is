@@ -1,0 +1,58 @@
+.highlight {
+  @include full-bleed();
+  margin: $content-margin 0;
+  background: $code__background;
+  color: $code__syntax;
+  pre {
+    @include content-column();
+    overflow-x: auto;
+    font-family: $font__mono;
+    font-size: .9rem;
+  }
+  .ch,
+  .cm,
+  .cp,
+  .cpf,
+  .c1,
+  .cs {
+    color: $code__comment;
+    font-style: italic;
+  }
+  .err {
+    background: $highlight;
+    color: $type--light;
+  }
+  .k,
+  .kc,
+  .kd,
+  .kn,
+  .kp,
+  .kr,
+  .ow {
+    color: $code__keyword;
+  }
+  .nf,
+  .nv {
+    color: $code__variable;
+  }
+  .kt,
+  .nc {
+    color: $code__class;
+  }
+  .s,
+  .sa,
+  .sb,
+  .sc,
+  .dl,
+  .sd,
+  .s2,
+  .se,
+  .sh,
+  .si,
+  .sx,
+  .sr,
+  .s1,
+  .ss {
+    color: $code__string;
+  }
+}

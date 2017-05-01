@@ -1,0 +1,48 @@
+.playlist {
+  border: 0;
+  th,
+  tr,
+  td {
+    border: 0;
+    background: none;
+  }
+  th {
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  tbody tr {
+    border-top: 1px solid $divider;
+    &:hover {
+      @include transition(color);
+      color: $highlight;
+    }
+  }
+  th {
+    vertical-align: middle;
+    padding: ($content-margin / 2);
+  }
+  td {
+    vertical-align: middle;
+    padding: 0 ($content-margin / 2);
+    &:first-child {
+      padding-left: 0;
+    }
+    &:last-child {
+      padding-right: 0;
+    }
+  }
+  &__fixed {
+    box-sizing: content-box;
+    width: 1.1em;
+  }
+  &__fluid {
+    width: auto;
+  }
+  &__link {
+    color: currentColor;
+    display: block;
+  }
+  &__cover {
+    width: 32px;
+  }
+}

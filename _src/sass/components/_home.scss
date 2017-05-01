@@ -1,0 +1,8 @@
+.home-container {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  @include mq(columns) {
+    flex-wrap: nowrap;
+  }
+}

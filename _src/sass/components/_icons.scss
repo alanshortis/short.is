@@ -1,0 +1,23 @@
+.icon {
+  @include transition(transform);
+  display: inline-block;
+  box-sizing: content-box;
+  fill: $type--light;
+  width: $icon__height;
+  height: $icon__height;
+  margin-left: ($content-margin / 4);
+  vertical-align: middle;
+  &--dark {
+    fill: $type;
+  }
+  &--individual {
+    width: 1em;
+    height: 1em;
+    margin-left: 0;
+    margin-right: ($content-margin / 4);
+  }
+  &--explicit {
+    fill: $highlight;
+    margin-right: 0;
+  }
+}

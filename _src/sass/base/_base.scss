@@ -1,0 +1,68 @@
+html {
+  height: 100%;
+  overflow: auto;
+}
+
+body {
+  // font-smoothing is regarded as standard by the linter: https://github.com/sasstools/sass-lint/issues/824
+  // sass-lint:disable-block no-vendor-prefixes
+  box-sizing: border-box;
+  overflow: auto;
+  min-height: 100%;
+  background: $background--main;
+  color: $type;
+  font-family: $font__serif;
+  font-size: $base-font-size;
+  font-weight: 300;
+  line-height: $base-line-height;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  &.post {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+::selection {
+  background: $type;
+  color: $type--light;
+  text-shadow: none;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid $divider;
+  margin-bottom: ($content-margin * 2);
+  font-family: $font__sans;
+  font-size: .9rem;
+}
+
+tr:nth-child(even) {
+  background: $stripe;
+}
+
+th {
+  background: $divider;
+  vertical-align: middle;
+  text-align: left;
+  padding: ($content-margin / 2);
+  font-weight: 500;
+}
+
+td {
+  vertical-align: top;
+  padding: ($content-margin / 2);
+  border: 1px solid $divider;
+  border-top: 0;
+}
+
+hr {
+  height: 1px;
+  margin: ($content-margin * 2) 0;
+  margin-bottom: calc(#{$content-margin * 2} - 1px);
+  background: $divider;
+}

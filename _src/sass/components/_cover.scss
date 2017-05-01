@@ -1,0 +1,40 @@
+.cover {
+  @include gradient-bg();
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 50vh;
+  min-height: 275px;
+  width: 100%;
+  padding: $content-margin;
+  color: $type--light;
+  @include mq(columns) {
+    position: fixed;
+    height: 100vh;
+    min-height: 0;
+    width: 50%;
+    padding: ($content-margin * 2);
+  }
+  &__logo {
+    display: block;
+    margin-bottom: $content-margin;
+    svg {
+      height: 1.5rem;
+    }
+    path {
+      fill: $type--light;
+    }
+  }
+  &__intro {
+    opacity: 0;
+    animation: reveal $transition__speed--slow ease $transition__speed 1 forwards;
+    font-size: 1.25rem;
+    line-height: 1.25;
+    @include mq(short) {
+      font-size: 1.5rem;
+    }
+    @include mq(small) {
+      font-size: 2.074rem;
+    }
+  }
+}
