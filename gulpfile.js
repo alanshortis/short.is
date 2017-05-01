@@ -98,9 +98,9 @@ gulp.task('clean', () => {
 
 gulp.task('deploy', () => {
   const args = minimist = require('minimist')(process.argv.slice(2));
-  const remotePath = '/websites/short.is/test/';
+  const remotePath = '/websites/short.is/www/';
   const conn = ftp.create({
-    host: 'websites/short.is/www',
+    host: args.host,
     user: args.user,
     password: args.password,
     log: gutil.log
