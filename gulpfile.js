@@ -100,7 +100,7 @@ gulp.task('deploy', () => {
   const args = minimist = require('minimist')(process.argv.slice(2));
   const remotePath = '/websites/short.is/test/';
   const conn = ftp.create({
-    host: args.host,
+    host: 'websites/short.is/www',
     user: args.user,
     password: args.password,
     log: gutil.log
