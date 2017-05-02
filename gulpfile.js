@@ -106,7 +106,6 @@ gulp.task('deploy', () => {
     log: gutil.log
   });
   gulp.src('./_site/**/*', {buffer: false, dot: true})
-    .pipe(conn.newer(remotePath))
     .pipe(conn.dest(remotePath));
 });
 
