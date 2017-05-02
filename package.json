@@ -1,6 +1,6 @@
 {
   "name": "short.is",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Jekyll powered personal website",
   "main": "gulpfile.js",
   "private": true,
