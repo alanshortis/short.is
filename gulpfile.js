@@ -111,7 +111,7 @@ gulp.task('deploy', () => {
 });
 
 
-gulp.task('watch', ['default'], () => {
+gulp.task('watch', ['default', 'jekyll'], () => {
   browserSync.init({
     server: {
       baseDir: './_site',
@@ -125,4 +125,4 @@ gulp.task('watch', ['default'], () => {
 });
 
 
-gulp.task('default', ['clean', 'svg', 'jekyll', 'minify']);
+gulp.task('default', ['clean', 'svg', 'minify']);
