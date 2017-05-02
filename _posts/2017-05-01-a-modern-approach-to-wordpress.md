@@ -196,7 +196,7 @@ define('DB_NAME', getenv('DB_NAME'));
 
 Your config will now be stored in the `.env` text file and will need to be generated in each environment. Your config will not need to change any further.
 
->**IMPORTANT:** Ensure you deny access to both `.env` and `.env.example` on your web server. For Apache:
+>**IMPORTANT:** Ensure you deny access to both `.env` and `.env.example` on your web server.
 
 ### In summary
 We now have a starting point for WordPress development. This may feel like a lot of work to set up but there are some serious benefits:
