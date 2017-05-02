@@ -2,38 +2,28 @@
   <thead>
     <tr>
       <th class="playlist__cover"></th>
-      <th class="playlist__fixed">
-        <a target="_blank" href="{{page.spotify_url}}">
-          <svg class="icon icon--dark icon--individual" role="presentation">
-            <use xlink:href="#icon-spotify"></use>
-          </svg>
-        </a>
-      </th>
-      <th class="playlist__fluid">Artist</th>
-      <th class="playlist__fluid">Title</th>
-      <th class="playlist__fixed"></th>
+      <th class="playlist__icon"></th>
+      <th>Artist</th>
+      <th>Title</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     {% for item in site.data.[page.playlist_data].tracks.items %}
       <tr>
-        <td class="playlist__cover">
+        <td class="playlist__cover"><img class="playlist__cover-image" src="{{item.track.album.images[2].url}}" alt="{{item.track.album.name | escape}}"></td>
+        <td class="playlist__icon">
           <a target="_blank" href="{{item.track.external_urls.spotify}}">
-            <img width="32" height="32" src="{{item.track.album.images[2].url}}" alt="{{item.track.album.name | escape}}">
-          </a>
-        </td>
-        <td>
-          <a target="_blank" href="{{item.track.external_urls.spotify}}">
-            <svg class="icon icon--dark icon--individual" role="presentation">
+            <svg class="icon icon--dark icon--playlist" role="presentation">
               <use xlink:href="#icon-play"></use>
             </svg>
           </a>
         </td>
-        <td><a class="playlist__link" target="_blank" href="{{item.track.external_urls.spotify}}">{{item.track.artists[0].name}}</a></td>
-        <td><a class="playlist__link" target="_blank" href="{{item.track.external_urls.spotify}}">{{item.track.name}}</a></td>
-        <td>
+        <td class="playlist__meta"><span>{{item.track.artists[0].name}}</span></td>
+        <td class="playlist__meta"><span>{{item.track.name}}</span></td>
+        <td class="playlist__icon">
           {% if item.track.explicit %}
-            <svg class="icon icon--explicit icon--individual" role="presentation">
+            <svg class="icon icon--explicit icon--playlist" role="presentation">
               <use xlink:href="#icon-explicit"></use>
             </svg>
           {% endif %}

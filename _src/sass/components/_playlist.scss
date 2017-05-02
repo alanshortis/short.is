@@ -1,48 +1,41 @@
 .playlist {
   border: 0;
-  th,
-  tr,
+  tr {
+    background: $background--main;
+    border: 0;
+    border-bottom: 1px solid $divider;
+  }
+  th {
+    background: $background--main;
+    text-transform: uppercase;
+  }
   td {
     border: 0;
-    background: none;
   }
-  th {
-    text-transform: uppercase;
-    font-weight: 500;
-  }
-  tbody tr {
-    border-top: 1px solid $divider;
-    &:hover {
-      @include transition(color);
-      color: $highlight;
+  &__meta {
+    max-width: 10vw;
+    > span {
+      @include text-overflow();
+      display: block;
     }
   }
-  th {
-    vertical-align: middle;
-    padding: ($content-margin / 2);
-  }
-  td {
-    vertical-align: middle;
-    padding: 0 ($content-margin / 2);
-    &:first-child {
-      padding-left: 0;
-    }
-    &:last-child {
-      padding-right: 0;
-    }
-  }
-  &__fixed {
-    box-sizing: content-box;
-    width: 1.1em;
-  }
-  &__fluid {
-    width: auto;
-  }
-  &__link {
-    color: currentColor;
-    display: block;
+  &__icon {
+    padding: 0;
+    width: 1.1rem;
   }
   &__cover {
-    width: 32px;
+    display: none;
+    box-sizing: content-box;
+    padding: 0;
+    padding-right: ($content-margin / 2);
+    width: $cover-dimensions;
+    height: $cover-dimensions;
+    @include mq(small) {
+      display: table-cell;
+    }
+  }
+  &__cover-image {
+    width: $cover-dimensions;
+    height: $cover-dimensions;
   }
 }

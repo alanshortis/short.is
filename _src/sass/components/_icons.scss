@@ -16,6 +16,11 @@
     margin-left: 0;
     margin-right: ($content-margin / 4);
   }
+  &--playlist {
+    width: 1.1em;
+    height: 1.1em;
+    margin: 0;
+  }
   &--explicit {
     fill: $highlight;
     margin-right: 0;
