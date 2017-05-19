@@ -124,4 +124,4 @@ gulp.task('watch', ['default', 'jekyll'], () => {
 });
 
 
-gulp.task('default', ['clean', 'svg', 'minify']);
+gulp.task('default', ['svg', 'minify']);
