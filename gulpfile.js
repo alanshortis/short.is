@@ -23,7 +23,7 @@ const fileHeader = `/* ${pkg.name} | ${new Date()} */\n`;
 
 
 gulp.task('jekyll', () => {
-  return run('jekyll build --incremental').exec()
+  return run('jekyll build').exec()
     .pipe(browserSync.stream());
 });
 
