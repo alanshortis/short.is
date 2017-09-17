@@ -13,3 +13,10 @@
 .right {
   text-align: right;
 }
+
+.covert-link {
+  color: currentColor;
+  &:hover {
+    color: $highlight;
+  }
+}
