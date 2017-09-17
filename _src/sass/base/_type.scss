@@ -26,6 +26,7 @@ li {
 }
 
 a {
+  @include transition(color);
   color: $highlight;
   text-decoration: none;
 }

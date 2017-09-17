@@ -9,7 +9,6 @@
     transform: translateY(50%);
   }
   &__item {
-    @include transition(color);
     color: $type;
     text-align: center;
     padding: $content-margin;

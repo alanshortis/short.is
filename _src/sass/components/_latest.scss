@@ -17,7 +17,6 @@
     }
   }
   &__post {
-    @include transition(color);
     display: block;
     padding: $content-margin;
     text-decoration: none;

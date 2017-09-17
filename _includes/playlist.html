@@ -19,8 +19,8 @@
             </svg>
           </a>
         </td>
-        <td class="playlist__meta"><span>{{item.track.artists[0].name}}</span></td>
-        <td class="playlist__meta"><span>{{item.track.name}}</span></td>
+        <td class="playlist__meta"><span><a class="covert-link" href="{{item.track.artists[0].external_urls.spotify}}">{{item.track.artists[0].name}}</a></span></td>
+        <td class="playlist__meta"><span><a class="covert-link" target="_blank" href="{{item.track.external_urls.spotify}}">{{item.track.name}}</a></span></td>
         <td class="playlist__icon">
           {% if item.track.explicit %}
             <svg class="icon icon--explicit icon--playlist" role="presentation">
