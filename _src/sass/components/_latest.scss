@@ -9,15 +9,13 @@
     margin: 0;
   }
   &__item {
-    border-bottom: 1px solid $divider;
     margin: 0;
     list-style: none;
-    &:last-child {
-      border: 0;
+    &:not(:last-child) {
+      border-bottom: 1px solid $divider;
     }
   }
   &__post {
-    @include transition(color);
     display: block;
     padding: $content-margin;
     text-decoration: none;
@@ -30,7 +28,7 @@
   &__title {
     @include text-overflow();
     font-weight: 300;
-    line-height: 1.25;
+    line-height: 1.5;
   }
   &__meta {
     @include text-overflow();

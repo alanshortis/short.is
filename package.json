@@ -21,7 +21,7 @@
       "sass": "_src/sass/**/*.scss",
       "icons": "_src/icons/**/*.svg"
     },
-    "dest" : {
+    "dest": {
       "site": "_site",
       "css": "_site/css",
       "icons": "_includes"

@@ -13,17 +13,19 @@
       <tr>
         <td class="playlist__cover"><img class="playlist__cover-image" src="{{item.track.album.images[2].url}}" alt="{{item.track.album.name | escape}}"></td>
         <td class="playlist__icon">
-          <a target="_blank" href="{{item.track.external_urls.spotify}}">
-            <svg class="icon icon--dark icon--playlist" role="presentation">
+          <a target="_blank" href="{{item.track.external_urls.spotify}}" title="Play">
+            <svg class="icon icon--dark icon--playlist" role="img" title="Play" aria-labelledby="play-icon">
+              <title id="play-icon">Play</title>
               <use xlink:href="#icon-play"></use>
             </svg>
           </a>
         </td>
-        <td class="playlist__meta"><span>{{item.track.artists[0].name}}</span></td>
-        <td class="playlist__meta"><span>{{item.track.name}}</span></td>
+        <td class="playlist__meta"><span><a class="covert-link" href="{{item.track.artists[0].external_urls.spotify}}">{{item.track.artists[0].name}}</a></span></td>
+        <td class="playlist__meta"><span><a class="covert-link" target="_blank" href="{{item.track.external_urls.spotify}}">{{item.track.name}}</a></span></td>
         <td class="playlist__icon">
           {% if item.track.explicit %}
-            <svg class="icon icon--explicit icon--playlist" role="presentation">
+            <svg class="icon icon--explicit icon--playlist" role="img" title="Explicit" aria-labelledby="explicit-icon">
+              <title id="explicit-icon">Explicit</title>
               <use xlink:href="#icon-explicit"></use>
             </svg>
           {% endif %}

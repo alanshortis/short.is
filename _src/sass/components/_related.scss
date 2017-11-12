@@ -1,15 +1,15 @@
 .related {
-  @include content-column();
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   margin-top: auto;
+  padding: 0;
   @include mq(related) {
+    @include content-column();
     flex-wrap: nowrap;
     transform: translateY(50%);
   }
   &__item {
-    @include transition(color);
     color: $type;
     text-align: center;
     padding: $content-margin;
@@ -21,6 +21,9 @@
       &:nth-child(2) {
         margin: 0 $content-margin;
       }
+    }
+    &:not(:last-child) {
+      border-bottom: 1px solid $divider;
     }
     &:hover {
       color: $highlight;
