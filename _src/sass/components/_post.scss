@@ -26,6 +26,9 @@
   &__title {
     line-height: 1.25;
   }
+  &__meta {
+    margin-bottom: $content-margin;
+  }
 }
 
 .post-footer {
