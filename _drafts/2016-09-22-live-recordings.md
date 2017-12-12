@@ -9,6 +9,8 @@ playlist_data: 'live'
 
 I've always liked live recordings, often more than the studio counterpart. Just as I was getting interested in music around 1995 I would always reach for Pink Floyd's Pulse over The Division Bell, helped by the fact that I'd recently started to learn drums so the increased reverb and tighter snare drum sound on the Earls Court recording really appealed to me.
 
-{% include playlist.html %}
+Here are ten live recordings that I find myself going back to pretty often, each with a little extra information on what makes them special.
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum impedit dolorum eos beatae iste sunt ipsum id adipisci quam amet ratione debitis cum tenetur ad molestias, eius sit voluptate? Amet.
+
+
+{% include playlist.html %}
