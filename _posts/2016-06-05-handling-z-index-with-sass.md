@@ -1,0 +1,110 @@
+---
+layout: post
+title: "Handling z-index with SASS"
+date: 2016-06-05 00:00:00 +0000
+categories: development
+---
+        
+`z-index` is not a particularly interesting CSS property, but it is one of the most misunderstood. What seems to be a very simple concept on the surface can be maddeningly frustrating at times. This article is not about the intricacies of `z-index`; Philip Walton explains the quirks better than I can in [this excellent and detailed post](https://philipwalton.com/articles/what-no-one-told-you-about-z-index/).
+        
+It's entirely possible to make a large website without using `z-index` at all, but if you don't have control over your HTML, use third party CSS and/or use sticky/fixed elements or modals it becomes essential.
+        
+While SASS cannot alter the behaviour of `z-index`, it can be used to make it easier to manage by placing control in one place. In vanilla CSS these values are peppered through your code leading to massive numbers like `z-index: 9000;` in an attempt to pull an element above another without knowing the values assigned.
+        
+## Solution 1
+        
+{% highlight scss %}
+// Apply values to variables.
+$z-menu: 10;
+$z-header: 20;
+$z-footer: $z-header;
+$z-modal: 30;
+        
+// Use.
+.header {
+  z-index: $z-header; // 20
+}
+{% endhighlight %}
+        
+This is the simplest way to use SASS to manage `z-index`. It's quick and easy to read and write, very clear as to what's going on and allows you to match values by setting new variables with those previously defined.
+        
+I like to set the values in multiples of 10 as this allows you to set a new variable to, say, `15` if you need something to sit between existing levels.
+        
+## Solution 2
+        
+{% highlight scss %}
+// Create a map to contain elements and values.
+$z: (
+  'modal': 30,
+  'header': 20,
+  'menu': 10
+);
+        
+// Create a function that gets the values from the map.
+@function z($value) {
+  @if map-has-key($z, $value) {
+    @return map-get($z, $value);
+  }		
+  // Use @warn instead of @error to get a more detailed backtrace.
+  @warn '#{$value} is not included in the $z map.';
+}
+        
+// Use.
+.header {
+  z-index: z(header); // 20
+}
+{% endhighlight %}
+        
+This solution stores the values in a map and uses a function to check the value is valid and returns it if it is.
+        
+This makes your `z-index` stack (arguably) more portable between projects, and I really like the syntax of calling a function with the element name as an argument to get the `z-index` value.
+        
+While trying to use an non-existent variable will always show an error, passing a value as an argument that doesn't appear in a map will not. Without checking if the value exists in the map first, the function will fail silently and you could end up with something like `z-index: z(unknown-element);` in your CSS.
+        
+## Solution 3
+        
+{% highlight scss %}
+// Create a list of elements that need a z-index value.
+$z: (
+  'menu',
+  'header',
+  'modal'
+);
+        
+// Create a function that gets the values from the list.
+@function z($value) {
+  @if index($z, $value) {
+    @return index($z, $value);
+  }
+  @warn '#{$value} is not included in the $z list.';
+}
+        
+// Use.
+.header {
+  z-index: z(header); // 2
+}
+{% endhighlight %}
+        
+By using a list, we don't need to define values at all. Our function finds the index of the element in the list and returns it. You can stop thinking about numbers entirely - if you need an element to sit above another in the stacking order you just need to ensure that it comes later in the list. This takes advantage of SASS not being zero indexed; The first item in the list has an index of `1`, not `0` as you'd expect in a JavaScript array.
+
+For a developer working alone or someone who has a high level of understanding of the lesser-used features of SASS this is a really clean and elegant solution. For less experienced developers or those more used to vanilla CSS this could cause some head-scratching.
+
+An issue you may face is that the values returned are going to be small numbers, so if you're fighting against some vendor CSS with typically massive `z-index` values (I'm looking at you, Leaflet) you'll need to add to your function:
+
+{% highlight scss %}
+@function z($value) {
+  @if index($z, $value) {
+    // Return a larger number by multiplying the index.
+    @return (index($z, $value) * 10);
+  }
+  @warn '#{$value} is not included in the $z list.';
+}
+{% endhighlight %}
+        
+A big issue with this and solution 2 is that if you are trying to enforce a rule in a linter that states that `z-index` must be set using a variable, a function call will be invalid, so you'd need to turn that rule off. This means a developer could start adding arbitrary values without the linter preventing them, a scenario even more likely if your chosen solution is hard to understand for a new or time-pressed developer.
+
+## Which one?
+
+I am currently using Solution 3 in a very large project and really enjoying how little effort is required to add a new element to the stacking order. There is no vendor CSS to work with, only a handful of elements that need their index explicitly set and I am the only developer touching the CSS so the drawbacks don't really matter to me.
+
+Its hard to argue with Solution 1, especially if the code base is going to be edited by a lot of developers. What it lacks in elegance it makes up for in simplicity and flexibility. You can set new variables based on existing ones, error handling and linter compatibility is free and any developer with even limited SASS knowledge is going to understand it immediately making them more likely to use it.
