@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Square media from the Instagram API"
-date: 2017-11-28 00:00:00 +0000
+date: 2017-12-13 00:00:00 +0000
 categories: development
 ---
 
@@ -30,8 +30,8 @@ Taking a closer look at the URLs of the images loaded gave the game away. There 
 In JavaScript, something like will get you the URL of a larger square image:
 
 {% highlight javascript %}
-  const response = // However you're getting your JSON from the API...
-  const largeSquareGram = response.images.thumbnail.url.replace('s150x150', 's640x640');
+const response = // However you're getting your JSON from the API...
+const largeSquareGram = response.images.thumbnail.url.replace('s150x150', 's640x640');
 {% endhighlight %}
 
 ## Documentation
