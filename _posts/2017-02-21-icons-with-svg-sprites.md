@@ -7,15 +7,15 @@ categories: development
 
 Icons have been an important aspect of UI design for a very long time, and approaches to loading and displaying icons has evolved.		
 
-Sprites are nothing new. When icons were .png files (or gif if you go back far enough for transpareny in pngs to be an issue) it was common to compile them all into a single image and use CSS to reveal only the icon required. This was good for HTTP requests, but a bit of a faff to reveal the icon desired as it relied on using pixel coordinates
+Sprites are nothing new. When icons were png or gif it was common to compile them all into a single image and use CSS to reveal only the icon required. This was good for limiting HTTP requests, but a bit of a faff to reveal the icon which relied on magic numbers.
 
-Icon fonts were next, with tools like [icomoon](https://icomoon.io/) making it extremely easy to put together a font of your own. That is, if you weren't using the excellent [Font Awesome](http://fontawesome.io/). Using a font means the icons are vector based which is perfect for scalability and high density displays, yet it does still feel as if we're highjacking something to fill a gap (not that this is anything new in web dev). There is also a tendency to include the entire Font Awesome collection in order to show two or three icons purely because it's quick and easy to do so.
+Icon fonts were next, with [icomoon](https://icomoon.io/) and various Gulp/Grunt utilities making it extremely easy to put together a font full of icons. And of course, [Font Awesome](http://fontawesome.io/). Using a font means the icons are vector based and can be styled with CSS, but it does still feel as if we're highjacking something to fill a gap. There is also the temptation to include the entire Font Awesome library in order to show a hamburger icon (you may laugh, but I've seen it done more than once).
 
-SVG sprites offer a combination of the two approaches. Control of the actual icons available, using images for icons and not hijacking fonts, and having icons available as vectors to they can be styled and look sharp everywhere. There are some steps involved to produce the sprite but once you've set this up it's as easy as saving an icon and using it.
+SVG sprites offer a combination of the two approaches. Control of the actual icons available, using images for icons and not hijacking fonts, and having icons available as vectors that can be styled with CSS and look sharp everywhere. There are some steps involved to produce the sprite but once you've set this process up and running it's as easy as saving an icon and using it in your markup.
 
 ### Making your icons
 
-Once you've designed your icons in Illustrator (or wherever) you can save them as SVGs. Illustrator adds a fair amount of extra junk in the SVG that we do not need but we'll take care of that as we build the sprite.
+Once you've designed your icons in Illustrator (or wherever) you can save them as SVGs. Illustrator adds a fair amount of extra markup that we don't need but we'll take care of that as we build the sprite.
 
 If you aren't designing your own icons you can take them from somewhere like [icomoon](https://icomoon.io/) or even get hold of the icons from [Font Awesome](https://github.com/encharm/Font-Awesome-SVG-PNG) and use them in the same way.
 
@@ -23,47 +23,39 @@ Place all of your icons in a folder that will go into your source control, e.g. 
 
 ### Building the sprite
 
-If you're unfamiliar with [NPM](https://www.npmjs.com/) and [Gulp](http://gulpjs.com/) then I would recommend looking at the basics before moving forwards. These steps can also be achieved with [Grunt](https://gruntjs.com/) or [webpack](https://webpack.github.io/) if your prefer them.		
+If you're unfamiliar with [NPM](https://www.npmjs.com/) and [Gulp](http://gulpjs.com/) then I would recommend looking at the basics before moving forwards. These steps can be achieved with [Grunt](https://gruntjs.com/), [Webpack](https://webpack.github.io/) or NPM scripts if your prefer, but I'll be using Gulp in these examples.		
 
-This gulp task will take your folder of icons and turn them into a sprite after a few extra things:
+This gulp task will do a few things for us:
 
 * Optimise each SVG.
 * Remove `fill` attributes and `style` elements.
-* Take the file name for each SVG and use it for the ID of the path, prepended with `icon-`.
+* Take the file name for each SVG and use it for the ID of the path, prepended with `icon-`. This is how we'll refer to individual icons.
 * Create a single SVG with multiple paths.
 
-You can install all the packages required for this particular task with NPM using `npm i --save-dev gulp gulp-svgmin gulp-cheerio gulp-rename gulp-svgstore`.
+You can install all the packages required for this particular task with NPM using `npm i --save-dev gulp gulp-svgo gulp-rename gulp-svgstore`.
 
 {% highlight javascript %}
 const gulp = require('gulp');
-const svgmin = require('gulp-svgmin');
-const cheerio = require('gulp-cheerio');
-const rename = require('gulp-rename');
+const svgo = require('gulp-svgo');
 const svgstore = require('gulp-svgstore');
+const rename = require('gulp-rename');
 
-gulp.task('svg', () => {
-  return gulp.src('src/icons/**/*.svg')
-  .pipe(svgmin())
-  .pipe(cheerio({
-    run: function ($) {
-      $('[fill]').removeAttr('fill');
-      $('style').remove();
-    },
-    parserOptions: { xmlMode: true }
-  }))
-  .pipe(rename({
-    prefix: 'icon-'
-  }))
-  .pipe(svgstore())
-  .pipe(gulp.dest('_includes'));
+gulp.task('icons', () => {
+  const task = themes.map(theme => {
+    return gulp.src('src/icons/**/*.svg')
+      .pipe(svgo({plugins: [{removeStyleElement: true}]}))
+      .pipe(rename({prefix: 'icon-'}))
+      .pipe(svgstore())
+      .pipe(gulp.dest('_includes'));
+    });
 });
 {% endhighlight %}
 
-Using the Jekyll file structure as an example, the individual icons will be taken from the `src` folder built into the sprite is output to `_includes`. Those familiar with Jekyll may see this folder as an odd choice of destination but the reason will be made clear below.
+Using the Jekyll file structure as an example, the individual icons will be taken from the `src/icons` folder, optimised and built into a sprite which is saved to `_includes`.
 
 ### Using the sprite
 
-To display each icon (which is now a path in an SVG) we need to add the entire SVG to our HTML document just after the opening body tag. In Jekyll (Liquid templating) we can just include it as we would any partial, but you should adjust this depending on your stack. Alternatively you could use AJAX to append the SVG to an existing element if including dynamically is not an option for you.
+To display each icon (which is now a path in an SVG) we need to add the entire SVG to our HTML document just after the opening body tag. In Jekyll (liquid) we can just include it as we would any partial, but you should adjust this depending on your stack. Alternatively you could use AJAX to append the SVG to an existing element if including dynamically is not an option for you.
 
 {% highlight liquid %}
 <body>
@@ -79,7 +71,8 @@ Note that the SVG is included inside an element that is hidden: `display: none;`
 To display the individual icons we need the `use` element within an SVG to get a path in our sprite by ID:
 
 {% highlight html %}
-<svg class="icon icon--large" role="presentation">
+<svg class="icon icon--large" role="img" aria-labelledby="unique-id">
+  <title id="unique-id">A Title for your icon</title> 
   <use xlink:href="#icon-menu"></use>
 </svg>
 {% endhighlight %}
