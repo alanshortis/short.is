@@ -125,3 +125,5 @@ gulp.task('watch', ['default', 'jekyll'], () => {
 
 
 gulp.task('default', ['svg', 'minify']);
+
+gulp.task('build', ['jekyll', 'svg', 'minify']);

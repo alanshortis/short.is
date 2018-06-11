@@ -16,6 +16,9 @@
   "bugs": {
     "url": "https://github.com/alanshortis/short.is/issues"
   },
+  "scripts": {
+    "build": "gulp"
+  },
   "path": {
     "src": {
       "sass": "_src/sass/**/*.scss",
