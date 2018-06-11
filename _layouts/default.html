@@ -16,11 +16,11 @@
     <meta name="twitter:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
     <meta name="twitter:creator" content="@alanshortis">
     <meta name="twitter:image" content="{{site.image}}">
-    <link rel="icon" href="{{ "/favicon.ico" | prepend: site.baseurl | append: '?v=' | append: site.version }}">
+    <link rel="icon" href="{{ "favicon.ico" | prepend: site.baseurl | append: '?v=' | append: site.version }}">
     {% if jekyll.environment == 'production' %}
-      {% assign css_url = '/css/as.min.css' %}
+      {% assign css_url = 'css/as.min.css' %}
     {% else %}
-      {% assign css_url = '/css/as.css' %}
+      {% assign css_url = 'css/as.css' %}
     {% endif %}
     <link rel="stylesheet" href="{{ css_url | prepend: site.baseurl | append: '?v=' | append: site.version }}">
   </head>
