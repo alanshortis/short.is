@@ -5,6 +5,7 @@ li {
   > a {
     @include transition();
     color: currentColor;
+    text-decoration: underline;
     text-decoration-color: $highlight;
     &:hover {
       color: $highlight;
@@ -24,6 +25,7 @@ li {
 a {
   @include transition(color);
   color: $highlight;
+  text-decoration: none;
 }
 
 h1 {
