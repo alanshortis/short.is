@@ -5,7 +5,7 @@ date: 2017-12-13 00:00:00 +0000
 categories: development
 ---
 
-## TL;DR
+>UPDATE. This method no longer works; access to the square media is blocked. In order to show square images you'll need to use some CSS to either create a square container with hidden overflow, or you could try using [object-fit](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit).
 
 You can get square versions of your media at all supported sizes from the instagram API even though they're not included in the response.
 
