@@ -23,7 +23,7 @@ include:
 exclude:
   - _src
   - README.md
-  - package.json
+  - package*
   - yarn.lock
   - node_modules
   - gulpfile.js

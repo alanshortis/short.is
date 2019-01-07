@@ -5,7 +5,7 @@
   "main": "gulpfile.js",
   "private": true,
   "scripts": {
-    "build": "gulp build"
+    "build": "gulp"
   },
   "repository": {
     "type": "git",
@@ -15,9 +15,6 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/alanshortis/short.is/issues"
-  },
-  "scripts": {
-    "build": "gulp"
   },
   "path": {
     "src": {
