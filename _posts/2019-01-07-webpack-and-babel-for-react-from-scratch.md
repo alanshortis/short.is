@@ -7,15 +7,15 @@ github_url: "https://github.com/alanshortis/short.is"
 --- 
 
 <ol class="contents">
-  <li><a href="#assume">Assumptions</a></li>
-  <li><a href="#create">Create the project</a></li>
+  <li><a href="#assumptions">Assumptions</a></li>
+  <li><a href="#create-app">Create the project</a></li>
   <li><a href="#babel">Babel</a></li>
   <li><a href="#webpack">Webpack</a></li>
   <li><a href="#react">React</a></li>
-  <li><a href="#dev">Development Server</a></li>
-  <li><a href="#styled">Styled Components</a></li>
-  <li><a href="#code">Code Quality</a></li>
-  <li><a href="#prod">Production Build</a></li>
+  <li><a href="#dev-server">Development Server</a></li>
+  <li><a href="#styled-components">Styled Components</a></li>
+  <li><a href="#code-quality">Code Quality</a></li>
+  <li><a href="#production-build">Production Build</a></li>
 </ol>
 
 There are various ways to write a React app without the need to deal with tooling and configuration. [Create React App](https://github.com/facebook/create-react-app), [Next.js](https://nextjs.org/) and [Gatsby](https://www.gatsbyjs.org/) are all excellent and can be used to make a complete, finished app (depending on your needs).
@@ -23,7 +23,7 @@ There are various ways to write a React app without the need to deal with toolin
 This guide will explain how to configure a React application from scratch. You may need to do this to meet the needs of your project, or you might just be curious to learn how your React source ends up in a format that can be understood by browsers.
 
 
-<h3 id="assume">Assumptions</h3>
+<h3 id="assumptions">Assumptions</h3>
 
 This guide assumes a few things that will not be covered:
 
@@ -31,7 +31,7 @@ This guide assumes a few things that will not be covered:
 * You know enough JavaScript and React to get by. We won't be touching React much, but what little we do write will not be explained.
 * You're comfortable enough on the command line to navigate the file system and run commands.
 
-<h3 id="create">Create project</h3>
+<h3 id="create-app">Create project</h3>
 
 Create a new folder for your project. Let's call it `react-project` for now.
 
@@ -176,7 +176,7 @@ render(<App />, document.getElementById('root'));
 That's it for now - we're just directly rendering one stateless functional component to the div with an ID of 'root' that we added to our HTML file earlier.
 
 
-<h3 id="dev">Development Server</h3>
+<h3 id="dev-server">Development Server</h3>
 
 We've yet to see anything in a browser yet. In order to do that we're going to configure Webpack to use [Webpack Dev Server](https://webpack.js.org/configuration/dev-server/) and [Browsersync](https://www.browsersync.io/) together. 
 
@@ -262,7 +262,7 @@ Visiting [http://localhost:3000](http://localhost:3000) will display your amazin
 >Tip: React Developer Tools is an essential extension available for [Chrome](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en) and [Firefox](https://addons.mozilla.org/en-GB/firefox/addon/react-devtools/) that makes debugging React much easier, as well as looking under the hood of third party apps built in React.
 
 
-<h3 id="styled">Styled Components</h3>
+<h3 id="styled-components">Styled Components</h3>
 
 [Styled Components](https://www.styled-components.com/) is a CSS-in-JS solution that takes advantage of tagged template literals. You can write CSS in a style really close to vanilla CSS, with the advantage of using JavaScript to augment it.
 
@@ -294,7 +294,7 @@ render(<App />, document.getElementById('root'));
 {% endhighlight %} 
 
 
-<h3 id="code">Code Quality</h3>
+<h3 id="code-quality">Code Quality</h3>
 
 #### Prettier and ESLint
 
@@ -474,7 +474,7 @@ module.exports = {
 This extends the existing rule for js and jsx files, and adds the ESLint and stylelint loaders. The order of the loaders in the `use` array is important - we need to lint our source files before Babel touches them, so ensure each linting loader is _after_ the Babel loader in the array.
 
 
-<h3 id="prod">Production Build</h3>
+<h3 id="production-build">Production Build</h3>
 
 Webpack can handle a production ready build for us, creating an uglified JavaScript bundle free of code used only for development/debugging. This is achieved using the `mode` parameter we already used for our development server.
 
