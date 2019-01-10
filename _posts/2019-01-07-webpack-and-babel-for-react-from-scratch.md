@@ -1,6 +1,6 @@
 --- 
 layout: post
-title: "Configuring Webpack, Babel and React"
+title: "Webpack and Babel for React from scratch"
 date: 2019-01-07 00:00:00 +0000
 categories: development
 github_url: "https://github.com/alanshortis/short.is"
@@ -33,24 +33,21 @@ This guide assumes a few things that will not be covered:
 
 <h3 id="create">Create project</h3>
 
-Create a new folder for your project, and move to it: `$ mkdir react-project && cd react-project`.
-
->TIP: If you using oh-my-zsh, you can create a move to a folder in one command: `$ take react-project`
+Create a new folder for your project. Let's call it `react-project` for now.
 
 We'll be using NPM to handle all of our dependencies, so we need to initialise it and create a `package.json`. Run `$ npm init -y` (the `-y` here will accept all default values for each property, which is fine to get started).
 
-If you're going to be using git, now is a good time to ignore some files. Run `$ touch .gitignore` to create the file, open it in your favourite editor and add a few entires:
+If you're going to be using git, now is a good time to ignore some files. Create a `.gitignore` file and add a few entires:
 
 {% highlight javascript %}node_modules
 npm-debug.log
 dist
 {% endhighlight %} 
 
->TIP: If you're using Visual Studio Code, you can open files directly from the command line: `$ code .gitignore`.
 
 <h3 id="babel">Babel</h3>
 
-Babel is a toolchain that will take your modern JavaScript source and transpile it down to a version that can be understood by browsers. For example, IE11 cannot work with JavaScript classes, so Babel will turn them back in to plain old Prototypes. When IE11 finally goes away, Babel will stop turning classes into prototypes when you rebuild.
+Babel is a toolchain that will take your modern JavaScript source and transpile it down to a version that can be understood by browsers. For example, IE11 cannot work with JavaScript classes so Babel will turn them back in to plain old Prototypes.
 
 The [Babel documentation](https://babeljs.io/docs/en/) is very good and explains everything in much more detail.
 
@@ -58,9 +55,7 @@ Install Babel, presets to handle modern JavaScript and React, and a Babel loader
 
 The Babel presets add support for transpiling particular parts of JavaScript. [preset-env](https://babeljs.io/docs/en/babel-preset-env) will take care of modern (think ES6 and beyond) features and [preset-react](https://babeljs.io/docs/en/babel-preset-react) will take care of features specific to React (such as JSX).
 
-Note that at this point that each of these dependencies have been installed into the `node_modules` folder, which we are ignoring with git, and are listed as `devDependencies` in package.json.
-
-Create a config file for Babel: `$ touch .babelrc`, open it, and add the presets we just downloaded:
+Create a config file for Babel named `.babelrc` and add the presets we just downloaded:
 
 {% highlight json %}{
   "presets": ["@babel/preset-env", "@babel/preset-react"]
@@ -80,7 +75,7 @@ Part of the process of creating bundles is running Babel, but it can automate ma
 
 Install Webpack and the Webpack CLI as dev dependencies: `$ npm i --save-dev webpack webpack-cli`.
 
-Create a new webpack config: `$ touch webpack.config.js`, open it, and add the below configuration to get started:
+Create a new webpack config named `webpack.config.js` and add the below configuration to get started:
 
 {% highlight javascript %}module.exports = {
   module: {
@@ -97,20 +92,20 @@ Create a new webpack config: `$ touch webpack.config.js`, open it, and add the b
 };
 {% endhighlight %} 
 
-With this configuration, running Webpack will look for all files with a .js or .jsx extension (excluding those that have been installed from npm) and run the `babel-loader` against them. The end result will be a JavaScript bundle comprised of each of our modules, transpiled down to a version of JavaScript that can be understood by our target browsers.
+With this configuration, running Webpack will look for all files with a `.js` or `.jsx` extension (excluding those that have been installed from npm) and run the Babel loader against them. The end result will be a transpiled JavaScript bundle comprised of each of our modules.
 
 To define what browsers we want to support, add a new property in `package.json` whose value describes the target:
 
 {% highlight javascript %}"browserslist": ["last 2 versions"]
 {% endhighlight %}
 
-Webpack uses [browserslist](https://github.com/browserslist/browserslist) for this, and details on how to specify the browsers you're interested in can be found in their documentation. For now, the last 2 versions of each browser will do. Internet Explorer and Edge are considered separate, so this config would include IE10 which you're not likely to need unless you're very unlucky.
+Webpack uses [browserslist](https://github.com/browserslist/browserslist) for this, and details on how to specify the browsers you're interested in can be found in their documentation. For now, the last 2 versions of each browser will do.
 
-React needs at least one HTML file to work, with a element we can render to. Webpack can help us with that too.
+We need an HTML for React to render to, so let's create one and add to our Webpack config so the file is copied from our source folder to the destination folder.
 
 Install the html loader and the html webpack plugin: `$ npm i --save-dev html-webpack-plugin html-loader`.
 
-Create a new folder for our source files at the root of the project: `$ mkdir src`. In the source folder, create a new HTML file: `$ cd src && touch index.html`. Add the below markup to this new HTML file, noting the div with an ID of `root`.
+Create a new folder named `src` for our source files at the root of the project and create a new HTML file named `index.html`. Add the below markup, noting the div with an ID of `root`.
 
 {% highlight html %}<!DOCTYPE html>
 <html lang="en">
@@ -126,7 +121,7 @@ Create a new folder for our source files at the root of the project: `$ mkdir sr
 </html>
 {% endhighlight %}
 
->TIP: If you're using emmet (which is included with Visual Studio Code), you can create this very quickly using: `html:5>#root`.
+>TIP: If you're using emmet you can create this very quickly using: `html:5>#root`.
 
 Add to your webpack config to use the HTML loader:
 
@@ -159,8 +154,6 @@ module.exports = {
 };
 {% endhighlight %}
 
-Similar to before, when running Webpack it will look for any HTML files and run the relevant loader. We're also configuring the `HtmlWebPackPlugin` to take the html file we created in our source folder and copy it to the output directory (which defaults to `dist`).
-
 
 <h3 id="react">React</h3>
 
@@ -168,9 +161,7 @@ Now we have some tooling taken care of, we can install React and create the most
 
 Install React and ReactDOM as dependencies: `$ npm i --save react react-dom`.
 
-Note that these will be listed under `dependencies` in package.json. This is because these dependencies are used in the application itself rather than just for development/tooling.
-
-In the src folder, create a new JavaScript file for our React App: `$ touch index.js`.
+In the src folder, create a new JavaScript file for our React App named `index.js`.
 
 {% highlight jsx %}import React from 'react';
 import { render } from 'react-dom';
@@ -187,11 +178,16 @@ That's it for now - we're just directly rendering one stateless functional compo
 
 <h3 id="dev">Development Server</h3>
 
-We've yet to see anything in a browser yet. In order to do that, and to have a smooth environment for development, we're going to configure Webpack to use [Webpack Dev Server](https://webpack.js.org/configuration/dev-server/) and [Browsersync](https://www.browsersync.io/) together. 
+We've yet to see anything in a browser yet. In order to do that we're going to configure Webpack to use [Webpack Dev Server](https://webpack.js.org/configuration/dev-server/) and [Browsersync](https://www.browsersync.io/) together. 
 
-The Webpack Dev Server is very quick and easy to set up, and provides excellent features such as [Hot Module Replacement](https://webpack.js.org/concepts/hot-module-replacement/). Browsersync allows you to use multiple browsers and devices at the same time, with scrolling and clicking synced everywhere.
+The Webpack Dev Server is very quick and easy to set up and provides excellent features such as [Hot Module Replacement](https://webpack.js.org/concepts/hot-module-replacement/). Browsersync allows you to use multiple browsers and devices at the same time, with scrolling and clicking synced everywhere.
 
 Install the Webpack Development Server and Browsersync: `$ npm i --save-dev webpack-dev-server browser-sync browser-sync-webpack-plugin`, and add the configuration to `webpack.config.js`.
+
+We're also adding `devtool` and `devserver` properties which:
+
+* `devtool` ensures that sourcemaps are created and available when debugging in the browser.
+* `devserver` ensures that any 404 errors fallback to `index.html`, which is essential if using something like React Router for client side routing.
 
 {% highlight javascript %}const HtmlWebPackPlugin = require("html-webpack-plugin");
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
@@ -227,7 +223,11 @@ module.exports = {
     {
       reload: false
     })
-  ]
+  ],
+  devServer: {
+    historyApiFallback: true,
+  },
+  devtool: 'inline-source-map'
 };
 {% endhighlight %} 
 
@@ -244,7 +244,7 @@ In `package.json`, we can create a new script entry for starting this developmen
 },
 {% endhighlight %} 
 
-Running `$ npm start` will fire up the dev server, open your browser on the correct url and port, set development [mode](https://webpack.js.org/concepts/mode/), ensure WDS runs on port 8080, and enables hot reloading. You'll also be given some additional URLs in your terminal:
+Running `$ npm start` will bundle our code, write sourcemaps, start the dev server in production [mode](https://webpack.js.org/concepts/mode/) with HMR, strat Browsersync proxying WDS and open your browser on the correct url and port. You'll also get a summary in your terminal:
 
 {% highlight html %}--------------------------------------
       Local: http://localhost:3000
@@ -264,7 +264,7 @@ Visiting [http://localhost:3000](http://localhost:3000) will display your amazin
 
 <h3 id="styled">Styled Components</h3>
 
-Styled Components is a really nice way of handling CSS for React. While it is a CSS-in-JS solution, it doesn't involve any inline CSS. It's not dissimilar to SASS, in that you can use mixins, functions and variables all of which can be written in regular JavaScript. The real power comes from the possibility of keeping all logic, markup and styling entirely self contained within a component.
+[Styled Components](https://www.styled-components.com/) is a CSS-in-JS solution that takes advantage of tagged template literals. You can write CSS in a style really close to vanilla CSS, with the advantage of using JavaScript to augment it.
 
 Install styled components as a  dependency: `$ npm i --save styled-components`.
 
@@ -276,7 +276,7 @@ There is also a Babel plugin that provides better debugging: `$ npm i --save-dev
 }
 {% endhighlight %} 
 
-We can now using Styled Components in our React Component:
+We can now use Styled Components in our existing React app:
 
 {% highlight jsx %}import React from 'react';
 import { render } from 'react-dom';
@@ -352,7 +352,7 @@ There are a few rules I like to override:
 
 Like ESLint for JavaScript, [stylelint](https://stylelint.io/) enforces rules for CSS. Install stylelint, a processor for styled components (so we can use this with Styled Components rather than just regular CSS or SASS) and the recommended/styled components configs: `$ npm i --save-dev stylelint stylelint-processor-styled-components stylelint-config-styled-components stylelint-config-recommended`.
 
-Create a .stylelintrc with this config, which extends the configs we just downloaded. I have also added some rules I like, but you should take the time to read the [available rules](https://stylelint.io/user-guide/rules/) as I find the recommended rules a bit too lenient.
+Create a `.stylelintrc` with this config, which extends the configs we just downloaded. I have also added some rules I like, but you should take the time to read the [available rules](https://stylelint.io/user-guide/rules/) as I find the recommended rules a bit too lenient.
 
 {% highlight json %}{
   "processors": [
@@ -378,22 +378,22 @@ Create a .stylelintrc with this config, which extends the configs we just downlo
 }
 {% endhighlight %} 
 
-If using Visual Studio Code, the Prettier, ESLint and stylelint plugins will add features to the editor. Issues will be underlined in code, and Prettier rules will be applied on save so you never need to think about things like indentation.
+If using Visual Studio Code, the [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode), [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) and [stylelint](https://marketplace.visualstudio.com/items?itemName=shinnn.stylelint) plugins will add features to the editor. Issues will be underlined in code, and Prettier rules will be applied on save so you never need to think about things like indentation.
 
-To enable the format on save feature, add to your VS Code settings.json:
+To enable the format on save feature, add to your VS Code `settings.json`:
 
 {% highlight json %}"editor.formatOnSave": true,
 "prettier.requireConfig": true,
 {% endhighlight %} 
 
-The `prettier.requireConfig` setting will prevent VS Code from applying prettier formats on save in projects that do not have a prettier config. This is especially useful if you're in an older codebase with established formatting that deviates from Prettier, otherwise you're going to have a huge amount of formatting changes to get through your source control.
+The `prettier.requireConfig` setting will prevent VS Code from applying prettier formats on save in projects that do not have a prettier config. This is especially useful if you're in an older codebase with established formatting that deviates from Prettier.
 
 
 #### Linting
 
 We now have linting rules for both JavaScript and CSS, so we should add methods to use them. First of all, we'll create scripts to run just the linters (which could be helpful for CI/CD workflows).
 
-Add scripts to package.json:
+Add scripts to `package.json`:
 
 {% highlight json %}"scripts": {
   "start": "webpack-dev-server --mode development --port 8080 --hot",
@@ -478,7 +478,7 @@ This extends the existing rule for js and jsx files, and adds the ESLint and sty
 
 Webpack can handle a production ready build for us, creating an uglified JavaScript bundle free of code used only for development/debugging. This is achieved using the `mode` parameter we already used for our development server.
 
-Add a new `build` script to package.json
+Add a new `build` script to `package.json`:
 
 {% highlight json %}"scripts": {
   "start": "webpack-dev-server --mode development --port 8080 --hot",
@@ -550,22 +550,6 @@ module.exports = {
 {% endhighlight %} 
 
 We should now have a marginally smaller bundle. Not by much, but it all helps.
-
-
-<h3 id="rr">Using React Router</h3>
-
-We're not going to go over using React Router, but to potentially save you some time there is a little additional config we can add to ensure it works properly when/if you need it.
-
-You'll quickly discover that you get an error when using any route other than `/`. This is because at the point of requesting the your page (e.g. `/about`) React Router has not been loaded, so the server does its best to fulfil the request by looking for something at that route, comes up short and throws a 404.
-
-Adding the below to our webpack config will ensure the dev server will fallback to `index.html` on all routes. Once loaded, React Router will pick up the route from the URL and show the expected page.
-
-{% highlight javascript %}devServer: {
-  historyApiFallback: true,
-},
-{% endhighlight %} 
-
-This just covers the development server; you'll need to consider this when you deploy your code.
 
 <h3 id="conclusion">Conclusion</h3>
 
