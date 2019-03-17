@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const StyledHeader = styled.header`
-  color: red;
+  color: #ff0000;
 `;
 
 const Header = ({ siteTitle }) => <StyledHeader>{siteTitle}</StyledHeader>;
