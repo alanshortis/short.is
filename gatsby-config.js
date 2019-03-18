@@ -7,9 +7,27 @@ module.exports = {
   plugins: [
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-styled-components',
-    'gatsby-plugin-stylelint',
+    '@danbruegge/gatsby-plugin-stylelint',
     // 'gatsby-transformer-sharp',
     // 'gatsby-plugin-sharp',
+    {
+      resolve: 'gatsby-transformer-remark',
+      options: {
+        type: 'Posts',
+        plugins: [
+          {
+            resolve: 'gatsby-remark-prismjs',
+          },
+        ],
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: `${__dirname}/src/posts`,
+        name: 'posts',
+      },
+    },
     // {
     //   resolve: 'gatsby-source-filesystem',
     //   options: {
