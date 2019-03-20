@@ -13,7 +13,6 @@ module.exports = {
     {
       resolve: 'gatsby-transformer-remark',
       options: {
-        type: 'Posts',
         plugins: [
           {
             resolve: 'gatsby-remark-prismjs',
