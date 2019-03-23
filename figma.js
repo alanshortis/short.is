@@ -1,100 +1,60 @@
 /* eslint-disable */
 
 require('dotenv').config();
-require('colors');
+const chalk = require('chalk');
+const fs = require('fs');
 const path = require('path');
 const Figma = require('figma-js');
+const figmaToken = process.env.FIGMA_TOKEN;
+const figmaFile = process.env.FIGMA_FILE;
+const themeDir = path.resolve('./src/theme/');
+const themeFile = path.join(themeDir, 'theme.json');
+const logPrepend = chalk.blue('[Figma]');
 
-const options = {
-  token: process.env.FIGMA_TOKEN,
-  figmaFile: process.env.FIGMA_FILE,
-  outputDir: path.resolve('./src/theme/'),
-  outputFileName: 'figma-styles.json',
+const log = (...args) => {
+  console.log(logPrepend, chalk.white(...args));
 };
 
-const log = (message, type) => {
-  const prepend = `${'[Figma]'.blue}`;
-  let color = 'white';
-
-  if (type === 'error') color = 'red';
-  if (type === 'success') color = 'green';
-
-  return console.log(`${prepend} ${message[color]}`);
+log.error = (...args) => {
+  console.log(logPrepend, chalk.red(...args));
 };
 
-if (!options.token || !options.figmaFile) {
-  log('Please add an access token and file ID to .env', 'error');
+log.success = (...args) => {
+  console.log(logPrepend, chalk.green(...args));
+};
+
+if (!figmaToken || !figmaFile) {
+  log.error('Please add an access token and file ID to .env');
   process.exit(9);
 }
 
 const figma = Figma.Client({
-  personalAccessToken: options.token,
+  personalAccessToken: figmaToken,
 });
 
 log('Fetching data...');
 
 figma
-  .file(options.figmaFile)
+  .file(figmaFile)
   .then(res => {
-    console.log(res.status);
+    log('Creating theme...');
+    const theme = JSON.stringify(res.data, null, 2);
+
+    if (!fs.existsSync(themeDir)) {
+      fs.mkdirSync(themeDir);
+    }
+
+    fs.writeFile(themeFile, theme, err => log.success('Theme file generated'));
   })
   .catch(({ response }) => {
-    console.log(response.status);
     if (response.status === 404) {
-      log('File not found - please check FIGMA_FILE in .env is valid', 'error');
+      log.error('File not found - please check FIGMA_FILE in .env is valid');
       process.exit(9);
     }
     if (response.status === 403) {
-      log('Not authorised - please check FIGMA_TOKEN in .env is valid', 'error');
+      log.error('Not authorised - please check FIGMA_TOKEN in .env is valid');
       process.exit(9);
     }
-    log(`${response.status} ${response.statusText}`);
+    log.error(response.status, response.statusText);
     process.exit(1);
   });
-
-// log('Parsing data...');
-
-// log(`Done!`, 'success');
-
-// ---------------------------------
-
-// const fs = require('fs');
-// // const parse = require('./figma-parser');
-
-// figma
-//   .file(options.figmaFile)
-//   .then(res => {
-//     console.log(res);
-//     if (res.status === 404) {
-//       log.error('🚫   File not found. Please check FIGMA_FILE in .env.');
-//       process.exit(9);
-//       return;
-//     }
-
-//     if (res.status !== 200) {
-//       log.error('🚫   ', res.status, res.statusText);
-//       process.exit(1);
-//       return;
-//     }
-
-//   log('🏭   Parsing data...');
-
-//   const theme = JSON.stringify(res.data, null, 2);
-
-//   if (!fs.existsSync(outputDir)) {
-//     fs.mkdirSync(outputDir);
-//   }
-
-//   fs.writeFile(outFile, theme, err => {
-//     if (err) {
-//       log.error(err);
-//       process.exit(1);
-//     }
-//     log(`🎉   ${chalk.green('File saved to:')}`, outFile);
-//   });
-// })
-// .catch(err => {
-//   const { response } = err;
-//   log(`${response.status} ${response.statusText}`);
-//   process.exit(1);
-// });
