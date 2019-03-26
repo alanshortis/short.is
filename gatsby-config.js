@@ -11,29 +11,23 @@ module.exports = {
     // 'gatsby-transformer-sharp',
     // 'gatsby-plugin-sharp',
     {
-      resolve: 'gatsby-transformer-remark',
-      options: {
-        plugins: [
-          {
-            resolve: 'gatsby-remark-prismjs',
-          },
-        ],
-      },
-    },
-    {
       resolve: 'gatsby-source-filesystem',
       options: {
         path: `${__dirname}/src/posts`,
         name: 'posts',
       },
     },
-    // {
-    //   resolve: 'gatsby-source-filesystem',
-    //   options: {
-    //     name: 'images',
-    //     path: `${__dirname}/src/images`,
-    //   },
-    // },
+    {
+      resolve: 'gatsby-mdx',
+      options: {
+        extensions: ['.md'],
+        gatsbyRemarkPlugins: [
+          {
+            resolve: 'gatsby-remark-prismjs',
+          },
+        ],
+      },
+    },
     // {
     //   resolve: 'gatsby-plugin-manifest',
     //   options: {
