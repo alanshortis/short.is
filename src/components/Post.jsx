@@ -1,17 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import MDXRenderer from 'gatsby-mdx/mdx-renderer';
+import PrismTheme from '../styles/PrismTheme';
 import Layout from './Layout';
-
-// TODO: Move this to prism styles
-const PostBody = styled.article`
-  span.gatsby-highlight-code-line {
-    display: block;
-    background-color: #dd6969;
-  }
-`;
 
 export const query = graphql`
   query PostQuery($slug: String!) {
@@ -31,13 +23,14 @@ const Post = ({ data }) => {
   const { mdx } = data;
   const { title, date } = mdx.frontmatter;
   return (
-    <Layout>
-      <h1>{title}</h1>
-      <p>{date}</p>
-      <PostBody>
+    <>
+      <PrismTheme />
+      <Layout>
+        <h1>{title}</h1>
+        <p>{date}</p>
         <MDXRenderer>{mdx.code.body}</MDXRenderer>
-      </PostBody>
-    </Layout>
+      </Layout>
+    </>
   );
 };
 
