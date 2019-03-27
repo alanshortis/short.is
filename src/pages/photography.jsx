@@ -2,11 +2,11 @@ import React from 'react';
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 
-const IndexPage = () => (
-  <Layout hideHeader>
-    <SEO title="Home" />
-    <h1>Home</h1>
+const Photography = () => (
+  <Layout>
+    <SEO title="Photography" />
+    <h1>Photography</h1>
   </Layout>
 );
 
-export default IndexPage;
+export default Photography;

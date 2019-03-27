@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import MDXRenderer from 'gatsby-mdx/mdx-renderer';
 import PrismTheme from '../styles/PrismTheme';
 import Layout from './Layout';
+import SEO from './SEO';
 
 export const query = graphql`
   query PostQuery($slug: String!) {
@@ -15,6 +16,7 @@ export const query = graphql`
       code {
         body
       }
+      excerpt
     }
   }
 `;
@@ -25,6 +27,7 @@ const Post = ({ data }) => {
   return (
     <>
       <Layout>
+        <SEO title={title} description={mdx.excerpt} />
         <PrismTheme />
         <h1>{title}</h1>
         <p>{date}</p>
