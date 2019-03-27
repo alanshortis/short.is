@@ -5,7 +5,7 @@ import { ThemeProvider } from 'styled-components';
 import theme from '../theme/theme.json';
 import Header from './Header';
 
-const Layout = ({ children }) => (
+const Layout = ({ children, hideHeader }) => (
   <ThemeProvider theme={theme}>
     <StaticQuery
       query={graphql`
@@ -19,7 +19,7 @@ const Layout = ({ children }) => (
       `}
       render={data => (
         <>
-          <Header siteTitle={data.site.siteMetadata.title} />
+          {!hideHeader && <Header siteTitle={data.site.siteMetadata.title} />}
           <main>{children}</main>
         </>
       )}
