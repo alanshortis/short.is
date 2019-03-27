@@ -4,7 +4,7 @@ import { Link, StaticQuery, graphql } from 'gatsby';
 const postsQuery = graphql`{
     allMdx(
       sort: { order: DESC, fields: [frontmatter___date] }
-      filter: { fileAbsolutePath: {regex: "/(posts)/.*\\.md$/"}}
+      filter: { fileAbsolutePath: {regex: "/(posts)/.*\\.(md|mdx)$/"}}
     ) {
       edges {
         node {
