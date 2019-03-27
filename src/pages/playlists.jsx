@@ -2,11 +2,11 @@ import React from 'react';
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 
-const IndexPage = () => (
+const Playlists = () => (
   <Layout>
-    <SEO title="Home" />
-    <h1>Home</h1>
+    <SEO title="Playlists" />
+    <h1>Playlists</h1>
   </Layout>
 );
 
-export default IndexPage;
+export default Playlists;
