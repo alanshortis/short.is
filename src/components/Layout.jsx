@@ -4,6 +4,7 @@ import { StaticQuery, graphql } from 'gatsby';
 import { ThemeProvider } from 'styled-components';
 import theme from '../theme/theme.json';
 import Header from './Header';
+import Menu from './Menu';
 
 const Layout = ({ children, hideHeader }) => (
   <ThemeProvider theme={theme}>
@@ -19,7 +20,11 @@ const Layout = ({ children, hideHeader }) => (
       `}
       render={data => (
         <>
-          {!hideHeader && <Header siteTitle={data.site.siteMetadata.title} />}
+          {!hideHeader && (
+            <Header siteTitle={data.site.siteMetadata.title}>
+              <Menu />
+            </Header>
+          )}
           <main>{children}</main>
         </>
       )}
@@ -29,6 +34,11 @@ const Layout = ({ children, hideHeader }) => (
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
+  hideHeader: PropTypes.bool,
+};
+
+Layout.defaultProps = {
+  hideHeader: false,
 };
 
 export default Layout;
