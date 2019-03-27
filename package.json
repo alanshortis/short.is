@@ -9,8 +9,8 @@
     "develop": "gatsby develop",
     "start": "npm run develop",
     "serve": "gatsby serve",
-    "lint:js": "eslint 'src/**/*.js'",
-    "lint:style": "stylelint 'src/**/*.js'",
+    "lint:js": "eslint 'src/**/*.{js,jsx}'",
+    "lint:style": "stylelint 'src/**/*.{js,jsx}'",
     "figma": "node figma.js"
   },
   "repository": {
