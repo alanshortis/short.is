@@ -5,17 +5,21 @@ slug: '/webpack-and-babel-for-react-from-scratch'
 github_url: 'https://github.com/alanshortis/short.is'
 ---
 
-<ol class="contents">
-  <li><a href="#assumptions">Assumptions</a></li>
-  <li><a href="#create-app">Create the project</a></li>
-  <li><a href="#babel">Babel</a></li>
-  <li><a href="#webpack">Webpack</a></li>
-  <li><a href="#react">React</a></li>
-  <li><a href="#dev-server">Development Server</a></li>
-  <li><a href="#styled-components">Styled Components</a></li>
-  <li><a href="#code-quality">Code Quality</a></li>
-  <li><a href="#production-build">Production Build</a></li>
-</ol>
+import Contents from './components/Contents';
+
+<Contents
+  sections={[
+    { title: 'Assumptions', hash: '#assumptions' },
+    { title: 'Create the project', hash: '#create-app' },
+    { title: 'Babel', hash: '#babel' },
+    { title: 'Webpack', hash: '#webpack' },
+    { title: 'React', hash: '#react' },
+    { title: 'Development Server', hash: '#dev-server' },
+    { title: 'Styled Components', hash: '#styled-components' },
+    { title: 'Code Quality', hash: '#code-quality' },
+    { title: 'Production Build', hash: '#production-build' },
+  ]}
+/>
 
 There are various ways to write a React app without the need to deal with tooling and configuration. [Create React App](https://github.com/facebook/create-react-app), [Next.js](https://nextjs.org/) and [Gatsby](https://www.gatsbyjs.org/) are all excellent and can be used to make a complete, finished app (depending on your needs).
 
