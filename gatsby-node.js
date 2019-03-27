@@ -19,7 +19,7 @@ exports.createPages = ({ graphql, actions }) => {
       results.data.allMdx.edges.forEach(({ node }) => {
         createPage({
           path: node.frontmatter.slug,
-          component: path.resolve('./src/components/Post.js'),
+          component: path.resolve('./src/components/Post.jsx'),
           context: {
             slug: node.frontmatter.slug,
           },
