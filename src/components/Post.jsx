@@ -24,8 +24,8 @@ const Post = ({ data }) => {
   const { title, date } = mdx.frontmatter;
   return (
     <>
-      <PrismTheme />
       <Layout>
+        <PrismTheme />
         <h1>{title}</h1>
         <p>{date}</p>
         <MDXRenderer>{mdx.code.body}</MDXRenderer>
