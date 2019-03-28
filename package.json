@@ -23,7 +23,7 @@
     }
   },
   "lint-staged": {
-    "*.js": [
+    "*.{js,jsx}": [
       "npm run lint:js",
       "npm run lint:style"
     ]
