@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 module.exports = {
   siteMetadata: {
     title: 'Alan Shortis',
@@ -8,8 +10,8 @@ module.exports = {
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-styled-components',
     '@danbruegge/gatsby-plugin-stylelint',
-    // 'gatsby-transformer-sharp',
-    // 'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
+    'gatsby-plugin-sharp',
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -26,6 +28,17 @@ module.exports = {
             resolve: 'gatsby-remark-prismjs',
           },
         ],
+      },
+    },
+    {
+      resolve: 'gatsby-source-spotify',
+      options: {
+        clientId: process.env.SPOTIFY_CLIENT_ID,
+        clientSecret: process.env.SPOTIFY_CLIENT_SECRET,
+        refreshToken: process.env.SPOTIFY_REFRESH_TOKEN,
+        fetchPlaylists: true,
+        fetchRecent: false,
+        timeRanges: ['long_term'],
       },
     },
     // {
