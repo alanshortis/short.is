@@ -1,6 +1,5 @@
 import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
-// import Img from 'gatsby-image';
 import Playlist from './Playlist';
 
 const playlistsQuery = graphql`
@@ -9,17 +8,11 @@ const playlistsQuery = graphql`
       node {
         spotifyId
         name
+        images {
+          url
+        }
         external_urls {
           spotify
-        }
-        image {
-          localFile {
-            childImageSharp {
-              fluid(maxWidth: 400) {
-                src
-              }
-            }
-          }
         }
         tracks {
           total
