@@ -19,7 +19,7 @@ const postsQuery = graphql`{
   }
 `;
 
-const PostList = () => (
+const List = () => (
   <StaticQuery
     query={postsQuery}
     render={({ allMdx }) =>
@@ -36,4 +36,4 @@ const PostList = () => (
   />
 );
 
-export default PostList;
+export default List;
