@@ -44,12 +44,12 @@ const List = () => (
         <>
           <h2>Playlists</h2>
           {playlists.edges.map(({ node }) => (
-            <Playlist node={node} />
+            <Playlist key={node.spotifyId} node={node} />
           ))}
 
           <h2>Annual</h2>
           {annual.edges.map(({ node }) => (
-            <Playlist node={node} />
+            <Playlist key={node.spotifyId} node={node} />
           ))}
         </>
       );
