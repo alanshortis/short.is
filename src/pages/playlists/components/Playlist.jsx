@@ -16,7 +16,6 @@ const Playlist = ({ node }) => {
 
 Playlist.propTypes = {
   node: PropTypes.shape({
-    spotifyId: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     tracks: PropTypes.shape({
       total: PropTypes.number.isRequired,
@@ -24,15 +23,11 @@ Playlist.propTypes = {
     external_urls: PropTypes.shape({
       spotify: PropTypes.string.isRequired,
     }),
-    image: PropTypes.shape({
-      localFile: PropTypes.shape({
-        childImageSharp: PropTypes.shape({
-          fluid: PropTypes.shape({
-            src: PropTypes.string.isRequired,
-          }),
-        }),
-      }),
-    }),
+    images: PropTypes.arrayOf(
+      PropTypes.shape({
+        url: PropTypes.string.isRequired,
+      })
+    ),
   }).isRequired,
 };
 
