@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const StyledHeader = styled.header`
-  color: #ff0000;
+  color: ${p => p.theme.colors.accent};
 `;
 
 const Header = ({ children, siteTitle }) => (
