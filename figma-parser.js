@@ -30,7 +30,7 @@ module.exports = data => {
     const { r, g, b } = fill.color;
     const opacity = fill.opacity || 1;
     const roundedOpacity = opacity < 1 ? opacity.toFixed(3) : opacity;
-    const rgb = [r, g, b].map(n => n * 255);
+    const rgb = [r, g, b].map(n => Math.round(n * 255));
     const color = `rgba(${rgb.join(', ')}, ${roundedOpacity})`;
     return {
       id: style.id,
