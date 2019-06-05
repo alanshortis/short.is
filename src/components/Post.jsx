@@ -24,16 +24,15 @@ export const query = graphql`
 const Post = ({ data }) => {
   const { mdx } = data;
   const { title, date } = mdx.frontmatter;
+  const { body } = mdx.code;
   return (
-    <>
-      <Layout>
-        <SEO title={title} description={mdx.excerpt} />
-        <PrismTheme />
-        <h1>{title}</h1>
-        <p>{date}</p>
-        <MDXRenderer>{mdx.code.body}</MDXRenderer>
-      </Layout>
-    </>
+    <Layout>
+      <SEO title={title} description={mdx.excerpt} />
+      <PrismTheme />
+      <h1>{title}</h1>
+      <p>{date}</p>
+      <MDXRenderer>{body}</MDXRenderer>
+    </Layout>
   );
 };
 
