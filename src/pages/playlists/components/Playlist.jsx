@@ -3,11 +3,13 @@ import PropTypes from 'prop-types';
 
 const Playlist = ({ node }) => {
   const { name, tracks, images, external_urls: urls } = node;
+  const [cover2x, cover] = images;
+
   return (
     <a href={urls.spotify}>
       <h2>{name}</h2>
       <h3>{tracks.total}</h3>
-      <img src={images[1].url} srcSet={`${images[0].url} 2x`} alt="" />
+      <img src={cover.url} srcSet={`${cover2x.url} 2x`} alt={`Cover for ${name} playlist`} />
     </a>
   );
 };
