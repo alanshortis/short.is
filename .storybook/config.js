@@ -1,13 +1,9 @@
-import { configure, addDecorator, addParameters } from '@storybook/react';
-import { themes } from '@storybook/theming';
+import React from 'react';
+import { ThemeProvider } from 'styled-components';
+import { configure, addDecorator } from '@storybook/react';
 import { withA11y } from '@storybook/addon-a11y';
 import { withKnobs } from '@storybook/addon-knobs';
-
-addParameters({
-  options: {
-    theme: themes.dark,
-  },
-});
+import theme from '../src/theme/theme.json';
 
 function loadStories() {
   const req = require.context('../src', true, /\.stories\.js$/);
@@ -16,4 +12,6 @@ function loadStories() {
 
 addDecorator(withKnobs);
 addDecorator(withA11y);
+addDecorator(story => <ThemeProvider theme={theme}>{story()}</ThemeProvider>);
+
 configure(loadStories, module);

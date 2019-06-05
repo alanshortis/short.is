@@ -5,6 +5,7 @@ import { ThemeProvider } from 'styled-components';
 import theme from '../theme/theme.json';
 import Header from './Header';
 import Menu from './Menu';
+import GlobalStyles from '../styles/GlobalStyles';
 
 const Layout = ({ children, hideHeader }) => (
   <ThemeProvider theme={theme}>
@@ -20,6 +21,7 @@ const Layout = ({ children, hideHeader }) => (
       `}
       render={data => (
         <>
+          <GlobalStyles />
           {!hideHeader && (
             <Header siteTitle={data.site.siteMetadata.title}>
               <Menu />

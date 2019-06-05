@@ -2,9 +2,9 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import MDXRenderer from 'gatsby-mdx/mdx-renderer';
-import PrismTheme from '../styles/PrismTheme';
 import Layout from './Layout';
 import SEO from './SEO';
+import PrismStyles from '../styles/PrismStyles';
 
 export const query = graphql`
   query PostQuery($slug: String!) {
@@ -24,16 +24,17 @@ export const query = graphql`
 const Post = ({ data }) => {
   const { mdx } = data;
   const { title, date } = mdx.frontmatter;
+  const { body } = mdx.code;
   return (
-    <>
-      <Layout>
-        <SEO title={title} description={mdx.excerpt} />
-        <PrismTheme />
+    <Layout>
+      <SEO title={title} description={mdx.excerpt} />
+      <article>
+        <PrismStyles />
         <h1>{title}</h1>
         <p>{date}</p>
-        <MDXRenderer>{mdx.code.body}</MDXRenderer>
-      </Layout>
-    </>
+        <MDXRenderer>{body}</MDXRenderer>
+      </article>
+    </Layout>
   );
 };
 
