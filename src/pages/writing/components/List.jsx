@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link, StaticQuery, graphql } from 'gatsby';
+import { StaticQuery, graphql } from 'gatsby';
+import Post from './Post';
 
 const postsQuery = graphql`{
     allMdx(
@@ -25,12 +26,7 @@ const List = () => (
     render={({ allMdx }) =>
       allMdx.edges.map(({ node }) => {
         const { slug, title, date } = node.frontmatter;
-        return (
-          <Link key={slug} to={slug}>
-            <h2>{title}</h2>
-            <p>{date}</p>
-          </Link>
-        );
+        return <Post slug={slug} title={title} date={date} />;
       })
     }
   />
