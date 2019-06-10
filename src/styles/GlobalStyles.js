@@ -52,6 +52,10 @@ const GlobalStyles = createGlobalStyle`
   strong, b {
     font-weight: ${fonts.settings.weightBold};
   }
+
+  em, i {
+    font-style: italic;
+  }
 `;
 
 export default GlobalStyles;
