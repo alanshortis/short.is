@@ -6,12 +6,18 @@ const GlobalStyles = createGlobalStyle`
   ${atRules};
   ${normalize()};
 
+  /* stylelint-disable-next-line selector-max-universal */
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+
   html {
     height: 100%;
   }
 
   body {
     background-color: ${p => p.theme.color.background};
+    box-sizing: border-box;
     color: ${p => p.theme.color.type};
     font-family: ${p => p.theme.font.face}, sans-serif;
     font-size: ${p => p.theme.font.baseSize};
