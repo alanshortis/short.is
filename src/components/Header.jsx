@@ -1,25 +1,22 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { Link } from 'gatsby';
 import styled from 'styled-components';
+import { rem } from 'polished';
+import Menu from './Menu';
 
 const StyledHeader = styled.header`
-  color: ${p => p.theme.colors.accent};
+  background-color: ${p => p.theme.color.backgroundDark};
+  color: ${p => p.theme.color.typeLight};
+  height: ${rem('84px')};
+  position: sticky;
+  top: 0;
 `;
 
-const Header = ({ children, siteTitle }) => (
+const Header = () => (
   <StyledHeader>
-    {siteTitle}
-    {children}
+    <Link to="/">Home</Link>
+    <Menu />
   </StyledHeader>
 );
-
-Header.propTypes = {
-  siteTitle: PropTypes.string.isRequired,
-  children: PropTypes.element,
-};
-
-Header.defaultProps = {
-  children: null,
-};
 
 export default Header;
