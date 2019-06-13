@@ -39,6 +39,14 @@ module.exports = {
         timeRanges: ['long_term'],
       },
     },
+    {
+      resolve: 'gatsby-plugin-react-svg',
+      options: {
+        rule: {
+          include: /img/,
+        },
+      },
+    },
     // {
     //   resolve: 'gatsby-plugin-manifest',
     //   options: {
