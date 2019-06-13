@@ -5,13 +5,12 @@
   "version": "2.0.0",
   "author": "Alan Shortis <hello@short.is>",
   "scripts": {
-    "build": "npm run figma && gatsby build",
+    "build": "gatsby build",
     "develop": "gatsby develop",
     "start": "npm run develop",
     "serve": "gatsby serve",
     "lint:js": "eslint 'src/**/*.{js,jsx}'",
     "lint:style": "stylelint 'src/**/*.{js,jsx}'",
-    "figma": "node figma.js",
     "storybook": "start-storybook"
   },
   "repository": {

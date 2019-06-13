@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
 import { ThemeProvider } from 'styled-components';
-import theme from '../theme/theme.json';
+import theme from '../styles/theme.json';
 import Header from './Header';
 import Menu from './Menu';
 import GlobalStyles from '../styles/GlobalStyles';
