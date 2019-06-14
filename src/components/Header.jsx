@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'gatsby';
 import styled from 'styled-components';
 import { rem } from 'polished';
 import Menu from './Menu';
@@ -18,9 +19,9 @@ const StyledHeader = styled.header`
 
 const Header = () => (
   <StyledHeader>
-    <a href="/">
+    <Link to="/">
       <Icon />
-    </a>
+    </Link>
     <Menu />
   </StyledHeader>
 );
