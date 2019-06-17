@@ -16,5 +16,8 @@
     "faceMono": "IBM Plex Mono",
     "weight": 400,
     "weightBold": 600
+  },
+  "media": {
+    "collapseMenu": "(min-width: 600px)"
   }
 }

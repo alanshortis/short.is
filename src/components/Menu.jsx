@@ -5,29 +5,46 @@ import { Link } from 'gatsby';
 import { rem } from 'polished';
 
 const StyledMenu = styled.ul`
-  margin: 0;
+  display: block;
   font-family: ${p => p.theme.font.faceMono};
+  margin: 0;
   text-transform: uppercase;
   li {
-    display: inline;
+    display: none;
     margin: 0;
-    &:not(:last-of-type) {
-      margin-right: ${rem('28px')};
+    margin-left: ${rem('28px')};
+    @media ${p => p.theme.media.collapseMenu} {
+      display: inline;
+    }
+    &:last-of-type {
+      display: inline;
+      @media ${p => p.theme.media.collapseMenu} {
+        display: none;
+      }
     }
   }
-  a {
-    text-decoration: none;
+  a,
+  button {
+    appearance: none;
+    background-color: transparent;
+    border: 0;
     color: ${p => p.theme.color.typeLight};
+    cursor: pointer;
+    font-family: ${p => p.theme.font.faceMono};
+    font-size: 1rem;
+    padding: 0;
     position: relative;
+    text-decoration: none;
+    text-transform: uppercase;
     &.active {
       &::after {
-        position: absolute;
-        top: 2em;
-        left: calc(50% - 3.5px);
         background-color: ${p => p.theme.color.accent};
         border-radius: 50%;
         content: '';
         height: 7px;
+        left: calc(50% - 3.5px);
+        position: absolute;
+        top: 2em;
         width: 7px;
       }
     }
@@ -37,6 +54,10 @@ const StyledMenu = styled.ul`
 const partlyActive = className => ({ isPartiallyCurrent }) => ({
   className: className + (isPartiallyCurrent ? ` active` : ``),
 });
+
+const handleMenu = () => {
+  console.log('Clicked!');
+};
 
 const Menu = ({ className }) => (
   <nav>
@@ -60,6 +81,11 @@ const Menu = ({ className }) => (
         <Link to="/about" getProps={partlyActive(className)}>
           About
         </Link>
+      </li>
+      <li>
+        <button type="button" onClick={handleMenu}>
+          Menu
+        </button>
       </li>
     </StyledMenu>
   </nav>
