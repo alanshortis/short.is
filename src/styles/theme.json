@@ -1,0 +1,23 @@
+{
+  "color": {
+    "background": "rgba(254, 254, 254, 1)",
+    "complement": "rgba(74, 148, 194, 1)",
+    "accent": "rgba(221, 105, 105, 1)",
+    "tertiary": "rgba(106, 222, 139, 1)",
+    "secondary": "rgba(227, 226, 132, 1)",
+    "quarternary": "rgba(245, 105, 176, 1)",
+    "typeLight": "rgba(254, 254, 254, 1)",
+    "type": "rgba(51, 51, 51, 1)",
+    "backgroundDark": "rgba(17, 17, 17, 1)"
+  },
+  "font": {
+    "baseSize": "14px",
+    "face": "IBM Plex Sans",
+    "faceMono": "IBM Plex Mono",
+    "weight": 400,
+    "weightBold": 600
+  },
+  "media": {
+    "collapseMenu": "(min-width: 600px)"
+  }
+}

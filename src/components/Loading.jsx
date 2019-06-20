@@ -13,9 +13,9 @@ const rotate = keyframes`
 const Loading = styled.div`
   animation: ${rotate} 1s linear infinite;
   background-color: transparent;
-  border: 5px solid ${p => transparentize('0.5', p.theme.colors.accent)};
+  border: 5px solid ${p => transparentize('0.5', p.theme.color.accent)};
   border-radius: 50%;
-  border-top-color: ${p => p.theme.colors.accent};
+  border-top-color: ${p => p.theme.color.accent};
   height: 2rem;
   width: 2rem;
 `;

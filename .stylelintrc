@@ -14,7 +14,7 @@
     "color-named": "never",
     "selector-max-id": 0,
     "selector-max-universal": 0,
-    "number-leading-zero": "never",
+    "number-leading-zero": "always",
     "number-no-trailing-zeros": true,
     "length-zero-no-unit": true,
     "unit-case": "lower",

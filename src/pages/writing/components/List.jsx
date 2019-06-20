@@ -26,7 +26,7 @@ const List = () => (
     render={({ allMdx }) =>
       allMdx.edges.map(({ node }) => {
         const { slug, title, date } = node.frontmatter;
-        return <Post slug={slug} title={title} date={date} />;
+        return <Post key={slug} slug={slug} title={title} date={date} />;
       })
     }
   />

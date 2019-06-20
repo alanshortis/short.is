@@ -5,13 +5,12 @@
   "version": "2.0.0",
   "author": "Alan Shortis <hello@short.is>",
   "scripts": {
-    "build": "npm run figma && gatsby build",
+    "build": "gatsby build",
     "develop": "gatsby develop",
     "start": "npm run develop",
     "serve": "gatsby serve",
     "lint:js": "eslint 'src/**/*.{js,jsx}'",
     "lint:style": "stylelint 'src/**/*.{js,jsx}'",
-    "figma": "node figma.js",
     "storybook": "start-storybook"
   },
   "repository": {
@@ -48,6 +47,7 @@
     "gatsby-plugin-manifest": "^2.0.24",
     "gatsby-plugin-offline": "^2.0.25",
     "gatsby-plugin-react-helmet": "^3.0.9",
+    "gatsby-plugin-react-svg": "^2.1.1",
     "gatsby-plugin-styled-components": "^3.0.7",
     "gatsby-remark-prismjs": "^3.2.6",
     "gatsby-source-filesystem": "^2.0.24",

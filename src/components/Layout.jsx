@@ -1,46 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StaticQuery, graphql } from 'gatsby';
 import { ThemeProvider } from 'styled-components';
-import theme from '../theme/theme.json';
+import theme from '../styles/theme.json';
 import Header from './Header';
-import Menu from './Menu';
 import GlobalStyles from '../styles/GlobalStyles';
 
-const Layout = ({ children, hideHeader }) => (
+const Layout = ({ children }) => (
   <ThemeProvider theme={theme}>
-    <StaticQuery
-      query={graphql`
-        query SiteTitleQuery {
-          site {
-            siteMetadata {
-              title
-            }
-          }
-        }
-      `}
-      render={data => (
-        <>
-          <GlobalStyles />
-          {!hideHeader && (
-            <Header siteTitle={data.site.siteMetadata.title}>
-              <Menu />
-            </Header>
-          )}
-          <main>{children}</main>
-        </>
-      )}
-    />
+    <>
+      <GlobalStyles />
+      <Header />
+      <main>{children}</main>
+    </>
   </ThemeProvider>
 );
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
-  hideHeader: PropTypes.bool,
-};
-
-Layout.defaultProps = {
-  hideHeader: false,
 };
 
 export default Layout;
