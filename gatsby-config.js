@@ -18,6 +18,20 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: `${__dirname}/src/data`,
+        name: 'data',
+      },
+    },
+    'gatsby-transformer-json',
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: './src/data/',
+      },
+    },
+    {
       resolve: 'gatsby-mdx',
       options: {
         extensions: ['.md', '.mdx'],
