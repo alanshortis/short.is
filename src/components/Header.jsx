@@ -3,6 +3,7 @@ import { Link } from 'gatsby';
 import styled from 'styled-components';
 import { rem } from 'polished';
 import Menu from './Menu';
+import MenuButton from './MenuButton';
 import Icon from '../img/icon.svg';
 
 const StyledHeader = styled.header`
@@ -23,6 +24,7 @@ const Header = () => (
       <Icon />
     </Link>
     <Menu sections={['writing', 'playlists', 'photography', 'about']} />
+    <MenuButton />
   </StyledHeader>
 );
 
