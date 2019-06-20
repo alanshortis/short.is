@@ -21,7 +21,6 @@ const StyledMenu = styled.ul`
   a {
     color: ${p => p.theme.color.typeLight};
     font-family: ${p => p.theme.font.faceMono};
-    font-size: 1rem;
     position: relative;
     text-decoration: none;
     text-transform: uppercase;
@@ -41,10 +40,10 @@ const StyledMenu = styled.ul`
 const Menu = ({ sections }) => (
   <nav>
     <StyledMenu>
-      {sections.map(({ slug, title }) => (
+      {sections.map(section => (
         <li>
-          <Link to={slug} activeClassName="active" partiallyActive>
-            {title}
+          <Link to={`/${section}`} activeClassName="active" partiallyActive>
+            {section}
           </Link>
         </li>
       ))}
@@ -53,10 +52,7 @@ const Menu = ({ sections }) => (
 );
 
 Menu.propTypes = {
-  sections: PropTypes.shape({
-    slug: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-  }).isRequired,
+  sections: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default Menu;

@@ -22,14 +22,7 @@ const Header = () => (
     <Link to="/">
       <Icon />
     </Link>
-    <Menu
-      sections={[
-        { title: 'Writing', slug: '/writing' },
-        { title: 'Playlists', slug: '/playlists' },
-        { title: 'Photography', slug: '/photography' },
-        { title: 'About', slug: '/about' },
-      ]}
-    />
+    <Menu sections={['writing', 'playlists', 'photography', 'about']} />
   </StyledHeader>
 );
 
