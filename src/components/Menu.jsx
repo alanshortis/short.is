@@ -41,7 +41,7 @@ const Menu = ({ sections }) => (
   <nav>
     <StyledMenu>
       {sections.map(section => (
-        <li>
+        <li key={section}>
           <Link to={`/${section}`} activeClassName="active" partiallyActive>
             {section}
           </Link>
