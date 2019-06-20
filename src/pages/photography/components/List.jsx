@@ -1,22 +1,33 @@
-import React, { Suspense, lazy } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
+import { StaticQuery, graphql } from 'gatsby';
 import { CloudinaryContext } from 'cloudinary-react';
-import Loading from '../../../components/Loading';
+import Photo from './Photo';
 
-const Photo = lazy(() => import('./Photo'));
-
-const List = ({ photos }) => (
-  <CloudinaryContext cloudName={process.env.GATSBY_CLOUDINARY_NAME}>
-    {photos.map(id => (
-      <Suspense key={id} fallback={<Loading />}>
-        <Photo photoId={id.toString()} />
-      </Suspense>
-    ))}
-  </CloudinaryContext>
+const List = () => (
+  <StaticQuery
+    query={graphql`
+      query PhotoListQuery {
+        allPhotosJson {
+          edges {
+            node {
+              id
+              location
+              camera
+              film
+              year
+            }
+          }
+        }
+      }
+    `}
+    render={data => (
+      <CloudinaryContext cloudName={process.env.GATSBY_CLOUDINARY_NAME}>
+        {data.allPhotosJson.edges.map(({ node }) => (
+          <Photo key={node.id} photo={node} />
+        ))}
+      </CloudinaryContext>
+    )}
+  />
 );
-
-List.propTypes = {
-  photos: PropTypes.arrayOf(PropTypes.number).isRequired,
-};
 
 export default List;
