@@ -1,10 +1,8 @@
 import { createGlobalStyle } from 'styled-components';
-import { normalize } from 'polished';
 import atRules from './fonts';
 
 const GlobalStyles = createGlobalStyle`
   ${atRules};
-  ${normalize()};
 
   /* stylelint-disable-next-line selector-max-universal */
   *, *:before, *:after {

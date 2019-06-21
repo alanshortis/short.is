@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
-import { rem } from 'polished';
 
 const StyledMenu = styled.ul`
   display: none;
@@ -16,7 +15,7 @@ const StyledMenu = styled.ul`
     display: inline;
     list-style: none;
     margin: 0;
-    margin-left: ${rem('28px')};
+    margin-left: 3rem;
   }
   a {
     color: ${p => p.theme.color.typeLight};
