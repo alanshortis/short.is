@@ -11,13 +11,10 @@
     "backgroundDark": "rgba(17, 17, 17, 1)"
   },
   "font": {
-    "baseSize": "14px",
     "face": "IBM Plex Sans",
     "faceMono": "IBM Plex Mono",
     "weight": 400,
     "weightBold": 600
   },
-  "media": {
-    "collapseMenu": "(min-width: 600px)"
-  }
+  "headerHeight": "4rem"
 }

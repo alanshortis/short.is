@@ -9,11 +9,14 @@ const StyledHeader = styled.header`
   background-color: ${p => p.theme.color.backgroundDark};
   color: ${p => p.theme.color.typeLight};
   display: flex;
-  height: 4rem;
+  height: ${p => p.theme.headerHeight};
   justify-content: space-between;
-  padding: 2rem;
+  padding: 0 1rem;
   position: sticky;
   top: 0;
+  > a {
+    height: 1.5rem;
+  }
 `;
 
 const Header = () => (

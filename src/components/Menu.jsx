@@ -2,24 +2,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
+import { rem } from 'polished';
 
 const StyledMenu = styled.ul`
-  display: none;
-  margin: 0;
-  padding: 0;
-  text-transform: uppercase;
-  @media ${p => p.theme.media.collapseMenu} {
-    display: block;
-  }
+  font-family: ${p => p.theme.font.faceMono};
+  font-size: ${rem('14px')};
+  position: relative;
   li {
     display: inline;
     list-style: none;
     margin: 0;
-    margin-left: 3rem;
+    margin-left: 1.5rem;
   }
   a {
     color: ${p => p.theme.color.typeLight};
-    font-family: ${p => p.theme.font.faceMono};
     position: relative;
     text-decoration: none;
     text-transform: uppercase;
@@ -30,7 +26,7 @@ const StyledMenu = styled.ul`
       height: 0.5em;
       left: calc(50% - 0.25em);
       position: absolute;
-      top: 2em;
+      top: 1.75em;
       width: 0.5em;
     }
   }
