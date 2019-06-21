@@ -17,7 +17,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    background-color: ${p => p.theme.color.background};
+    background-color: ${p => p.theme.color.backgroundDark};
     box-sizing: border-box;
     color: ${p => p.theme.color.type};
     font-family: ${p => p.theme.font.face}, sans-serif;
