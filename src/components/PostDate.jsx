@@ -2,9 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const PostDate = ({ date }) => {
-  const dateObject = new Date(date);
-  const dateOptions = { day: 'numeric', month: 'long', year: 'numeric' };
-  const formattedDate = dateObject.toLocaleDateString('en-GB', dateOptions);
+  const formattedDate = new Date(date).toLocaleDateString('en-GB', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  });
 
   return <time dateTime={date}>{formattedDate}</time>;
 };
