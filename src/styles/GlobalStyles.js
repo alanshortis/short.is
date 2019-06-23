@@ -23,6 +23,7 @@ const GlobalStyles = createGlobalStyle`
     font-family: ${p => p.theme.font.face}, sans-serif;
     font-weight: ${p => p.theme.font.weight};
     min-height: 100%;
+    line-height: 1.5;
   }
 
   ::selection {

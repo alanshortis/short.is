@@ -2,18 +2,11 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import MDXRenderer from 'gatsby-mdx/mdx-renderer';
-import styled from 'styled-components';
 import Layout from './Layout';
 import SEO from './SEO';
 import PostDate from './PostDate';
+import Article from './Post.styles';
 import PrismStyles from '../styles/PrismStyles';
-
-const Article = styled.article`
-  max-width: 60rem;
-  margin: 0 auto;
-  width: 100%;
-  padding: 0 2rem;
-`;
 
 export const query = graphql`
   query PostQuery($slug: String!) {
