@@ -24,7 +24,7 @@ const Header = () => (
     <Link to="/">
       <Icon />
     </Link>
-    <Menu sections={['writing', 'playlists', 'photography']} />
+    <Menu sections={['writing', 'playlists', 'photography', 'about']} />
   </StyledHeader>
 );
 

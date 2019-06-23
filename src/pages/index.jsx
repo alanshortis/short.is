@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import { rem } from 'polished';
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
-import Shard from '../components/home/Shard';
 
 const Container = styled.article`
   align-items: center;
@@ -14,23 +14,21 @@ const Container = styled.article`
   position: relative;
 `;
 
-const Title = styled.h1`
-  align-items: center;
-  display: flex;
-  font-size: 2rem;
-  font-weight: ${p => p.theme.font.weight};
-  height: 100%;
-  justify-content: center;
-  padding: 1rem;
-  position: absolute;
-  text-align: center;
-  text-shadow: 0 0 1rem ${p => p.theme.color.backgroundDark};
-  width: 100%;
-  @media screen and (min-width: 800px) {
-    font-size: 3vw;
-  }
+const Globe = styled.div`
+  border-radius: 50%;
+  height: 35vw;
+  width: 35vw;
+  background-image: linear-gradient(
+    135deg,
+    ${p => p.theme.color.accent},
+    transparent 0,
+    transparent 17%,
+    ${p => p.theme.color.accent}
+  );
+  box-shadow: inset 0 0 2em 0 ${p => p.theme.color.accent};
   @media screen and (min-width: 1441px) {
-    font-size: 3rem;
+    height: ${rem('500px')};
+    width: ${rem('500px')};
   }
 `;
 
@@ -38,12 +36,7 @@ const Home = () => (
   <Layout>
     <SEO title="Home" />
     <Container>
-      <Shard />
-      <Title>
-        <span>
-          <b>Alan Shortis</b>&nbsp;is a developer and occasional&nbsp;designer
-        </span>
-      </Title>
+      <Globe />
     </Container>
   </Layout>
 );
