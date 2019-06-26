@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
+import PostDate from '../../../components/PostDate';
 
 const Post = ({ slug, title, date }) => (
   <Link key={slug} to={slug}>
     <h2>{title}</h2>
-    <p>{date}</p>
+    <PostDate date={date} />
   </Link>
 );
 

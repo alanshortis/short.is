@@ -1,23 +1,23 @@
 {
   "color": {
-    "background": "rgba(254, 254, 254, 1)",
-    "complement": "rgba(74, 148, 194, 1)",
-    "accent": "rgba(221, 105, 105, 1)",
-    "tertiary": "rgba(106, 222, 139, 1)",
-    "secondary": "rgba(227, 226, 132, 1)",
-    "quarternary": "rgba(245, 105, 176, 1)",
-    "typeLight": "rgba(254, 254, 254, 1)",
-    "type": "rgba(51, 51, 51, 1)",
-    "backgroundDark": "rgba(17, 17, 17, 1)"
+    "accent": "hsl(0, 63%, 64%)",
+    "background": "hsl(0, 0%, 100%)",
+    "backgroundDark": "hsl(0, 0%, 7%)",
+    "backgroundMid": "hsl(0, 0%, 13%)",
+    "complement": "hsl(203, 50%, 53%)",
+    "quarternary": "hsl(330, 88%, 69%)",
+    "secondary": "hsl(59, 63%, 70%)",
+    "tertiary": "hsl(137, 64%, 64%)",
+    "type": "hsl(0, 0%, 20%)",
+    "typeLight": "hsl(0, 0%, 100%)",
+    "typeMid": "hsl(0, 0%, 33%)"
   },
   "font": {
-    "baseSize": "14px",
     "face": "IBM Plex Sans",
     "faceMono": "IBM Plex Mono",
     "weight": 400,
     "weightBold": 600
   },
-  "media": {
-    "collapseMenu": "(min-width: 600px)"
-  }
+  "headerHeight": "4rem",
+  "contentMargin": "1.5rem"
 }

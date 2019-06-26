@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
-import { rem } from 'polished';
 import Menu from './Menu';
 import Icon from '../img/icon.svg';
 
@@ -10,11 +9,15 @@ const StyledHeader = styled.header`
   background-color: ${p => p.theme.color.backgroundDark};
   color: ${p => p.theme.color.typeLight};
   display: flex;
-  height: ${rem('84px')};
+  height: ${p => p.theme.headerHeight};
   justify-content: space-between;
-  padding: ${rem('28px')};
+  padding: 0 1rem;
   position: sticky;
   top: 0;
+  z-index: 1;
+  > a {
+    height: 1.5rem;
+  }
 `;
 
 const Header = () => (
