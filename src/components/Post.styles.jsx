@@ -2,9 +2,6 @@ import styled from 'styled-components';
 
 const Article = styled.article`
   background-color: ${p => p.theme.color.background};
-  > time {
-    text-transform: uppercase;
-  }
   > div {
     max-width: 60rem;
     margin: 0 auto;
