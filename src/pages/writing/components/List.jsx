@@ -12,6 +12,7 @@ const postsQuery = graphql`{
           frontmatter {
             slug
             title
+            category
             date(formatString: "DD MMMM YYYY")
           }
         }
@@ -21,15 +22,17 @@ const postsQuery = graphql`{
 `;
 
 const List = () => (
-  <StaticQuery
-    query={postsQuery}
-    render={({ allMdx }) =>
-      allMdx.edges.map(({ node }) => {
-        const { slug, title, date } = node.frontmatter;
-        return <Post key={slug} slug={slug} title={title} date={date} />;
-      })
-    }
-  />
+  <div>
+    <StaticQuery
+      query={postsQuery}
+      render={({ allMdx }) =>
+        allMdx.edges.map(({ node }) => {
+          const { slug, title, category, date } = node.frontmatter;
+          return <Post key={slug} slug={slug} title={title} category={category} date={date} />;
+        })
+      }
+    />
+  </div>
 );
 
 export default List;
