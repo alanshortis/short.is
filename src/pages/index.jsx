@@ -22,10 +22,10 @@ const Globe = styled.div`
     135deg,
     ${p => p.theme.color.accent},
     transparent 0,
-    transparent 17%,
+    transparent 20%,
     ${p => p.theme.color.accent}
   );
-  box-shadow: inset 0 0 2em 0 ${p => p.theme.color.accent};
+  box-shadow: inset 0 0 3em 0 ${p => p.theme.color.accent};
   @media screen and (min-width: 1441px) {
     height: ${rem('500px')};
     width: ${rem('500px')};
