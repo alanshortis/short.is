@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import MDXRenderer from 'gatsby-mdx/mdx-renderer';
 import Layout from './Layout';
 import SEO from './SEO';
-import PostDate from './PostDate';
+import PostMeta from './PostMeta';
 import Article from './Post.styles';
 import PrismStyles from '../styles/PrismStyles';
 
@@ -14,6 +14,7 @@ export const query = graphql`
       frontmatter {
         title
         date
+        category
       }
       code {
         body
@@ -25,7 +26,7 @@ export const query = graphql`
 
 const Post = ({ data }) => {
   const { mdx } = data;
-  const { title, date } = mdx.frontmatter;
+  const { title, date, category } = mdx.frontmatter;
   const { body } = mdx.code;
 
   return (
@@ -34,7 +35,7 @@ const Post = ({ data }) => {
       <Article>
         <PrismStyles />
         <h1>{title}</h1>
-        <PostDate date={date} />
+        <PostMeta date={date} category={category} />
         <MDXRenderer>{body}</MDXRenderer>
       </Article>
     </Layout>

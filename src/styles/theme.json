@@ -19,5 +19,6 @@
     "weightBold": 600
   },
   "headerHeight": "4rem",
-  "contentMargin": "1.5rem"
+  "contentMargin": "1.5rem",
+  "borderWidth": "7px"
 }

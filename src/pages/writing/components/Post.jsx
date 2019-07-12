@@ -2,12 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
-import PostDate from '../../../components/PostDate';
+import PostMeta from '../../../components/PostMeta';
 
 const PostLink = styled(Link)`
   display: block;
   color: ${p => p.theme.color.typeLight};
-  border: 7px solid ${p => p.theme.color.typeLight};
+  border: ${p => p.theme.borderWidth} solid ${p => p.theme.color.typeLight};
   padding: 1rem;
   text-decoration: none;
   transition: background-color 0.2s ease;
@@ -22,7 +22,7 @@ const PostLink = styled(Link)`
 const Post = ({ slug, title, category, date }) => (
   <PostLink key={slug} to={slug}>
     <h2>{title}</h2>
-    <PostDate date={date} /> | {category}
+    <PostMeta date={date} category={category} />
   </PostLink>
 );
 
