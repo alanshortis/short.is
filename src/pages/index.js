@@ -1,10 +1,13 @@
 import React from 'react';
-import { Layout, Meta } from '../components';
+import { Layout, Meta, Header } from '../components';
 
 const Home = () => (
   <>
     <Meta title="Home" />
-    <Layout isDark>ayy lmao</Layout>
+    <Layout isDark>
+      <Header />
+      Home
+    </Layout>
   </>
 );
 

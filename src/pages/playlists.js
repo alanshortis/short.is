@@ -1,14 +1,14 @@
 import React from 'react';
 import { Layout, Meta, Header } from '../components';
 
-const NotFound = () => (
+const Playlists = () => (
   <>
-    <Meta title="404" />
+    <Meta title="Playlists" />
     <Layout isDark>
       <Header />
-      404
+      Playlists
     </Layout>
   </>
 );
 
-export default NotFound;
+export default Playlists;

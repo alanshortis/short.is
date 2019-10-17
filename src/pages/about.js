@@ -1,14 +1,14 @@
 import React from 'react';
 import { Layout, Meta, Header } from '../components';
 
-const NotFound = () => (
+const About = () => (
   <>
-    <Meta title="404" />
+    <Meta title="About" />
     <Layout isDark>
       <Header />
-      404
+      Alan Shortis is a web developer.
     </Layout>
   </>
 );
 
-export default NotFound;
+export default About;
