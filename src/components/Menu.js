@@ -4,23 +4,16 @@ import styled from 'styled-components';
 import { Link } from 'gatsby';
 import { math } from 'polished';
 
-const ListItem = styled.li`
-  display: inline;
-  font-size: 0.79rem;
-  list-style: none;
-  &:not(:last-child) {
-    @media ${p => p.theme.media.xSmallMin} {
-      margin-right: ${p => p.theme.contentMargin};
-    }
-    margin-right: ${p => math(`${p.theme.contentMargin} / 2`)};
-  }
-`;
-
 const MenuLink = styled(Link)`
+  font-size: 0.79rem;
+  letter-spacing: 3px;
   position: relative;
   text-decoration: none;
   text-transform: uppercase;
   transition: color ${p => p.theme.transitionSpeed} ${p => p.theme.transitionTiming};
+  &:not(:last-child) {
+    margin-right: ${p => p.theme.contentMargin};
+  }
   &:hover,
   &.active {
     color: ${p => p.theme.color.accent};
@@ -38,15 +31,13 @@ const MenuLink = styled(Link)`
 `;
 
 const Menu = ({ items }) => (
-  <ul>
+  <nav>
     {items.map(item => (
-      <ListItem>
-        <MenuLink to={item.url} activeClassName="active" partiallyActive>
-          {item.label}
-        </MenuLink>
-      </ListItem>
+      <MenuLink to={item.url} activeClassName="active" partiallyActive>
+        {item.label}
+      </MenuLink>
     ))}
-  </ul>
+  </nav>
 );
 
 Menu.propTypes = {

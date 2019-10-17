@@ -1,8 +1,13 @@
 import React from 'react';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
+const StyledIcon = styled.svg`
+  display: flex;
+`;
+
 const Icon = ({ fill }) => (
-  <svg width="40" height="24" fill={fill} xmlns="http://www.w3.org/2000/svg">
+  <StyledIcon width="40" height="24" fill={fill} xmlns="http://www.w3.org/2000/svg">
     <title>Alan Shortis</title>
     <g clipPath="url(#clip0)">
       <path
@@ -15,7 +20,7 @@ const Icon = ({ fill }) => (
         <path fill={fill} d="M0 0h39.4286v24H0z" />
       </clipPath>
     </defs>
-  </svg>
+  </StyledIcon>
 );
 
 Icon.propTypes = {
