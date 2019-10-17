@@ -14,25 +14,26 @@ const ListItem = styled.li`
     }
     margin-right: ${p => math(`${p.theme.contentMargin} / 2`)};
   }
-  a {
-    position: relative;
-    text-decoration: none;
-    text-transform: uppercase;
-    transition: color ${p => p.theme.transitionSpeed} ${p => p.theme.transitionTiming};
-    &:hover,
-    &.active {
-      color: ${p => p.theme.color.accent};
-    }
-    &.active::after {
-      content: '';
-      position: absolute;
-      top: ${p => p.theme.contentMargin};
-      left: calc(50% - ${p => math(`${p.theme.border} / 2`)});
-      width: ${p => p.theme.border};
-      height: ${p => p.theme.border};
-      border-radius: 50%;
-      background-color: ${p => p.theme.color.accent};
-    }
+`;
+
+const MenuLink = styled(Link)`
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color ${p => p.theme.transitionSpeed} ${p => p.theme.transitionTiming};
+  &:hover,
+  &.active {
+    color: ${p => p.theme.color.accent};
+  }
+  &.active::after {
+    content: '';
+    position: absolute;
+    top: ${p => p.theme.contentMargin};
+    left: calc(50% - ${p => math(`${p.theme.border} / 2`)});
+    width: ${p => p.theme.border};
+    height: ${p => p.theme.border};
+    border-radius: 50%;
+    background-color: ${p => p.theme.color.accent};
   }
 `;
 
@@ -40,9 +41,9 @@ const Menu = ({ items }) => (
   <ul>
     {items.map(item => (
       <ListItem>
-        <Link to={item.url} activeClassName="active" partiallyActive>
+        <MenuLink to={item.url} activeClassName="active" partiallyActive>
           {item.label}
-        </Link>
+        </MenuLink>
       </ListItem>
     ))}
   </ul>
