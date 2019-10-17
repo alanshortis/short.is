@@ -1,5 +1,11 @@
 import React from 'react';
+import { Layout, Meta } from '../components';
 
-const NotFound = () => <div>404</div>;
+const NotFound = () => (
+  <>
+    <Meta title="404" />
+    <Layout isDark>404</Layout>
+  </>
+);
 
 export default NotFound;

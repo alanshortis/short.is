@@ -1,6 +1,11 @@
 import React from 'react';
-import Layout from '../components/Layout';
+import { Layout, Meta } from '../components';
 
-const Home = () => <Layout isDark>ayy lmao</Layout>;
+const Home = () => (
+  <>
+    <Meta title="Home" />
+    <Layout isDark>ayy lmao</Layout>
+  </>
+);
 
 export default Home;
