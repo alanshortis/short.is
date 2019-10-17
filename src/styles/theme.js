@@ -21,6 +21,8 @@ const theme = {
   border: rem('7px'),
   container: '1000px',
   containerNarrow: '500px',
+  transitionSpeed: '200ms',
+  transitionTiming: 'ease',
 };
 
 theme.color.complement = complement(theme.color.accent);
