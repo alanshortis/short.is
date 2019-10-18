@@ -3,8 +3,10 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const StyledDate = styled.time`
+  display: block;
   font-size: 0.79rem;
   letter-spacing: 3px;
+  margin-bottom: calc(${p => p.theme.contentMargin} / 2);
   text-transform: uppercase;
 `;
 

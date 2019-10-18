@@ -37,6 +37,7 @@ const GlobalStyles = createGlobalStyle`
 
   h1, h2, h3 {
     font-size: 2.074rem;
+    line-height: 1.125;
     margin-bottom: ${p => p.theme.contentMargin};
   }
 
@@ -54,6 +55,10 @@ const GlobalStyles = createGlobalStyle`
 
   em, i {
     font-style: italic;
+  }
+
+  ul, ol {
+    list-style: none;
   }
 `;
 

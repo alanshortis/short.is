@@ -6,7 +6,7 @@ import { Menu, Icon } from '.';
 
 const StyledHeader = styled.header`
   align-items: center;
-  background-color: ${p => p.theme.color.header(p.isDark, 0.1)};
+  background-color: ${p => p.theme.color.header(p.isDark, 0.05)};
   display: flex;
   height: ${p => p.theme.headerHeight};
   justify-content: space-between;
@@ -14,6 +14,7 @@ const StyledHeader = styled.header`
   position: sticky;
   top: 0;
   width: 100%;
+  z-index: 1;
   @supports (backdrop-filter: blur(7px)) {
     backdrop-filter: blur(7px);
     background-color: ${p => p.theme.color.header(p.isDark, 0.3)};
