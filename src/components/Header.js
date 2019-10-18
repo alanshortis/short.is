@@ -6,14 +6,18 @@ import { Menu, Icon } from '.';
 
 const StyledHeader = styled.header`
   align-items: center;
-  backdrop-filter: blur(5px);
-  background-color: ${p => (p.isDark ? p.theme.color.headerDark : p.theme.color.header)};
+  background-color: ${p => p.theme.color.header(p.isDark, 0.1)};
   display: flex;
-  height: 5rem;
+  height: ${p => p.theme.headerHeight};
   justify-content: space-between;
   padding: 0 ${p => p.theme.contentMargin};
-  position: fixed;
+  position: sticky;
+  top: 0;
   width: 100%;
+  @supports (backdrop-filter: blur(7px)) {
+    backdrop-filter: blur(7px);
+    background-color: ${p => p.theme.color.header(p.isDark, 0.3)};
+  }
   a {
     color: currentColor;
   }

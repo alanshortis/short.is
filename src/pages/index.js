@@ -6,7 +6,7 @@ import Anaglyph from '../components/sketches/Anaglyph';
 const Container = styled.div`
   display: flex;
   align-items: center;
-  height: 100vh;
+  height: calc(100vh - ${p => p.theme.headerHeight});
   justify-content: center;
 `;
 

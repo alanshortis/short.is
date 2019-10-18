@@ -8,8 +8,10 @@ const theme = {
     backgroundDark: 'hsl(0, 0%, 10%)',
     type: 'hsl(0, 0%, 10%)',
     typeLight: 'hsl(0, 0%, 100%)',
-    header: transparentize(0.3, 'hsl(0, 0%, 100%)'),
-    headerDark: transparentize(0.3, 'hsl(0, 0%, 10%)'),
+    header: (isDark, amount) => {
+      const color = isDark ? 'hsl(0, 0%, 10%)' : 'hsl(0, 0%, 100%)';
+      return transparentize(amount, color);
+    },
   },
   font: {
     face: 'Inter',
@@ -24,7 +26,7 @@ const theme = {
   border: rem('7px'),
   container: rem('1000px'),
   containerNarrow: rem('500px'),
-  headerHeight: rem('40px'),
+  headerHeight: '5rem',
   transitionSpeed: '200ms',
   transitionTiming: 'ease',
 };
