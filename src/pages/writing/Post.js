@@ -1,16 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
+import { Time } from '../../components';
 
 const Post = ({ node }) => {
   const { slug, title, date } = node.frontmatter;
   return (
     <li>
-      <Link to={slug}>
-        {title}
-        {date}
-        {node.excerpt}
-      </Link>
+        <h2>{title}</h2>
+        <Time date={date} />
+        <p>{node.excerpt}</p>
     </li>
   );
 };
