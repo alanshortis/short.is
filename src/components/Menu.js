@@ -33,7 +33,7 @@ const MenuLink = styled(Link)`
 const Menu = ({ items }) => (
   <nav>
     {items.map(item => (
-      <MenuLink to={item.url} activeClassName="active" partiallyActive>
+      <MenuLink key={item.url} to={item.url} activeClassName="active" partiallyActive>
         {item.label}
       </MenuLink>
     ))}
