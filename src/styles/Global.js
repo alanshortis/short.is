@@ -62,6 +62,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   .smallcaps {
+    color: currentColor;
     font-size: 0.79rem;
     letter-spacing: 3px;
     margin-bottom: calc(${p => p.theme.contentMargin} / 2);

@@ -19,7 +19,7 @@ const StyledLink = styled(Link)`
   height: 100%;
   padding: ${p => p.theme.contentMargin};
   text-decoration: none;
-  transition: all ${p => p.theme.transitionSpeed} ${p => p.theme.transitionTiming};
+  transition: box-shadow ${p => p.theme.transitionSpeed} ${p => p.theme.transitionTiming};
   &:hover {
     box-shadow: 0 0 0 ${p => p.theme.border} currentColor;
   }

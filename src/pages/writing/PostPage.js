@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer';
-import { Layout, Time, Meta, NextPost } from '.';
+import { Layout, Time, Meta, NextPost } from '../../components';
 
 const PostContainer = styled.article`
   margin: 0 auto;
