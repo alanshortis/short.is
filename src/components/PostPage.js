@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer';
-import { Layout, Time, PostAge } from '.';
+import { Layout, Time, Meta } from '.';
 
 const PostContainer = styled.article`
   margin: 0 auto;
@@ -30,15 +30,17 @@ const Post = ({ data }) => {
   const { title, date, intro } = mdx.frontmatter;
 
   return (
-    <Layout>
-      <PostAge date={date} />
-      <PostContainer>
-        <h1>{title}</h1>
-        <Time date={date} />
-        <blockquote>{intro}</blockquote>
-        <MDXRenderer>{mdx.body}</MDXRenderer>
-      </PostContainer>
-    </Layout>
+    <>
+      <Meta title={title} description={intro} />
+      <Layout>
+        <PostContainer>
+          <h1>{title}</h1>
+          <Time date={date} />
+          <blockquote>{intro}</blockquote>
+          <MDXRenderer>{mdx.body}</MDXRenderer>
+        </PostContainer>
+      </Layout>
+    </>
   );
 };
 

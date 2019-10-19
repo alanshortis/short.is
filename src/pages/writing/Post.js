@@ -30,7 +30,9 @@ const Post = ({ node }) => {
   return (
     <StyledPost>
       <StyledLink to={slug}>
-        <Time date={date} />
+        <div>
+          <Time date={date} withNewLabel />
+        </div>
         <h2>{title}</h2>
         <p>{intro}</p>
       </StyledLink>
