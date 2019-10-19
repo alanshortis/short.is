@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer';
-import { Layout, Time, Meta } from '.';
+import { Layout, Time, Meta, NextPost } from '.';
 
 const PostContainer = styled.article`
   margin: 0 auto;
@@ -25,7 +25,7 @@ export const query = graphql`
   }
 `;
 
-const Post = ({ data }) => {
+const Post = ({ data, pageContext }) => {
   const { mdx } = data;
   const { title, date, intro } = mdx.frontmatter;
 
@@ -38,6 +38,7 @@ const Post = ({ data }) => {
           <Time date={date} />
           <blockquote>{intro}</blockquote>
           <MDXRenderer>{mdx.body}</MDXRenderer>
+          <NextPost pageContext={pageContext} />
         </PostContainer>
       </Layout>
     </>
@@ -55,6 +56,7 @@ Post.propTypes = {
       }),
     }),
   }).isRequired,
+  pageContext: PropTypes.shape({}).isRequired,
 };
 
 export default Post;

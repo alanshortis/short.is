@@ -5,11 +5,6 @@ import { Link } from 'gatsby';
 import { math } from 'polished';
 
 const MenuLink = styled(Link)`
-  font-size: 0.79rem;
-  letter-spacing: 3px;
-  position: relative;
-  text-decoration: none;
-  text-transform: uppercase;
   transition: color ${p => p.theme.transitionSpeed} ${p => p.theme.transitionTiming};
   &:not(:last-child) {
     margin-right: ${p => p.theme.contentMargin};
@@ -33,7 +28,13 @@ const MenuLink = styled(Link)`
 const Menu = ({ items }) => (
   <nav>
     {items.map(item => (
-      <MenuLink key={item.url} to={item.url} activeClassName="active" partiallyActive>
+      <MenuLink
+        className="smallcaps"
+        key={item.url}
+        to={item.url}
+        activeClassName="active"
+        partiallyActive
+      >
         {item.label}
       </MenuLink>
     ))}

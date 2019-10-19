@@ -60,6 +60,15 @@ const GlobalStyles = createGlobalStyle`
   ul, ol {
     list-style: none;
   }
+
+  .smallcaps {
+    font-size: 0.79rem;
+    letter-spacing: 3px;
+    margin-bottom: calc(${p => p.theme.contentMargin} / 2);
+    position: relative;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
 `;
 
 export default GlobalStyles;

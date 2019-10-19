@@ -5,23 +5,27 @@ exports.createPages = ({ graphql, actions }) => {
   return new Promise(resolve => {
     graphql(`
       {
-        allMdx {
+        allMdx(sort: { order: ASC, fields: frontmatter___date }) {
           edges {
             node {
               frontmatter {
                 slug
+                title
               }
             }
           }
         }
       }
     `).then(results => {
-      results.data.allMdx.edges.forEach(({ node }) => {
+      const { edges: pages } = results.data.allMdx;
+      pages.forEach(({ node }, i) => {
         createPage({
           path: node.frontmatter.slug,
           component: path.resolve('./src/components/PostPage.js'),
           context: {
             slug: node.frontmatter.slug,
+            next: i === 0 ? null : pages[i - 1].node,
+            prev: i === pages.length - 1 ? null : pages[i + 1].node,
           },
         });
       });
