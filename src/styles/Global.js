@@ -35,18 +35,22 @@ const GlobalStyles = createGlobalStyle`
     color: ${p => p.theme.color.typeLight};
   }
 
-  h1, h2, h3 {
+  h1, h2, h3, h4 {
     font-size: 2.074rem;
     line-height: 1.125;
     margin-bottom: ${p => p.theme.contentMargin};
   }
 
   h2 {
-    font-size: 1.728em;
+    font-size: 1.728rem;
   }
 
   h3 {
-    font-size: 1.44em;
+    font-size: 1.44rem;
+  }
+
+  h4 {
+    font-size: 1.2rem;
   }
 
   strong, b {

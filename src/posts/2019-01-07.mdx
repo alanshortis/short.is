@@ -26,9 +26,9 @@ There are various ways to write a React app without the need to deal with toolin
 
 This guide will explain how to configure a React application from scratch. You may need to do this to meet the needs of your project, or you might just be curious to learn how your React source ends up in a format that can be understood by browsers.
 
-<a name="assumptions" />
+<a class="anchor" name="assumptions" />
 
-### Assumptions
+## Assumptions
 
 This guide assumes a few things that will not be covered:
 
@@ -36,9 +36,9 @@ This guide assumes a few things that will not be covered:
 - You know enough JavaScript and React to get by. We won't be touching React much, but what little we do write will not be explained.
 - You're comfortable enough on the command line to navigate the file system and run commands.
 
-<a name="create-app" />
+<a class="anchor" name="create-app" />
 
-### Create project
+## Create project
 
 Create a new folder for your project. Let's call it `react-project` for now.
 
@@ -52,9 +52,9 @@ npm-debug.log
 dist
 ```
 
-<a name="babel" />
+<a class="anchor" name="babel" />
 
-### Babel
+## Babel
 
 Babel is a toolchain that will take your modern JavaScript source and transpile it down to a version that can be understood by browsers. For example, IE11 cannot work with JavaScript classes so Babel will turn them back in to plain old Prototypes.
 
@@ -72,9 +72,9 @@ Create a config file for Babel named `.babelrc` and add the presets we just down
 }
 ```
 
-<a name="webpack" />
+<a class="anchor" name="webpack" />
 
-### Webpack
+## Webpack
 
 At its heart, Webpack is a module bundler. It takes all the pieces of JavaScript we're using and puts them together into a bundle that can be used by the browser.
 
@@ -171,9 +171,9 @@ module.exports = {
 };
 ```
 
-<a name="react" />
+<a class="anchor" name="react" />
 
-### React
+## React
 
 Now we have some tooling taken care of, we can install React and create the most basic App.
 
@@ -192,9 +192,9 @@ render(<App />, document.getElementById('root'));
 
 That's it for now - we're just directly rendering one stateless functional component to the div with an ID of 'root' that we added to our HTML file earlier.
 
-<a name="dev-server" />
+<a class="anchor" name="dev-server" />
 
-### Development Server
+## Development Server
 
 We've yet to see anything in a browser yet. In order to do that we're going to configure Webpack to use [Webpack Dev Server](https://webpack.js.org/configuration/dev-server/) and [Browsersync](https://www.browsersync.io/) together.
 
@@ -284,9 +284,9 @@ Visiting [http://localhost:3000](http://localhost:3000) will display your amazin
 
 > Tip: React Developer Tools is an essential extension available for [Chrome](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en) and [Firefox](https://addons.mozilla.org/en-GB/firefox/addon/react-devtools/) that makes debugging React much easier, as well as looking under the hood of third party apps built in React.
 
-<a name="styled-components" />
+<a class="anchor" name="styled-components" />
 
-### Styled Components
+## Styled Components
 
 [Styled Components](https://www.styled-components.com/) is a CSS-in-JS solution that takes advantage of tagged template literals. You can write CSS in a style really close to vanilla CSS, with the advantage of using JavaScript to augment it.
 
@@ -317,11 +317,11 @@ const App = () => <StyledText>This is my React app.</StyledText>;
 render(<App />, document.getElementById('root'));
 ```
 
-<a name="code-quality" />
+<a class="anchor" name="code-quality" />
 
-### Code Quality
+## Code Quality
 
-#### Prettier and ESLint
+### Prettier and ESLint
 
 [Prettier](https://prettier.io/) and [ESLint](https://eslint.org/) are tools that help ensure that your code adheres to standards and is correctly formatted. There is a little bit of overlap in what these tools do, so by configuring them together we can get the benefits of both.
 
@@ -375,7 +375,7 @@ There are a few rules I like to override:
 - Ensure trailing commas are used. I like this for source control, as it means a line won't appear to have been authored by a developer who only added a comma at the end.
 - Set a longer line length.
 
-#### Stylelint
+### Stylelint
 
 Like ESLint for JavaScript, [stylelint](https://stylelint.io/) enforces rules for CSS. Install stylelint, a processor for styled components (so we can use this with Styled Components rather than just regular CSS or SASS) and the recommended/styled components configs: `$ npm i --save-dev stylelint stylelint-processor-styled-components stylelint-config-styled-components stylelint-config-recommended`.
 
@@ -412,7 +412,7 @@ To enable the format on save feature, add to your VS Code `settings.json`:
 
 The `prettier.requireConfig` setting will prevent VS Code from applying prettier formats on save in projects that do not have a prettier config. This is especially useful if you're in an older codebase with established formatting that deviates from Prettier.
 
-#### Linting
+### Linting
 
 We now have linting rules for both JavaScript and CSS, so we should add methods to use them. First of all, we'll create scripts to run just the linters (which could be helpful for CI/CD workflows).
 
@@ -446,7 +446,7 @@ render(<App />, document.getElementById('root'));
 
 Rerunning the linter should now show no output at all, as all rules have been adhered to.
 
-#### Linting on save with Webpack
+### Linting on save with Webpack
 
 Webpack can be configured to run the linters as we work, as part of our existing development server configuration.
 
@@ -496,9 +496,9 @@ module.exports = {
 
 This extends the existing rule for js and jsx files, and adds the ESLint and stylelint loaders. The order of the loaders in the `use` array is important - we need to lint our source files before Babel touches them, so ensure each linting loader is _after_ the Babel loader in the array.
 
-<a name="production-build" />
+<a class="anchor" name="production-build" />
 
-### Production Build
+## Production Build
 
 Webpack can handle a production ready build for us, creating an uglified JavaScript bundle free of code used only for development/debugging. This is achieved using the `mode` parameter we already used for our development server.
 
@@ -577,8 +577,8 @@ module.exports = {
 
 We should now have a marginally smaller bundle. Not by much, but it all helps.
 
-<a name="conclusion" />
+<a class="anchor" name="conclusion" />
 
-### Conclusion
+## Conclusion
 
 This should be a good start for understanding how the tooling works, but is the tip of the iceberg for Webpack configuration for React. As you build a large and complex application you'll likely need to refine this config by adding more Babel plugins to handle emerging JavaScript features, add loaders for different file types and strengthen linter rules to suit your team.

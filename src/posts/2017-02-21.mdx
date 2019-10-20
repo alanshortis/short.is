@@ -14,7 +14,7 @@ Icon fonts were next, with [icomoon](https://icomoon.io/) and various Gulp/Grunt
 
 SVG sprites offer a combination of the two approaches. Control of the actual icons available, using images for icons and not hijacking fonts, and having icons available as vectors that can be styled with CSS and look sharp everywhere. There are some steps involved to produce the sprite but once you've set this process up and running it's as easy as saving an icon and using it in your markup.
 
-### Making your icons
+## Making your icons
 
 Once you've designed your icons in Illustrator (or wherever) you can save them as SVGs. Illustrator adds a fair amount of extra markup that we don't need but we'll take care of that as we build the sprite.
 
@@ -22,7 +22,7 @@ If you aren't designing your own icons you can take them from somewhere like [ic
 
 Place all of your icons in a folder that will go into your source control, e.g. `src/icons`.
 
-### Building the sprite
+## Building the sprite
 
 If you're unfamiliar with [NPM](https://www.npmjs.com/) and [Gulp](http://gulpjs.com/) then I would recommend looking at the basics before moving forwards. These steps can be achieved with [Grunt](https://gruntjs.com/), [Webpack](https://webpack.github.io/) or NPM scripts if your prefer, but I'll be using Gulp in these examples.
 
@@ -55,7 +55,7 @@ gulp.task('icons', () => {
 
 Using the Jekyll file structure as an example, the individual icons will be taken from the `src/icons` folder, optimised and built into a sprite which is saved to `_includes`.
 
-### Using the sprite
+## Using the sprite
 
 To display each icon (which is now a path in an SVG) we need to add the entire SVG to our HTML document just after the opening body tag. In Jekyll (liquid) we can just include it as we would any partial, but you should adjust this depending on your stack. Alternatively you could use AJAX to append the SVG to an existing element if including dynamically is not an option for you.
 
@@ -81,7 +81,7 @@ To display the individual icons we need the `use` element within an SVG to get a
 
 With no styling the icon will be huge and black.
 
-### Styling icons
+## Styling icons
 
 We can use CSS to style these icons rather than using the inline styling more common with SVG. Our glup task removes all styling from the SVGs to avoid conflicts. The `fill` property determines the color of your icon and we can use `currentColor` for this property to match the color of our type automatically.
 

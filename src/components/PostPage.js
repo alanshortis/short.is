@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer';
+import StyledPost from './PostPage.style';
 import { Layout, Time, Meta, NextPost } from '.';
 
 const PostContainer = styled.article`
@@ -44,7 +45,9 @@ const Post = ({ data, pageContext }) => {
           <Time date={date} />
           <h1>{title}</h1>
           <PostIntro>{intro}</PostIntro>
-          <MDXRenderer>{mdx.body}</MDXRenderer>
+          <StyledPost>
+            <MDXRenderer>{mdx.body}</MDXRenderer>
+          </StyledPost>
           <NextPost pageContext={pageContext} />
         </PostContainer>
       </Layout>
