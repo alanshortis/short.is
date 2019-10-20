@@ -35,22 +35,21 @@ const StyledLink = styled(Link)`
 `;
 
 const NextPost = ({ pageContext }) => {
-  const { next, prev } = pageContext;
-  const noPrev = prev === null;
+  const { newer, older } = pageContext;
   return (
-    <NavContainer noPrev={noPrev}>
-      {prev ? (
-        <StyledLink to={prev.frontmatter.slug}>
-          <p className="smallcaps">&#8592; previous</p>
-          <h2>{prev.frontmatter.title}</h2>
+    <NavContainer>
+      {older ? (
+        <StyledLink to={older.frontmatter.slug}>
+          <p className="smallcaps">&#8592; older</p>
+          <h2>{older.frontmatter.title}</h2>
         </StyledLink>
       ) : (
         <div />
       )}
-      {next && (
-        <StyledLink to={next.frontmatter.slug} align="right">
-          <p className="smallcaps">next &#8594;</p>
-          <h2>{next.frontmatter.title}</h2>
+      {newer && (
+        <StyledLink to={newer.frontmatter.slug} align="right">
+          <p className="smallcaps">newer &#8594;</p>
+          <h2>{newer.frontmatter.title}</h2>
         </StyledLink>
       )}
     </NavContainer>
@@ -59,13 +58,13 @@ const NextPost = ({ pageContext }) => {
 
 NextPost.propTypes = {
   pageContext: PropTypes.shape({
-    next: PropTypes.shape({
+    newer: PropTypes.shape({
       frontmatter: PropTypes.shape({
         slug: PropTypes.string,
         title: PropTypes.string,
       }),
     }),
-    prev: PropTypes.shape({
+    older: PropTypes.shape({
       frontmatter: PropTypes.shape({
         slug: PropTypes.string,
         title: PropTypes.string,

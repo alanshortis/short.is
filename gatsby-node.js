@@ -24,8 +24,8 @@ exports.createPages = ({ graphql, actions }) => {
           component: path.resolve('./src/components/PostPage.js'),
           context: {
             slug: node.frontmatter.slug,
-            next: i === 0 ? null : pages[i - 1].node,
-            prev: i === pages.length - 1 ? null : pages[i + 1].node,
+            newer: i === pages.length - 1 ? null : pages[i + 1].node,
+            older: i === 0 ? null : pages[i - 1].node,
           },
         });
       });
