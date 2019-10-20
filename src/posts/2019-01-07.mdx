@@ -60,7 +60,7 @@ Babel is a toolchain that will take your modern JavaScript source and transpile 
 
 The [Babel documentation](https://babeljs.io/docs/en/) is very good and explains everything in much more detail.
 
-Install Babel, presets to handle modern JavaScript and React, and a Babel loader (this is for Webpack, which will be explained later): `$ npm i --save-dev @babel/core @babel/preset-env @babel/preset-react babel-loader`
+Install Babel, presets to handle modern JavaScript and React, and a Babel loader (this is for Webpack, which will be explained later): `$ npm i --save-dev @babel/core @babel/preset-env @babel/preset-react babel-loader`.
 
 The Babel presets add support for transpiling particular parts of JavaScript. [preset-env](https://babeljs.io/docs/en/babel-preset-env) will take care of modern (think ES6 and beyond) features and [preset-react](https://babeljs.io/docs/en/babel-preset-react) will take care of features specific to React (such as JSX).
 
@@ -351,7 +351,7 @@ We're adjusting the Airbnb rules here slightly. The rules state that all files t
 
 To use `.jsx` files, we'll need to add a property to our webpack config that will ensure JSX files are resolved:
 
-```json
+```javascript
 resolve: {
   extensions: ['.js', '.jsx'],
 },

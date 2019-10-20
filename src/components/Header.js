@@ -17,7 +17,7 @@ const StyledHeader = styled.header`
   z-index: 1;
   @supports (backdrop-filter: blur(7px)) {
     backdrop-filter: blur(7px);
-    background-color: ${p => p.theme.color.header(p.isDark, 0.3)};
+    background-color: ${p => p.theme.color.header(p.isDark, 0.5)};
   }
   a {
     color: currentColor;
