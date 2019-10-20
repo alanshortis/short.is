@@ -3,7 +3,7 @@ title: 'Icons with SVG Sprites'
 date: '2017-02-21'
 category: 'development'
 slug: '/writing/icons-with-svg-sprites'
-intro: 'First there were sprite sheets. Then icon fonts. Then SVGs. Now we can combine two of those and keep all our icons in one SVG file.'
+intro: 'First there were sprite sheets. Then icon fonts. Then SVGs. Now there are SVG sprites, and some .'
 ---
 
 Icons have been an important aspect of UI design for a very long time, and approaches to loading and displaying icons has evolved.
@@ -83,19 +83,13 @@ With no styling the icon will be huge and black.
 
 ### Styling icons
 
-I like to use BEM syntax in SASS to style icons. If you're unfamiliar with these approaches it's worth reading up on the basics. They're not essential for using icons in this way; you can style them however you'd like, taking into account your designs and coding style.
+We can use CSS to style these icons rather than using the inline styling more common with SVG. Our glup task removes all styling from the SVGs to avoid conflicts. The `fill` property determines the color of your icon and we can use `currentColor` for this property to match the color of our type automatically.
 
-Note the `fill` property; this determines the color of your SVG icon and is possible as we stripped all inline styling in the SVG itself in our gulp task.
-
-```scss
+```css
 .icon {
   width: 1em;
   height: 1em;
-  fill: $color__icon;
-  &--large {
-    width: 2em;
-    height: 2em;
-  }
+  fill: currentColor;
 }
 ```
 
