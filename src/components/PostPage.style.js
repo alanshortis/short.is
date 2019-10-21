@@ -8,7 +8,6 @@ const StyledPost = styled.div`
     margin-bottom: ${p => p.theme.contentMargin};
     code {
       background-color: ${p => p.theme.color.syntax.background};
-      border-radius: ${p => p.theme.border};
       color: ${p => p.theme.color.syntax.text};
       font-size: 0.833rem;
       line-height: 1em;
@@ -69,7 +68,6 @@ const StyledPost = styled.div`
 
   .gatsby-highlight {
     background-color: ${p => p.theme.color.syntax.background};
-    border-radius: ${p => p.theme.border};
     color: ${p => p.theme.color.syntax.text};
     font-size: 0.833rem;
     left: 0;
