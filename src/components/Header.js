@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
-import { Menu, Icon } from '.';
+import { Menu, Icon, MenuButton } from '.';
 
 const StyledHeader = styled.header`
   align-items: center;
@@ -10,6 +10,7 @@ const StyledHeader = styled.header`
   display: flex;
   height: ${p => p.theme.headerHeight};
   justify-content: space-between;
+  overflow: visible;
   padding: 0 ${p => p.theme.contentMargin};
   position: sticky;
   top: 0;
@@ -30,13 +31,14 @@ const Header = ({ isDark }) => (
       <Icon />
     </Link>
     <Menu
+      isDark={isDark}
       items={[
         { label: 'Writing', url: '/writing' },
         { label: 'Photography', url: '/photography' },
         { label: 'Playlists', url: '/playlists' },
-        { label: 'About', url: '/about' },
       ]}
     />
+    <MenuButton />
   </StyledHeader>
 );
 
