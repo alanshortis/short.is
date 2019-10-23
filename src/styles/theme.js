@@ -30,7 +30,7 @@ const theme = {
     weightBold: 700,
   },
   media: {
-    xSmallMin: `(min-width: ${rem('500px')})`,
+    xSmallMin: `(min-width: ${rem('550px')})`,
     smallMin: `(min-width: ${rem('700px')})`,
   },
   contentMargin: '1.618rem',

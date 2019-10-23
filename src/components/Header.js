@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
 import { Menu, Icon, MenuButton } from '.';
+import { MenuProvider } from './MenuContext';
 
 const StyledHeader = styled.header`
   align-items: center;
@@ -25,22 +26,36 @@ const StyledHeader = styled.header`
   }
 `;
 
-const Header = ({ isDark }) => (
-  <StyledHeader isDark={isDark}>
-    <Link to="/">
-      <Icon />
-    </Link>
-    <Menu
-      isDark={isDark}
-      items={[
-        { label: 'Writing', url: '/writing' },
-        { label: 'Photography', url: '/photography' },
-        { label: 'Playlists', url: '/playlists' },
-      ]}
-    />
-    <MenuButton />
-  </StyledHeader>
-);
+const Header = ({ isDark }) => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const contextValue = {
+    isMenuOpen,
+    toggleMenu: () => {
+      setIsMenuOpen(!isMenuOpen);
+    },
+  };
+
+  return (
+    <MenuProvider value={contextValue}>
+      <StyledHeader isDark={isDark}>
+        <Link to="/">
+          <Icon />
+        </Link>
+        <MenuButton />
+        <Menu
+          isDark={isDark}
+          items={[
+            { label: 'Writing', url: '/writing', childRoutes: true },
+            { label: 'Photography', url: '/photography' },
+            { label: 'Playlists', url: '/playlists' },
+            { label: 'About', url: '/' },
+          ]}
+        />
+      </StyledHeader>
+    </MenuProvider>
+  );
+};
 
 Header.propTypes = {
   isDark: PropTypes.bool.isRequired,

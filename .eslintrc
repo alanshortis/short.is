@@ -1,6 +1,6 @@
 {
   "globals": {
-    "document": true
+    "window": true
   },
   "extends": ["airbnb", "prettier", "prettier/react"],
   "plugins": ["prettier"],
