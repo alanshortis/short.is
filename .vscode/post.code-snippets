@@ -3,10 +3,11 @@
     "prefix": "pfm",
     "body": [
       "---",
-      "title: '$0'",
+      "title: '$1'",
       "date: '$CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE'",
-      "slug: '/$1'",
-      "intro: '$2'",
+      "category: 'development'",
+      "slug: '/writing/$2'",
+      "intro: '$3'",
       "---"
     ],
     "description": "Frontmatter for posts"
