@@ -42,7 +42,15 @@ const StyledPost = styled.div`
     border-bottom: calc(${p => p.theme.border} / 2) solid ${p => p.theme.color.accent};
     color: currentColor;
     text-decoration: none;
+    text-decoration-color: ${p => p.theme.color.accent};
     transition: border-bottom-width ${p => p.theme.transitionSpeed} ${p => p.theme.transitionTiming};
+    @supports (text-decoration-thickness: 3px) {
+      border-bottom: 0;
+      text-decoration: underline;
+      text-decoration-color: ${p => p.theme.color.accent};
+      text-decoration-skip-ink: none;
+      text-decoration-thickness: calc(${p => p.theme.border} / 2);
+    }
     &.anchor {
       border: 0;
       display: block;
