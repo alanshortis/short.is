@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 module.exports = {
   siteMetadata: {
     author: 'Alan Shortis',
@@ -26,6 +28,17 @@ module.exports = {
             resolve: 'gatsby-remark-prismjs',
           },
         ],
+      },
+    },
+    {
+      resolve: `gatsby-source-spotify`,
+      options: {
+        clientId: process.env.SPOTIFY_CLIENT,
+        clientSecret: process.env.SPOTIFY_TOKEN,
+        refreshToken: process.env.SPOTIFY_REFRESH,
+        fetchPlaylists: true,
+        fetchRecent: false,
+        timeRanges: ['long_term'],
       },
     },
   ],

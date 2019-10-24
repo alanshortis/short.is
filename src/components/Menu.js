@@ -91,6 +91,7 @@ Menu.propTypes = {
     PropTypes.shape({
       label: PropTypes.string,
       url: PropTypes.string,
+      childRoutes: PropTypes.bool,
     })
   ).isRequired,
   isDark: PropTypes.bool,
