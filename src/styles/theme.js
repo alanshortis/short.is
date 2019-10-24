@@ -26,6 +26,7 @@ const theme = {
   },
   font: {
     face: 'Inter',
+    family: 'Inter, "Helvetica Neue", Helvetica, Arial, sans-serif',
     weight: 400,
     weightBold: 700,
   },

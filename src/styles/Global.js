@@ -24,7 +24,7 @@ const GlobalStyles = createGlobalStyle`
     background-color: ${p => (p.isDark ? p.theme.color.backgroundDark : p.theme.color.background)};
     box-sizing: border-box;
     color: ${p => (p.isDark ? p.theme.color.typeLight : p.theme.color.type)};
-    font-family: ${p => p.theme.font.face};
+    font-family: ${p => p.theme.font.family};
     font-weight: ${p => p.theme.font.weight};
     line-height: 1.5;
     min-height: 100%;

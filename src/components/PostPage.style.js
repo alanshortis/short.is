@@ -8,7 +8,7 @@ const StyledPost = styled.div`
     margin-bottom: ${p => p.theme.contentMargin};
     code {
       background-color: ${p => p.theme.color.syntax.background};
-      color: ${p => p.theme.color.syntax.text};
+      color: ${p => p.theme.color.accent};
       font-size: 0.833rem;
       line-height: 1em;
       padding: calc(${p => p.theme.contentMargin} / 8) calc(${p => p.theme.contentMargin} / 4);
@@ -134,11 +134,6 @@ const StyledPost = styled.div`
   .token.important,
   .token.variable {
     color: ${p => p.theme.color.syntax.regex};
-  }
-
-  .token.important,
-  .token.bold {
-    font-weight: bold;
   }
 
   .token.italic {

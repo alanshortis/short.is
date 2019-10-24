@@ -20,6 +20,10 @@ const PostIntro = styled.p`
   border-bottom: ${p => p.theme.border} solid currentColor;
 `;
 
+const PostTitle = styled.h1`
+  font-size: 2.488rem;
+`;
+
 export const query = graphql`
   query PostQuery($slug: String!) {
     mdx(frontmatter: { slug: { eq: $slug } }) {
@@ -43,7 +47,7 @@ const Post = ({ data, pageContext }) => {
       <Layout>
         <PostContainer>
           <Time date={date} />
-          <h1>{title}</h1>
+          <PostTitle>{title}</PostTitle>
           <PostIntro>{intro}</PostIntro>
           <StyledPost>
             <MDXRenderer>{mdx.body}</MDXRenderer>
