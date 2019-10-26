@@ -46,7 +46,7 @@ const Header = ({ isDark }) => {
         <Menu
           isDark={isDark}
           items={[
-            { label: 'Writing', url: '/writing', childRoutes: true },
+            { label: 'Writing', url: '/writing', hasChildRoutes: true },
             { label: 'Photography', url: '/photography' },
             { label: 'Playlists', url: '/playlists' },
             { label: 'About', url: '/' },

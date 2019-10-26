@@ -77,7 +77,7 @@ const Menu = ({ items, isDark }) => {
           key={item.url}
           to={item.url}
           activeClassName="active"
-          partiallyActive={item.childRoutes}
+          partiallyActive={item.hasChildRoutes}
         >
           {item.label}
         </MenuLink>
