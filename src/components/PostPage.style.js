@@ -1,7 +1,31 @@
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 import { transparentize } from 'polished';
+import codeRegular from '../../node_modules/typeface-ibm-plex-mono/files/ibm-plex-mono-latin-400.woff2';
+import codeItalic from '../../node_modules/typeface-ibm-plex-mono/files/ibm-plex-mono-latin-400italic.woff2';
+
+export const CodeFont = createGlobalStyle`
+  @font-face {
+    font-display: swap;
+    font-family: ${p => p.theme.font.faceCode};
+    font-style: normal;
+    font-weight: ${p => p.theme.font.weight};
+    src: url(${codeRegular}) format('woff2');
+  }
+
+  @font-face {
+    font-display: swap;
+    font-family: ${p => p.theme.font.faceCode};
+    font-style: italic;
+    font-weight: ${p => p.theme.font.weight};
+    src: url(${codeItalic}) format('woff2');
+  }
+`;
 
 const StyledPost = styled.div`
+  code, pre {
+    font-family: ${p => p.theme.font.familyCode};
+  }
+
   p,
   ul,
   ol {
@@ -69,12 +93,12 @@ const StyledPost = styled.div`
   }
 
   .gatsby-highlight-code-line {
-    display: block;
     background-color: ${p => p.theme.color.syntax.backgroundHighlight};
-    position: relative;
+    display: block;
     left: calc((${p => p.theme.contentMargin} / 2) * -1);
-    width: calc(100% + ${p => p.theme.contentMargin});
     padding: 0 calc(${p => p.theme.contentMargin} / 2);
+    position: relative;
+    width: calc(100% + ${p => p.theme.contentMargin});
   }
 
   .gatsby-highlight {

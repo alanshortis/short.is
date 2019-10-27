@@ -26,7 +26,9 @@ const theme = {
   },
   font: {
     face: 'Inter',
+    faceCode: 'IBM Plex Mono',
     family: 'Inter, "Helvetica Neue", Helvetica, Arial, sans-serif',
+    familyCode: '"IBM Plex Mono", mono',
     weight: 400,
     weightBold: 700,
   },
