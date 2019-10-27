@@ -10,9 +10,12 @@ const StyledPost = styled.div`
       background-color: ${p => p.theme.color.syntax.background};
       color: ${p => p.theme.color.accent};
       font-size: 0.833rem;
-      line-height: 1em;
       padding: calc(${p => p.theme.contentMargin} / 8) calc(${p => p.theme.contentMargin} / 4);
     }
+  }
+
+  iframe {
+    margin-bottom: ${p => p.theme.contentMargin};
   }
 
   h2,
