@@ -8,6 +8,8 @@ const theme = {
     backgroundDark: 'hsl(0, 0%, 10%)',
     type: 'hsl(0, 0%, 20%)',
     typeLight: 'hsl(0, 0%, 100%)',
+    scrollTrack: 'hsl(0, 0%, 80%)',
+    scrollBar: 'hsl(0, 63%, 80%)',
     syntax: {
       background: 'hsl(0, 0%, 95%)',
       backgroundHighlight: 'hsl(0, 0%, 90%)',

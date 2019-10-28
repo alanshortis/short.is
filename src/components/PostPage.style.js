@@ -113,6 +113,16 @@ const StyledPost = styled.div`
     padding: calc(${p => p.theme.contentMargin} / 2);
     right: 0;
     width: auto;
+
+    &::-webkit-scrollbar {
+      height: ${p => p.theme.border};
+    }
+    &::-webkit-scrollbar-track {
+      background: ${p => p.theme.color.scrollTrack};
+    }
+    &::-webkit-scrollbar-thumb {
+      background: ${p => p.theme.color.scrollBar};
+    }
   }
 
   .token.comment,
@@ -120,12 +130,12 @@ const StyledPost = styled.div`
   .token.doctype,
   .token.cdata,
   .namespace {
-    color: ${p => transparentize(0.5, p.theme.color.type)};
-  }
+  color: ${ p => transparentize(0.5, p.theme.color.type)};
+}
 
   .token.comment {
-    font-style: italic;
-  }
+  font - style: italic;
+}
 
   .token.property,
   .token.tag,
@@ -134,46 +144,46 @@ const StyledPost = styled.div`
   .token.constant,
   .token.symbol,
   .token.deleted {
-    color: ${p => p.theme.color.syntax.property};
-  }
+  color: ${ p => p.theme.color.syntax.property};
+}
 
   .token.selector,
-  .token.attr-name,
+  .token.attr - name,
   .token.string,
   .token.char,
   .token.builtin,
   .token.inserted {
-    color: ${p => p.theme.color.syntax.selector};
-  }
+  color: ${ p => p.theme.color.syntax.selector};
+}
 
   .token.operator,
   .token.entity,
   .token.url,
-  .language-css .token.string,
-  .style .token.string {
-    color: ${p => p.theme.color.syntax.operator};
-  }
+  .language - css.token.string,
+  .style.token.string {
+  color: ${ p => p.theme.color.syntax.operator};
+}
 
   .token.atrule,
-  .token.attr-value,
+  .token.attr - value,
   .token.keyword {
-    color: ${p => p.theme.color.syntax.keyword};
-  }
+  color: ${ p => p.theme.color.syntax.keyword};
+}
 
   .token.function,
-  .token.class-name {
-    color: ${p => p.theme.color.syntax.function};
-  }
+  .token.class - name {
+  color: ${ p => p.theme.color.syntax.function};
+}
 
   .token.regex,
   .token.important,
   .token.variable {
-    color: ${p => p.theme.color.syntax.regex};
-  }
+  color: ${ p => p.theme.color.syntax.regex};
+}
 
   .token.italic {
-    font-style: italic;
-  }
+  font - style: italic;
+}
 `;
 
 export default StyledPost;
