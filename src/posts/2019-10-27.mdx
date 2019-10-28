@@ -30,7 +30,7 @@ body {
 }
 ```
 
-This is the simplest possible dark mode implementation, setting alternative background and font colors based on the result of the media query. It can be further refined using [CSS custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/--*) (variables).
+This is the simplest possible dark mode implementation, setting alternative background and font colors based on the result of the media query. It can be further refined using [CSS custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/--*) (variables):
 
 ```CSS
 :root {
@@ -53,7 +53,7 @@ body {
 
 ## A more flexible approach
 
-Using JavaScript to detect the preferred colour scheme then using alternative styling in CSS is an approach that makes it possible to defy the result of the media query and set the colour scheme programitically.
+Using JavaScript to detect the preferred colour scheme then using alternative styling in CSS is an approach that makes it possible to defy the result of the media query and set the colour scheme programatically.
 
 ### Prepare CSS
 
@@ -79,7 +79,7 @@ We only redefine the type and background colours as our design has a highlight a
 
 ### Set the scheme in JavaScript
 
-Media Queries aren't just for CSS, they can be used in JavaScript with `window.matchMedia`. With this, we can conditionally add a class to the body tag.
+Media Queries aren't just for CSS, they can be used in JavaScript with `window.matchMedia`. With this, we can conditionally add a class to the body tag:
 
 ```JS
 function setInitialScheme() {
@@ -188,7 +188,7 @@ Doing it in this order sets a bit of a hierarchy for the scheme to use:
 
 Now we've put all of these parts together, we have a site that can handle dark mode if set in the OS settings but also allows the user to have what they want.
 
-Everything we have covered (plus a little more styling) is included in this pen. Saving the preferred scheme with `localStorage` works even in this embedded iFrame.
+Everything we have covered (plus a little more styling) is included in this pen. Saving the preferred scheme with `localStorage` works even in this embedded iFrame:
 
 <iframe
   height="379"
@@ -209,4 +209,4 @@ This solution is totally vanilla. No JS frameworks, libraries, CSS-in-JS or pre-
 
 For instance, [Styled Components](https://www.styled-components.com/) includes [ThemeProvider](https://www.styled-components.com/docs/advanced#theming), which makes the contents of a JSON theme file avaialble to all styled components via props. Mainintaining a pair of themes (one light, one dark) and providing the correct one based on the media query/local storage would mean your CSS needs zero adjustment, and you could drop in as many themes as you like. All that's needed is that your theme file is very carefully defined.
 
-For an even more stripped back approach, you could use [CSS filters](https://dev.to/pqina/poor-man-s-dark-mode-using-css-filter-211n).
+For an even more stripped back approach, you could use [CSS filters](https://dev.to/pqina/poor-man-s-dark-mode-using-css-filter-211n). It requires no consideration of alternative colour schemes whatsoever, but it also means you relinquish some control over the end result.
