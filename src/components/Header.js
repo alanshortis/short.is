@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
-import { Menu, Icon, MenuButton } from '.';
-import { MenuProvider } from './MenuContext';
+import { Menu, Icon } from '.';
 
 const StyledHeader = styled.header`
   align-items: center;
@@ -11,7 +10,6 @@ const StyledHeader = styled.header`
   display: flex;
   height: ${p => p.theme.headerHeight};
   justify-content: space-between;
-  overflow: visible;
   padding: 0 ${p => p.theme.contentMargin};
   position: sticky;
   top: 0;
@@ -26,36 +24,20 @@ const StyledHeader = styled.header`
   }
 `;
 
-const Header = ({ isDark }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const contextValue = {
-    isMenuOpen,
-    toggleMenu: () => {
-      setIsMenuOpen(!isMenuOpen);
-    },
-  };
-
-  return (
-    <MenuProvider value={contextValue}>
-      <StyledHeader isDark={isDark}>
-        <Link to="/">
-          <Icon />
-        </Link>
-        <MenuButton />
-        <Menu
-          isDark={isDark}
-          items={[
-            { label: 'Writing', url: '/writing', hasChildRoutes: true },
-            { label: 'Photography', url: '/photography' },
-            { label: 'Playlists', url: '/playlists' },
-            { label: 'About', url: '/' },
-          ]}
-        />
-      </StyledHeader>
-    </MenuProvider>
-  );
-};
+const Header = ({ isDark }) => (
+  <StyledHeader isDark={isDark}>
+    <Link to="/">
+      <Icon />
+    </Link>
+    <Menu
+      isDark={isDark}
+      items={[
+        { label: 'Writing', url: '/writing', hasChildRoutes: true },
+        { label: 'Playlists', url: '/playlists' },
+      ]}
+    />
+  </StyledHeader>
+);
 
 Header.propTypes = {
   isDark: PropTypes.bool.isRequired,
