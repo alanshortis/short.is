@@ -28,8 +28,8 @@ const MenuLink = styled(Link)`
   }
 `;
 
-const Menu = ({ items, isDark }) => (
-  <nav isDark={isDark}>
+const Menu = ({ items }) => (
+  <nav>
     {items.map(item => (
       <MenuLink
         className="smallcaps"
@@ -52,11 +52,6 @@ Menu.propTypes = {
       childRoutes: PropTypes.bool,
     })
   ).isRequired,
-  isDark: PropTypes.bool,
-};
-
-Menu.defaultProps = {
-  isDark: false,
 };
 
 export default Menu;
