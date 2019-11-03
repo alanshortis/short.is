@@ -14,7 +14,7 @@ const StyledHeader = styled.header`
   position: sticky;
   top: 0;
   width: 100%;
-  z-index: 1;
+  z-index: 2;
   @supports (backdrop-filter: blur(7px)) {
     backdrop-filter: blur(7px);
     background-color: ${p => p.theme.color.header(p.isDark, 0.5)};

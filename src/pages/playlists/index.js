@@ -1,16 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
 import { useStaticQuery, graphql } from 'gatsby';
 import Playlist from './Playlist';
-import { Layout, Meta } from '../../components';
-
-const Container = styled.ol`
-  display: grid;
-  margin: 0 auto;
-  max-width: ${p => p.theme.container};
-  padding: ${p => p.theme.contentMargin};
-  width: 100%;
-`;
+import { Layout, Meta, Grid } from '../../components';
 
 const Playlists = () => {
   const data = useStaticQuery(
@@ -24,13 +15,13 @@ const Playlists = () => {
               external_urls {
                 spotify
               }
-              tracks {
-                total
-              }
               images {
                 height
                 width
                 url
+              }
+              tracks {
+                total
               }
             }
           }
@@ -45,11 +36,11 @@ const Playlists = () => {
     <>
       <Meta title="Playlists" />
       <Layout isDark>
-        <Container>
+        <Grid.Container>
           {edges.map(playlist => (
             <Playlist key={playlist.node.spotifyId} playlist={playlist} />
           ))}
-        </Container>
+        </Grid.Container>
       </Layout>
     </>
   );

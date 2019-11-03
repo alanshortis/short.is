@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Link } from 'gatsby';
-import { Time } from '../../components';
+import { Time, Grid } from '../../components';
 
 const StyledPost = styled.li`
   display: block;
@@ -11,31 +10,17 @@ const StyledPost = styled.li`
   }
 `;
 
-const StyledLink = styled(Link)`
-  border: ${p => p.theme.border} solid currentColor;
-  box-shadow: 0 0 0 0 currentColor;
-  color: currentColor;
-  display: block;
-  height: 100%;
-  padding: ${p => p.theme.contentMargin};
-  text-decoration: none;
-  transition: box-shadow ${p => p.theme.transitionSpeed} ${p => p.theme.transitionTiming};
-  &:hover {
-    box-shadow: 0 0 0 ${p => p.theme.border} currentColor;
-  }
-`;
-
 const Post = ({ node }) => {
   const { slug, title, date, intro } = node.frontmatter;
   return (
     <StyledPost>
-      <StyledLink to={slug}>
+      <Grid.Item to={slug}>
         <div>
           <Time date={date} withNewLabel />
         </div>
         <h2>{title}</h2>
         <p>{intro}</p>
-      </StyledLink>
+      </Grid.Item>
     </StyledPost>
   );
 };

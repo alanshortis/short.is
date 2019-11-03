@@ -1,6 +1,42 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { Grid } from '../../components';
+
+const PlaylistItem = styled(Grid.Item)`
+  position: relative;
+  overflow: hidden;
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(${p => p.backgroundImage});
+    background-size: 100% 100%;
+    filter: blur(50px);
+  }
+  h2 {
+    margin-bottom: 0;
+    z-index: 1;
+    position: relative;
+  }
+`;
+
+const StyledImage = styled.div`
+  position: relative;
+  text-align: center;
+  margin-bottom: ${p => p.theme.contentMargin};
+  background-size: 100% 100%;
+  z-index: 1;
+  img {
+    width: 100%;
+    max-width: ${p => `${p.maxImgWidth}px`};
+    height: auto;
+    box-shadow: 0 0 calc(${p => p.theme.contentMargin} * 2) 0 #000;
+  }
+`;
 
 const Playlist = ({ playlist }) => {
   const { external_urls: externalUrls, images, tracks, name } = playlist.node;
@@ -8,18 +44,27 @@ const Playlist = ({ playlist }) => {
 
   return (
     <li>
-      <a target="_blank" href={externalUrls.spotify} rel="noopener noreferrer">
-        <img
-          src={smallImage.url}
-          srcSet={`${largeImage.url} 2x`}
-          width={smallImage.width}
-          height={smallImage.height}
-          alt=""
-          loading="lazy"
-        />
+      <PlaylistItem
+        target="_blank"
+        href={externalUrls.spotify}
+        rel="noopener noreferrer"
+        backgroundImage={smallImage.url}
+      >
+        <StyledImage maxImgWidth={smallImage.width}>
+          <img
+            src={smallImage.url}
+            srcSet={`${largeImage.url} 2x`}
+            width={smallImage.width}
+            height={smallImage.height}
+            alt=""
+            loading="lazy"
+          />
+        </StyledImage>
+        <p className="smallcaps" style={{ zIndex: 1 }}>
+          {tracks.total} tracks
+        </p>
         <h2>{name}</h2>
-        <p>{tracks.total}</p>
-      </a>
+      </PlaylistItem>
     </li>
   );
 };
