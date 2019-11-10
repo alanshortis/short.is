@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Grid } from '../../components';
+import { Button, Grid } from '../../components';
 
 const PlaylistItem = styled(Grid.Item)`
   position: relative;
@@ -15,21 +15,21 @@ const PlaylistItem = styled(Grid.Item)`
     bottom: 0;
     background-image: url(${p => p.backgroundImage});
     background-size: 100% 100%;
-    filter: blur(50px);
+    filter: blur(100px);
   }
-  h2 {
-    margin-bottom: 0;
-    z-index: 1;
-    position: relative;
-  }
+`;
+
+const Meta = styled.div`
+  position: relative;
+  z-index: 1;
 `;
 
 const StyledImage = styled.div`
   position: relative;
+  z-index: 1;
   text-align: center;
   margin-bottom: ${p => p.theme.contentMargin};
   background-size: 100% 100%;
-  z-index: 1;
   img {
     width: 100%;
     max-width: ${p => `${p.maxImgWidth}px`};
@@ -39,14 +39,15 @@ const StyledImage = styled.div`
 `;
 
 const Playlist = ({ playlist }) => {
-  const { external_urls: externalUrls, images, tracks, name } = playlist.node;
+  const { external_urls: urls, images, tracks, name } = playlist;
   const [largeImage, smallImage] = images;
 
   return (
     <li>
       <PlaylistItem
         target="_blank"
-        href={externalUrls.spotify}
+        as="a"
+        href={urls.spotify}
         rel="noopener noreferrer"
         backgroundImage={smallImage.url}
       >
@@ -60,10 +61,13 @@ const Playlist = ({ playlist }) => {
             loading="lazy"
           />
         </StyledImage>
-        <p className="smallcaps" style={{ zIndex: 1 }}>
-          {tracks.total} tracks
-        </p>
-        <h2>{name}</h2>
+        <Meta>
+          <p className="smallcaps" style={{ zIndex: 1 }}>
+            {tracks.total} tracks
+          </p>
+          <h2>{name}</h2>
+          <Button>Listen</Button>
+        </Meta>
       </PlaylistItem>
     </li>
   );
@@ -71,21 +75,19 @@ const Playlist = ({ playlist }) => {
 
 Playlist.propTypes = {
   playlist: PropTypes.shape({
-    node: PropTypes.shape({
-      name: PropTypes.string,
-      external_urls: PropTypes.shape({
-        spotify: PropTypes.string,
-      }),
-      images: PropTypes.arrayOf(
-        PropTypes.shape({
-          url: PropTypes.string,
-          height: PropTypes.number,
-          width: PropTypes.number,
-        })
-      ),
-      tracks: PropTypes.shape({
-        total: PropTypes.number,
-      }),
+    name: PropTypes.string,
+    external_urls: PropTypes.shape({
+      spotify: PropTypes.string,
+    }),
+    images: PropTypes.arrayOf(
+      PropTypes.shape({
+        url: PropTypes.string,
+        height: PropTypes.number,
+        width: PropTypes.number,
+      })
+    ),
+    tracks: PropTypes.shape({
+      total: PropTypes.number,
     }),
   }).isRequired,
 };

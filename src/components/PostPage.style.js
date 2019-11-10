@@ -22,7 +22,8 @@ export const CodeFont = createGlobalStyle`
 `;
 
 const StyledPost = styled.div`
-  code, pre {
+  code,
+  pre {
     font-family: ${p => p.theme.font.familyCode};
   }
 
@@ -130,7 +131,7 @@ const StyledPost = styled.div`
   .token.doctype,
   .token.cdata,
   .namespace {
-    color: ${ p => transparentize(0.5, p.theme.color.type)};
+    color: ${p => transparentize(0.5, p.theme.color.type)};
   }
 
   .token.comment {
@@ -144,7 +145,7 @@ const StyledPost = styled.div`
   .token.constant,
   .token.symbol,
   .token.deleted {
-    color: ${ p => p.theme.color.syntax.property};
+    color: ${p => p.theme.color.syntax.property};
   }
 
   .token.selector,
@@ -153,7 +154,7 @@ const StyledPost = styled.div`
   .token.char,
   .token.builtin,
   .token.inserted {
-    color: ${ p => p.theme.color.syntax.selector};
+    color: ${p => p.theme.color.syntax.selector};
   }
 
   .token.operator,
@@ -161,24 +162,24 @@ const StyledPost = styled.div`
   .token.url,
   .language-css.token.string,
   .style.token.string {
-    color: ${ p => p.theme.color.syntax.operator};
+    color: ${p => p.theme.color.syntax.operator};
   }
 
   .token.atrule,
   .token.attr-value,
   .token.keyword {
-    color: ${ p => p.theme.color.syntax.keyword};
+    color: ${p => p.theme.color.syntax.keyword};
   }
 
   .token.function,
   .token.class-name {
-    color: ${ p => p.theme.color.syntax.function};
+    color: ${p => p.theme.color.syntax.function};
   }
 
   .token.regex,
   .token.important,
   .token.variable {
-    color: ${ p => p.theme.color.syntax.regex};
+    color: ${p => p.theme.color.syntax.regex};
   }
 
   .token.italic {

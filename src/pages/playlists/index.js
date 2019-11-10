@@ -1,46 +1,16 @@
 import React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
-import Playlist from './Playlist';
-import { Layout, Meta, Grid } from '../../components';
+import { Layout, Meta } from '../../components';
+import playlistQuery from './query';
+import List from './List';
 
 const Playlists = () => {
-  const data = useStaticQuery(
-    graphql`
-      {
-        allSpotifyPlaylist {
-          edges {
-            node {
-              spotifyId
-              name
-              external_urls {
-                spotify
-              }
-              images {
-                height
-                width
-                url
-              }
-              tracks {
-                total
-              }
-            }
-          }
-        }
-      }
-    `
-  );
-
-  const { edges } = data.allSpotifyPlaylist;
-
+  const data = playlistQuery();
   return (
     <>
       <Meta title="Playlists" />
       <Layout isDark>
-        <Grid.Container>
-          {edges.map(playlist => (
-            <Playlist key={playlist.node.spotifyId} playlist={playlist} />
-          ))}
-        </Grid.Container>
+        <List playlists={data.annual} playlistTitle="Annual" />
+        <List playlists={data.playlists} playlistTitle="Thematic" />
       </Layout>
     </>
   );
