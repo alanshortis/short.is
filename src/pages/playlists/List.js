@@ -12,12 +12,23 @@ const Title = styled.h1`
 const List = ({ playlists, playlistTitle }) => (
   <>
     <Grid.Container>
-      <Title>{playlistTitle}</Title>
+      <Title>{playlistTitle}</Title>z
       {playlists.nodes.map(playlist => (
         <Playlist key={playlist.spotifyId} playlist={playlist} />
       ))}
     </Grid.Container>
   </>
 );
+
+List.propTypes = {
+  playlists: PropTypes.shape({
+    nodes: PropTypes.arrayOf(
+      PropTypes.shape({
+        spotifyId: PropTypes.string,
+      })
+    ),
+  }).isRequired,
+  playlistTitle: PropTypes.string.isRequired,
+};
 
 export default List;
