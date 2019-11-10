@@ -1,27 +1,10 @@
 import React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
 import { Layout, Meta, Grid } from '../../components';
 import Post from './Post';
+import postQuery from './query';
 
 const Writing = () => {
-  const data = useStaticQuery(
-    graphql`
-      {
-        allMdx(sort: { order: DESC, fields: [frontmatter___date] }) {
-          edges {
-            node {
-              frontmatter {
-                slug
-                title
-                date
-                intro
-              }
-            }
-          }
-        }
-      }
-    `
-  );
+  const data = postQuery();
 
   return (
     <>
