@@ -9,8 +9,8 @@ const Playlists = () => {
     <>
       <Meta title="Playlists" />
       <Layout isDark>
-        <List playlists={data.annual} playlistTitle="Annual" />
-        <List playlists={data.playlists} playlistTitle="Thematic" />
+        <List playlists={data.annual} />
+        <List playlists={data.playlists} />
       </Layout>
     </>
   );

@@ -18,7 +18,7 @@ import { Contents } from '../components';
   ]}
 />
  
-<a class="anchor" name="intro" />
+<a class="anchor" id="intro" />
 
 ## Introduction
 
@@ -32,7 +32,7 @@ This guide assumes a few things:
 - You're comfortable with the command line.
 - You have [Composer](https://getcomposer.org/) installed and know the basics.
 
-<a class="anchor" name="essential-plugins" />
+<a class="anchor" id="essential-plugins" />
 
 ## Essential plugins
 
@@ -55,7 +55,7 @@ The [Pro](https://www.advancedcustomfields.com/pro/) version is so reasonably pr
 
 If using the Pro version, take a look at [ACF Pro Installer](https://github.com/PhilippBaschke/acf-pro-installer).
 
-<a class="anchor" name="wp-composer" />
+<a class="anchor" id="wp-composer" />
 
 ### Composer and WordPress Packagist
 
@@ -114,7 +114,7 @@ require WPMU_PLUGIN_DIR.'/timber-library/timber.php';
 
 To install everything we need, run `$ composer install`. This will fetch everything into their defined folders and create a new file - `composer.lock` - that needs to be added to source control along with `composer.json` to keep track of dependencies.
 
-<a class="anchor" name="get-running" />
+<a class="anchor" id="get-running" />
 
 ## Getting WordPress running
 
@@ -150,7 +150,7 @@ To use the Timber starter theme, copy it from `mu-plugins/timber-library` to `wp
 
 Visit your site in your development environment and follow the steps to install WordPress, then log in to admin. We are now running WordPress with a new folder structure and our essential plugins running with all these dependencies managed with Composer.
 
-<a class="anchor" name="wp-cli" />
+<a class="anchor" id="wp-cli" />
 
 ## WP CLI and Environment Variables
 

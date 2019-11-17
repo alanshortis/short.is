@@ -14,18 +14,31 @@ const IndexTitle = styled.h2`
   }
 `;
 
-const Contents = ({ sections }) => (
-  <>
-    <IndexTitle>Index</IndexTitle>
-    <StyledList>
-      {sections.map(section => (
-        <li key={section.hash}>
-          <a href={section.hash}>{section.title}</a>
-        </li>
-      ))}
-    </StyledList>
-  </>
-);
+const Contents = ({ sections }) => {
+  const handleClick = e => {
+    e.preventDefault();
+    const id = e.target.getAttribute('href');
+    document.querySelector(id).scrollIntoView({
+      behavior: 'smooth',
+    });
+    window.history.pushState(null, null, id);
+  };
+
+  return (
+    <>
+      <IndexTitle>Index</IndexTitle>
+      <StyledList>
+        {sections.map(section => (
+          <li key={section.hash}>
+            <a href={section.hash} onClick={handleClick}>
+              {section.title}
+            </a>
+          </li>
+        ))}
+      </StyledList>
+    </>
+  );
+};
 
 Contents.propTypes = {
   sections: PropTypes.arrayOf(
