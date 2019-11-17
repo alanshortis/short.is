@@ -15,7 +15,7 @@ const reveal = keyframes`
   }
 `;
 
-const SlideIn = styled.main`
+const SlideIn = styled.div`
   ${initialState}
   animation: ${reveal} 500ms ease 250ms 1 forwards;
 `;
