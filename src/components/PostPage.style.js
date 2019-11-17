@@ -88,9 +88,14 @@ const StyledPost = styled.div`
   }
 
   blockquote {
-    border-left: ${p => p.theme.border} solid currentColor;
-    margin: 0 ${p => p.theme.contentMargin};
-    padding-left: ${p => p.theme.contentMargin};
+    border: 1px solid currentColor;
+    border-left-width: ${p => p.theme.border};
+    margin: ${p => p.theme.contentMargin};
+    padding: ${p => p.theme.contentMargin};
+
+    p:last-of-type {
+      margin-bottom: 0;
+    }
   }
 
   .gatsby-highlight-code-line {
