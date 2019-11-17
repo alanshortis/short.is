@@ -28,4 +28,10 @@ const Item = styled(Link)`
   }
 `;
 
-export default { Container, Item };
+const ItemContainer = styled.li`
+  &:first-child {
+    grid-column: 1 / -1;
+  }
+`;
+
+export default { Container, Item, ItemContainer };

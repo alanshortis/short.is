@@ -10,11 +10,6 @@ const playlistQuery = () =>
           external_urls {
             spotify
           }
-          images {
-            height
-            width
-            url
-          }
           tracks {
             total
           }
@@ -22,13 +17,13 @@ const playlistQuery = () =>
       }
       query {
         playlists: allSpotifyPlaylist(
-          sort: { fields: [order], order: ASC }
+          sort: { order: ASC, fields: [order] }
           filter: { name: { regex: "/^((?![0-9]{4}).)*$/" } }
         ) {
           ...SpotifyFields
         }
         annual: allSpotifyPlaylist(
-          sort: { fields: [name], order: DESC }
+          sort: { order: DESC, fields: [name] }
           filter: { name: { regex: "/[0-9]{4}/" } }
         ) {
           ...SpotifyFields

@@ -1,75 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Button, Grid } from '../../components';
+import { Grid } from '../../components';
+import descriptions from './descriptions';
 
-const PlaylistItem = styled(Grid.Item)`
-  position: relative;
-  overflow: hidden;
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url(${p => p.backgroundImage});
-    background-size: 100% 100%;
-    filter: blur(100px);
-  }
-`;
-
-const Meta = styled.div`
-  position: relative;
-  z-index: 1;
-`;
-
-const StyledImage = styled.div`
-  position: relative;
-  z-index: 1;
-  text-align: center;
-  margin-bottom: ${p => p.theme.contentMargin};
-  background-size: 100% 100%;
-  img {
-    width: 100%;
-    max-width: ${p => `${p.maxImgWidth}px`};
-    height: auto;
-    box-shadow: 0 0 calc(${p => p.theme.contentMargin} * 2) 0 #000;
+const Count = styled.p`
+  display: flex;
+  justify-content: space-between;
+  span:nth-child(2) {
+    color: ${p => p.theme.color.accent};
   }
 `;
 
 const Playlist = ({ playlist }) => {
-  const { external_urls: urls, images, tracks, name } = playlist;
-  const [largeImage, smallImage] = images;
-
+  const { external_urls: urls, tracks, name } = playlist;
+  const currentYear = new Date().getFullYear().toString();
   return (
-    <li>
-      <PlaylistItem
-        target="_blank"
-        as="a"
-        href={urls.spotify}
-        rel="noopener noreferrer"
-        backgroundImage={smallImage.url}
-      >
-        <StyledImage maxImgWidth={smallImage.width}>
-          <img
-            src={smallImage.url}
-            srcSet={`${largeImage.url} 2x`}
-            width={smallImage.width}
-            height={smallImage.height}
-            alt=""
-            loading="lazy"
-          />
-        </StyledImage>
-        <Meta>
-          <p className="smallcaps" style={{ zIndex: 1 }}>
-            {tracks.total} tracks
-          </p>
-          <h2>{name}</h2>
-          <Button>Listen</Button>
-        </Meta>
-      </PlaylistItem>
-    </li>
+    <Grid.ItemContainer>
+      <Grid.Item as="a" href={urls.spotify} target="_blank" rel="noopener noreferrer">
+        <Count className="smallcaps">
+          <span>{tracks.total} tracks</span>
+          {currentYear === name && <span>Updated</span>}
+        </Count>
+        <h2>{name}</h2>
+        <p>{descriptions[name.toLowerCase()]}</p>
+      </Grid.Item>
+    </Grid.ItemContainer>
   );
 };
 
@@ -79,13 +35,6 @@ Playlist.propTypes = {
     external_urls: PropTypes.shape({
       spotify: PropTypes.string,
     }),
-    images: PropTypes.arrayOf(
-      PropTypes.shape({
-        url: PropTypes.string,
-        height: PropTypes.number,
-        width: PropTypes.number,
-      })
-    ),
     tracks: PropTypes.shape({
       total: PropTypes.number,
     }),
