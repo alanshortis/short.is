@@ -1,8 +1,8 @@
 ---
-title: 'Webpack and Babel for React from scratch'
+title: 'Webpack and Babel for React'
 date: '2019-01-07'
 category: 'development'
-slug: '/writing/webpack-and-babel-for-react-from-scratch'
+slug: '/writing/webpack-and-babel-for-react'
 intro: "There so many ways to bootstrap a React app without touching any config. Let's put together a sensible config from scratch in order to better understand what's going on under the hood."
 ---
 
@@ -115,7 +115,7 @@ To define what browsers we want to support, add a new property in `package.json`
 
 Webpack uses [browserslist](https://github.com/browserslist/browserslist) for this, and details on how to specify the browsers you're interested in can be found in their documentation. For now, the last 2 versions of each browser will do.
 
-We need an HTML for React to render to, so let's create one and add to our Webpack config so the file is copied from our source folder to the destination folder.
+We need an HTML element for React to render to, so let's create one and add to our Webpack config so the file is copied from our source folder to the destination folder.
 
 Install the html loader and the html webpack plugin: `$ npm i --save-dev html-webpack-plugin html-loader`.
 
@@ -137,7 +137,7 @@ Create a new folder named `src` for our source files at the root of the project 
 </html>
 ```
 
-> TIP: If you're using emmet you can create this very quickly using: `html:5>#root`.
+> TIP: If you're using [emmet](https://emmet.io/) you can create this very quickly using: `html:5>#root`.
 
 Add to your webpack config to use the HTML loader:
 
@@ -266,7 +266,7 @@ In `package.json`, we can create a new script entry for starting this developmen
 },
 ```
 
-Running `$ npm start` will bundle our code, write sourcemaps, start the dev server in production [mode](https://webpack.js.org/concepts/mode/) with HMR, strat Browsersync proxying WDS and open your browser on the correct url and port. You'll also get a summary in your terminal:
+Running `$ npm start` will bundle our code, write sourcemaps, start the dev server in development [mode](https://webpack.js.org/concepts/mode/) with HMR, start Browsersync and open your browser on the correct url and port. You'll also get a summary in your terminal:
 
 ```bash
 --------------------------------------
@@ -303,7 +303,7 @@ There is also a Babel plugin that provides better debugging: `$ npm i --save-dev
 
 We can now use Styled Components in our existing React app:
 
-```jsx{3-9}
+```jsx{3,4,5,6,7,8,9}
 import React from 'react';
 import { render } from 'react-dom';
 import styled from 'styled-components';
@@ -331,7 +331,7 @@ The Airbnb config expects various peer dependencies, and these can all be instal
 
 We also need to install the babel parser for ESLint, Prettier and the Prettier configs and plugins so it'll work nicely with ESLint: `$ npm i --save-dev babel-eslint prettier eslint-config-prettier eslint-plugin-prettier`.
 
-Create a `.eslintrc` config file, extending each config,using the prettier plugin and using the babel-eslint parser:
+Create a `.eslintrc` config file, extending each config, using the prettier plugin and using the babel-eslint parser:
 
 ```json
 {
@@ -418,7 +418,7 @@ We now have linting rules for both JavaScript and CSS, so we should add methods 
 
 Add scripts to `package.json`:
 
-```json
+```json{3-4}
 "scripts": {
   "start": "webpack-dev-server --mode development --port 8080 --hot",
   "lint:js": "eslint --ext .js --ext .jsx src",
@@ -426,7 +426,7 @@ Add scripts to `package.json`:
 }
 ```
 
-Each of these scripts will look inside our source folder and all folder contained within, and check that the linting rules pass for all js and jsx files.
+Each of these scripts will look inside our source folder and sub folders, and check that the linting rules pass for all js and jsx files.
 
 When running the CSS linter, you'll notice it flags an issue. We have used the `red` colour keyword in our Styled Component which our rules forbid. To solve this, go back to `src/index.js` and set the colour in hex:
 

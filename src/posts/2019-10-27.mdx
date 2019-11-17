@@ -57,7 +57,7 @@ Using JavaScript to detect the preferred colour scheme then using alternative st
 
 ### Prepare CSS
 
-Still using CSS custom properties, we can redefine colours that need to change based on the result of the media query:
+Still using CSS custom properties, we can redefine colours that need to change based on a class on the body:
 
 ```CSS
 :root {
@@ -134,12 +134,12 @@ schemeToggle.forEach(button => {
 ```
 
 - Select all elements with the `js--change-scheme` class.
-- For all of the buttons, add a click event listener.
+- For each selected element, add a click event listener.
 - When clicked, call the `changeScheme` function and pass the value of the `data-scheme` attribute as an argument.
 
 ### Remember the chosen scheme
 
-What we have so far is pretty good - set the colour scheme based on the OS settings but allow an override. This can be improved by remembering the choice of scheme and applying that when the site loads using `localStorage`.
+What we have so far is pretty good - set the colour scheme based on the OS settings but allow an override. This can be improved by remembering the choice of scheme using `localStorage` and applying that when the site loads.
 
 First, set the preferred scheme in `localStorage` when it's changed using the buttons by updating the `changeScheme` function:
 
