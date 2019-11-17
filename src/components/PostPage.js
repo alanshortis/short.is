@@ -1,28 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer';
-import StyledPost, { CodeFont } from './PostPage.style';
+import { StyledPost, CodeFont, PostContainer, PostIntro, PostTitle } from './PostPage.style';
 import { Layout, Time, Meta, NextPost } from '.';
-
-const PostContainer = styled.article`
-  margin: 0 auto;
-  max-width: ${p => p.theme.container};
-  padding: ${p => p.theme.contentMargin};
-  width: 100%;
-`;
-
-const PostIntro = styled.p`
-  font-size: 1.2rem;
-  padding-bottom: ${p => p.theme.contentMargin};
-  margin-bottom: ${p => p.theme.contentMargin};
-  border-bottom: ${p => p.theme.border} solid currentColor;
-`;
-
-const PostTitle = styled.h1`
-  font-size: 2.488rem;
-`;
 
 export const query = graphql`
   query PostQuery($slug: String!) {
@@ -68,8 +49,6 @@ Post.propTypes = {
         title: PropTypes.string,
         date: PropTypes.string,
         intro: PropTypes.string,
-        codepen: PropTypes.string,
-        github: PropTypes.string,
       }),
     }),
   }).isRequired,

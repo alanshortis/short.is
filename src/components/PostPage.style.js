@@ -21,7 +21,25 @@ export const CodeFont = createGlobalStyle`
   }
 `;
 
-const StyledPost = styled.div`
+export const PostContainer = styled.article`
+  margin: 0 auto;
+  max-width: ${p => p.theme.container};
+  padding: ${p => p.theme.contentMargin};
+  width: 100%;
+`;
+
+export const PostIntro = styled.p`
+  font-size: 1.2rem;
+  padding-bottom: ${p => p.theme.contentMargin};
+  margin-bottom: ${p => p.theme.contentMargin};
+  border-bottom: ${p => p.theme.border} solid currentColor;
+`;
+
+export const PostTitle = styled.h1`
+  font-size: 2.488rem;
+`;
+
+export const StyledPost = styled.div`
   code,
   pre {
     font-family: ${p => p.theme.font.familyCode};
@@ -83,7 +101,7 @@ const StyledPost = styled.div`
       border: 0;
       display: block;
       position: relative;
-      top: calc((${p => p.theme.headerHeight} + ${p => p.theme.contentMargin}) * -1);
+      top: calc((${p => p.theme.headerHeight} + ${p => p.theme.contentMargin}) * -0.5);
     }
   }
 
@@ -191,5 +209,3 @@ const StyledPost = styled.div`
     font-style: italic;
   }
 `;
-
-export default StyledPost;
