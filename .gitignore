@@ -1,6 +1,7 @@
-_site
 .DS_Store
-.sass-cache
-.jekyll-metadata
-.idea
+.env
+.cache
+!.vscode
+npm-debug.log*
 node_modules
+public
