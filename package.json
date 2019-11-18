@@ -2,7 +2,7 @@
   "name": "short.is",
   "private": true,
   "description": "Alan Shortis is a web developer.",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "author": "Alan Shortis",
   "license": "MIT",
   "repository": {
@@ -38,9 +38,7 @@
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-helmet": "^5.2.1",
-    "styled-components": "^4.4.0",
-    "typeface-ibm-plex-mono": "0.0.61",
-    "typeface-inter": "^3.10.0"
+    "styled-components": "^4.4.0"
   },
   "devDependencies": {
     "@danbruegge/gatsby-plugin-stylelint": "^3.4.1",

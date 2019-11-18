@@ -1,15 +1,14 @@
 import { createGlobalStyle } from 'styled-components';
-import fontImports from './fonts';
 
 const GlobalStyles = createGlobalStyle`
-  ${fontImports}
-
   /* stylelint-disable-next-line selector-max-universal */
   *, *:before, *:after {
     border: 0;
     box-sizing: inherit;
     margin: 0;
     padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   html {

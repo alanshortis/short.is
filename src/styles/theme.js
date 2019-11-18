@@ -27,9 +27,9 @@ const theme = {
     },
   },
   font: {
-    face: 'Inter',
-    faceCode: 'IBM Plex Mono',
-    family: 'Inter, "Helvetica Neue", Helvetica, Arial, sans-serif',
+    family: '"Helvetica Neue", Helvetica, Arial, sans-serif',
+    familyMono:
+      "Consolas, 'Andale Mono WT', 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Liberation Mono', 'Nimbus Mono L', Monaco, 'Courier New', Courier, monospace;",
     familyCode: '"IBM Plex Mono", mono',
     weight: 400,
     weightBold: 700,

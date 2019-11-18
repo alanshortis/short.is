@@ -2,7 +2,7 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer';
-import { StyledPost, CodeFont, PostContainer, PostIntro, PostTitle } from './PostPage.style';
+import { StyledPost, PostContainer, PostIntro, PostTitle } from './PostPage.style';
 import { Layout, Time, Meta, NextPost } from '..';
 
 export const query = graphql`
@@ -27,7 +27,6 @@ const Post = ({ data, pageContext }) => {
       <Meta title={title} description={intro} />
       <Layout>
         <PostContainer>
-          <CodeFont />
           <Time date={date} />
           <PostTitle>{title}</PostTitle>
           <PostIntro>{intro}</PostIntro>
