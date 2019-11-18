@@ -7,6 +7,7 @@ module.exports = {
     title: 'Alan Shortis',
   },
   plugins: [
+    'gatsby-plugin-styled-components',
     {
       resolve: 'gatsby-plugin-favicon',
       options: {
