@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Playlist from './Playlist';
-import { Grid } from '../../components';
+import { Grid } from '..';
 
 const List = ({ playlists }) => (
   <Grid.Container>

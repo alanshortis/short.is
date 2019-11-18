@@ -1,7 +1,7 @@
 import styled, { createGlobalStyle } from 'styled-components';
 import { transparentize } from 'polished';
-import codeRegular from '../../node_modules/typeface-ibm-plex-mono/files/ibm-plex-mono-latin-400.woff2';
-import codeItalic from '../../node_modules/typeface-ibm-plex-mono/files/ibm-plex-mono-latin-400italic.woff2';
+import codeRegular from '../../../node_modules/typeface-ibm-plex-mono/files/ibm-plex-mono-latin-400.woff2';
+import codeItalic from '../../../node_modules/typeface-ibm-plex-mono/files/ibm-plex-mono-latin-400italic.woff2';
 
 export const CodeFont = createGlobalStyle`
   @font-face {

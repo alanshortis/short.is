@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Grid } from '../../components';
+import { Grid } from '..';
 import descriptions from './descriptions.json';
 
 const Count = styled.p`

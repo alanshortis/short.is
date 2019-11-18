@@ -21,7 +21,7 @@ exports.createPages = ({ graphql, actions }) => {
       pages.forEach(({ node }, i) => {
         createPage({
           path: node.frontmatter.slug,
-          component: path.resolve('./src/components/PostPage.js'),
+          component: path.resolve('./src/components/writing/PostPage.js'),
           context: {
             slug: node.frontmatter.slug,
             newer: i === pages.length - 1 ? null : pages[i + 1].node,

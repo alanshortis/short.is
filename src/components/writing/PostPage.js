@@ -3,7 +3,7 @@ import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer';
 import { StyledPost, CodeFont, PostContainer, PostIntro, PostTitle } from './PostPage.style';
-import { Layout, Time, Meta, NextPost } from '.';
+import { Layout, Time, Meta, NextPost } from '..';
 
 export const query = graphql`
   query PostQuery($slug: String!) {

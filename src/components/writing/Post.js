@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Time, Grid } from '../../components';
+import { Time, Grid } from '..';
 
 const Post = ({ node }) => {
   const { slug, title, date, intro } = node.frontmatter;

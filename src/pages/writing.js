@@ -1,7 +1,7 @@
 import React from 'react';
-import { Layout, Meta, Grid } from '../../components';
-import Post from './Post';
-import postQuery from './query';
+import { Layout, Meta, Grid } from '../components';
+import Post from '../components/writing/Post';
+import postQuery from '../components/writing/query';
 
 const Writing = () => {
   const data = postQuery();

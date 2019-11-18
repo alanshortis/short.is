@@ -1,7 +1,7 @@
 import React from 'react';
-import { Layout, Meta } from '../../components';
-import playlistQuery from './query';
-import List from './List';
+import { Layout, Meta } from '../components';
+import playlistQuery from '../components/playlists/query';
+import List from '../components/playlists/List';
 
 const Playlists = () => {
   const data = playlistQuery();
