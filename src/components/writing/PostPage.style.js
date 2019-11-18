@@ -5,7 +5,6 @@ import codeItalic from '../../../node_modules/typeface-ibm-plex-mono/files/ibm-p
 
 export const CodeFont = createGlobalStyle`
   @font-face {
-    font-display: swap;
     font-family: ${p => p.theme.font.faceCode};
     font-style: normal;
     font-weight: ${p => p.theme.font.weight};
@@ -13,7 +12,6 @@ export const CodeFont = createGlobalStyle`
   }
 
   @font-face {
-    font-display: swap;
     font-family: ${p => p.theme.font.faceCode};
     font-style: italic;
     font-weight: ${p => p.theme.font.weight};

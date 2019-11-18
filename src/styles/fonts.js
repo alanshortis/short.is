@@ -6,7 +6,6 @@ import boldItalic from '../../node_modules/typeface-inter/Inter (web)/Inter-Bold
 
 const fontImports = css`
   @font-face {
-    font-display: swap;
     font-family: ${p => p.theme.font.face};
     font-style: normal;
     font-weight: ${p => p.theme.font.weight};
@@ -14,7 +13,6 @@ const fontImports = css`
   }
 
   @font-face {
-    font-display: swap;
     font-family: ${p => p.theme.font.face};
     font-style: italic;
     font-weight: ${p => p.theme.font.weight};
@@ -22,7 +20,6 @@ const fontImports = css`
   }
 
   @font-face {
-    font-display: swap;
     font-family: ${p => p.theme.font.face};
     font-style: normal;
     font-weight: ${p => p.theme.font.weightBold};
@@ -30,7 +27,6 @@ const fontImports = css`
   }
 
   @font-face {
-    font-display: swap;
     font-family: ${p => p.theme.font.face};
     font-style: italic;
     font-weight: ${p => p.theme.font.weightBold};
