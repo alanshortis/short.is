@@ -7,9 +7,14 @@ const Anaglyph = styled.div`
     -0.25em 0 1em 0 ${p => p.theme.color.complement},
     inset 0.25em 0 1em 0 ${p => p.theme.color.accent},
     inset -0.25em 0 1em 0 ${p => p.theme.color.complement};
-  margin: 0 calc(${p => p.theme.contentMargin} * 2);
-  max-width: calc(${p => p.theme.containerNarrow} - ${p => p.theme.contentMargin});
+  margin: 0 auto;
+  margin-bottom: calc(${p => p.theme.contentMargin} * 2);
+  max-width: 420px;
   width: 100%;
+  @media ${p => p.theme.media.mediumMin} {
+    margin: 0;
+    margin-left: calc(${p => p.theme.contentMargin} * 2);
+  }
   &::after {
     content: '';
     display: block;

@@ -37,6 +37,7 @@ const theme = {
   media: {
     xSmallMin: `(min-width: ${rem('550px')})`,
     smallMin: `(min-width: ${rem('700px')})`,
+    mediumMin: `(min-width: ${rem('800px')})`,
   },
   contentMargin: '1.618rem',
   border: rem('7px'),
