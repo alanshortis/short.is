@@ -1,29 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Layout, Meta } from '../components';
-import Anaglyph from '../components/sketches/Anaglyph';
 
 const Container = styled.div`
-  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   height: calc(100vh - ${p => p.theme.headerHeight});
   margin: 0 auto;
-  max-width: ${p => p.theme.container};
+  max-width: calc(${p => p.theme.containerNarrow} * 1.5);
   padding: var(--margin);
   width: 100%;
-  @media ${p => p.theme.media.mediumMin} {
-    align-items: center;
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: center;
-  }
   p {
     margin-bottom: var(--margin);
   }
-`;
-
-const Intro = styled.div`
-  width: 100%;
-  flex-shrink: 1;
 `;
 
 const SocialLink = styled.a.attrs(() => ({
@@ -45,13 +35,12 @@ const Home = () => (
     <Meta title="Home" />
     <Layout isDark>
       <Container>
-        <Anaglyph />
-        <Intro>
-          <h1>I&rsquo;m Alan Shortis—a front end developer based in Nottingham.</h1>
-          <p>
-            I like CSS more than JavaScript, aesthetics more than data, design systems more than
-            chaos, and accessibility more than exclusion.
-          </p>
+        <h1>I&rsquo;m Alan Shortis—a front end developer based in Nottingham.</h1>
+        <p>
+          I like CSS more than JavaScript, aesthetics more than data, design systems more than
+          chaos, and accessibility more than exclusion.
+        </p>
+        <div>
           <SocialLink href="https://twitter.com/alanshortis" className="smallcaps">
             Twitter
           </SocialLink>
@@ -61,7 +50,7 @@ const Home = () => (
           <SocialLink href="https://codepen.io/alanshortis" className="smallcaps">
             CodePen
           </SocialLink>
-        </Intro>
+        </div>
       </Container>
     </Layout>
   </>
