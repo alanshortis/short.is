@@ -1,22 +1,24 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
+  :root {
+    --margin: calc(${p => p.theme.contentMargin} * 0.75);
+    @media ${p => p.theme.media.smallMin} {
+      --margin: ${p => p.theme.contentMargin};
+    }
+  }
+
   /* stylelint-disable-next-line selector-max-universal */
   *, *:before, *:after {
     border: 0;
     box-sizing: inherit;
     margin: 0;
     padding: 0;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
   }
 
   html {
-    font-size: 14px;
+    font-size: 16px;
     height: 100%;
-    @media ${p => p.theme.media.smallMin} {
-      font-size: 16px;
-    }
   }
 
   body {
@@ -37,7 +39,7 @@ const GlobalStyles = createGlobalStyle`
   h1, h2, h3, h4 {
     font-size: 2.074rem;
     line-height: 1.125;
-    margin-bottom: ${p => p.theme.contentMargin};
+    margin-bottom: var(--margin);
   }
 
   h2 {
@@ -68,7 +70,7 @@ const GlobalStyles = createGlobalStyle`
     color: currentColor;
     font-size: 0.79rem;
     letter-spacing: 3px;
-    margin-bottom: calc(${p => p.theme.contentMargin} / 2);
+    margin-bottom: calc(var(--margin) / 2);
     position: relative;
     text-decoration: none;
     text-transform: uppercase;

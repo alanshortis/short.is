@@ -6,11 +6,11 @@ import { Link } from 'gatsby';
 const NavContainer = styled.nav`
   border-top: ${p => p.theme.border} solid currentColor;
   display: grid;
-  grid-gap: ${p => p.theme.contentMargin};
+  grid-gap: var(--margin);
   grid-template-columns: 1fr;
-  margin-top: ${p => p.theme.contentMargin};
+  margin-top: var(--margin);
   max-width: ${p => p.theme.container};
-  padding-top: ${p => p.theme.contentMargin};
+  padding-top: var(--margin);
   @media ${p => p.theme.media.smallMin} {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -22,7 +22,7 @@ const StyledLink = styled(Link)`
   color: currentColor;
   display: block;
   height: 100%;
-  padding: ${p => p.theme.contentMargin};
+  padding: var(--margin);
   text-align: ${p => (p.align === 'right' ? 'right' : 'left')};
   text-decoration: none;
   transition: all ${p => p.theme.transitionSpeed} ${p => p.theme.transitionTiming};

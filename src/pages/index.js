@@ -8,7 +8,7 @@ const Container = styled.div`
   height: calc(100vh - ${p => p.theme.headerHeight});
   margin: 0 auto;
   max-width: ${p => p.theme.container};
-  padding: ${p => p.theme.contentMargin};
+  padding: var(--margin);
   width: 100%;
   @media ${p => p.theme.media.mediumMin} {
     align-items: center;
@@ -17,7 +17,7 @@ const Container = styled.div`
     justify-content: center;
   }
   p {
-    margin-bottom: ${p => p.theme.contentMargin};
+    margin-bottom: var(--margin);
   }
 `;
 
@@ -33,9 +33,9 @@ const SocialLink = styled.a.attrs(() => ({
   display: inline-block;
   margin-bottom: 0;
   &:not(:last-child) {
-    margin-right: calc(${p => p.theme.contentMargin} / 2);
+    margin-right: calc(var(--margin) / 2);
     @media ${p => p.theme.media.smallMin} {
-      margin-right: ${p => p.theme.contentMargin};
+      margin-right: var(--margin);
     }
   }
 `;

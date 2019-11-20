@@ -9,7 +9,7 @@ const MenuLink = styled(Link)`
   font-size: 0.79rem;
   transition: color ${p => p.theme.transitionSpeed} ${p => p.theme.transitionTiming};
   &:not(:last-child) {
-    margin-right: ${p => p.theme.contentMargin};
+    margin-right: var(--margin);
   }
   &:hover,
   &.active {
@@ -23,7 +23,7 @@ const MenuLink = styled(Link)`
     left: calc(50% - ${p => math(`${p.theme.border} / 2`)});
     position: absolute;
     right: auto;
-    top: ${p => p.theme.contentMargin};
+    top: 25px;
     width: ${p => p.theme.border};
   }
 `;
