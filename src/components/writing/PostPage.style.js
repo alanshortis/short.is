@@ -117,16 +117,6 @@ export const StyledPost = styled.div`
     padding: calc(var(--margin) / 2);
     right: 0;
     width: auto;
-
-    &::-webkit-scrollbar {
-      height: ${p => p.theme.border};
-    }
-    &::-webkit-scrollbar-track {
-      background: ${p => p.theme.color.scrollTrack};
-    }
-    &::-webkit-scrollbar-thumb {
-      background: ${p => p.theme.color.scrollBar};
-    }
   }
 
   .token.comment,
