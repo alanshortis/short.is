@@ -68,7 +68,6 @@ export const StyledPost = styled.div`
     color: currentColor;
     text-decoration: none;
     text-decoration-color: ${p => p.theme.color.accent};
-    transition: border-bottom-width ${p => p.theme.transitionSpeed} ${p => p.theme.transitionTiming};
     @supports (text-decoration-thickness: 3px) {
       border-bottom: 0;
       text-decoration: underline;
@@ -85,8 +84,10 @@ export const StyledPost = styled.div`
   }
 
   blockquote {
-    border: 1px solid currentColor;
-    border-left-width: ${p => p.theme.border};
+    /* border: 1px solid currentColor;
+    border-left-width: ${p => p.theme.border}; */
+    border-left: ${p => p.theme.border} solid currentColor;
+    font-size: 1.2rem;
     margin: var(--margin);
     padding: var(--margin);
 
