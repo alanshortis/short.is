@@ -10,7 +10,7 @@ const Container = styled.div`
   justify-content: center;
   margin: 0 auto;
   max-width: ${p => p.theme.container};
-  padding: ${p => p.theme.contentMargin};
+  padding: var(--margin);
   width: 100%;
 `;
 

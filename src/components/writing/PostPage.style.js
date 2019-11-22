@@ -4,14 +4,14 @@ import { transparentize } from 'polished';
 export const PostContainer = styled.article`
   margin: 0 auto;
   max-width: ${p => p.theme.container};
-  padding: ${p => p.theme.contentMargin};
+  padding: var(--margin);
   width: 100%;
 `;
 
 export const PostIntro = styled.p`
   font-size: 1.2rem;
-  padding-bottom: ${p => p.theme.contentMargin};
-  margin-bottom: ${p => p.theme.contentMargin};
+  padding-bottom: var(--margin);
+  margin-bottom: var(--margin);
   border-bottom: ${p => p.theme.border} solid currentColor;
 `;
 
@@ -28,22 +28,21 @@ export const StyledPost = styled.div`
   p,
   ul,
   ol {
-    margin-bottom: ${p => p.theme.contentMargin};
+    margin-bottom: var(--margin);
     code {
       background-color: ${p => p.theme.color.syntax.background};
-      color: ${p => p.theme.color.accent};
-      font-size: 0.833rem;
-      padding: 0 calc(${p => p.theme.contentMargin} / 8);
+      font-size: 0.9rem;
+      padding: 0 calc(var(--margin) / 4);
     }
   }
 
   iframe {
-    margin-bottom: ${p => p.theme.contentMargin};
+    margin-bottom: var(--margin);
   }
 
   h2,
   h3 {
-    padding-top: ${p => p.theme.contentMargin};
+    padding-top: var(--margin);
   }
 
   h2 + h3 {
@@ -53,7 +52,7 @@ export const StyledPost = styled.div`
   ul,
   ol {
     list-style: decimal;
-    padding-left: ${p => p.theme.contentMargin};
+    padding-left: var(--margin);
   }
 
   ul {
@@ -61,7 +60,7 @@ export const StyledPost = styled.div`
   }
 
   li {
-    margin-bottom: calc(${p => p.theme.contentMargin} / 4);
+    margin-bottom: calc(var(--margin) / 4);
   }
 
   a {
@@ -69,7 +68,6 @@ export const StyledPost = styled.div`
     color: currentColor;
     text-decoration: none;
     text-decoration-color: ${p => p.theme.color.accent};
-    transition: border-bottom-width ${p => p.theme.transitionSpeed} ${p => p.theme.transitionTiming};
     @supports (text-decoration-thickness: 3px) {
       border-bottom: 0;
       text-decoration: underline;
@@ -81,15 +79,17 @@ export const StyledPost = styled.div`
       border: 0;
       display: block;
       position: relative;
-      top: calc((${p => p.theme.headerHeight} + ${p => p.theme.contentMargin}) * -0.5);
+      top: calc((${p => p.theme.headerHeight} + var(--margin)) * -0.5);
     }
   }
 
   blockquote {
-    border: 1px solid currentColor;
-    border-left-width: ${p => p.theme.border};
-    margin: ${p => p.theme.contentMargin};
-    padding: ${p => p.theme.contentMargin};
+    /* border: 1px solid currentColor;
+    border-left-width: ${p => p.theme.border}; */
+    border-left: ${p => p.theme.border} solid currentColor;
+    font-size: 1.2rem;
+    margin: var(--margin);
+    padding: var(--margin);
 
     p:last-of-type {
       margin-bottom: 0;
@@ -99,10 +99,10 @@ export const StyledPost = styled.div`
   .gatsby-highlight-code-line {
     background-color: ${p => p.theme.color.syntax.backgroundHighlight};
     display: block;
-    left: calc((${p => p.theme.contentMargin} / 2) * -1);
-    padding: 0 calc(${p => p.theme.contentMargin} / 2);
+    left: calc((var(--margin) / 2) * -1);
+    padding: 0 calc(var(--margin) / 2);
     position: relative;
-    width: calc(100% + ${p => p.theme.contentMargin});
+    width: calc(100% + var(--margin));
   }
 
   .gatsby-highlight {
@@ -110,23 +110,13 @@ export const StyledPost = styled.div`
     color: ${p => p.theme.color.syntax.text};
     font-size: 0.833rem;
     left: 0;
-    margin-bottom: ${p => p.theme.contentMargin};
+    margin-bottom: var(--margin);
     margin-left: 0;
     margin-right: 0;
     overflow-x: auto;
-    padding: calc(${p => p.theme.contentMargin} / 2);
+    padding: calc(var(--margin) / 2);
     right: 0;
     width: auto;
-
-    &::-webkit-scrollbar {
-      height: ${p => p.theme.border};
-    }
-    &::-webkit-scrollbar-track {
-      background: ${p => p.theme.color.scrollTrack};
-    }
-    &::-webkit-scrollbar-thumb {
-      background: ${p => p.theme.color.scrollBar};
-    }
   }
 
   .token.comment,

@@ -10,7 +10,7 @@ const StyledHeader = styled.header`
   display: flex;
   height: ${p => p.theme.headerHeight};
   justify-content: space-between;
-  padding: 0 ${p => p.theme.contentMargin};
+  padding: 0 var(--margin);
   position: sticky;
   top: 0;
   width: 100%;

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const StyledList = styled.ol`
   && {
-    margin-bottom: calc(${p => p.theme.contentMargin} * 2);
+    margin-bottom: calc(var(--margin) * 2);
   }
 `;
 

@@ -4,10 +4,10 @@ import { Link } from 'gatsby';
 const Container = styled.ol`
   display: grid;
   grid-template-columns: 1fr;
-  grid-gap: ${p => p.theme.contentMargin};
+  grid-gap: var(--margin);
   margin: 0 auto;
   max-width: ${p => p.theme.container};
-  padding: ${p => p.theme.contentMargin};
+  padding: var(--margin);
   width: 100%;
   @media ${p => p.theme.media.smallMin} {
     grid-template-columns: repeat(2, 1fr);
@@ -20,7 +20,7 @@ const Item = styled(Link)`
   color: currentColor;
   display: block;
   height: 100%;
-  padding: ${p => p.theme.contentMargin};
+  padding: var(--margin);
   text-decoration: none;
   transition: box-shadow ${p => p.theme.transitionSpeed} ${p => p.theme.transitionTiming};
   &:hover {
