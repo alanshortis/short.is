@@ -20,7 +20,7 @@ const Playlist = ({ playlist }) => {
       <Grid.Item as="a" href={urls.spotify} target="_blank" rel="noopener noreferrer">
         <Count className="smallcaps">
           <span>{tracks.total} tracks</span>
-          {currentYear === name && <span>Updated</span>}
+          {(currentYear === name || name === '99 albums') && <span>Updated</span>}
         </Count>
         <h2>{name}</h2>
         <p>{descriptions[name.toLowerCase()]}</p>
