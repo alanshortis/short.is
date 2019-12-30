@@ -50,6 +50,12 @@ const Home = () => (
           <SocialLink href="https://codepen.io/alanshortis" className="smallcaps">
             CodePen
           </SocialLink>
+          <SocialLink href="https://www.last.fm/user/ashortis" className="smallcaps">
+            last.fm
+          </SocialLink>
+          <SocialLink href="https://www.strava.com/athletes/138800" className="smallcaps">
+            Strava
+          </SocialLink>
         </div>
       </Container>
     </Layout>
