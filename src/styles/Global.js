@@ -1,6 +1,9 @@
 import { createGlobalStyle } from 'styled-components';
+import fontImports from './fontImports';
 
 const GlobalStyles = createGlobalStyle`
+  ${fontImports};
+
   :root {
     --margin: calc(${p => p.theme.contentMargin} * 0.75);
     @media ${p => p.theme.media.smallMin} {
