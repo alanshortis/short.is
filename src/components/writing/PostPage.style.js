@@ -1,5 +1,24 @@
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 import { transparentize } from 'polished';
+import codeRegular from '../../../node_modules/typeface-ibm-plex-mono/files/ibm-plex-mono-latin-400.woff2';
+import codeItalic from '../../../node_modules/typeface-ibm-plex-mono/files/ibm-plex-mono-latin-400italic.woff2';
+
+export const CodeFont = createGlobalStyle`
+  @font-face {
+    font-display: swap;
+    font-family: ${p => p.theme.font.faceMono};
+    font-style: normal;
+    font-weight: ${p => p.theme.font.weight};
+    src: url(${codeRegular}) format('woff2');
+  }
+  @font-face {
+    font-display: swap;
+    font-family: ${p => p.theme.font.faceMono};
+    font-style: italic;
+    font-weight: ${p => p.theme.font.weight};
+    src: url(${codeItalic}) format('woff2');
+  }
+`;
 
 export const PostContainer = styled.article`
   margin: 0 auto;

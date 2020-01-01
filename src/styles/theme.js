@@ -28,9 +28,10 @@ const theme = {
   },
   font: {
     face: 'InterWeb',
+    faceMono: 'PlexMono',
     family: 'InterWeb, "Helvetica Neue", Helvetica, Arial, sans-serif',
     familyMono:
-      "Consolas, 'Andale Mono WT', 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Liberation Mono', 'Nimbus Mono L', Monaco, 'Courier New', Courier, monospace;",
+      "PlexMono, Consolas, 'Andale Mono WT', 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Liberation Mono', 'Nimbus Mono L', Monaco, 'Courier New', Courier, monospace;",
     weight: 400,
     weightBold: 700,
   },
