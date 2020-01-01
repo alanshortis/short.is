@@ -38,7 +38,9 @@
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-helmet": "^5.2.1",
-    "styled-components": "^4.4.0"
+    "styled-components": "^4.4.0",
+    "typeface-ibm-plex-mono": "0.0.61",
+    "typeface-inter": "^3.11.2"
   },
   "devDependencies": {
     "@danbruegge/gatsby-plugin-stylelint": "^3.4.1",
