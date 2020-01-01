@@ -68,7 +68,7 @@ export const StyledPost = styled.div`
     color: currentColor;
     text-decoration: none;
     text-decoration-color: ${p => p.theme.color.accent};
-    @supports (text-decoration-thickness: 3px) {
+    @supports ((text-decoration-thickness: 3px) and (text-decoration-skip-ink: none)) {
       border-bottom: 0;
       text-decoration: underline;
       text-decoration-color: ${p => p.theme.color.accent};
