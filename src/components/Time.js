@@ -11,7 +11,7 @@ const Container = styled.div`
   }
 `;
 
-const Time = ({ date, withNewLabel }) => {
+const Time = ({ date, withNewLabel, pre }) => {
   const formattedDate = new Date(date).toLocaleDateString('en-GB', {
     day: 'numeric',
     month: 'long',
@@ -21,7 +21,13 @@ const Time = ({ date, withNewLabel }) => {
 
   return (
     <Container className="smallcaps">
-      <time dateTime={date}>{formattedDate}</time>
+      {pre ? (
+        <span>
+          {pre}: <time dateTime={date}>{formattedDate}</time>
+        </span>
+      ) : (
+        <time dateTime={date}>{formattedDate}</time>
+      )}
       {isNew && <p>New</p>}
     </Container>
   );
@@ -30,10 +36,12 @@ const Time = ({ date, withNewLabel }) => {
 Time.propTypes = {
   date: PropTypes.string.isRequired,
   withNewLabel: PropTypes.bool,
+  pre: PropTypes.bool,
 };
 
 Time.defaultProps = {
   withNewLabel: false,
+  pre: '',
 };
 
 export default Time;
