@@ -19,6 +19,10 @@ const StyledHeader = styled.header`
     backdrop-filter: blur(7px);
     background-color: ${p => p.theme.color.header(p.isDark, 0.5)};
   }
+  @media (prefers-reduced-transparency: reduce) {
+    background-color: ${p => p.theme.color.header(p.isDark, 1)};
+    backdrop-filter: none;
+  }
   a {
     color: currentColor;
   }
