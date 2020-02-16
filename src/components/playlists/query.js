@@ -19,12 +19,14 @@ const playlistQuery = () =>
         playlists: allSpotifyPlaylist(
           sort: { order: ASC, fields: [order] }
           filter: { name: { regex: "/^((?![0-9]{4}).)*$/" } }
+          limit: 3
         ) {
           ...SpotifyFields
         }
         annual: allSpotifyPlaylist(
           sort: { order: DESC, fields: [name] }
           filter: { name: { regex: "/[0-9]{4}/" } }
+          limit: 3
         ) {
           ...SpotifyFields
         }
