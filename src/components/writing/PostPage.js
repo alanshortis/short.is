@@ -3,7 +3,7 @@ import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer';
 import { StyledPost, PostContainer, PostIntro, PostTitle, CodeFont } from './PostPage.style';
-import { Layout, Time, Meta, NextPost } from '..';
+import { Layout, Time, Meta, NextPost, Social } from '..';
 
 export const query = graphql`
   query PostQuery($slug: String!) {
@@ -35,6 +35,7 @@ const Post = ({ data, pageContext }) => {
             <MDXRenderer>{mdx.body}</MDXRenderer>
           </StyledPost>
           <NextPost pageContext={pageContext} />
+          <Social />
         </PostContainer>
       </Layout>
     </>
