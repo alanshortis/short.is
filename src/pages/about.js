@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 import { Link } from 'gatsby';
-import { Layout, Time, Meta } from '../components';
+import { Layout, Time, Meta, Social } from '../components';
 import {
   StyledPost,
   PostContainer,
@@ -20,30 +19,6 @@ A.propTypes = {
   href: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
 };
-
-const SocialLink = styled.a.attrs(() => ({
-  target: '_blank',
-  rel: 'noopener noreferrer',
-}))`
-  display: inline-block;
-  margin-bottom: 0;
-  && {
-    text-decoration: none;
-  }
-  &:not(:last-child) {
-    margin-right: calc(var(--margin) / 2);
-    @media ${p => p.theme.media.smallMin} {
-      margin-right: var(--margin);
-    }
-  }
-`;
-
-const Social = styled.div`
-  padding-top: var(--margin);
-  margin-top: calc(var(--margin) * 2);
-  border-top: ${p => p.theme.border} solid currentColor;
-  text-align: center;
-`;
 
 const Now = () => {
   const d = new Date();
@@ -69,7 +44,8 @@ const Now = () => {
             </p>
             <p>
               I have been a developer profressionally in some capacity for more than 10 years,
-              though I made my first websites in the late 90s. They were terrible.
+              though I made my first websites in the late 90s. They were terrible, even by the
+              standards of Geocities.
             </p>
             <p>
               My preference for front end development is likely connected to me being a design
@@ -77,15 +53,17 @@ const Now = () => {
               career I have also worked with Classic ASP, PHP, WordPress and SQL in my brief time as
               an analyst.
             </p>
+            <p>
+              I&rsquo;m currently working for Experian, and have previously worked in higher
+              education, agencies, and retail both as an individual and as part of an agile team.
+            </p>
             <h2>Now</h2>
             <ul>
               <li>
                 Training for{' '}
                 <A href="https://lepapemarmottegranfondoalpes.com/">Marmotte Granfondo Alpes</A>.
               </li>
-              <li>
-                Expanding the <Link to="/playlists">playlists</Link> section.
-              </li>
+              <li>Better mobile navigation. This is more than a little cramped.</li>
               <li>
                 Rewriting <A href="https://nivolet.cc">nivolet.cc</A>.
               </li>
@@ -101,30 +79,11 @@ const Now = () => {
                 by George Orwell.
               </li>
               <li>
-                Attempting a{' '}
-                <A href="https://www.areaware.com/products/gradient-puzzle?variant=36263538436">
-                  frankly ridiculous Jigsaw
-                </A>
-                .
+                Trying to catch up on{' '}
+                <A href="http://revisionisthistory.com/">Revitionist History</A>.
               </li>
             </ul>
-            <Social>
-              <SocialLink href="https://twitter.com/alanshortis" className="smallcaps">
-                Twitter
-              </SocialLink>
-              <SocialLink href="https://www.instagram.com/ashortis/" className="smallcaps">
-                Instagram
-              </SocialLink>
-              <SocialLink href="https://codepen.io/alanshortis" className="smallcaps">
-                CodePen
-              </SocialLink>
-              <SocialLink href="https://www.last.fm/user/ashortis" className="smallcaps">
-                last.fm
-              </SocialLink>
-              <SocialLink href="https://www.strava.com/athletes/138800" className="smallcaps">
-                Strava
-              </SocialLink>
-            </Social>
+            <Social />
           </StyledPost>
         </PostContainer>
       </Layout>
