@@ -7,4 +7,5 @@ export { default as Menu } from './Menu';
 export { default as Meta } from './Meta';
 export { default as NextPost } from './NextPost';
 export { default as SlideIn } from './SlideIn';
+export { default as Social } from './Social';
 export { default as Time } from './Time';

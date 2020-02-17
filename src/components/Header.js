@@ -38,7 +38,7 @@ const Header = ({ isDark }) => (
       items={[
         { label: 'Writing', url: '/writing', hasChildRoutes: true },
         { label: 'Playlists', url: '/playlists' },
-        { label: 'Now', url: '/now' },
+        { label: 'About', url: '/about' },
       ]}
     />
   </StyledHeader>
