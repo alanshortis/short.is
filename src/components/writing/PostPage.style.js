@@ -103,8 +103,6 @@ export const StyledPost = styled.div`
   }
 
   blockquote {
-    /* border: 1px solid currentColor;
-    border-left-width: ${p => p.theme.border}; */
     border-left: ${p => p.theme.border} solid currentColor;
     font-size: 1.2rem;
     margin: var(--margin);
