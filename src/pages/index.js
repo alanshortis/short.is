@@ -19,7 +19,6 @@ const Home = () => (
     <Meta title="Home" />
     <Layout isDark>
       <Container>
-        {/* <Orb /> */}
         <Anaglyph />
       </Container>
     </Layout>
