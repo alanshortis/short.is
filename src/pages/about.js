@@ -82,8 +82,8 @@ const Now = () => {
                 <A href="http://revisionisthistory.com/">Revitionist History</A>.
               </li>
             </ul>
-            <Social />
           </StyledPost>
+          <Social />
         </PostContainer>
       </Layout>
     </>
