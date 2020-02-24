@@ -27,7 +27,7 @@ const Now = () => {
       <Meta title="About" description="Who is Alan Shortis anyway?" />
       <Layout>
         <PostContainer>
-          <Time date="2020-02-17" pre="Updated" />
+          <Time date="2020-02-24" pre="Updated" />
           <PostTitle>About</PostTitle>
           <PostIntro>
             I&rsquo;m Alan Shortis—a front end developer based in Nottingham. I like CSS more than
@@ -68,10 +68,6 @@ const Now = () => {
               </li>
               <li>
                 Reading{' '}
-                <A href="https://www.amazon.co.uk/Nineteen-Eighty-Four-Penguin-Modern-Classics/dp/0141393041/ref=asc_df_0141393041">
-                  Nineteen Eighty-Four
-                </A>{' '}
-                and{' '}
                 <A href="https://www.amazon.co.uk/Animal-Farm-Penguin-Modern-Classics/dp/0141182709">
                   Animal Farm
                 </A>{' '}
