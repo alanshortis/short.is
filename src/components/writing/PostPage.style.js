@@ -98,7 +98,7 @@ export const StyledPost = styled.div`
       border: 0;
       display: block;
       position: relative;
-      top: calc((${p => p.theme.headerHeight} + var(--margin)) * -0.5);
+      scroll-margin-top: ${p => p.theme.headerHeight};
     }
   }
 
