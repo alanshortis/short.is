@@ -27,7 +27,7 @@ const Now = () => {
       <Meta title="About" description="Who is Alan Shortis anyway?" />
       <Layout>
         <PostContainer>
-          <Time date="2020-02-24" pre="Updated" />
+          <Time date="2020-03-01" pre="Updated" />
           <PostTitle>About</PostTitle>
           <PostIntro>
             I&rsquo;m Alan Shortis—a front end developer based in Nottingham. I like CSS more than
@@ -62,7 +62,7 @@ const Now = () => {
                 Training for{' '}
                 <A href="https://lepapemarmottegranfondoalpes.com/">Marmotte Granfondo Alpes</A>.
               </li>
-              <li>Better mobile navigation. This is more than a little cramped.</li>
+              <li>Learning TypeScript.</li>
               <li>
                 Rewriting <A href="https://nivolet.cc">nivolet.cc</A>.
               </li>
