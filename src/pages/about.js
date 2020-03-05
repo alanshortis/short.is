@@ -68,8 +68,8 @@ const Now = () => {
               </li>
               <li>
                 Reading{' '}
-                <A href="https://www.amazon.co.uk/Animal-Farm-Penguin-Modern-Classics/dp/0141182709">
-                  Animal Farm
+                <A href="https://www.amazon.co.uk/Nationalism-Penguin-Modern-George-Orwell/dp/0241339561/">
+                  Notes on Nationalism
                 </A>{' '}
                 by George Orwell.
               </li>
