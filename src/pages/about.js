@@ -27,7 +27,7 @@ const Now = () => {
       <Meta title="About" description="Who is Alan Shortis anyway?" />
       <Layout>
         <PostContainer>
-          <Time date="2020-03-01" pre="Updated" />
+          <Time date="2020-03-05" pre="Updated" />
           <PostTitle>About</PostTitle>
           <PostIntro>
             I&rsquo;m Alan Shortis—a front end developer based in Nottingham. I like CSS more than
