@@ -20,5 +20,6 @@ module.exports = {
       },
     },
     'gatsby-plugin-offline', // Must be after manifest plugin
+    'gatsby-plugin-react-helmet',
   ],
 };
