@@ -5,6 +5,9 @@ module.exports = {
     author: 'Alan Shortis',
     description: 'Alan Shortis is a web developer',
     title: 'Alan Shortis',
+    twitterUsername: '@alanshortis',
+    siteUrl: 'https://short.is',
+    ogImage: '/og.png',
   },
   plugins: [
     {
