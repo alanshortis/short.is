@@ -2,11 +2,11 @@ import React from 'react';
 import SEO from '../components/SEO';
 import Layout from '../components/Layout';
 
-const Home = () => (
+const Playlists = () => (
   <Layout>
-    <SEO />
-    <p>home</p>
+    <SEO title="Playlists" pathName="/playlists" />
+    <p>Playlists</p>
   </Layout>
 );
 
-export default Home;
+export default Playlists;

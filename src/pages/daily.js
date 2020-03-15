@@ -2,11 +2,11 @@ import React from 'react';
 import SEO from '../components/SEO';
 import Layout from '../components/Layout';
 
-const Home = () => (
+const Daily = () => (
   <Layout>
-    <SEO />
-    <p>home</p>
+    <SEO title="Daily" pathName="/daily" />
+    <p>Daily</p>
   </Layout>
 );
 
-export default Home;
+export default Daily;
