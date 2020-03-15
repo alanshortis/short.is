@@ -11,5 +11,16 @@
       "---"
     ],
     "description": "Frontmatter for posts"
+  },
+  "Daily Frontmatter": {
+    "prefix": "dfm",
+    "body": [
+      "---",
+      "date: '$CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE'",
+      "mobile: false$1",
+      "slug: '/daily/$CURRENT_YEAR$CURRENT_MONTH$CURRENT_DATE'",
+      "---"
+    ],
+    "description": "Frontmatter for daily"
   }
 }
