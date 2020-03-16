@@ -21,7 +21,7 @@ const SEO = ({ title, description, pathName, children }) => {
   );
 
   const { siteMetadata } = site;
-  const pageTitle = title ? `${title} · ${siteMetadata.title}` : siteMetadata.title;
+  const pageTitle = title ? `${title} • ${siteMetadata.title}` : siteMetadata.title;
   const pageDescription = description || siteMetadata.description;
   const pageUrl = `${siteMetadata.siteUrl}${pathName || '/'}`;
 
