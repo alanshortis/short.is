@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer';
 import Layout from './Layout';
@@ -33,6 +34,21 @@ const WritingTemplate = ({ data, pageContext }) => {
       </Layout>
     </>
   );
+};
+
+WritingTemplate.propTypes = {
+  data: PropTypes.shape({
+    mdx: PropTypes.shape({
+      body: PropTypes.node,
+      frontmatter: PropTypes.shape({
+        title: PropTypes.string,
+        date: PropTypes.string,
+        intro: PropTypes.string,
+        slug: PropTypes.string,
+      }),
+    }),
+  }).isRequired,
+  pageContext: PropTypes.shape({}).isRequired,
 };
 
 export default WritingTemplate;
