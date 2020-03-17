@@ -1,6 +1,6 @@
 const path = require('path');
 
-function pageCreator(graphql, actions, postFolder, templatePath) {
+function pageCreator(graphql, actions, postFolder) {
   const { createPage } = actions;
   return new Promise(resolve => {
     graphql(`
@@ -24,7 +24,7 @@ function pageCreator(graphql, actions, postFolder, templatePath) {
       pages.forEach(({ node }, i) => {
         createPage({
           path: node.frontmatter.slug,
-          component: path.resolve(templatePath),
+          component: path.resolve('./src/components/PostTemplate.js'),
           context: {
             slug: node.frontmatter.slug,
             newer: i === pages.length - 1 ? null : pages[i + 1].node,
@@ -38,6 +38,6 @@ function pageCreator(graphql, actions, postFolder, templatePath) {
 }
 
 exports.createPages = async ({ graphql, actions }) => {
-  await pageCreator(graphql, actions, 'writing', './src/components/WritingTemplate.js');
-  await pageCreator(graphql, actions, 'daily', './src/components/DailyTemplate.js');
+  await pageCreator(graphql, actions, 'writing');
+  await pageCreator(graphql, actions, 'daily');
 };

@@ -6,26 +6,28 @@ import Layout from './Layout';
 import NextPrev from './NextPrev';
 
 export const query = graphql`
-  query DailyQuery($slug: String!) {
+  query WritingQuery($slug: String!) {
     mdx(frontmatter: { slug: { eq: $slug } }) {
       body
       frontmatter {
         title
         date
+        intro
         slug
       }
     }
   }
 `;
 
-const DailyTemplate = ({ data, pageContext }) => {
-  const { date, title, slug } = data.mdx.frontmatter;
+const WritingTemplate = ({ data, pageContext }) => {
+  const { title, date, intro, slug } = data.mdx.frontmatter;
   return (
     <>
-      <SEO title={title} pathName={slug} />
+      <SEO title={title} description={intro} pathName={slug} />
       <Layout>
         <time>{date}</time>
-        <h1>{title} DAILY TEMPLATE</h1>
+        <h1>{title}</h1>
+        {intro && <p>{intro}</p>}
         <div>
           <MDXRenderer>{data.mdx.body}</MDXRenderer>
         </div>
@@ -35,4 +37,4 @@ const DailyTemplate = ({ data, pageContext }) => {
   );
 };
 
-export default DailyTemplate;
+export default WritingTemplate;
