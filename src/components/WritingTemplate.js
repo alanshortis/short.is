@@ -5,7 +5,7 @@ import SEO from './SEO';
 import Layout from './Layout';
 
 export const query = graphql`
-  query PostQuery($slug: String!) {
+  query WritingQuery($slug: String!) {
     mdx(frontmatter: { slug: { eq: $slug } }) {
       body
       frontmatter {
@@ -18,7 +18,7 @@ export const query = graphql`
   }
 `;
 
-const PostTemplate = ({ data, pageContext }) => {
+const WritingTemplate = ({ data, pageContext }) => {
   const { mdx } = data;
   const { title, date, intro } = mdx.frontmatter;
 
@@ -27,7 +27,7 @@ const PostTemplate = ({ data, pageContext }) => {
       <SEO title={title} description={intro} pathName={pageContext.slug} />
       <Layout>
         <time>{date}</time>
-        <h1>{title}</h1>
+        <h1>{title} POST TEMPLATE</h1>
         <p>{intro}</p>
         <div>
           <MDXRenderer>{mdx.body}</MDXRenderer>
@@ -49,4 +49,4 @@ const PostTemplate = ({ data, pageContext }) => {
   );
 };
 
-export default PostTemplate;
+export default WritingTemplate;
