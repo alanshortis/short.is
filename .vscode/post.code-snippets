@@ -18,8 +18,8 @@
       "---",
       "title: #$1",
       "date: '$CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE'",
-      "mobile: false$2",
-      "slug: '/daily/$CURRENT_YEAR$CURRENT_MONTH$CURRENT_DATE'",
+      "mobile: false$3",
+      "slug: '/daily/$2'",
       "---"
     ],
     "description": "Frontmatter for daily"
