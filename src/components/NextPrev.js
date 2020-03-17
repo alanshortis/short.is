@@ -14,24 +14,18 @@ const NextPrev = ({ pageContext }) => {
 
 NextPrev.propTypes = {
   pageContext: PropTypes.shape({
-    newer: PropTypes.oneOf([
-      null,
-      PropTypes.shape({
-        frontmatter: PropTypes.shape({
-          slug: PropTypes.string,
-          title: PropTypes.string,
-        }),
+    newer: PropTypes.shape({
+      frontmatter: PropTypes.shape({
+        slug: PropTypes.string,
+        title: PropTypes.string,
       }),
-    ]),
-    older: PropTypes.oneOf([
-      null,
-      PropTypes.shape({
-        frontmatter: PropTypes.shape({
-          slug: PropTypes.string,
-          title: PropTypes.string,
-        }),
+    }),
+    older: PropTypes.shape({
+      frontmatter: PropTypes.shape({
+        slug: PropTypes.string,
+        title: PropTypes.string,
       }),
-    ]),
+    }),
   }).isRequired,
 };
 
