@@ -6,7 +6,7 @@ import Layout from './Layout';
 import NextPrev from './NextPrev';
 
 export const query = graphql`
-  query WritingQuery($slug: String!) {
+  query PostQuery($slug: String!) {
     mdx(frontmatter: { slug: { eq: $slug } }) {
       body
       frontmatter {
@@ -19,7 +19,7 @@ export const query = graphql`
   }
 `;
 
-const WritingTemplate = ({ data, pageContext }) => {
+const PostTemplate = ({ data, pageContext }) => {
   const { title, date, intro, slug } = data.mdx.frontmatter;
   return (
     <>
@@ -36,7 +36,7 @@ const WritingTemplate = ({ data, pageContext }) => {
   );
 };
 
-WritingTemplate.propTypes = {
+PostTemplate.propTypes = {
   data: PropTypes.shape({
     mdx: PropTypes.shape({
       body: PropTypes.node,
@@ -51,4 +51,4 @@ WritingTemplate.propTypes = {
   pageContext: PropTypes.shape({}).isRequired,
 };
 
-export default WritingTemplate;
+export default PostTemplate;
