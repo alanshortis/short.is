@@ -1,10 +1,8 @@
 import React from 'react';
-import SEO from '../components/SEO';
 import Layout from '../components/Layout';
 
 const About = () => (
-  <Layout>
-    <SEO title="About" pathName="/about" />
+  <Layout title="About" pathName="/about">
     <p>About</p>
   </Layout>
 );

@@ -1,7 +1,6 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer';
-import SEO from './SEO';
 import Layout from './Layout';
 import NextPrev from './NextPrev';
 
@@ -23,8 +22,7 @@ const WritingTemplate = ({ data, pageContext }) => {
   const { title, date, intro, slug } = data.mdx.frontmatter;
   return (
     <>
-      <SEO title={title} description={intro} pathName={slug} />
-      <Layout>
+      <Layout title={title} description={intro} pathName={slug}>
         <time>{date}</time>
         <h1>{title}</h1>
         {intro && <p>{intro}</p>}
