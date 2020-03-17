@@ -16,10 +16,10 @@
     "prefix": "dfm",
     "body": [
       "---",
+      "title: #$1",
       "date: '$CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE'",
-      "mobile: false$1",
+      "mobile: false$2",
       "slug: '/daily/$CURRENT_YEAR$CURRENT_MONTH$CURRENT_DATE'",
-      "number: $2",
       "---"
     ],
     "description": "Frontmatter for daily"
