@@ -1,14 +1,22 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 
-const Nav = () => (
+const Nav = ({ items }) => (
   <>
-    <Link to="/">Home</Link>
-    <Link to="/writing">Writing</Link>
-    <Link to="/daily">Daily</Link>
-    <Link to="/playlists">Playlists</Link>
-    <Link to="/about">About</Link>
+    {items.map(item => (
+      <Link to={item.path}>{item.title}</Link>
+    ))}
   </>
 );
+
+Nav.propTypes = {
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string,
+      path: PropTypes.string,
+    })
+  ).isRequired,
+};
 
 export default Nav;
