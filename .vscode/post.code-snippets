@@ -5,9 +5,9 @@
       "---",
       "title: '$1'",
       "date: '$CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE'",
-      "category: 'development'",
-      "slug: '/writing/$2'",
-      "intro: '$3'",
+      "category: '${3:development}'",
+      "slug: '/writing/$1'",
+      "intro: '$2'",
       "---"
     ],
     "description": "Frontmatter for posts"
@@ -18,9 +18,9 @@
       "---",
       "title: '#$1'",
       "date: '$CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE'",
-      "mobile: false$3",
-      "featured: false$4",
-      "slug: '/daily/$2'",
+      "mobile: ${3:false}",
+      "featured: ${4:false}",
+      "slug: '/daily/$1'",
       "---"
     ],
     "description": "Frontmatter for daily"
