@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Nav from './Nav';
+import Header from './Header';
 import SEO from './SEO';
 
 const Layout = ({ title, description, pathName, children }) => (
   <>
     <SEO title={title} description={description} pathName={pathName} />
-    <Nav />
-    <div>{children}</div>
+    <Header />
+    <main>{children}</main>
   </>
 );
 
