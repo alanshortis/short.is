@@ -1,6 +1,27 @@
-const prompts = require('prompts');
 const fs = require('fs');
+const prompts = require('prompts');
 const chalk = require('chalk');
+
+const POST_ROOT = 'src/posts';
+const FIRST_DAILY_POST = '2020-03-15';
+
+const templates = {
+  daily: (date, title) => `---
+title: '#${title}'
+date: '${date}'
+mobile: false
+featured: false
+slug: '/daily/${title}'
+---`,
+
+  writing: (date, title, slug) => `---
+title: '${title}'
+date: '${date}'
+category: 'development'
+slug: '/writing/${slug}'
+intro: ""
+---`,
+};
 
 const postType = async () => {
   const response = await prompts({
@@ -27,13 +48,15 @@ const postTitle = async () => {
 };
 
 const createFolder = async folder => {
-  const fullPath = `src/posts/daily/${folder}`;
-  await fs.mkdirSync(fullPath, { recursive: true });
-  console.log(chalk.green(`✔ ${fullPath} folder created.`));
+  const fullPath = `${POST_ROOT}/daily/${folder}`;
+  if (!fs.existsSync(fullPath)) {
+    fs.mkdirSync(fullPath, { recursive: true });
+    console.log(chalk.green(`✔ ${fullPath} folder created.`));
+  }
 };
 
 const createFile = async (path, fileName, content) => {
-  await fs.writeFile(`${path}/${fileName}`, content, err => {
+  fs.writeFile(`${path}/${fileName}`, content, err => {
     if (err) throw err;
     console.log(chalk.green(`✔ ${path}/${fileName} created.`));
   });
@@ -44,9 +67,8 @@ const postGenerator = async () => {
   const date = today.getDate();
   const month = today.getMonth();
   const formattedMonth = String(month + 1).padStart(2, 0);
-  const year = today.getFullYear() + 2;
+  const year = today.getFullYear();
   const formattedDate = `${year}-${formattedMonth}-${date}`;
-  const path = 'src/posts';
 
   const type = await postType();
 
@@ -57,18 +79,26 @@ const postGenerator = async () => {
       .join('-')
       .toLowerCase();
 
-    createFile(`${path}/writing`, `${formattedDate}.mdx`, slug);
+    createFile(
+      `${POST_ROOT}/writing`,
+      `${formattedDate}.mdx`,
+      templates.writing(formattedDate, title, slug)
+    );
   }
 
   if (type === 'daily') {
-    const firstDailyPost = new Date('2020-03-15');
+    const firstDailyPost = new Date(FIRST_DAILY_POST);
     const daysSince = (today - firstDailyPost) / (1000 * 3600 * 24);
     const dailyPostCount = Math.round(daysSince - 1);
     const yearMonthFolder = `${year}/${formattedMonth}`;
-    const fullPath = `${path}/daily/${yearMonthFolder}`;
+    const fullPath = `${POST_ROOT}/daily/${yearMonthFolder}`;
 
     await createFolder(yearMonthFolder);
-    await createFile(fullPath, `${formattedDate}.mdx`, dailyPostCount);
+    await createFile(
+      fullPath,
+      `${formattedDate}.mdx`,
+      templates.daily(formattedDate, dailyPostCount)
+    );
   }
 };
 
