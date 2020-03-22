@@ -1,0 +1,199 @@
+---
+title: 'Automating file creation'
+date: '2020-03-21'
+category: 'development'
+slug: '/writing/automating-file-creation'
+intro: 'If you frequently write posts in markdown that need specific file names and front matter, you could save yourself literally seconds by automating file creation and content.'
+---
+
+As well as these occasional technical posts, I have recently started to write a daily blog. This isn't yet published anywhere but will be when v3 of this site is ready to go.
+
+For posts like the one you're reading now it's not a huge problem to just manually create a file, cut and paste the front matter from elsewhere, update what needs to change before writing the post and publishing. For the daily posts however, the file name must be the correct date, the front matter needs the current date and the post number for the title and slug. That's plenty of opportunity to make a mistake every day, and the more friction there is the less likely I am to keep posting every single day.
+
+## VS Code Snippets
+
+A great feature of VS Code is the ability to define your own snippets to quickly scaffold file contents.
+
+Create a new file in the `.vscode` folder at the root of your project, named `posts.code-snippets` and add this content:
+
+```javascript
+{
+  "Post Frontmatter": {
+    "prefix": "pfm",
+    "description": "Frontmatter for posts",
+    "body": [
+      "---",
+      "title: '$1'",
+      "date: '$CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE'",
+      "category: '${3:development}'",
+      "slug: '/writing/$1'",
+      "intro: '$2'",
+      "---"
+    ]
+  },
+  "Daily Frontmatter": {
+    "prefix": "dfm",
+    "description": "Frontmatter for daily",
+    "body": [
+      "---",
+      "title: '#$1'",
+      "date: '$CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE'",
+      "mobile: ${3:false}",
+      "featured: ${4:false}",
+      "slug: '/daily/$1'",
+      "---"
+    ]
+  }
+}
+```
+
+Each entry in the object is a new snippet whose properties are:
+
+- `prefix` is what you type in VS Code to use the snippet. You can either type this directly into the file and hit tab, or hit <kbd>cmd</kdb>+<kbd>shift</kdb>+<kbd>p</kdb> to open the command palette and type 'insert snippet' to see a list of all available code snippets.
+- `body` is what will be printed into the file when using a snippet.
+- `description` is a brief description of what the snippet does. This is shown in the command palette when snippets are listed, and when using the prefix directly.
+
+The `body` section has a fair amount going on:
+
+- It is an array with each entry being a new line of the snippet.
+- You can pre-fill from a few variables provided by VS Code - in this case I build the date from the current year, month and date. There are [many variables to choose from](https://code.visualstudio.com/docs/editor/userdefinedsnippets#_variables).
+- Placeholders help to add content that may change between uses. Using `$1` will place the cursor at that point once the snippet has been printed. Using the same number multiple times will add multiple cursors. It's also possible to add a default value - `${2:true}` - and the cursor will be positioned in that position with the default value already filled. Good for booleans.
+
+For my use case, this isn't _bad_. It removes the need to remember the front matter I should add to each post and it's pretty easy to update the content. But:
+
+- I still need to create the file first.
+- For daily posts, I need to remember the post number or look in an older post to figure out how to increment, and update the slug and title.
+- For regular posts I need to add a title, then repeat it for the slug, but hyphenated and lowercase.
+
+## Create a CLI
+
+To remove these boundaries and as an excuse to write something in node, I'm going to write a CLI which will:
+
+- Prompt for the type of post being created.
+- Prompt for a title if needed.
+- Create a folder for the month/year if needed.
+- Create the file with the correct file name.
+- Add the frontmatter to file with all the correct data.
+
+Like most front end developers my exposure to Node.js is limited. I have configured tools that are built on Node like Gulp and Webpack, and I have used NPM to install thousands of dependencies, but I haven't really written a utility from scratch.
+
+It's very likely my solution is not going to be the most elegant JavaScript you've ever seen, and there will certainly be better approaches and best practices. I really don't think this matters; the tool I am writing is for my own personal use, it will never go in front of a team, it will never be used in a production environment and possible edge cases are tiny. Let's not let perfect get in the way of good enough.
+
+To follow along, let's assume you already have a website at least partially set up, node is installed and package.json already exists.
+
+Lets do this step by step, and remember that I'm figuring this out as I go along so it may seem convoluted and weird at times.
+
+### 1. Make and run a Node app
+
+At the root of the project, create a new file named `post-generator.js` and add a quick console log: `console.log('👋')`.
+
+In package.json add a new entry in the scripts section:
+
+```json
+"scripts": {
+  "new-post": "node post-generator.js"
+}
+```
+
+From your terminal, `npm run new-post` should have your console log waving back at you.
+
+This is a real Node.js app, and it confirms that we can use emoji all over the place in our final app.
+
+### 2. Prompt the user
+
+To generate a new post we need to first ask the user what type of post we're writing, then ask what the title should be (but not if this is a daily post).
+
+We're going to use a package from npm to handle the prompts named, appropriately, [prompts](https://www.npmjs.com/package/prompts). `npm i --save-dev prompts`.
+
+In our `post-generator.js`, delete the waving console log, then require the prompts package and add the first prompt to find out what kind of post we're creating:
+
+```javascript
+const prompts = require('prompts');
+
+const postType = async () => {
+  const response = await prompts({
+    type: 'select',
+    name: 'type',
+    message: 'What type of post should be created?',
+    choices: [
+      { title: 'Daily', value: 'daily' },
+      { title: 'Writing', value: 'writing' },
+    ],
+  });
+
+  console.log(response.type);
+};
+
+postType();
+```
+
+Running this from the terminal again, you'll now be prompted for the post type. You can navigate the list with the arrow keys, and on enter the choice will be console logged.
+
+We lets rearrange this a little so it's easier to build out, and add out second prompt:
+
+```javascript{14,17-38}
+const prompts = require('prompts');
+
+const postType = async () => {
+  const response = await prompts({
+    type: 'select',
+    name: 'type',
+    message: 'What type of post should be created?',
+    choices: [
+      { title: 'Daily', value: 'daily' },
+      { title: 'Writing', value: 'writing' },
+    ],
+  });
+
+  return response.type;
+};
+
+const postTitle = async () => {
+  const response = await prompts({
+    type: 'text',
+    name: 'title',
+    message: "What's the title of the new post?",
+  });
+
+  return response.title;
+};
+
+const postGenerator = async () => {
+  const type = await postType();
+
+  console.log(type);
+
+  if (type === 'writing') {
+    const title = await postTitle();
+    console.log(title);
+  }
+};
+
+postGenerator();
+```
+
+The changes we've made are:
+
+- The prompt functions return the value instead of logging them.
+- Add an additional prompt for the title.
+- Add a function to contain everything we do and call it immediately.
+- Prompt for the title if the post type is 'writing'. If it's 'daily' we'll generate it in a later step.
+
+### Create a 'writing' post
+
+Because we don't need to concern ourselves with creating folders, we'll start by creating a new 'writing' post if selected from the prompt.
+
+Before we can create any posts, we need the current day, month and year for the file name. We'll add them as variables in the `postGenerator` function:
+
+```javascript
+const postGenerator = async () => {
+  const type = await postType();
+
+  console.log(type);
+
+  if (type === 'writing') {
+    const title = await postTitle();
+    console.log(title);
+  }
+};
+```
