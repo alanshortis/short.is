@@ -45,6 +45,7 @@
     "@danbruegge/gatsby-plugin-stylelint": "^4.0.0",
     "babel-plugin-styled-components": "^1.10.7",
     "babel-preset-gatsby": "^0.2.36",
+    "chalk": "^3.0.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.1.0",
     "eslint-config-prettier": "^6.10.0",
