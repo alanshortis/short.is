@@ -27,7 +27,7 @@ const Now = () => {
       <Meta title="About" description="Who is Alan Shortis anyway?" />
       <Layout>
         <PostContainer>
-          <Time date="2020-03-05" pre="Updated" />
+          <Time date="2020-03-23" pre="Updated" />
           <PostTitle>About</PostTitle>
           <PostIntro>
             I&rsquo;m Alan Shortis—a front end developer based in Nottingham. I like CSS more than
@@ -38,7 +38,7 @@ const Now = () => {
             <h2>Experience and Skills</h2>
             <p>
               As a front end developer, I specialise in developing user interfaces in HTML and CSS.
-              But, it being {thisYear}, I also work extensively in JavaScript, using React/Node and
+              But, it being {thisYear}, I also work extensively in JavaScript, using React and
               friends on a daily basis.
             </p>
             <p>
@@ -57,26 +57,31 @@ const Now = () => {
               education, agencies, and retail both as an individual and as part of an agile team.
             </p>
             <h2>Now</h2>
+            <p>
+              This secion feels a little weird in the current circumstances. So much of what
+              everyone is doing has changed whether we like it or not. However, we all need to keep
+              moving ahead.
+            </p>
             <ul>
               <li>
-                Training for{' '}
-                <A href="https://lepapemarmottegranfondoalpes.com/">Marmotte Granfondo Alpes</A>.
+                Writing every day. This will eventually be published in a new &rsquo;daily&rsquo;
+                section when v3 of this site is ready to go.
               </li>
-              <li>Learning TypeScript.</li>
               <li>
-                Rewriting <A href="https://nivolet.cc">nivolet.cc</A>.
+                Writing v3 of this site, and trying to choose between Styled Components or SCSS.
               </li>
               <li>
                 Reading{' '}
-                <A href="https://www.amazon.co.uk/Nationalism-Penguin-Modern-George-Orwell/dp/0241339561/">
-                  Notes on Nationalism
+                <A href="https://www.amazon.co.uk/American-Psycho-Bret-Easton-Ellis/dp/0330536303">
+                  American Psycho
                 </A>{' '}
-                by George Orwell.
+                by Bret Easton Ellis.
               </li>
               <li>
                 Trying to catch up on{' '}
                 <A href="http://revisionisthistory.com/">Revitionist History</A>.
               </li>
+              <li>Giving a large amount of time to Red Dead Redemption II.</li>
             </ul>
           </StyledPost>
           <Social />
