@@ -3,7 +3,7 @@ const prompts = require('prompts');
 const chalk = require('chalk');
 
 const POST_ROOT = 'src/posts';
-const FIRST_DAILY_POST = '2020-03-15';
+const FIRST_DAILY_POST = new Date('2020-03-15');
 
 const templates = {
   daily: (date, title) => `---
@@ -64,11 +64,10 @@ const createFile = async (path, fileName, content) => {
 
 const postGenerator = async () => {
   const today = new Date();
-  const date = today.getDate();
-  const month = today.getMonth();
-  const formattedMonth = String(month + 1).padStart(2, 0);
+  const date = String(today.getDate()).padStart(2, 0);
+  const month = String(today.getMonth() + 1).padStart(2, 0);
   const year = today.getFullYear();
-  const formattedDate = `${year}-${formattedMonth}-${date}`;
+  const formattedDate = `${year}-${month}-${date}`;
 
   const type = await postType();
 
@@ -87,10 +86,9 @@ const postGenerator = async () => {
   }
 
   if (type === 'daily') {
-    const firstDailyPost = new Date(FIRST_DAILY_POST);
-    const daysSince = (today - firstDailyPost) / (1000 * 3600 * 24);
+    const daysSince = (today - FIRST_DAILY_POST) / (1000 * 3600 * 24);
     const dailyPostCount = Math.round(daysSince - 1);
-    const yearMonthFolder = `${year}/${formattedMonth}`;
+    const yearMonthFolder = `${year}/${month}`;
     const fullPath = `${POST_ROOT}/daily/${yearMonthFolder}`;
 
     await createFolder(yearMonthFolder);
