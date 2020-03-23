@@ -6,9 +6,9 @@ slug: '/writing/automating-file-creation'
 intro: 'If you frequently write posts in markdown that need specific file names and front matter, you could save yourself literally seconds by automating file creation and content.'
 ---
 
-As well as these occasional technical posts, I have recently started to write a daily blog. This isn't yet published anywhere but will be when v3 of this site is ready to go.
+As well as these occasional technical post, I have recently started to write a daily blog. This isn't yet published anywhere but will be when v3 of this site is ready to go.
 
-For posts like the one you're reading now it's not a huge problem to just manually create a file, cut and paste the front matter from elsewhere, update what needs to change before writing the post and publishing. For the daily posts however, the file name must be the correct date, the front matter needs the current date and the post number for the title and slug. That's plenty of opportunity to make a mistake every day, and the more friction there is the less likely I am to keep posting every single day.
+For posts like the one you're reading now it's not a huge problem to just manually create a file, cut and paste the [front matter](https://www.gatsbyjs.org/docs/adding-markdown-pages/#frontmatter-for-metadata-in-markdown-files) from an older post, update what needs to change before writing the post and publishing. For the daily posts however, the file name must be the correct date, the front matter needs the current date and the post number for the title and slug. That's plenty of opportunity to make a mistake every day, and the more friction there is the less likely I am to keep posting every single day.
 
 ## VS Code Snippets
 
@@ -18,9 +18,9 @@ Create a new file in the `.vscode` folder at the root of your project, named `po
 
 ```javascript
 {
-  "Post Frontmatter": {
+  "Post Front matter": {
     "prefix": "pfm",
-    "description": "Frontmatter for posts",
+    "description": "Front matter for posts",
     "body": [
       "---",
       "title: '$1'",
@@ -31,9 +31,9 @@ Create a new file in the `.vscode` folder at the root of your project, named `po
       "---"
     ]
   },
-  "Daily Frontmatter": {
+  "Daily Front matter": {
     "prefix": "dfm",
-    "description": "Frontmatter for daily",
+    "description": "Front matter for daily",
     "body": [
       "---",
       "title: '#$1'",
@@ -62,78 +62,98 @@ The `body` section has a fair amount going on:
 For my use case, this isn't _bad_. It removes the need to remember the front matter I should add to each post and it's pretty easy to update the content. But:
 
 - I still need to create the file first.
-- For daily posts, I need to remember the post number or look in an older post to figure out how to increment, and update the slug and title.
-- For regular posts I need to add a title, then repeat it for the slug, but hyphenated and lowercase.
+- I still need to update the front matter, some of which is either repeated or could be generated.
 
 ## Create a CLI
 
-To remove these boundaries and as an excuse to write something in node, I'm going to write a CLI which will:
-
-- Prompt for the type of post being created.
-- Prompt for a title if needed.
-- Create a folder for the month/year if needed.
-- Create the file with the correct file name.
-- Add the frontmatter to file with all the correct data.
+To remove these boundaries and as an excuse to write something in node, I'm going to write a CLI.
 
 Like most front end developers my exposure to Node.js is limited. I have configured tools that are built on Node like Gulp and Webpack, and I have used NPM to install thousands of dependencies, but I haven't really written a utility from scratch.
 
-It's very likely my solution is not going to be the most elegant JavaScript you've ever seen, and there will certainly be better approaches and best practices. I really don't think this matters; the tool I am writing is for my own personal use, it will never go in front of a team, it will never be used in a production environment and possible edge cases are tiny. Let's not let perfect get in the way of good enough.
+It's very likely my solution is not going to be the most elegant, and there will certainly be better approaches and best practices. I really don't think this matters; the tool I am writing is for my own personal use, it will never go in front of a team, it will never be used in a production environment and possible edge cases are tiny. Let's not let perfect get in the way of good enough.
 
-To follow along, let's assume you already have a website at least partially set up, node is installed and package.json already exists.
+Ordinarily I would write a step-by-step guide to building this but with my limited knowledge and the hack-like nature of the idea, I'm just going to explain each part.
 
-Lets do this step by step, and remember that I'm figuring this out as I go along so it may seem convoluted and weird at times.
+### Requirements
 
-### 1. Make and run a Node app
+Even for a quick and dirty project like this I'll write some requirements down to get me started, as well as any other considerations that might help:
 
-At the root of the project, create a new file named `post-generator.js` and add a quick console log: `console.log('👋')`.
+- Prompt for the type of post being created - either 'daily' or 'writing'.
+  - If this is a 'writing' post, also prompt for the title.
+  - If this is a daily post, the title will be the post count. We can calculate this from the number of days since the first daily post. A daily post may also need new folders.
+- Create the file with the correct file name - the date of creation. Days and months need a leading zero if they're less than 10.
+- Add the front matter to file with all the correct data.
+- Show a message in the console to indicate what was created and where.
 
-In package.json add a new entry in the scripts section:
+My folder structure looks like this:
 
-```json
-"scripts": {
-  "new-post": "node post-generator.js"
-}
+```
+src
+└── posts
+    ├── daily
+    │   └── [YYYY]
+    │       └── [MM]
+    │           └── YYYY-MM-DD.mdx
+    └── writing
+        └── YYYY-MM-DD.mdx
 ```
 
-From your terminal, `npm run new-post` should have your console log waving back at you.
+We can assume that the 'writing' folder will always exist which simplifies that post type, but for 'daily' I'd like to make new folders automatically each month and year.
 
-This is a real Node.js app, and it confirms that we can use emoji all over the place in our final app.
+All of the code below can go into a single file at the root of your project named `post-generator.js` and can be executed from the terminal using `node post-generator.js`.
 
-### 2. Prompt the user
-
-To generate a new post we need to first ask the user what type of post we're writing, then ask what the title should be (but not if this is a daily post).
-
-We're going to use a package from npm to handle the prompts named, appropriately, [prompts](https://www.npmjs.com/package/prompts). `npm i --save-dev prompts`.
-
-In our `post-generator.js`, delete the waving console log, then require the prompts package and add the first prompt to find out what kind of post we're creating:
+### Dependencies and Constants
 
 ```javascript
+const fs = require('fs');
 const prompts = require('prompts');
-
-const postType = async () => {
-  const response = await prompts({
-    type: 'select',
-    name: 'type',
-    message: 'What type of post should be created?',
-    choices: [
-      { title: 'Daily', value: 'daily' },
-      { title: 'Writing', value: 'writing' },
-    ],
-  });
-
-  console.log(response.type);
-};
-
-postType();
+const chalk = require('chalk');
 ```
 
-Running this from the terminal again, you'll now be prompted for the post type. You can navigate the list with the arrow keys, and on enter the choice will be console logged.
+The `fs` package is needed to work with the file system - creating folders and files - and is bundled with Node. There is no need to install it.
 
-We lets rearrange this a little so it's easier to build out, and add out second prompt:
+`chalk` lets us make console logs look a little prettier in the console, and `prompts` makes it really easy to make prompts and record the response.
 
-```javascript{14,17-38}
-const prompts = require('prompts');
+`npm i --save chalk prompts`.
 
+This solution is going to be pretty variable heavy but most of them will be dynamic and change with every use. There are two key pieces of information that should remain constant: the date of the first 'daily' post and the root for all post types.
+
+```javascript
+const POST_ROOT = 'src/posts';
+const FIRST_DAILY_POST = new Date('2020-03-15');
+```
+
+### Templates
+
+To add content as files are created, template literals can be used in a function to add given text to what is returned. Each template returns front matter which is used to store metadata about the specific post that can be used later:
+
+```javascript
+const templates = {
+  daily: (date, title) => `---
+title: '#${title}'
+date: '${date}'
+mobile: false
+featured: false
+slug: '/daily/${title}'
+---`,
+
+  writing: (date, title, slug) => `---
+title: '${title}'
+date: '${date}'
+category: 'development'
+slug: '/writing/${slug}'
+intro: ""
+---`,
+};
+```
+
+The questionable indentation is deliberate - any indentation would also appear in the file which we don't want. You _could_ make a 'dedent' function to fix it, but I'd only bother if your template was large and/or complex.
+
+### Prompts
+
+Making use of the `prompts` package installed earlier we can make both prompts needed really quickly:
+
+```javascript
 const postType = async () => {
   const response = await prompts({
     type: 'select',
@@ -157,43 +177,96 @@ const postTitle = async () => {
 
   return response.title;
 };
+```
 
+The `postType` function provides a selection prompt, where we can choose if we're creating a 'Daily' or 'Writing' post type, and the choice is returned.
+
+The `postTitle` is much more lightweight as it only prompts for a string. It's possible to add some [validation](https://www.npmjs.com/package/prompts#%E2%9D%AF-usage) to the entry using the `prompts` package and not need to handle this yourself.
+
+### Creating folders
+
+The 'daily' post type is organised into folders, by year and month. On the first of the month and the first of January new folders will be automatically created:
+
+```javascript
+const createFolder = async folder => {
+  const fullPath = `${POST_ROOT}/daily/${folder}`;
+  if (!fs.existsSync(fullPath)) {
+    fs.mkdirSync(fullPath, { recursive: true });
+    console.log(chalk.green(`✔ ${fullPath} folder created.`));
+  }
+};
+```
+
+This takes an argument of 'folder', which in this case will be the current year and month. If the passed folder doesn't already exist it'll create all the folders in the tree, e.g. `2020/04` as an argument would create just the `04` folder as the `2020` folder alreacy exists. When given `2021/01` both folders will be created. This works because of the addition of the `recursive` function.
+
+Once created, the path to the folder(s) created is logged to the console using the `chalk` package we installed to make the text green. Which is important.
+
+### Creating files
+
+```javascript
+const createFile = async (path, fileName, content) => {
+  fs.writeFile(`${path}/${fileName}`, content, err => {
+    if (err) throw err;
+    console.log(chalk.green(`✔ ${path}/${fileName} created.`));
+  });
+};
+```
+
+The function takes arguments of 'path' (the folder we want to create the file in), 'fileName' (what the file should be called including the extension) and 'content' (which should go in the file).
+
+This also has a callback function which will throw an error if there is one, or log the name of the file created to the console if successful.
+
+### Making it all work
+
+This is a large function, so I'll do my best to explain. This is where most of the messy, quick decisions have been made so forgive anything repetitive or inelegant:
+
+```javascript
 const postGenerator = async () => {
-  const type = await postType();
+  const today = new Date();
+  const date = String(today.getDate()).padStart(2, 0);
+  const month = String(today.getMonth() + 1).padStart(2, 0);
+  const year = today.getFullYear();
+  const formattedDate = `${year}-${month}-${date}`;
 
-  console.log(type);
+  const type = await postType();
 
   if (type === 'writing') {
     const title = await postTitle();
-    console.log(title);
+    const slug = title
+      .split(' ')
+      .join('-')
+      .toLowerCase();
+
+    createFile(
+      `${POST_ROOT}/writing`,
+      `${formattedDate}.mdx`,
+      templates.writing(formattedDate, title, slug)
+    );
+  }
+
+  if (type === 'daily') {
+    const daysSince = (today - FIRST_DAILY_POST) / (1000 * 3600 * 24);
+    const dailyPostCount = Math.round(daysSince - 1);
+    const yearMonthFolder = `${year}/${month}`;
+    const fullPath = `${POST_ROOT}/daily/${yearMonthFolder}`;
+
+    await createFolder(yearMonthFolder);
+    await createFile(
+      fullPath,
+      `${formattedDate}.mdx`,
+      templates.daily(formattedDate, dailyPostCount)
+    );
   }
 };
 
 postGenerator();
 ```
 
-The changes we've made are:
+First, we need set some variables for dates, and parts of dates. Each post's file name is the date it was created and the date is required in the front matter. Using the `Date` constructor we can get today's date, then:
 
-- The prompt functions return the value instead of logging them.
-- Add an additional prompt for the title.
-- Add a function to contain everything we do and call it immediately.
-- Prompt for the title if the post type is 'writing'. If it's 'daily' we'll generate it in a later step.
+- Use the `getDate` method for the day of the month. Stylistically, if the day is less than 10, I want a leading zero. This is pretty easy using a newer method in JS, `padStart`.
+- The `getMonth` method gives us the current month, BUT, in JavaScript this is zero indexed so we need to add one to ensure we're not a month behind. Again, we pad the number.
+- For the year, it's `getFullYear`. No extra messing around here.
+- Finally, we put these all together to make the formatted date, YYYY-MM-DD.
 
-### Create a 'writing' post
-
-Because we don't need to concern ourselves with creating folders, we'll start by creating a new 'writing' post if selected from the prompt.
-
-Before we can create any posts, we need the current day, month and year for the file name. We'll add them as variables in the `postGenerator` function:
-
-```javascript
-const postGenerator = async () => {
-  const type = await postType();
-
-  console.log(type);
-
-  if (type === 'writing') {
-    const title = await postTitle();
-    console.log(title);
-  }
-};
-```
+To get the post type we call on the `postType` function mentioned earlier. This is probably a good time to mention the heavy use of [asynchronous functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) in this small app, because the prompts need to wait for user responses and the functions to create folders and files may not have completed before following code that relies on those processes is run.
