@@ -113,6 +113,17 @@ export const StyledPost = styled.div`
     }
   }
 
+  kbd {
+    display: inline-block;
+    border-radius: 3px;
+    padding: 0 calc(var(--margin) / 4);
+    font-size: 0.9rem;
+    vertical-align: middle;
+    background: ${p => p.theme.color.syntax.background};
+    font-variant: small-caps;
+    letter-spacing: 1px;
+  }
+
   .gatsby-highlight-code-line {
     background-color: ${p => p.theme.color.syntax.backgroundHighlight};
     display: block;
