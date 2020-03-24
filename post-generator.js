@@ -55,7 +55,7 @@ const createFolder = async folder => {
   }
 };
 
-const createFile = async (path, fileName, content) => {
+const createFile = async (fileName, content, path = `${POST_ROOT}/writing`) => {
   fs.writeFile(`${path}/${fileName}`, content, err => {
     if (err) throw err;
     console.log(chalk.green(`✔ ${path}/${fileName} created.`));
@@ -73,16 +73,14 @@ const postGenerator = async () => {
 
   if (type === 'writing') {
     const title = await postTitle();
-    const slug = title
-      .split(' ')
-      .join('-')
-      .toLowerCase();
-
-    createFile(
-      `${POST_ROOT}/writing`,
-      `${formattedDate}.mdx`,
-      templates.writing(formattedDate, title, slug)
+    const slug = encodeURI(
+      title
+        .split(' ')
+        .join('-')
+        .toLowerCase()
     );
+
+    createFile(`${formattedDate}.mdx`, templates.writing(formattedDate, title, slug));
   }
 
   if (type === 'daily') {
@@ -93,9 +91,9 @@ const postGenerator = async () => {
 
     await createFolder(yearMonthFolder);
     await createFile(
-      fullPath,
       `${formattedDate}.mdx`,
-      templates.daily(formattedDate, dailyPostCount)
+      templates.daily(formattedDate, dailyPostCount),
+      fullPath
     );
   }
 };
