@@ -14,7 +14,8 @@
     "develop": "gatsby develop",
     "lint": "eslint 'src/**/*.js'; stylelint 'src/**/*.js'",
     "serve": "gatsby serve",
-    "start": "npm run develop"
+    "start": "npm run develop",
+    "new-post": "node post-generator.js"
   },
   "husky": {
     "hooks": {
@@ -24,6 +25,7 @@
   "dependencies": {
     "@mdx-js/mdx": "^1.5.7",
     "@mdx-js/react": "^1.5.7",
+    "chalk": "^3.0.0",
     "dotenv-safe": "^8.2.0",
     "gatsby": "^2.19.45",
     "gatsby-plugin-manifest": "^2.2.48",
@@ -34,6 +36,7 @@
     "gatsby-remark-prismjs": "^3.3.36",
     "gatsby-source-filesystem": "^2.1.56",
     "prismjs": "^1.19.0",
+    "prompts": "^2.3.2",
     "prop-types": "^15.7.2",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
