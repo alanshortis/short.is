@@ -6,16 +6,15 @@ slug: '/writing/automating-file-creation'
 intro: 'If you frequently write posts in markdown that need specific file names and front matter, you could save yourself literally seconds by automating file creation and content.'
 ---
 
-<!--
 import { Contents } from '../components';
 
 <Contents
   sections={[
     { title: 'VS Code Snippets', hash: '#snippets' },
     { title: 'Create a CLI', hash: '#cli' },
+    { title: 'Going even further', hash: '#further' },
   ]}
 />
--->
 
 As well as these occasional technical posts, I have recently started to write a daily blog. This isn't yet published anywhere but will be when v3 of this site is ready to go.
 
@@ -62,7 +61,7 @@ To add custom snippets, create a new file in the `.vscode` folder at the root of
 
 Each entry in the object is a new snippet whose properties are:
 
-- `prefix` is what you type in VS Code to use the snippet. You can either type this directly into the file and hit tab, or hit <kbd>cmd</kbd>+<kbd>shift</kbd>+<kbd>p</kbd> to open the command palette and type 'insert snippet' to see a list.
+- `prefix` is what you type in VS Code to use the snippet. You can either type this directly into the file and hit tab, or hit <kbd>cmd</kbd> + <kbd>shift</kbd> + <kbd>p</kbd> to open the command palette and type 'insert snippet' to see a list.
 - `body` is what will be printed into the file when using a snippet.
 - `description` is a brief description of what the snippet does. This is shown in the command palette when snippets are listed, and when using the prefix directly.
 
@@ -246,10 +245,12 @@ const postGenerator = async () => {
 
   if (type === 'writing') {
     const title = await postTitle();
-    const slug = title
-      .split(' ')
-      .join('-')
-      .toLowerCase();
+    const slug = encodeURI(
+      title
+        .split(' ')
+        .join('-')
+        .toLowerCase()
+    );
 
     createFile(`${formattedDate}.mdx`, templates.writing(formattedDate, title, slug));
   }
@@ -312,3 +313,27 @@ At this point, many words further down the page, we could argue that this is a l
 - Errors will be near-eliminated, so in many cases I'll be happy to merge in a new post without firing up the app to check it's working.
 - Making post creation this quick removes another boundary between me and writing a new post, and this is key when I intend to write every day.
 - It's an excuse to mess with some code, in an area I wouldn't have otherwise looked into. I already have an idea for another CLI.
+
+<a class="anchor" id="further" />
+
+## Update: 29/03/2020: Going even further
+
+I've been using the post generator for about a week and while it's definitely saved a lot of time and error it was still a little bit more manual than I'd like. Because I am dealing with a few branches for this site (`master` is what's live, `feature/v3` is the new version, plus various branches for new posts and features that go either into v3 for future release _or_ straight to `master`) I am creating branches for each daily post that are then pull requested.
+
+In order to make this an even quicker process, I have added this alias to my machine:
+
+`alias newpost="cd ~/Sites/short.is && git checkout -b $(date +daily/'%d-%m-%y') && npm run new-post"`
+
+1. Change directory to where my site lives.
+2. Create a new branch named `daily/DD-MM-YY`.
+3. Start the post generator.
+
+The only other change required is to add a new script in `package.json` to start the post generator:
+
+```javascript
+"scripts": {
+  "new-post": "node post-generator.js"
+},
+```
+
+To create a new post I now just need to type `newpost` in my terminal and a new branch, file and front matter is all created for me.
