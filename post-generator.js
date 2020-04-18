@@ -80,7 +80,7 @@ const postGenerator = async () => {
         .toLowerCase()
     );
 
-    createFile(`${formattedDate}.mdx`, templates.writing(formattedDate, title, slug));
+    createFile(`${formattedDate}-${slug}.mdx`, templates.writing(formattedDate, title, slug));
   }
 
   if (type === 'daily') {
