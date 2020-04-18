@@ -1,45 +1,66 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import Layout from '../components/Layout';
-
-const playlists = [
-  { name: '99 albums', spotifyID: '7autJTV8V8OZlt7EG03EwM' },
-  { name: '2020', spotifyID: '7hSbxdvfTP9N2869hrjXfE' },
-];
+import Playlist from '../components/playlists/Playlist';
 
 const Playlists = () => {
   const data = useStaticQuery(
     graphql`
-      fragment SpotifyFields on SpotifyPlaylist {
-        description
-        name
-        tracks {
-          total
-        }
-        external_urls {
-          spotify
-        }
-        images {
-          height
-          url
-          width
+      fragment SpotifyFields on SpotifyPlaylistConnection {
+        nodes {
+          spotifyId
+          name
+          description
+          tracks {
+            total
+          }
+          images {
+            width
+            height
+            url
+          }
         }
       }
       query {
-        thing: spotifyPlaylist(spotifyId: { eq: "7autJTV8V8OZlt7EG03EwM" }) {
+        playlists: allSpotifyPlaylist(
+          sort: { order: ASC, fields: [order] }
+          filter: {
+            name: {
+              in: [
+                "99 albums"
+                "Drummers"
+                "Bassists"
+                "Sampled"
+                "Covers"
+                "Dev"
+                "Fat Tuesday"
+                "DOOM"
+                "Start Your Engines"
+              ]
+            }
+          }
+        ) {
           ...SpotifyFields
         }
-        thing2: spotifyPlaylist(spotifyId: { eq: "7hSbxdvfTP9N2869hrjXfE" }) {
+        annual: allSpotifyPlaylist(
+          sort: { order: DESC, fields: [name] }
+          filter: {
+            name: { in: ["2020", "2019", "2018", "2017", "2016", "2015", "2014", "2013", "1998"] }
+          }
+        ) {
           ...SpotifyFields
         }
       }
     `
   );
 
+  const { playlists, annual } = data;
+
   return (
     <Layout title="Playlists" pathName="/playlists">
       <p>Playlists</p>
-      <pre>{JSON.stringify(data, null, 2)}</pre>
+      <Playlist playlists={annual} />
+      <Playlist playlists={playlists} />
     </Layout>
   );
 };
