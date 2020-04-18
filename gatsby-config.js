@@ -35,6 +35,17 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-spotify`,
+      options: {
+        clientId: process.env.SPOTIFY_CLIENT,
+        clientSecret: process.env.SPOTIFY_TOKEN,
+        refreshToken: process.env.SPOTIFY_REFRESH,
+        fetchPlaylists: true,
+        fetchRecent: false,
+        timeRanges: ['long_term'],
+      },
+    },
+    {
       resolve: 'gatsby-plugin-manifest',
       options: {
         name: 'Alan Shortis',
