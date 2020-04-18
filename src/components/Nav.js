@@ -5,7 +5,9 @@ import { Link } from 'gatsby';
 const Nav = ({ items }) => (
   <>
     {items.map(item => (
-      <Link to={item.path}>{item.title}</Link>
+      <Link key={item.path} to={item.path}>
+        {item.title}
+      </Link>
     ))}
   </>
 );
