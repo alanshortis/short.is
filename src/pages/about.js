@@ -27,7 +27,7 @@ const Now = () => {
       <Meta title="About" description="Who is Alan Shortis anyway?" />
       <Layout>
         <PostContainer>
-          <Time date="2020-03-23" pre="Updated" />
+          <Time date="2020-04-24" pre="Updated" />
           <PostTitle>About</PostTitle>
           <PostIntro>
             I&rsquo;m Alan Shortis—a front end developer based in Nottingham. I like CSS more than
@@ -57,31 +57,22 @@ const Now = () => {
               education, agencies, and retail both as an individual and as part of an agile team.
             </p>
             <h2>Now</h2>
-            <p>
-              This secion feels a little weird in the current circumstances. So much of what
-              everyone is doing has changed whether we like it or not. However, we all need to keep
-              moving ahead.
-            </p>
             <ul>
+              <li>Working from home, and living alone. Trying to keep the lonliness at bay.</li>
               <li>
                 Writing every day. This will eventually be published in a new &rsquo;daily&rsquo;
                 section when v3 of this site is ready to go.
               </li>
-              <li>
-                Writing v3 of this site, and trying to choose between Styled Components or SCSS.
-              </li>
+              <li>Learning German. Or at least, attempting to.</li>
               <li>
                 Reading{' '}
-                <A href="https://www.amazon.co.uk/American-Psycho-Bret-Easton-Ellis/dp/0330536303">
-                  American Psycho
+                <A href="https://www.waterstones.com/book/the-shock-doctrine/naomi-klein//9780141024530">
+                  The Shock Doctrine
                 </A>{' '}
-                by Bret Easton Ellis.
-              </li>
-              <li>
-                Trying to catch up on{' '}
-                <A href="http://revisionisthistory.com/">Revitionist History</A>.
+                by Naomi Klein.
               </li>
               <li>Giving a large amount of time to Red Dead Redemption II.</li>
+              <li>Aiming for 150 miles a week on the bike.</li>
             </ul>
           </StyledPost>
           <Social />
