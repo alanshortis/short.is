@@ -11,7 +11,7 @@ const GlobalStyles = createGlobalStyle`
     }
   }
 
-  /* stylelint-disable-next-line selector-max-universal */
+  /* stylelint-disable selector-max-universal */
   *, *:before, *:after {
     border: 0;
     box-sizing: inherit;
