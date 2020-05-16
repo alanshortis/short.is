@@ -27,7 +27,7 @@ const Now = () => {
       <Meta title="About" description="Who is Alan Shortis anyway?" />
       <Layout>
         <PostContainer>
-          <Time date="2020-04-24" pre="Updated" />
+          <Time date="2020-06-16" pre="Updated" />
           <PostTitle>About</PostTitle>
           <PostIntro>
             I&rsquo;m Alan Shortis—a front end developer based in Nottingham. I like CSS more than
@@ -38,8 +38,8 @@ const Now = () => {
             <h2>Experience and Skills</h2>
             <p>
               As a front end developer, I specialise in developing user interfaces in HTML and CSS.
-              But, it being {thisYear}, I also work extensively in JavaScript, using React and
-              friends on a daily basis.
+              But, it being {thisYear}, I also work extensively in JavaScript, using React on a
+              daily basis.
             </p>
             <p>
               I have been a developer profressionally in some capacity for more than 10 years,
@@ -58,10 +58,9 @@ const Now = () => {
             </p>
             <h2>Now</h2>
             <ul>
-              <li>Working from home, and living alone. Trying to keep the lonliness at bay.</li>
+              <li>Working from home, and living alone. Feeling optimistic.</li>
               <li>
-                Writing every day. This will eventually be published in a new &rsquo;daily&rsquo;
-                section when v3 of this site is ready to go.
+                Writing every day for a new &lsquo;daily&rsquo; section I&rsquo;ll be adding soon.
               </li>
               <li>Learning German. Or at least, attempting to.</li>
               <li>
@@ -69,10 +68,10 @@ const Now = () => {
                 <A href="https://www.waterstones.com/book/the-shock-doctrine/naomi-klein//9780141024530">
                   The Shock Doctrine
                 </A>{' '}
-                by Naomi Klein.
+                by Naomi Klein. However, since the removal of commute and the many things I seem to
+                trying to do, my reading has dropped off significantly.
               </li>
-              <li>Giving a large amount of time to Red Dead Redemption II.</li>
-              <li>Aiming for 150 miles a week on the bike.</li>
+              <li>Aiming for 100 miles a week on the bike; just enough to keep me sane.</li>
             </ul>
           </StyledPost>
           <Social />
