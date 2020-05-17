@@ -1,4 +1,6 @@
 export { default as Contents } from './Contents';
+export { default as Example } from './Example';
+export { default as ExternalIcon } from './icons/ExternalIcon';
 export { default as Grid } from './Grid';
 export { default as Header } from './Header';
 export { default as Icon } from './Icon';
