@@ -58,20 +58,18 @@ const Now = () => {
             </p>
             <h2>Now</h2>
             <ul>
-              <li>Working from home, and living alone. Feeling optimistic.</li>
-              <li>
-                Writing every day for a new &lsquo;daily&rsquo; section I&rsquo;ll be adding soon.
-              </li>
+              <li>Working from home, and living alone. Feeling optimistic though, somehow.</li>
+              <li>Writing every day.</li>
               <li>Learning German. Or at least, attempting to.</li>
               <li>
                 Reading{' '}
                 <A href="https://www.waterstones.com/book/the-shock-doctrine/naomi-klein//9780141024530">
                   The Shock Doctrine
                 </A>{' '}
-                by Naomi Klein. However, since the removal of commute and the many things I seem to
-                trying to do, my reading has dropped off significantly.
+                by Naomi Klein. However, since the removal of my commute and the many things I seem
+                to be trying to do alongside a 9-5 job, my reading has dropped off significantly.
               </li>
-              <li>Aiming for 100 miles a week on the bike; just enough to keep me sane.</li>
+              <li>Training for a summer of cycling. In 2021.</li>
             </ul>
           </StyledPost>
           <Social />
