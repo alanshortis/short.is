@@ -55,10 +55,6 @@ export const StyledPost = styled.div`
     }
   }
 
-  iframe {
-    margin-bottom: var(--margin);
-  }
-
   h2,
   h3 {
     padding-top: var(--margin);
