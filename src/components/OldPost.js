@@ -11,6 +11,7 @@ const Message = styled.div`
   padding: calc(var(--margin) / 2);
   svg {
     margin-right: calc(var(--margin) / 2);
+    flex-shrink: 0;
   }
 `;
 
@@ -18,7 +19,7 @@ const OldPost = () => (
   <Message>
     <AlertIcon />
     This post is more than two years old. Dependencies, approaches, and best practices may be
-    outdated.
+    outdated and links may be broken.
   </Message>
 );
 
