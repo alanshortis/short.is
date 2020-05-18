@@ -6,6 +6,7 @@ const theme = {
     complement: complement('hsl(0, 63%, 64%)'),
     background: 'hsl(0, 0%, 100%)',
     backgroundDark: 'hsl(0, 0%, 10%)',
+    backgroundWarning: 'hsl(0, 63%, 90%)',
     type: 'hsl(0, 0%, 20%)',
     typeLight: 'hsl(0, 0%, 100%)',
     scrollTrack: 'hsl(0, 0%, 80%)',

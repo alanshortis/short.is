@@ -3,7 +3,8 @@ import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer';
 import { StyledPost, PostContainer, PostIntro, PostTitle, CodeFont } from './PostPage.style';
-import { Layout, Time, Meta, NextPost, Social } from '..';
+import { Layout, Time, Meta, NextPost, OldPost, Social } from '..';
+import dateDiff from '../../functions/date-diff';
 
 export const query = graphql`
   query PostQuery($slug: String!) {
@@ -21,6 +22,7 @@ export const query = graphql`
 const Post = ({ data, pageContext }) => {
   const { mdx } = data;
   const { title, date, intro } = mdx.frontmatter;
+  const isOld = dateDiff(date) > 731;
 
   return (
     <>
@@ -30,6 +32,7 @@ const Post = ({ data, pageContext }) => {
           <CodeFont />
           <Time date={date} />
           <PostTitle>{title}</PostTitle>
+          {isOld && <OldPost />}
           <PostIntro>{intro}</PostIntro>
           <StyledPost>
             <MDXRenderer>{mdx.body}</MDXRenderer>
