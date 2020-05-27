@@ -1,9 +1,11 @@
 const fs = require('fs');
 const prompts = require('prompts');
 const chalk = require('chalk');
+const simpleGit = require('simple-git/promise');
 
 const POST_ROOT = 'src/posts';
 const FIRST_DAILY_POST = new Date('2020-03-15');
+const BASE_BRANCH = 'feature/v3';
 
 const templates = {
   daily: (date, title) => `---
@@ -80,6 +82,8 @@ const postGenerator = async () => {
         .toLowerCase()
     );
 
+    await simpleGit.checkoutBranch(`writing/${slug}`, BASE_BRANCH);
+
     createFile(`${formattedDate}-${slug}.mdx`, templates.writing(formattedDate, title, slug));
   }
 
@@ -88,6 +92,8 @@ const postGenerator = async () => {
     const dailyPostCount = Math.round(daysSince - 1);
     const yearMonthFolder = `${year}/${month}`;
     const fullPath = `${POST_ROOT}/daily/${yearMonthFolder}`;
+
+    await simpleGit.checkoutBranch(`daily/${formattedDate}`, BASE_BRANCH);
 
     await createFolder(yearMonthFolder);
     await createFile(
