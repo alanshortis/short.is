@@ -1,5 +1,5 @@
 ---
-title: 'Automating file creation'
+title: 'Automating file creation, Part 1'
 date: '2020-03-24'
 category: 'development'
 slug: '/writing/automating-file-creation'
@@ -12,7 +12,6 @@ import { Contents } from '../components';
   sections={[
     { title: 'VS Code Snippets', hash: '#snippets' },
     { title: 'Create a CLI', hash: '#cli' },
-    { title: 'Going even further', hash: '#further' },
   ]}
 />
 
@@ -314,26 +313,4 @@ At this point, many words further down the page, we could argue that this is a l
 - Making post creation this quick removes another boundary between me and writing a new post, and this is key when I intend to write every day.
 - It's an excuse to mess with some code, in an area I wouldn't have otherwise looked into. I already have an idea for another CLI.
 
-<a class="anchor" id="further" />
-
-## Update: 29/03/2020: Going even further
-
-I've been using the post generator for about a week and while it's definitely saved a lot of time and error it was still a little bit more manual than I'd like. Because I am dealing with a few branches for this site (`master` is what's live, `feature/v3` is the new version, plus various branches for new posts and features that go either into v3 for future release _or_ straight to `master`) I am creating branches for each daily post that are then pull requested.
-
-In order to make this an even quicker process, I have added this alias to my machine:
-
-`alias newpost="cd ~/Sites/short.is && git checkout -b $(date +daily/'%d-%m-%y') && npm run new-post"`
-
-1. Change directory to where my site lives.
-2. Create a new branch named `daily/DD-MM-YY`.
-3. Start the post generator.
-
-The only other change required is to add a new script in `package.json` to start the post generator:
-
-```javascript
-"scripts": {
-  "new-post": "node post-generator.js"
-},
-```
-
-To create a new post I now just need to type `newpost` in my terminal and a new branch, file and front matter is all created for me.
+For further refinement when working with branches, see [Part 2](/writing/automating-file-creation-part-2).

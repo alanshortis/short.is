@@ -1,0 +1,92 @@
+---
+title: 'Automating file creation, Part 2'
+date: '2020-05-27'
+category: 'development'
+slug: '/writing/automating-file-creation-part-2'
+intro: 'When automating file creation for a blog or website, you may need to create new content in a feature branch. Fortunately, that can be automated too.'
+---
+
+This is a continuation of [Part 1](/writing/automating-file-creation), where we automated the creation of new files when adding posts to websites.
+
+## Branching
+
+After using the post generator for a couple of months it's definitely saved a lot of time and error. The only remaining manual step is to create new branches for each new post.
+
+Creating PRs, merging the feature branch and deleting once merged cannot be easily automated, and with the difficult branching strategy I currently have to deal a manual process makes more sense right now.
+
+Creating a feature branch before the files and folders for a new post is simple enough, and it started with a new script in `package.json`:
+
+```json
+"scripts": {
+  "new-post": "node post-generator.js"
+},
+```
+
+Then, a new bash alias will help us skip a couple of steps - change to the folder that contains the post generator and website, and run the script to start post generation:
+
+```bash
+alias newpost="cd ~/Sites/short.is && npm run new-post"
+```
+
+From any location on the command line, running `newpost` will get us to the right folder, in a new branch, with the required files in one command.
+
+## Updating the script
+
+We'll use a small package from NPM to handle git branching - `npm i --save simple-git` - require it, and create a new constant for the base branch. That is, the branch the new branch for the post will be based on.
+
+This is defined as a constant as, in my case, I'll be using a feature branch until the new version of the website is live, then I'll switch to `master`.
+
+```js{4,8}
+const fs = require('fs');
+const prompts = require('prompts');
+const chalk = require('chalk');
+const simpleGit = require('simple-git/promise');
+
+const POST_ROOT = 'src/posts';
+const FIRST_DAILY_POST = new Date('2020-03-15');
+const BASE_BRANCH = 'feature/v3';
+```
+
+`simple-git` can use either callbacks or promises, and in this case we'll use promises.
+
+To create a branch before we create folders and files, we use the `checkoutBranch` method which needs a name for the new branch, and the branch from which the one is created. It also takes a callback, but we don't need that here.
+
+When creating a 'daily' post we can use the `formattedDate` created earlier for the branch name:
+
+```js{7}
+if (type === 'daily') {
+  const daysSince = (today - FIRST_DAILY_POST) / (1000 * 3600 * 24);
+  const dailyPostCount = Math.round(daysSince - 1);
+  const yearMonthFolder = `${year}/${month}`;
+  const fullPath = `${POST_ROOT}/daily/${yearMonthFolder}`;
+
+  await simpleGit().checkoutBranch(`daily/${formattedDate}`, BASE_BRANCH);
+
+  await createFolder(yearMonthFolder);
+  await createFile(
+    `${formattedDate}.mdx`,
+    templates.daily(formattedDate, dailyPostCount),
+    fullPath
+  );
+}
+```
+
+For a 'writing' post, the slug of the new post works well for a branch name:
+
+```js{10}
+if (type === 'writing') {
+  const title = await postTitle();
+  const slug = encodeURI(
+    title
+      .split(' ')
+      .join('-')
+      .toLowerCase()
+  );
+
+  await simpleGit().checkoutBranch(`writing/${slug}`, BASE_BRANCH);
+
+  createFile(`${formattedDate}-${slug}.mdx`, templates.writing(formattedDate, title, slug));
+}
+```
+
+This quick change makes for even quicker post creation. Making branches on a daily basis adds up, and more than once I have branched from the wrong base which wasted more time than this change.
