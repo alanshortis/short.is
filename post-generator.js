@@ -82,7 +82,7 @@ const postGenerator = async () => {
         .toLowerCase()
     );
 
-    await simpleGit.checkoutBranch(`writing/${slug}`, BASE_BRANCH);
+    await simpleGit().checkoutBranch(`writing/${slug}`, BASE_BRANCH);
 
     createFile(`${formattedDate}-${slug}.mdx`, templates.writing(formattedDate, title, slug));
   }
@@ -93,7 +93,7 @@ const postGenerator = async () => {
     const yearMonthFolder = `${year}/${month}`;
     const fullPath = `${POST_ROOT}/daily/${yearMonthFolder}`;
 
-    await simpleGit.checkoutBranch(`daily/${formattedDate}`, BASE_BRANCH);
+    await simpleGit().checkoutBranch(`daily/${formattedDate}`, BASE_BRANCH);
 
     await createFolder(yearMonthFolder);
     await createFile(
