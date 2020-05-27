@@ -43,6 +43,7 @@
     "react-dom": "^16.13.0",
     "react-helmet": "^5.2.1",
     "react-html-parser": "^2.0.2",
+    "simple-git": "^2.5.0",
     "styled-components": "^5.0.1"
   },
   "devDependencies": {
