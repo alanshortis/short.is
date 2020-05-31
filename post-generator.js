@@ -82,7 +82,9 @@ const postGenerator = async () => {
         .toLowerCase()
     );
 
-    await simpleGit().checkoutBranch(`writing/${slug}`, BASE_BRANCH);
+    await simpleGit().checkoutBranch(`writing/${slug}`, BASE_BRANCH, () => {
+      console.log(chalk.green(`✔ branch 'writing/${slug}' created.`));
+    });
 
     createFile(`${formattedDate}-${slug}.mdx`, templates.writing(formattedDate, title, slug));
   }
@@ -93,7 +95,9 @@ const postGenerator = async () => {
     const yearMonthFolder = `${year}/${month}`;
     const fullPath = `${POST_ROOT}/daily/${yearMonthFolder}`;
 
-    await simpleGit().checkoutBranch(`daily/${formattedDate}`, BASE_BRANCH);
+    await simpleGit().checkoutBranch(`daily/${formattedDate}`, BASE_BRANCH, () => {
+      console.log(chalk.green(`✔ branch 'daily/${formattedDate}' created.`));
+    });
 
     await createFolder(yearMonthFolder);
     await createFile(
