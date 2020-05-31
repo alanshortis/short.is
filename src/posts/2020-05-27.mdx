@@ -18,7 +18,6 @@ Updating the generator to create a new feature branch before the files and folde
 
 We'll use a small package from NPM to handle git branching: `npm i --save simple-git`.
 
-
 ```js{4,8}
 const fs = require('fs');
 const prompts = require('prompts');
@@ -47,6 +46,7 @@ if (type === 'daily') {
   const fullPath = `${POST_ROOT}/daily/${yearMonthFolder}`;
 
   await simpleGit().checkoutBranch(`daily/${formattedDate}`, BASE_BRANCH);
+  console.log(chalk.green(`✔ branch 'daily/${formattedDate}' created and checked out.`));
 
   await createFolder(yearMonthFolder);
   await createFile(
@@ -72,6 +72,7 @@ if (type === 'writing') {
   );
 
   await simpleGit().checkoutBranch(`writing/${slug}`, BASE_BRANCH);
+  console.log(chalk.green(`✔ branch 'writing/${slug}' created and checked out.`));
 
   createFile(`${formattedDate}-${slug}.mdx`, templates.writing(formattedDate, title, slug));
 }
