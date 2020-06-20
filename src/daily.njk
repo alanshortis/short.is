@@ -8,3 +8,12 @@ eleventyNavigation:
 ---
 
 <p>Daily</p>
+
+<div>
+  {%- for post in collections.daily | reverse -%}
+    <a href="{{post.data.permalink}}">
+      <time>{{post.data.date}}</time>
+      <p>{{post.data.title}}</p>
+    </a>
+  {%- endfor %}
+</div>
