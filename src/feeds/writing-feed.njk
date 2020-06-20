@@ -1,0 +1,29 @@
+---
+permalink: '/feeds/writing.xml'
+---
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>{{ site.title }}</title>
+  <subtitle>Writing on code and development from Alan Shortis.</subtitle>
+  <link href="{{ site.url }}{{ permalink }}" rel="self" />
+  <link href="{{ site.url }}/writing" />
+  <updated>{{ collections.writing | rssLastUpdatedDate }}</updated>
+  <id>{{ site.url }}/writing</id>
+  <author>
+    <name>{{ site.author }}</name>
+    <email>{{ site.email }}</email>
+  </author>
+  {% for post in collections.writing %}
+    {% set postUrl %}{{ site.url }}{{ post.url | url }}{% endset %}
+    <entry>
+      <title>{{ post.data.title }}</title>
+      <link href="{{ postUrl }}"/>
+      <updated>{{ post.date | rssDate }}</updated>
+      <id>{{ postUrl }}</id>
+      <content type="html">
+        {{ post.intro }}
+        {{ post.templateContent | safe }}
+      </content>
+    </entry>
+  {% endfor %}
+</feed>

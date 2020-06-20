@@ -9,6 +9,8 @@ eleventyNavigation:
 
 <p>Daily</p>
 
+<a href="/feeds/daily.xml">RSS</a>
+
 <div>
   {%- for post in collections.daily | reverse -%}
     <a href="{{post.data.permalink}}">
