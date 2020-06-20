@@ -20,7 +20,7 @@ A great feature of VS Code is the ability to define your own snippets to quickly
 
 To add custom snippets, create a new file in the `.vscode` folder at the root of your project named `posts.code-snippets`. My snippets for 'writing' and 'daily' posts look like this:
 
-```javascript
+```js
 {
   "Post Front matter": {
     "prefix": "pfm",
@@ -109,7 +109,7 @@ All of the code below can go into a single file at the root of your project name
 
 ### 1. Dependencies and Constants
 
-```javascript
+```js
 const fs = require('fs');
 const prompts = require('prompts');
 const chalk = require('chalk');
@@ -123,7 +123,7 @@ The `fs` package is needed to work with the file system - creating folders and f
 
 This solution is going to be pretty variable heavy but most of them will be dynamic and change with every use. There are two key pieces of information that should remain constant: the date of the first 'daily' post and the root for all post types.
 
-```javascript
+```js
 const POST_ROOT = 'src/posts';
 const FIRST_DAILY_POST = new Date('2020-03-15');
 ```
@@ -132,7 +132,7 @@ const FIRST_DAILY_POST = new Date('2020-03-15');
 
 To add content to the files we create, template literals can be used in a function to add given text to what is returned. Each template returns front matter which is used to store metadata about the specific post that can be used later:
 
-```javascript
+```js
 const templates = {
   daily: (date, title) => `---
 title: '#${title}'
@@ -158,7 +158,7 @@ The questionable indentation is deliberate - any indentation would also appear i
 
 Making use of the `prompts` package installed earlier we can make both prompts needed really quickly:
 
-```javascript
+```js
 const postType = async () => {
   const response = await prompts({
     type: 'select',
@@ -192,7 +192,7 @@ The `postTitle` is much more lightweight as it only prompts for a string. It's p
 
 The 'daily' post type is organised into folders, by year and month. On the first of the month new folders will be automatically created:
 
-```javascript
+```js
 const createFolder = async folder => {
   const fullPath = `${POST_ROOT}/daily/${folder}`;
   if (!fs.existsSync(fullPath)) {
@@ -208,7 +208,7 @@ Once created, the path to the folder(s) is logged to the console using the `chal
 
 ### 5. Creating files
 
-```javascript
+```js
 const createFile = async (fileName, content, path = `${POST_ROOT}/writing`) => {
   fs.writeFile(`${path}/${fileName}`, content, err => {
     if (err) throw err;
@@ -225,7 +225,7 @@ This also has a callback function which will throw an error if there is one, or 
 
 This is a large function, so I'll do my best to explain. This is where most of the messy, quick decisions have been made so forgive anything repetitive or inelegant:
 
-```javascript
+```js
 const postGenerator = async () => {
   const today = new Date();
   const date = String(today.getDate()).padStart(2, 0);

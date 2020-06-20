@@ -92,7 +92,7 @@ Install Webpack and the Webpack CLI as dev dependencies: `$ npm i --save-dev web
 
 Create a new webpack config named `webpack.config.js` and add the below configuration to get started:
 
-```javascript
+```js
 module.exports = {
   module: {
     rules: [
@@ -144,7 +144,7 @@ Create a new folder named `src` for our source files at the root of the project 
 
 Add to your webpack config to use the HTML loader:
 
-```javascript{1,13-18,21-26}
+```js
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 
 module.exports = {
@@ -210,7 +210,7 @@ We're also adding `devtool` and `devserver` properties which:
 - `devtool` ensures that sourcemaps are created and available when debugging in the browser.
 - `devserver` ensures that any 404 errors fallback to `index.html`, which is essential if using something like React Router for client side routing.
 
-```javascript{2,27-36,38-41}
+```js
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
@@ -297,7 +297,7 @@ Install styled components as a dependency: `$ npm i --save styled-components`.
 
 There is also a Babel plugin that provides better debugging: `$ npm i --save-dev babel-plugin-styled-components`. Add this plugin to `.babelrc`:
 
-```json{3}
+```json
 {
   "presets": ["@babel/preset-env", "@babel/preset-react"],
   "plugins": ["babel-plugin-styled-components"]
@@ -306,7 +306,7 @@ There is also a Babel plugin that provides better debugging: `$ npm i --save-dev
 
 We can now use Styled Components in our existing React app:
 
-```jsx{3,4,5,6,7,8,9}
+```jsx
 import React from 'react';
 import { render } from 'react-dom';
 import styled from 'styled-components';
@@ -354,7 +354,7 @@ We're adjusting the Airbnb rules here slightly. The rules state that all files t
 
 To use `.jsx` files, we'll need to add a property to our webpack config that will ensure JSX files are resolved:
 
-```javascript
+```js
 resolve: {
   extensions: ['.js', '.jsx'],
 },
@@ -421,7 +421,7 @@ We now have linting rules for both JavaScript and CSS, so we should add methods 
 
 Add scripts to `package.json`:
 
-```json{3-4}
+```json
 "scripts": {
   "start": "webpack-dev-server --mode development --port 8080 --hot",
   "lint:js": "eslint --ext .js --ext .jsx src",
@@ -433,7 +433,7 @@ Each of these scripts will look inside our source folder and sub folders, and ch
 
 When running the CSS linter, you'll notice it flags an issue. We have used the `red` colour keyword in our Styled Component which our rules forbid. To solve this, go back to `src/index.js` and set the colour in hex:
 
-```jsx{6}
+```jsx
 import React from 'react';
 import { render } from 'react-dom';
 import styled from 'styled-components';
@@ -455,7 +455,7 @@ Webpack can be configured to run the linters as we work, as part of our existing
 
 First, we need eslint and stylelint loaders: `$ npm i --save-dev eslint-loader stylelint-custom-processor-loader`, and add to our existing rule for js/jsx files:
 
-```javascript{10}
+```js
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
@@ -507,7 +507,7 @@ Webpack can handle a production ready build for us, creating an uglified JavaScr
 
 Add a new `build` script to `package.json`:
 
-```json{5}
+```json
 "scripts": {
   "start": "webpack-dev-server --mode development --port 8080 --hot",
   "lint:js": "eslint --ext .js --ext .jsx src",
@@ -524,7 +524,7 @@ We can add some optimisation to the bundle in our Webpack config. Here, we're go
 
 This will be our final Webpack config.
 
-```javascript{3,40-50}
+```js
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');

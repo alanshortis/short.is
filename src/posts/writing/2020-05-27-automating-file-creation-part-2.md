@@ -1,5 +1,6 @@
 ---
 title: 'Automating file creation, Part 2'
+layout: 'main'
 date: '2020-05-27'
 updated: '2020-03-29'
 tags: writing
@@ -19,7 +20,7 @@ Updating the generator to create a new feature branch before the files and folde
 
 We'll use a small package from NPM to handle git branching: `npm i --save simple-git`.
 
-```js{4,8}
+```js
 const fs = require('fs');
 const prompts = require('prompts');
 const chalk = require('chalk');
@@ -39,7 +40,7 @@ To create a branch before we create folders and files, we use the `checkoutBranc
 
 When creating a 'daily' post we can use the `formattedDate` created earlier for the branch name:
 
-```js{7}
+```js
 if (type === 'daily') {
   const daysSince = (today - FIRST_DAILY_POST) / (1000 * 3600 * 24);
   const dailyPostCount = Math.round(daysSince - 1);
@@ -62,7 +63,7 @@ When selecting 'daily' in the post generator, a new branch of `daily/2020-05-27`
 
 For a 'writing' post, the slug of the new post works well for a branch name:
 
-```js{10}
+```js
 if (type === 'writing') {
   const title = await postTitle();
   const slug = encodeURI(title.split(' ').join('-').toLowerCase());
@@ -84,7 +85,7 @@ To make this _even smoother_ we can add a bash alias to reduce the creation of a
 
 Let's start by adding the node script to `package.json` so the command is more succinct, but also so it's documented:
 
-```json{2}
+```json
 "scripts": {
   "new-post": "node post-generator.js"
 }

@@ -179,7 +179,7 @@ This file acts as a template for the actual file and is used by the CLI to promp
 
 Run this command: `$ wp dotenv init --template=.env.example --interactive --with-salts` and add the required values as prompted. Once you're done, a new `.env` file will be created and look something like this:
 
-```bash{8-15}
+```bash
 # Standard WordPress credentials.
 DB_NAME=wp_test
 DB_USER=root

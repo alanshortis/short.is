@@ -36,7 +36,7 @@ This gulp task will do a few things for us:
 
 You can install all the packages required for this particular task with NPM using `npm i --save-dev gulp gulp-svgo gulp-rename gulp-svgstore`.
 
-```javascript
+```js
 const gulp = require('gulp');
 const svgo = require('gulp-svgo');
 const svgstore = require('gulp-svgstore');
