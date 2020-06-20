@@ -7,3 +7,13 @@ eleventyNavigation:
 ---
 
 <p>Writing</p>
+
+<div>
+  {%- for post in collections.writing | reverse -%}
+    <a href="{{post.data.permalink}}">
+      <time>{{post.data.date}}</time>
+      <p>{{post.data.title}}</p>
+      <p>{{post.data.intro}}</p>
+    </a>
+  {%- endfor %}
+</div>
