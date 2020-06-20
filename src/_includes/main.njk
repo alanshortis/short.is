@@ -8,6 +8,14 @@
   <meta charset="UTF-8">
   <title>{{pageTitle}}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+  <meta name="description" content="{{intro | default(site.description)}}" />
+  <meta property="og:title" content="{{pageTitle}}" />
+  <meta property="og:description" content="{{intro | default(site.description)}}" />
+  <meta property="og:url" content="{{site.url}}{{page.url}}" />
+  <meta property="og:image" content="/og.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:creator" content="{{site.twitter}}" />
+  <link rel="icon" href="/icon.png"/>
 </head>
 <body>
   <header>
