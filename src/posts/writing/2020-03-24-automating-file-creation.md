@@ -1,6 +1,6 @@
 ---
 title: 'Automating file creation'
-layout: 'main'
+layout: 'writing'
 date: '2020-03-24'
 updated: '2020-03-29'
 tags: writing

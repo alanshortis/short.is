@@ -1,6 +1,6 @@
 ---
 title: 'Handling z-index with SASS'
-layout: 'main'
+layout: 'writing'
 date: '2016-06-05'
 tags: writing
 permalink: '/writing/handling-z-index-with-sass/'

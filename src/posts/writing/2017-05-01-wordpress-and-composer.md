@@ -1,6 +1,6 @@
 ---
 title: 'WordPress and Composer'
-layout: 'main'
+layout: 'writing'
 date: '2017-05-01'
 tags: writing
 permalink: '/writing/wordpress-and-composer/'

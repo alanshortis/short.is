@@ -20,9 +20,10 @@
   </head>
   <body>
     <header>
-    <a href="/">LOGO</a>
-    {% include "nav.njk" %}
+      <a href="/">LOGO</a>
+      {% include "nav.njk" %}
     </header>
-    {{content | safe}}
+    {% block content %}
+    {% endblock content %}
   </body>
 </html>

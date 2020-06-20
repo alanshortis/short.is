@@ -1,6 +1,6 @@
 ---
 title: 'Future responsiveness'
-layout: 'main'
+layout: 'writing'
 date: '2020-02-15'
 tags: writing
 permalink: '/writing/future-responsiveness/'

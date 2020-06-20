@@ -1,6 +1,6 @@
 ---
 title: 'Automating file creation, Part 2'
-layout: 'main'
+layout: 'writing'
 date: '2020-05-27'
 updated: '2020-03-29'
 tags: writing

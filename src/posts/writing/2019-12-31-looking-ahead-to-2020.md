@@ -1,6 +1,6 @@
 ---
 title: 'Looking ahead to 2020'
-layout: 'main'
+layout: 'writing'
 date: '2019-12-31'
 updated: '2020-04-13'
 tags: writing

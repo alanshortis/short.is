@@ -1,6 +1,6 @@
 ---
 title: 'React Render Props'
-layout: 'main'
+layout: 'writing'
 date: '2019-02-25'
 tags: writing
 permalink: '/writing/react-render-props/'

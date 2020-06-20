@@ -1,6 +1,6 @@
 ---
 title: 'Make your own website'
-layout: 'main'
+layout: 'writing'
 date: '2019-11-22'
 tags: writing
 permalink: '/writing/make-your-own-website/'
