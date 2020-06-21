@@ -6,5 +6,10 @@
   <p>{{ intro }}</p>
 
   {{ content | safe }}
-{% endblock %}
 
+  {% set previousPost = collections.writing | getPreviousCollectionItem(page) %}
+  {% set nextPost = collections.writing | getNextCollectionItem(page) %}
+
+  {% if previousPost %}Older<a href="{{ previousPost.url }}">{{ previousPost.data.title }}</a>{% endif %}
+  {% if nextPost %}Newer<a href="{{ nextPost.url }}">{{ nextPost.data.title }}</a>{% endif %}
+{% endblock %}
