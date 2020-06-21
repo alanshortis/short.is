@@ -7,8 +7,9 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(eleventyRssPlugin);
   eleventyConfig.addPlugin(eleventySyntaxPlugin);
   eleventyConfig.addLayoutAlias('main', 'layouts/main.njk');
-  eleventyConfig.addLayoutAlias('writing', 'layouts/writing.njk');
   eleventyConfig.addLayoutAlias('page', 'layouts/page.njk');
+  eleventyConfig.addLayoutAlias('writing', 'layouts/writing.njk');
+  eleventyConfig.addLayoutAlias('daily', 'layouts/daily.njk');
   eleventyConfig.setTemplateFormats(['njk', 'md', 'css', 'png']);
 
   return {

@@ -1,0 +1,9 @@
+{% extends 'layouts/main.njk' %}
+
+{% block content %}
+  <p>{{ page.date }}</p>
+  <h1>{{ title }}</h1>
+
+  {{ content | safe }}
+{% endblock %}
+
