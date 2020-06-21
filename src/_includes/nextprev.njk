@@ -1,0 +1,7 @@
+<nav>
+  {% set previousPost = collection | getPreviousCollectionItem(page) %}
+  {% set nextPost = collection | getNextCollectionItem(page) %}
+
+  {% if previousPost %}Older<a href="{{ previousPost.url }}">{{ previousPost.data.title }}</a>{% endif %}
+  {% if nextPost %}Newer<a href="{{ nextPost.url }}">{{ nextPost.data.title }}</a>{% endif %}
+</nav>

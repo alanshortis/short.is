@@ -6,10 +6,6 @@
 
   {{ content | safe }}
 
-  {% set previousPost = collections.daily | getPreviousCollectionItem(page) %}
-  {% set nextPost = collections.daily | getNextCollectionItem(page) %}
-
-  {% if previousPost %}Older<a href="{{ previousPost.url }}">{{ previousPost.data.title }}</a>{% endif %}
-  {% if nextPost %}Newer<a href="{{ nextPost.url }}">{{ nextPost.data.title }}</a>{% endif %}
+  {% set collection = collections.daily %}
+  {% include 'nextprev.njk' %}
 {% endblock %}
-
