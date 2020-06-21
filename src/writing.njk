@@ -13,7 +13,10 @@ eleventyNavigation:
 <div>
   {%- for post in collections.writing | reverse -%}
     <a href="{{post.data.permalink}}">
-      <time>{{post.data.date}}</time>
+      <time datetime="{{ post.data.date }}">{{ post.data.date | formatDate }}</time>
+      {% if post.data.date | dateDiff < 28 %}
+        <mark>New!</mark>
+      {% endif %}
       <p>{{post.data.title}}</p>
       <p>{{post.data.intro}}</p>
     </a>
