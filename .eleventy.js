@@ -1,3 +1,4 @@
+require('dotenv-safe').config();
 const eleventyNavigationPlugin = require('@11ty/eleventy-navigation');
 const eleventyRssPlugin = require('@11ty/eleventy-plugin-rss');
 const eleventySyntaxPlugin = require('@11ty/eleventy-plugin-syntaxhighlight');
