@@ -27,7 +27,7 @@ const Now = () => {
       <Meta title="About" description="Who is Alan Shortis anyway?" />
       <Layout>
         <PostContainer>
-          <Time date="2020-05-16" pre="Updated" />
+          <Time date="2020-06-27" pre="Updated" />
           <PostTitle>About</PostTitle>
           <PostIntro>
             I&rsquo;m Alan Shortis—a front end developer based in Nottingham. I like CSS more than
@@ -58,18 +58,26 @@ const Now = () => {
             </p>
             <h2>Now</h2>
             <ul>
-              <li>Working from home, and living alone. Feeling optimistic though, somehow.</li>
               <li>Writing every day.</li>
-              <li>Learning German. Or at least, attempting to.</li>
+              <li>Learning German, allmählich.</li>
               <li>
                 Reading{' '}
-                <A href="https://www.waterstones.com/book/the-shock-doctrine/naomi-klein//9780141024530">
-                  The Shock Doctrine
+                <A href="https://www.amazon.co.uk/Mountains-Cycling-Climbs-Michael-Blann/dp/0500023085/">
+                  Mountains: Epic Cycling Climbs
                 </A>{' '}
-                by Naomi Klein. However, since the removal of my commute and the many things I seem
-                to be trying to do alongside a 9-5 job, my reading has dropped off significantly.
+                by Michael Blann, and{' '}
+                <A href="https://www.amazon.co.uk/Mindf-Inside-Cambridge-Analyticas-Break/dp/1788164997/">
+                  Mindf*ck: Inside Cambridge Analytica’s Plot to Break the World
+                </A>{' '}
+                by Christopher Wylie.
               </li>
-              <li>Training for a summer of cycling. In 2021.</li>
+              <li>
+                Training with the possibility of{' '}
+                <A href="https://en.wikipedia.org/wiki/La_Marmotte">La Marmotte</A> actually taking
+                place in September.
+              </li>
+              <li>Watching The Sopranos yet again.</li>
+              <li>Researching a career change.</li>
             </ul>
           </StyledPost>
           <Social />
