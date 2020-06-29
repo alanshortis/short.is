@@ -7,3 +7,15 @@ eleventyNavigation:
 ---
 
 <p>Playlists</p>
+
+<ul>
+  {%- for playlist in spotify.annual %}
+    {%- include 'playlist.njk' %}
+  {%- endfor %}
+</ul>
+
+<ul>
+  {%- for playlist in spotify.theme %}
+    {%- include 'playlist.njk' %}
+  {%- endfor %}
+</ul>

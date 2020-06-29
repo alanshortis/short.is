@@ -1,0 +1,7 @@
+<li>
+  <a href="{{ playlist.external_urls.spotify }}">
+    {{ playlist.tracks.total }}
+    {{ playlist.name }}
+    {{ playlist.description | safe }}
+  </a>
+</li>
