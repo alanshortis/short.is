@@ -1,5 +1,6 @@
 <li>
   <a href="{{ playlist.external_urls.spotify }}">
+    <img src="{{ playlist.images[1].url }}" srcset="{{ playlist.images[0].url }} 2x" alt="{{ playlist.name }} cover" />
     {{ playlist.tracks.total }}
     {{ playlist.name }}
     {{ playlist.description | safe }}
