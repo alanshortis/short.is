@@ -2,7 +2,7 @@
 layout: 'page'
 title: 'Daily'
 changeFreq: 'daily'
-eleventyNavigation:
+eleventyNavigation: 
   key: Daily
   order: 2
 ---
@@ -14,7 +14,8 @@ eleventyNavigation:
 <div>
   {%- for post in collections.daily | reverse -%}
     <a href="{{post.data.permalink}}">
-      <time datetime="{{ post.data.date }}">{{ post.data.date | formatDate }}</time>
+      {%- set postDate = post.data.date %}
+      {% include 'postdate.njk' %}
       <p>{{post.data.title}}</p>
     </a>
   {%- endfor %}

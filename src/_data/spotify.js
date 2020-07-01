@@ -41,8 +41,6 @@ module.exports = async function () {
         return !/[0-9]{4}/.test(playlist.name);
       });
 
-      console.log(annual[0]);
-
       return {
         annual,
         theme,
