@@ -1,10 +1,10 @@
-<nav>
-    {%- set pageItems = collections.all | eleventyNavigation %}
-    <ul>
-      {%- for item in pageItems %}
-        <li>
-          <a href="{{ item.url | url }}" {% if item.url in page.url %} class="active"{% endif %}>{{ item.title }}</a>
-        </li>
-      {%- endfor %}
-    </ul>
-  </nav>
+<nav aria-labelledby="nav-label">
+  <p class="sr-only" id="nav-label">Main menu</p>
+  <ul>
+    {%- for item in collections.all | eleventyNavigation %}
+      <li>
+        <a href="{{ item.url | url }}" {% if item.url in page.url %} class="active" {% endif %}>{{ item.title }}</a>
+      </li>
+    {%- endfor %}
+  </ul>
+</nav>
