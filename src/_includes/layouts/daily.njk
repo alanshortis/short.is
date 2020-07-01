@@ -1,7 +1,10 @@
 {% extends 'layouts/main.njk' %}
 
 {% block content %}
-  <time datetime={{ date }}>{{ date | formatDate }}</time>
+  <p>
+    <span class="sr-only">Posted on:</span>
+    <time datetime="{{ date }}">{{ date | formatDate }}</time>
+  </p>
   <h1>{{ title }}</h1>
 
   {{ content | safe }}
