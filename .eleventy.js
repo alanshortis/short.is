@@ -14,7 +14,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addLayoutAlias('writing', 'layouts/writing.njk');
   eleventyConfig.addLayoutAlias('daily', 'layouts/daily.njk');
 
-  eleventyConfig.setTemplateFormats(['njk', 'md', 'css', 'png']);
+  eleventyConfig.setTemplateFormats(['njk', 'md', 'css', 'png', 'jpg', 'webp']);
 
   eleventyConfig.addFilter('formatDate', date.format);
   eleventyConfig.addFilter('dateDiff', date.diff);
