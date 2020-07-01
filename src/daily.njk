@@ -14,10 +14,8 @@ eleventyNavigation:
 <div>
   {%- for post in collections.daily | reverse -%}
     <a href="{{post.data.permalink}}">
-      <p>
-        <span class="sr-only">Posted on: </span>
-        <time datetime="{{ post.data.date }}">{{ post.data.date | formatDate }}</time>
-      </p>
+      {%- set postDate = post.data.date %}
+      {% include 'postdate.njk' %}
       <p>{{post.data.title}}</p>
     </a>
   {%- endfor %}
