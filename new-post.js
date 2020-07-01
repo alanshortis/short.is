@@ -17,7 +17,7 @@ featured: false
 permalink: '/daily/${title}/'
 tags: daily
 changeFreq: 'never'
-layout: 'main'
+layout: 'daily'
 ---`,
 
   writing: (date, title, slug) => `---
@@ -26,6 +26,7 @@ date: '${date}'
 tags: writing
 slug: '/writing/${slug}/'
 intro: ""
+layout: 'writing'
 ---`,
 };
 
