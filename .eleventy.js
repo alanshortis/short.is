@@ -2,7 +2,7 @@ require('dotenv-safe').config();
 const eleventyNavigationPlugin = require('@11ty/eleventy-navigation');
 const eleventyRssPlugin = require('@11ty/eleventy-plugin-rss');
 const eleventySyntaxPlugin = require('@11ty/eleventy-plugin-syntaxhighlight');
-const date = require('./helpers');
+const helpers = require('./helpers');
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
@@ -16,8 +16,9 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.setTemplateFormats(['njk', 'md', 'css', 'png', 'jpg', 'webp']);
 
-  eleventyConfig.addFilter('formatDate', date.format);
-  eleventyConfig.addFilter('dateDiff', date.diff);
+  eleventyConfig.addFilter('formatDate', helpers.dateFormat);
+  eleventyConfig.addFilter('dateDiff', helpers.dateDiff);
+  eleventyConfig.addFilter('playlistImage', helpers.playlistImage);
 
   return {
     dir: {

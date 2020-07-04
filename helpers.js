@@ -1,4 +1,4 @@
-exports.format = date => {
+exports.dateFormat = date => {
   return new Date(date).toLocaleDateString('en-GB', {
     day: '2-digit',
     month: 'long',
@@ -6,7 +6,7 @@ exports.format = date => {
   });
 };
 
-exports.diff = date => {
+exports.dateDiff = date => {
   const today = new Date();
   const postDate = new Date(date);
   const ageDays = (today - postDate) / (1000 * 3600 * 24);
@@ -14,4 +14,9 @@ exports.diff = date => {
   return Math.round(ageDays);
 };
 
-module.exports;
+exports.playlistImage = playlist => {
+  const { name, images } = playlist;
+  const [img, largeImg] = images;
+
+  return `<img src="${img.url}" srcset="${largeImg.url} 2x" alt="${name} playlist cover"/>`;
+};
