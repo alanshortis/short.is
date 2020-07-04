@@ -7,22 +7,6 @@ permalink: '/writing/wordpress-and-composer/'
 intro: "WordPress should be treated as a dependency like any other. With Composer and a little time it's not too hard to get there."
 ---
 
-<!--
-import { Contents } from '../components';
-
-<Contents
-  sections={[
-    { title: 'Introduction', hash: '#intro' },
-    { title: 'Essential Plugins', hash: '#essential-plugins' },
-    { title: 'Composer and WordPress Packagist', hash: '#wp-composer' },
-    { title: 'Getting WordPress running', hash: '#get-running' },
-    { title: 'WP CLI and Environment Variables', hash: '#wp-cli' },
-  ]}
-/>
--->
-
-<a class="anchor" id="intro" />
-
 ## Introduction
 
 If using WordPress for a large, complex, and bespoke site you may not want to use it as it comes out of the box. This article covers the approach I like to take, and starts with an empty folder.
@@ -34,8 +18,6 @@ This guide assumes a few things:
 - You have a development environment where you can run PHP.
 - You're comfortable with the command line.
 - You have [Composer](https://getcomposer.org/) installed and know the basics.
-
-<a class="anchor" id="essential-plugins" />
 
 ## Essential plugins
 
@@ -57,8 +39,6 @@ The [Pro](https://www.advancedcustomfields.com/pro/) version is so reasonably pr
 - [Options Page](https://www.advancedcustomfields.com/add-ons/options-page/) allows you to create fields that can be used anywhere in your site, not just on a particular post, which is useful for things like footer information, but can also be used when making archive pages for custom post types.
 
 If using the Pro version, take a look at [ACF Pro Installer](https://github.com/PhilippBaschke/acf-pro-installer).
-
-<a class="anchor" id="wp-composer" />
 
 ### Composer and WordPress Packagist
 
@@ -117,8 +97,6 @@ require WPMU_PLUGIN_DIR.'/timber-library/timber.php';
 
 To install everything we need, run `$ composer install`. This will fetch everything into their defined folders and create a new file - `composer.lock` - that needs to be added to source control along with `composer.json` to keep track of dependencies.
 
-<a class="anchor" id="get-running" />
-
 ## Getting WordPress running
 
 As WordPress is installed in a subfolder, we need to copy a couple of files from `wp` to the project root:
@@ -152,8 +130,6 @@ To use the Timber starter theme, copy it from `mu-plugins/timber-library` to `wp
 > To complete the next steps, update your `wp-config.php` with your database credentials. We'll revisit this later and use environment variables.
 
 Visit your site in your development environment and follow the steps to install WordPress, then log in to admin. We are now running WordPress with a new folder structure and our essential plugins running with all these dependencies managed with Composer.
-
-<a class="anchor" id="wp-cli" />
 
 ## WP CLI and Environment Variables
 

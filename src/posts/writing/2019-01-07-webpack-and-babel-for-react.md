@@ -7,29 +7,9 @@ permalink: '/writing/webpack-and-babel-for-react/'
 intro: "There so many ways to bootstrap a React app without touching any config. Let's put together a sensible config from scratch in order to better understand what's going on under the hood."
 ---
 
-<!--
-import { Contents } from '../components';
-
-<Contents
-  sections={[
-    { title: 'Assumptions', hash: '#assumptions' },
-    { title: 'Create the project', hash: '#create-app' },
-    { title: 'Babel', hash: '#babel' },
-    { title: 'Webpack', hash: '#webpack' },
-    { title: 'React', hash: '#react' },
-    { title: 'Development Server', hash: '#dev-server' },
-    { title: 'Styled Components', hash: '#styled-components' },
-    { title: 'Code Quality', hash: '#code-quality' },
-    { title: 'Production Build', hash: '#production-build' },
-  ]}
-/>
--->
-
 There are various ways to write a React app without the need to deal with tooling and configuration. [Create React App](https://github.com/facebook/create-react-app), [Next.js](https://nextjs.org/) and [Gatsby](https://www.gatsbyjs.org/) are all excellent and can be used to make a complete, finished app (depending on your needs).
 
 This guide will explain how to configure a React application from scratch. You may need to do this to meet the needs of your project, or you might just be curious to learn how your React source ends up in a format that can be understood by browsers.
-
-<a class="anchor" id="assumptions" />
 
 ## Assumptions
 
@@ -38,8 +18,6 @@ This guide assumes a few things that will not be covered:
 - You have Node.js and NPM installed. At the time of writing, the latest versions are `11.6.0` and `6.5.0` respectively.
 - You know enough JavaScript and React to get by. We won't be touching React much, but what little we do write will not be explained.
 - You're comfortable enough on the command line to navigate the file system and run commands.
-
-<a class="anchor" id="create-app" />
 
 ## Create project
 
@@ -54,8 +32,6 @@ node_modules
 npm-debug.log
 dist
 ```
-
-<a class="anchor" id="babel" />
 
 ## Babel
 
@@ -74,8 +50,6 @@ Create a config file for Babel named `.babelrc` and add the presets we just down
   "presets": ["@babel/preset-env", "@babel/preset-react"]
 }
 ```
-
-<a class="anchor" id="webpack" />
 
 ## Webpack
 
@@ -174,8 +148,6 @@ module.exports = {
 };
 ```
 
-<a class="anchor" id="react" />
-
 ## React
 
 Now we have some tooling taken care of, we can install React and create the most basic App.
@@ -194,8 +166,6 @@ render(<App />, document.getElementById('root'));
 ```
 
 That's it for now - we're just directly rendering one stateless functional component to the div with an ID of 'root' that we added to our HTML file earlier.
-
-<a class="anchor" id="dev-server" />
 
 ## Development Server
 
@@ -287,8 +257,6 @@ Visiting [http://localhost:3000](http://localhost:3000) will display your amazin
 
 > Tip: React Developer Tools is an essential extension available for [Chrome](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en) and [Firefox](https://addons.mozilla.org/en-GB/firefox/addon/react-devtools/) that makes debugging React much easier, as well as looking under the hood of third party apps built in React.
 
-<a class="anchor" id="styled-components" />
-
 ## Styled Components
 
 [Styled Components](https://www.styled-components.com/) is a CSS-in-JS solution that takes advantage of tagged template literals. You can write CSS in a style really close to vanilla CSS, with the advantage of using JavaScript to augment it.
@@ -319,8 +287,6 @@ const App = () => <StyledText>This is my React app.</StyledText>;
 
 render(<App />, document.getElementById('root'));
 ```
-
-<a class="anchor" id="code-quality" />
 
 ## Code Quality
 
@@ -499,8 +465,6 @@ module.exports = {
 
 This extends the existing rule for js and jsx files, and adds the ESLint and stylelint loaders. The order of the loaders in the `use` array is important - we need to lint our source files before Babel touches them, so ensure each linting loader is _after_ the Babel loader in the array.
 
-<a class="anchor" id="production-build" />
-
 ## Production Build
 
 Webpack can handle a production ready build for us, creating an uglified JavaScript bundle free of code used only for development/debugging. This is achieved using the `mode` parameter we already used for our development server.
@@ -579,8 +543,6 @@ module.exports = {
 ```
 
 We should now have a marginally smaller bundle. Not by much, but it all helps.
-
-<a class="anchor" id="conclusion" />
 
 ## Conclusion
 
