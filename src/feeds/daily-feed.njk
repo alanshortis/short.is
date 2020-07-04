@@ -5,8 +5,8 @@ permalink: '/feeds/daily.xml'
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>{{ site.title }}</title>
   <subtitle>Daily writing from Alan Shortis.</subtitle>
-  <link href="{{ site.url }}{{ permalink }}" rel="self" />
-  <link href="{{ site.url }}/daily" />
+  <link href="{{ site.url }}{{ permalink }}" rel="self"/>
+  <link href="{{ site.url }}/daily"/>
   <updated>{{ collections.daily | rssLastUpdatedDate }}</updated>
   <id>{{ site.url }}/daily</id>
   <author>
@@ -21,7 +21,9 @@ permalink: '/feeds/daily.xml'
       <updated>{{ post.date | rssDate }}</updated>
       <id>{{ postUrl }}</id>
       <content type="html">
+        <![CDATA[
         {{ post.templateContent | safe }}
+      ]]>
       </content>
     </entry>
   {% endfor %}

@@ -5,8 +5,8 @@ permalink: '/feeds/writing.xml'
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>{{ site.title }}</title>
   <subtitle>Writing on code and development from Alan Shortis.</subtitle>
-  <link href="{{ site.url }}{{ permalink }}" rel="self" />
-  <link href="{{ site.url }}/writing" />
+  <link href="{{ site.url }}{{ permalink }}" rel="self"/>
+  <link href="{{ site.url }}/writing"/>
   <updated>{{ collections.writing | rssLastUpdatedDate }}</updated>
   <id>{{ site.url }}/writing</id>
   <author>
@@ -21,8 +21,10 @@ permalink: '/feeds/writing.xml'
       <updated>{{ post.date | rssDate }}</updated>
       <id>{{ postUrl }}</id>
       <content type="html">
+        <![CDATA[
         {{ post.intro }}
         {{ post.templateContent | safe }}
+      ]]>
       </content>
     </entry>
   {% endfor %}
