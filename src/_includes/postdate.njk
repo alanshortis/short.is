@@ -1,4 +1,8 @@
 <p>
-  <span class="sr-only">Posted on</span>
+  <span class="sr">Posted on</span>
   <time datetime="{{ postDate }}">{{ postDate | formatDate }}</time>
+  {# TODO: Update diff time #}
+  {% if (postDate | dateDiff < 50) and (withNewLabel) %}
+    <span>New<span class="sr">post</span></span>
+  {% endif %}
 </p>

@@ -7,16 +7,24 @@ eleventyNavigation:
   order: 2
 ---
 
-<p>Daily</p>
+<section>
+  <header>
+    <h1>Daily</h1>
+    <a href="/feeds/daily.xml">RSS</a>
+  </header>
 
-<a href="/feeds/daily.xml">RSS</a>
-
-<div>
-  {%- for post in collections.daily | reverse -%}
-    <a href="{{post.data.permalink}}">
-      {%- set postDate = post.data.date %}
-      {% include 'postdate.njk' %}
-      <p>{{post.data.title}}</p>
-    </a>
-  {%- endfor %}
-</div>
+  <ul>
+    {%- for post in collections.daily | reverse -%}
+      <li>
+        <article>
+          <a href="{{post.data.permalink}}">
+            {%- set postDate = post.data.date %}
+            {%- set withNewLabel = false %}
+            {% include 'postdate.njk' %}
+            <h2>{{post.data.title}}</h2>
+          </a>
+        </article>
+      </li>
+    {%- endfor %}
+  </ul>
+</section>

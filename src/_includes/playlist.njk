@@ -1,8 +1,10 @@
 <li>
-  <a href="{{ playlist.external_urls.spotify }}">
-    <img src="{{ playlist.images[1].url }}" srcset="{{ playlist.images[0].url }} 2x" alt="{{ playlist.name }} cover" />
-    {{ playlist.tracks.total }}
-    {{ playlist.name }}
-    {{ playlist.description | safe }}
-  </a>
+  <article>
+    <a href="{{ playlist.external_urls.spotify }}" rel="noopener noreferrer me">
+      <img src="{{ playlist.images[1].url }}" srcset="{{ playlist.images[0].url }} 2x" alt="{{ playlist.name }} playlist cover"/>
+      <p>{{ playlist.tracks.total }} tracks</p>
+      <h2>{{ playlist.name }}</h2>
+      <p>{{ playlist.description | safe }}</p>
+    </a>
+  </article>
 </li>

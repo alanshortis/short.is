@@ -6,16 +6,21 @@ eleventyNavigation:
   order: 4
 ---
 
-<p>Playlists</p>
+<section>
+  <header>
+    <h1>Playlists</h1>
+    <a href="https://open.spotify.com/user/overview?si=U1PJ2y4uT6aGBXPXtnRm4g" rel="noopener noreferrer me">Follow on Spotify</a>
+  </header>
 
-<ul>
-  {%- for playlist in spotify.annual %}
-    {%- include 'playlist.njk' %}
-  {%- endfor %}
-</ul>
+  <ul>
+    {%- for playlist in spotify.annual %}
+      {%- include 'playlist.njk' %}
+    {%- endfor %}
+  </ul>
 
-<ul>
-  {%- for playlist in spotify.theme %}
-    {%- include 'playlist.njk' %}
-  {%- endfor %}
-</ul>
+  <ul>
+    {%- for playlist in spotify.theme %}
+      {%- include 'playlist.njk' %}
+    {%- endfor %}
+  </ul>
+</section>
