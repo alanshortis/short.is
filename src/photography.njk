@@ -6,17 +6,26 @@ eleventyNavigation:
   order: 3
 ---
 
-<p>Photography</p>
+<section>
+  <header>
+    <h1>Photography</h1>
+  </header>
 
-<ul>
-  {%- for photo in photos %}
-    <li>
-      <picture>
-        <source srcset="/photos/as-{{ photo.id }}@0.5x.webp" />
-        <img src="/photos/as-{{ photo.id }}@0.5x.jpg" loading="lazy" />
-      </picture>
-      {{ photo.location }}, {{ photo.year }}
-      {{photo.camera }}, {{ photo.film }}
-    </li>
-  {%- endfor %}
-</ul>
+  <ul>
+    {%- for photo in photos %}
+      <li>
+        <figure>
+          <picture>
+            <source srcset="/photos/as-{{ photo.id }}@0.5x.webp" type="image/webp"/>
+            <img src="/photos/as-{{ photo.id }}@0.5x.jpg" loading="lazy" alt="{{ photo.alt }}"/>
+          </picture>
+          <figcaption>{{ photo.location }}, {{ photo.year }}.
+            {{ photo.camera }}
+            {% if photo.film %}on {{ photo.film }}
+            {% endif %}
+          </figcaption>
+        </figure>
+      </li>
+    {%- endfor %}
+  </ul>
+</section>
