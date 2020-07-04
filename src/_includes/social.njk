@@ -1,0 +1,8 @@
+<ul>
+  <p class="sr" id="nav-label">Social media menu</p>
+  {%- for key, item in site.social %}
+    <li>
+      <a href="{{ key }}" target="_blank" rel="noopener noreferrer me">{{ item }}</a>
+    </li>
+  {% endfor %}
+</ul>

@@ -7,35 +7,31 @@
     {%- endif %}
     <meta charset="UTF-8">
     <title>{{ pageTitle }}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="{{ intro | default(site.description) }}" />
-    <meta property="og:title" content="{{ pageTitle }}" />
-    <meta property="og:description" content="{{ intro | default(site.description) }}" />
-    <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
-    <meta property="og:image" content="/og.png" />
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:creator" content="{{ site.twitter }}"  />
-    <link rel="icon" href="/icon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content="{{ intro | default(site.description) }}"/>
+    <meta property="og:title" content="{{ pageTitle }}"/>
+    <meta property="og:description" content="{{ intro | default(site.description) }}"/>
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}"/>
+    <meta property="og:image" content="/og.png"/>
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:creator" content="{{ site.twitter }}"/>
+    <link rel="icon" href="/icon.png"/>
     <link rel="stylesheet" href="/css/style.css">
   </head>
   <body>
     <header>
+      <a class="sr" href="#main">Skip to content.</a>
       <a href="/">
         {% include "logo.svg" %}
       </a>
       {% include "nav.njk" %}
     </header>
-    <main>
-      {% block content %}
-      {% endblock content %}
+    <main id="main">
+      {% block content %}{% endblock content %}
     </main>
-
     <footer>
-      <ul>
-        {%- for key, item in site.social %}
-          <li><a href="{{ key }}" target="_blank" rel="noopener noreferrer">{{ item }}</a></li>
-        {% endfor %}
-      </ul>
+      {% include 'social.njk' %}
+      <a href="#main">Back to top.</a>
     </footer>
   </body>
 </html>
