@@ -13,10 +13,3 @@ exports.dateDiff = date => {
 
   return Math.round(ageDays);
 };
-
-exports.playlistImage = playlist => {
-  const { name, images } = playlist;
-  const [img, largeImg] = images;
-
-  return `<img src="${img.url}" srcset="${largeImg.url} 2x" alt="${name} playlist cover"/>`;
-};
