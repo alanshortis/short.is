@@ -16,7 +16,6 @@ mobile: false
 featured: false
 permalink: '/daily/${title}/'
 tags: daily
-changeFreq: 'never'
 layout: 'daily'
 ---`,
 
