@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 .sr {
   clip-path: inset(100%);
   clip: rect(0, 0, 0, 0);
