@@ -1,10 +1,186 @@
 [
   {
-    "alt": "Black and white photograph, looking up through the glass roof of the railway station in Cologne, a silouette of the spires of the cathedral are just about visible.",
-    "camera": "Holga 120SF",
+    "alt": "Colour photograph. A heavy, stiched, faded and crunpled flag of the USA sits in the window of a dilapidated door of a Brooklyn storefront.",
+    "camera": "Bronica EC TL",
+    "film": "Kodak Ektar 100",
+    "id": 1,
+    "location": "New York",
+    "year": 2009
+  },
+  {
+    "alt": "Colour photograph. A Dodge pick-up truck with a dented chrome bumper sits along an overgown curb beside a chain-link fence. An open top Jeep is passing on the right beside a construction site.",
+    "camera": "Bronica EC TL",
+    "film": "Kodak Ektar 100",
+    "id": 2,
+    "location": "New York",
+    "year": 2009
+  },
+  {
+    "alt": "Black and white photograph. From a low angle, looking across the basement of a bar with exposed brick walls and uneven floorboards. Worn leather sofas and steel poles between the cieling and the floor. A staircase leads up to the bar, and a doorway is at the far end with graffitied walls beyond.",
+    "camera": "Leica M6",
+    "film": "Ilford XP2",
+    "id": 3,
+    "location": "London",
+    "year": 2007
+  },
+  {
+    "alt": "Black and white photograph. In a metro station, looking across the tracks to the opposite platform there are 4 seats in front of a network map. The wall is tiled in white, with darker tiles forming vetical stripes beside the seats and a hexagon to the right.",
+    "camera": "Leica M6",
+    "film": "Ilford XP2",
+    "id": 4,
+    "location": "Brussels",
+    "year": 2008
+  },
+  {
+    "alt": "Black and white photograph. In a metro station, looking diagonally across the tracks to escalators at the end of the opposite platform leading to street level. Lights reflect in the polished stainless steel sides of the escalator.",
+    "camera": "Leica M6",
+    "film": "Ilford XP2",
+    "id": 5,
+    "location": "Brussels",
+    "year": 2008
+  },
+  {
+    "alt": "Black and white photograph. Looking through a window from inside Grand Central Station, the frame is dark with light coming in from the ouside. A statue is silhouetted in the ornate window, and a chandelier with one missing bulb sits above.",
+    "camera": "Holga SF",
+    "film": "Ilford Delta 3200",
+    "id": 11,
+    "location": "New York",
+    "year": 2007
+  },
+  {
+    "alt": "Black and white photograph. On the boardwalk at Coney Island, the perspective of the wood railing goes off into the distance. Wood floorboards perpendicular to the railing.",
+    "camera": "Holga SF",
+    "film": "Ilford Delta 3200",
+    "id": 12,
+    "location": "New York",
+    "year": 2007
+  },
+  {
+    "alt": "Black and white photograph. A woman, partially concealed by a light leak, walks through Grand Central Station, through a shaft of sunlight coming in from high windows. Ticket windows and departure boards are in the background.",
+    "camera": "Holga SF",
+    "film": "Ilford Delta 3200",
+    "id": 13,
+    "location": "New York",
+    "year": 2007
+  },
+  {
+    "alt": "Black and white photograph. From floor level on the deck of an aircraft carrier, three 1950s figther jets in the distance. A lone figure is in the middle disance.",
+    "camera": "Holga SF",
+    "film": "Ilford Delta 3200",
+    "id": 14,
+    "location": "New York",
+    "year": 2007
+  },
+  {
+    "alt": "Black and white photograph. A double exposure of clouds, with the same clouds reflected in the glass pyramid of The Louvre.",
+    "camera": "Holga SF",
     "film": "Ilford Delta 400",
+    "id": 15,
+    "location": "Paris",
+    "year": 2008
+  },
+  {
+    "alt": "Black and white photograph. Looking up through the glass roof of the railway station in Cologne, a silouette of the spires of the cathedral are just about visible.",
+    "camera": "Holga 120SF",
+    "film": "Ilford Delta 3200",
     "id": 16,
     "location": "Cologne",
     "year": 2010
+  },
+  {
+    "alt": "Color photograph. The back of a building, with clean light grey walls and white steel doors. Looking towards a Steel staircse behind a low chainlink fence with an empty cable reel. A gravel floor has a sprinkling of orange leaves.",
+    "camera": "Bronica EC TL",
+    "film": "Kodak Porta 400VC",
+    "id": 17,
+    "location": "Geneva",
+    "year": 2010
+  },
+  {
+    "alt": "Color photograph. The top of an escalator with a staircase beside in an airport terminal. A yellow sign indicates that gates 21 to 28 and 71 to 86 are 5 minutes away.",
+    "camera": "Bronica EC TL",
+    "film": "Kodak Porta 400VC",
+    "id": 18,
+    "location": "Geneva",
+    "year": 2010
+  },
+  {
+    "alt": "Black and white photograph. Looking from the bar across to a table with two men eating dinner. The walls are covered in framed pictures, and the face of the man facing the camera is blurred from the slow shutter speed.",
+    "camera": "Holga TLR",
+    "film": "Ilford Delta 400",
+    "id": 19,
+    "location": "New York",
+    "year": 2009
+  },
+  {
+    "alt": "Colour photograph. Looking up the sign for an arcade in Coney Island called 'Eldorado Arcade'. The surround of the sign is bright yellow, against a clear blue sky.",
+    "camera": "Diana F+",
+    "film": "Fuji Pro 400H",
+    "id": 20,
+    "location": "New York",
+    "year": 2009
+  },
+  {
+    "alt": "Colour photograph. The end of a roll of film, the upper half of the image has the paper back exposed with 'Kodak' and 7' clearly visible. The lower half is a deep blue with the silouette of a Welsh mountain just about visible.",
+    "camera": "Holga SF",
+    "film": "Kodak Porta 400NC",
+    "id": 21,
+    "location": "Snowdonia",
+    "year": 2007
+  },
+  {
+    "alt": "Colour photograph. Looking through a valley in Wales, a peak in the distance. A large light leak on the left and underexposure on the right besets the earthy tones of the image.",
+    "camera": "Diana F+",
+    "film": "",
+    "id": 22,
+    "location": "Snowdonia",
+    "year": 2007
+  },
+  {
+    "alt": "Black and white photograph. Thick fog over the river thames gives the impression of the sky and water being one; an industrial peir is reflected in the water.",
+    "camera": "Nikon D70",
+    "id": 23,
+    "location": "London",
+    "year": 2009
+  },
+  {
+    "alt": "Black and white photograph. A convex mirror on a wire fence shows some quarry machinery.",
+    "camera": "Holga 120 SF",
+    "film": "Fuji Acros 100",
+    "id": 23,
+    "location": "London",
+    "year": 2009
+  },
+  {
+    "alt": "Colour photograph. The front right corner of a classic muscle car shot from above. Golden leaves are on the ground around it with a few on the hood of the car, which is a deep blue. There is a small patch of rust that matches the leaves quite closely, and a bright meganta light leak at the top left of the frame.",
+    "camera": "Holga 120 SF",
+    "film": "Kodak Porta 400NC",
+    "id": 24,
+    "location": "New York",
+    "year": 2009
+  },
+  {
+    "alt": "Black and white photograph. Looking along the edge of a ticket counter, a woman dressed all in black faces away from us. The main hall and windows of Grand Central Station are in the background, the long exposure making people appear blurred.",
+    "camera": "Holga 120 TLR",
+    "film": "Ilford Delta 400",
+    "id": 25,
+    "location": "New York",
+    "year": 2009
+  },
+  {
+    "alt": "Black and white photograph. From a low angle, looking into the corner of an elevator. The interior is finished in stainless steel, there is a sign that reads 'No Smoking' and an LED display tells us we're at the 14th floor.",
+    "camera": "Holga 120 SF",
+    "film": "Ilford Delta 3200",
+    "id": 26,
+    "location": "New York",
+    "year": 2007
+  },
+
+  {
+    "alt": "Black and white photograph. Looking down a tight staircase with bare wood floorboards, a woman is walking down carrying a bag on her shoulder, and looking slight back up at the camera.",
+    "camera": "Holga 120 SF",
+    "film": "Ilfortd Delta 400",
+    "id": 36,
+    "location": "Paris",
+    "year": 2008
   }
 ]
