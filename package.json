@@ -4,9 +4,10 @@
   "description": "Alan Shortis is a Web Developer.",
   "version": "3.0.0",
   "scripts": {
-    "build": "eleventy",
+    "build": "ELEVENTY_ENV=production eleventy && npm run uglify",
     "dev": "eleventy --serve --quiet",
     "clean": "rm -rf dist",
+    "uglify": "uglifycss dist/css/style.css > dist/css/style.min.css",
     "new-post": "node new-post.js"
   },
   "devDependencies": {
@@ -19,6 +20,7 @@
     "prompts": "^2.3.2",
     "request": "^2.88.2",
     "request-promise": "^4.2.5",
-    "simple-git": "^2.8.0"
+    "simple-git": "^2.8.0",
+    "uglifycss": "^0.0.29"
   }
 }
