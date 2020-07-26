@@ -17,10 +17,12 @@
     "@11ty/eleventy-plugin-syntaxhighlight": "^3.0.1",
     "chalk": "^4.1.0",
     "dotenv-safe": "^8.2.0",
+    "node-fetch": "^2.6.0",
     "prompts": "^2.3.2",
     "request": "^2.88.2",
     "request-promise": "^4.2.5",
     "simple-git": "^2.8.0",
-    "uglifycss": "^0.0.29"
+    "uglifycss": "^0.0.29",
+    "xml-js": "^1.6.11"
   }
 }
