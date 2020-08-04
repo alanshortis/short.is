@@ -12,7 +12,7 @@ eleventyNavigation:
     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem, animi officiis sapiente earum placeat ratione exercitationem corporis eligendi iusto, doloremque delectus harum maxime aut. Quo nesciunt consequatur excepturi ab at!</p>
     <h2>Now</h2>
     <ul>
-      <li>Reading <a href="{{ goodreads.url }}" target="_blank" rel="noopener noreferrer">{{ goodreads.title }}</a> by {{ goodreads.author }}.</li>
+      <li>Reading {{ goodreads | safe }}.</li>
       <li>Leaning German.</li>
       <li>Writing every day.</li>
     </ul>
