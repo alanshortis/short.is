@@ -1,6 +1,5 @@
 const fetch = require('node-fetch');
 const convert = require('xml-js');
-
 const { GOODREADS_KEY, GOODREADS_USER } = process.env;
 
 const bookTemplate = (link, title, author) =>
