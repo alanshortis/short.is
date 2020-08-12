@@ -1,4 +1,12 @@
 exports.dateFormat = date => {
+  if (this.dateDiff(date) === 0) {
+    return 'Today';
+  }
+
+  if (this.dateDiff(date) === 1) {
+    return 'Yesterday';
+  }
+
   return new Date(date).toLocaleDateString('en-GB', {
     day: '2-digit',
     month: 'long',
@@ -11,5 +19,5 @@ exports.dateDiff = date => {
   const postDate = new Date(date);
   const ageDays = (today - postDate) / (1000 * 3600 * 24);
 
-  return Math.round(ageDays);
+  return Math.floor(ageDays);
 };

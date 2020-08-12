@@ -3,6 +3,38 @@ layout: 'page'
 ---
 
 <section>
-  <h1>Home</h1>
-  <p>I’m Alan Shortis—a front end developer based in Nottingham. I like CSS more than JavaScript, aesthetics more than data, design systems more than chaos, and accessibility more than exclusion.</p>
+  <h1>Alan Shortis</h1>
+  <p>—a front end developer based in Nottingham.</p>
+
+  <div>
+    <h2>Latest writing</h2>
+    <ul>
+      {%- for post in collections.latest_writing -%}
+        <li>
+          <article>
+            <a href="{{ post.data.permalink }}">
+              {%- set postDate = post.data.date %}
+              {% include 'postdate.njk' %}
+              <h2>{{ post.data.title }}</h2>
+            </a>
+          </article>
+        </li>
+      {%- endfor %}
+    </ul>
+
+    <h2>Daily</h2>
+    <ul>
+      {%- for post in collections.latest_daily -%}
+        <li>
+          <article>
+            <a href="{{ post.data.permalink }}">
+              {%- set postDate = post.data.date %}
+              {% include 'postdate.njk' %}
+              <h2>{{ post.data.title }}</h2>
+            </a>
+          </article>
+        </li>
+      {%- endfor %}
+    </ul>
+  </div>
 </section>
