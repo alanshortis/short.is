@@ -20,6 +20,14 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter('dateDiff', helpers.dateDiff);
   eleventyConfig.addFilter('playlistImage', helpers.playlistImage);
 
+  eleventyConfig.addCollection('latest_writing', function (collectionApi) {
+    return collectionApi.getFilteredByTag('writing').reverse().slice(0, 1);
+  });
+
+  eleventyConfig.addCollection('latest_daily', function (collectionApi) {
+    return collectionApi.getFilteredByTag('daily').reverse().slice(0, 1);
+  });
+
   return {
     dir: {
       input: 'src',
