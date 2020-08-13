@@ -4,7 +4,7 @@ const eleventyRssPlugin = require('@11ty/eleventy-plugin-rss');
 const eleventySyntaxPlugin = require('@11ty/eleventy-plugin-syntaxhighlight');
 const helpers = require('./helpers');
 
-module.exports = function (eleventyConfig) {
+module.exports = eleventyConfig => {
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
   eleventyConfig.addPlugin(eleventyRssPlugin);
   eleventyConfig.addPlugin(eleventySyntaxPlugin);
@@ -18,13 +18,12 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addFilter('formatDate', helpers.dateFormat);
   eleventyConfig.addFilter('dateDiff', helpers.dateDiff);
-  eleventyConfig.addFilter('playlistImage', helpers.playlistImage);
 
-  eleventyConfig.addCollection('latest_writing', function (collectionApi) {
+  eleventyConfig.addCollection('latest_writing', collectionApi => {
     return collectionApi.getFilteredByTag('writing').reverse().slice(0, 1);
   });
 
-  eleventyConfig.addCollection('latest_daily', function (collectionApi) {
+  eleventyConfig.addCollection('latest_daily', collectionApi => {
     return collectionApi.getFilteredByTag('daily').reverse().slice(0, 1);
   });
 
