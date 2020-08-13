@@ -1,0 +1,33 @@
+.as-logo {
+  height: 26px;
+  width: 40px;
+  z-index: 1;
+  path {
+    fill: var(--type);
+    mix-blend-mode: lighten;
+  }
+}
+
+.site-header {
+  padding: var(--spacing) calc(var(--spacing) * 2);
+  display: flex;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+}
+
+.main-menu {
+  mix-blend-mode: multiply;
+  li {
+    display: inline;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    font-family: PlexMono, mono;
+    &:not(:first-child) {
+      margin-left: var(--spacing);
+    }
+    a.active {
+      color: var(--accent);
+    }
+  }
+}

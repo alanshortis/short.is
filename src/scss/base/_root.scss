@@ -1,0 +1,31 @@
+@use 'sass-variables' as *;
+
+*,
+*:before,
+*:after {
+  border: 0;
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+ul,
+ol {
+  & li {
+    list-style-type: none;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--type);
+  font-family: $family;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.25;
+  line-height: 1.5;
+}
