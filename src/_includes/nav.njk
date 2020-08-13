@@ -1,6 +1,6 @@
 <nav aria-labelledby="nav-label">
   <p class="sr" id="nav-label">Main menu</p>
-  <ul>
+  <ul class="main-menu">
     {%- for item in collections.all | eleventyNavigation %}
       <li>
         <a href="{{ item.url | url }}" {% if item.url in page.url %} class="active" {% endif %}>{{ item.title }}</a>

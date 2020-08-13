@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="/css/style.css">
   </head>
   <body>
-    <header>
+    <header class="site-header">
       <a class="sr" href="#main">Skip to content.</a>
       <a href="/">
         {% include "logo.svg" %}
@@ -29,9 +29,5 @@
     <main id="main">
       {% block content %}{% endblock content %}
     </main>
-    <footer>
-      {% include 'social.njk' %}
-      <a href="#main">Back to top.</a>
-    </footer>
   </body>
 </html>
