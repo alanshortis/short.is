@@ -2,6 +2,7 @@ const fs = require('fs');
 const prompts = require('prompts');
 const chalk = require('chalk');
 const simpleGit = require('simple-git/promise');
+const { exec } = require('child_process');
 
 const POST_ROOT = 'src/posts';
 const FIRST_DAILY_POST = new Date('2020-03-15');
@@ -66,6 +67,8 @@ const createFile = async (fileName, content, path = `${POST_ROOT}/writing`) => {
     if (err) throw err;
     console.log(chalk.green(`✔ ${path}/${fileName} created.`));
   });
+
+  exec(`code ${path}/${fileName}`);
 };
 
 const postGenerator = async () => {
