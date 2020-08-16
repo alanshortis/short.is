@@ -29,3 +29,10 @@ body {
   line-height: 1.25;
   line-height: 1.5;
 }
+
+main {
+  margin: 0 auto;
+  max-width: 70rem;
+  padding: calc(var(--spacing) * 2);
+  width: 100%;
+}

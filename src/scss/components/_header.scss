@@ -1,33 +1,23 @@
 .as-logo {
-  height: 26px;
-  width: 40px;
-  z-index: 1;
-  path {
+  align-items: center;
+  color: var(--accent);
+  display: flex;
+  svg {
     fill: var(--type);
-    mix-blend-mode: lighten;
+    height: 26px;
+    margin-right: var(--spacing);
+    width: 40px;
   }
 }
 
 .site-header {
-  padding: var(--spacing) calc(var(--spacing) * 2);
+  align-items: center;
   display: flex;
+  display: flex;
+  height: 4rem;
   justify-content: space-between;
+  justify-content: space-between;
+  padding: 0 calc(var(--spacing) * 2);
   position: sticky;
   top: 0;
-}
-
-.main-menu {
-  mix-blend-mode: multiply;
-  li {
-    display: inline;
-    text-transform: uppercase;
-    font-size: 0.9rem;
-    font-family: PlexMono, mono;
-    &:not(:first-child) {
-      margin-left: var(--spacing);
-    }
-    a.active {
-      color: var(--accent);
-    }
-  }
 }

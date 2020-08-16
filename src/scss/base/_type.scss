@@ -1,3 +1,5 @@
+@use 'sass-variables' as *;
+
 a {
   color: var(--type);
   text-decoration: none;
@@ -11,4 +13,11 @@ a {
   position: absolute;
   white-space: nowrap;
   width: 1px;
+}
+
+.label {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-family: $face--mono;
+  font-size: 0.833rem;
 }

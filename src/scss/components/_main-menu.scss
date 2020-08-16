@@ -1,0 +1,47 @@
+.menu-button {
+  align-items: flex-end;
+  background-color: inherit;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  height: 1rem;
+  justify-content: space-between;
+  position: relative;
+  width: 2rem;
+  span {
+    background-color: var(--type);
+    height: 0.125rem;
+    width: 100%;
+    &:nth-child(2) {
+      width: 90%;
+    }
+    &:nth-child(3) {
+      width: 80%;
+    }
+  }
+}
+
+.main-menu {
+  display: none;
+  li {
+    display: inline;
+    position: relative;
+    &:not(:last-child) {
+      margin-right: calc(var(--spacing) / 2);
+    }
+    a.active {
+      color: var(--accent);
+      &::after {
+        background-color: var(--accent);
+        border-radius: 50%;
+        content: '';
+        display: inline-block;
+        height: 0.5rem;
+        left: calc(50% - 0.5rem);
+        position: absolute;
+        top: calc(var(--spacing) * 1.5);
+        width: 0.5rem;
+      }
+    }
+  }
+}
