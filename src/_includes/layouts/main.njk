@@ -21,9 +21,15 @@
   <body>
     <header class="site-header">
       <a class="sr" href="#main">Skip to content.</a>
-      <a href="/">
-        {% include "logo.svg" %}
+      <a href="/" class="as-logo label">
+        {% include "logo.svg" %} Alan Shortis
       </a>
+      <button class="menu-button">
+        <span></span>
+        <span></span>
+        <span></span>
+        <p class="sr">Open Menu</p>
+      </button>
       {% include "nav.njk" %}
     </header>
     <main id="main">

@@ -1,13 +1,12 @@
 :root {
-  --light: #e5dcdf;
-  --dark: #1a2320;
-  --mid: #808080;
   --accent: #e34f4f;
+  --dark: #1a2320;
+  --light: #e5dcdf;
+  --mid: #808080;
 
   --background: var(--light);
-  --type: var(--dark);
-
   --spacing: 1rem;
+  --type: var(--dark);
 }
 
 :root body.dark {
