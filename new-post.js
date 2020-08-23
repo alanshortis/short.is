@@ -14,7 +14,6 @@ const templates = {
 title: '#${title}'
 date: '${date}'
 mobile: false
-featured: false
 permalink: '/daily/${title}/'
 tags: daily
 layout: 'daily'
@@ -23,8 +22,8 @@ layout: 'daily'
   writing: (date, title, slug) => `---
 title: '${title}'
 date: '${date}'
+permalink: '/writing/${slug}/'
 tags: writing
-slug: '/writing/${slug}/'
 intro: ""
 layout: 'writing'
 ---`,
