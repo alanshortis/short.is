@@ -14,7 +14,6 @@ const templates = {
 title: '#${title}'
 date: '${date}'
 mobile: false
-featured: false
 permalink: '/daily/${title}/'
 tags: daily
 layout: 'daily'
