@@ -22,8 +22,8 @@ layout: 'daily'
   writing: (date, title, slug) => `---
 title: '${title}'
 date: '${date}'
+permalink: '/writing/${slug}/'
 tags: writing
-slug: '/writing/${slug}/'
 intro: ""
 layout: 'writing'
 ---`,
