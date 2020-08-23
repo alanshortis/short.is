@@ -12,6 +12,22 @@ eleventyNavigation:
     <a href="/feeds/daily.xml">RSS</a>
   </header>
 
+  <h2>Featured</h2>
+  <ul>
+    {%- for post in collections.featured | reverse -%}
+      <li>
+        <article>
+          <a href="{{ post.data.permalink }}">
+            {%- set postDate = post.data.date %}
+            {%- set withNewLabel = false %}
+            {% include 'postdate.njk' %}
+            <h2>{{ post.data.title }}</h2>
+          </a>
+        </article>
+      </li>
+    {%- endfor %}
+  </ul>
+
   <ul>
     {%- for post in collections.daily | reverse -%}
       <li>
