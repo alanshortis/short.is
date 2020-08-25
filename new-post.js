@@ -15,7 +15,9 @@ title: '#${title}'
 date: '${date}'
 mobile: false
 permalink: '/daily/${title}/'
-tags: daily
+tags: 
+  - daily
+  - discogs
 layout: 'daily'
 ---`,
 
