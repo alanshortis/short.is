@@ -14,7 +14,12 @@ module.exports = eleventyConfig => {
   eleventyConfig.addLayoutAlias('writing', 'layouts/writing.njk');
   eleventyConfig.addLayoutAlias('daily', 'layouts/daily.njk');
 
-  eleventyConfig.setTemplateFormats(['njk', 'md', 'css', 'map', 'png', 'jpg', 'webp', 'woff2']);
+  eleventyConfig.setUseGitIgnore(false);
+
+  eleventyConfig.setTemplateFormats(['md', 'njk', 'png']);
+  eleventyConfig.addPassthroughCopy('src/fonts');
+  eleventyConfig.addPassthroughCopy('src/photos');
+  eleventyConfig.addPassthroughCopy('src/assets');
 
   eleventyConfig.addFilter('formatDate', helpers.dateFormat);
   eleventyConfig.addFilter('dateDiff', helpers.dateDiff);
