@@ -1,4 +1,3 @@
-const names = ['Alan', 'Naomi'];
-const [, love] = names;
+import setDateLabels from './date-labels';
 
-console.log(love);
+setDateLabels();
