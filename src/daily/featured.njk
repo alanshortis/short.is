@@ -1,0 +1,15 @@
+---
+layout: 'page'
+title: 'Daily'
+---
+
+<section>
+  <header>
+    <h1>Daily: Featured</h1>
+  </header>
+  <ul>
+    {%- for post in collections.featured | reverse -%}
+      {%- include 'daily.njk' %}
+    {%- endfor %}
+  </ul>
+</section>
