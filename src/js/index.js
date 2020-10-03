@@ -1,5 +1,5 @@
-import registerDarkMode from './dark-mode';
+import registerSchemeToggle from './scheme-toggle';
 import setDateLabels from './date-labels';
 
-registerDarkMode();
+registerSchemeToggle();
 setDateLabels();
