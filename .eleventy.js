@@ -24,14 +24,6 @@ module.exports = eleventyConfig => {
   eleventyConfig.addFilter('formatDate', helpers.dateFormat);
   eleventyConfig.addFilter('dateDiff', helpers.dateDiff);
 
-  eleventyConfig.addCollection('latest_writing', collectionApi => {
-    return collectionApi.getFilteredByTag('writing').reverse().slice(0, 1);
-  });
-
-  eleventyConfig.addCollection('latest_daily', collectionApi => {
-    return collectionApi.getFilteredByTag('daily').reverse().slice(0, 1);
-  });
-
   return {
     dir: {
       input: 'src',
