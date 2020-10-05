@@ -9,7 +9,8 @@ layout: 'page'
   <div>
     <h2>Latest writing</h2>
     <ul>
-      {%- for post in collections.latest_writing -%}
+      {% set latest_writing = collections.writing | reverse %}
+      {% for post in latest_writing.slice(0, 1) %}
         <li>
           <article>
             <a href="{{ post.data.permalink }}">
@@ -25,7 +26,8 @@ layout: 'page'
 
     <h2>Daily</h2>
     <ul>
-      {%- for post in collections.latest_daily -%}
+      {% set latest_daily = collections.daily | reverse %}
+      {% for post in latest_daily.slice(0, 1) %}
         <li>
           <article>
             <a href="{{ post.data.permalink }}">
