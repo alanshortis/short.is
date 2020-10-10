@@ -100,8 +100,8 @@ const postGenerator = async () => {
     const yearMonthFolder = `${year}/${month}`;
     const fullPath = `${POST_ROOT}/daily/${yearMonthFolder}`;
 
-    await simpleGit().checkoutBranch(`daily/${formattedDate}`, BASE_BRANCH);
-    console.log(chalk.green(`✔ branch 'daily/${formattedDate}' created and checked out.`));
+    await simpleGit().checkoutBranch(`daily/${dailyPostCount}`, BASE_BRANCH);
+    console.log(chalk.green(`✔ branch 'daily/${dailyPostCount}' created and checked out.`));
 
     await createFolder(yearMonthFolder);
     await createFile(
