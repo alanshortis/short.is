@@ -27,7 +27,7 @@ const Now = () => {
       <Meta title="About" description="Who is Alan Shortis anyway?" />
       <Layout>
         <PostContainer>
-          <Time date="2020-06-27" pre="Updated" />
+          <Time date="2020-10-10" pre="Updated" />
           <PostTitle>About</PostTitle>
           <PostIntro>
             I&rsquo;m Alan Shortis—a front end developer based in Nottingham. I like CSS more than
@@ -59,25 +59,17 @@ const Now = () => {
             <h2>Now</h2>
             <ul>
               <li>Writing every day.</li>
-              <li>Learning German, allmählich.</li>
+              <li>Learning German.</li>
               <li>
                 Reading{' '}
-                <A href="https://www.amazon.co.uk/Mountains-Cycling-Climbs-Michael-Blann/dp/0500023085/">
-                  Mountains: Epic Cycling Climbs
+                <A href="https://www.goodreads.com/book/show/54754.Can_t_Stop_Won_t_Stop">
+                  Can't Stop Won't Stop: A History of the Hip-Hop Generation
                 </A>{' '}
-                by Michael Blann, and{' '}
-                <A href="https://www.amazon.co.uk/Mindf-Inside-Cambridge-Analyticas-Break/dp/1788164997/">
-                  Mindf*ck: Inside Cambridge Analytica’s Plot to Break the World
-                </A>{' '}
-                by Christopher Wylie.
+                by Jeff Chang.
               </li>
-              <li>
-                Training with the possibility of{' '}
-                <A href="https://en.wikipedia.org/wiki/La_Marmotte">La Marmotte</A> actually taking
-                place in September.
-              </li>
-              <li>Watching The Sopranos yet again.</li>
-              <li>Researching a career change.</li>
+              <li>Watching Six Feet Under and the Giro d'Italia.</li>
+              <li>Playing Portal 2 co-op.</li>
+              <li>Getting fed up with PostCSS and using SCSS.</li>
             </ul>
           </StyledPost>
           <Social />
