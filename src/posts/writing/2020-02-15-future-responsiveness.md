@@ -2,6 +2,7 @@
 title: 'Future responsiveness'
 layout: 'writing'
 date: '2020-02-15'
+updated: '2020-10-10'
 tags: writing
 permalink: '/writing/future-responsiveness/'
 intro: 'Using media queries to adapt layouts for screen size has defined responsive design for a long time, but now we can respond to more.'
@@ -70,6 +71,17 @@ By applying delay and duration of zero and ensuring animations only run once on 
 The downside of this is less control over a non-animated state which could lead to some jank, and also differentiating decorative animation (which you definitely want to stop) and animation with some meaning (which you may want to keep).
 
 You also don't need to stop animations entirely - you could speed them up, slow them down, or just simplify. The media query looks for preference of _reduced_ motion so it doesn't need to be all or nothing.
+
+### In HTML
+
+You can use this in the `picture` element as well as in CSS. In this example, we can show a still image by default, or show the animated version if the user has no preference for motion:
+
+```html
+<picture>
+  <source srcset="microwave.gif" media="(perfers-reduced-motion: no-preference)" />
+  <img src="microwave.png" alt="A potato cooking in a microwave" />
+</picture>
+```
 
 ## Transparency
 
