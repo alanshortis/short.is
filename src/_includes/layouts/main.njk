@@ -16,7 +16,7 @@
     <meta name="twitter:card" content="summary"/>
     <meta name="twitter:creator" content="{{ site.twitter }}"/>
     <link rel="icon" href="/icon.png"/>
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/style.css?v={{ site.version }}">
   </head>
   <body>
     <header class="site-header">
@@ -36,6 +36,6 @@
       {% block content %}{% endblock content %}
       <scheme-toggle></scheme-toggle>
     </main>
-    <script src="/assets/js/index.js"></script>
+    <script src="/assets/js/index.js?v={{ site.version }}"></script>
   </body>
 </html>
