@@ -1,10 +1,7 @@
-# short.is
+[![Netlify Status](https://api.netlify.com/api/v1/badges/5678912b-26be-4fde-98cc-0e871554f9eb/deploy-status)](https://app.netlify.com/sites/betashortis/deploys)
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/d5115e1b-a5eb-4a0c-93c1-3719da849490/deploy-status)](https://app.netlify.com/sites/shortis/deploys)
+# short.is
 
 A personal website, using:
 
-- Gatsby
-- Styled Components
-- MDX
-- Netlify
+- [11ty](https://www.11ty.dev/)
