@@ -19,6 +19,9 @@
     <link rel="stylesheet" href="/assets/css/style.css?v={{ site.version }}"> #}
   </head>
   <body>
+    <header>
+      {% include "menu.njk" %}
+    </header>
     <main>
       {{ content | safe }}
     </main>
