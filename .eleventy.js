@@ -1,6 +1,7 @@
 require('dotenv-safe').config();
 const eleventyNavigationPlugin = require('@11ty/eleventy-navigation');
 const htmlmin = require('html-minifier');
+const filters = require('./filters');
 
 module.exports = eleventyConfig => {
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
@@ -8,6 +9,9 @@ module.exports = eleventyConfig => {
   eleventyConfig.addLayoutAlias('main', 'layouts/main.njk');
   eleventyConfig.addLayoutAlias('page', 'layouts/page.njk');
   eleventyConfig.addLayoutAlias('writing', 'layouts/writing.njk');
+
+  eleventyConfig.addFilter('formatDate', filters.dateFormat);
+  eleventyConfig.addFilter('dateDiff', filters.dateDiff);
 
   eleventyConfig.addTransform('htmlmin', (content, outputPath) => {
     if (outputPath.endsWith('.html')) {
