@@ -1,0 +1,7 @@
+<p>
+  <time datetime="{{ postDate }}" class="js-date-label">{{ postDate | formatDate }}</time>
+  {# TODO: Update diff time #}
+  {% if (postDate | dateDiff < 300) %}
+    <span>New</span>
+  {% endif %}
+</p>
