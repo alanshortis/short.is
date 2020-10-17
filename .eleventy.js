@@ -1,12 +1,14 @@
 require('dotenv-safe').config();
-const eleventyNavigationPlugin = require('@11ty/eleventy-navigation');
-const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
+const navigationPlugin = require('@11ty/eleventy-navigation');
+const rssPlugin = require('@11ty/eleventy-plugin-rss');
+const syntaxPlugin = require('@11ty/eleventy-plugin-syntaxhighlight');
 const htmlmin = require('html-minifier');
 const filters = require('./filters');
 
 module.exports = eleventyConfig => {
-  eleventyConfig.addPlugin(eleventyNavigationPlugin);
-  eleventyConfig.addPlugin(syntaxHighlight, { templateFormats: ['md'] });
+  eleventyConfig.addPlugin(navigationPlugin);
+  eleventyConfig.addPlugin(rssPlugin);
+  eleventyConfig.addPlugin(syntaxPlugin, { templateFormats: ['md'] });
 
   eleventyConfig.addLayoutAlias('main', 'layouts/main.njk');
   eleventyConfig.addLayoutAlias('page', 'layouts/page.njk');
