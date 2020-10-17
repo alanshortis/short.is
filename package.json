@@ -8,6 +8,10 @@
     "type": "git",
     "url": "https://github.com/alanshortis/short.is"
   },
+  "scripts": {
+    "dev": "eleventy --serve --quiet",
+    "build": "eleventy --quiet"
+  },
   "babel": {
     "presets": [
       "@babel/preset-env"
@@ -20,10 +24,10 @@
     "arrowParens": "avoid"
   },
   "devDependencies": {
+    "@11ty/eleventy": "^0.11.0",
     "@babel/core": "^7.12.3",
     "@babel/preset-env": "^7.12.1",
     "dotenv-safe": "^8.2.0",
-    "prettier": "^2.1.2",
     "prompts": "^2.3.2",
     "simple-git": "^2.21.0"
   }
