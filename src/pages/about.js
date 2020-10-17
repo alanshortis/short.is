@@ -27,7 +27,7 @@ const Now = () => {
       <Meta title="About" description="Who is Alan Shortis anyway?" />
       <Layout>
         <PostContainer>
-          <Time date="2020-10-10" pre="Updated" />
+          <Time date="2020-10-18" pre="Updated" />
           <PostTitle>About</PostTitle>
           <PostIntro>
             I&rsquo;m Alan Shortis—a front end developer based in Nottingham. I like CSS more than
@@ -58,7 +58,6 @@ const Now = () => {
             </p>
             <h2>Now</h2>
             <ul>
-              <li>Writing every day.</li>
               <li>Learning German.</li>
               <li>
                 Reading{' '}
@@ -69,7 +68,10 @@ const Now = () => {
               </li>
               <li>Watching Six Feet Under and the Giro d'Italia.</li>
               <li>Playing Portal 2 co-op.</li>
-              <li>Getting fed up with PostCSS and using SCSS.</li>
+              <li>
+                Writing v3 of this site, and making the progress public:{' '}
+                <A href="https://beta.short.is">beta.short.is</A>
+              </li>
             </ul>
           </StyledPost>
           <Social />
