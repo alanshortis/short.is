@@ -1,5 +1,5 @@
 ---
-layout: 'main'
+layout: 'page'
 title: 'Writing'
 eleventyNavigation:
   key: writing
@@ -9,5 +9,19 @@ eleventyNavigation:
 {% block content %}
   <section>
     <h1>Writing</h1>
+    <ul>
+      {%- for post in collections.writing | reverse -%}
+        <li>
+          <article>
+            <a href="{{ post.data.permalink }}">
+              {%- set postDate = post.data.date %}
+              {% include 'postdate.njk' %}
+              <h2>{{ post.data.title }}</h2>
+              <p>{{ post.data.intro }}</p>
+            </a>
+          </article>
+        </li>
+      {%- endfor %}
+    </ul>
   </section>
 {% endblock %}

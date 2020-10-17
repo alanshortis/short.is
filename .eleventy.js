@@ -6,9 +6,10 @@ module.exports = eleventyConfig => {
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
 
   eleventyConfig.addLayoutAlias('main', 'layouts/main.njk');
+  eleventyConfig.addLayoutAlias('page', 'layouts/page.njk');
+  eleventyConfig.addLayoutAlias('writing', 'layouts/writing.njk');
 
   eleventyConfig.addTransform('htmlmin', (content, outputPath) => {
-    console.log(process.env);
     if (outputPath.endsWith('.html')) {
       const minified = htmlmin.minify(content, {
         useShortDoctype: true,
