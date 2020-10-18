@@ -9,4 +9,5 @@
   <h1>{{ title }}</h1>
   <p>{{ intro }}</p>
   {{ content | safe }}
+  {%- include "nextprev.njk" %}
 {% endblock %}

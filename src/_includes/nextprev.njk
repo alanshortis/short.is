@@ -1,0 +1,23 @@
+<nav>
+  <ul>
+    {% set previousPost = collections.writing | getPreviousCollectionItem(page) %}
+    {% set nextPost = collections.writing | getNextCollectionItem(page) %}
+
+    {% if previousPost %}
+      <li>
+        <a href="{{ previousPost.url }}">
+          Older
+          {{ previousPost.data.title }}
+        </a>
+      </li>
+    {% endif %}
+    {% if nextPost %}
+      <li>
+        <a href="{{ nextPost.url }}">
+          Newer
+          {{ nextPost.data.title }}
+        </a>
+      </li>
+    {% endif %}
+  </ul>
+</nav>
