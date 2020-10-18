@@ -5,3 +5,5 @@
 A personal website, using:
 
 - [11ty](https://www.11ty.dev/)
+- [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components)
+- [Sass](https://sass-lang.com/)

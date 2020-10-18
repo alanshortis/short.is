@@ -11,7 +11,7 @@ module.exports = eleventyConfig => {
   eleventyConfig.addPlugin(syntaxPlugin, { templateFormats: ['md'] });
 
   eleventyConfig.setTemplateFormats(['md', 'njk']);
-  eleventyConfig.addPassthroughCopy('src/js');
+  eleventyConfig.addPassthroughCopy('src/assets');
 
   eleventyConfig.setUseGitIgnore(false);
 

@@ -7,9 +7,9 @@ module.exports = ({ NODE_ENV }) => {
     mode: NODE_ENV,
     watch: !isProd,
     devtool: isProd ? false : 'source-map',
-    entry: './src/src/js/index.js',
+    entry: './src/js/index.js',
     output: {
-      path: path.resolve(__dirname, 'src/js'),
+      path: path.resolve(__dirname, 'src/assets'),
       filename: 'index.js',
     },
   };
