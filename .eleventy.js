@@ -10,6 +10,11 @@ module.exports = eleventyConfig => {
   eleventyConfig.addPlugin(rssPlugin);
   eleventyConfig.addPlugin(syntaxPlugin, { templateFormats: ['md'] });
 
+  eleventyConfig.setTemplateFormats(['md', 'njk']);
+  eleventyConfig.addPassthroughCopy('src/js');
+
+  eleventyConfig.setUseGitIgnore(false);
+
   eleventyConfig.addLayoutAlias('main', 'layouts/main.njk');
   eleventyConfig.addLayoutAlias('page', 'layouts/page.njk');
   eleventyConfig.addLayoutAlias('writing', 'layouts/writing.njk');
