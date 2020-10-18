@@ -6,6 +6,8 @@ eleventyNavigation:
   order: 1
 ---
 
+{% from "macros/postdate.njk" import postDate %}
+
 {% block content %}
   <section>
     <h1>Writing</h1>
@@ -14,8 +16,7 @@ eleventyNavigation:
         <li>
           <article>
             <a href="{{ post.data.permalink }}">
-              {%- set postDate = post.data.date %}
-              {% include 'postdate.njk' %}
+              {{ postDate(post.data.date) }}
               <h2>{{ post.data.title }}</h2>
               <p>{{ post.data.intro }}</p>
             </a>
