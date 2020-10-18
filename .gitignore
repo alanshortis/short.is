@@ -3,5 +3,5 @@
 npm-debug.log*
 node_modules
 dist
-src/js
-src/css
+src/assets
+src/*.map
