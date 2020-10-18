@@ -9,5 +9,15 @@ eleventyNavigation:
 {% block content %}
   <section>
     <h1>Playlists</h1>
+    <ul>
+      {%- for playlist in spotify.annual %}
+        {%- include 'playlist.njk' %}
+      {%- endfor %}
+    </ul>
+    <ul>
+      {%- for playlist in spotify.theme %}
+        {%- include 'playlist.njk' %}
+      {%- endfor %}
+    </ul>
   </section>
 {% endblock %}
