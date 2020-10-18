@@ -41,6 +41,7 @@
     "html-minifier": "^4.0.0",
     "node-fetch": "^2.6.1",
     "prompts": "^2.3.2",
+    "request-promise": "^4.2.6",
     "sass": "^1.27.0",
     "simple-git": "^2.21.0",
     "webpack": "^4.44.2",
