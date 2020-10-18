@@ -42,7 +42,7 @@ class SchemeToggle extends HTMLElement {
   }
 
   render() {
-    this.innerHTML = `<button id="js-scheme-toggle">Dark theme?</button> (Switches a class on the body)`;
+    this.innerHTML = `<button id="js-scheme-toggle">Dark theme?</button>`;
     this.afterRender();
   }
 

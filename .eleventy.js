@@ -12,6 +12,7 @@ module.exports = eleventyConfig => {
 
   eleventyConfig.setTemplateFormats(['md', 'njk']);
   eleventyConfig.addPassthroughCopy('src/js');
+  eleventyConfig.addPassthroughCopy('src/css');
 
   eleventyConfig.setUseGitIgnore(false);
 
