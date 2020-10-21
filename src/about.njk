@@ -9,6 +9,9 @@ eleventyNavigation:
 {% block content %}
   <section>
     <h1>About</h1>
-    <p>Reading {{ goodreads | safe }}.</p>
+    <h2>Now</h2>
+    <ul>
+      <li>Reading {{ goodreads | safe }}.</li>
+    </ul>
   </section>
 {% endblock %}

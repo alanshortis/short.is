@@ -1,0 +1,9 @@
+{% macro postDate(date) %}
+  <p>
+    <time datetime="{{ date }}">{{ date | formatDate }}</time>
+    {# TODO: Update diff time #}
+    {%- if (date | dateDiff < 300) %}
+      <span>New</span>
+    {%- endif %}
+  </p>
+{% endmacro %}
