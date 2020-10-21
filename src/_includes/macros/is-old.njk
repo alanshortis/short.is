@@ -1,0 +1,5 @@
+{% macro isOld(date) %}
+  {%- if date | dateDiff > 731 %}
+    <mark>This post is more than two years old. Dependencies, approaches, and best practices may be outdated and links may be broken.</mark>
+  {%- endif %}
+{% endmacro %}
