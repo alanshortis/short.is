@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-GB">
+<html lang="en-GB" id="top">
   <head>
     {%- set pageTitle = title + ' — ' + site.title if title else site.title %}
     <meta charset="UTF-8">
@@ -16,15 +16,17 @@
     <link rel="stylesheet" href="/assets/style.css?v={{ site.version }}">
   </head>
   <body>
+    <a href="#main">Skip to content</a>
     <header>
       <a href="/" class="logo">
         {% include "logo.svg" %}
       </a>
       {% include "menu.njk" %}
     </header>
-    <main>
+    <main id="main">
       {% block content %}{% endblock content %}
     </main>
+    <a href="#top">Back to the top</a>
     <script src="/assets/index.js?v={{ site.version }}"></script>
   </body>
 </html>
