@@ -1,9 +1,9 @@
 {% macro postDate(date) %}
   <p>
-    <time datetime="{{ date }}" class="js-date-label">{{ date | formatDate }}</time>
+    <time datetime="{{ date }}">{{ date | formatDate }}</time>
     {# TODO: Update diff time #}
-    {% if (date | dateDiff < 300) %}
+    {%- if (date | dateDiff < 300) %}
       <span>New</span>
-    {% endif %}
+    {%- endif %}
   </p>
 {% endmacro %}
