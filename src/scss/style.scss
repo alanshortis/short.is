@@ -1,22 +1,2 @@
-:root {
-  --light: white;
-  --dark: #333;
-
-  --background: var(--light);
-  --text: var(--dark);
-
-  & body.dark {
-    --background: var(--dark);
-    --type: var(--light);
-  }
-}
-
-body {
-  color: var(--type);
-  background-color: var(--background);
-}
-
-a {
-  color: currentColor;
-  text-decoration: none;
-}
+@use 'root';
+@use 'header';
