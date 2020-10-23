@@ -16,10 +16,8 @@ module.exports = eleventyConfig => {
 
   eleventyConfig.setTemplateFormats(['md', 'njk']);
 
-  // Do not use gotignore to determne files that shouldn't be copied on
-  // build otherwise our compiled CSS and JS will never go anywhere.
-  eleventyConfig.setUseGitIgnore(false);
-  eleventyConfig.addPassthroughCopy(`${input}/assets`);
+  eleventyConfig.addPassthroughCopy(`${input}/*.js`);
+  eleventyConfig.addPassthroughCopy(`${input}/*.css`);
 
   eleventyConfig.addLayoutAlias('main', 'layouts/main.njk');
   eleventyConfig.addLayoutAlias('page', 'layouts/page.njk');
