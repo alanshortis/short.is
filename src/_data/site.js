@@ -2,9 +2,11 @@ const { version } = require('../../package.json');
 
 module.exports = {
   version,
+  lang: 'en-GB',
   author: 'Alan Shortis',
   email: 'hello@short.is',
   title: 'Alan Shortis',
+  shortTitle: 'short.is',
   description: 'Alan Shortis is a Web Developer',
   url: 'https://short.is',
   twitter: '@alanshortis',
