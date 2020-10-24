@@ -9,7 +9,7 @@ module.exports = ({ NODE_ENV }) => {
     devtool: isProd ? false : 'source-map',
     entry: {
       app: './src/js/app.js',
-      sw: './src/js/serviceworker.js',
+      serviceworker: './src/js/serviceworker.js',
     },
     output: {
       path: path.resolve(__dirname, 'src'),
