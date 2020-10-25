@@ -1,9 +1,9 @@
-const registerServiceWorker = () => {
+const registerSw = () => {
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/serviceworker.js');
+      navigator.serviceWorker.register('/sw.js');
     });
   }
 };
 
-export default registerServiceWorker;
+export default registerSw;
