@@ -1,8 +1,10 @@
-<ul role="navigation" aria-label="Main menu">
-  {%- for item in collections.all | eleventyNavigation %}
-    <li>
-      <a href="{{ item.url | url }}" {% if item.url in page.url %} class="active" {% endif %}>{{ item.title }}</a>
-    </li>
-  {%- endfor %}
-</ul>
-<scheme-toggle></scheme-toggle>
+<nav>
+  <ul>
+    {%- for key, section in site.sections %}
+      <li>
+        <a href="/{{ key }}/" {% if key in page.url %} class="active" {% endif %}>{{ section }}</a>
+      </li>
+    {%- endfor %}
+  </ul>
+  <scheme-toggle></scheme-toggle>
+</nav>

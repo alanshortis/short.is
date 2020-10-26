@@ -1,6 +1,5 @@
 require('dotenv-safe').config();
 const fs = require('fs');
-const navigationPlugin = require('@11ty/eleventy-navigation');
 const rssPlugin = require('@11ty/eleventy-plugin-rss');
 const syntaxPlugin = require('@11ty/eleventy-plugin-syntaxhighlight');
 const htmlmin = require('html-minifier');
@@ -10,7 +9,6 @@ const input = 'src';
 const output = 'dist';
 
 module.exports = eleventyConfig => {
-  eleventyConfig.addPlugin(navigationPlugin);
   eleventyConfig.addPlugin(rssPlugin);
   eleventyConfig.addPlugin(syntaxPlugin, { templateFormats: ['md'] });
 

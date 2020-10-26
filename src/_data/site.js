@@ -17,4 +17,10 @@ module.exports = {
     'https://www.strava.com/athletes/138800': 'Strava',
     'https://twitter.com/alanshortis': 'Twitter',
   },
+  sections: {
+    writing: 'Writing',
+    photography: 'Photography',
+    playlists: 'Playlists',
+    about: 'About',
+  },
 };
