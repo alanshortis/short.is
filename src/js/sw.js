@@ -7,8 +7,8 @@ const STATIC_ASSETS = ['/', '/style.css?v=3.0.0', '/app.js?v=3.0.0'];
 const IGNORED_URLS = ['/browser-sync/'];
 
 // On install, open or create a static cache and add anything defined in the above array.
-self.addEventListener('install', event => {
-  event.waitUntil(
+self.addEventListener('install', e => {
+  e.waitUntil(
     caches.open(STATIC_CACHE).then(cache => {
       cache.addAll(STATIC_ASSETS);
     })
@@ -16,8 +16,8 @@ self.addEventListener('install', event => {
 });
 
 // Once activated, check for old caches and delete them.
-self.addEventListener('activate', event => {
-  event.waitUntil(
+self.addEventListener('activate', e => {
+  e.waitUntil(
     caches.keys().then(keys => {
       return Promise.all(
         keys.filter(key => !CACHE_NAMES.includes(key)).map(key => caches.delete(key))
@@ -27,20 +27,21 @@ self.addEventListener('activate', event => {
 });
 
 // On fetch, serve from cache if possible and cache anything else.
-self.addEventListener('fetch', event => {
-  if (IGNORED_URLS.some(page => event.request.url.indexOf(page) > -1)) {
-    return;
-  }
+self.addEventListener('fetch', e => {
+  // Prevent attempted caching of anything not over http (browser extensions, etc).
+  if (!(e.request.url.indexOf('http') === 0)) return;
 
-  event.respondWith(
-    caches.match(event.request).then(cacheResponse => {
+  if (IGNORED_URLS.some(page => e.request.url.indexOf(page) > -1)) return;
+
+  e.respondWith(
+    caches.match(e.request).then(cacheResponse => {
       if (cacheResponse) {
         return cacheResponse;
       }
 
       return caches.open(DYNAMIC_CACHE).then(cache => {
-        return fetch(event.request).then(response => {
-          return cache.put(event.request, response.clone()).then(() => response);
+        return fetch(e.request).then(response => {
+          return cache.put(e.request, response.clone()).then(() => response);
         });
       });
     })
