@@ -1,8 +1,14 @@
 {
-  "background_color": "#FEFEFE",
-  "description": "",
+  "lang": "en-GB",
+  "name": "Alan Shortis",
+  "short_name": "short.is",
+  "description": "Alan Shortis is a Web Developer",
+  "start_url": "/",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
   "dir": "ltr",
-  "display": "minimal-ui",
+  "display": "standalone",
+  "orientation": "portrait-primary",
   "icons": [
     {
       "src": "/img/icon-192@2x.png",
@@ -30,10 +36,5 @@
       "type": "image/png",
       "purpose": "any maskable"
     }
-  ],
-  "lang": "en-GB",
-  "name": "Alan Shortis",
-  "short_name": "short.is",
-  "start_url": "/",
-  "theme_color": "#ffffff"
+  ]
 }
