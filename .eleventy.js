@@ -16,6 +16,7 @@ module.exports = eleventyConfig => {
 
   eleventyConfig.setTemplateFormats(['md', 'njk']);
 
+  eleventyConfig.addPassthroughCopy(`${input}/img/*`);
   eleventyConfig.addPassthroughCopy(`${input}/*.js`);
   eleventyConfig.addPassthroughCopy(`${input}/*.css`);
   eleventyConfig.addPassthroughCopy(`${input}/*.map`);
