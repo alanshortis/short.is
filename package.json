@@ -11,11 +11,11 @@
   "scripts": {
     "dev": "npm run clean && concurrently \"eleventy --serve --quiet\" \"npm run dev:css\" \"npm run dev:js\"",
     "dev:js": "webpack --env.NODE_ENV=development",
-    "dev:css": "sass src/scss/style.scss src/assets/style.css --watch",
+    "dev:css": "sass src/scss/style.scss src/style.css --watch",
     "build": "npm run build:css && npm run build:js && eleventy --quiet",
     "build:js": "webpack --env.NODE_ENV=production",
-    "build:css": "sass src/scss/style.scss src/assets/style.css --style=compressed --no-source-map",
-    "clean": "rm -rf dist && rm -rf src/assets",
+    "build:css": "sass src/scss/style.scss src/style.css --style=compressed --no-source-map",
+    "clean": "rm -rf dist && rm -rf src/*.js && rm -rf src/*.css && rm -rf src/*.map",
     "newpost": "node newpost.js"
   },
   "babel": {
