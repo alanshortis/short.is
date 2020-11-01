@@ -13,7 +13,7 @@ title: 'Writing'
         <li>
           <article>
             <a href="{{ post.data.permalink }}">
-              {{ postDate(post.data.date) }}
+              {{ postDate(post.data.date, post.data.updated) }}
               <h2>{{ post.data.title }}</h2>
               <p>{{ post.data.intro }}</p>
             </a>
