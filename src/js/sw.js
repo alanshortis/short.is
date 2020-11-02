@@ -3,7 +3,15 @@ const CACHE_NAMES = [`assets=${VERSION}`, `dynamic=${VERSION}`];
 const [STATIC_CACHE, DYNAMIC_CACHE] = CACHE_NAMES;
 
 // What we want to cache immediately, and what we never want to cache.
-const STATIC_ASSETS = ['/', '/style.css?v=3.0.0', '/app.js?v=3.0.0'];
+const STATIC_ASSETS = [
+  '/',
+  '/style.css?v=3.0.0',
+  '/app.js?v=3.0.0',
+  '/fonts/inter-bold.woff2',
+  '/fonts/inter-italic.woff2',
+  '/fonts/inter-regular.woff2',
+  'plex.woff2',
+];
 const IGNORED_URLS = ['/browser-sync/'];
 
 // On install, open or create a static cache and add anything defined in the above array.
@@ -29,7 +37,7 @@ self.addEventListener('activate', e => {
 // On fetch, serve from cache if possible and cache anything else.
 self.addEventListener('fetch', e => {
   // Prevent attempted caching of anything not over http (browser extensions, etc).
-  if (!(e.request.url.indexOf('http') === 0)) return;
+  if (e.request.url.indexOf('http') !== 0) return;
 
   if (IGNORED_URLS.some(page => e.request.url.indexOf(page) > -1)) return;
 

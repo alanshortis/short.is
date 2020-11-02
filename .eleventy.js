@@ -12,9 +12,12 @@ module.exports = eleventyConfig => {
   eleventyConfig.addPlugin(rssPlugin);
   eleventyConfig.addPlugin(syntaxPlugin, { templateFormats: ['md'] });
 
+  eleventyConfig.setUseGitIgnore(false);
+
   eleventyConfig.setTemplateFormats(['md', 'njk']);
 
-  eleventyConfig.addPassthroughCopy(`${input}/img/*`);
+  eleventyConfig.addPassthroughCopy(`${input}/img`);
+  eleventyConfig.addPassthroughCopy(`${input}/fonts`);
   eleventyConfig.addPassthroughCopy(`${input}/*.js`);
   eleventyConfig.addPassthroughCopy(`${input}/*.css`);
   eleventyConfig.addPassthroughCopy(`${input}/*.map`);
