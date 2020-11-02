@@ -4,4 +4,4 @@ import registerSw from './register-serviceworker';
 
 doesSupportJs();
 registerSchemeToggle();
-registerSw();
+// registerSw();
