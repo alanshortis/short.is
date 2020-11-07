@@ -1,4 +1,6 @@
-@use 'font-imports';
+@use 'generic/font-imports';
 
-@use 'root';
-@use 'header';
+@use 'base/root';
+@use 'base/type';
+
+@use 'components/header';

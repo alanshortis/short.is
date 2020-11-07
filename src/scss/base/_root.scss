@@ -1,16 +1,22 @@
-@use 'vars';
+@use '../settings/vars';
 
 :root {
-  --light: white;
-  --dark: #222;
-
-  --background: var(--light);
-  --text: var(--dark);
+  --background: #{vars.$light};
+  --text: #{vars.$dark};
 
   & body.dark {
-    --background: var(--dark);
-    --type: var(--light);
+    --background: #{vars.$dark};
+    --type: #{vars.$light};
   }
+}
+
+*,
+*:before,
+*:after {
+  border: 0;
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
 }
 
 html {
@@ -23,17 +29,10 @@ html {
 
 body {
   background-color: var(--background);
+  box-sizing: border-box;
   color: var(--type);
   font-family: vars.$family;
+  font-size: vars.$base-font-size;
   font-weight: vars.$weight;
   min-height: 100%;
-}
-
-a {
-  color: currentColor;
-  text-decoration: none;
-}
-
-code {
-  font-family: vars.$family--mono;
 }

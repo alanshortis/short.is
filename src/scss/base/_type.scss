@@ -1,0 +1,10 @@
+@use '../settings/vars';
+
+a {
+  color: vars.$accent;
+  text-decoration: none;
+}
+
+code {
+  font-family: vars.$family--mono;
+}
