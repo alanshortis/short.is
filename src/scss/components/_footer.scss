@@ -1,0 +1,14 @@
+@use '../settings/mixins' as m;
+
+.site-footer {
+  align-items: center;
+  border-top: 0.5rem solid currentColor;
+  display: flex;
+  height: 3rem;
+  justify-content: space-between;
+  margin: var(--margin);
+  margin-bottom: 0;
+  @include m.mq(small) {
+    height: 4rem;
+  }
+}
