@@ -1,12 +1,45 @@
 @use '../settings/vars' as v;
 
+h1,
+h2,
+h3,
+h4 {
+  font-weight: v.$weight--bold;
+  line-height: 1.25;
+}
+
+h1 {
+  font-size: 2.488rem;
+  &.hero {
+    font-size: 4.976rem;
+  }
+}
+
+h2 {
+  font-size: 2.074rem;
+}
+
+h3 {
+  font-size: 1.728rem;
+}
+
+h4 {
+  font-size: 1.44rem;
+}
+
+p {
+  &.large {
+    font-size: 1.2rem;
+  }
+}
+
 a {
   color: currentColor;
   text-decoration: none;
 }
 
-code {
-  font-family: v.$family--mono;
+strong {
+  font-weight: v.$weight--bold;
 }
 
 .sr-only {
@@ -20,6 +53,8 @@ code {
 
 .label {
   font-family: v.$family--mono;
+  font-size: 0.833rem;
+  line-height: 1;
   letter-spacing: 2px;
   text-transform: uppercase;
 }

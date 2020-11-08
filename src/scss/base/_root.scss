@@ -25,6 +25,11 @@
   text-decoration: none;
 }
 
+ul,
+ol {
+  list-style: none;
+}
+
 html {
   height: 100%;
   scroll-behavior: smooth;
@@ -40,9 +45,13 @@ body {
   display: flex;
   flex-direction: column;
   font-family: v.$family;
-  font-size: v.$base-font-size;
+  font-size: 14px;
   font-weight: v.$weight;
+  line-height: 1.5;
   min-height: 100vh;
+  @include m.mq(small) {
+    font-size: 16px;
+  }
 }
 
 main {

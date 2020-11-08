@@ -9,7 +9,7 @@
 
 .site-footer {
   align-items: center;
-  border-top: 0.5rem solid currentColor;
+  border-top: v.$divider-fatness solid currentColor;
   display: flex;
   height: 3rem;
   justify-content: space-between;
