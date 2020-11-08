@@ -1,4 +1,11 @@
+@use '../settings/vars' as v;
 @use '../settings/mixins' as m;
+
+.footer-container {
+  margin: 0 auto;
+  max-width: v.$container-max;
+  width: 100%;
+}
 
 .site-footer {
   align-items: center;
@@ -6,6 +13,7 @@
   display: flex;
   height: 3rem;
   justify-content: space-between;
+  margin-bottom: 0;
   margin: var(--margin);
   margin-bottom: 0;
   @include m.mq(small) {
