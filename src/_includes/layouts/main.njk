@@ -19,17 +19,11 @@
     <link rel="stylesheet" href="/style.css?v={{ site.version }}">
   </head>
   <body class="no-js">
-    <a href="#main">Skip to content</a>
-    <header>
-      <a href="/" class="logo">
-        {% include "logo.svg" %}
-      </a>
-      {% include "menu.njk" %}
-    </header>
+    {%- include "header.njk" %}
     <main id="main">
       {% block content %}{% endblock content %}
     </main>
-    <a href="#top">Back to the top</a>
+    {%- include "footer.njk" %}
     <script src="/app.js?v={{ site.version }}"></script>
   </body>
 </html>
