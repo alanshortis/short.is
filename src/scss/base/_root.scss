@@ -1,12 +1,18 @@
-@use '../settings/vars';
+@use '../settings/vars' as v;
+@use '../settings/mixins' as m;
 
 :root {
-  --background: #{vars.$light};
-  --text: #{vars.$dark};
+  --background: #{v.$light};
+  --type: #{v.$dark};
+  --margin: 1rem;
 
   & body.dark {
-    --background: #{vars.$dark};
-    --type: #{vars.$light};
+    --background: #{v.$dark};
+    --type: #{v.$light};
+  }
+
+  @include m.mq(small) {
+    --margin: 2rem;
   }
 }
 
@@ -17,12 +23,13 @@
   box-sizing: inherit;
   margin: 0;
   padding: 0;
+  text-decoration: none;
 }
 
 html {
   height: 100%;
   scroll-behavior: smooth;
-  @media (prefers-reduced-motion: reduce) {
+  @include m.mq(motion) {
     scroll-behavior: auto;
   }
 }
@@ -31,8 +38,18 @@ body {
   background-color: var(--background);
   box-sizing: border-box;
   color: var(--type);
-  font-family: vars.$family;
-  font-size: vars.$base-font-size;
-  font-weight: vars.$weight;
-  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  font-family: v.$family;
+  font-size: v.$base-font-size;
+  font-weight: v.$weight;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+  margin: 0 auto;
+  max-width: 1204px;
+  padding: 0 var(--margin);
+  width: 100%;
 }
