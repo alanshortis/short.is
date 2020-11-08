@@ -17,6 +17,17 @@
   pre,
   blockquote {
     margin-bottom: var(--margin);
+    a {
+      border-bottom: calc(var(--margin) / 12) solid v.$accent;
+      text-decoration-color: v.$accent;
+      @supports ((text-decoration-thickness: 3px) and (text-decoration-skip-ink: none)) {
+        border-bottom: 0;
+        text-decoration: underline;
+        text-decoration-color: v.$accent;
+        text-decoration-skip-ink: none;
+        text-decoration-thickness: calc(var(--margin) / 12);
+      }
+    }
   }
 
   ul,
