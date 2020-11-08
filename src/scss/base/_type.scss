@@ -1,12 +1,12 @@
-@use '../settings/vars';
+@use '../settings/vars' as v;
 
 a {
-  color: vars.$accent;
+  color: currentColor;
   text-decoration: none;
 }
 
 code {
-  font-family: vars.$family--mono;
+  font-family: v.$family--mono;
 }
 
 .sr-only {
@@ -16,4 +16,10 @@ code {
   overflow: hidden;
   position: absolute;
   width: 1px;
+}
+
+.label {
+  font-family: v.$family--mono;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
