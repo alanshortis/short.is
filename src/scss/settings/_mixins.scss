@@ -1,0 +1,18 @@
+$media-queries: (
+  motion: (
+    prefers-reduced-motion: reduce,
+  ),
+  small: (
+    min-width: 600px,
+  ),
+);
+
+@mixin mq($bp) {
+  @if map-has-key($media-queries, $bp) {
+    @media #{inspect(map-get($media-queries, $bp))} {
+      @content;
+    }
+  } @else {
+    @warn '#{$bp} is not a valid breakpoint.';
+  }
+}
