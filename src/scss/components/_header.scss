@@ -1,0 +1,63 @@
+@use '../settings/vars' as v;
+@use '../settings/mixins' as m;
+
+.site-header {
+  align-items: center;
+  display: flex;
+  height: 3rem;
+  justify-content: space-between;
+  margin-bottom: var(--margin);
+  position: sticky;
+  top: 0;
+  width: 100%;
+  @supports (mix-blend-mode: difference) {
+    color: v.$header--fore;
+    mix-blend-mode: difference;
+  }
+  @include m.mq(small) {
+    height: 4rem;
+  }
+}
+
+.logo {
+  color: currentColor;
+  display: flex;
+  svg {
+    fill: currentColor;
+    height: 1.5rem;
+  }
+}
+
+%header-link {
+  align-items: flex-end;
+  color: currentColor;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  padding: 0 var(--margin);
+}
+
+.home-link {
+  @extend %header-link;
+}
+
+.menu-button {
+  @extend %header-link;
+  background: none;
+  span {
+    position: relative;
+    background-color: currentColor;
+    height: 2px;
+    width: 1.5rem;
+    &:first-of-type {
+      transform: translateY(-5px);
+      width: 2rem;
+    }
+    &:last-of-type {
+      transform: translateY(5px);
+      width: 1rem;
+    }
+  }
+}

@@ -1,0 +1,33 @@
+@use '../settings/vars' as v;
+
+%arrow-styles {
+  color: v.$accent;
+  speak: never;
+}
+
+.arrow {
+  &--up {
+    &::after {
+      @extend %arrow-styles;
+      content: '  ↑';
+    }
+  }
+  &--down {
+    &::after {
+      @extend %arrow-styles;
+      content: '  ↓';
+    }
+  }
+  &--left {
+    &::before {
+      @extend %arrow-styles;
+      content: '←  ';
+    }
+  }
+  &--right {
+    &::after {
+      @extend %arrow-styles;
+      content: '  →';
+    }
+  }
+}

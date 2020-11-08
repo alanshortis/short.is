@@ -1,4 +1,10 @@
-@use 'font-imports';
+@use 'generic/font-imports';
 
-@use 'root';
-@use 'header';
+@use 'base/root';
+@use 'base/type';
+
+@use 'components/arrow';
+@use 'components/dot';
+@use 'components/footer';
+@use 'components/header';
+@use 'components/post-content';
