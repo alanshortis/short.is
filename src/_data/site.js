@@ -1,7 +1,9 @@
 const { version } = require('../../package.json');
+const thisYear = new Date().getFullYear();
 
 module.exports = {
   version,
+  thisYear,
   lang: 'en-GB',
   author: 'Alan Shortis',
   email: 'hello@short.is',
