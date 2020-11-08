@@ -4,13 +4,12 @@
 :root {
   --background: #{v.$light};
   --type: #{v.$dark};
-  --margin: 1rem;
-
   & body.dark {
     --background: #{v.$dark};
     --type: #{v.$light};
   }
 
+  --margin: 1rem;
   @include m.mq(small) {
     --margin: 2rem;
   }
@@ -49,7 +48,7 @@ body {
 main {
   flex: 1;
   margin: 0 auto;
-  max-width: 1204px;
+  max-width: v.$container-max;
   padding: 0 var(--margin);
   width: 100%;
 }

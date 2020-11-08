@@ -1,11 +1,11 @@
 {% macro postDate(date, updated) %}
-  <p>
+  <p class="label">
     <time datetime="{{ date }}">{{ date | formatDate }}</time>
     {# TODO: Update diff time #}
     {%- if (updated | dateDiff < 300) %}
-      <span>Updated</span>
+      <span class="accent">Updated</span>
     {%- elif (date | dateDiff < 300) %}
-      <span>New</span>
+      <span class="accent">New</span>
     {%- endif %}
   </p>
 {% endmacro %}
