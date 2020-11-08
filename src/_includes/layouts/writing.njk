@@ -1,9 +1,7 @@
 {% from "macros/postdate.njk" import postDate %}
-{% from "macros/is-old.njk" import isOld %}
 {% extends 'layouts/main.njk' %}
 
 {% block content %}
-  {{ isOld(date)}}
   {{ postDate(date, updated) }}
   <h1>{{ title }}</h1>
   <p>{{ intro }}</p>
