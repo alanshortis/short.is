@@ -34,11 +34,14 @@ p {
 }
 
 a {
-  color: currentColor;
+  color: v.$accent;
   text-decoration: none;
   &[href^='http']::after {
     color: v.$accent;
-    content: '  ↗';
+    content: '↗';
+    font-family: v.$family--mono;
+    font-size: 0.833rem;
+    margin: 0 0.25em;
   }
 }
 
