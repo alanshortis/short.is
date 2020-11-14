@@ -5,6 +5,9 @@ $media-queries: (
   small: (
     min-width: 600px,
   ),
+  medium: (
+    min-width: 1200px,
+  ),
 );
 
 @mixin mq($bp) {
