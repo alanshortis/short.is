@@ -13,15 +13,8 @@
     <div class="post-content__body">
       <p class="large">{{ intro }}</p>
       {{ content | safe }}
-      <p>If you have found this ariticle helpful, please consider <a href="https://ko-fi.com/alanshortis" targt="_blank">buying me a Coffee</a>. Thank you!</p>
+      <p>If you have found this ariticle helpful, please consider <a href="https://ko-fi.com/alanshortis" targt="_blank">buying me a Coffee</a>.</p>
     </div>
-    <a class="post-content__prev next-prev" href="{{ previousPost.url }}">
-      <span>Older</span>
-      <span>{{ previousPost.data.title }}</span>
-    </a>
-    <a class="post-content__next next-prev" href="{{ nextPost.url }}">
-      <span>Newer</span>
-      <span>{{ nextPost.data.title }}</span>
-    </a>
+    {%- include 'nextprev.njk' %}
   </article>
 {% endblock %}

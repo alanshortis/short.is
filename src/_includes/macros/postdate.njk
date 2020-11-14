@@ -1,5 +1,5 @@
 {% macro postDate(date, updated) %}
-  <p class="label">
+  <p class="label post-date">
     <time datetime="{{ date }}">{{ date | formatDate }}</time>
     {# TODO: Update diff time #}
     {%- if (updated | dateDiff < 300) %}
