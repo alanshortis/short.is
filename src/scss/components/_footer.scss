@@ -1,22 +1,16 @@
 @use '../settings/vars' as v;
 @use '../settings/mixins' as m;
 
-.footer-container {
+.site-footer {
   margin: 0 auto;
   max-width: v.$container-max;
   width: 100%;
-}
-
-.site-footer {
-  align-items: center;
-  border-top: v.$divider-fatness solid currentColor;
-  display: flex;
-  height: 3rem;
-  justify-content: space-between;
-  margin-bottom: 0;
-  margin: var(--margin);
-  margin-bottom: 0;
-  @include m.mq(small) {
-    height: 4rem;
+  div {
+    align-items: center;
+    border-top: v.$divider-fatness solid currentColor;
+    display: flex;
+    height: 100%;
+    justify-content: space-between;
+    margin: 0 var(--margin);
   }
 }

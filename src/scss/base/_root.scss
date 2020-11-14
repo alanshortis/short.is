@@ -42,22 +42,22 @@ body {
   background-color: var(--background);
   box-sizing: border-box;
   color: var(--type);
-  display: flex;
-  flex-direction: column;
+  display: grid;
   font-family: v.$family;
   font-size: 14px;
   font-weight: v.$weight;
+  grid-template-rows: 3rem auto 3rem;
   line-height: 1.5;
   min-height: 100vh;
   @include m.mq(small) {
     font-size: 16px;
+    grid-template-rows: 4rem auto 4rem;
   }
 }
 
 main {
-  flex: 1;
   margin: 0 auto;
   max-width: v.$container-max;
-  padding: 0 var(--margin);
+  padding: var(--margin);
   width: 100%;
 }

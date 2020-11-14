@@ -4,18 +4,13 @@
 .site-header {
   align-items: center;
   display: flex;
-  height: 3rem;
   justify-content: space-between;
-  margin-bottom: var(--margin);
   position: sticky;
   top: 0;
   width: 100%;
   @supports (mix-blend-mode: difference) {
     color: v.$header--fore;
     mix-blend-mode: difference;
-  }
-  @include m.mq(small) {
-    height: 4rem;
   }
 }
 

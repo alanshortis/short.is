@@ -2,11 +2,19 @@
 {% extends 'layouts/main.njk' %}
 
 {% block content %}
-  <article class="post-content">
-    {{ postDate(date, updated) }}
-    <h1>{{ title }}</h1>
-    <p class="large">{{ intro }}</p>
-    {{ content | safe }}
+  {% set previousPost = collections.writing | getPreviousCollectionItem(page) %}
+  {% set nextPost = collections.writing | getNextCollectionItem(page) %}
+
+  <article class="post-content post-formatting">
+    <div class="post-content__meta">
+      {{ postDate(date, updated) }}
+      <h1>{{ title }}</h1>
+    </div>
+    <div class="post-content__body">
+      <p class="large">{{ intro }}</p>
+      {{ content | safe }}
+      <p>If you have found this ariticle helpful, please consider <a href="https://ko-fi.com/alanshortis" targt="_blank">buying me a Coffee</a>.</p>
+    </div>
+    {%- include 'nextprev.njk' %}
   </article>
-  {%- include "nextprev.njk" %}
 {% endblock %}
