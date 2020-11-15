@@ -2,14 +2,14 @@
 {% set nextPost = collections.writing | getNextCollectionItem(page) %}
 
 {%- if previousPost %}
-  <a class="post-content__prev" href="{{ previousPost.url }}">
-    <span>Older</span>
-    <span>{{ previousPost.data.title }}</span>
+  <a class="post-content__nav post-content__nav--prev" href="{{ previousPost.url }}">
+    <span class="label arrow--left">Older</span>
+    <p class="h4">{{ previousPost.data.title }}</p>
   </a>
 {%- endif %}
 {%- if nextPost %}
-  <a class="post-content__next" href="{{ nextPost.url }}">
-    <span>Newer</span>
-    <span>{{ nextPost.data.title }}</span>
+  <a class="post-content__nav post-content__nav--next" href="{{ nextPost.url }}">
+    <span class="label arrow--right">Newer</span>
+    <p class="h4">{{ nextPost.data.title }}</p>
   </a>
 {%- endif %}

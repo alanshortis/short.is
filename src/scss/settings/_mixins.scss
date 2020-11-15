@@ -1,21 +1,32 @@
-$media-queries: (
-  motion: (
-    prefers-reduced-motion: reduce,
-  ),
-  small: (
-    min-width: 600px,
-  ),
-  medium: (
-    min-width: 900px,
-  ),
-);
+@use '../settings/vars' as v;
 
 @mixin mq($bp) {
-  @if map-has-key($media-queries, $bp) {
-    @media #{inspect(map-get($media-queries, $bp))} {
+  @if map-has-key(v.$media-queries, $bp) {
+    @media #{inspect(map-get(v.$media-queries, $bp))} {
       @content;
     }
   } @else {
     @warn '#{$bp} is not a valid breakpoint.';
+  }
+}
+
+@mixin post-link() {
+  color: currentColor;
+  border: v.$divider-fatness solid currentColor;
+  display: block;
+  padding: var(--margin);
+  @include mq(motion) {
+    box-shadow: 0 0 0 0 currentColor;
+    transition: box-shadow 200ms ease;
+    &:hover {
+      box-shadow: 0 0 0 v.$divider-fatness currentColor;
+    }
+  }
+  span {
+    display: block;
+    margin-bottom: var(--margin);
+  }
+  p {
+    margin-bottom: 0;
   }
 }

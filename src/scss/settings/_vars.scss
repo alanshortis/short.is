@@ -13,3 +13,18 @@ $accent: #dd6969;
 $dark: #222222;
 $light: #fefefe;
 $header--fore: $light;
+
+$media-queries: (
+  reduce-motion: (
+    prefers-reduced-motion: reduce,
+  ),
+  motion: (
+    prefers-reduced-motion: no-preference,
+  ),
+  small: (
+    min-width: 600px,
+  ),
+  medium: (
+    min-width: 900px,
+  ),
+);

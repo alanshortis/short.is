@@ -1,0 +1,61 @@
+@use '../settings/vars' as v;
+
+.post-formatting {
+  h1 {
+    margin-bottom: var(--margin);
+  }
+
+  h2,
+  h3 {
+    padding-top: var(--margin);
+    margin-bottom: var(--margin);
+  }
+
+  h2 + h3 {
+    padding-top: 0;
+  }
+
+  p,
+  ul,
+  ol,
+  pre,
+  blockquote {
+    margin-bottom: var(--margin);
+    code {
+      line-height: 1em;
+    }
+  }
+
+  ul,
+  ol {
+    list-style: decimal;
+    padding-left: var(--margin);
+  }
+
+  ul {
+    list-style: disc;
+  }
+
+  li {
+    margin-bottom: calc(var(--margin) / 4);
+  }
+
+  pre {
+    overflow-x: scroll;
+  }
+
+  code {
+    font-family: v.$family--mono;
+    font-size: 0.833rem;
+  }
+
+  blockquote {
+    font-size: 1.2rem;
+    padding: var(--margin);
+    border-left: v.$divider-fatness solid currentColor;
+    p:only-child,
+    p:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+}
