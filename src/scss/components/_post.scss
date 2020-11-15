@@ -1,0 +1,60 @@
+@use '../settings/vars' as v;
+@use '../settings/mixins' as m;
+
+.post-content {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: var(--margin);
+  @include m.mq(medium) {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+  &__meta {
+    border-bottom: v.$divider-fatness solid currentColor;
+    margin-bottom: var(--margin);
+    grid-column: 1 / 3;
+    @include m.mq(medium) {
+      grid-column: 1 / 6;
+      border: none;
+    }
+  }
+  &__date {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: var(--margin);
+    margin-top: calc(var(--margin) / 4);
+  }
+  &__body {
+    grid-column: 1 / 3;
+    @include m.mq(medium) {
+      grid-column: 6 / 13;
+    }
+  }
+  &__nav {
+    @include m.post-link();
+    grid-column: 1 / 3;
+    margin-top: var(--margin);
+    &--prev {
+      @include m.mq(small) {
+        grid-column: 1 / 2;
+      }
+      @include m.mq(medium) {
+        grid-column: 1 / 7;
+      }
+    }
+    &--next {
+      text-align: right;
+      @include m.mq(small) {
+        grid-column: 2 / 3;
+      }
+      @include m.mq(medium) {
+        grid-column: 7 / 13;
+      }
+    }
+  }
+}
+
+.post-date {
+  display: flex;
+  justify-content: space-between;
+  margin-top: calc(var(--margin) / 4);
+}
