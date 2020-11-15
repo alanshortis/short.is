@@ -4,9 +4,13 @@
 :root {
   --background: #{v.$light};
   --type: #{v.$dark};
+  --syntax-bg: #{v.$syntax-bg};
+  --syntax-comment: #{v.$syntax-comment};
   & body.dark {
     --background: #{v.$dark};
     --type: #{v.$light};
+    --syntax-bg: #{v.$syntax-bg--dark};
+    --syntax-comment: #{v.$syntax-comment--dark};
   }
 
   --margin: 1rem;
