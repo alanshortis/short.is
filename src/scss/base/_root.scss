@@ -4,9 +4,13 @@
 :root {
   --background: #{v.$light};
   --type: #{v.$dark};
+  --syntax-bg: #{v.$syntax-bg};
+  --syntax-comment: #{v.$syntax-comment};
   & body.dark {
     --background: #{v.$dark};
     --type: #{v.$light};
+    --syntax-bg: #{v.$syntax-bg--dark};
+    --syntax-comment: #{v.$syntax-comment--dark};
   }
 
   --margin: 1rem;
@@ -53,13 +57,6 @@ body {
     font-size: 16px;
     grid-template-rows: 4rem auto 4rem;
   }
-}
-
-main {
-  margin: 0 auto;
-  max-width: v.$container-max;
-  padding: var(--margin);
-  width: 100%;
 }
 
 hr {

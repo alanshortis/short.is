@@ -190,7 +190,13 @@ Now we've put all of these parts together, we have a site that can handle dark m
 
 Everything we have covered (plus a little more styling) is included in this pen. Saving the preferred scheme with `localStorage` works even in this embedded iFrame:
 
-<iframe title="Dark Mode" src="https://examples.short.is/dark-mode/final/" frameborder="no" allowfullscreen="false" loading="lazy"></iframe>
+<div class="example-embed">
+  <iframe class="example-embed__frame" title="Dark Mode" src="https://examples.short.is/dark-mode/final/" frameborder="no" allowfullscreen="false" loading="lazy"></iframe>
+  <a class="example-embed__footer" href="https://examples.short.is/dark-mode/final/" target="_blank">
+  <span>Dark Mode</span>
+  <span>https://examples.short.is/dark-mode/final/</span>
+  </a>
+</div>
 
 This solution is totally vanilla. No JS frameworks, libraries, CSS-in-JS or pre-processors are needed to get it working. You could use these things to make this a little easier to manage if you work on a large app and/or part of a team.
 

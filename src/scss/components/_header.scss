@@ -8,10 +8,7 @@
   position: sticky;
   top: 0;
   width: 100%;
-  @supports (mix-blend-mode: difference) {
-    color: v.$header--fore;
-    mix-blend-mode: difference;
-  }
+  z-index: 1;
 }
 
 .logo {
