@@ -19,7 +19,7 @@
     box-shadow: 0 0 0 0 currentColor;
     transition: box-shadow 200ms ease;
     &:hover {
-      box-shadow: 0 0 0 v.$divider-fatness currentColor;
+      box-shadow: 0 0 0 (v.$divider-fatness / 1.5) currentColor;
     }
   }
   span {
