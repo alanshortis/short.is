@@ -1,27 +1,26 @@
 @use '../settings/vars' as v;
 @use '../settings/mixins' as m;
 
-@mixin animated-state() {
+@mixin to() {
   opacity: 1;
   transform: translateY(0);
 }
 
 @keyframes slide {
   100% {
-    @include animated-state();
+    @include to();
   }
 }
 
 main {
-  animation: slide 500ms ease 250ms 1 forwards;
+  @include to();
   margin: 0 auto;
   max-width: v.$container-max;
-  opacity: 0;
   padding: var(--margin);
-  transform: translateY(1rem);
   width: 100%;
-  @include m.mq(reduce-motion) {
-    @include animated-state();
-    animation: none;
+  @include m.mq(motion) {
+    animation: slide 500ms ease 250ms 1 forwards;
+    opacity: 0;
+    transform: translateY(1rem);
   }
 }

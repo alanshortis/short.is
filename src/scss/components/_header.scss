@@ -5,6 +5,7 @@
   align-items: center;
   display: flex;
   justify-content: space-between;
+  padding: 0 var(--margin);
   position: sticky;
   top: 0;
   width: 100%;
@@ -20,28 +21,25 @@
   }
 }
 
-%header-link {
-  align-items: flex-end;
+.home-link {
+  align-items: flex-start;
   color: currentColor;
   cursor: pointer;
   display: flex;
   flex-direction: column;
   height: 100%;
   justify-content: center;
-  padding: 0 var(--margin);
-}
-
-.home-link {
-  @extend %header-link;
+  width: 2rem;
 }
 
 .menu-button {
-  @extend %header-link;
+  @extend .home-link;
   background: none;
   span {
     position: relative;
     background-color: currentColor;
-    height: 2px;
+    margin-left: auto;
+    height: 0.125rem;
     width: 1.5rem;
     &:first-of-type {
       transform: translateY(-5px);

@@ -16,6 +16,10 @@ h1 {
   }
 }
 
+h1 {
+  margin-bottom: var(--margin);
+}
+
 h2 {
   font-size: 2.074rem;
 }
@@ -36,14 +40,16 @@ p {
 }
 
 a {
-  color: v.$accent;
+  color: var(--accent);
   text-decoration: none;
   &[href^='http']::after {
-    color: v.$accent;
+    color: var(--accent);
     content: '↗';
+    display: inline-block;
     font-family: v.$family--mono;
     font-size: 0.833rem;
     margin: 0 0.25em;
+    text-decoration: none;
   }
 }
 
@@ -69,5 +75,5 @@ strong {
 }
 
 .accent {
-  color: v.$accent;
+  color: var(--accent);
 }

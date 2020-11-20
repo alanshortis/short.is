@@ -5,12 +5,12 @@
   {% set previousPost = collections.writing | getPreviousCollectionItem(page) %}
   {% set nextPost = collections.writing | getNextCollectionItem(page) %}
 
-  <article class="post-content post-formatting">
+  <article class="post-content">
     <div class="post-content__meta">
       {{ postDate(date, updated) }}
       <h1>{{ title }}</h1>
     </div>
-    <div class="post-content__body">
+    <div class="post-content__body post-formatting">
       <p class="large">{{ intro }}</p>
       {{ content | safe }}
       <hr>

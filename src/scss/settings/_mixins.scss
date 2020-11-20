@@ -11,22 +11,17 @@
 }
 
 @mixin post-link() {
+  border-radius: v.$radius;
   color: currentColor;
-  border: v.$divider-fatness solid currentColor;
   display: block;
   padding: var(--margin);
-  @include mq(motion) {
-    box-shadow: 0 0 0 0 currentColor;
-    transition: box-shadow 200ms ease;
-    &:hover {
-      box-shadow: 0 0 0 (v.$divider-fatness / 1.5) currentColor;
-    }
-  }
-  span {
+  text-decoration: none;
+  h2,
+  > span {
     display: block;
     margin-bottom: var(--margin);
   }
-  p {
+  p:last-child {
     margin-bottom: 0;
   }
 }
