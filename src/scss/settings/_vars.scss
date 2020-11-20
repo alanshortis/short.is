@@ -1,10 +1,9 @@
 @use 'sass:color';
 
-$container-max: 1204px;
-$divider-fatness: 0.5rem;
+$container-max: 76rem;
+$divider-fatness: 0.125rem;
 $radius: 0.25rem;
 
-$base-font-size: 100%;
 $face: Inter;
 $face--mono: Plex;
 $family: $face, Helvetica, Arial, sans-serif;
@@ -13,20 +12,17 @@ $weight: 400;
 $weight--bold: 700;
 
 $accent: #cf000f;
+$accent--complement: color.complement($accent);
 $accent--dark: #ff6347;
 $dark: #222831;
 $light: #e1e5ea;
 $mid: color.mix($light, $dark, 50%);
-
 $syntax-bg: color.scale($light, $lightness: -4%);
 $syntax-bg--dark: color.scale($dark, $lightness: 4%);
 $syntax-comment: #6e6e6e;
 $syntax-comment--dark: #959595;
 
 $media-queries: (
-  reduce-motion: (
-    prefers-reduced-motion: reduce,
-  ),
   motion: (
     prefers-reduced-motion: no-preference,
   ),

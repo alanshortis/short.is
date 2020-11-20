@@ -7,6 +7,7 @@
   --syntax-bg: #{v.$syntax-bg};
   --syntax-comment: #{v.$syntax-comment};
   --accent: #{v.$accent};
+  --accent--complement: #{v.$accent--complement};
   & body.dark {
     --background: #{v.$dark};
     --type: #{v.$light};
@@ -28,7 +29,6 @@
   box-sizing: inherit;
   margin: 0;
   padding: 0;
-  text-decoration: none;
 }
 
 ul,
@@ -49,13 +49,13 @@ body {
   color: var(--type);
   display: grid;
   font-family: v.$family;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: v.$weight;
   grid-template-rows: 3rem auto 3rem;
   line-height: 1.5;
   min-height: 100vh;
   @include m.mq(small) {
-    font-size: 16px;
+    // font-size: 16px;
     grid-template-rows: 4rem auto 4rem;
   }
 }
@@ -65,8 +65,8 @@ hr {
   color: inherit;
   margin: 0 auto;
   margin-bottom: var(--margin);
-  border-bottom: v.$divider-fatness solid currentColor;
-  width: (v.$divider-fatness * 4);
+  border-bottom: v.$divider-fatness solid v.$mid;
+  width: 3rem;
 }
 
 ::selection {

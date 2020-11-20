@@ -1,6 +1,6 @@
 @use '../settings/vars' as v;
 
-%arrow-styles {
+@mixin arrow-styles() {
   color: var(--accent);
   speak: never;
 }
@@ -8,25 +8,25 @@
 .arrow {
   &--up {
     &::after {
-      @extend %arrow-styles;
+      @include arrow-styles();
       content: '  ↑';
     }
   }
   &--down {
     &::after {
-      @extend %arrow-styles;
+      @include arrow-styles();
       content: '  ↓';
     }
   }
   &--left {
     &::before {
-      @extend %arrow-styles;
+      @include arrow-styles();
       content: '←  ';
     }
   }
   &--right {
     &::after {
-      @extend %arrow-styles;
+      @include arrow-styles();
       content: '  →';
     }
   }

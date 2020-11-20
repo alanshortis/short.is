@@ -1,33 +1,33 @@
-@use '../settings/vars';
+@use '../settings/vars' as v;
 
 @font-face {
   font-display: swap;
-  font-family: vars.$face--mono;
+  font-family: v.$face--mono;
   font-style: normal;
-  font-weight: vars.$weight;
+  font-weight: v.$weight;
   src: url('/fonts/plex.woff2') format('woff2');
 }
 
 @font-face {
   font-display: swap;
-  font-family: vars.$face;
+  font-family: v.$face;
   font-style: normal;
-  font-weight: vars.$weight;
+  font-weight: v.$weight;
   src: url('/fonts/inter-regular.woff2') format('woff2');
 }
 
 @font-face {
   font-display: swap;
-  font-family: vars.$face;
+  font-family: v.$face;
   font-style: italic;
-  font-weight: vars.$weight;
+  font-weight: v.$weight;
   src: url('/fonts/inter-italic.woff2') format('woff2');
 }
 
 @font-face {
   font-display: swap;
-  font-family: vars.$face;
+  font-family: v.$face;
   font-style: normal;
-  font-weight: vars.$weight--bold;
+  font-weight: v.$weight--bold;
   src: url('/fonts/inter-bold.woff2') format('woff2');
 }

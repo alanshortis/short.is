@@ -9,12 +9,10 @@
     grid-template-columns: repeat(12, minmax(0, 1fr));
   }
   &__meta {
-    border-bottom: v.$divider-fatness solid currentColor;
     margin-bottom: var(--margin);
     grid-column: 1 / 3;
     @include m.mq(medium) {
       grid-column: 1 / 6;
-      border: none;
     }
   }
   &__date {
@@ -51,10 +49,4 @@
       }
     }
   }
-}
-
-.post-date {
-  display: flex;
-  justify-content: space-between;
-  margin-top: calc(var(--margin) / 4);
 }

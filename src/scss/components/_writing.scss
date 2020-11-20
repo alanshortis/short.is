@@ -1,13 +1,7 @@
-@use '../settings/vars' as v;
-@use '../settings/mixins' as m;
-
 .writing {
-  display: grid;
-  gap: var(--margin);
   &__post {
     a {
-      @include m.post-link();
-      height: 100%;
+      color: currentColor;
     }
   }
 }
