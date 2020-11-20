@@ -1,10 +1,6 @@
 @use '../settings/vars' as v;
 
 .post-formatting {
-  h1 {
-    margin-bottom: var(--margin);
-  }
-
   h2,
   h3 {
     padding-top: var(--margin);
@@ -71,12 +67,14 @@
   .example-embed {
     margin-bottom: var(--margin);
     &__frame {
+      border-radius: v.$radius v.$radius 0 0;
       display: flex;
       width: 100%;
       height: 28rem;
     }
     &__footer {
       background-color: var(--syntax-bg);
+      border-radius: 0 0 v.$radius v.$radius;
       color: currentColor;
       display: flex;
       flex-wrap: wrap;

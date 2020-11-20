@@ -11,22 +11,30 @@
 }
 
 @mixin post-link() {
+  border-radius: v.$radius;
   color: currentColor;
-  border: v.$divider-fatness solid currentColor;
+  // border: v.$divider-fatness solid currentColor;
   display: block;
   padding: var(--margin);
   @include mq(motion) {
-    box-shadow: 0 0 0 0 currentColor;
-    transition: box-shadow 200ms ease;
-    &:hover {
-      box-shadow: 0 0 0 (v.$divider-fatness / 1.5) currentColor;
-    }
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.12);
+    // transition: box-shadow 200ms ease;
+    // &:hover {
+    //   box-shadow: 0 0 0.5rem 0 #111;
+    // }
   }
-  span {
+  h2,
+  > span {
     display: block;
     margin-bottom: var(--margin);
   }
-  p {
+  p:last-child {
     margin-bottom: 0;
   }
 }
+
+// --shadow-smallest: 0px 4px 8px rgba(0,0,0,0.12);
+// --shadow-small: 0 5px 10px rgba(0,0,0,0.12);
+// --shadow-medium: 0 8px 30px rgba(0,0,0,0.12);
+// --shadow-large: 0 30px 60px rgba(0,0,0,0.12);
+// --shadow-hover: 0 30px 60px rgba(0,0,0,0.12);

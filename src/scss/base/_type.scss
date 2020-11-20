@@ -16,6 +16,10 @@ h1 {
   }
 }
 
+h1 {
+  margin-bottom: var(--margin);
+}
+
 h2 {
   font-size: 2.074rem;
 }
@@ -36,10 +40,10 @@ p {
 }
 
 a {
-  color: v.$accent;
+  color: var(--accent);
   text-decoration: none;
   &[href^='http']::after {
-    color: v.$accent;
+    color: var(--accent);
     content: '↗';
     font-family: v.$family--mono;
     font-size: 0.833rem;
@@ -69,5 +73,5 @@ strong {
 }
 
 .accent {
-  color: v.$accent;
+  color: var(--accent);
 }

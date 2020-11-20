@@ -6,11 +6,13 @@
   --type: #{v.$dark};
   --syntax-bg: #{v.$syntax-bg};
   --syntax-comment: #{v.$syntax-comment};
+  --accent: #{v.$accent};
   & body.dark {
     --background: #{v.$dark};
     --type: #{v.$light};
     --syntax-bg: #{v.$syntax-bg--dark};
     --syntax-comment: #{v.$syntax-comment--dark};
+    --accent: #{v.$accent--dark};
   }
 
   --margin: 1rem;
@@ -36,9 +38,8 @@ ol {
 
 html {
   height: 100%;
-  scroll-behavior: smooth;
-  @include m.mq(reduce-motion) {
-    scroll-behavior: auto;
+  @include m.mq(motion) {
+    scroll-behavior: smooth;
   }
 }
 
@@ -69,6 +70,6 @@ hr {
 }
 
 ::selection {
-  background-color: v.$accent;
+  background-color: var(--accent);
   color: v.$light;
 }

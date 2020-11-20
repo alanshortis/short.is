@@ -1,7 +1,7 @@
 @use '../settings/vars' as v;
 
 %arrow-styles {
-  color: v.$accent;
+  color: var(--accent);
   speak: never;
 }
 

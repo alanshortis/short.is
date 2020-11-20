@@ -13,6 +13,7 @@
 }
 
 main {
+  @include animated-state();
   animation: slide 500ms ease 250ms 1 forwards;
   margin: 0 auto;
   max-width: v.$container-max;

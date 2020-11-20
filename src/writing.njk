@@ -8,16 +8,14 @@ title: 'Writing'
 {% block content %}
   <section>
     <h1>Writing</h1>
-    <ul>
+    <ul class="writing">
       {%- for post in collections.writing | reverse -%}
-        <li>
-          <article>
-            <a href="{{ post.data.permalink }}">
-              {{ postDate(post.data.date, post.data.updated) }}
-              <h2>{{ post.data.title }}</h2>
-              <p>{{ post.data.intro }}</p>
-            </a>
-          </article>
+        <li class="writing__post">
+          <a href="{{ post.data.permalink }}">
+            {{ postDate(post.data.date, post.data.updated) }}
+            <h2>{{ post.data.title }}</h2>
+            <p>{{ post.data.intro }}</p>
+          </a>
         </li>
       {%- endfor %}
     </ul>

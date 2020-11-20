@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 $container-max: 1204px;
 $divider-fatness: 0.5rem;
 $radius: 0.25rem;
@@ -10,11 +12,14 @@ $family--mono: $face--mono, monospace;
 $weight: 400;
 $weight--bold: 700;
 
-$accent: #dd6969;
-$dark: #222222;
-$light: #fefefe;
-$syntax-bg: #f2f2f2;
-$syntax-bg--dark: #2e2e2e;
+$accent: #cf000f;
+$accent--dark: #ff6347;
+$dark: #222831;
+$light: #e1e5ea;
+$mid: color.mix($light, $dark, 50%);
+
+$syntax-bg: color.scale($light, $lightness: -4%);
+$syntax-bg--dark: color.scale($dark, $lightness: 4%);
 $syntax-comment: #6e6e6e;
 $syntax-comment--dark: #959595;
 
@@ -26,7 +31,7 @@ $media-queries: (
     prefers-reduced-motion: no-preference,
   ),
   small: (
-    min-width: 600px,
+    min-width: 700px,
   ),
   medium: (
     min-width: 900px,

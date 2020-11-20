@@ -5,6 +5,7 @@
   align-items: center;
   display: flex;
   justify-content: space-between;
+  padding: 0 var(--margin);
   position: sticky;
   top: 0;
   width: 100%;
@@ -21,14 +22,14 @@
 }
 
 %header-link {
-  align-items: flex-end;
+  align-items: flex-start;
   color: currentColor;
   cursor: pointer;
   display: flex;
   flex-direction: column;
   height: 100%;
   justify-content: center;
-  padding: 0 var(--margin);
+  width: 2rem;
 }
 
 .home-link {
@@ -41,6 +42,7 @@
   span {
     position: relative;
     background-color: currentColor;
+    margin-left: auto;
     height: 2px;
     width: 1.5rem;
     &:first-of-type {

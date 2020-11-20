@@ -8,6 +8,6 @@
   width: 0.5rem;
 
   &--accent {
-    color: v.$accent;
+    color: var(--accent);
   }
 }
