@@ -22,6 +22,9 @@ $syntax-bg--dark: color.scale($dark, $lightness: 4%);
 $syntax-comment: #6e6e6e;
 $syntax-comment--dark: #959595;
 
+$transition__speed: 250ms;
+$transition__timing: ease;
+
 $media-queries: (
   motion: (
     prefers-reduced-motion: no-preference,

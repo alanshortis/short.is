@@ -19,7 +19,7 @@ main {
   padding: var(--margin);
   width: 100%;
   @include m.mq(motion) {
-    animation: slide 500ms ease 250ms 1 forwards;
+    animation: slide 500ms v.$transition__timing v.$transition__speed 1 forwards;
     opacity: 0;
     transform: translateY(1rem);
   }
