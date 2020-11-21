@@ -16,7 +16,8 @@ h1 {
   }
 }
 
-h1 {
+h1,
+h2 {
   margin-bottom: var(--margin);
 }
 
@@ -33,12 +34,6 @@ h4,
   font-size: 1.44rem;
 }
 
-p {
-  &.large {
-    font-size: 1.2rem;
-  }
-}
-
 a {
   color: var(--accent);
   text-decoration: none;
@@ -50,6 +45,12 @@ a {
     font-size: 0.833rem;
     margin: 0 0.25em;
     text-decoration: none;
+  }
+}
+
+p {
+  &.large {
+    font-size: 1.2rem;
   }
 }
 
