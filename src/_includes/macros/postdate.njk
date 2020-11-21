@@ -3,9 +3,9 @@
     <time datetime="{{ date }}">{{ date | formatDate }}</time>
     {# TODO: Update diff time #}
     {%- if (updated | dateDiff < 300) %}
-      <span class="accent">Updated</span>
+      <span> | Updated</span>
     {%- elif (date | dateDiff < 300) %}
-      <span class="accent">New</span>
+      <span> | New</span>
     {%- endif %}
   </p>
 {% endmacro %}
