@@ -10,18 +10,15 @@
   }
 }
 
-@mixin post-link() {
+@mixin item-border() {
   border-radius: v.$radius;
-  color: currentColor;
-  display: block;
-  padding: var(--margin);
-  text-decoration: none;
-  h2,
-  > span {
-    display: block;
-    margin-bottom: var(--margin);
+  border: 0.25rem solid var(--syntax-bg);
+  box-shadow: 0;
+  transition: box-shadow v.$transition__speed v.$transition__timing;
+  &:hover {
+    box-shadow: 0 0 0 0.5rem var(--syntax-bg);
   }
-  p:last-child {
-    margin-bottom: 0;
+  .label {
+    color: var(--accent);
   }
 }

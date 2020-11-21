@@ -1,7 +1,33 @@
+@use '../settings/vars' as v;
+@use '../settings/mixins' as m;
+
 .writing {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: var(--margin);
+  gap: var(--margin);
+  @include m.mq(small) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include m.mq(medium) {
+    grid-template-columns: repeat(3, 1fr);
+  }
   &__post {
+    @include m.item-border();
+    &:first-child {
+      @include m.mq(small) {
+        grid-column: 1 / 3;
+      }
+    }
     a {
+      display: block;
       color: currentColor;
+      padding: var(--margin);
+      height: 100%;
     }
   }
+}
+
+.rss {
+  margin-top: var(--margin);
 }
