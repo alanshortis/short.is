@@ -1,7 +1,8 @@
 .DS_Store
 .env
-.cache
-!.vscode
 npm-debug.log*
 node_modules
-public
+dist
+src/*.js
+src/*.css
+src/*.map
