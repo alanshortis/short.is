@@ -6,4 +6,16 @@ layout: 'page'
   <section>
     <h1>Alan Shortis</h1>
   </section>
+  <section>
+    <ul>
+      {%- for post in collections.writing | reverse -%}
+        <li class="writing__post">
+          <a href="{{ post.data.permalink }}">
+            <h2>{{ post.data.title }}</h2>
+            <p>{{ post.data.intro }}</p>
+          </a>
+        </li>
+      {%- endfor %}
+    </ul>
+  </section>
 {% endblock %}
