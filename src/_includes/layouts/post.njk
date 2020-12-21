@@ -1,0 +1,12 @@
+{% extends 'layouts/main.njk' %}
+{% from "macros/post-date.njk" import postDate %}
+
+{% block content %}
+  <article>
+    {{ postDate(date, updated) }}
+    <h1>{{ title }}</h1>
+    <p>{{ intro }}</p>
+    {{ content | safe }}
+    <p>If you have found this ariticle helpful, please consider donating to <a href="https://donate.helprefugees.org/campaigns/donate/" target="_blank">Choose Love</a>.</p>
+  </article>
+{% endblock %}

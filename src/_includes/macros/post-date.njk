@@ -1,0 +1,10 @@
+{% macro postDate(date, updated) %}
+  <p>
+    <time datetime="{{date}}">{{ date | dateFormat }}</time>
+    {%- if (updated | dateDiff < 300) %}
+      <span>Updated</span>
+    {%- elif (date | dateDiff < 300) %}
+      <span>New</span>
+    {%- endif %}
+  </p>
+{% endmacro %}
