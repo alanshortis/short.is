@@ -1,6 +1,6 @@
 ---
 title: 'Detect, set and save Dark Mode'
-layout: 'writing'
+layout: 'post'
 date: '2019-10-27'
 tags: writing
 permalink: '/writing/detect-set-and-save-dark-mode/'

@@ -1,6 +1,6 @@
 ---
 title: 'Icons with SVG Sprites'
-layout: 'writing'
+layout: 'post'
 date: '2017-02-21'
 tags: writing
 permalink: '/writing/icons-with-svg-sprites/'

@@ -1,6 +1,6 @@
 ---
 title: 'Make your own website'
-layout: 'writing'
+layout: 'post'
 date: '2019-11-22'
 updated: '2020-11-15'
 tags: writing

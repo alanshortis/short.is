@@ -1,6 +1,6 @@
 ---
 title: 'Webpack and Babel for React'
-layout: 'writing'
+layout: 'post'
 date: '2019-01-07'
 tags: writing
 permalink: '/writing/webpack-and-babel-for-react/'

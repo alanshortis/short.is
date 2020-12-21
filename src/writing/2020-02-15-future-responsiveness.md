@@ -1,6 +1,6 @@
 ---
 title: 'Future responsiveness'
-layout: 'writing'
+layout: 'post'
 date: '2020-02-15'
 updated: '2020-10-10'
 tags: writing
