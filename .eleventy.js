@@ -8,7 +8,7 @@ module.exports = eleventyConfig => {
   eleventyConfig.addLayoutAlias('page', 'layouts/page.njk');
   eleventyConfig.addLayoutAlias('writing', 'layouts/writing.njk');
 
-  eleventyConfig.addFilter('formatDate', filters.dateFormat);
+  eleventyConfig.addFilter('dateFormat', filters.dateFormat);
   eleventyConfig.addFilter('dateDiff', filters.dateDiff);
 
   return {
