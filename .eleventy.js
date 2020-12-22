@@ -6,6 +6,7 @@ const output = 'dist';
 module.exports = eleventyConfig => {
   eleventyConfig.setUseGitIgnore(false);
 
+  eleventyConfig.addPassthroughCopy(`${input}/*.css`);
   eleventyConfig.addPassthroughCopy(`${input}/*.js`);
   eleventyConfig.addPassthroughCopy(`${input}/*.map`);
 
