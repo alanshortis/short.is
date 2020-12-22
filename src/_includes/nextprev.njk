@@ -1,0 +1,20 @@
+<nav>
+  <ul>
+    {%- if previousPost %}
+      <li>
+        <a href="{{ previousPost.url }}">
+          <span>Older</span>
+          <p>{{ previousPost.data.title }}</p>
+        </a>
+      </li>
+    {%- endif %}
+    {%- if nextPost %}
+      <li>
+        <a href="{{ nextPost.url }}">
+          <span>Newer</span>
+          <p>{{ nextPost.data.title }}</p>
+        </a>
+      </li>
+    {%- endif %}
+  </ul>
+</nav>

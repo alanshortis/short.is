@@ -1,15 +1,30 @@
+{%- set pageTitle = title + ' — ' + site.title if title else site.title %}
 <!DOCTYPE html>
 <html lang="en-GB">
   <head>
     <meta charset="UTF-8">
-    <title>Alan Shortis</title>
+    <title>{{ pageTitle }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content="{{ intro | default(site.description) }}"/>
+    <meta property="og:title" content="{{ pageTitle }}"/>
+    <meta property="og:description" content="{{ intro | default(site.description) }}"/>
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}"/>
+    {# <meta property="og:image" content="/og.png"/> #}
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:creator" content="{{ site.twitter }}"/>
+    {# <meta name="theme-color" content="#ffffff"> #}
+    {# <link rel="manifest" href="/manifest.json"> #}
+    {# <link rel="apple-touch-icon" href="/img/apple-touch-icon-152x152.png"/> #}
+    {# <link rel="icon" type="image/png" href="/img/icon-196x196.png" sizes="196x196"/> #}
+
     <link rel="stylesheet" href="/style.css?v={{ site.version }}">
   </head>
   <body>
-    <main>
-      {% block content %}
-      {% endblock content %}
-    </main>
+    <header>
+      Logo <button>Toggle</button>
+    </header>
+    {% block content %}
+    {% endblock content %}
     <script src="/app.js?v={{ site.version }}"></script>
   </body>
 </html>
