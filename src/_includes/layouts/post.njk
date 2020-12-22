@@ -14,24 +14,7 @@
       <p>If you have found this ariticle helpful, please consider donating to <a href="https://donate.helprefugees.org/campaigns/donate/" target="_blank">Choose Love</a>.</p>
     </article>
 
-    <ul>
-      {%- if previousPost %}
-        <li>
-          <a href="{{ previousPost.url }}">
-            <span>Older</span>
-            <p>{{ previousPost.data.title }}</p>
-          </a>
-        </li>
-      {%- endif %}
-      {%- if nextPost %}
-        <li>
-          <a href="{{ nextPost.url }}">
-            <span>Newer</span>
-            <p>{{ nextPost.data.title }}</p>
-          </a>
-        </li>
-      {%- endif %}
-    </ul>
+    {%- include 'nextprev.njk' %}
   </main>
   <footer>
     This is a footer.
