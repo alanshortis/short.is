@@ -6,10 +6,11 @@
     <link rel="stylesheet" href="/style.css?v={{ site.version }}">
   </head>
   <body>
-    <main>
-      {% block content %}
-      {% endblock content %}
-    </main>
+    <header>
+      Logo <button>Toggle</button>
+    </header>
+    {% block content %}
+    {% endblock content %}
     <script src="/app.js?v={{ site.version }}"></script>
   </body>
 </html>
