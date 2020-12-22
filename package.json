@@ -5,9 +5,13 @@
   "description": "Alan Shortis is a web developer.",
   "private": true,
   "scripts": {
-    "dev": "concurrently \"eleventy --serve --quiet\" \"npm run dev:js\"",
+    "dev": "concurrently \"eleventy --serve --quiet\" \"npm run dev:css\" \"npm run dev:js\"",
+    "dev:css": "sass src/scss/style.scss src/style.css --watch",
     "dev:js": "webpack --env.NODE_ENV=development",
-    "build:js": "webpack --env.NODE_ENV=production"
+    "build": "npm run build:css && npm run build:js && eleventy --quiet",
+    "build:css": "sass src/scss/style.scss src/style.css --style=compressed --no-source-map",
+    "build:js": "webpack --env.NODE_ENV=production",
+    "clean": "rm -rf dist && rm -rf src/*.js* && rm -rf src/*.css*"
   },
   "repository": {
     "type": "git",
@@ -16,6 +20,7 @@
   "devDependencies": {
     "@11ty/eleventy": "^0.11.1",
     "concurrently": "^5.3.0",
+    "sass": "^1.30.0",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12"
   }
