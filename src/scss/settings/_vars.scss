@@ -12,3 +12,10 @@ $accent--dark: #ff6347;
 $dark: #222831;
 $light: #e1e5ea;
 $mid: color.mix($light, $dark, 50%);
+
+$face: Inter;
+$face--mono: Plex;
+$family: $face, Helvetica, Arial, sans-serif;
+$family--mono: $face--mono, monospace;
+$weight: 400;
+$weight--bold: 700;
