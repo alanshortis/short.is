@@ -1,3 +1,1 @@
-import test from './func';
-
-test('ayoooooo');
+console.log('register service worker pls');
