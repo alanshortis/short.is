@@ -1,3 +1,18 @@
+@use '../settings/mixins' as m;
+@use '../settings/vars' as v;
+
+:root {
+  --accent: #{v.$accent};
+  --background: #{v.$light};
+  --type: #{v.$dark};
+
+  & body.dark {
+    --accent: #{v.$accent--dark};
+    --background: #{v.$dark};
+    --type: #{v.$light};
+  }
+}
+
 *,
 *:before,
 *:after {
@@ -5,4 +20,29 @@
   box-sizing: inherit;
   margin: 0;
   padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+html {
+  height: 100%;
+  @include m.mq(motion) {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  background-color: var(--background);
+  box-sizing: border-box;
+  color: var(--type);
+  font-size: 16px;
+  line-height: 1.75;
+  min-height: 100vh;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
 }

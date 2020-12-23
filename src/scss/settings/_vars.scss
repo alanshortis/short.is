@@ -1,0 +1,14 @@
+@use 'sass:color';
+
+$media-queries: (
+  motion: (
+    prefers-reduced-motion: no-preference,
+  ),
+);
+
+$accent: #cf000f;
+$accent--complement: color.complement($accent);
+$accent--dark: #ff6347;
+$dark: #222831;
+$light: #e1e5ea;
+$mid: color.mix($light, $dark, 50%);
