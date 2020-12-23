@@ -20,9 +20,21 @@
     <link rel="stylesheet" href="/style.css?v={{ site.version }}">
   </head>
   <body>
+    <header class="site-header">
+      <div class="site-header__item">
+        <a href="/" class="site-header__link">
+          <span class="sr-only">Home page</span>
+          <div class="site-header__dot"></div>
+        </a>
+      </div>
+      <div class="site-header__item">
         <a href="/" class="site-header__logo site-header__item">
           {%- include 'logo.svg' %}
         </a>
+      </div>
+      <div class="site-header__item">
+        <scheme-toggle></scheme-toggle>
+      </div>
     </header>
     {% block content %}
     {% endblock content %}

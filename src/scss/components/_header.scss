@@ -1,0 +1,36 @@
+@use '../settings/vars' as v;
+
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 v.$content-margin;
+  height: v.$header-height;
+  &__item {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    &:first-child > a {
+      margin-right: auto;
+    }
+    &:last-child > scheme-toggle {
+      margin-left: auto;
+    }
+  }
+  &__dot {
+    background-color: currentColor;
+    border-radius: 50%;
+    height: 0.5rem;
+    width: 0.5rem;
+  }
+  &__logo {
+    display: flex;
+    svg {
+      fill: currentColor;
+      height: 1.5rem;
+    }
+  }
+  a {
+    color: currentColor;
+  }
+}
