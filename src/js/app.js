@@ -1,3 +1,3 @@
-import test from './func';
+import registerSchemeToggle from './scheme-toggle';
 
-test('ayoooooo');
+registerSchemeToggle();
