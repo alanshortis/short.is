@@ -14,8 +14,7 @@ $light: #e1e5ea;
 $mid: color.mix($light, $dark, 50%);
 
 $face: Inter;
-$face--mono: Plex;
 $family: $face, Helvetica, Arial, sans-serif;
-$family--mono: $face--mono, monospace;
+$family--mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
 $weight: 400;
 $weight--bold: 700;
