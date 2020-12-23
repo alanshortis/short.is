@@ -1,0 +1,11 @@
+@use 'vars' as v;
+
+@mixin mq($bp) {
+  @if map-has-key(v.$media-queries, $bp) {
+    @media #{inspect(map-get(v.$media-queries, $bp))} {
+      @content;
+    }
+  } @else {
+    @warn '#{$bp} is not a valid breakpoint.';
+  }
+}
