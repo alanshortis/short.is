@@ -20,6 +20,7 @@ module.exports = eleventyConfig => {
   eleventyConfig.addPassthroughCopy(`${input}/*.css`);
   eleventyConfig.addPassthroughCopy(`${input}/*.js`);
   eleventyConfig.addPassthroughCopy(`${input}/*.map`);
+  eleventyConfig.addPassthroughCopy(`${input}/fonts`);
 
   eleventyConfig.addLayoutAlias('main', 'layouts/main.njk');
   eleventyConfig.addLayoutAlias('page', 'layouts/page.njk');
