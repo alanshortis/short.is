@@ -20,8 +20,9 @@
     <link rel="stylesheet" href="/style.css?v={{ site.version }}">
   </head>
   <body>
-    <header>
-      Logo <scheme-toggle initial="dark"></scheme-toggle>
+        <a href="/" class="site-header__logo site-header__item">
+          {%- include 'logo.svg' %}
+        </a>
     </header>
     {% block content %}
     {% endblock content %}
