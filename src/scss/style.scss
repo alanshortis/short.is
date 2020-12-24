@@ -2,3 +2,6 @@
 @use './settings/vars';
 
 @use './base/root';
+@use './base/type';
+
+@use './components/header';

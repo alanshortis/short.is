@@ -20,8 +20,22 @@
     <link rel="stylesheet" href="/style.css?v={{ site.version }}">
   </head>
   <body>
-    <header>
-      Logo <scheme-toggle initial="dark"></scheme-toggle>
+    {%- include 'sprite.svg' %}
+    <header class="site-header">
+      <div class="site-header__item">
+        <a href="/" class="site-header__link">
+          <span class="sr-only">Home page</span>
+          <div class="site-header__dot"></div>
+        </a>
+      </div>
+      <div class="site-header__item">
+        <svg class="site-header__logo">
+          <use xlink:href="#logo"></use>
+        </svg>
+      </div>
+      <div class="site-header__item">
+        <scheme-toggle></scheme-toggle>
+      </div>
     </header>
     {% block content %}
     {% endblock content %}
