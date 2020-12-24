@@ -58,7 +58,7 @@ class SchemeToggle extends HTMLElement {
           display: flex;
           width: 1.25rem;
         }
-        svg {
+        button > svg {
           width: 1.25rem;
           height: 1.25rem;
         }

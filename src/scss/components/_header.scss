@@ -23,9 +23,10 @@
     height: 0.5rem;
     width: 0.5rem;
   }
-  svg {
+  &__logo {
     fill: currentColor;
     width: 2.5rem;
+    height: 1.5rem;
   }
   a {
     color: currentColor;
