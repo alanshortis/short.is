@@ -3,54 +3,79 @@ class SchemeToggle extends HTMLElement {
     super();
     this.STORAGE_KEY = 'scheme';
     this.MEDIA_QUERY = window.matchMedia('(prefers-color-scheme: dark)');
-    this.state = 'light';
+    this.state = '';
   }
 
   connectedCallback() {
-    this.render();
-    this.initialSceheme();
+    this.initialScheme();
   }
 
   setState(scheme, saveScheme = false) {
     this.state = scheme;
-    this.changeScheme();
 
     if (saveScheme) {
       localStorage.setItem(this.STORAGE_KEY, this.state);
     }
+
+    if (this.state === 'dark') {
+      document.body.classList.add('dark');
+    } else {
+      document.body.classList.remove('dark');
+    }
+
+    this.render();
   }
 
-  initialSceheme() {
-    if (localStorage.getItem(this.STORAGE_KEY)) {
-      this.setState(localStorage.getItem(this.STORAGE_KEY));
+  initialScheme() {
+    const storedState = localStorage.getItem(this.STORAGE_KEY);
+
+    if (storedState) {
+      this.setState(storedState);
       return;
     }
 
     if (this.MEDIA_QUERY.matches) {
       this.setState('dark');
+      return;
     }
+
+    this.setState('light');
   }
 
-  changeScheme() {
-    if (this.state === 'dark') {
-      document.body.classList.add('dark');
-      this.toggleButton.innerText = 'Light theme';
-    } else {
-      document.body.classList.remove('dark');
-      this.toggleButton.innerText = 'Dark theme';
-    }
+  schemeNotInUse() {
+    return this.state === 'light' ? 'dark' : 'light';
   }
 
   render() {
-    this.innerHTML = `<button>Dark theme</button>`;
-    this.afterRender();
+    const label = `Switch to ${this.schemeNotInUse()} mode`;
+
+    this.innerHTML = `
+      <style>
+        button {
+          background: none;
+          color: currentColor;
+          cursor: pointer;
+          display: flex;
+          width: 1.25rem;
+        }
+        svg {
+          width: 1.25rem;
+          height: 1.25rem;
+        }
+      </style>
+      <button type="button" title="${label}" aria-label="${label}">
+        <svg>
+          <use xlink:href="#${this.schemeNotInUse()}"></use>
+        </svg>
+      </button>
+    `;
+
+    this.listeners();
   }
 
-  afterRender() {
-    this.toggleButton = this.querySelector('button');
-
-    this.toggleButton.addEventListener('click', () => {
-      this.state === 'light' ? this.setState('dark', true) : this.setState('light', true);
+  listeners() {
+    this.querySelector('button').addEventListener('click', () => {
+      this.setState(this.schemeNotInUse(), true);
     });
 
     this.MEDIA_QUERY.addEventListener('change', () => {
