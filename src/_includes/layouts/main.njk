@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="/style.css?v={{ site.version }}">
   </head>
   <body>
+    {%- include 'sprite.svg' %}
     <header class="site-header">
       <div class="site-header__item">
         <a href="/" class="site-header__link">
@@ -28,9 +29,9 @@
         </a>
       </div>
       <div class="site-header__item">
-        <a href="/" class="site-header__logo site-header__item">
-          {%- include 'logo.svg' %}
-        </a>
+        <svg>
+          <use xlink:href="#logo"></use>
+        </svg>
       </div>
       <div class="site-header__item">
         <scheme-toggle></scheme-toggle>

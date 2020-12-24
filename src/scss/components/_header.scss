@@ -23,12 +23,9 @@
     height: 0.5rem;
     width: 0.5rem;
   }
-  &__logo {
-    display: flex;
-    svg {
-      fill: currentColor;
-      height: 1.5rem;
-    }
+  svg {
+    fill: currentColor;
+    width: 2.5rem;
   }
   a {
     color: currentColor;
