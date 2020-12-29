@@ -4,6 +4,12 @@ $media-queries: (
   motion: (
     prefers-reduced-motion: no-preference,
   ),
+  small: (
+    min-width: 700px,
+  ),
+  medium: (
+    min-width: 900px,
+  ),
 );
 
 $accent: #cf000f;
@@ -19,5 +25,8 @@ $family--mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, mo
 $weight: 400;
 $weight--bold: 700;
 
-$content-margin: 1.5rem;
 $header-height: 4rem;
+$container-max: 76rem;
+
+$transition__speed: 250ms;
+$transition__timing: ease;

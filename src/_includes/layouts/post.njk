@@ -6,11 +6,15 @@
   {% set nextPost = collections.writing | getNextCollectionItem(page) %}
 
   <main>
-    <article>
-      {{ postDate(date, updated) }}
-      <h1>{{ title }}</h1>
-      <p>{{ intro }}</p>
-      {{ content | safe }}
+    <article class="post">
+      <div class="post__meta">
+        {{ postDate(date, updated) }}
+        <h1>{{ title }}</h1>
+      </div>
+      <div class="post__body">
+        <p>{{ intro }}</p>
+        {{ content | safe }}
+      </div>
     </article>
 
     {%- include 'nextprev.njk' %}
