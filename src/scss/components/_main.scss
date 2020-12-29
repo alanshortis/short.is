@@ -1,0 +1,26 @@
+@use '../settings/mixins' as m;
+@use '../settings/vars' as v;
+
+@mixin to() {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes slide {
+  100% {
+    @include to();
+  }
+}
+
+main {
+  @include to();
+  margin: 0 auto;
+  max-width: v.$container-max;
+  width: 100%;
+  padding: var(--margin);
+  @include m.mq(motion) {
+    animation: slide 500ms v.$transition__timing v.$transition__speed 1 forwards;
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+}
