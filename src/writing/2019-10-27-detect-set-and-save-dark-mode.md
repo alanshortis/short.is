@@ -2,6 +2,7 @@
 title: 'Detect, set and save Dark Mode'
 layout: 'post'
 date: '2019-10-27'
+updated: '2020-12-29'
 tags: writing
 permalink: '/writing/detect-set-and-save-dark-mode/'
 intro: 'Dark Mode is mainstream. Supporting it is reasonably easy, but what about giving users the option to contradict their OS settings and remembering that choice?'
@@ -190,11 +191,13 @@ Now we've put all of these parts together, we have a site that can handle dark m
 
 Everything we have covered (plus a little more styling) is included in this pen. Saving the preferred scheme with `localStorage` works even in this embedded iFrame:
 
+(December 2020: It appears that Chrome is now preventing interaction with `localStorage` when embedded in an iframe, so if this example doesn't work as expected please click the URL below the frame to pop the example out into its own window.)
+
 <div class="example-embed">
   <iframe class="example-embed__frame" title="Dark Mode" src="https://examples.short.is/dark-mode/final/" frameborder="no" allowfullscreen="false" loading="lazy"></iframe>
-  <a class="example-embed__footer" href="https://examples.short.is/dark-mode/final/" target="_blank">
-  <span>Dark Mode</span>
-  <span>https://examples.short.is/dark-mode/final/</span>
+  <a class="example-embed__footer no-arrow" href="https://examples.short.is/dark-mode/final/" target="_blank">
+    <span>Dark Mode</span>
+    <span>https://examples.short.is/dark-mode/final/</span>
   </a>
 </div>
 
