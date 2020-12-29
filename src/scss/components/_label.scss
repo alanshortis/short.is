@@ -1,0 +1,10 @@
+@use '../settings/vars' as v;
+
+.label {
+  font-family: v.$family--mono;
+  font-size: 0.833rem;
+  text-transform: uppercase;
+  margin-bottom: calc(var(--margin) / 2);
+  letter-spacing: 4px;
+  line-height: 2rem;
+}

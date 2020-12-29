@@ -1,0 +1,87 @@
+@use '../settings/mixins' as m;
+@use '../settings/vars' as v;
+
+.post-formatting {
+  h2,
+  h3 {
+    padding-top: var(--margin);
+    margin-bottom: var(--margin);
+  }
+
+  h2 + h3 {
+    padding-top: 0;
+  }
+
+  a {
+    text-decoration: underline;
+    color: var(--accent);
+    &[href^='http']:not(.no-arrow)::after {
+      content: '↗';
+      display: inline-block;
+      font-family: v.$family--mono;
+      font-size: 0.833rem;
+      margin: 0 0.25em;
+      text-decoration: none;
+    }
+  }
+
+  p,
+  ul,
+  ol,
+  pre {
+    margin-bottom: var(--margin);
+    code {
+      background-color: var(--secondary-bg);
+      border-radius: v.$radius;
+      line-height: 1em;
+      padding: calc(var(--margin) / 8);
+    }
+  }
+
+  ul,
+  ol {
+    padding-left: var(--margin);
+  }
+
+  li {
+    list-style: decimal;
+    margin-bottom: calc(var(--margin) / 4);
+  }
+
+  ul {
+    li {
+      list-style: disc;
+    }
+  }
+
+  pre {
+    background-color: var(--secondary-bg);
+    border-radius: v.$radius;
+    overflow-x: auto;
+    padding: calc(var(--margin) / 2);
+    .comment {
+      color: var(--syntax-comment);
+    }
+  }
+
+  code {
+    font-family: v.$family--mono;
+    font-size: 0.833rem;
+  }
+
+  blockquote {
+    border: 1px solid var(--secondary-bg);
+    border-radius: v.$radius;
+    font-size: 1.2rem;
+    padding: calc(var(--margin) / 2);
+    margin-bottom: var(--margin);
+    @include m.mq(small) {
+      margin: var(--margin);
+      margin-top: 0;
+    }
+    p:only-child,
+    p:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+}
