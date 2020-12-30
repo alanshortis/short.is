@@ -31,7 +31,8 @@ $syntax-comment--dark: #959595;
 
 $face: Inter;
 $family: $face, Helvetica, Arial, sans-serif;
-$family--mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+$face--mono: Plex;
+$family--mono: $face--mono, 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
 $weight: 400;
 $weight--bold: 700;
 
