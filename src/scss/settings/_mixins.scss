@@ -9,3 +9,10 @@
     @warn '#{$bp} is not a valid breakpoint.';
   }
 }
+
+@mixin container() {
+  margin: 0 auto;
+  max-width: v.$container-max;
+  width: 100%;
+  padding: var(--margin);
+}

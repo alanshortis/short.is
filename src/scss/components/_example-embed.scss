@@ -12,12 +12,12 @@
   &__footer {
     background-color: var(--secondary-bg);
     border-radius: 0 0 v.$radius v.$radius;
-    color: currentColor;
+    color: currentColor !important;
     display: flex;
     flex-wrap: wrap;
     font-size: 0.833rem;
     justify-content: space-between;
-    padding: calc(var(--margin) / 2);
+    padding: calc(var(--margin) / 4);
     text-decoration: none !important;
   }
 }

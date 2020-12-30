@@ -14,10 +14,7 @@
 
 main {
   @include to();
-  margin: 0 auto;
-  max-width: v.$container-max;
-  width: 100%;
-  padding: var(--margin);
+  @include m.container();
   @include m.mq(motion) {
     animation: slide 500ms v.$transition__timing v.$transition__speed 1 forwards;
     opacity: 0;
