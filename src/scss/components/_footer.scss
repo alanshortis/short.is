@@ -1,0 +1,16 @@
+@use '../settings/mixins' as m;
+
+.site-footer {
+  @include m.container();
+  padding-top: 0;
+  div {
+    border-top: 1px solid var(--secondary-bg);
+    display: flex;
+    justify-content: space-between;
+    padding-top: var(--margin);
+  }
+  .label {
+    color: var(--accent);
+    margin-bottom: 0;
+  }
+}
