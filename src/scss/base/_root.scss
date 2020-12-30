@@ -7,6 +7,7 @@
   --type: #{v.$dark};
   --secondary-bg: #{v.$secondary-bg};
   --syntax-comment: #{v.$syntax-comment};
+  --divider: #{v.$divider};
 
   & body.dark {
     --accent: #{v.$accent--dark};
@@ -14,6 +15,7 @@
     --type: #{v.$light};
     --secondary-bg: #{v.$secondary-bg--dark};
     --syntax-comment: #{v.$syntax-comment--dark};
+    --divider: #{v.$divider--dark};
   }
 
   --margin: 1rem;

@@ -2,7 +2,7 @@
 @use '../settings/vars' as v;
 
 .post-nav {
-  border-top: 1px solid var(--secondary-bg);
+  border-top: 1px solid var(--divider);
   column-gap: var(--margin);
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
