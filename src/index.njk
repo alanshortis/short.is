@@ -12,10 +12,10 @@ layout: 'page'
     <section class="home-page__section">
       <ul>
         {%- for post in collections.writing | reverse -%}
-          <li class="writing__post">
+          <li class="post-list__post">
             <a href="{{ post.data.permalink }}">
               <p>{{ postDate(post.data.date, post.data.updated) }}</p>
-              <h2>{{ post.data.title }}</h2>
+              <p class="h4">{{ post.data.title }}</p>
               <p>{{ post.data.intro }}</p>
             </a>
           </li>

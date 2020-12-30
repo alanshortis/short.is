@@ -13,8 +13,9 @@
       padding: var(--margin);
       min-width: 100vw;
       height: 50vh;
+      border-right: 1px solid var(--divider);
       @include m.mq(medium) {
-        max-height: calc(100vh - #{v.$header-height});
+        height: calc(100vh - #{v.$header-height});
         min-width: 50vw;
         position: sticky;
         top: v.$header-height;
