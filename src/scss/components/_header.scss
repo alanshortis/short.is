@@ -2,6 +2,7 @@
 
 .site-header {
   background-color: var(--background);
+  border-bottom: 1px solid var(--secondary-bg);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -10,7 +11,8 @@
   top: 0;
   height: v.$header-height;
   z-index: 1;
-  @supports (backdrop-filter: blur(7px)) {
+  @supports (backdrop-filter: blur(7px)) or (-webkit-backdrop-filter: blur(7px)) {
+    -webkit-backdrop-filter: blur(7px);
     backdrop-filter: blur(7px);
     background-color: v.$transparent;
   }
