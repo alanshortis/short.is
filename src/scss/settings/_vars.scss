@@ -4,8 +4,14 @@ $media-queries: (
   motion: (
     prefers-reduced-motion: no-preference,
   ),
+  tiny: (
+    min-width: 400px,
+  ),
   small: (
     min-width: 700px,
+  ),
+  small-max: (
+    max-width: 700px,
   ),
   medium: (
     min-width: 900px,
