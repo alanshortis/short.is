@@ -1,0 +1,15 @@
+@use '../settings/vars' as v;
+
+.home-page {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  max-height: calc(100vh - #{v.$header-height});
+  &__section {
+    border: 1px solid var(--secondary-bg);
+    &--cover {
+      padding: var(--margin);
+      position: sticky;
+      top: v.$header-height;
+    }
+  }
+}
