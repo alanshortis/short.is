@@ -11,7 +11,6 @@ module.exports = async function () {
   )
     .then(res => res.text())
     .then(text => {
-      console.log(text);
       const json = JSON.parse(convert.xml2json(text, { compact: true }));
       const { review } = json.GoodreadsResponse.reviews;
 
