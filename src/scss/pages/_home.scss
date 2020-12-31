@@ -8,18 +8,32 @@
   @include m.mq(medium) {
     flex-direction: row;
   }
-  &__section {
-    &--cover {
-      padding: var(--margin);
-      min-width: 100vw;
-      height: 50vh;
+  &__title {
+    position: absolute;
+    bottom: 0;
+    padding: 0 var(--margin);
+    z-index: 1;
+    .label {
+      white-space: nowrap;
+    }
+  }
+  &__cover {
+    background-image: linear-gradient(135deg, var(--orb), var(--background), var(--background));
+    position: relative;
+    display: grid;
+    place-content: center;
+    padding: var(--margin);
+    min-width: 100vw;
+    min-height: 50vh;
+    border-right: 0;
+    border-bottom: 1px solid var(--divider);
+    @include m.mq(medium) {
       border-right: 1px solid var(--divider);
-      @include m.mq(medium) {
-        height: calc(100vh - #{v.$header-height});
-        min-width: 50vw;
-        position: sticky;
-        top: v.$header-height;
-      }
+      border-bottom: 0;
+      height: calc(100vh - #{v.$header-height});
+      min-width: 50vw;
+      position: sticky;
+      top: v.$header-height;
     }
   }
 }

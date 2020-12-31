@@ -8,6 +8,7 @@
   --secondary-bg: #{v.$secondary-bg};
   --syntax-comment: #{v.$syntax-comment};
   --divider: #{v.$divider};
+  --orb: #{v.$orb};
 
   & body.dark {
     --accent: #{v.$accent--dark};
@@ -16,6 +17,7 @@
     --secondary-bg: #{v.$secondary-bg--dark};
     --syntax-comment: #{v.$syntax-comment--dark};
     --divider: #{v.$divider--dark};
+    --orb: #{v.$orb--dark};
   }
 
   --margin: 1rem;
