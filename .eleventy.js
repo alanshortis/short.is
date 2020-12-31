@@ -1,3 +1,5 @@
+require('dotenv-safe').config();
+
 const markdownIt = require('markdown-it');
 const mila = require('markdown-it-link-attributes');
 const filters = require('./filters');
