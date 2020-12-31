@@ -2,10 +2,14 @@
 
 .label {
   color: var(--accent);
+  display: flex;
   font-family: v.$family--mono;
   font-size: 0.833rem;
   font-weight: v.$weight;
   text-transform: uppercase;
   margin-bottom: calc(var(--margin) / 4);
   letter-spacing: 3px;
+  &__new {
+    margin-left: auto;
+  }
 }

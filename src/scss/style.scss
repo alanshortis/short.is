@@ -4,6 +4,8 @@
 @use './base/root';
 @use './base/type';
 
+@use './base/a11y';
+
 @use './pages/home';
 @use './pages/post';
 

@@ -6,6 +6,13 @@
     <title>{{ pageTitle }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <meta name="description" content="{{ intro | default(site.description) }}"/>
+    
+    <link rel="preload" as="font" href="/fonts/inter-bold-subset.woff2" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" as="font" href="/fonts/inter-italic-subset.woff2" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" as="font" href="/fonts/inter-regular-subset.woff2" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" as="font" href="/fonts/plex-subset.woff2" type="font/woff2" crossorigin="anonymous">
+    <link rel="stylesheet" href="/style.css?v={{ site.version }}">
+
     <meta property="og:title" content="{{ pageTitle }}"/>
     <meta property="og:description" content="{{ intro | default(site.description) }}"/>
     <meta property="og:url" content="{{ site.url }}{{ page.url }}"/>
@@ -16,20 +23,19 @@
     {# <link rel="manifest" href="/manifest.json"> #}
     {# <link rel="apple-touch-icon" href="/img/apple-touch-icon-152x152.png"/> #}
     {# <link rel="icon" type="image/png" href="/img/icon-196x196.png" sizes="196x196"/> #}
-
-    <link rel="stylesheet" href="/style.css?v={{ site.version }}">
   </head>
   <body id="top">
     {%- include 'sprite.svg' %}
     <header class="site-header">
       <div class="site-header__item">
-        <a href="/" class="site-header__link">
+        <a href="/">
           <span class="sr-only">Home page</span>
           <div class="site-header__dot"></div>
         </a>
       </div>
       <div class="site-header__item">
         <a href="/">
+          <span class="sr-only">Home page</span>
           <svg class="site-header__logo">
             <use xlink:href="#logo"></use>
           </svg>

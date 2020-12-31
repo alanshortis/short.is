@@ -2,9 +2,9 @@
   <p class="label">
     <time datetime="{{date}}">{{ date | dateFormat }}</time>
     {%- if (updated | dateDiff < 30) %}
-      <span> | Updated</span>
+      <span class="label__new">Updated</span>
     {%- elif (date | dateDiff < 30) %}
-      <span> | New</span>
+      <span class="label__new">New</span>
     {%- endif %}
   </p>
 {% endmacro %}

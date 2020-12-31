@@ -16,7 +16,7 @@ layout: 'page'
           {%- for post in collections.writing | reverse -%}
             <li class="post-list__post">
               <a href="{{ post.data.permalink }}">
-                <p>{{ postDate(post.data.date, post.data.updated) }}</p>
+                {{ postDate(post.data.date, post.data.updated) }}
                 <p class="h4">{{ post.data.title }}</p>
                 <p>{{ post.data.intro }}</p>
               </a>
