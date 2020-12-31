@@ -14,7 +14,9 @@
       }
     }
     &--next {
-      text-align: right;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
       grid-column: 2 / 3;
     }
   }
