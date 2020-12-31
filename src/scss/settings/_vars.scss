@@ -19,15 +19,18 @@ $media-queries: (
 );
 
 $accent: #cf000f;
-$accent--complement: color.complement($accent);
 $accent--dark: #ff6347;
 $dark: #222831;
 $light: #e1e5ea;
-$mid: color.mix($light, $dark, 50%);
 $secondary-bg: color.scale($light, $lightness: -4%);
 $secondary-bg--dark: color.scale($dark, $lightness: 4%);
 $syntax-comment: #6e6e6e;
 $syntax-comment--dark: #959595;
+$divider: color.scale($light, $lightness: -8%);
+$divider--dark: color.scale($dark, $lightness: 8%);
+$orb: $dark;
+$orb--dark: $accent--dark;
+$transparent: rgba(0, 0, 0, 0);
 
 $face: Inter;
 $family: $face, Helvetica, Arial, sans-serif;

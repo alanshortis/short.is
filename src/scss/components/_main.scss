@@ -20,4 +20,8 @@ main {
     opacity: 0;
     transform: translateY(1rem);
   }
+  &.home {
+    max-width: 100%;
+    padding: 0;
+  }
 }

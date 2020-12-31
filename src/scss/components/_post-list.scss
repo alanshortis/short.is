@@ -1,0 +1,20 @@
+@use '../settings/vars' as v;
+
+.post-list {
+  &__post {
+    transition: background-color v.$transition__speed v.$transition__timing;
+    &:hover {
+      background-color: var(--secondary-bg);
+    }
+    &:not(:last-child) {
+      border-bottom: 1px solid var(--divider);
+    }
+    a {
+      display: block;
+      padding: var(--margin);
+    }
+    .h4 {
+      margin-bottom: calc(var(--margin) / 2);
+    }
+  }
+}
