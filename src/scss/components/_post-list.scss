@@ -4,6 +4,9 @@
   &__post {
     border-top: 1px solid var(--divider);
     transition: background-color v.$transition__speed v.$transition__timing;
+    &:last-child {
+      padding-bottom: env(safe-area-inset-bottom);
+    }
     &:hover {
       background-color: var(--secondary-bg);
     }

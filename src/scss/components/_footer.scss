@@ -8,6 +8,7 @@
     display: flex;
     justify-content: space-between;
     padding-top: var(--margin);
+    padding-bottom: env(safe-area-inset-bottom);
   }
   .label {
     margin-bottom: 0;
