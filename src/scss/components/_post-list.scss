@@ -2,12 +2,10 @@
 
 .post-list {
   &__post {
+    border-top: 1px solid var(--divider);
     transition: background-color v.$transition__speed v.$transition__timing;
     &:hover {
       background-color: var(--secondary-bg);
-    }
-    &:not(:last-child) {
-      border-bottom: 1px solid var(--divider);
     }
     a {
       display: block;
