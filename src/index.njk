@@ -5,23 +5,25 @@ layout: 'page'
 {% from "macros/post-date.njk" import postDate %}
 
 {% block content %}
-  <div class="home-page">
-    <section class="home-page__cover">
-      <h1 class="home-page__title">Alan Shortis is a web developer. <a href="/about" class="label arrow--right">Tell me more</a></h1>
-      <div class="orb"></div>
-    </section>
-    <section>
-      <ul>
-        {%- for post in collections.writing | reverse -%}
-          <li class="post-list__post">
-            <a href="{{ post.data.permalink }}">
-              <p>{{ postDate(post.data.date, post.data.updated) }}</p>
-              <p class="h4">{{ post.data.title }}</p>
-              <p>{{ post.data.intro }}</p>
-            </a>
-          </li>
-        {%- endfor %}
-      </ul>
-    </section>
-  </div>
+  <main class="home">
+    <div class="home-page">
+      <section class="home-page__cover">
+        <h1 class="home-page__title">Alan Shortis is a front end developer <a href="/about" class="label arrow--right">Tell me more</a></h1>
+        <div class="orb"></div>
+      </section>
+      <section>
+        <ul>
+          {%- for post in collections.writing | reverse -%}
+            <li class="post-list__post">
+              <a href="{{ post.data.permalink }}">
+                <p>{{ postDate(post.data.date, post.data.updated) }}</p>
+                <p class="h4">{{ post.data.title }}</p>
+                <p>{{ post.data.intro }}</p>
+              </a>
+            </li>
+          {%- endfor %}
+        </ul>
+      </section>
+    </div>
+  </main>
 {% endblock %}
