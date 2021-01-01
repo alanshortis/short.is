@@ -10,15 +10,30 @@
   }
   &__title {
     position: absolute;
-    bottom: 0;
-    padding: 0 var(--margin);
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: var(--margin);
+    margin-bottom: 0;
+    text-align: right;
     z-index: 1;
     .label {
       white-space: nowrap;
+      display: inline-block;
     }
   }
   &__cover {
-    background-image: linear-gradient(135deg, var(--orb), var(--background), var(--background));
+    --angle: 45deg;
+    body.dark & {
+      --angle: 45deg;
+    }
+    background-image: linear-gradient(
+      var(--angle),
+      var(--orb),
+      var(--background),
+      var(--background)
+    );
+
     position: relative;
     display: grid;
     place-content: center;

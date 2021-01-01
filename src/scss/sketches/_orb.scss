@@ -1,8 +1,12 @@
 .orb {
+  --angle: 45deg;
+  body.dark & {
+    --angle: 225deg;
+  }
   flex-shrink: 0;
-  background-image: linear-gradient(315deg, transparent 18%, var(--orb));
+  background-image: linear-gradient(var(--angle), transparent 18%, var(--orb));
   border-radius: 50%;
-  box-shadow: inset 0 0 5em 0 var(--background);
+  box-shadow: inset 0 0 5em 0 var(--secondary-bg);
   height: 15rem;
   margin-left: auto;
   width: 15rem;
@@ -10,5 +14,8 @@
     height: 5rem;
     margin: 0;
     width: 5rem;
+  }
+  body.dark & {
+    transform: rotate(0.5turn);
   }
 }
