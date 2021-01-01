@@ -28,7 +28,7 @@ $syntax-comment: #6e6e6e;
 $syntax-comment--dark: #959595;
 $divider: color.scale($light, $lightness: -8%);
 $divider--dark: color.scale($dark, $lightness: 8%);
-$orb: $accent;
+$orb: $dark;
 $orb--dark: $accent--dark;
 $transparent: rgba(0, 0, 0, 0);
 
