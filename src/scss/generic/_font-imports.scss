@@ -19,14 +19,6 @@
 @font-face {
   font-display: swap;
   font-family: v.$face;
-  font-style: italic;
-  font-weight: v.$weight;
-  src: url('/fonts/inter-italic-subset.woff2') format('woff2');
-}
-
-@font-face {
-  font-display: swap;
-  font-family: v.$face;
   font-style: normal;
   font-weight: v.$weight--bold;
   src: url('/fonts/inter-bold-subset.woff2') format('woff2');
