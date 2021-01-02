@@ -24,7 +24,7 @@ module.exports = eleventyConfig => {
   eleventyConfig.setUseGitIgnore(false);
 
   eleventyConfig.addPassthroughCopy(`${input}/*.css`);
-  eleventyConfig.addPassthroughCopy(`${input}/*.js`);
+  eleventyConfig.addPassthroughCopy(`${input}/app.js`);
   eleventyConfig.addPassthroughCopy(`${input}/*.map`);
   eleventyConfig.addPassthroughCopy(`${input}/fonts`);
   eleventyConfig.addPassthroughCopy(`${input}/img`);
