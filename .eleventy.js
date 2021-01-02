@@ -24,6 +24,7 @@ module.exports = eleventyConfig => {
   eleventyConfig.addPassthroughCopy(`${input}/*.map`);
   eleventyConfig.addPassthroughCopy(`${input}/fonts`);
   eleventyConfig.addPassthroughCopy(`${input}/img`);
+  eleventyConfig.addPassthroughCopy(`${input}/manifest.json`);
   eleventyConfig.addPassthroughCopy(`${input}/_redirects`);
 
   eleventyConfig.addLayoutAlias('main', 'layouts/main.njk');

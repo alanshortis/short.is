@@ -1,0 +1,40 @@
+{
+  "lang": "en-GB",
+  "name": "Alan Shortis",
+  "short_name": "short.is",
+  "description": "Alan Shortis is a front end developer",
+  "start_url": "/",
+  "theme_color": "#ff6347",
+  "background_color": "#222831",
+  "dir": "ltr",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/img/icon-192@2x.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "/img/icon-256@2x.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/img/icon-384@2x.png",
+      "sizes": "768x768",
+      "type": "image/png"
+    },
+    {
+      "src": "/img/icon-512@2x.png",
+      "sizes": "1024x1024",
+      "type": "image/png"
+    },
+    {
+      "src": "/img/icon-maskable.png",
+      "sizes": "1575x1575",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
