@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>{{ pageTitle }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <link rel="stylesheet" href="/style.css?v={{ site.version }}">
     <meta name="description" content="{{ intro | default(site.description) }}"/>
     <meta property="og:title" content="{{ pageTitle }}"/>
     <meta property="og:description" content="{{ intro | default(site.description) }}"/>
@@ -16,7 +17,7 @@
     {# <link rel="manifest" href="/manifest.json"> #}
     <link rel="apple-touch-icon" href="/img/icon-152.png"/>
     <link rel="icon" type="image/png" href="/img/icon-196.png" sizes="196x196"/>
-    <link rel="stylesheet" href="/style.css?v={{ site.version }}">
+    <link rel="alternate" type="application/rss+xml" href="/writing/feed.xml" title="{{site.description}}" />
   </head>
   <body id="top">
     {%- include 'sprite.svg' %}

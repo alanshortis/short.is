@@ -1,5 +1,7 @@
 require('dotenv-safe').config();
 
+const rssPlugin = require('@11ty/eleventy-plugin-rss');
+
 const markdownIt = require('markdown-it');
 const mila = require('markdown-it-link-attributes');
 const filters = require('./filters');
@@ -17,6 +19,8 @@ const input = 'src';
 const output = 'dist';
 
 module.exports = eleventyConfig => {
+  eleventyConfig.addPlugin(rssPlugin);
+
   eleventyConfig.setUseGitIgnore(false);
 
   eleventyConfig.addPassthroughCopy(`${input}/*.css`);
