@@ -4,7 +4,7 @@
   "short_name": "short.is",
   "description": "Alan Shortis is a front end developer",
   "start_url": "/",
-  "theme_color": "#ff6347",
+  "theme_color": "#222831",
   "background_color": "#222831",
   "dir": "ltr",
   "display": "standalone",
