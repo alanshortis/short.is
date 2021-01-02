@@ -11,7 +11,7 @@
     "build": "npm run build:css && npm run build:js && eleventy --quiet",
     "build:css": "sass src/scss/style.scss src/style.css --style=compressed --no-source-map",
     "build:js": "webpack --env.NODE_ENV=production",
-    "clean": "rm -rf dist && rm -rf src/*.js* && rm -rf src/*.css*",
+    "clean": "rm -rf dist && rm -rf src/*.js && rm -rf src/*.css && rm -rf src/*.map",
     "new-post": "node newpost.js"
   },
   "repository": {
