@@ -1,0 +1,14 @@
+<nav class="post-nav">
+  {%- if previousPost %}
+    <a class="post-nav__item" href="{{ previousPost.url }}">
+      <p class="label arrow--left">Older</p>
+      <p class="h4">{{ previousPost.data.title }}</p>
+    </a>
+  {%- endif %}
+  {%- if nextPost %}
+    <a class="post-nav__item post-nav__item--next" href="{{ nextPost.url }}">
+      <p class="label arrow--right">Newer</p>
+      <p class="h4">{{ nextPost.data.title }}</p>
+    </a>
+  {%- endif %}
+</nav>

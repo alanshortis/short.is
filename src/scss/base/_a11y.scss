@@ -1,0 +1,27 @@
+// A bit of a mess of quick a11y fixes.
+
+@mixin focus-styles() {
+  outline-style: dotted;
+  outline-color: var(--accent);
+  outline-width: 3px;
+  outline-offset: 1px;
+  .post-list__post &,
+  .example-embed & {
+    outline-offset: -3px;
+  }
+}
+
+a,
+button {
+  &:-moz-focusring {
+    @include focus-styles();
+  }
+  &:focus-visible {
+    @include focus-styles();
+  }
+  @supports not selector(:focus-visible) {
+    &:focus {
+      @include focus-styles();
+    }
+  }
+}

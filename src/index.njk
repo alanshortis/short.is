@@ -1,0 +1,29 @@
+---
+layout: 'page'
+---
+
+{% from "macros/post-date.njk" import postDate %}
+
+{% block content %}
+  <main class="home">
+    <div class="home-page">
+      <section class="home-page__cover">
+        <h1 class="home-page__title">{{ site.description }}<br /><a href="/about" class="label arrow--right">Tell me more</a></h1>
+        <div class="orb"></div>
+      </section>
+      <section>
+        <ul>
+          {%- for post in collections.writing | reverse -%}
+            <li class="post-list__post">
+              <a href="{{ post.data.permalink }}">
+                {{ postDate(post.data.date, post.data.updated) }}
+                <p class="h4">{{ post.data.title }}</p>
+                <p>{{ post.data.intro }}</p>
+              </a>
+            </li>
+          {%- endfor %}
+        </ul>
+      </section>
+    </div>
+  </main>
+{% endblock %}

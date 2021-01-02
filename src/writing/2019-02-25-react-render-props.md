@@ -1,0 +1,51 @@
+---
+title: 'React Render Props'
+layout: 'post'
+date: '2019-02-25'
+tags: writing
+permalink: '/writing/react-render-props/'
+intro: "The React documentation is really detailed and extensive, but the explanation of Render Props wasn't quite simplified enough for me as a beginner. Let's use Render Props in a really simple, real world example."
+---
+
+The issue I was trying to solve that led me to render props was:
+
+- I had a component that displayed a number alongside some other text, but this number would be in a variety of formats (currency/percentage formatted with a function, or a separate component that converts months to a label showing years and months).
+- The component looks identical in all scenarios, with only the number differing in appearance.
+- The number could be null, in which case we should show 'n/a'.
+
+I had previously put this together using `children` to pass the figure being shown, and while this gave me the flexibility to pass the variety formats I needed, it caused problems when I needed to use a function on a number to apply formatting, especially when this number could be `null`. I had to use a fair amount of logic in my JSX to make it work, and I really didn't want to diversify the currency and percentage functions. It was a mess.
+
+These kinds of problems are hard to solve when you're teaching yourself. Knowing how to google effectively is a key skill in being a developer, and fortunately I stumbled upon render props.
+
+## What are render props?
+
+> A render prop is a React component passed to another component as a prop. The passed component can then be used inside the parent prop, along with any other props.
+
+That's a terrible explanation that I have tried to rewrite a dozen times, so let's look at an example.
+
+```jsx
+<NaLabel render={value => <span>{currency(value)}</span>} value={paymentAmount} />
+```
+
+Here we are using the `NaLabel` component and passing the value we want to show as a prop. Our `render` prop contains a function that returns a template. You could use another component or any other valid JSX in the template.
+
+```jsx
+const NaLabel = ({ render, value }) => {
+  const isNull = value === null;
+
+  if (isNull) {
+    return <abbr title="Not Applicable">n/a</abbr>;
+  }
+  return render(value);
+};
+```
+
+Let's go over what this component does:
+
+1. Check if the value being passed is null. In this case, zero is a valid figure so we have to check for null specifically rather than a falsey value.
+2. If the value is null, show the 'Not Applicable' abbreviation.
+3. If the value is not null, use our render prop passing in the value we want shown.
+
+This is a really stripped back example of using render props, but it is solving a real issue I had, even if this is a reduced example.
+
+I'm sure I'll run in to far more complex and powerful uses, but I hope this guide helps someone else who is confused by the official docs.

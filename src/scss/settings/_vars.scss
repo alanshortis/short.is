@@ -1,0 +1,47 @@
+@use 'sass:color';
+
+$media-queries: (
+  motion: (
+    prefers-reduced-motion: no-preference,
+  ),
+  tiny: (
+    min-width: 400px,
+  ),
+  small: (
+    min-width: 700px,
+  ),
+  small-max: (
+    max-width: 700px,
+  ),
+  medium: (
+    min-width: 900px,
+  ),
+);
+
+$accent: #cf000f;
+$accent--dark: #ff6347;
+$dark: #222831;
+$light: #e1e5ea;
+$secondary-bg: color.scale($light, $lightness: -4%);
+$secondary-bg--dark: color.scale($dark, $lightness: 4%);
+$syntax-comment: #6e6e6e;
+$syntax-comment--dark: #959595;
+$divider: color.scale($light, $lightness: -8%);
+$divider--dark: color.scale($dark, $lightness: 8%);
+$orb: $dark;
+$orb--dark: $accent--dark;
+$transparent: rgba(0, 0, 0, 0);
+
+$face: Inter;
+$family: $face, Helvetica, Arial, sans-serif;
+$face--mono: Plex;
+$family--mono: $face--mono, 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+$weight: 400;
+$weight--bold: 700;
+
+$header-height: 4rem;
+$container-max: 76rem;
+$radius: 0.25rem;
+
+$transition__speed: 250ms;
+$transition__timing: ease;

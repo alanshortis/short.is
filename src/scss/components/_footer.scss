@@ -1,0 +1,31 @@
+@use '../settings/mixins' as m;
+
+.site-footer {
+  @include m.container();
+  padding-top: 0;
+  div {
+    border-top: 1px solid var(--divider);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: var(--margin);
+    padding-bottom: env(safe-area-inset-bottom);
+    @include m.mq(small) {
+      flex-direction: row;
+    }
+  }
+  .label {
+    margin-bottom: 0;
+    display: inline;
+  }
+  .c {
+    color: currentColor;
+    margin-bottom: var(--margin);
+    @include m.mq(small) {
+      margin-bottom: 0;
+    }
+  }
+  .r {
+    margin-right: var(--margin);
+  }
+}
