@@ -71,6 +71,7 @@
   code {
     font-family: v.$family--mono;
     font-size: 0.833rem;
+    padding: 0 !important;
   }
 
   blockquote {
@@ -89,5 +90,12 @@
     p:last-of-type {
       margin-bottom: 0;
     }
+  }
+
+  img {
+    display: flex;
+    margin: 0 auto;
+    margin-bottom: var(--margin);
+    text-align: center;
   }
 }
