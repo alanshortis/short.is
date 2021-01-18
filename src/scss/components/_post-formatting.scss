@@ -58,6 +58,11 @@
     }
   }
 
+  code {
+    font-family: v.$family--mono;
+    font-size: 0.833rem;
+  }
+
   pre {
     background-color: var(--secondary-bg);
     border-radius: v.$radius;
@@ -66,12 +71,9 @@
     .comment {
       color: var(--syntax-comment);
     }
-  }
-
-  code {
-    font-family: v.$family--mono;
-    font-size: 0.833rem;
-    padding: 0 !important;
+    code {
+      padding: 0;
+    }
   }
 
   blockquote {
