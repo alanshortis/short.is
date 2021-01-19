@@ -12,7 +12,7 @@ layout: 'page'
         <div class="orb"></div>
       </section>
       <section>
-        <ul>
+        <ol>
           {%- for post in collections.writing | reverse -%}
             <li class="post-list__post">
               <a href="{{ post.data.permalink }}">
@@ -22,7 +22,7 @@ layout: 'page'
               </a>
             </li>
           {%- endfor %}
-        </ul>
+        </ol>
       </section>
     </div>
   </main>

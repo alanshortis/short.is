@@ -70,13 +70,15 @@ First, we need to add the value of the environment variable to a CSS custom prop
 
 To allow space, we need to increase the padding at the bottom of the menu. We can't redefine `padding-bottom` immediately as browsers that do not support `env()` will just see an invalid padding value and default back to zero. By wrapping the declaration in `@supports` we can hide it completely from any browser that doesn't understand.
 
-And that's it! Let's take a look, either by [viewing the example](https://examples.short.is/css-env-vars/), or this screen shot:
+And that's it! Let's take a look:
 
 <picture>
   <source srcset="/img/bottom-menu@2x.webp 2x" type="image/webp">
   <source srcset="/img/bottom-menu.webp" type="image/webp">
   <img src="/img/bottom-menu.png" srcset="/img/bottom-menu@2x.png" loading="lazy" alt="A screenshot of an iPhone will a well spaced footer menu"/>
 </picture>
+
+Plenty of space on the iPhone. Take a look at the [example](https://examples.short.is/css-env-vars/) to see how this behaves across devices and to view the complete source.
 
 ## Use in JavaScript
 
