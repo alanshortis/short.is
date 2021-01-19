@@ -5,7 +5,7 @@ date: '2019-11-22'
 updated: '2020-11-15'
 tags: writing
 permalink: '/writing/make-your-own-website/'
-intro: "There are a lot of places to quickly post some content. It's quick, convinient but ultimately bad for you and your work."
+intro: "There are a lot of places to quickly post some content. It's quick, convenient but ultimately bad for you and your work."
 ---
 
 There is a bit of a backlash against the likes of [Medium](https://www.medium.com) happening, and for developers it goes deeper than their paywall and irritating clutter clogging up the page when you first visit. Writing about this industry is a great thing to do—with new concepts and approaches unfolding constantly, we're all googling questions every single day. Plus, if you're anything like me, writing about a subject while figuring it out is a great way to learn.

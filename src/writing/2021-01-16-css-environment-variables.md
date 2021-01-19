@@ -44,7 +44,7 @@ Fixing this cramped layout would usually be as simple as increasing the bottom p
 
 ```css
 :root {
-  --safe-area-inset-bottom: var(safe-area-inset-bottom);
+  --safe-area-inset-bottom: env(safe-area-inset-bottom);
 }
 
 .footer-menu {
