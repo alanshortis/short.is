@@ -1,9 +1,0 @@
-.DS_Store
-.env
-.cache
-npm-debug.log*
-node_modules
-dist
-src/*.js
-src/*.css
-src/*.map
