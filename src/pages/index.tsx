@@ -5,10 +5,10 @@ interface HomeProps {
 }
 
 const StyledP = styled.p`
-  color: #f00;
+  color: ${p => p.theme.color.type};
 `;
 
-const Home: React.FC<HomeProps> = () => <StyledP>Nah</StyledP>;
+const Home: React.FC<HomeProps> = ({ message }) => <StyledP>{message}</StyledP>;
 
 export const config = {
   unstable_runtimeJS: false,
@@ -17,7 +17,7 @@ export const config = {
 export async function getStaticProps() {
   return {
     props: {
-      message: 'Hello, world',
+      message: 'This is v4 of short.is, the development of which is going to be public.',
     },
   };
 }
