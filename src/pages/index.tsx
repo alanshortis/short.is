@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Layout from '../components/Layout';
 import type { Meta } from '../types';
 
 interface HomeProps {
@@ -12,9 +13,11 @@ const StyledP = styled.p`
 
 const Home: React.FC<HomeProps> = ({ message, meta }) => {
   return (
-    <StyledP>
-      {message} {meta.year}
-    </StyledP>
+    <Layout meta={meta}>
+      <StyledP>
+        {message} {meta.year}
+      </StyledP>
+    </Layout>
   );
 };
 
