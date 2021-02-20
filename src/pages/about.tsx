@@ -1,5 +1,5 @@
 import Layout from '../components/Layout';
-import type { Meta } from '../types';
+import type { Meta } from '../data/Meta';
 
 interface HomeProps {
   meta: Meta;

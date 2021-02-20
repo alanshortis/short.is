@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import type { Meta } from '../types';
+import type { Meta } from '../data/Meta';
 
 interface Props {
   title?: string;
