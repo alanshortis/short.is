@@ -1,0 +1,21 @@
+{
+  "name": "short.is",
+  "version": "4.0.0",
+  "author": "Alan Shortis",
+  "description": "Alan Shortis is a web developer.",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alanshortis/short.is.git"
+  },
+  "dependencies": {
+    "next": "^10.0.7",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  }
+}
