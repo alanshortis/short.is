@@ -31,6 +31,7 @@
     "react/jsx-props-no-spreading": 2,
     "react/prop-types": 0,
     "react/react-in-jsx-scope": 0,
-    "semi": [2, "always"]
+    "semi": [2, "always"],
+    "no-underscore-dangle": 0
   }
 }

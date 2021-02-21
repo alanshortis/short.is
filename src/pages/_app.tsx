@@ -3,7 +3,7 @@ import { ThemeProvider } from 'styled-components';
 import type { AppProps } from 'next/app';
 import DocumentHead from '../components/DocumentHead';
 import defaultTheme from '../styles/defaultTheme';
-import meta from '../data/Meta';
+import meta from '../data/meta';
 
 const Shortis = ({ Component, pageProps }: AppProps) => {
   const props = {

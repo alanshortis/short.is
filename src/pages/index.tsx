@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import Layout from '../components/Layout';
-import type { Meta } from '../data/Meta';
+import type { Meta } from '../data/meta';
 
-interface HomeProps {
+interface Props {
   message: string;
   meta: Meta;
 }
@@ -11,7 +11,7 @@ const StyledP = styled.p`
   color: ${p => p.theme.color.type};
 `;
 
-const Home: React.FC<HomeProps> = ({ message, meta }) => {
+const Home: React.FC<Props> = ({ message, meta }) => {
   return (
     <Layout meta={meta}>
       <StyledP>
