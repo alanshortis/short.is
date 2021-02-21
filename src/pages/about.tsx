@@ -22,7 +22,9 @@ export const config = {
 };
 
 export async function getStaticProps() {
-  const res = await fetch(process.env.GOODREADS_URL);
+  const res = await fetch(
+    `https://www.goodreads.com/review/list?v=2&id=${process.env.GOODREADS_USER}&shelf=currently-reading&key=${process.env.GOODREADS_KEY}`
+  );
   const text = await res.text();
   const json = JSON.parse(convert.xml2json(text, { compact: true }));
   const { review } = json.GoodreadsResponse.reviews;
