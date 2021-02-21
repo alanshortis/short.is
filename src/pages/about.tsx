@@ -1,14 +1,18 @@
+import convert from 'xml-js';
 import Layout from '../components/Layout';
-import type { Meta } from '../data/Meta';
+import Reading from '../components/Reading';
+import type { Meta, Book } from '../types';
 
-interface HomeProps {
+interface Props {
   meta: Meta;
+  reading: [Book];
 }
 
-const Home: React.FC<HomeProps> = ({ meta }) => {
+const About: React.FC<Props> = ({ meta, reading }) => {
   return (
     <Layout title="About" meta={meta}>
       <h1>About</h1>
+      <Reading reading={reading} />
     </Layout>
   );
 };
@@ -17,4 +21,28 @@ export const config = {
   unstable_runtimeJS: false,
 };
 
-export default Home;
+export async function getStaticProps() {
+  const res = await fetch(
+    `https://www.goodreads.com/review/list?v=2&id=${process.env.GOODREADS_USER}&shelf=currently-reading&key=${process.env.GOODREADS_KEY}`
+  );
+  const text = await res.text();
+  const json = JSON.parse(convert.xml2json(text, { compact: true }));
+  const { review } = json.GoodreadsResponse.reviews;
+  const books = Array.isArray(review) ? review : [review];
+
+  const reading = books.map(({ book }) => {
+    return {
+      url: book.link._text,
+      title: book.title._text,
+      author: book.authors.author.name._text,
+    };
+  });
+
+  return {
+    props: {
+      reading,
+    },
+  };
+}
+
+export default About;
