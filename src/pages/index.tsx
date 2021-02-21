@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Layout from '../components/Layout';
-import type { Meta } from '../data/meta';
+import type { Meta } from '../types';
 
 interface Props {
   message: string;

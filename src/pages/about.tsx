@@ -1,8 +1,7 @@
 import convert from 'xml-js';
 import Layout from '../components/Layout';
 import Reading from '../components/Reading';
-import type { Meta } from '../data/meta';
-import type Book from '../types/Book';
+import type { Meta, Book } from '../types';
 
 interface Props {
   meta: Meta;

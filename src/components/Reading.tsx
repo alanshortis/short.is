@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import type Book from '../types/Book';
+import type { Book } from '../types';
 
 interface ReadingProps {
   reading: [Book];
