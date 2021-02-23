@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import styled from 'styled-components';
 import Layout from '../components/Layout';
 import type { Meta } from '../types';
@@ -16,6 +17,11 @@ const Home: React.FC<Props> = ({ message, meta }) => {
     <Layout meta={meta}>
       <StyledP>
         {message} {meta.year}
+      </StyledP>
+      <StyledP>
+        <Link href="/about">
+          <a>About</a>
+        </Link>
       </StyledP>
     </Layout>
   );
