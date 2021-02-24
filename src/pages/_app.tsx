@@ -1,7 +1,7 @@
 import { StrictMode } from 'react';
 import { ThemeProvider } from 'styled-components';
 import type { AppProps } from 'next/app';
-import DocumentHead from '../components/DocumentHead';
+import { DocumentHead } from '../components';
 import defaultTheme from '../styles/defaultTheme';
 
 const Shortis = ({ Component, pageProps }: AppProps) => {

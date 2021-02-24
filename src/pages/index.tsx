@@ -1,6 +1,5 @@
 import Link from 'next/link';
-import Layout from '../components/Layout';
-import PostList from '../components/PostList';
+import { Layout, PostList } from '../components';
 import getPosts from '../posts/posts';
 import type { Meta, Post } from '../types';
 

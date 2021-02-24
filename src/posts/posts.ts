@@ -1,14 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-
-interface Post {
-  title: string;
-  date: string;
-  slug: string;
-  intro: string;
-  updated?: string;
-}
+import type { Post } from '../types';
 
 const postsDirectory = path.join(process.cwd(), 'src/posts');
 
@@ -17,9 +10,9 @@ const getPosts = (): Post[] => {
 
   const allPostsData = fileNames.map(filename => {
     const fullPath = path.join(postsDirectory, filename);
-    const fileContents = fs.readFileSync(fullPath, 'utf8');
+    const fileContents = fs.readFileSync(fullPath);
 
-    return matter(fileContents).data;
+    return matter(fileContents).data as Post;
   });
 
   const sortedPosts = allPostsData.sort((a, b) => {
