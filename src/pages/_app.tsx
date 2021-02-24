@@ -3,6 +3,7 @@ import { ThemeProvider } from 'styled-components';
 import type { AppProps } from 'next/app';
 import DocumentHead from '../components/DocumentHead';
 import defaultTheme from '../styles/defaultTheme';
+import GlobalStyles from '../styles/GlobalStyles';
 import meta from '../data/meta';
 
 const Shortis = ({ Component, pageProps }: AppProps) => {
@@ -15,6 +16,7 @@ const Shortis = ({ Component, pageProps }: AppProps) => {
     <StrictMode>
       <ThemeProvider theme={defaultTheme}>
         <DocumentHead meta={meta} />
+        <GlobalStyles />
         {/* eslint-disable-next-line react/jsx-props-no-spreading */}
         <Component {...props} />
       </ThemeProvider>
