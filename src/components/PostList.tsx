@@ -8,9 +8,9 @@ interface Props {
 const PostList: React.FC<Props> = ({ posts }) => (
   <ul>
     {posts.map(post => (
-      <li key={post.slug}>
+      <li>
         <Link href={post.slug}>
-          <a>{post.title}</a>
+          <a>{post.slug}</a>
         </Link>
       </li>
     ))}
