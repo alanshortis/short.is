@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Layout, PostList } from '../components';
-import getPosts from '../data/posts';
+import { getPosts } from '../data';
 import type { Meta, Post } from '../types';
 
 interface Props {
