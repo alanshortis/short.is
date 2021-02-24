@@ -1,6 +1,8 @@
-import convert from 'xml-js';
-import { Layout, Reading } from '../components';
-import type { Meta, Book } from '../types';
+import Reading from '../components/Reading';
+import Layout from '../components/Layout';
+import getBooks from '../data/books';
+import type Book from '../types/Book';
+import type Meta from '../types/Meta';
 
 interface Props {
   meta: Meta;
@@ -21,21 +23,7 @@ export const config = {
 };
 
 export async function getStaticProps() {
-  const res = await fetch(
-    `https://www.goodreads.com/review/list?v=2&id=${process.env.GOODREADS_USER}&shelf=currently-reading&key=${process.env.GOODREADS_KEY}`
-  );
-  const text = await res.text();
-  const json = JSON.parse(convert.xml2json(text, { compact: true }));
-  const { review } = json.GoodreadsResponse.reviews;
-  const books = Array.isArray(review) ? review : [review];
-
-  const reading = books.map(({ book }) => {
-    return {
-      url: book.link._text,
-      title: book.title._text,
-      author: book.authors.author.name._text,
-    };
-  });
+  const reading = await getBooks();
 
   return {
     props: {

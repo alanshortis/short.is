@@ -1,7 +1,9 @@
 import Link from 'next/link';
-import { Layout, PostList } from '../components';
-import { getPosts } from '../data';
-import type { Meta, Post } from '../types';
+import Layout from '../components/Layout';
+import PostList from '../components/PostList';
+import getPosts from '../data/posts';
+import type Post from '../types/Post';
+import type Meta from '../types/Meta';
 
 interface Props {
   meta: Meta;

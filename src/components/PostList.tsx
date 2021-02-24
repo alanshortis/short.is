@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import type { Post } from '../types';
+import type Post from '../types/Post';
 
 interface Props {
   posts: Post[];
@@ -8,7 +8,7 @@ interface Props {
 const PostList: React.FC<Props> = ({ posts }) => (
   <ul>
     {posts.map(post => (
-      <li>
+      <li key={post.slug}>
         <Link href={post.slug}>
           <a>{post.slug}</a>
         </Link>
