@@ -1,31 +1,31 @@
 import { Fragment } from 'react';
 import type Book from '../types/Book';
 
-interface ReadingProps {
+interface Props {
   reading: [Book];
 }
 
-const Reading: React.FC<ReadingProps> = ({ reading }) => {
+const BookLink: React.FC<Book> = ({ url, title, author }) => (
+  <>
+    <a href={url}>{title}</a> by {author}
+  </>
+);
+
+const Reading: React.FC<Props> = ({ reading }) => {
   const bookCount = reading.length;
 
-  if (bookCount > 1) {
-    return (
-      <>
-        {reading.map((book, i) => (
-          <Fragment key={book.url}>
-            {i !== 0 && ', '}
-            {i + 1 === bookCount && 'and '}
-            <a href={book.url}>{book.title}</a> by {book.author}
-          </Fragment>
-        ))}
-      </>
-    );
-  }
-
-  const { url, title, author } = reading[0];
   return (
     <>
-      <a href={url}>{title}</a> by {author}
+      {reading.map((book, i) => {
+        const { url, title, author } = book;
+        return (
+          <Fragment key={url}>
+            {i !== 0 && ', '}
+            {i + 1 === bookCount && i !== 0 && 'and '}
+            <BookLink url={url} title={title} author={author} />
+          </Fragment>
+        );
+      })}
     </>
   );
 };
