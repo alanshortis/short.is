@@ -1,7 +1,6 @@
 ---
 title: 'CSS environment variables'
 date: '2021-01-18'
-slug: '/writing/css-environment-variables/'
 intro: 'Not all viewports are perfect uninterrupted rectangles. How can the user agent help us tailor the experience to account for this?'
 ---
 

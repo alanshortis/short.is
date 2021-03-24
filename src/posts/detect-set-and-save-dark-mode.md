@@ -2,7 +2,6 @@
 title: 'Detect, set and save Dark Mode'
 date: '2019-10-27'
 updated: '2020-12-29'
-slug: '/writing/detect-set-and-save-dark-mode/'
 intro: 'Dark Mode is mainstream. Supporting it is reasonably easy, but what about giving users the option to contradict their OS settings and remembering that choice?'
 ---
 

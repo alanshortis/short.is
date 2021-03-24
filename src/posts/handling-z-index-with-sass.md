@@ -1,7 +1,6 @@
 ---
 title: 'Handling z-index with SASS'
 date: '2016-06-05'
-slug: '/writing/handling-z-index-with-sass/'
 intro: "It's not uncommon for z-indexes across your app to become a tangle of bigger and bigger values, all fighting to come out on top. SASS can help you manage that."
 ---
 

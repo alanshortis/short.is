@@ -1,7 +1,6 @@
 ---
 title: 'React Render Props'
 date: '2019-02-25'
-slug: '/writing/react-render-props/'
 intro: "The React documentation is really detailed and extensive, but the explanation of Render Props wasn't quite simplified enough for me as a beginner. Let's use Render Props in a really simple, real world example."
 ---
 
