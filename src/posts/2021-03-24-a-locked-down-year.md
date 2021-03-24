@@ -1,8 +1,6 @@
 ---
 title: 'A locked down year'
-layout: 'post'
 date: '2021-03-24'
-tags: writing
 permalink: '/writing/a-locked-down-year/'
 intro: "The two week lockdown started a year ago. Initial positivity in my actions didn't last and continue to be absent."
 ---
