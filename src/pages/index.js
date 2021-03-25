@@ -1,4 +1,4 @@
-import getPosts from '../data/posts';
+import { getPostList } from '../data/posts';
 import PostList from '../components/PostList';
 
 const Home = ({ posts }) => (
@@ -13,7 +13,7 @@ export const config = {
 };
 
 export async function getStaticProps() {
-  const allPosts = getPosts();
+  const allPosts = getPostList();
 
   return {
     props: {
