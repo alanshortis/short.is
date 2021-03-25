@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 
-const FILE_EXTENSION = '.md';
+const FILE_EXTENSION = '.mdx';
 const POSTS_DIR = path.join(process.cwd(), 'src/posts');
 
 const postFileContents = slug => {
