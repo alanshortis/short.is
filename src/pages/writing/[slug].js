@@ -3,9 +3,9 @@ import renderToString from 'next-mdx-remote/render-to-string';
 import hydrate from 'next-mdx-remote/hydrate';
 import { allPostSlugs, getPostContent } from '../../data/posts';
 import PostDate from '../../components/PostDate';
-import Test from '../../components/Test';
+import ExampleEmbed from '../../components/ExampleEmbed';
 
-const components = { Test };
+const components = { ExampleEmbed };
 
 const Post = ({ content, data }) => {
   const postContent = hydrate(content, { components });
