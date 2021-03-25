@@ -2,7 +2,6 @@
 title: 'Detect, set and save Dark Mode'
 date: '2019-10-27'
 updated: '2020-12-29'
-slug: '/writing/detect-set-and-save-dark-mode/'
 intro: 'Dark Mode is mainstream. Supporting it is reasonably easy, but what about giving users the option to contradict their OS settings and remembering that choice?'
 ---
 
@@ -191,24 +190,7 @@ Everything we have covered (plus a little more styling) is included in this pen.
 
 (December 2020: It appears that Chrome is now preventing interaction with `localStorage` when embedded in an iframe, so if this example doesn't work as expected please click the URL below the frame to pop the example out into its own window.)
 
-<div class="example-embed">
-  <iframe
-    class="example-embed__frame"
-    title="Dark Mode"
-    src="https://examples.short.is/dark-mode/final/"
-    frameborder="no"
-    allowfullscreen="false"
-    loading="lazy"
-  ></iframe>
-  <a
-    class="example-embed__footer no-arrow"
-    href="https://examples.short.is/dark-mode/final/"
-    target="_blank"
-  >
-    <span>Dark Mode</span>
-    <span>https://examples.short.is/dark-mode/final/</span>
-  </a>
-</div>
+<ExampleEmbed title="Dark Mode" url="https://examples.short.is/dark-mode/final/" />
 
 This solution is totally vanilla. No JS frameworks, libraries, CSS-in-JS or pre-processors are needed to get it working. You could use these things to make this a little easier to manage if you work on a large app and/or part of a team.
 

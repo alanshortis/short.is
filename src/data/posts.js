@@ -2,16 +2,27 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 
-const postsDirectory = path.join(process.cwd(), 'src/posts');
+const FILE_EXTENSION = '.mdx';
+const POSTS_DIR = path.join(process.cwd(), 'src/posts');
 
-const getPosts = () => {
-  const fileNames = fs.readdirSync(postsDirectory).filter(file => path.extname(file) === '.md');
+const postFileContents = slug => {
+  const fullPath = path.join(POSTS_DIR, `${slug}${FILE_EXTENSION}`);
+  return fs.readFileSync(fullPath);
+};
+
+export const allPostSlugs = () => {
+  const fileNames = fs.readdirSync(POSTS_DIR).filter(file => path.extname(file) === FILE_EXTENSION);
+  return fileNames.map(name => path.basename(name, FILE_EXTENSION));
+};
+
+export const getPostList = () => {
+  const fileNames = allPostSlugs();
 
   const allPostsData = fileNames.map(filename => {
-    const fullPath = path.join(postsDirectory, filename);
-    const fileContents = fs.readFileSync(fullPath);
-
-    return matter(fileContents).data;
+    return {
+      slug: `writing/${path.basename(filename, FILE_EXTENSION)}`,
+      ...matter(postFileContents(filename)).data,
+    };
   });
 
   const sortedPosts = allPostsData.sort((a, b) => {
@@ -24,4 +35,6 @@ const getPosts = () => {
   return sortedPosts;
 };
 
-export default getPosts;
+export const getPostContent = slug => {
+  return matter(postFileContents(slug));
+};

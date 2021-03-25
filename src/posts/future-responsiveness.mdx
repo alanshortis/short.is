@@ -2,7 +2,6 @@
 title: 'Future responsiveness'
 date: '2020-02-15'
 updated: '2020-10-10'
-slug: '/writing/future-responsiveness/'
 intro: 'Using media queries to adapt layouts for screen size has defined responsive design for a long time, but now we can respond to more.'
 ---
 

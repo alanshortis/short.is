@@ -1,7 +1,6 @@
 ---
 title: 'A locked down year'
 date: '2021-03-24'
-slug: '/writing/a-locked-down-year/'
 intro: "The two week lockdown started a year ago. Initial positivity in my actions didn't last and continue to be absent."
 ---
 

@@ -1,7 +1,6 @@
 ---
 title: 'CSS environment variables'
 date: '2021-01-18'
-slug: '/writing/css-environment-variables/'
 intro: 'Not all viewports are perfect uninterrupted rectangles. How can the user agent help us tailor the experience to account for this?'
 ---
 
@@ -33,9 +32,14 @@ A common issue for newer iPhones is that a footer or static menu at the bottom o
 When viewing [pitchfork](https://pitchfork.com/) with an affected device, this is really obvious:
 
 <picture>
-  <source srcset="/img/pitchfork@2x.webp 2x" type="image/webp">
-  <source srcset="/img/pitchfork.webp" type="image/webp">
-  <img src="/img/pitchfork.png" srcset="/img/pitchfork@2x.png" loading="lazy" alt="A screenshot of pitchfork.com, where the part of the OS overlaps with the website's footer menu"/>
+  <source srcset="/img/pitchfork@2x.webp 2x" type="image/webp" />
+  <source srcset="/img/pitchfork.webp" type="image/webp" />
+  <img
+    src="/img/pitchfork.png"
+    srcset="/img/pitchfork@2x.png"
+    loading="lazy"
+    alt="A screenshot of pitchfork.com, where the part of the OS overlaps with the website's footer menu"
+  />
 </picture>
 
 Fixing this cramped layout would usually be as simple as increasing the bottom padding on the menu, but that would mean extra space on every device. This is where the `env(safe-area-inset-bottom)` environment variable steps in:
@@ -71,9 +75,14 @@ To allow space, we need to increase the padding at the bottom of the menu. We ca
 And that's it! Let's take a look:
 
 <picture>
-  <source srcset="/img/bottom-menu@2x.webp 2x" type="image/webp">
-  <source srcset="/img/bottom-menu.webp" type="image/webp">
-  <img src="/img/bottom-menu.png" srcset="/img/bottom-menu@2x.png" loading="lazy" alt="A screenshot of an iPhone will a well spaced footer menu"/>
+  <source srcset="/img/bottom-menu@2x.webp 2x" type="image/webp" />
+  <source srcset="/img/bottom-menu.webp" type="image/webp" />
+  <img
+    src="/img/bottom-menu.png"
+    srcset="/img/bottom-menu@2x.png"
+    loading="lazy"
+    alt="A screenshot of an iPhone will a well spaced footer menu"
+  />
 </picture>
 
 Plenty of space on the iPhone. Take a look at the [example](https://examples.short.is/css-env-vars/) to see how this behaves across devices and to view the complete source.

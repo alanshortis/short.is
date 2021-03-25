@@ -1,7 +1,6 @@
 ---
 title: 'Icons with SVG Sprites'
 date: '2017-02-21'
-slug: '/writing/icons-with-svg-sprites/'
 intro: 'First there were sprite sheets. Then icon fonts. Then SVGs. Now there are SVG sprites, and some .'
 ---
 

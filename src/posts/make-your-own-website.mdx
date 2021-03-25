@@ -2,7 +2,6 @@
 title: 'Make your own website'
 date: '2019-11-22'
 updated: '2020-11-15'
-slug: '/writing/make-your-own-website/'
 intro: "There are a lot of places to quickly post some content. It's quick, convenient but ultimately bad for you and your work."
 ---
 
