@@ -7,13 +7,13 @@ import ExampleEmbed from '../../components/ExampleEmbed';
 
 const components = { ExampleEmbed };
 
-const Post = ({ content, data }) => {
+const Post = ({ content, frontMatter }) => {
   const postContent = hydrate(content, { components });
   return (
     <>
-      <PostDate date={data.date} />
-      <h1>{data.title}</h1>
-      <p>{data.intro}</p>
+      <PostDate date={frontMatter.date} />
+      <h1>{frontMatter.title}</h1>
+      <p>{frontMatter.intro}</p>
       <div>{postContent}</div>
     </>
   );
@@ -35,7 +35,7 @@ export async function getStaticProps({ params }) {
   const { content, data } = getPostContent(params.slug);
   const mdxContent = await renderToString(content, { components });
 
-  return { props: { content: mdxContent, data } };
+  return { props: { content: mdxContent, frontMatter: data } };
 }
 
 export default Post;
