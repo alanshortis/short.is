@@ -1,3 +1,4 @@
+import ReactMarkdown from 'react-markdown';
 import { allPostSlugs, getPostContent } from '../../data/posts';
 import PostDate from '../../components/PostDate';
 
@@ -6,7 +7,7 @@ const Post = ({ content, data }) => (
     <PostDate date={data.date} />
     <h1>{data.title}</h1>
     <p>{data.intro}</p>
-    {content}
+    <ReactMarkdown allowDangerousHtml>{content}</ReactMarkdown>
   </>
 );
 
