@@ -1,5 +1,5 @@
 import { allPostFrontMatter } from '../data/posts';
-import PostList from '../components/PostList';
+import { PostList } from '../components';
 
 const Home = ({ posts }) => (
   <>

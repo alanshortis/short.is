@@ -2,9 +2,7 @@ import Link from 'next/link';
 import renderToString from 'next-mdx-remote/render-to-string';
 import hydrate from 'next-mdx-remote/hydrate';
 import { allPostFrontMatter, postContent } from '../../data/posts';
-import PostDate from '../../components/PostDate';
-import ExampleEmbed from '../../components/ExampleEmbed';
-import PostNav from '../../components/PostNav';
+import { PostDate, ExampleEmbed, PostNav } from '../../components';
 
 const components = { ExampleEmbed };
 
