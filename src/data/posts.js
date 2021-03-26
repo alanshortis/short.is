@@ -2,37 +2,36 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 
-const FILE_EXTENSION = '.mdx';
+const EXT = '.mdx';
 const POSTS_DIR = path.join(process.cwd(), 'src/posts');
+const allPostFiles = fs.readdirSync(POSTS_DIR).filter(file => path.extname(file) === EXT);
+const postCount = allPostFiles.length;
 
-const postFileContents = slug => {
-  const fullPath = path.join(POSTS_DIR, `${slug}${FILE_EXTENSION}`);
-  return fs.readFileSync(fullPath);
+// All post slugs.
+export const allPostSlugs = allPostFiles.map(post => path.basename(post, EXT));
+
+// Full content of each post file.
+export const postFileContents = slug => {
+  const fullPath = path.join(POSTS_DIR, slug);
+  return matter(fs.readFileSync(fullPath));
 };
 
-export const getPostList = () => {
-  const fileNames = fs.readdirSync(POSTS_DIR).filter(file => path.extname(file) === FILE_EXTENSION);
-  const slugs = fileNames.map(name => path.basename(name, FILE_EXTENSION));
+// All post front matter, sorted, with computed front matter.
+export const allPostFrontMatter = () =>
+  allPostFiles
+    .map(file => ({ ...postFileContents(file).data, slug: path.basename(file, EXT) }))
+    .sort((a, b) => (new Date(a.date) < new Date(b.date) ? 1 : -1))
+    .map((post, i) => ({
+      ...post,
+      nextPostSlug: i === 0 ? null : allPostSlugs[i - 1],
+      prevPostSlug: i === postCount - 1 ? null : allPostSlugs[i + 1],
+    }));
 
-  const allPostsData = slugs.map(filename => {
-    return {
-      slug: `writing/${path.basename(filename, FILE_EXTENSION)}`,
-      ...matter(postFileContents(filename)).data,
-    };
-  });
-
-  const sortedPosts = allPostsData.sort((a, b) => {
-    if (new Date(a.date) < new Date(b.date)) {
-      return 1;
-    }
-    return -1;
-  });
-
-  return sortedPosts;
-};
-
-export const allPostSlugs = getPostList().map(post => post.slug);
-
-export const getPostContent = slug => {
-  return matter(postFileContents(slug));
+// The post content with all front maatter.
+export const postContent = slug => {
+  return {
+    // fontMatter: allPostFrontMatter().find(post => post.slug === slug),
+    // content: postFileContents(`${slug}${EXT}`).content,
+    ...postFileContents(`${slug}${EXT}`),
+  };
 };

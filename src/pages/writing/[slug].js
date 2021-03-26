@@ -1,7 +1,7 @@
 // import ReactMarkdown from 'react-markdown';
 import renderToString from 'next-mdx-remote/render-to-string';
 import hydrate from 'next-mdx-remote/hydrate';
-import { allPostSlugs, getPostContent } from '../../data/posts';
+import { allPostSlugs, postContent } from '../../data/posts';
 import PostDate from '../../components/PostDate';
 import ExampleEmbed from '../../components/ExampleEmbed';
 
@@ -24,15 +24,16 @@ export const config = {
 };
 
 export async function getStaticPaths() {
+  console.log(allPostSlugs);
   const paths = allPostSlugs.map(slug => ({
-    params: { slug: slug.split('/').pop() }, // Slug without 'writing/'
+    params: { slug },
   }));
 
   return { paths, fallback: false };
 }
 
 export async function getStaticProps({ params }) {
-  const { content, data } = getPostContent(params.slug);
+  const { content, data } = postContent(params.slug);
   const mdxContent = await renderToString(content, { components });
 
   return { props: { content: mdxContent, frontMatter: data } };
