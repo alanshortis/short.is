@@ -10,15 +10,11 @@ const postFileContents = slug => {
   return fs.readFileSync(fullPath);
 };
 
-export const allPostSlugs = () => {
-  const fileNames = fs.readdirSync(POSTS_DIR).filter(file => path.extname(file) === FILE_EXTENSION);
-  return fileNames.map(name => path.basename(name, FILE_EXTENSION));
-};
-
 export const getPostList = () => {
-  const fileNames = allPostSlugs();
+  const fileNames = fs.readdirSync(POSTS_DIR).filter(file => path.extname(file) === FILE_EXTENSION);
+  const slugs = fileNames.map(name => path.basename(name, FILE_EXTENSION));
 
-  const allPostsData = fileNames.map(filename => {
+  const allPostsData = slugs.map(filename => {
     return {
       slug: `writing/${path.basename(filename, FILE_EXTENSION)}`,
       ...matter(postFileContents(filename)).data,
@@ -34,6 +30,8 @@ export const getPostList = () => {
 
   return sortedPosts;
 };
+
+export const allPostSlugs = getPostList().map(post => post.slug);
 
 export const getPostContent = slug => {
   return matter(postFileContents(slug));

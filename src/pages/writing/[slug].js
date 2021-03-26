@@ -24,8 +24,8 @@ export const config = {
 };
 
 export async function getStaticPaths() {
-  const paths = allPostSlugs().map(slug => ({
-    params: { slug },
+  const paths = allPostSlugs.map(slug => ({
+    params: { slug: slug.split('/').pop() }, // Slug without 'writing/'
   }));
 
   return { paths, fallback: false };
