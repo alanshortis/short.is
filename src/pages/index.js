@@ -1,5 +1,5 @@
-import { getPostList } from '../data/posts';
-import PostList from '../components/PostList';
+import { allPostFrontMatter } from '../data/posts';
+import { PostList } from '../components';
 
 const Home = ({ posts }) => (
   <>
@@ -13,11 +13,9 @@ export const config = {
 };
 
 export async function getStaticProps() {
-  const allPosts = getPostList();
-
   return {
     props: {
-      posts: allPosts,
+      posts: allPostFrontMatter,
     },
   };
 }

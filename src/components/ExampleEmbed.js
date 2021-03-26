@@ -4,7 +4,7 @@ const ExampleEmbed = ({ title, url }) => (
       title={title}
       src={url}
       frameBorder="no"
-      allowFullScreen="false"
+      allowFullScreen={false}
       loading="lazy"
     ></iframe>
     <a href={url} target="_blank">
