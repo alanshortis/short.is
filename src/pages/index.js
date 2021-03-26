@@ -13,11 +13,9 @@ export const config = {
 };
 
 export async function getStaticProps() {
-  const allPosts = allPostFrontMatter();
-
   return {
     props: {
-      posts: allPosts,
+      posts: allPostFrontMatter,
     },
   };
 }

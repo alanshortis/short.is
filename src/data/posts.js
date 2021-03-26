@@ -16,22 +16,20 @@ export const postFileContents = slug => {
   return matter(fs.readFileSync(fullPath));
 };
 
-// All post front matter, sorted, with computed front matter.
-export const allPostFrontMatter = () =>
-  allPostFiles
-    .map(file => ({ ...postFileContents(file).data, slug: path.basename(file, EXT) }))
-    .sort((a, b) => (new Date(a.date) < new Date(b.date) ? 1 : -1))
-    .map((post, i) => ({
-      ...post,
-      nextPostSlug: i === 0 ? null : allPostSlugs[i - 1],
-      prevPostSlug: i === postCount - 1 ? null : allPostSlugs[i + 1],
-    }));
+// All post front matter, sorted, with computed values.
+export const allPostFrontMatter = allPostFiles
+  .map(file => ({ ...postFileContents(file).data, slug: path.basename(file, EXT) }))
+  .sort((a, b) => (new Date(a.date) < new Date(b.date) ? 1 : -1))
+  .map((post, i) => ({
+    ...post,
+    nextPostSlug: i === 0 ? null : allPostSlugs[i - 1],
+    prevPostSlug: i === postCount - 1 ? null : allPostSlugs[i + 1],
+  }));
 
 // The post content with all front maatter.
 export const postContent = slug => {
   return {
-    // fontMatter: allPostFrontMatter().find(post => post.slug === slug),
-    // content: postFileContents(`${slug}${EXT}`).content,
-    ...postFileContents(`${slug}${EXT}`),
+    content: postFileContents(`${slug}${EXT}`).content,
+    frontMatter: allPostFrontMatter.find(post => post.slug === slug),
   };
 };

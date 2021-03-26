@@ -1,4 +1,4 @@
-// import ReactMarkdown from 'react-markdown';
+import Link from 'next/link';
 import renderToString from 'next-mdx-remote/render-to-string';
 import hydrate from 'next-mdx-remote/hydrate';
 import { allPostSlugs, postContent } from '../../data/posts';
@@ -11,6 +11,9 @@ const Post = ({ content, frontMatter }) => {
   const postContent = hydrate(content, { components });
   return (
     <>
+      <Link href="/">
+        <a>Back</a>
+      </Link>
       <PostDate date={frontMatter.date} />
       <h1>{frontMatter.title}</h1>
       <p>{frontMatter.intro}</p>
@@ -24,7 +27,6 @@ export const config = {
 };
 
 export async function getStaticPaths() {
-  console.log(allPostSlugs);
   const paths = allPostSlugs.map(slug => ({
     params: { slug },
   }));
@@ -33,10 +35,10 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const { content, data } = postContent(params.slug);
+  const { content, frontMatter } = postContent(params.slug);
   const mdxContent = await renderToString(content, { components });
 
-  return { props: { content: mdxContent, frontMatter: data } };
+  return { props: { content: mdxContent, frontMatter } };
 }
 
 export default Post;
