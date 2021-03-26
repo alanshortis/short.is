@@ -2,23 +2,25 @@ import Link from 'next/link';
 import renderToString from 'next-mdx-remote/render-to-string';
 import hydrate from 'next-mdx-remote/hydrate';
 import { allPostFrontMatter, postContent } from '../../data/posts';
-import { PostDate, ExampleEmbed, PostNav } from '../../components';
+import { ExampleEmbed, Layout, PostDate, PostNav } from '../../components';
 
 const components = { ExampleEmbed };
 
-const Post = ({ content, frontMatter, nextPost, prevPost }) => {
+const Post = ({ content, frontMatter, meta, nextPost, prevPost }) => {
   const postContent = hydrate(content, { components });
+  const { date, title, intro } = frontMatter;
+
   return (
-    <>
+    <Layout meta={meta} title={title}>
       <Link href="/">
         <a>Back</a>
       </Link>
-      <PostDate date={frontMatter.date} />
-      <h1>{frontMatter.title}</h1>
-      <p>{frontMatter.intro}</p>
+      <PostDate date={date} />
+      <h1>{title}</h1>
+      <p>{intro}</p>
       <div>{postContent}</div>
       <PostNav nextPost={nextPost} prevPost={prevPost} />
-    </>
+    </Layout>
   );
 };
 

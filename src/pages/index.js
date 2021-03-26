@@ -1,11 +1,10 @@
 import { allPostFrontMatter } from '../data/posts';
-import { PostList } from '../components';
+import { Layout, PostList } from '../components';
 
-const Home = ({ posts }) => (
-  <>
-    <p>short.is v4</p>
+const Home = ({ meta, posts }) => (
+  <Layout meta={meta}>
     <PostList posts={posts} />
-  </>
+  </Layout>
 );
 
 export const config = {
