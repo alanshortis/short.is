@@ -7,29 +7,34 @@ const POSTS_DIR = path.join(process.cwd(), 'src/posts');
 const allPostFiles = fs.readdirSync(POSTS_DIR).filter(file => path.extname(file) === EXT);
 const postCount = allPostFiles.length;
 
-// All post slugs.
-export const allPostSlugs = allPostFiles.map(post => path.basename(post, EXT));
-
 // Full content of each post file.
-export const postFileContents = slug => {
+const postFileContent = slug => {
   const fullPath = path.join(POSTS_DIR, slug);
   return matter(fs.readFileSync(fullPath));
 };
 
 // All post front matter, sorted, with computed values.
 export const allPostFrontMatter = allPostFiles
-  .map(file => ({ ...postFileContents(file).data, slug: path.basename(file, EXT) }))
+  .map(file => ({ ...postFileContent(file).data, slug: path.basename(file, EXT) }))
   .sort((a, b) => (new Date(a.date) < new Date(b.date) ? 1 : -1))
-  .map((post, i) => ({
+  .map((post, idx, arr) => ({
     ...post,
-    nextPostSlug: i === 0 ? null : allPostSlugs[i - 1],
-    prevPostSlug: i === postCount - 1 ? null : allPostSlugs[i + 1],
+    nextPostSlug: idx === 0 ? null : arr[idx - 1].slug,
+    prevPostSlug: idx === postCount - 1 ? null : arr[idx + 1].slug,
   }));
+
+// Front matter for a specific post.
+const postFrontMatter = slug => allPostFrontMatter.find(post => post.slug === slug);
 
 // The post content with all front maatter.
 export const postContent = slug => {
+  const { content } = postFileContent(`${slug}${EXT}`);
+  const frontMatter = postFrontMatter(slug);
+
   return {
-    content: postFileContents(`${slug}${EXT}`).content,
-    frontMatter: allPostFrontMatter.find(post => post.slug === slug),
+    content,
+    frontMatter,
+    nextPost: postFrontMatter(frontMatter.nextPostSlug) || null,
+    prevPost: postFrontMatter(frontMatter.prevPostSlug) || null,
   };
 };
