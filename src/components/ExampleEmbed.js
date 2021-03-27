@@ -1,5 +1,3 @@
-import PropTypes from 'prop-types';
-
 const ExampleEmbed = ({ title, url }) => (
   <div>
     <iframe
@@ -15,10 +13,5 @@ const ExampleEmbed = ({ title, url }) => (
     </a>
   </div>
 );
-
-ExampleEmbed.propTypes = {
-  title: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
-};
 
 export default ExampleEmbed;

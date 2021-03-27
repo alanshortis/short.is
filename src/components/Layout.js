@@ -1,12 +1,8 @@
 import Head from 'next/head';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import Header from './Header';
+import Footer from './Footer';
 
-const StyledP = styled.p`
-  font-weight: bold;
-`;
-
-const Layout = ({ children, title, meta }) => (
+const Layout = ({ children, title, meta, withFooter }) => (
   <>
     <Head>
       <title>
@@ -14,25 +10,10 @@ const Layout = ({ children, title, meta }) => (
         {meta.title}
       </title>
     </Head>
-    <header>
-      <StyledP>short.is v4</StyledP>
-    </header>
+    <Header meta={meta} />
     <main>{children}</main>
-    <footer>{meta.year}</footer>
+    {withFooter && <Footer meta={meta} />}
   </>
 );
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-  title: PropTypes.string,
-  meta: PropTypes.shape({
-    title: PropTypes.string,
-    year: PropTypes.number,
-  }).isRequired,
-};
-
-Layout.defaultProps = {
-  title: null,
-};
 
 export default Layout;

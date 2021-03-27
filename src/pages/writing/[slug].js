@@ -11,14 +11,17 @@ const Post = ({ content, frontMatter, meta, nextPost, prevPost }) => {
   const { date, title, intro } = frontMatter;
 
   return (
-    <Layout meta={meta} title={title}>
-      <Link href="/">
-        <a>Back</a>
-      </Link>
-      <PostDate date={date} />
-      <h1>{title}</h1>
-      <p>{intro}</p>
-      <div>{postContent}</div>
+    <Layout meta={meta} title={title} withFooter>
+      <article>
+        <div>
+          <PostDate date={date} />
+          <h1>{title}</h1>
+        </div>
+        <div>
+          <p>{intro}</p>
+          {postContent}
+        </div>
+      </article>
       <PostNav nextPost={nextPost} prevPost={prevPost} />
     </Layout>
   );
