@@ -1,9 +1,10 @@
+import PropTypes from 'prop-types';
 import getGoodreads from '../data/goodreads';
-import { Goodreads } from '../components';
+import { Goodreads, Layout } from '../components';
 
-const About = ({ goodreads }) => {
+const About = ({ goodreads, meta }) => {
   return (
-    <>
+    <Layout meta={meta} title="About">
       <h1>About</h1>
       <h2>Now</h2>
       <ul>
@@ -11,7 +12,7 @@ const About = ({ goodreads }) => {
           <Goodreads goodreads={goodreads} />
         </li>
       </ul>
-    </>
+    </Layout>
   );
 };
 
@@ -22,5 +23,22 @@ export async function getStaticProps() {
     },
   };
 }
+
+About.propTypes = {
+  goodreads: PropTypes.arrayOf(
+    PropTypes.shape({
+      author: PropTypes.string,
+      title: PropTypes.string,
+      url: PropTypes.string,
+    })
+  ).isRequired,
+  meta: PropTypes.shape({
+    description: PropTypes.string,
+    title: PropTypes.string,
+    twitter: PropTypes.string,
+    url: PropTypes.string,
+    year: PropTypes.number,
+  }).isRequired,
+};
 
 export default About;
