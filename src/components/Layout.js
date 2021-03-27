@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const StyledP = styled.p`
@@ -20,5 +21,18 @@ const Layout = ({ children, title, meta }) => (
     <footer>{meta.year}</footer>
   </>
 );
+
+Layout.propTypes = {
+  children: PropTypes.node.isRequired,
+  title: PropTypes.string,
+  meta: PropTypes.shape({
+    title: PropTypes.string,
+    year: PropTypes.number,
+  }).isRequired,
+};
+
+Layout.defaultProps = {
+  title: null,
+};
 
 export default Layout;

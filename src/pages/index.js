@@ -42,7 +42,7 @@ Home.propTypes = {
       nextPostSlug: PropTypes.string,
       prevPostSlug: PropTypes.string,
     })
-  ),
+  ).isRequired,
 };
 
 export default Home;
