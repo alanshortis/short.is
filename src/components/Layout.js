@@ -1,4 +1,9 @@
 import Head from 'next/head';
+import styled from 'styled-components';
+
+const StyledP = styled.p`
+  font-weight: bold;
+`;
 
 const Layout = ({ children, title, meta }) => (
   <>
@@ -9,10 +14,10 @@ const Layout = ({ children, title, meta }) => (
       </title>
     </Head>
     <header>
-      <p>short.is v4</p>
+      <StyledP>short.is v4</StyledP>
     </header>
     <main>{children}</main>
-    <footer>Footer</footer>
+    <footer>{meta.year}</footer>
   </>
 );
 

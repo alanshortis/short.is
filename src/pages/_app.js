@@ -1,5 +1,8 @@
 import { StrictMode } from 'react';
+import { ThemeProvider } from 'styled-components';
 import meta from '../data/meta';
+import theme from '../styles/theme';
+import GlobalStyles from '../styles/GlobalStyles';
 
 const Shortis = ({ Component, pageProps }) => {
   const props = {
@@ -9,7 +12,10 @@ const Shortis = ({ Component, pageProps }) => {
 
   return (
     <StrictMode>
-      <Component {...props} />
+      <ThemeProvider theme={theme}>
+        <GlobalStyles />
+        <Component {...props} />
+      </ThemeProvider>
     </StrictMode>
   );
 };
