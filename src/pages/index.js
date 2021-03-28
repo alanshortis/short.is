@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { allPostFrontMatter } from '../data/posts';
 import { Layout, PostList } from '../components';
+import generateRss from '../feed/rss';
 
 const Home = ({ meta, posts }) => (
   <Layout meta={meta}>
@@ -23,6 +24,8 @@ export const config = {
 };
 
 export async function getStaticProps() {
+  generateRss();
+
   return {
     props: {
       posts: allPostFrontMatter,
