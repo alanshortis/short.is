@@ -3,7 +3,7 @@ import path from 'path';
 import { allPostFrontMatter } from '../data/posts';
 import meta from '../data/meta';
 
-const FEED_DIR = path.join(process.cwd(), 'public/writing');
+const FEED_OUTPUT_PATH = path.join(process.cwd(), 'public/writing');
 
 const rssXml = () => `<feed xmlns="http://www.w3.org/2005/Atom">
   <title>${meta.title}</title>
@@ -37,10 +37,10 @@ const rssXml = () => `<feed xmlns="http://www.w3.org/2005/Atom">
 
 const generateRss = () => {
   if (process.env.NODE_ENV === 'production') {
-    if (!fs.existsSync(FEED_DIR)) {
-      fs.mkdirSync(FEED_DIR);
+    if (!fs.existsSync(FEED_OUTPUT_PATH)) {
+      fs.mkdirSync(FEED_OUTPUT_PATH, { recursive: true });
     }
-    fs.writeFileSync(`${FEED_DIR}/feed.xml`, rssXml());
+    fs.writeFileSync(`${FEED_OUTPUT_PATH}/feed.xml`, rssXml());
   }
 };
 
