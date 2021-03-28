@@ -18,10 +18,6 @@ const GlobalStyles = createGlobalStyle`
     display: grid;
     grid-template-rows: 3rem auto 3rem;
   }
-
-  a {
-    color: inherit;
-  }
 `;
 
 export default GlobalStyles;
