@@ -2,12 +2,13 @@
   "name": "short.is",
   "version": "4.0.0",
   "author": "Alan Shortis",
-  "description": "A personal website, very much always in progress. Currently using:",
+  "description": "Alan Shortis is a front end developer.",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "new-post": "node newpost.js"
   },
   "repository": {
     "type": "git",
