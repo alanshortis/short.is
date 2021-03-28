@@ -1,5 +1,5 @@
 import getGoodreads from '../data/goodreads';
-import { Goodreads, Layout } from '../components';
+import { A, Goodreads, Layout } from '../components';
 
 const About = ({ goodreads, meta }) => {
   return (
@@ -44,7 +44,13 @@ const About = ({ goodreads, meta }) => {
             components for client JavaScript, and Netlify to build, deploy, and host.
           </p>
           <h2>Elsewhere</h2>
-          <p>Find me on CodePen , GitHub , Instagram , Last.fm , Strava , and Twitter.</p>
+          <p>
+            Find me on <A href="https://codepen.io/alanshortis">CodePen</A>,{' '}
+            <A href="https://github.com/alanshortis">GitHub</A>,{' '}
+            <A href="https://www.instagram.com/ashortis/">Instagram</A>,{' '}
+            <A href="https://www.last.fm/user/ashortis">Last.fm</A>, and{' '}
+            <A href="https://www.strava.com/athletes/138800">Strava</A>.
+          </p>
         </div>
       </article>
     </Layout>
