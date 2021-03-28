@@ -1,16 +1,18 @@
 const PostNav = ({ nextPost, prevPost }) => (
-  <>
+  <nav>
     {prevPost && (
-      <p>
-        PREV: <a href={`/writing/${prevPost.slug}`}>{prevPost.title}</a>
-      </p>
+      <a href={`/writing/${prevPost.slug}`}>
+        <p>Older</p>
+        <p>{prevPost.title}</p>
+      </a>
     )}
     {nextPost && (
-      <p>
-        NEXT:<a href={`/writing/${nextPost.slug}`}>{nextPost.title}</a>
-      </p>
+      <a href={`/writing/${nextPost.slug}`}>
+        <p>Newer</p>
+        <p>{nextPost.title}</p>
+      </a>
     )}
-  </>
+  </nav>
 );
 
 export default PostNav;

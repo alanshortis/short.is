@@ -1,5 +1,4 @@
 import { Fragment } from 'react';
-import PropTypes from 'prop-types';
 
 const Goodreads = ({ goodreads }) => {
   const bookCount = goodreads.length;
@@ -18,16 +17,6 @@ const Goodreads = ({ goodreads }) => {
       })}
     </>
   );
-};
-
-Goodreads.propTypes = {
-  goodreads: PropTypes.arrayOf(
-    PropTypes.shape({
-      author: PropTypes.string,
-      title: PropTypes.string,
-      url: PropTypes.string,
-    })
-  ).isRequired,
 };
 
 export default Goodreads;
