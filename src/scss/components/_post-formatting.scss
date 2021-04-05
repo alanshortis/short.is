@@ -14,18 +14,12 @@
 
   a {
     text-decoration: none;
-    text-decoration-skip-ink: none;
     color: var(--accent);
     &[href^='http']:not(.no-arrow)::after {
       content: '↗';
-      display: inline-block;
       font-family: v.$family--mono;
       font-size: 0.833rem;
-      margin: 0 0.25em;
-      text-decoration: none;
-    }
-    &:hover {
-      text-decoration: underline;
+      margin-left: 0.25em;
     }
   }
 
