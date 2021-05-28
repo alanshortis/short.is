@@ -1,9 +1,6 @@
 .DS_Store
 .env
 .cache
+.next
 npm-debug.log*
 node_modules
-dist
-src/*.js
-src/*.css
-src/*.map
