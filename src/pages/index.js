@@ -10,6 +10,10 @@ export async function getStaticProps() {
   };
 }
 
+export const config = {
+  unstable_runtimeJS: false,
+};
+
 const Home = ({ meta, posts }) => (
   <Layout meta={meta}>
     {posts.map(post => (

@@ -5,6 +5,11 @@ const GlobalStyles = createGlobalStyle`
     font-size: 100%;
     --background: #e1e5ea;
     --color: #222831;
+
+    & body.dark {
+      --background: #222831;
+      --color: #e1e5ea;
+    }
   }
 
   *, *::before, *::after {
@@ -39,6 +44,10 @@ const GlobalStyles = createGlobalStyle`
   img {
     max-width: 100%;
     height: auto;
+  }
+
+  .hidden {
+    display: none;
   }
 `;
 
