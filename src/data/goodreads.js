@@ -8,8 +8,6 @@ const getGoodreads = async () => {
   const json = JSON.parse(convert.xml2json(text, { compact: true }));
   const { review } = json.GoodreadsResponse.reviews;
 
-  console.log(text);
-
   // Make this an array even if it's one book.
   const books = Array.isArray(review) ? review : [review];
 
