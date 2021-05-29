@@ -1,5 +1,5 @@
 .DS_Store
-.env
+.env.local
 .cache
 .next
 npm-debug.log*
