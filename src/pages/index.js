@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { allPostFrontMatter } from '../data/posts';
-import { Layout } from '../components';
+import { Layout, PostDate } from '../components';
 
 export async function getStaticProps() {
   return {
@@ -15,7 +15,7 @@ const Home = ({ meta, posts }) => (
     {posts.map(post => (
       <Link key={post.slug} href={`/writing/${post.slug}`}>
         <a>
-          <time dateTime={post.date}>{post.date}</time>
+          <PostDate date={post.date} />
           <h2>{post.title}</h2>
           <p>{post.intro}</p>
         </a>

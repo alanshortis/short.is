@@ -2,7 +2,7 @@ import { serialize } from 'next-mdx-remote/serialize';
 import { MDXRemote } from 'next-mdx-remote';
 import externalLinks from 'remark-external-links';
 import { allPostFrontMatter, postContent } from '../../data/posts';
-import { ExampleEmbed, Layout } from '../../components';
+import { ExampleEmbed, Layout, PostDate } from '../../components';
 
 // Create pages for all posts.
 export function getStaticPaths() {
@@ -35,7 +35,7 @@ const Post = ({ mdxContent, frontMatter, meta }) => {
     <Layout meta={meta} title={title}>
       <article>
         <div>
-          <date dateTime={date}>{date}</date>
+          <PostDate date={date} />
           <h1>{title}</h1>
         </div>
         <div>
