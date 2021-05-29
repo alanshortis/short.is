@@ -1,9 +1,9 @@
-import styled from 'styled-components';
+import { Layout } from '../components';
 
-const StyledP = styled.p`
-  color: red;
-`;
-
-const Home = () => <StyledP>Home</StyledP>;
+const Home = ({ meta }) => (
+  <Layout meta={meta}>
+    <p>Home</p>
+  </Layout>
+);
 
 export default Home;

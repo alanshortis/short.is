@@ -9,6 +9,10 @@ const GlobalStyles = createGlobalStyle`
 
   *, *::before, *::after {
     box-sizing: inherit;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
   }
 
   body {
@@ -26,6 +30,15 @@ const GlobalStyles = createGlobalStyle`
 
   main {
     flex: 1;
+  }
+
+  ul, ol {
+    list-style: none;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
   }
 `;
 
