@@ -9,6 +9,10 @@ export async function getStaticProps() {
   };
 }
 
+export const config = {
+  unstable_runtimeJS: false,
+};
+
 const About = ({ goodreads, meta }) => (
   <Layout title="About" meta={meta}>
     <Goodreads goodreads={goodreads} />
