@@ -50,7 +50,7 @@ class SchemeToggle extends HTMLElement {
     const label = `Switch to ${this.schemeNotInUse()} mode`;
 
     this.innerHTML = `
-      <svg width="0" height="0" class="hidden">
+      <svg width="0" height="0" class="sprite">
         <symbol xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" id="dark">
           <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
         </symbol>
@@ -71,6 +71,9 @@ class SchemeToggle extends HTMLElement {
         button > svg {
           width: 1.25rem;
           height: 1.25rem;
+        }
+        .sprite {
+          display: none;
         }
       </style>
 

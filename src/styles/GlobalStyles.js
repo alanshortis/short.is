@@ -49,10 +49,6 @@ const GlobalStyles = createGlobalStyle`
     max-width: 100%;
     height: auto;
   }
-
-  .hidden {
-    display: none;
-  }
 `;
 
 export default GlobalStyles;
