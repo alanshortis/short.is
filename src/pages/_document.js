@@ -1,6 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
-import { Sprite } from '../components';
 
 class ShortisDocument extends Document {
   static async getInitialProps(ctx) {
@@ -33,7 +32,6 @@ class ShortisDocument extends Document {
       <Html lang="en-GB">
         <Head />
         <body>
-          <Sprite />
           <Main />
           <NextScript />
           <script src="/scheme-toggle.js"></script>
