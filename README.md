@@ -2,4 +2,10 @@
 
 # short.is
 
-A personal website, currently using:
+A personal website, written with Next.js, styled-components, and Web Components.
+
+## A note on code quality
+
+This project is maintained by one person, so is not a great example of how to write well documented and scalable code. There is no linting, no JSDoc comments or prop types, very minimal commenting and no tests.
+
+The focus is primarily on performance and accessibility, and how React as a development approach doesn't have to mean delivering a large amount of JavaScript to users.
