@@ -3,10 +3,16 @@ import styled from 'styled-components';
 import { Logo, MainNav } from '../components';
 
 const StyledHeader = styled.header`
-  display: flex;
   align-items: center;
+  display: flex;
+  height: var(--header-height);
   justify-content: space-between;
-  padding: 2rem;
+  margin: 0 auto;
+  max-width: 90rem;
+  padding: 0 var(--spacing);
+  position: sticky;
+  top: 0;
+  width: 100%;
   div {
     display: flex;
   }
