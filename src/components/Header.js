@@ -4,15 +4,20 @@ import { Logo, MainNav } from '../components';
 
 const StyledHeader = styled.header`
   align-items: center;
+  background-color: var(--background);
   display: flex;
-  height: var(--header-height);
+  height: ${p => p.theme.headerHeight};
   justify-content: space-between;
   margin: 0 auto;
   max-width: 90rem;
-  padding: 0 var(--spacing);
+  padding: 0 ${p => p.theme.spacing};
   position: sticky;
   top: 0;
   width: 100%;
+  @supports (backdrop-filter: blur(7px)) {
+    backdrop-filter: blur(7px);
+    background-color: transparent;
+  }
   div {
     display: flex;
   }
