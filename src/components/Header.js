@@ -5,7 +5,7 @@ const SchemeToggle = dynamic(() => import('../components/SchemeToggle'), {
 });
 
 const Header = () => (
-  <header id="site-header">
+  <header>
     <svg>
       <use href="#logo"></use>
     </svg>
