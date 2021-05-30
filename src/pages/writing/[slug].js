@@ -2,7 +2,7 @@ import { serialize } from 'next-mdx-remote/serialize';
 import { MDXRemote } from 'next-mdx-remote';
 import externalLinks from 'remark-external-links';
 import { allPostFrontMatter, postContent } from '../../data/posts';
-import { ExampleEmbed, Layout, PostDate } from '../../components';
+import { ExampleEmbed, Layout, PostDate, PostNav } from '../../components';
 
 // Create pages for all posts.
 export function getStaticPaths() {
@@ -28,7 +28,7 @@ export async function getStaticProps({ params }) {
 // Add each component used in MDX files.
 const components = { ExampleEmbed };
 
-const Post = ({ mdxContent, frontMatter, meta }) => {
+const Post = ({ mdxContent, frontMatter, meta, nextPost, prevPost }) => {
   const { date, title, intro } = frontMatter;
 
   return (
@@ -43,6 +43,7 @@ const Post = ({ mdxContent, frontMatter, meta }) => {
           <MDXRemote {...mdxContent} components={components} />
         </div>
       </article>
+      <PostNav nextPost={nextPost} prevPost={prevPost} />
     </Layout>
   );
 };

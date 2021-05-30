@@ -7,3 +7,4 @@ export { default as Layout } from './Layout';
 export { default as Logo } from './Logo';
 export { default as MainNav } from './MainNav';
 export { default as PostDate } from './PostDate';
+export { default as PostNav } from './PostNav';
