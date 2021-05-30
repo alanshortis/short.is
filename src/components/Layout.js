@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { Header, Footer } from '../components';
 
-const Layout = ({ children, title, meta }) => (
+const Layout = ({ children, title, meta, hasFooter }) => (
   <>
     <Head>
       <title>
@@ -11,7 +11,7 @@ const Layout = ({ children, title, meta }) => (
     </Head>
     <Header />
     <main>{children}</main>
-    <Footer />
+    {hasFooter && <Footer />}
   </>
 );
 
