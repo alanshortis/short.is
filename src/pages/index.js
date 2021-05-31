@@ -36,7 +36,7 @@ const HomePage = styled.div`
 
 const Cover = styled.section`
   height: calc(50vh - ${p => p.theme.headerHeight});
-  padding: ${p => p.theme.spacing};
+  padding: var(--spacing);
   scroll-margin-top: calc(${p => p.theme.headerHeight});
   @media ${p => p.theme.media.medium} {
     height: calc(100vh - ${p => p.theme.headerHeight});

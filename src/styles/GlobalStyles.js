@@ -1,40 +1,27 @@
 import { createGlobalStyle } from 'styled-components';
+import FontImports from './FontImports';
 
 const GlobalStyles = createGlobalStyle`
-  @font-face {
-    font-display: swap;
-    font-family: strawford;
-    font-style: normal;
-    font-weight: 400;
-    src: url('/fonts/strawford-regular-webfont.woff2') format('woff2');
-  }
-  @font-face {
-    font-display: swap;
-    font-family: strawford;
-    font-style: normal;
-    font-weight: 500;
-    src: url('/fonts/strawford-medium-webfont.woff2') format('woff2');
-  }
-  @font-face {
-    font-display: swap;
-    font-family: strawford;
-    font-style: normal;
-    font-weight: 700;
-    src: url('/fonts/strawford-black-webfont.woff2') format('woff2');
-  }
+  ${FontImports};
 
   :root {
     font-size: 90%;
     --background: ${p => p.theme.color.light};
+    --secondary-background: ${p => p.theme.color.secondaryBg};
     --color: ${p => p.theme.color.dark};
+    --accent: #dd6969;
+    --syntax-comment: #6e6e6e;
+    --spacing: ${p => p.theme.spacingSmall};
 
     @media ${p => p.theme.media.small} {
       font-size: 100%;
+      --spacing: ${p => p.theme.spacing};
     }
 
     & body.dark {
       --background: ${p => p.theme.color.dark};
       --color: ${p => p.theme.color.light};
+      --secondary-background: ${p => p.theme.color.secondaryBgDark};
     }
   }
 
@@ -47,11 +34,8 @@ const GlobalStyles = createGlobalStyle`
   }
 
   html:focus-within {
-    scroll-behavior: smooth;
-    ${
-      '' /* @media ${p => p.theme.media.shouldAnimate} {
+    @media ${p => p.theme.media.shouldAnimate} {
       scroll-behavior: smooth;
-    } */
     }
   }
 
@@ -59,8 +43,8 @@ const GlobalStyles = createGlobalStyle`
     color: var(--color);
     background: var(--background);
     box-sizing: border-box;
-    font-family: strawford, sans-serif;
-    font-weight: 400;
+    font-family: ${p => p.theme.font.family};
+    font-weight: ${p => p.theme.font.weight};
     line-height: 1.75;
   }
 
@@ -84,13 +68,40 @@ const GlobalStyles = createGlobalStyle`
     text-decoration: none;
   }
 
+  strong {
+    font-weight: ${p => p.theme.font.weightBold};
+  }
+
+  em {
+    font-style: italic;
+  }
+
+  code,
+  pre {
+    font-family: ${p => p.theme.font.familyMono};
+    font-size: 0.833rem;
+  }
+
+  h1, h2, h3, h4 {
+    font-weight: 700;
+    font-size: 2.488rem;
+    line-height: 1.2em;
+  }
+
   h1 {
     font-size: 2.488rem;
-    font-weight: 700;
   }
-  
-  h2, h3, h4 {
-    font-weight: 500;
+
+  h2 {
+    font-size: 2.074rem;
+  }
+
+  h3 {
+    font-size: 1.728rem;
+  }
+
+  h4 {
+    font-size: 1.44rem;
   }
 `;
 

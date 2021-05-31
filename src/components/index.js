@@ -9,6 +9,5 @@ export { default as Main } from './Main';
 export { default as PostDate } from './PostDate';
 export { default as PostList } from './PostList';
 export { default as PostNav } from './PostNav';
-export { default as PostStyles } from './PostStyles';
 export { default as RssIcon } from './RssIcon';
 export { default as VisuallyHidden } from './VisuallyHidden';
