@@ -66,11 +66,11 @@ class SchemeToggle extends HTMLElement {
           color: currentColor;
           cursor: pointer;
           display: flex;
-          width: 1.25rem;
+          width: 1.5rem;
         }
         button > svg {
-          width: 1.25rem;
-          height: 1.25rem;
+          width: 1.5rem;
+          height: 1.5rem;
         }
         .sprite {
           display: none;

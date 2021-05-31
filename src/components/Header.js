@@ -1,7 +1,7 @@
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import styled from 'styled-components';
-import { Logo } from '../components';
+import { Logo, RssIcon, VisuallyHidden } from '../components';
 
 const SchemeToggle = dynamic(() => import('../components/SchemeToggle'), {
   ssr: process.env.NODE_ENV === 'production',
@@ -36,7 +36,15 @@ const Header = () => (
         <Logo />
       </a>
     </Link>
-    <SchemeToggle />
+    <div>
+      <Link href="writing/feed.xml">
+        <a title="Subcribe to the RSS feed">
+          <VisuallyHidden>Subcribe to the RSS feed</VisuallyHidden>
+          <RssIcon />
+        </a>
+      </Link>
+      <SchemeToggle />
+    </div>
   </StyledHeader>
 );
 

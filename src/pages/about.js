@@ -1,12 +1,16 @@
-import styled from 'styled-components';
-import { Goodreads, Intro } from '../components';
+import getGoodreads from '../data/goodreads';
+import { Goodreads, Intro, Layout } from '../components';
 
-const AboutContent = styled.div`
-  padding: ${p => p.theme.spacing};
-`;
+export async function getStaticProps() {
+  return {
+    props: {
+      goodreads: await getGoodreads(),
+    },
+  };
+}
 
-const About = ({ goodreads }) => (
-  <AboutContent>
+const About = ({ goodreads, meta }) => (
+  <Layout meta={meta} title="About">
     <Intro>
       I’m Alan Shortis—a front end developer based in Nottingham. I like CSS more than JavaScript,
       design systems more than chaos, and accessibility more than exclusion.
@@ -45,7 +49,7 @@ const About = ({ goodreads }) => (
     </p>
     <h3>Elsewhere</h3>
     <p>Find me on CodePen, GitHub, Instagram, Last.fm, Strava, and Twitter.</p>
-  </AboutContent>
+  </Layout>
 );
 
 export default About;

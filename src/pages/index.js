@@ -1,13 +1,12 @@
+import Link from 'next/link';
 import styled from 'styled-components';
 import { allPostFrontMatter } from '../data/posts';
-import getGoodreads from '../data/goodreads';
-import { About, Layout, PostList } from '../components';
+import { Layout, PostList } from '../components';
 
 export async function getStaticProps() {
   return {
     props: {
       posts: allPostFrontMatter,
-      goodreads: await getGoodreads(),
     },
   };
 }
@@ -16,7 +15,7 @@ export const config = {
   unstable_runtimeJS: false,
 };
 
-const Level = styled.div`
+const HomePage = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -45,23 +44,17 @@ const Cover = styled.section`
 
 const Home = ({ meta, posts, goodreads }) => (
   <Layout meta={meta}>
-    <Level>
+    <HomePage>
       <Cover>
         <h1>Alan Shortis is a front end developer.</h1>
-        <a href="#about">Who?</a>
+        <Link href="/about">
+          <a>Who?</a>
+        </Link>
       </Cover>
       <section>
         <PostList posts={posts} />
       </section>
-    </Level>
-    <Level>
-      <Cover id="about">
-        <h2>About</h2>
-      </Cover>
-      <section>
-        <About goodreads={goodreads} />
-      </section>
-    </Level>
+    </HomePage>
   </Layout>
 );
 
