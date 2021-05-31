@@ -2,25 +2,27 @@ import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
   @font-face {
-    font-display: swap;
-    font-family: strawford;
-    font-style: normal;
-    font-weight: 400;
-    src: url('/fonts/strawford-regular-webfont.woff2') format('woff2');
-  }
+  font-display: swap;
+  font-family: ${p => p.theme.font.faceMono};
+  font-style: normal;
+  font-weight: ${p => p.theme.font.weight};
+  src: url('/fonts/plex-subset.woff2') format('woff2');
+}
+
   @font-face {
     font-display: swap;
-    font-family: strawford;
+    font-family: ${p => p.theme.font.face};
     font-style: normal;
-    font-weight: 500;
-    src: url('/fonts/strawford-medium-webfont.woff2') format('woff2');
+    font-weight: ${p => p.theme.font.weight};
+    src: url('/fonts/inter-regular-subset.woff2') format('woff2');
   }
+
   @font-face {
     font-display: swap;
-    font-family: strawford;
+    font-family: ${p => p.theme.font.face};
     font-style: normal;
-    font-weight: 700;
-    src: url('/fonts/strawford-black-webfont.woff2') format('woff2');
+    font-weight: ${p => p.theme.font.weightBold};
+    src: url('/fonts/inter-bold-subset.woff2') format('woff2');
   }
 
   :root {
@@ -47,11 +49,8 @@ const GlobalStyles = createGlobalStyle`
   }
 
   html:focus-within {
-    scroll-behavior: smooth;
-    ${
-      '' /* @media ${p => p.theme.media.shouldAnimate} {
+    @media ${p => p.theme.media.shouldAnimate} {
       scroll-behavior: smooth;
-    } */
     }
   }
 
@@ -59,8 +58,8 @@ const GlobalStyles = createGlobalStyle`
     color: var(--color);
     background: var(--background);
     box-sizing: border-box;
-    font-family: strawford, sans-serif;
-    font-weight: 400;
+    font-family: ${p => p.theme.font.family};
+    font-weight: ${p => p.theme.font.weight};
     line-height: 1.75;
   }
 
