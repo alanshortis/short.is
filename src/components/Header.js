@@ -9,23 +9,22 @@ const SchemeToggle = dynamic(() => import('../components/SchemeToggle'), {
 
 const StyledHeader = styled.header`
   align-items: center;
-  background-color: var(--background);
+  background: linear-gradient(var(--background) 0%, transparent 100%);
   display: flex;
   height: ${p => p.theme.headerHeight};
   justify-content: space-between;
   margin: 0 auto;
   max-width: 90rem;
-  padding: 0 ${p => p.theme.spacing};
+  padding: 0 var(--spacing);
   position: sticky;
   top: 0;
   width: 100%;
   z-index: 1;
-  @supports (backdrop-filter: blur(7px)) {
-    backdrop-filter: blur(7px);
-    background-color: transparent;
-  }
   div {
     display: flex;
+  }
+  scheme-toggle {
+    margin-left: 1rem;
   }
 `;
 
