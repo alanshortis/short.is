@@ -2,8 +2,11 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import { allPostFrontMatter } from '../data/posts';
 import { Layout, PostList } from '../components';
+import generateRss from '../feed/rss';
 
 export async function getStaticProps() {
+  generateRss();
+
   return {
     props: {
       posts: allPostFrontMatter,
