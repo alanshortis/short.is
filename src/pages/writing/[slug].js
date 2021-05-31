@@ -2,9 +2,9 @@ import { serialize } from 'next-mdx-remote/serialize';
 import { MDXRemote } from 'next-mdx-remote';
 import externalLinks from 'remark-external-links';
 import { allPostFrontMatter, postContent } from '../../data/posts';
-import { ExampleEmbed, Intro, Layout, PostDate, PostNav } from '../../components';
+import { A, ExampleEmbed, Layout, PostDate, PostNav } from '../../components';
+import { PostArticle, PostMeta, PostBody } from '../../components/PostLayout';
 
-// Create pages for all posts.
 export function getStaticPaths() {
   const paths = allPostFrontMatter.map(post => ({
     params: { slug: post.slug },
@@ -13,7 +13,6 @@ export function getStaticPaths() {
   return { paths, fallback: false };
 }
 
-// Get content for this post.
 export async function getStaticProps({ params }) {
   const { content, frontMatter, nextPost, prevPost } = postContent(params.slug);
   const mdxContent = await serialize(content, {
@@ -37,16 +36,21 @@ const Post = ({ mdxContent, frontMatter, meta, nextPost, prevPost }) => {
 
   return (
     <Layout meta={meta} title={title} hasFooter>
-      <article>
-        <div>
+      <PostArticle>
+        <PostMeta>
           <PostDate date={date} />
           <h1>{title}</h1>
-        </div>
-        <div>
-          <Intro>{intro}</Intro>
+        </PostMeta>
+        <PostBody>
+          <p className="intro">{intro}</p>
           <MDXRemote {...mdxContent} components={components} />
-        </div>
-      </article>
+          <hr />
+          <p>
+            If you have found this article useful, please consider{' '}
+            <A href="https://www.buymeacoffee.com/alanshortis">buying me a coffee</A>.
+          </p>
+        </PostBody>
+      </PostArticle>
       <PostNav nextPost={nextPost} prevPost={prevPost} />
     </Layout>
   );

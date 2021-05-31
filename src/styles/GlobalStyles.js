@@ -28,7 +28,7 @@ const GlobalStyles = createGlobalStyle`
     --background: ${p => p.theme.color.light};
     --color: ${p => p.theme.color.dark};
 
-    @media(min-width: 600px) {
+    @media ${p => p.theme.media.small} {
       font-size: 100%;
     }
 
