@@ -5,8 +5,9 @@ const theme = {
   },
   media: {
     medium: '(min-width: 600px)',
+    shouldAnimate: '(prefers-reduced-motion: no-preference)',
   },
-  spacing: '2.5%',
+  spacing: '2rem',
   headerHeight: '5rem',
 };
 

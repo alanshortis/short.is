@@ -34,7 +34,7 @@ class ShortisDocument extends Document {
         <body>
           <Main />
           <NextScript />
-          <script src="/scheme-toggle.js"></script>
+          <script src="/wc/scheme-toggle.js"></script>
         </body>
       </Html>
     );

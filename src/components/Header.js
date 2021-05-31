@@ -1,6 +1,11 @@
 import dynamic from 'next/dynamic';
+import Link from 'next/link';
 import styled from 'styled-components';
-import { Logo, MainNav } from '../components';
+import { Logo } from '../components';
+
+const SchemeToggle = dynamic(() => import('../components/SchemeToggle'), {
+  ssr: process.env.NODE_ENV === 'production',
+});
 
 const StyledHeader = styled.header`
   align-items: center;
@@ -14,6 +19,7 @@ const StyledHeader = styled.header`
   position: sticky;
   top: 0;
   width: 100%;
+  z-index: 1;
   @supports (backdrop-filter: blur(7px)) {
     backdrop-filter: blur(7px);
     background-color: transparent;
@@ -23,17 +29,14 @@ const StyledHeader = styled.header`
   }
 `;
 
-const SchemeToggle = dynamic(() => import('../components/SchemeToggle'), {
-  ssr: process.env.NODE_ENV === 'production',
-});
-
 const Header = () => (
   <StyledHeader>
-    <Logo />
-    <div>
-      <MainNav />
-      <SchemeToggle />
-    </div>
+    <Link href="/">
+      <a>
+        <Logo />
+      </a>
+    </Link>
+    <SchemeToggle />
   </StyledHeader>
 );
 

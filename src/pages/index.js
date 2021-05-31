@@ -1,12 +1,13 @@
-import Link from 'next/link';
 import styled from 'styled-components';
 import { allPostFrontMatter } from '../data/posts';
-import { Layout, PostDate } from '../components';
+import getGoodreads from '../data/goodreads';
+import { About, Layout, PostList } from '../components';
 
 export async function getStaticProps() {
   return {
     props: {
       posts: allPostFrontMatter,
+      goodreads: await getGoodreads(),
     },
   };
 }
@@ -15,7 +16,7 @@ export const config = {
   unstable_runtimeJS: false,
 };
 
-const HomePage = styled.div`
+const Level = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -25,7 +26,6 @@ const HomePage = styled.div`
     flex-direction: row;
   }
   section {
-    padding: ${p => p.theme.spacing};
     @media ${p => p.theme.media.medium} {
       width: 50vw;
     }
@@ -34,6 +34,8 @@ const HomePage = styled.div`
 
 const Cover = styled.section`
   height: calc(50vh - ${p => p.theme.headerHeight});
+  padding: ${p => p.theme.spacing};
+  scroll-margin-top: calc(${p => p.theme.headerHeight});
   @media ${p => p.theme.media.medium} {
     height: calc(100vh - ${p => p.theme.headerHeight});
     position: sticky;
@@ -41,28 +43,25 @@ const Cover = styled.section`
   }
 `;
 
-const Home = ({ meta, posts }) => (
+const Home = ({ meta, posts, goodreads }) => (
   <Layout meta={meta}>
-    <HomePage>
+    <Level>
       <Cover>
         <h1>Alan Shortis is a front end developer.</h1>
+        <a href="#about">Who?</a>
       </Cover>
       <section>
-        <ol>
-          {posts.map(post => (
-            <li key={post.slug}>
-              <Link href={`/writing/${post.slug}`}>
-                <a>
-                  <PostDate date={post.date} />
-                  <h2>{post.title}</h2>
-                  <p>{post.intro}</p>
-                </a>
-              </Link>
-            </li>
-          ))}
-        </ol>
+        <PostList posts={posts} />
       </section>
-    </HomePage>
+    </Level>
+    <Level>
+      <Cover id="about">
+        <h2>About</h2>
+      </Cover>
+      <section>
+        <About goodreads={goodreads} />
+      </section>
+    </Level>
   </Layout>
 );
 

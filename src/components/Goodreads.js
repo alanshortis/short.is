@@ -5,7 +5,8 @@ const Goodreads = ({ goodreads }) => {
   const bookCount = goodreads.length;
 
   return (
-    <>
+    <span>
+      Reading{' '}
       {goodreads.map((book, idx) => (
         <Fragment key={book.url}>
           {idx !== 0 && ', '}
@@ -13,7 +14,7 @@ const Goodreads = ({ goodreads }) => {
           <A href={book.url}>{book.title}</A> by {book.author}
         </Fragment>
       ))}
-    </>
+    </span>
   );
 };
 
