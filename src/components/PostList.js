@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { PostDate } from '../components';
 
 const Post = styled.li`
-  padding: ${p => p.theme.spacing};
+  padding: var(--spacing);
 `;
 
 const PostList = ({ posts }) => (
