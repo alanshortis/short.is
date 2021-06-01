@@ -16,8 +16,6 @@ export const PostArticle = styled.article`
 
 export const PostMeta = styled.div`
   grid-column: 1 / 3;
-  margin-bottom: var(--spacing);
-  margin-top: calc(var(--spacing) / 4);
   @media ${p => p.theme.media.medium} {
     grid-column: 1 / 6;
   }

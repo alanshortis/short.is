@@ -12,7 +12,7 @@ const PostList = ({ posts }) => (
       <Post key={post.slug}>
         <Link href={`/writing/${post.slug}`}>
           <a>
-            <PostDate date={post.date} />
+            <PostDate date={post.date} updated={post.updated} />
             <h2>{post.title}</h2>
             <p>{post.intro}</p>
           </a>

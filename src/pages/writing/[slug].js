@@ -32,13 +32,13 @@ export const config = {
 const components = { ExampleEmbed };
 
 const Post = ({ mdxContent, frontMatter, meta, nextPost, prevPost }) => {
-  const { date, title, intro } = frontMatter;
+  const { date, title, intro, updated } = frontMatter;
 
   return (
     <Layout meta={meta} title={title} hasFooter>
       <PostArticle>
         <PostMeta>
-          <PostDate date={date} />
+          <PostDate date={date} updated={updated} />
           <h1>{title}</h1>
         </PostMeta>
         <PostBody>
