@@ -46,6 +46,9 @@ const GlobalStyles = createGlobalStyle`
     font-family: ${p => p.theme.font.family};
     font-weight: ${p => p.theme.font.weight};
     line-height: 1.75;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   #__next {
@@ -86,6 +89,7 @@ const GlobalStyles = createGlobalStyle`
     font-weight: 700;
     font-size: 2.488rem;
     line-height: 1.2em;
+    margin-bottom: 1em;
   }
 
   h1 {
