@@ -14,7 +14,7 @@ const PostStyles = styled.div`
   a {
     color: var(--accent);
     text-decoration: none;
-    &[href^='http']::after {
+    &[href^='http']:not([href*='short.is'])::after {
       content: '↗';
       font-family: ${p => p.theme.font.familyMono};
       font-size: 0.833rem;
