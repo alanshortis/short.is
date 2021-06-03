@@ -26,7 +26,7 @@ const PostLink = styled.a`
 const PostNav = ({ nextPost, prevPost }) => (
   <StyledNav>
     {prevPost ? (
-      <Link href={prevPost.slug}>
+      <Link href={`/writing/${prevPost.slug}`} passHref>
         <PostLink>
           <p>
             <Label>&larr; Older</Label>
@@ -38,7 +38,7 @@ const PostNav = ({ nextPost, prevPost }) => (
       <div></div>
     )}
     {nextPost && (
-      <Link href={nextPost.slug}>
+      <Link href={`/writing/${nextPost.slug}`} passHref>
         <PostLink isRight>
           <p>
             <Label>Newer &rarr;</Label>
