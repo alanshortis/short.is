@@ -26,20 +26,49 @@ const About = ({ goodreads, meta }) => (
       </PostMeta>
       <PostBody>
         <p>
-          As a front end developer, I specialise in building user interfaces with HTML and CSS. But,
-          it being 2021, I also work extensively in JavaScript, using React on a daily basis
-          partnered with GraphQL and Node.
+          I specialise in building user interfaces with HTML, CSS, and JavaScript. I have been a
+          developer professionally in some capacity for almost 15 years, though I made my first
+          websites in the late 90s. They were terrible, even by the standards of Geocities.
         </p>
         <p>
-          I have been a developer professionally in some capacity for more than 10 years, though I
-          made my first websites in the late 90s. They were terrible, even by the standards of
-          Geocities.
+          My preference for front end development was founded in being a design hobbyist who used
+          the internet to show off derivative ideas. Across my career I have also worked with
+          Classic ASP, .net, PHP, and SQL in my brief time as an analyst, but building accessible
+          user interfaces for people is where I have settled.
         </p>
         <p>
-          My preference for front end development is likely connected to me being a design hobbyist
-          who used the internet to show off derivative ideas. Across my career I have also worked
-          with Classic ASP, .net, PHP, and SQL in my brief time as an analyst, but building
-          accessible user interfaces for people is where I have settled.
+          This site uses <A href="https://nextjs.org/">Next.js</A> to generate static HTML,{' '}
+          <A href="https://styled-components.com/">styled components</A> to author CSS,{' '}
+          <A href="https://developer.mozilla.org/en-US/docs/Web/Web_Components">web components</A>{' '}
+          for minimal client JavaScript, and <A href="https://www.netlify.com/">Netlify</A> to
+          build, deploy and host.
+        </p>
+        <p>
+          Find me on{' '}
+          <A href="https://codepen.io/alanshortis" rel="me">
+            CodePen
+          </A>
+          ,{' '}
+          <A href="https://github.com/alanshortis" rel="me">
+            GitHub
+          </A>
+          ,{' '}
+          <A href="https://www.instagram.com/ashortis/" rel="me">
+            Instagram
+          </A>
+          ,{' '}
+          <A href="https://www.last.fm/user/ashortis" rel="me">
+            Last.fm
+          </A>
+          ,{' '}
+          <A href="https://www.strava.com/athletes/138800" rel="me">
+            Strava
+          </A>
+          , and{' '}
+          <A href="https://twitter.com/alanshortis" rel="me">
+            Twitter
+          </A>
+          .
         </p>
         <h3>Now</h3>
         <ul>
