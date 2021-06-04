@@ -19,6 +19,8 @@ const PostStyles = styled.div`
       font-family: ${p => p.theme.font.familyMono};
       font-size: 0.833rem;
       margin-left: 0.25em;
+      position: relative;
+      left: -2px;
     }
   }
 
