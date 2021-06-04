@@ -17,7 +17,7 @@ export const config = {
 };
 
 const About = ({ goodreads, lastFm, meta }) => (
-  <Layout meta={meta} title="About">
+  <Layout meta={meta} title="About" hasFooter>
     <PostArticle>
       <PostMeta>
         <h1>About</h1>
