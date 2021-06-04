@@ -19,12 +19,12 @@ const About = ({ goodreads, meta }) => (
     <PostArticle>
       <PostMeta>
         <h1>About</h1>
-      </PostMeta>
-      <PostBody>
         <p className="intro">
           I’m Alan Shortis—a front end developer based in Nottingham. I like CSS more than
           JavaScript, design systems more than chaos, and accessibility more than exclusion.
         </p>
+      </PostMeta>
+      <PostBody>
         <p>
           As a front end developer, I specialise in building user interfaces with HTML and CSS. But,
           it being 2021, I also work extensively in JavaScript, using React on a daily basis
