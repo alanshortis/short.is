@@ -1,11 +1,13 @@
 import getGoodreads from '../data/goodreads';
-import { Goodreads, Layout } from '../components';
+import getLastfm from '../data/lastfm';
+import { A, Goodreads, Layout, Lastfm } from '../components';
 import { PostArticle, PostMeta, PostBody } from '../components/PostLayout';
 
 export async function getStaticProps() {
   return {
     props: {
       goodreads: await getGoodreads(),
+      lastFm: await getLastfm(),
     },
   };
 }
@@ -14,7 +16,7 @@ export const config = {
   unstable_runtimeJS: false,
 };
 
-const About = ({ goodreads, meta }) => (
+const About = ({ goodreads, lastFm, meta }) => (
   <Layout meta={meta} title="About">
     <PostArticle>
       <PostMeta>
@@ -75,20 +77,13 @@ const About = ({ goodreads, meta }) => (
           <li>
             <Goodreads goodreads={goodreads} />
           </li>
+          <li>
+            <Lastfm lastFm={lastFm} />
+          </li>
+          <li>Watching The Sopranos yet again.</li>
+          <li>Learning German.</li>
           <li>Trying to climb out from under the last year.</li>
         </ul>
-        <h3>This site</h3>
-        <p>
-          short.is uses Next.js to generate static HTML with a 0kb JS bundle, styled components to
-          author CSS, web components for minimal client JavaScript, and Netlify to build, deploy and
-          host.
-        </p>
-        <p>
-          Much more detail on how this all works can be found in this post: Delivering a Next.js
-          site with a 0kb bundle.
-        </p>
-        <h3>Elsewhere</h3>
-        <p>Find me on CodePen, GitHub, Instagram, Last.fm, Strava, and Twitter.</p>
       </PostBody>
     </PostArticle>
   </Layout>
