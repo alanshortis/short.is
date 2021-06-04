@@ -6,13 +6,10 @@ const getLastfm = async () => {
     `http://ws.audioscrobbler.com/2.0/?method=user.gettopartists&user=${process.env.LASTFM_USER}&api_key=${process.env.LASTFM_KEY}&format=json&period=${PERIOD}&limit=${ARTISTS}`
   );
   const data = await res.json();
-  const { artist: artists } = data.topartists;
+  const { artist } = data.topartists;
 
-  const lastFm = artists.map(artist => {
-    return {
-      name: artist.name,
-      url: artist.url,
-    };
+  const lastFm = artist.map(({ name, url }) => {
+    return { name, url };
   });
 
   return lastFm;
