@@ -40,9 +40,9 @@ const Post = ({ mdxContent, frontMatter, meta, nextPost, prevPost }) => {
         <PostMeta>
           <PostDate date={date} updated={updated} />
           <h1>{title}</h1>
+          <p className="intro">{intro}</p>
         </PostMeta>
         <PostBody>
-          <p className="intro">{intro}</p>
           <MDXRemote {...mdxContent} components={components} />
           <hr />
           <p>

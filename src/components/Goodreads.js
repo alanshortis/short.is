@@ -14,6 +14,7 @@ const Goodreads = ({ goodreads }) => {
           <A href={book.url}>{book.title}</A> by {book.author}
         </Fragment>
       ))}
+      .
     </span>
   );
 };

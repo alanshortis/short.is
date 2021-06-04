@@ -19,6 +19,8 @@ const PostStyles = styled.div`
       font-family: ${p => p.theme.font.familyMono};
       font-size: 0.833rem;
       margin-left: 0.25em;
+      position: relative;
+      left: -2px;
     }
   }
 
@@ -99,10 +101,6 @@ const PostStyles = styled.div`
     margin-bottom: var(--spacing);
     max-width: 100%;
     text-align: center;
-  }
-
-  .intro {
-    font-size: 1.2rem;
   }
 `;
 

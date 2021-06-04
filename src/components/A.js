@@ -1,5 +1,5 @@
-const A = ({ children, href }) => (
-  <a href={href} target="_blank" rel="noopener noreferrer">
+const A = ({ children, href, rel }) => (
+  <a href={href} target="_blank" rel={`noopener noreferrer ${rel}`}>
     {children}
   </a>
 );
