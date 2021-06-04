@@ -100,10 +100,6 @@ const PostStyles = styled.div`
     max-width: 100%;
     text-align: center;
   }
-
-  .intro {
-    font-size: 1.2rem;
-  }
 `;
 
 export default PostStyles;
