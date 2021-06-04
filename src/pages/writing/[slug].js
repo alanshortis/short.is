@@ -44,11 +44,6 @@ const Post = ({ mdxContent, frontMatter, meta, nextPost, prevPost }) => {
         </PostMeta>
         <PostBody>
           <MDXRemote {...mdxContent} components={components} />
-          <hr />
-          <p>
-            If you have found this article useful, please consider{' '}
-            <A href="https://www.buymeacoffee.com/alanshortis">buying me a coffee</A>.
-          </p>
         </PostBody>
       </PostArticle>
       <PostNav nextPost={nextPost} prevPost={prevPost} />

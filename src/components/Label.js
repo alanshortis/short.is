@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const Label = styled.span`
-  color: var(--accent);
+  color: ${p => (p.currentColor ? 'currentColor' : 'var(--accent)')};
   font-size: 0.833rem;
   font-family: ${p => p.theme.font.familyMono};
   letter-spacing: 2px;

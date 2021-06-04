@@ -11,7 +11,7 @@ const Layout = ({ children, title, meta, hasFooter }) => (
     </Head>
     <Header />
     <Main>{children}</Main>
-    {hasFooter && <Footer />}
+    {hasFooter && <Footer meta={meta} />}
   </>
 );
 
