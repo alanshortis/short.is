@@ -35,7 +35,7 @@ const Post = ({ mdxContent, frontMatter, meta, nextPost, prevPost }) => {
   const { date, title, intro, updated } = frontMatter;
 
   return (
-    <Layout meta={meta} title={title} hasFooter>
+    <Layout meta={meta} title={title} intro={intro} hasFooter>
       <PostArticle>
         <PostMeta>
           <PostDate date={date} updated={updated} />
