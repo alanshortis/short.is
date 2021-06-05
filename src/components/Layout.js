@@ -1,14 +1,8 @@
-import Head from 'next/head';
-import { Header, Footer, Main } from '../components';
+import { Head, Header, Footer, Main } from '../components';
 
-const Layout = ({ children, title, meta, hasFooter }) => (
+const Layout = ({ children, title, intro, meta, hasFooter }) => (
   <>
-    <Head>
-      <title>
-        {title && `${title} — `}
-        {meta.title}
-      </title>
-    </Head>
+    <Head title={title} intro={intro} meta={meta} />
     <Header />
     <Main>{children}</Main>
     {hasFooter && <Footer meta={meta} />}
