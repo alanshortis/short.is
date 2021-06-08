@@ -5,13 +5,13 @@ const GlobalStyles = createGlobalStyle`
   ${FontImports};
 
   :root {
-    font-size: 90%;
+    font-size: 93.75%;
     --background: ${p => p.theme.color.light};
     --secondary-background: ${p => p.theme.color.secondaryBg};
     --color: ${p => p.theme.color.dark};
-    --accent: #dd6969;
-    --syntax-comment: #6e6e6e;
+    --accent: ${p => p.theme.color.accent};
     --spacing: ${p => p.theme.spacingSmall};
+    --divider: ${p => p.theme.color.divider};
 
     @media ${p => p.theme.media.small} {
       font-size: 100%;
@@ -22,6 +22,8 @@ const GlobalStyles = createGlobalStyle`
       --background: ${p => p.theme.color.dark};
       --color: ${p => p.theme.color.light};
       --secondary-background: ${p => p.theme.color.secondaryBgDark};
+      --accent: ${p => p.theme.color.accentDark};
+      --divider: ${p => p.theme.color.dividerDark};
     }
   }
 
@@ -85,7 +87,7 @@ const GlobalStyles = createGlobalStyle`
     font-size: 0.833rem;
   }
 
-  h1, h2, h3, h4 {
+  h1, h2, h3, h4, .h4 {
     font-weight: 700;
     font-size: 2.488rem;
     line-height: 1.2em;
@@ -104,7 +106,7 @@ const GlobalStyles = createGlobalStyle`
     font-size: 1.728rem;
   }
 
-  h4 {
+  h4, .h4 {
     font-size: 1.44rem;
   }
 `;

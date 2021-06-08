@@ -2,6 +2,10 @@ const theme = {
   color: {
     light: '#e1e5ea',
     dark: '#222831',
+    accent: '#BF2B2B',
+    accentDark: '#DE6E6E',
+    divider: '#cbd2db',
+    dividerDark: '#303845',
     secondaryBg: '#d6dce2',
     secondaryBgDark: '#29303b',
   },
