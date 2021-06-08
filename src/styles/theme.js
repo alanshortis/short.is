@@ -1,13 +1,13 @@
 const theme = {
   color: {
-    light: '#e1e5ea',
-    dark: '#222831',
-    accent: '#BF2B2B',
-    accentDark: '#DE6E6E',
-    divider: '#cbd2db',
-    dividerDark: '#303845',
-    secondaryBg: '#d6dce2',
-    secondaryBgDark: '#29303b',
+    light: 'hsl(213, 18%, 90%)',
+    dark: 'hsl(216, 18%, 16%)',
+    accent: 'hsl(0, 63%, 46%)',
+    accentDark: 'hsl(0, 63%, 65%)',
+    divider: 'hsl(214, 18%, 83%)',
+    dividerDark: 'hsl(217, 18%, 23%)',
+    secondaryBg: 'hsl(210, 17%, 86%)',
+    secondaryBgDark: 'hsl(217, 18%, 20%)',
   },
   font: {
     face: 'Inter',
