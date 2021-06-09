@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 import { allPostFrontMatter } from '../data/posts';
-import { Layout, PostList } from '../components';
+import { Label, Layout, PostList } from '../components';
 import generateRss from '../feed/rss';
 
 export async function getStaticProps() {
@@ -35,7 +35,8 @@ const HomePage = styled.div`
 `;
 
 const Cover = styled.section`
-  height: calc(50vh - ${p => p.theme.headerHeight});
+  height: auto;
+  min-height: calc(50vh - ${p => p.theme.headerHeight});
   padding: var(--spacing);
   scroll-margin-top: calc(${p => p.theme.headerHeight});
   @media ${p => p.theme.media.medium} {
@@ -45,14 +46,24 @@ const Cover = styled.section`
   }
 `;
 
-const Home = ({ meta, posts, goodreads }) => (
+const Title = styled.div`
+  h1 {
+    display: inline;
+    margin-right: var(--spacing);
+    mix-blend-mode: difference;
+  }
+`;
+
+const Home = ({ meta, posts }) => (
   <Layout meta={meta}>
     <HomePage>
       <Cover>
-        <h1>Alan Shortis is a front end developer.</h1>
-        <Link href="/about">
-          <a>Who?</a>
-        </Link>
+        <Title>
+          <h1>Alan Shortis is a front end developer.</h1>
+          <Link href="/about" passHref>
+            <Label as="a">About &rarr;</Label>
+          </Link>
+        </Title>
       </Cover>
       <section>
         <PostList posts={posts} />
