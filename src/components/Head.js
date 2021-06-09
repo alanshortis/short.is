@@ -3,12 +3,13 @@ import { useRouter } from 'next/router';
 
 const Head = ({ title, intro, meta }) => {
   const router = useRouter();
+  const pageTitle = title ? `${title} — ${meta.title}` : meta.title;
 
   return (
     <NextHead>
-      <title>{(title && `${title} — `) + meta.title}</title>
+      <title>{pageTitle}</title>
       <meta name="description" content={intro || meta.description} />
-      <meta property="og:title" content={(title && `${title} — `) + meta.title} />
+      <meta property="og:title" content={pageTitle} />
       <meta property="og:description" content={intro || meta.description} />
       <meta property="og:url" content={meta.url + router.asPath} />
       <meta property="og:image" content="/img/og.png" />
