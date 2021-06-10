@@ -29,6 +29,7 @@ const Head = ({ title, intro, meta }) => {
         type="font/woff2"
         crossOrigin="anonymous"
       />
+      <script src="/wc/scheme-toggle.js"></script>
       <meta name="description" content={intro || meta.description} />
       <meta property="og:title" content={pageTitle} />
       <meta property="og:description" content={intro || meta.description} />

@@ -31,10 +31,9 @@ class ShortisDocument extends Document {
     return (
       <Html lang="en-GB">
         <Head />
-        <body className="dark">
+        <body>
           <Main />
           <NextScript />
-          <script src="/wc/scheme-toggle.js"></script>
         </body>
       </Html>
     );
