@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import PostStyles from './PostStyles';
 
 export const PostArticle = styled.article`
-  column-gap: var(--spacing);
+  column-gap: calc(var(--spacing) * 2);
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   margin: 0 auto;
