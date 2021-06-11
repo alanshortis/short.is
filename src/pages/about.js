@@ -43,10 +43,8 @@ const About = ({ goodreads, lastFm, meta }) => (
           This site uses <A href="https://nextjs.org/">Next.js</A> to generate static HTML,{' '}
           <A href="https://styled-components.com/">styled components</A> to author CSS,{' '}
           <A href="https://developer.mozilla.org/en-US/docs/Web/Web_Components">web components</A> for minimal
-          client JavaScript, and <A href="https://www.netlify.com/">Netlify</A> to build, deploy and host.
-        </p>
-        <p>
-          You can read more about how this site's performance is so good in{' '}
+          client JavaScript, and <A href="https://www.netlify.com/">Netlify</A> to build, deploy and host. You
+          can read more about how this site was built in{' '}
           <Link href="/writing/next.js-with-web-components-and-a-0kb-bundle">
             <a>Next.js with web components and a 0kb bundle</a>
           </Link>
@@ -87,9 +85,12 @@ const About = ({ goodreads, lastFm, meta }) => (
           <li>
             <Lastfm lastFm={lastFm} />
           </li>
-          <li>Watching The Sopranos yet again.</li>
+          <li>
+            Watching everything <A href="https://www.youtube.com/user/VanNeistat">Van Neistat</A> publishes.
+          </li>
           <li>Learning German.</li>
-          <li>Trying to climb out from under the last year.</li>
+          <li>Scanning negatives from circa 2009.</li>
+          <li>Shopping for a new camera.</li>
         </ul>
       </PostBody>
     </PostArticle>
