@@ -1,9 +1,8 @@
 .DS_Store
-.env
+.env.local
 .cache
+.next
 npm-debug.log*
 node_modules
-dist
-src/*.js
-src/*.css
-src/*.map
+public/writing/feed.xml
+out

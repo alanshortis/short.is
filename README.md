@@ -1,9 +1,11 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/d5115e1b-a5eb-4a0c-93c1-3719da849490/deploy-status)](https://app.netlify.com/sites/shortis/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/65ad39b2-76ae-46bc-b778-b410c2924613/deploy-status)](https://app.netlify.com/sites/betashortis/deploys)
 
 # short.is
 
-A personal website, very much always in progress, currently using:
+A personal website, written with Next.js, styled-components, and Web Components.
 
-- [11ty](https://www.11ty.dev/) with [Nunjucks](https://mozilla.github.io/nunjucks/)
-- [Sass](https://sass-lang.com/)
-- [Web Components](https://www.webcomponents.org/)
+## A note on code quality
+
+This project is maintained by one person, so is not a great example of how to write well documented and scalable code. There is no linting, no JSDoc comments or prop types, very minimal commenting and no tests.
+
+The focus is primarily on performance and accessibility, and how React as a development approach doesn't have to mean delivering a large amount of JavaScript to users.

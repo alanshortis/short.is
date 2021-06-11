@@ -1,14 +1,11 @@
 const fs = require('fs');
 const readline = require('readline');
 
-const PATH = 'src/writing';
+const PATH = 'src/posts';
 
-const template = (title, slug, date) => `---
+const template = (title, date) => `---
 title: '${title}'
-layout: 'post'
 date: '${date}'
-tags: writing
-permalink: '/writing/${slug}/'
 intro: ""
 ---
 `;
@@ -22,7 +19,7 @@ rl.question("🤔   \x1B[34mWhat's the title of the post? \033[37m", title => {
   const slug = encodeURIComponent(title.split(' ').join('-').toLowerCase());
   const date = new Date().toISOString().slice(0, 10);
 
-  fs.writeFileSync(`${PATH}/${date}-${slug}.md`, template(title, slug, date));
+  fs.writeFileSync(`${PATH}/${slug}.mdx`, template(title, date));
   rl.close();
 });
 
