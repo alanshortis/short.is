@@ -14,7 +14,7 @@ const Goodreads = ({ goodreads }) => {
           <A href={book.url}>{book.title}</A> by {book.author}
         </Fragment>
       ))}
-      .
+      . (via <A href="https://www.goodreads.com/user/show/91451434-alan">Goodreads</A>.)
     </span>
   );
 };
