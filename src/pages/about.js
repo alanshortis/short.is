@@ -40,15 +40,9 @@ const About = ({ goodreads, lastFm, meta }) => (
           have settled.
         </p>
         <p>
-          This site uses <A href="https://nextjs.org/">Next.js</A> to generate static HTML,{' '}
-          <A href="https://styled-components.com/">styled components</A> to author CSS,{' '}
-          <A href="https://developer.mozilla.org/en-US/docs/Web/Web_Components">web components</A> for minimal
-          client JavaScript, and <A href="https://www.netlify.com/">Netlify</A> to build, deploy and host. You
-          can read more about how this site was built in{' '}
-          <Link href="/writing/next.js-with-web-components-and-a-0kb-bundle">
-            <a>Next.js with web components and a 0kb bundle</a>
-          </Link>
-          .
+          This site uses <A href="https://nextjs.org/">Next.js</A>,{' '}
+          <A href="https://styled-components.com/">styled components</A>, and{' '}
+          <A href="https://developer.mozilla.org/en-US/docs/Web/Web_Components">web components</A>.
         </p>
         <p>
           Find me on{' '}

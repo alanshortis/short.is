@@ -14,7 +14,7 @@ const LastFm = ({ lastFm }) => {
           <A href={artist.url}>{artist.name}</A>
         </Fragment>
       ))}
-      .
+      . (via <A href="https://www.last.fm/user/ashortis">Last.fm</A>.)
     </span>
   );
 };
