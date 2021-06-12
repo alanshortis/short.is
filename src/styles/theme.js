@@ -14,6 +14,10 @@ const theme = {
     secondaryBg: 'hsl(210, 17%, 86%)',
     secondaryBgDark: 'hsl(217, 18%, 20%)',
   },
+  syntax: {
+    comment: 'hsl(218, 20%, 39%)',
+    commentDark: 'hsl(227, 20%, 64%)',
+  },
   font: {
     face: 'Inter',
     family: 'Inter, Helvetica, Arial, sans-serif',
