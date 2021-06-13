@@ -18,6 +18,10 @@ const theme = {
     comment: 'hsl(218, 20%, 39%)',
     commentDark: 'hsl(227, 20%, 64%)',
   },
+  gradient: {
+    header: 'linear-gradient(hsla(213, 18%, 90%, 1) 0%, hsla(213, 18%, 90%, 0) 100%)',
+    headerDark: 'linear-gradient(hsla(216, 18%, 16%, 1) 0%, hsla(216, 18%, 16%, 0) 100%)',
+  },
   font: {
     face: 'Inter',
     family: 'Inter, Helvetica, Arial, sans-serif',

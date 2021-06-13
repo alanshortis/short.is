@@ -1,4 +1,5 @@
 export { default as A } from './A';
+export { default as Disclaimer } from './Disclaimer';
 export { default as ExampleEmbed } from './ExampleEmbed';
 export { default as Footer } from './Footer';
 export { default as Goodreads } from './Goodreads';
