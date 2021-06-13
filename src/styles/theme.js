@@ -17,6 +17,8 @@ const theme = {
   syntax: {
     comment: 'hsl(218, 20%, 39%)',
     commentDark: 'hsl(227, 20%, 64%)',
+    line: 'hsl(210, 17%, 88%)',
+    lineDark: 'hsl(217, 18%, 18%)',
   },
   gradient: {
     header: 'linear-gradient(hsla(213, 18%, 90%, 1) 0%, hsla(213, 18%, 90%, 0) 100%)',
@@ -32,6 +34,7 @@ const theme = {
   },
   media: {
     small: `(min-width: ${breakpoints.small}px)`,
+    smallMax: `(max-width: ${breakpoints.small}px)`,
     medium: `(min-width: ${breakpoints.medium}px)`,
     mediumMax: `(max-width: ${breakpoints.medium}px)`,
     shouldAnimate: '(prefers-reduced-motion: no-preference)',

@@ -58,7 +58,7 @@ const PostStyles = styled.div`
     border-radius: ${p => p.theme.radius};
     overflow-x: auto;
     padding: calc(var(--spacing) / 2);
-    @media ${p => p.theme.media.mediumMax} {
+    @media ${p => p.theme.media.smallMax} {
       left: 50%;
       margin-left: -50vw;
       margin-right: -50vw;
