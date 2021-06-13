@@ -57,7 +57,7 @@ Like fonts and images, the web component needs to be treated as [static content]
 
 My web component needs to be in the head, so I add the script tag via [next/head](https://nextjs.org/docs/api-reference/next/head). It's much more common for JavaScript to be placed just before the closing body tag, and this can be done in the custom `_document.js` by adding a render method to the class:
 
-```javascript
+```javascript{7}
 render() {
   return (
     <Html lang="en-GB">
