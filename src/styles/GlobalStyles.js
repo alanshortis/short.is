@@ -55,6 +55,12 @@ const GlobalStyles = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
   }
 
+  ::selection,
+  a::selection {
+    background-color: var(--accent);
+    color: ${p => p.theme.color.light};
+  }
+
   #__next {
     display: flex;
     flex-direction: column;
