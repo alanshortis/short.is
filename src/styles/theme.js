@@ -14,6 +14,10 @@ const theme = {
     secondaryBg: 'hsl(210, 17%, 86%)',
     secondaryBgDark: 'hsl(217, 18%, 20%)',
   },
+  gradient: {
+    header: 'linear-gradient(hsla(213, 18%, 90%, 1) 0%, hsla(213, 18%, 90%, 0) 100%)',
+    headerDark: 'linear-gradient(hsla(216, 18%, 16%, 1) 0%, hsla(216, 18%, 16%, 0) 100%)',
+  },
   font: {
     face: 'Inter',
     family: 'Inter, Helvetica, Arial, sans-serif',

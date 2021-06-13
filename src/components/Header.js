@@ -9,7 +9,7 @@ const SchemeToggle = dynamic(() => import('../components/SchemeToggle'), {
 
 const StyledHeader = styled.header`
   align-items: center;
-  background: linear-gradient(var(--background) 0%, hsla(0, 0%, 0%, 0) 100%);
+  background: var(--header-gradient);
   display: flex;
   height: ${p => p.theme.headerHeight};
   justify-content: space-between;
