@@ -7,7 +7,7 @@ const EmbedContainer = styled.div`
   padding: 0.25rem;
   padding-bottom: 0;
 
-  @media ${p => p.theme.media.mediumMax} {
+  @media ${p => p.theme.media.smallMax} {
     border-radius: 0;
     left: 50%;
     margin-left: -50vw;
@@ -34,13 +34,7 @@ const EmbedContainer = styled.div`
 
 const ExampleEmbed = ({ title, url }) => (
   <EmbedContainer>
-    <iframe
-      title={title}
-      src={url}
-      frameBorder="no"
-      allowFullScreen={false}
-      loading="lazy"
-    ></iframe>
+    <iframe title={title} src={url} frameBorder="no" allowFullScreen={false} loading="lazy"></iframe>
     <a href={url} target="_blank">
       <span>{title}</span>
       <span>{url}</span>
