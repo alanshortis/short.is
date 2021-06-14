@@ -18,13 +18,6 @@ const Syntax = createGlobalStyle`
     transform: translateX(-1rem);
     padding: 0.25rem 1rem;
     width: calc(100% + 2rem);
-    ${
-      '' /* @media ${p => p.theme.media.mediumMax} {
-      padding: 0.25rem 2rem;
-      transform: translateX(-2rem);
-      width: calc(100% + 4rem);
-    } */
-    }
     @media ${p => p.theme.media.smallMax} {
       padding: 0.25rem 1rem;
       transform: translateX(-1rem);
