@@ -4,7 +4,7 @@ import externalLinks from 'remark-external-links';
 import { allPostFrontMatter, postContent } from '../../data/posts';
 import { Disclaimer, ExampleEmbed, Layout, PostDate, PostNav } from '../../components';
 import { PostArticle, PostMeta, PostBody } from '../../components/PostLayout';
-import Syntax from '../../styles/Syntax';
+import SyntaxStyles from '../../styles/SyntaxStyles';
 import daysSince from '../../helpers/daysSince';
 
 export function getStaticPaths() {
@@ -43,7 +43,7 @@ const Post = ({ mdxContent, frontMatter, meta, nextPost, prevPost }) => {
 
   return (
     <Layout meta={meta} title={title} intro={intro} hasFooter>
-      <Syntax />
+      <SyntaxStyles />
       <PostArticle>
         <PostMeta>
           <PostDate date={date} updated={updated} />
