@@ -17,7 +17,7 @@ const theme = {
   syntax: {
     comment: 'hsl(218, 20%, 39%)',
     commentDark: 'hsl(227, 20%, 64%)',
-    line: 'hsl(210, 17%, 88%)',
+    line: 'hsl(210, 17%, 84%)',
     lineDark: 'hsl(217, 18%, 18%)',
   },
   gradient: {
