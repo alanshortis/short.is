@@ -33,6 +33,7 @@ class ShortisDocument extends Document {
         <Head />
         <body>
           <Main />
+          <script src="/wc/code-copy.js"></script>
           <NextScript />
         </body>
       </Html>
