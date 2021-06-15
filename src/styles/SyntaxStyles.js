@@ -11,7 +11,7 @@ const SyntaxStyles = createGlobalStyle`
     }
   }
 
-  pre[class^="language-"] {
+  pre {
     background-color: var(--secondary-background);
     border-radius: ${p => p.theme.radius};
     margin-bottom: var(--spacing);
@@ -31,21 +31,7 @@ const SyntaxStyles = createGlobalStyle`
     }
   }
 
-  .remark-highlight-code-line {
-    display: block;
-    background-color: var(--line);
-    box-shadow: inset 11px 0 0 -7px var(--accent);
-    transform: translateX(-1rem);
-    padding: 0.25rem 1rem;
-    width: calc(100% + 2rem);
-    @media ${p => p.theme.media.smallMax} {
-      padding: 0.25rem 1rem;
-      transform: translateX(-1rem);
-      width: calc(100% + 2rem);
-    }
-  }
-
-  .comment {
+  .hljs-comment {
     font-style: italic;
     color: var(--comment);
   }
