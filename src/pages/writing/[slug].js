@@ -1,11 +1,13 @@
 import { serialize } from 'next-mdx-remote/serialize';
 import { MDXRemote } from 'next-mdx-remote';
 import externalLinks from 'remark-external-links';
+import highlight from 'remark-highlight.js';
+import codeExtra from 'remark-code-extra';
 import { allPostFrontMatter, postContent } from '../../data/posts';
 import { Disclaimer, ExampleEmbed, Layout, PostDate, PostNav } from '../../components';
 import { PostArticle, PostMeta, PostBody } from '../../components/PostLayout';
 import SyntaxStyles from '../../styles/SyntaxStyles';
-import daysSince from '../../helpers/daysSince';
+import { daysSince, uniqueId } from '../../helpers';
 
 export function getStaticPaths() {
   const paths = allPostFrontMatter.map(post => ({
@@ -22,7 +24,41 @@ export async function getStaticProps({ params }) {
       remarkPlugins: [
         externalLinks,
         { target: '_blank', rel: ['noopener', 'noreferrer'] },
-        require('remark-prism'),
+        highlight,
+        [
+          codeExtra,
+          {
+            transform: node => {
+              const codeBlockId = uniqueId();
+              return {
+                before: [
+                  {
+                    type: 'element',
+                    tagName: 'button',
+                    properties: {
+                      type: 'button',
+                      'data-id': codeBlockId,
+                    },
+                    children: [
+                      {
+                        type: 'text',
+                        value: 'Copy',
+                      },
+                    ],
+                  },
+                  {
+                    type: 'text',
+                    value: node.lang,
+                  },
+                ],
+                transform: node => {
+                  console.log(node);
+                  node.data.hProperties.className.push(codeBlockId);
+                },
+              };
+            },
+          },
+        ],
       ],
     },
   });
