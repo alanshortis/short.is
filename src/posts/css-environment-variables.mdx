@@ -91,7 +91,7 @@ Plenty of space on the iPhone. Take a look at the [example](https://examples.sho
 
 There isn't a way to access these environment variables in in JavaScript directly, but we can access CSS custom properties. Once a custom property has been defined (as above), we can use `getComputedStyle` to read it in JavaScript:
 
-```js
+```javascript
 getComputedStyle(document.documentElement).getPropertyValue('--safe-area-inset-bottom');
 ```
 

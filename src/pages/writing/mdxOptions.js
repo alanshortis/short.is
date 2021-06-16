@@ -14,7 +14,9 @@ const mdxOptions = {
           transform: node => {
             node.data.hName = 'code-block'; // Wrap code block in this web component
             node.data.hProperties = {
-              'data-lang': node.lang,
+              // Not all languages are supported so we can override
+              // what's shown by using meta (string that follows lang in markdown).
+              'data-lang': node.meta || node.lang,
             };
           },
         },
