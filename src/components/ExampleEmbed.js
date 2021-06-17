@@ -6,17 +6,6 @@ const EmbedContainer = styled.div`
   margin-bottom: var(--spacing);
   padding: 0.25rem;
   padding-bottom: 0;
-
-  @media ${p => p.theme.media.smallMax} {
-    border-radius: 0;
-    left: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
-    position: relative;
-    right: 50%;
-    width: 100vw;
-  }
-
   iframe {
     display: flex;
     width: 100%;

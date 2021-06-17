@@ -13,7 +13,7 @@ if ('customElements' in window && 'clipboard' in navigator) {
       render() {
         this.innerHTML = `<div class="code-block">
           ${this.innerHTML}
-          <div class="code-block-header">
+          <div class="code-block__header">
             <button type="button">Copy</button>
             <dl>
               <dt class="visually-hidden">Code block language</dt>
