@@ -20,13 +20,13 @@ These kinds of problems are hard to solve when you're teaching yourself. Knowing
 
 That's a terrible explanation that I have tried to rewrite a dozen times, so let's look at an example.
 
-```jsx
+```javascript
 <NaLabel render={value => <span>{currency(value)}</span>} value={paymentAmount} />
 ```
 
 Here we are using the `NaLabel` component and passing the value we want to show as a prop. Our `render` prop contains a function that returns a template. You could use another component or any other valid JSX in the template.
 
-```jsx
+```javascript
 const NaLabel = ({ render, value }) => {
   const isNull = value === null;
 

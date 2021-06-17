@@ -27,7 +27,7 @@ const PostStyles = styled.div`
   p,
   ul,
   ol,
-  pre {
+  blockquote {
     margin-bottom: var(--spacing);
     code {
       background-color: var(--secondary-background);
@@ -53,38 +53,9 @@ const PostStyles = styled.div`
     }
   }
 
-  pre {
-    background-color: var(--secondary-background);
-    border-radius: ${p => p.theme.radius};
-    overflow-x: auto;
-    padding: calc(var(--spacing) / 2);
-    @media ${p => p.theme.media.mediumMax} {
-      left: 50%;
-      margin-left: -50vw;
-      margin-right: -50vw;
-      padding: var(--spacing);
-      position: relative;
-      right: 50%;
-      width: 100vw;
-    }
-    code {
-      padding: 0;
-    }
-  }
-
-  hr {
-    border-top: 1px solid currentColor;
-    margin-bottom: var(--spacing);
-  }
-
   blockquote {
-    border: 2px solid var(--secondary-bg);
-    border-bottom-width: 4px;
-    border-right-width: 4px;
-    border-radius: ${p => p.theme.radius};
-    font-size: 1.2rem;
+    border-left: 0.25rem solid var(--secondary-background);
     padding: calc(var(--spacing) / 2);
-    margin-bottom: var(--spacing);
     @media ${p => p.theme.media.small} {
       margin: var(--spacing);
       margin-top: 0;

@@ -33,7 +33,7 @@ This gulp task will do a few things for us:
 
 You can install all the packages required for this particular task with NPM using `npm i --save-dev gulp gulp-svgo gulp-rename gulp-svgstore`.
 
-```js
+```javascript
 const gulp = require('gulp');
 const svgo = require('gulp-svgo');
 const svgstore = require('gulp-svgstore');
@@ -57,11 +57,9 @@ Using the Jekyll file structure as an example, the individual icons will be take
 
 To display each icon (which is now a path in an SVG) we need to add the entire SVG to our HTML document just after the opening body tag. In Jekyll (liquid) we can just include it as we would any partial, but you should adjust this depending on your stack. Alternatively you could use AJAX to append the SVG to an existing element if including dynamically is not an option for you.
 
-```liquid
+```twig liquid
 <body>
-  <div class="is-hidden">
-    {% raw %}{% include icons.svg %}{% endraw %}
-  </div>
+  <div class="is-hidden">{% raw %}{% include icons.svg %}{% endraw %}</div>
   ...
 </body>
 ```

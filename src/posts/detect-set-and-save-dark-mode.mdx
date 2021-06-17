@@ -80,7 +80,7 @@ We only redefine the type and background colours as our design has a highlight a
 
 Media Queries aren't just for CSS, they can be used in JavaScript with `window.matchMedia`. With this, we can conditionally add a class to the body tag:
 
-```js
+```javascript
 function setInitialScheme() {
   if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
     document.bodyclassList.add('dark');
@@ -105,7 +105,7 @@ Now that we have control of the color scheme in JavaScript, we can change it pro
 
 Now we have the buttons, we need to handle their clicks. First, write a function that toggles the class on the body tag to change the color scheme:
 
-```js
+```javascript
 function changeScheme(scheme) {
   if (scheme === 'dark') {
     classList.add('dark');
@@ -121,7 +121,7 @@ function changeScheme(scheme) {
 
 Now to handle clicking the buttons to run this function:
 
-```js
+```javascript
 const schemeToggle = document.querySelectorAll('.js--change-scheme');
 
 schemeToggle.forEach(button => {
@@ -141,7 +141,7 @@ What we have so far is pretty good - set the colour scheme based on the OS setti
 
 First, set the preferred scheme in `localStorage` when it's changed using the buttons by updating the `changeScheme` function:
 
-```js
+```javascript
 function changeScheme(scheme) {
   if (scheme === 'dark') {
     classList.add('dark');
@@ -157,7 +157,7 @@ When the scheme is changed we set our local storage to the value of the selected
 
 Next, we can check if this local storage has a value when we set the initial scheme:
 
-```js
+```javascript
 const storedScheme = localStorage.getItem('as-scheme');
 
 function setInitialScheme() {

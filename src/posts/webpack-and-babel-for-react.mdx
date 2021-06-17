@@ -24,7 +24,7 @@ We'll be using NPM to handle all of our dependencies, so we need to initialise i
 
 If you're going to be using git, now is a good time to ignore some files. Create a `.gitignore` file and add a few entires:
 
-```bash
+```shell
 node_modules
 npm-debug.log
 dist
@@ -63,7 +63,7 @@ Install Webpack and the Webpack CLI as dev dependencies: `$ npm i --save-dev web
 
 Create a new webpack config named `webpack.config.js` and add the below configuration to get started:
 
-```js
+```javascript
 module.exports = {
   module: {
     rules: [
@@ -115,7 +115,7 @@ Create a new folder named `src` for our source files at the root of the project 
 
 Add to your webpack config to use the HTML loader:
 
-```js
+```javascript
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 
 module.exports = {
@@ -153,7 +153,7 @@ Install React and ReactDOM as dependencies: `$ npm i --save react react-dom`.
 
 In the src folder, create a new JavaScript file for our React App named `index.js`.
 
-```jsx
+```javascript
 import React from 'react';
 import { render } from 'react-dom';
 
@@ -177,7 +177,7 @@ We're also adding `devtool` and `devserver` properties which:
 - `devtool` ensures that sourcemaps are created and available when debugging in the browser.
 - `devserver` ensures that any 404 errors fallback to `index.html`, which is essential if using something like React Router for client side routing.
 
-```js
+```javascript
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
@@ -215,6 +215,9 @@ module.exports = {
       }
     ),
   ],
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
   devServer: {
     historyApiFallback: true,
   },
@@ -238,12 +241,12 @@ In `package.json`, we can create a new script entry for starting this developmen
 
 Running `$ npm start` will bundle our code, write sourcemaps, start the dev server in development [mode](https://webpack.js.org/concepts/mode/) with HMR, start Browsersync and open your browser on the correct url and port. You'll also get a summary in your terminal:
 
-```bash
+```shell
 --------------------------------------
       Local: http://localhost:3000
-  External: http://10.216.69.213:3000
+   External: http://10.216.69.213:3000
 --------------------------------------
-        UI: http://localhost:3001
+         UI: http://localhost:3001
 UI External: http://localhost:3001
 --------------------------------------
 ```
@@ -271,7 +274,7 @@ There is also a Babel plugin that provides better debugging: `$ npm i --save-dev
 
 We can now use Styled Components in our existing React app:
 
-```jsx
+```javascript
 import React from 'react';
 import { render } from 'react-dom';
 import styled from 'styled-components';
@@ -317,10 +320,49 @@ We're adjusting the Airbnb rules here slightly. The rules state that all files t
 
 To use `.jsx` files, we'll need to add a property to our webpack config that will ensure JSX files are resolved:
 
-```js
-resolve: {
-  extensions: ['.js', '.jsx'],
-},
+```javascript
+const HtmlWebPackPlugin = require('html-webpack-plugin');
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+        },
+      },
+      {
+        test: /\.html$/,
+        use: {
+          loader: 'html-loader',
+        },
+      },
+    ],
+  },
+  plugins: [
+    new HtmlWebPackPlugin({
+      template: './src/index.html',
+      filename: './index.html',
+    }),
+    new BrowserSyncPlugin(
+      {
+        host: 'localhost',
+        port: 3000,
+        proxy: 'http://localhost:8080/',
+      },
+      {
+        reload: false,
+      }
+    ),
+  ],
+  devServer: {
+    historyApiFallback: true,
+  },
+  devtool: 'inline-source-map',
+};
 ```
 
 With this added, you could go back and rename `src/index.js` to `src/index.jsx` if you prefer.
@@ -396,7 +438,7 @@ Each of these scripts will look inside our source folder and sub folders, and ch
 
 When running the CSS linter, you'll notice it flags an issue. We have used the `red` colour keyword in our Styled Component which our rules forbid. To solve this, go back to `src/index.js` and set the colour in hex:
 
-```jsx
+```javascript
 import React from 'react';
 import { render } from 'react-dom';
 import styled from 'styled-components';
@@ -418,7 +460,7 @@ Webpack can be configured to run the linters as we work, as part of our existing
 
 First, we need eslint and stylelint loaders: `$ npm i --save-dev eslint-loader stylelint-custom-processor-loader`, and add to our existing rule for js/jsx files:
 
-```js
+```javascript
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
@@ -485,7 +527,7 @@ We can add some optimisation to the bundle in our Webpack config. Here, we're go
 
 This will be our final Webpack config.
 
-```js
+```javascript
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');

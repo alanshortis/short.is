@@ -43,8 +43,6 @@ The WordPress plugin directory does not support Composer as standard, but fortun
 
 Create `composer.json` at the root of your new project folder and add the below content. We'll go over the relevant parts in a moment.
 
-> NOTE: This article may be reasonably old by the time you're reading this, so check the versions defined below. They may be very out of date.
-
 ```json
 {
   "repositories": [
@@ -138,7 +136,7 @@ We added database credentials to `wp-config.php` earlier, and still need to add 
 
 Create a new file at the project root named `.env.example` with the below contents (you can add anything extra you feel is appropriate for your project, like API keys):
 
-```bash
+```shell
 # Standard WordPress credentials.
 DB_NAME=
 DB_USER=
@@ -152,7 +150,7 @@ This file acts as a template for the actual file and is used by the CLI to promp
 
 Run this command: `$ wp dotenv init --template=.env.example --interactive --with-salts` and add the required values as prompted. Once you're done, a new `.env` file will be created and look something like this:
 
-```bash
+```shell
 # Standard WordPress credentials.
 DB_NAME=wp_test
 DB_USER=root
