@@ -8,6 +8,7 @@ const GlobalStyles = createGlobalStyle`
     font-size: 93.75%;
     --background: ${p => p.theme.color.light};
     --secondary-background: ${p => p.theme.color.secondaryBg};
+    --tertiary-background: ${p => p.theme.color.tertiaryBg};
     --color: ${p => p.theme.color.dark};
     --accent: ${p => p.theme.color.accent};
     --spacing: ${p => p.theme.spacingSmall};
@@ -23,6 +24,7 @@ const GlobalStyles = createGlobalStyle`
       --background: ${p => p.theme.color.dark};
       --color: ${p => p.theme.color.light};
       --secondary-background: ${p => p.theme.color.secondaryBgDark};
+      --tertiary-background: ${p => p.theme.color.tertiaryBgDark};
       --accent: ${p => p.theme.color.accentDark};
       --divider: ${p => p.theme.color.dividerDark};
       --header-gradient: ${p => p.theme.gradient.headerDark};
@@ -116,6 +118,10 @@ const GlobalStyles = createGlobalStyle`
 
   h4, .h4 {
     font-size: 1.44rem;
+  }
+
+  button {
+    font: inherit;
   }
 
   .visually-hidden {

@@ -13,6 +13,8 @@ const theme = {
     dividerDark: 'hsl(217, 18%, 23%)',
     secondaryBg: 'hsl(210, 17%, 86%)',
     secondaryBgDark: 'hsl(217, 18%, 20%)',
+    tertiaryBg: 'hsl(210, 17%, 84%)',
+    tertiaryBgDark: 'hsl(217, 18%, 18%)',
   },
   syntax: {
     comment: 'hsl(218, 20%, 39%)',

@@ -11,11 +11,16 @@ if ('customElements' in window && 'clipboard' in navigator) {
       }
 
       render() {
-        const children = this.innerHTML;
-        this.innerHTML =
-          `<button type="button" class="code-copy">Copy</button> 
-      <dl><dt class="visually-hidden">Code block language</dt><dd>${this.getAttribute('data-lang')}</dd></dl>
-    ` + children;
+        this.innerHTML = `<div class="code-block">
+          ${this.innerHTML}
+          <div class="code-block-header">
+            <button type="button">Copy</button>
+            <dl>
+              <dt class="visually-hidden">Code block language</dt>
+              <dd>${this.getAttribute('data-lang')}</dd>
+            </dl>
+          </div>
+        </div>`;
 
         this.listeners();
       }
