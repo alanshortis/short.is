@@ -1,10 +1,12 @@
 import dynamic from 'next/dynamic';
 import { serialize } from 'next-mdx-remote/serialize';
+import externalLinks from 'remark-external-links';
+import highlight from 'remark-highlight.js';
+import codeExtra from 'remark-code-extra';
 import { allPostFrontMatter, postContent } from '../../data/posts';
 import { Disclaimer, ExampleEmbed, Layout, PostDate, PostNav } from '../../components';
 import { PostArticle, PostMeta, PostBody } from '../../components/PostLayout';
 import SyntaxStyles from '../../styles/SyntaxStyles';
-import mdxOptions from './mdxOptions';
 import { daysSince } from '../../helpers';
 
 // Dynamic import to prevent server render in dev
@@ -23,7 +25,30 @@ export function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const { content, frontMatter, nextPost, prevPost } = postContent(params.slug);
-  const mdxContent = await serialize(content, { mdxOptions });
+  const mdxContent = await serialize(content, {
+    mdxOptions: {
+      remarkPlugins: [
+        externalLinks,
+        { target: '_blank', rel: ['noopener', 'noreferrer'] },
+        highlight,
+        [
+          codeExtra,
+          {
+            transform: {
+              transform: node => {
+                node.data.hName = 'code-block'; // Wrap code block in this web component
+                node.data.hProperties = {
+                  // Not all languages are supported so we can override
+                  // what's shown by using meta (string that follows lang in markdown).
+                  'data-lang': node.meta || node.lang,
+                };
+              },
+            },
+          },
+        ],
+      ],
+    },
+  });
 
   return { props: { mdxContent, frontMatter, nextPost, prevPost } };
 }
