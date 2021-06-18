@@ -2,14 +2,14 @@ import { createGlobalStyle } from 'styled-components';
 
 const SyntaxStyles = createGlobalStyle`
   :root {
-  --mono-3: #a0a1a7;
-  --hue-1: #0184bb;
-  --hue-2: #4078f2;
-  --hue-3: #a626a4;
-  --hue-4: #50a14f;
-  --hue-5: #e45649;
-  --hue-6: #986801;
-  --hue-6-2: #c18401;
+    --mono-3: #a0a1a7;
+    --hue-1: #0184bb;
+    --hue-2: #4078f2;
+    --hue-3: #a626a4;
+    --hue-4: #50a14f;
+    --hue-5: #e45649;
+    --hue-6: #986801;
+    --hue-6-2: #c18401;
 
     & body.dark {
       --mono-3: #5c6370;
