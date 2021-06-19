@@ -35,6 +35,9 @@ const PostStyles = styled.div`
       line-height: 1em;
       padding: calc(var(--spacing) / 8);
     }
+    &.intro {
+      font-size: 1.2rem;
+    }
   }
 
   ul,
