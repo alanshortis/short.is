@@ -19,12 +19,10 @@ const theme = {
     headerDark: 'linear-gradient(hsla(216, 18%, 16%, 1) 0%, hsla(216, 18%, 16%, 0) 100%)',
   },
   font: {
-    face: 'Inter',
-    family: 'Inter, Helvetica, Arial, sans-serif',
-    faceMono: 'Plex',
-    familyMono: "Plex, 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace",
-    weight: 400,
-    weightBold: 700,
+    family: '"Helvetica Neue", Helvetica, Arial, sans-serif',
+    familyMono: '"SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace',
+    weight: 'normal',
+    weightBold: 'bold',
   },
   media: {
     small: `(min-width: ${breakpoints.small}px)`,

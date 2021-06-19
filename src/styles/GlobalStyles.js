@@ -1,9 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
-import FontImports from './FontImports';
 
 const GlobalStyles = createGlobalStyle`
-  ${FontImports};
-
   :root {
     font-size: 93.75%;
     --background: ${p => p.theme.color.light};
