@@ -32,6 +32,7 @@ const theme = {
     shouldAnimate: '(prefers-reduced-motion: no-preference)',
   },
   spacing: '2rem',
+  spacingMed: '1.5rem',
   spacingSmall: '1rem',
   headerHeight: '5rem',
   articleWidth: '72rem',

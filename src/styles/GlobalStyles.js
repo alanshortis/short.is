@@ -13,6 +13,11 @@ const GlobalStyles = createGlobalStyle`
 
     @media ${p => p.theme.media.small} {
       font-size: 100%;
+      --spacing: ${p => p.theme.spacingMed};
+    }
+
+    @media ${p => p.theme.media.medium} {
+      font-size: 106.25%;
       --spacing: ${p => p.theme.spacing};
     }
 
@@ -116,6 +121,10 @@ const GlobalStyles = createGlobalStyle`
   }
 
   button {
+    background: none;
+    color: currentColor;
+    cursor: pointer;
+    display: flex;
     font: inherit;
   }
 
