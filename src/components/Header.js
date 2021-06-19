@@ -23,9 +23,6 @@ const StyledHeader = styled.header`
   div {
     display: flex;
   }
-  scheme-toggle {
-    margin-left: 1rem;
-  }
 `;
 
 const Header = () => (
