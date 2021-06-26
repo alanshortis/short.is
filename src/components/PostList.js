@@ -22,6 +22,11 @@ const Post = styled.li`
   .h4 {
     margin-bottom: calc(var(--spacing) / 4);
   }
+  @supports (padding-bottom: env(safe-area-inset-bottom)) {
+    &:last-child {
+      padding-bottom: calc(var(--safe-area-inset-bottom) + var(--spacing));
+    }
+  }
 `;
 
 const PostList = ({ posts }) => (
