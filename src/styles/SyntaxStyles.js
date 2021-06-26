@@ -2,24 +2,24 @@ import { createGlobalStyle } from 'styled-components';
 
 const SyntaxStyles = createGlobalStyle`
   :root {
-    --mono-3: #a0a1a7;
-    --hue-1: #0184bb;
-    --hue-2: #4078f2;
-    --hue-3: #a626a4;
-    --hue-4: #50a14f;
-    --hue-5: #e45649;
-    --hue-6: #986801;
-    --hue-6-2: #c18401;
+    --comment: #5E6673;
+    --literal: #2B6E78;
+    --symbol: #1269AF;
+    --keyword: #9E30C0;
+    --string: #496D31;
+    --name: #BF2B2B;
+    --attr: #8D5A2A;
+    --title: #855F19;
 
     & body.dark {
-      --mono-3: #5c6370;
-      --hue-1: #56b6c2;
-      --hue-2: #61aeee;
-      --hue-3: #c678dd;
-      --hue-4: #98c379;
-      --hue-5: #e06c75;
-      --hue-6: #d19a66;
-      --hue-6-2: #e6c07b;
+      --comment: #848d9A;
+      --literal: #56b6c2;
+      --symbol: #61aeee;
+      --keyword: #c678dd;
+      --string: #98c379;
+      --name: #de6e6e;
+      --attr: #d19a66;
+      --title: #e6c07b;
     }
   }
 
@@ -34,6 +34,7 @@ const SyntaxStyles = createGlobalStyle`
     }
   }
 
+  /* The div with this class only renders if the web component works. */
   .code-block {
     margin-bottom: var(--spacing);
     pre {
@@ -64,14 +65,14 @@ const SyntaxStyles = createGlobalStyle`
 
   .hljs-comment,
   .hljs-quote {
-    color: var(--mono-3);
+    color: var(--comment);
     font-style: italic;
   }
 
   .hljs-doctag,
   .hljs-keyword,
   .hljs-formula {
-    color: var(--hue-3);
+    color: var(--keyword);
   }
 
   .hljs-section,
@@ -79,11 +80,11 @@ const SyntaxStyles = createGlobalStyle`
   .hljs-selector-tag,
   .hljs-deletion,
   .hljs-subst {
-    color: var(--hue-5);
+    color: var(--name);
   }
 
   .hljs-literal {
-    color: var(--hue-1);
+    color: var(--literal);
   }
 
   .hljs-string,
@@ -91,7 +92,7 @@ const SyntaxStyles = createGlobalStyle`
   .hljs-addition,
   .hljs-attribute,
   .hljs-meta .hljs-string {
-    color: var(--hue-4);
+    color: var(--string);
   }
 
   .hljs-attr,
@@ -102,7 +103,7 @@ const SyntaxStyles = createGlobalStyle`
   .hljs-selector-attr,
   .hljs-selector-pseudo,
   .hljs-number {
-    color: var(--hue-6);
+    color: var(--attr);
   }
 
   .hljs-symbol,
@@ -111,13 +112,13 @@ const SyntaxStyles = createGlobalStyle`
   .hljs-meta,
   .hljs-selector-id,
   .hljs-title {
-    color: var(--hue-2);
+    color: var(--symbol);
   }
 
   .hljs-built_in,
   .hljs-title.class_,
   .hljs-class .hljs-title {
-    color: var(--hue-6-2);
+    color: var(--title);
   }
 `;
 

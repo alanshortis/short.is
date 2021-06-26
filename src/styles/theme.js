@@ -5,18 +5,18 @@ const breakpoints = {
 
 const theme = {
   color: {
-    light: 'hsl(213, 18%, 90%)',
-    dark: 'hsl(216, 18%, 16%)',
-    accent: 'hsl(0, 63%, 46%)',
+    light: 'hsl(216, 18%, 90%)',
+    dark: 'hsl(216, 18%, 15%)',
+    secondaryBg: 'hsl(216, 18%, 88%)',
+    secondaryBgDark: 'hsl(216, 18%, 17%)',
+    divider: 'hsl(216, 18%, 86%)',
+    dividerDark: 'hsl(216, 18%, 17%)',
+    accent: 'hsl(0, 63%, 45%)',
     accentDark: 'hsl(0, 63%, 65%)',
-    divider: 'hsl(214, 18%, 83%)',
-    dividerDark: 'hsl(217, 18%, 23%)',
-    secondaryBg: 'hsl(210, 17%, 86%)',
-    secondaryBgDark: 'hsl(217, 18%, 20%)',
   },
   gradient: {
-    header: 'linear-gradient(hsla(213, 18%, 90%, 1) 0%, hsla(213, 18%, 90%, 0) 100%)',
-    headerDark: 'linear-gradient(hsla(216, 18%, 16%, 1) 0%, hsla(216, 18%, 16%, 0) 100%)',
+    header: 'linear-gradient(hsla(216, 18%, 90%, 1) 0%, hsla(216, 18%, 90%, 0) 100%)',
+    headerDark: 'linear-gradient(hsla(216, 18%, 15%, 1) 0%, hsla(216, 18%, 10%, 0) 100%)',
   },
   font: {
     family: '"Helvetica Neue", Helvetica, Arial, sans-serif',
@@ -40,3 +40,7 @@ const theme = {
 };
 
 export default theme;
+
+// - Footer spacing (env var).
+// - Step to minify scripts?
+// - Remove lang label.
