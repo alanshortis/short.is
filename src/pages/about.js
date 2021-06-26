@@ -22,12 +22,12 @@ const About = ({ goodreads, lastFm, meta }) => (
     <PostArticle>
       <PostMeta>
         <h1>About</h1>
+      </PostMeta>
+      <PostBody>
         <p className="intro">
           I’m Alan Shortis—a front end developer based in Nottingham. I like CSS more than JavaScript, design
           systems more than chaos, and accessibility more than exclusion.
         </p>
-      </PostMeta>
-      <PostBody>
         <p>
           I specialise in building user interfaces with HTML, CSS, and JavaScript. I have been a developer
           professionally in some capacity for almost 15 years, though I made my first websites in the late

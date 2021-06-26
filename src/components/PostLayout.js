@@ -20,9 +20,6 @@ export const PostMeta = styled.div`
   @media ${p => p.theme.media.medium} {
     grid-column: 1 / 6;
   }
-  .intro {
-    font-size: 1.2rem !important;
-  }
 `;
 
 export const PostBody = styled(PostStyles)`

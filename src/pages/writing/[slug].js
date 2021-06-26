@@ -68,13 +68,13 @@ const Post = ({ mdxContent, frontMatter, meta, nextPost, prevPost }) => {
     <Layout meta={meta} title={title} intro={intro} hasFooter>
       <SyntaxStyles />
       <PostArticle>
+        {isOld && <Disclaimer />}
         <PostMeta>
           <PostDate date={date} updated={updated} />
           <h1>{title}</h1>
-          {isOld && <Disclaimer />}
-          <p className="intro">{intro}</p>
         </PostMeta>
         <PostBody>
+          <p className="intro">{intro}</p>
           <Mdx {...mdxContent} components={components} />
         </PostBody>
       </PostArticle>

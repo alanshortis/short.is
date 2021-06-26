@@ -1,11 +1,9 @@
 import { createGlobalStyle } from 'styled-components';
-import FontImports from './FontImports';
 
 const GlobalStyles = createGlobalStyle`
-  ${FontImports};
-
   :root {
     font-size: 93.75%;
+    --safe-area-inset-bottom: env(safe-area-inset-bottom);
     --background: ${p => p.theme.color.light};
     --secondary-background: ${p => p.theme.color.secondaryBg};
     --color: ${p => p.theme.color.dark};
@@ -16,6 +14,11 @@ const GlobalStyles = createGlobalStyle`
 
     @media ${p => p.theme.media.small} {
       font-size: 100%;
+      --spacing: ${p => p.theme.spacingMed};
+    }
+
+    @media ${p => p.theme.media.medium} {
+      font-size: 106.25%;
       --spacing: ${p => p.theme.spacing};
     }
 
@@ -119,6 +122,10 @@ const GlobalStyles = createGlobalStyle`
   }
 
   button {
+    background: none;
+    color: currentColor;
+    cursor: pointer;
+    display: flex;
     font: inherit;
   }
 

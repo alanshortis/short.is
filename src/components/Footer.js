@@ -8,6 +8,9 @@ const StyledFooter = styled.footer`
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
+  @supports (padding-bottom: env(safe-area-inset-bottom)) {
+    padding-bottom: calc(var(--safe-area-inset-bottom) + var(--spacing));
+  }
 `;
 
 const Footer = ({ meta }) => (
