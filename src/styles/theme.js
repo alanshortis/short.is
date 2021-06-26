@@ -40,7 +40,3 @@ const theme = {
 };
 
 export default theme;
-
-// - Footer spacing (env var).
-// - Step to minify scripts?
-// - Remove lang label.
