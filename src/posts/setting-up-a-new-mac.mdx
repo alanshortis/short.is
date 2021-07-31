@@ -20,7 +20,7 @@ Open the default terminal and run each of these commands:
 
 ### Finder
 
-```shell
+```bash shell
 # Set sidebar icon size to medium
 defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 2
 
@@ -88,7 +88,7 @@ defaults write com.apple.finder WarnOnEmptyTrash -bool false
 
 ### User Experience
 
-```shell
+```bash shell
 # Set the icon size of Dock items
 defaults write com.apple.dock tilesize -int 36
 
@@ -158,7 +158,7 @@ defaults write com.apple.dock wvous-br-modifier -int 0
 
 ### Screenshots
 
-```shell
+```bash shell
 # Save screenshots to {user}/Pictures instead of Desktop
 defaults write com.apple.screencapture location -string "${HOME}/Pictures"
 
@@ -171,7 +171,7 @@ defaults write com.apple.screencapture disable-shadow -bool true
 
 ### Miscellaneous
 
-```shell
+```bash shell
 # Use Graphite Highlight Color
 defaults write NSGlobalDomain AppleHighlightColor -string "0.780400 0.815700 0.858800"
 
@@ -208,7 +208,7 @@ Nothing will take effect until the Finder and Dock have been killed. It's best t
 
 If for some reason you want to see what any of these options are set to (probably useful if you already have your mouse tracking speed but you'd like to script it), you can replace `write` with `read` for any command. Though, something needs to have been set at some time to get a result:
 
-```shell
+```bash shell
 defaults read -g com.apple.mouse.scaling
 # '3'
 ```
@@ -219,7 +219,7 @@ defaults read -g com.apple.mouse.scaling
 
 Open the terminal and paste this command to install Homebrew or copy the command from the Homebrew website if you'd prefer, following the prompts:
 
-```shell
+```bash shell
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
@@ -282,7 +282,7 @@ We already installed [Hyper](https://hyper.is/) using Homebrew, so let's set it 
 
 I like the [One Dark](https://hyper.is/store/hyper-one-dark) theme for everything, and like everything else in this guide we don't even need to leave the terminal to install this and a few other plugins:
 
-```shell
+```bash shell
 # One Dark theme for Hyper
 hyper i hyper-one-dark
 
@@ -299,7 +299,7 @@ There are plenty of other [plugins](https://hyper.is/plugins/newest) and [themes
 
 macOS uses zsh by default now, but I like to use [Oh My Zsh](https://ohmyz.sh/) as it comes with a lot of useful extras. Install it via the terminal, or copy the command from their website if you'd prefer:
 
-```shell
+```bash shell
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
@@ -313,7 +313,7 @@ Oh My Zsh includes a few, e.g. `g` being short for `git` and `gco` being short f
 
 I like to keep a separate `.aliases` file as I tinker with it pretty often. To do this, create that file in your user directory, then refer to it in `.zshrc` in place of the aliases already there:
 
-```shell
+```bash shell
 [ -f .aliases ] && source .aliases
 ```
 
@@ -325,7 +325,7 @@ For example, if you visit a folder `~/Sites/design/design-system` pretty often, 
 
 This isn't something we can magically install from the terminal, but it's still not very difficult. Download `z.sh` from the [GitHub repository](https://github.com/rupa/z) and save it as is in your user folder (the same place as your aliases and `.zshrc`). Next, open `.zshrc` again and add a reference to it at the bottom of the file:
 
-```shell
+```bash shell
 # Include z
 . ~/z.sh
 zstyle ':completion:*' menu select
@@ -347,13 +347,13 @@ I love this because I don't need to keep a mental model of what's where, I just 
 
 Install, or copy the command from the [GitHub repository](https://github.com/zsh-users/zsh-autosuggestions/):
 
-```shell
+```bash shell
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 ```
 
 Then, add to the plugin list in `.zshrc`:
 
-```shell
+```bash shell
 plugins=(git zsh-autosuggestions)
 ```
 
@@ -373,7 +373,7 @@ fontFamily: "MesloLGS NF",
 
 Next, [install the theme itself](https://github.com/romkatv/powerlevel10k#oh-my-zsh) and apply it:
 
-```shell
+```bash shell
 # Download the theme
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
 
