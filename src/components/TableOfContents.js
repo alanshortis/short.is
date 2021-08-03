@@ -1,0 +1,11 @@
+const TableOfContents = ({ sections }) => (
+  <nav>
+    <ol>
+      {sections.map(section => (
+        <li key={section.id}><a href={section.id}>{section.title}</a></li>
+      ))}
+    </ol>
+  </nav>
+)
+
+export default TableOfContents;

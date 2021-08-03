@@ -4,10 +4,10 @@ import externalLinks from 'remark-external-links';
 import highlight from 'remark-highlight.js';
 import codeExtra from 'remark-code-extra';
 import { allPostFrontMatter, postContent } from '../../data/posts';
-import { Disclaimer, ExampleEmbed, Layout, PostDate, PostNav } from '../../components';
 import { PostArticle, PostMeta, PostBody } from '../../components/PostLayout';
 import SyntaxStyles from '../../styles/SyntaxStyles';
 import { daysSince } from '../../helpers';
+import { Disclaimer, ExampleEmbed, Layout, PostDate, PostNav, TableOfContents } from '../../components';
 
 // Dynamic import to prevent server render in dev
 // because MDX code blocks are wrapped in a web component.
@@ -58,7 +58,7 @@ export const config = {
 };
 
 // Add each component used in MDX files.
-const components = { ExampleEmbed };
+const components = { ExampleEmbed, TableOfContents };
 
 const Post = ({ mdxContent, frontMatter, meta, nextPost, prevPost }) => {
   const { date, title, intro, updated } = frontMatter;
