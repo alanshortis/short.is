@@ -213,6 +213,16 @@ defaults read -g com.apple.mouse.scaling
 # '3'
 ```
 
+## SSH key for source control permissions
+
+If you're working with anything in GitHub that's private, either in a personal repo, an organisation, or in GitHub enterprise, you'll need to set up an SSH key so that you can push/pull with permission as seamlessly as possible.
+
+First follow the steps in [Generating a new SSH key and adding it to the ssh-agent](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent), then follow [Adding a new SSH key to your GitHub account](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account).
+
+There are similar guides for [Bitbucket](https://support.atlassian.com/bitbucket-cloud/docs/set-up-an-ssh-key/#Step-3.-Add-the-public-key-to-your-Account-settings), [GitLab](https://docs.gitlab.com/ee/ssh/), and [Azure DevOps](https://docs.microsoft.com/en-us/azure/devops/repos/git/use-ssh-keys-to-authenticate?view=azure-devops).
+
+If you've recently parted ways with a Mac make sure you delete keys from any services that had them.
+
 ## Installing apps
 
 [Homebrew](https://brew.sh/) is a package manager for macOS, meaning you can install the apps you want (where available) from the command line. While it was originally for binaries and packages like Node, [Cask](https://github.com/Homebrew/homebrew-cask) extends its powers to include desktop apps.
