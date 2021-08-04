@@ -80,7 +80,7 @@ export const config = {
 const components = { ExampleEmbed };
 
 const Post = ({ mdxContent, frontMatter, meta, nextPost, prevPost, toc }) => {
-  const { date, title, intro, updated } = frontMatter;
+  const { date, title, intro, updated, noToc } = frontMatter;
   const isOld = daysSince(date) >= 365 * 2;
 
   return (
@@ -94,7 +94,7 @@ const Post = ({ mdxContent, frontMatter, meta, nextPost, prevPost, toc }) => {
         </PostMeta>
         <PostBody>
           <p className="intro">{intro}</p>
-          {toc?.length > 1 && <TableOfContents sections={toc} />}
+          {!noToc && toc?.length > 1 && <TableOfContents sections={toc} />}
           <Mdx {...mdxContent} components={components} />
         </PostBody>
       </PostArticle>
