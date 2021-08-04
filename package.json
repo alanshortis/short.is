@@ -21,6 +21,7 @@
     "remark-code-extra": "^1.0.1",
     "remark-external-links": "^8.0.0",
     "remark-highlight.js": "^6.0.0",
+    "remark-slug": "^6.1.0",
     "styled-components": "^5.3.0",
     "xml-js": "^1.6.11"
   },

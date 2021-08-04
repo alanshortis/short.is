@@ -3,6 +3,7 @@ import { serialize } from 'next-mdx-remote/serialize';
 import externalLinks from 'remark-external-links';
 import highlight from 'remark-highlight.js';
 import codeExtra from 'remark-code-extra';
+import remarkSlug from 'remark-slug';
 import { allPostFrontMatter, postContent } from '../../data/posts';
 import { PostArticle, PostMeta, PostBody } from '../../components/PostLayout';
 import SyntaxStyles from '../../styles/SyntaxStyles';
@@ -28,6 +29,7 @@ export async function getStaticProps({ params }) {
   const mdxContent = await serialize(content, {
     mdxOptions: {
       remarkPlugins: [
+        remarkSlug,
         externalLinks,
         { target: '_blank', rel: ['noopener', 'noreferrer'] },
         highlight,
