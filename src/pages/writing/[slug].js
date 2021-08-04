@@ -3,11 +3,13 @@ import { serialize } from 'next-mdx-remote/serialize';
 import externalLinks from 'remark-external-links';
 import highlight from 'remark-highlight.js';
 import codeExtra from 'remark-code-extra';
+import remarkSlug from 'remark-slug';
+import GithubSlugger from 'github-slugger';
 import { allPostFrontMatter, postContent } from '../../data/posts';
-import { Disclaimer, ExampleEmbed, Layout, PostDate, PostNav } from '../../components';
 import { PostArticle, PostMeta, PostBody } from '../../components/PostLayout';
 import SyntaxStyles from '../../styles/SyntaxStyles';
 import { daysSince } from '../../helpers';
+import { Disclaimer, ExampleEmbed, Layout, PostDate, PostNav, TableOfContents } from '../../components';
 
 // Dynamic import to prevent server render in dev
 // because MDX code blocks are wrapped in a web component.
@@ -24,10 +26,12 @@ export function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
+  // Get the content of the post.
   const { content, frontMatter, nextPost, prevPost } = postContent(params.slug);
   const mdxContent = await serialize(content, {
     mdxOptions: {
       remarkPlugins: [
+        remarkSlug,
         externalLinks,
         { target: '_blank', rel: ['noopener', 'noreferrer'] },
         highlight,
@@ -50,7 +54,22 @@ export async function getStaticProps({ params }) {
     },
   });
 
-  return { props: { mdxContent, frontMatter, nextPost, prevPost } };
+  // Create an array of all the h2 titles for a TOC.
+  const slugger = new GithubSlugger();
+  const headingsRegex = new RegExp(/^(## )(.*)\n/, 'gm'); // All h2 titles from markdown.
+  const headings = [...content.matchAll(headingsRegex)];
+
+  const toc = headings.map(heading => {
+    const title = heading[2].trim();
+    const id = slugger.slug(title);
+
+    return {
+      title,
+      id
+    }
+  })
+
+  return { props: { mdxContent, frontMatter, nextPost, prevPost, toc } };
 }
 
 export const config = {
@@ -60,8 +79,8 @@ export const config = {
 // Add each component used in MDX files.
 const components = { ExampleEmbed };
 
-const Post = ({ mdxContent, frontMatter, meta, nextPost, prevPost }) => {
-  const { date, title, intro, updated } = frontMatter;
+const Post = ({ mdxContent, frontMatter, meta, nextPost, prevPost, toc }) => {
+  const { date, title, intro, updated, hasToc } = frontMatter;
   const isOld = daysSince(date) >= 365 * 2;
 
   return (
@@ -75,6 +94,7 @@ const Post = ({ mdxContent, frontMatter, meta, nextPost, prevPost }) => {
         </PostMeta>
         <PostBody>
           <p className="intro">{intro}</p>
+          {hasToc && <TableOfContents sections={toc} />}
           <Mdx {...mdxContent} components={components} />
         </PostBody>
       </PostArticle>

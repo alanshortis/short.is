@@ -5,6 +5,9 @@ const PostStyles = styled.div`
   h3 {
     padding-top: var(--spacing);
     margin-bottom: var(--spacing);
+    &[id] {
+      scroll-margin-top: ${p => p.theme.headerHeight};
+    }
   }
 
   h2 + h3 {

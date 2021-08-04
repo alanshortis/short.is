@@ -6,6 +6,7 @@ const PATH = 'src/posts';
 const template = (title, date) => `---
 title: '${title}'
 date: '${date}'
+hasToc: true
 intro: ""
 ---
 `;
