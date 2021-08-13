@@ -1,11 +1,11 @@
 import { Head, Header, Footer, Main } from '../components';
 
-const Layout = ({ children, title, intro, meta, hasFooter }) => (
+const Layout = ({ children, title, intro, hasFooter }) => (
   <>
-    <Head title={title} intro={intro} meta={meta} />
+    <Head title={title} intro={intro} />
     <Header />
     <Main>{children}</Main>
-    {hasFooter && <Footer meta={meta} />}
+    {hasFooter && <Footer />}
   </>
 );
 

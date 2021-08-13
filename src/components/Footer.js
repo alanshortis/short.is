@@ -1,5 +1,7 @@
+import { useContext } from 'react';
 import styled from 'styled-components';
 import { Label } from '../components';
+import MetaContext from '../data/meta';
 
 const StyledFooter = styled.footer`
   max-width: ${p => p.theme.articleWidth};
@@ -13,15 +15,19 @@ const StyledFooter = styled.footer`
   }
 `;
 
-const Footer = ({ meta }) => (
-  <StyledFooter>
-    <Label currentColor>
-      &copy; {meta.year} {meta.author}
-    </Label>
-    <Label>
-      <a href="#top">&uarr; Top</a>
-    </Label>
-  </StyledFooter>
-);
+const Footer = () => {
+  const meta = useContext(MetaContext);
+
+  return (
+    <StyledFooter>
+      <Label currentColor>
+        &copy; {meta.year} {meta.author}
+      </Label>
+      <Label>
+        <a href="#top">&uarr; Top</a>
+      </Label>
+    </StyledFooter>
+  );
+}
 
 export default Footer;

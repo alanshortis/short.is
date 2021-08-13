@@ -17,8 +17,8 @@ export const config = {
   unstable_runtimeJS: false,
 };
 
-const About = ({ goodreads, lastFm, meta }) => (
-  <Layout meta={meta} title="About" hasFooter>
+const About = ({ goodreads, lastFm }) => (
+  <Layout title="About" hasFooter>
     <PostArticle>
       <PostMeta>
         <h1>About</h1>

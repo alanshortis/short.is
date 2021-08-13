@@ -54,8 +54,8 @@ const Title = styled.div`
   }
 `;
 
-const Home = ({ meta, posts }) => (
-  <Layout meta={meta}>
+const Home = ({ posts }) => (
+  <Layout>
     <HomePage>
       <Cover>
         <Title>

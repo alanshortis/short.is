@@ -1,3 +1,5 @@
+import { createContext } from 'react';
+
 const meta = {
   author: 'Alan Shortis',
   description: 'Alan Shortis is a front end developer',
@@ -8,4 +10,6 @@ const meta = {
   year: new Date().getFullYear(),
 };
 
-export default meta;
+const MetaContext = createContext(meta);
+
+export default MetaContext;

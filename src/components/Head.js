@@ -1,7 +1,10 @@
+import { useContext } from 'react';
 import { default as NextHead } from 'next/head';
 import { useRouter } from 'next/router';
+import MetaContext from '../data/meta';
 
-const Head = ({ title, intro, meta }) => {
+const Head = ({ title, intro }) => {
+  const meta = useContext(MetaContext);
   const router = useRouter();
   const pageTitle = title ? `${title} — ${meta.title}` : meta.title;
 

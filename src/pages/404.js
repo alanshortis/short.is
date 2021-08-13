@@ -6,8 +6,8 @@ export const config = {
   unstable_runtimeJS: false,
 };
 
-const FourOhFour = ({ meta }) => (
-  <Layout meta={meta} title="404" hasFooter>
+const FourOhFour = () => (
+  <Layout title="404" hasFooter>
     <PostArticle>
       <PostMeta>
         <h1>404</h1>
