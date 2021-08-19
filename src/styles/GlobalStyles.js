@@ -9,8 +9,6 @@ const GlobalStyles = createGlobalStyle`
     --color: ${p => p.theme.color.dark};
     --accent: ${p => p.theme.color.accent};
     --spacing: ${p => p.theme.spacingSmall};
-    --divider: ${p => p.theme.color.divider};
-    --header-gradient: ${p => p.theme.gradient.header};
 
     @media ${p => p.theme.media.small} {
       font-size: 100%;
@@ -27,8 +25,6 @@ const GlobalStyles = createGlobalStyle`
       --color: ${p => p.theme.color.light};
       --secondary-background: ${p => p.theme.color.secondaryBgDark};
       --accent: ${p => p.theme.color.accentDark};
-      --divider: ${p => p.theme.color.dividerDark};
-      --header-gradient: ${p => p.theme.gradient.headerDark};
     }
   }
 

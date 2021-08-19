@@ -2,14 +2,6 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import { PostDate } from '../components';
 
-const StyledList = styled.ol`
-  border-top: 1px solid var(--divider);
-  @media ${p => p.theme.media.medium} {
-    border-top: none;
-    border-left: 1px solid var(--divider);
-  }
-`;
-
 const Post = styled.li`
   a {
     display: block;
@@ -30,7 +22,7 @@ const Post = styled.li`
 `;
 
 const PostList = ({ posts }) => (
-  <StyledList>
+  <ol>
     {posts.map(post => (
       <Post key={post.slug}>
         <Link href={`/writing/${post.slug}`}>
@@ -42,7 +34,7 @@ const PostList = ({ posts }) => (
         </Link>
       </Post>
     ))}
-  </StyledList>
+  </ol>
 );
 
 export default PostList;
