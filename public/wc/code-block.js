@@ -15,10 +15,6 @@ if ('customElements' in window && 'clipboard' in navigator) {
           ${this.innerHTML}
           <div class="code-block__header">
             <button type="button">Copy</button>
-            <dl>
-              <dt class="visually-hidden">Code block language</dt>
-              <dd>${this.getAttribute('data-lang')}</dd>
-            </dl>
           </div>
         </div>`;
 
