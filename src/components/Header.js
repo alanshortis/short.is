@@ -9,6 +9,7 @@ const SchemeToggle = dynamic(() => import('../components/SchemeToggle'), {
 
 const StyledHeader = styled.header`
   align-items: center;
+  background-color: var(--background);
   display: flex;
   height: ${p => p.theme.headerHeight};
   justify-content: space-between;
@@ -19,6 +20,10 @@ const StyledHeader = styled.header`
   top: 0;
   width: 100%;
   z-index: 1;
+  @supports (backdrop-filter: blur(5px)) {
+    backdrop-filter: blur(5px);
+    background-color: transparent;
+  }
   div {
     display: flex;
   }
