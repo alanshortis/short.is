@@ -4,11 +4,15 @@ const getGoodreads = async () => {
   const res = await fetch(
     `https://www.goodreads.com/review/list?v=2&id=${process.env.GOODREADS_USER}&shelf=currently-reading&key=${process.env.GOODREADS_KEY}`
   );
+
+  // The goodreads API deals in XML, so we have to convert it.
   const text = await res.text();
   const json = JSON.parse(convert.xml2json(text, { compact: true }));
   const { review } = json.GoodreadsResponse.reviews;
 
-  // Make this an array even if it's one book.
+  // The goodreads API only gives us an array if it returns more
+  // then one book, so we need to put a single book into an array
+  // so it's easier to handle later on.
   const books = Array.isArray(review) ? review : [review];
 
   const reading = books.map(({ book }) => {

@@ -4,6 +4,5 @@
 .next
 npm-debug.log*
 node_modules
-public/writing/feed.xml
 out
 *.report.html
