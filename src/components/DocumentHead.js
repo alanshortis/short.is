@@ -7,11 +7,18 @@ const Head = ({ title, intro }) => {
   const meta = useContext(MetaContext);
   const router = useRouter();
   const pageTitle = title ? `${title} — ${meta.title}` : meta.title;
+  const fontFiles = [
+    '/fonts/plex-subset.woff2',
+    '/fonts/inter-regular-subset.woff2',
+    '/fonts/inter-bold-subset.woff2',
+  ];
 
   return (
     <NextHead>
       <title>{pageTitle}</title>
-      <script src="/wc/scheme-toggle.js"></script>
+      {fontFiles.map(f => (
+        <link key={f} rel="preload" href={f} as="font" type="font/woff2" crossOrigin="anonymous" />
+      ))}
       <meta name="description" content={intro || meta.description} />
       <meta property="og:title" content={pageTitle} />
       <meta property="og:description" content={intro || meta.description} />
