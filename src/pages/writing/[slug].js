@@ -5,11 +5,9 @@ import highlight from 'remark-highlight.js';
 import codeExtra from 'remark-code-extra';
 import remarkSlug from 'remark-slug';
 import GithubSlugger from 'github-slugger';
-import { allPostFrontMatter, postContent } from '../../data/posts';
-import { PostArticle, PostMeta, PostBody } from '../../components/PostLayout';
-import SyntaxStyles from '../../styles/SyntaxStyles';
+import { allPostFrontMatter, postContent } from '../../posts/posts';
 import { daysSince } from '../../helpers';
-import { Disclaimer, ExampleEmbed, Layout, PostDate, PostNav, TableOfContents } from '../../components';
+import { ExampleEmbed, Layout, PostDate, PostNav, TableOfContents } from '../../components';
 
 // Dynamic import to prevent server render in dev
 // because MDX code blocks are wrapped in a web component.
@@ -60,9 +58,9 @@ export async function getStaticProps({ params }) {
 
     return {
       title,
-      id
-    }
-  })
+      id,
+    };
+  });
 
   return { props: { mdxContent, frontMatter, nextPost, prevPost, toc } };
 }
@@ -74,25 +72,24 @@ export const config = {
 // Add each component used in MDX files.
 const components = { ExampleEmbed };
 
-const Post = ({ mdxContent, frontMatter, meta, nextPost, prevPost, toc }) => {
+const Post = ({ mdxContent, frontMatter, nextPost, prevPost, toc }) => {
   const { date, title, intro, updated, hasToc } = frontMatter;
   const isOld = daysSince(date) >= 365 * 2;
 
   return (
-    <Layout meta={meta} title={title} intro={intro} hasFooter>
-      <SyntaxStyles />
-      <PostArticle>
-        {isOld && <Disclaimer />}
-        <PostMeta>
+    <Layout title={title} intro={intro}>
+      <article>
+        {isOld && <p>THIS IS OLD</p>}
+        <div>
           <PostDate date={date} updated={updated} />
           <h1>{title}</h1>
-        </PostMeta>
-        <PostBody>
+        </div>
+        <div>
           <p className="intro">{intro}</p>
           {hasToc && <TableOfContents sections={toc} />}
           <Mdx {...mdxContent} components={components} />
-        </PostBody>
-      </PostArticle>
+        </div>
+      </article>
       <PostNav nextPost={nextPost} prevPost={prevPost} />
     </Layout>
   );

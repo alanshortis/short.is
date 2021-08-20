@@ -11,11 +11,9 @@ if ('customElements' in window && 'clipboard' in navigator) {
       }
 
       render() {
-        this.innerHTML = `<div class="code-block">
+        this.innerHTML = `<div>
           ${this.innerHTML}
-          <div class="code-block__header">
-            <button type="button">Copy</button>
-          </div>
+          <button type="button">Copy</button>
         </div>`;
 
         this.listeners();
