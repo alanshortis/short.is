@@ -1,23 +1,11 @@
-import Link from 'next/link';
-import getGoodreads from '../data/goodreads';
-import getLastfm from '../data/lastfm';
-import { A, Goodreads, Layout, Lastfm } from '../components';
+import { A, Layout } from '../components';
 import { PostArticle, PostMeta, PostBody } from '../components/PostLayout';
-
-export async function getStaticProps() {
-  return {
-    props: {
-      goodreads: await getGoodreads(),
-      lastFm: await getLastfm(),
-    },
-  };
-}
 
 export const config = {
   unstable_runtimeJS: false,
 };
 
-const About = ({ goodreads, lastFm }) => (
+const About = () => (
   <Layout title="About" hasFooter>
     <PostArticle>
       <PostMeta>
@@ -71,21 +59,6 @@ const About = ({ goodreads, lastFm }) => (
           </A>
           .
         </p>
-        <h3>Now</h3>
-        <ul>
-          <li>
-            <Goodreads goodreads={goodreads} />
-          </li>
-          <li>
-            <Lastfm lastFm={lastFm} />
-          </li>
-          <li>
-            Watching everything <A href="https://www.youtube.com/user/VanNeistat">Van Neistat</A> publishes.
-          </li>
-          <li>Learning German.</li>
-          <li>Scanning negatives from circa 2009.</li>
-          <li>Shopping for a new camera.</li>
-        </ul>
       </PostBody>
     </PostArticle>
   </Layout>
