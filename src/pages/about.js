@@ -46,10 +46,6 @@ const About = () => (
             Instagram
           </A>
           ,{' '}
-          <A href="https://www.last.fm/user/ashortis" rel="me">
-            Last.fm
-          </A>
-          ,{' '}
           <A href="https://www.strava.com/athletes/138800" rel="me">
             Strava
           </A>
