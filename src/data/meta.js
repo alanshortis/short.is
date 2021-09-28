@@ -1,6 +1,6 @@
 import { createContext } from 'react';
 
-const meta = {
+export const meta = {
   author: 'Alan Shortis',
   description: 'Alan Shortis is a front end developer',
   email: 'hello@short.is',
