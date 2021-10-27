@@ -254,6 +254,7 @@ npm -v
 npm i -g yarn
 npm i -g lighthouse
 npm i -g nodemon
+npm i -g typescript
 ```
 
 Before we can install all the desktop apps we want we need to extend what's available to us by installing a new 'tap', [homebrew-cask-versions](https://github.com/Homebrew/homebrew-cask-versions):
@@ -265,10 +266,8 @@ brew tap homebrew/cask-versions
 Time for our desktop apps:
 
 ```bash shell
-# Browers
+# Browser
 brew install --cask firefox-developer-edition
-brew install --cask google-chrome
-brew install --cask google-chrome-canary
 
 # Deveopment stuff
 brew install --cask hyper
@@ -282,7 +281,6 @@ brew install --cask vuescan
 
 # Other stuff
 brew install --cask slack
-brew install --cask spotify
 ```
 
 ## A better terminal
@@ -322,13 +320,28 @@ It'll only take a few seconds to install, and once it's finished the command pro
 
 Aliases are amazing. If you have long or complex commands that you need run frequently, like starting a server and a web application at the same time while moving between working directories, you can make a very short alias instead. You can also make aliases that are so small they almost seem pointless, but everyone likes a marginal gain.
 
-Oh My Zsh includes a few, e.g. `g` being short for `git` and `gco` being short for `git checkout`. To add your own, open `.zshrc` from your user folder (you'll need to open it from finder, and you will have needed to already have made hidden files visible) and at the bottom of the file there are some examples you can edit or replace.
+To add your own, open `.zshrc` from your user folder (you'll need to open it from finder, and you will have needed to already have made hidden files visible) and at the bottom of the file there are some examples you can edit or replace.
 
 I like to keep a separate `.aliases` file as I tinker with it pretty often. To do this, create that file in your user directory, then refer to it in `.zshrc` in place of the aliases already there:
 
 ```bash shell
 [ -f .aliases ] && source .aliases
 ```
+
+These are some of my aliases. It includes an alias to open my aliases. See if you can spot the ones added when I had a faulty keyboard on my 2016 MacBook Pro:
+
+```bash shell
+alias c="clear"
+alias g="git"
+alias gitt="git"
+alias gittt="git"
+alias gir="git"
+alias aliases="cd ~ && code .aliases"
+alias dev="npm run dev"
+alias as="cd ~/Sites/short.is && npm run dev"
+```
+
+
 
 ### z
 
