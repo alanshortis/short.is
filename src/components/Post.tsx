@@ -1,16 +1,17 @@
 import type { FC } from 'react';
 import Link from 'next/link';
 import type { PostList } from '../types/Posts';
+import { PostDate } from '.';
 
 export const Post: FC<PostList> = ({ posts }) => (
   <section>
-    {posts.map(post => (
-      <article key={post.slug}>
-        <Link href={`/writing/${post.slug}`}>
+    {posts.map(({ slug, date, updated, title, intro }) => (
+      <article key={slug}>
+        <Link href={`/writing/${slug}`}>
           <a>
-            <h2>{post.title}</h2>
-            <p>{post.date}</p>
-            <p>{post.intro}</p>
+            <PostDate date={date} updated={updated} />
+            <h2>{title}</h2>
+            <p>{intro}</p>
           </a>
         </Link>
       </article>

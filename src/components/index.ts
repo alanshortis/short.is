@@ -5,3 +5,4 @@ export { Layout } from './Layout';
 export { Menu } from './Menu';
 export { NextPrev } from './NextPrev';
 export { Post } from './Post';
+export { PostDate } from './PostDate';
