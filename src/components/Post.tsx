@@ -1,12 +1,8 @@
 import type { FC } from 'react';
 import Link from 'next/link';
-import type { FrontMatter } from '../data/posts';
+import type { PostList } from '../types/PostList';
 
-interface Props {
-  posts: FrontMatter[];
-}
-
-export const Post: FC<Props> = ({ posts }) => (
+export const Post: FC<PostList> = ({ posts }) => (
   <section>
     {posts.map(post => (
       <article key={post.slug}>

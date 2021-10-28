@@ -1,14 +1,10 @@
 import type { NextPage, GetStaticPropsResult } from 'next';
-import type { FrontMatter } from '../../data/posts';
 import { Layout } from '../../components/Layout';
 import { Post } from '../../components/Post';
 import { allPostsFrontMatter } from '../../data/posts';
+import type { PostList } from '../../types/PostList';
 
-interface Props {
-  posts: FrontMatter[];
-}
-
-export async function getStaticProps(): Promise<GetStaticPropsResult<Props>> {
+export async function getStaticProps(): Promise<GetStaticPropsResult<PostList>> {
   return {
     props: {
       posts: allPostsFrontMatter,
@@ -16,7 +12,7 @@ export async function getStaticProps(): Promise<GetStaticPropsResult<Props>> {
   };
 }
 
-const Writing: NextPage<Props> = ({ posts }) => (
+const Writing: NextPage<PostList> = ({ posts }) => (
   <Layout title="Writing">
     <h1>Writing</h1>
     <Post posts={posts} />
