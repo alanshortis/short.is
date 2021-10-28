@@ -1,5 +1,7 @@
 import type { FC } from 'react';
 import { Head } from './Head';
+import { Header } from './Header';
+import { Footer } from './Footer';
 
 interface Props {
   title?: string;
@@ -8,10 +10,8 @@ interface Props {
 export const Layout: FC<Props> = ({ children, title }) => (
   <>
     <Head title={title} />
-    <header>
-      <span>Logo</span>
-      <nav>Menu</nav>
-    </header>
+    <Header />
     <main>{children}</main>
+    <Footer />
   </>
 );

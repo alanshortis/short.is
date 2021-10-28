@@ -1,0 +1,100 @@
+---
+title: 'Next.js with web components and a 0kb bundle'
+date: '2021-06-11'
+hasToc: true
+intro: "Often, by choosing React you're burdening users with a lot of JavaScript they don't need. Can we get all the benefits of good developer experience without impacting users as a result?"
+---
+
+Over the years this website has used four different static site generators. Three of them required just too much compromise for either myself as developer, or for end users:
+
+[Jekyll](https://jekyllrb.com/) and [Eleventy](https://www.11ty.dev/) are great in theory. Extremely fast builds, very little opinion forced on you, and rapid speed of development. But in practice, they don't scale to support my future plans and templating languages aren't nice to work with.
+
+[Gatsby](https://www.gatsbyjs.com/) is probably the king of this sector right now. I like using React, but I don't like the bundle, the plugin ecosystem, and the horrible build speed. While there is a [plugin](https://www.gatsbyjs.com/plugins/gatsby-plugin-no-javascript/) to eliminate client JavaScript, it also kills styled components which apparently don't get server rendered properly.
+
+I have finally settled on [Next.js](https://nextjs.org/).
+
+## Next.js
+
+I was a huge skeptic of JSX and CSS-in-JS when I started to use React but I have since grown to love how I can think and work. With the additional features in the box with Next, and styled components for nicely encapsulated styles, I don't really want to use anything else. For now.
+
+I use Next in my day job on a very large and complex financial platform. This is not that, so it begs the question: 'Isn't this a bit much for a blog?!'.
+
+## Nice DX, nice UX
+
+Next offers a great developer experience. You get:
+
+- Hot reloading.
+- Option to step through Node processes in an IDE.
+- React dev tools to inspect props and the source in the browser.
+- Other features that come packaged with Next, like data fetching and static props.
+
+Next is a library that uses React, and as such includes a JavaScript bundle. With a little configuration we can lose the bundle, instantly saving kilobytes and shifting the focus to performance. All while keeping the development benefits. Let's get into how this works.
+
+## Configuration
+
+### Suppress the bundle
+
+To keep the bundle for the developer but not for the user, you can export a config object in each page that doesn't need React. That is, you're just rendering a page and not using anything like state, context, effects, etc:
+
+```javascript
+export const config = {
+  unstable_runtimeJS: false,
+};
+```
+
+This won't have any affect when developing, but will reduce the JavaScript bundle to nothing. Zero. Nil.
+
+### Configure Styled Components
+
+This step isn't specific to this approach, but when using Styled Components in Next you need a little extra configuration to render the styles on the server and not just the client. In a regular Next app this prevents <abbr title="Flash of Unstyled Content">FOUC</abbr>, but in this case it's essential to have any CSS rendered at all.
+
+The extra config required in a custom `_document.js` can be found in the [Next.js repo](https://github.com/vercel/next.js/blob/canary/examples/with-styled-components/pages/_document.js).
+
+### Using web components
+
+I want to JavaScript to handle dark mode, but I also want to ensure that it's as small as possible and that if anyone visits with JavaScript disabled the experience won't be diminished. When using Eleventy I wrote a web component to handle every aspect of a dark mode toggle, from the UI to the detecting OS preference, to local storage.
+
+Like fonts and images, the web component needs to be treated as [static content](https://nextjs.org/docs/basic-features/static-file-serving) because we don't want Next/Webpack to be aware of or process the JavaScript in any way.
+
+My web component needs to be in the head, so I add the script tag via [next/head](https://nextjs.org/docs/api-reference/next/head). It's much more common for JavaScript to be placed just before the closing body tag, and this can be done in the custom `_document.js` by adding a render method to the class:
+
+```javascript
+render() {
+  return (
+    <Html lang="en-GB">
+      <Head />
+      <body>
+        <Main />
+        <script src="/scheme-toggle.js"></script>
+        <NextScript />
+      </body>
+    </Html>
+  );
+}
+```
+
+To add the web component element (`<scheme-toggle>`) to the page, we have to wrap it in a React component. Web components cannot be parsed during server rendering as the DOM API isn't available. React gets upset that the server and client do not match and throws an error. It doesn't prevent a working production build but it does prevent the web component from rendering at all in development mode.
+
+Create a React component that just returns the web component element:
+
+```javascript
+const SchemeToggle = () => <scheme-toggle></scheme-toggle>;
+
+export default SchemeToggle;
+```
+
+Then, import that component with [dynamic import](https://nextjs.org/docs/advanced-features/dynamic-import) and ask it to only render on the server when in production. In development mode it'll only be rendered in the client, avoiding the mismatch and preventing any issues:
+
+```javascript
+const SchemeToggle = dynamic(() => import('../components/SchemeToggle'), {
+  ssr: process.env.NODE_ENV === 'production',
+});
+```
+
+And that's it.
+
+## Conclusion
+
+We can have all the benefits of the JAM stack when developing without transferring non-essential JavaScript to the user. The production build delivers static HTML and CSS with just 1.35kb on non-essential JavaScript (which could be marginally less if I added a step to minify it). This, combined with a little extra optimisation (subsetting and preloading font files, using webp images) leads to a fast and accessible site with a perfect lighthouse score.
+
+The repository for this site where all these ideas are in use can be found on [GitHub](https://github.com/alanshortis/short.is).

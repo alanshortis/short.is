@@ -13,4 +13,14 @@ export const Global = createGlobalStyle`
     background-color: ${p => p.theme.color.dark};
     color: ${p => p.theme.color.light};
   }
+
+  #__next {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  main {
+    flex: 1;
+  }
 `;
