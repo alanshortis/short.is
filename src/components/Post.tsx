@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import Link from 'next/link';
-import type { PostList } from '../types/PostList';
+import type { PostList } from '../types/Posts';
 
 export const Post: FC<PostList> = ({ posts }) => (
   <section>

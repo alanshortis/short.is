@@ -1,8 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import type { FrontMatter } from '../types/FrontMatter';
-import type { Post } from '../types/Post';
+import type { Post, FrontMatter } from '../types/Posts';
 
 const EXT = '.mdx';
 const POSTS_DIR = path.join(process.cwd(), 'src/posts');
@@ -21,17 +20,14 @@ export const allPostsFrontMatter: FrontMatter[] = allPostFileNames
   )
   .sort((a, b) => (new Date(a.date) < new Date(b.date) ? 1 : -1));
 
-// The front matter for the requested post, next and previous posts, and the content.
-export const postContent = (fileName: string): Post => {
-  const slug = path.basename(fileName, EXT);
+// The front matter for the requested, next, and previous posts, and the content.
+export const postContent = (slug: string): Post => {
   const thisPost = allPostsFrontMatter.findIndex(post => post.slug === slug);
 
   return {
     ...(allPostsFrontMatter[thisPost] as FrontMatter),
-    content: 'test',
+    content: fileContent(slug).content,
     nextPost: allPostsFrontMatter[thisPost - 1] || null,
     prevPost: allPostsFrontMatter[thisPost + 1] || null,
   };
 };
-
-console.log(postContent('setting-up-a-new-mac.mdx'));
