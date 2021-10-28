@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
-import { Menu } from './Menu';
+import { Menu } from '.';
 
 const StyledHeader = styled.header`
   display: flex;

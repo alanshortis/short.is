@@ -1,15 +1,10 @@
 import type { FC } from 'react';
-import { Head } from './Head';
-import { Header } from './Header';
-import { Footer } from './Footer';
+import type { HeadInfo } from '../types/Head';
+import { Head, Header, Footer } from '.';
 
-interface Props {
-  title?: string;
-}
-
-export const Layout: FC<Props> = ({ children, title }) => (
+export const Layout: FC<HeadInfo> = ({ children, title, intro }) => (
   <>
-    <Head title={title} />
+    <Head title={title} intro={intro} />
     <Header />
     <main>{children}</main>
     <Footer />

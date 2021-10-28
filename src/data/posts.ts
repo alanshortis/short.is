@@ -26,7 +26,7 @@ export const postContent = (slug: string): Post => {
 
   return {
     ...(allPostsFrontMatter[thisPost] as FrontMatter),
-    content: fileContent(slug).content,
+    content: fileContent(`${slug}${EXT}`).content,
     nextPost: allPostsFrontMatter[thisPost - 1] || null,
     prevPost: allPostsFrontMatter[thisPost + 1] || null,
   };
