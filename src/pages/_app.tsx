@@ -9,7 +9,6 @@ const Shortis: FC<AppProps> = ({ Component, pageProps }) => (
   <StrictMode>
     <ThemeProvider theme={theme}>
       <Global />
-      {/* eslint-disable-next-line react/jsx-props-no-spreading */}
       <Component {...pageProps} />
     </ThemeProvider>
   </StrictMode>

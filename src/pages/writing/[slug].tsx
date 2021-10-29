@@ -1,5 +1,11 @@
+/* eslint-disable no-param-reassign */
 import type { FC } from 'react';
 import type { GetStaticPaths, GetStaticProps } from 'next';
+import { MDXRemote } from 'next-mdx-remote';
+import { serialize } from 'next-mdx-remote/serialize';
+import codeExtra from 'remark-code-extra';
+import externalLinks from 'remark-external-links';
+import highlight from 'remark-highlight.js';
 import type { Post } from '../../types/Posts';
 import { allPostsFrontMatter, postContent } from '../../data/posts';
 import { Layout, NextPrev, PostDate } from '../../components';
@@ -12,22 +18,47 @@ export const getStaticPaths: GetStaticPaths = async () => {
   return { paths, fallback: false };
 };
 
-export const getStaticProps: GetStaticProps = async context => {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const fileContent = postContent(params?.slug as string);
+  const mdxContent = await serialize(fileContent.content, {
+    mdxOptions: {
+      remarkPlugins: [
+        externalLinks,
+        highlight,
+        [
+          codeExtra,
+          {
+            transform: {
+              transform: (node: Record<string, unknown>): void => {
+                // TODO: Figure out how this should be handled.
+                // @ts-ignore
+                node.data.hName = 'code-block'; // Wrap each code block in this web component.
+                // @ts-ignore
+                node.data.hProperties = []; // Get rid of the 'classname' attr.
+              },
+            },
+          },
+        ],
+      ],
+    },
+  });
+
   return {
     props: {
-      ...postContent(context?.params?.slug as string),
+      ...fileContent,
+      mdxContent,
     },
   };
 };
 
-type Props = Omit<Post, 'slug'>;
+type Props = Omit<Post, 'slug' | 'content'>;
 
-const WrtingPost: FC<Props> = ({ title, date, intro, nextPost, prevPost, updated, content }) => (
+const WrtingPost: FC<Props> = ({ title, date, intro, nextPost, prevPost, updated, mdxContent }) => (
   <Layout title={title} intro={intro}>
     <PostDate date={date} updated={updated} />
     <h1>{title}</h1>
     <p>{intro}</p>
-    <p>{content}</p>
+    <MDXRemote {...mdxContent} />
     <NextPrev nextPost={nextPost} prevPost={prevPost} />
   </Layout>
 );

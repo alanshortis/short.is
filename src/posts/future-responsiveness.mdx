@@ -2,7 +2,6 @@
 title: 'Future responsiveness'
 date: '2020-02-15'
 updated: '2021-08-03'
-hasToc: true
 intro: 'Using media queries to adapt layouts for screen size has defined responsive design for a long time, but now we can respond to more.'
 ---
 
@@ -136,9 +135,14 @@ body {
 The same result in HTML:
 
 ```html
-<link rel="preconnect" href="https://fonts.googleapis.com" media="(prefers-reduced-data: no-preference)">
-<link rel="preconnect" href="https://fonts.gstatic.com" media="(prefers-reduced-data: no-preference)" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"> 
+<link rel="preconnect" href="https://fonts.googleapis.com" media="(prefers-reduced-data: no-preference)" />
+<link
+  rel="preconnect"
+  href="https://fonts.gstatic.com"
+  media="(prefers-reduced-data: no-preference)"
+  crossorigin
+/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
 ```
 
 The biggest weakness with this media query is that it needs to be added by the developers creating the site you're using. If adverts drive their revenue and the designers wont budge on fonts, it could be hard to get the benefit.

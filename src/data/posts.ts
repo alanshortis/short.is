@@ -21,7 +21,7 @@ export const allPostsFrontMatter: FrontMatter[] = allPostFileNames
   .sort((a, b) => (new Date(a.date) < new Date(b.date) ? 1 : -1));
 
 // The front matter for the requested, next, and previous posts, and the content.
-export const postContent = (slug: string): Post => {
+export const postContent = (slug: string): Omit<Post, 'mdxContent'> => {
   const thisPost = allPostsFrontMatter.findIndex(post => post.slug === slug);
 
   return {
