@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import Link from 'next/link';
-import type { PostList } from '../types/Posts';
+import type { PostList } from '../types';
 import { PostDate } from '.';
 
 export const Post: FC<PostList> = ({ posts }) => (

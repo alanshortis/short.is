@@ -1,33 +1,47 @@
 import type { FC } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import styled from 'styled-components';
+import type { MenuItem } from '../types';
 
-const StyledMenu = styled.menu`
+const StyledList = styled.ul`
   margin: 0;
   li {
     display: inline;
     margin-left: 1rem;
   }
+
+  [aria-current='page'] {
+    color: red;
+  }
 `;
 
-export const Menu: FC = () => (
-  <nav>
-    <StyledMenu>
-      <li>
-        <Link href="/writing">
-          <a>Writing</a>
-        </Link>
-      </li>
-      <li>
-        <Link href="/photography">
-          <a>Photography</a>
-        </Link>
-      </li>
-      <li>
-        <Link href="/about">
-          <a>About</a>
-        </Link>
-      </li>
-    </StyledMenu>
-  </nav>
-);
+const pages: MenuItem[] = [
+  { title: 'Writing', path: '/writing' },
+  { title: 'Photography', path: '/photography' },
+  { title: 'About', path: '/about' },
+];
+
+export const Menu: FC = () => {
+  const router = useRouter();
+
+  return (
+    <nav>
+      <StyledList role="menubar">
+        {pages.map((page: MenuItem) => {
+          const isCurrent = router.pathname.startsWith(page.path);
+
+          return (
+            <li key={page.path} role="none">
+              <Link href={page.path}>
+                <a role="menuitem" aria-current={isCurrent ? 'page' : 'false'}>
+                  {page.title}
+                </a>
+              </Link>
+            </li>
+          );
+        })}
+      </StyledList>
+    </nav>
+  );
+};

@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import { useContext } from 'react';
 import NextHead from 'next/head';
-import type { HeadInfo } from '../types/Head';
+import type { HeadInfo } from '../types';
 import { MetaContext } from '../data/meta';
 
 export const Head: FC<HeadInfo> = ({ title, intro }) => {

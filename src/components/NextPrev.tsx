@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import Link from 'next/link';
-import type { Post } from '../types/Posts';
+import type { Post } from '../types';
 
 type Props = Pick<Post, 'nextPost' | 'prevPost'>;
 

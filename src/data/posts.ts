@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import type { Post, FrontMatter } from '../types/Posts';
+import type { Post, FrontMatter } from '../types';
 
 const EXT = '.mdx';
 const POSTS_DIR = path.join(process.cwd(), 'src/posts');

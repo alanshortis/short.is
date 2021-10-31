@@ -1,5 +1,15 @@
 import type { MDXRemoteSerializeResult } from 'next-mdx-remote';
 
+export interface HeadInfo {
+  title?: string;
+  intro?: string;
+}
+
+export type MenuItem = {
+  title: string;
+  path: string;
+};
+
 export interface FrontMatter {
   title: string;
   date: string;

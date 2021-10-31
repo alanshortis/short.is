@@ -6,7 +6,7 @@ import { serialize } from 'next-mdx-remote/serialize';
 import codeExtra from 'remark-code-extra';
 import externalLinks from 'remark-external-links';
 import highlight from 'remark-highlight.js';
-import type { Post } from '../../types/Posts';
+import type { Post } from '../../types';
 import { allPostsFrontMatter, postContent } from '../../data/posts';
 import { Layout, NextPrev, PostDate } from '../../components';
 
@@ -16,6 +16,14 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }));
 
   return { paths, fallback: false };
+};
+
+// Yuck. 'remark-code-extra' doesn't have types, so...
+type RemarkNode = {
+  data: {
+    hName: string;
+    hProperties: string[];
+  };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
@@ -29,11 +37,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
           codeExtra,
           {
             transform: {
-              transform: (node: Record<string, unknown>): void => {
-                // TODO: Figure out how this should be handled.
-                // @ts-ignore
+              transform: (node: RemarkNode): void => {
                 node.data.hName = 'code-block'; // Wrap each code block in this web component.
-                // @ts-ignore
                 node.data.hProperties = []; // Get rid of the 'classname' attr.
               },
             },

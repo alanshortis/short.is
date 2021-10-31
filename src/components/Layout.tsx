@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import type { HeadInfo } from '../types/Head';
+import type { HeadInfo } from '../types';
 import { Head, Header, Footer } from '.';
 
 export const Layout: FC<HeadInfo> = ({ children, title, intro }) => (
