@@ -6,7 +6,7 @@ export const Layout: FC<HeadInfo> = ({ children, title, intro }) => (
   <>
     <Head title={title} intro={intro} />
     <Header />
-    <main>{children}</main>
+    <main id="main">{children}</main>
     <Footer />
   </>
 );

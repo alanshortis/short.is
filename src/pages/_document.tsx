@@ -31,7 +31,7 @@ class ShortisDocument extends Document {
 
   render(): JSX.Element {
     return (
-      <Html lang="en-GB">
+      <Html lang="en-GB" id="top">
         <Head />
         <body>
           <Main />

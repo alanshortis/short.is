@@ -6,4 +6,7 @@ export const theme = {
     dark: 'hsl(0, 0%, 13%)',
     accent: '#dd6969',
   },
+  media: {
+    shouldAnimate: '(prefers-reduced-motion: no-preference)',
+  },
 };

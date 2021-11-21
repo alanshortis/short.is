@@ -13,6 +13,7 @@ export const Header: FC = () => (
     <Link href="/">
       <a>Logo</a>
     </Link>
+    <a href="#main">Skip to main content</a>
     <Menu />
   </StyledHeader>
 );

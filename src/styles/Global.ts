@@ -9,6 +9,12 @@ export const Global = createGlobalStyle`
     font-weight: normal;
   }
 
+  html {
+    @media ${p => p.theme.media.shouldAnimate} {
+      scroll-behavior: smooth;
+    }
+  }
+
   body {
     background-color: ${p => p.theme.color.dark};
     color: ${p => p.theme.color.light};

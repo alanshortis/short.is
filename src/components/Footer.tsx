@@ -23,6 +23,7 @@ export const Footer: FC = () => {
     <StyledFooter>
       <span>{year}</span>
       <span>{author}</span>
+      <a href="#top">Back to top</a>
       <SchemeToggle />
     </StyledFooter>
   );
