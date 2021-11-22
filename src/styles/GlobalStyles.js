@@ -8,6 +8,7 @@ const GlobalStyles = createGlobalStyle`
     --secondary-background: ${p => p.theme.color.secondaryBg};
     --color: ${p => p.theme.color.dark};
     --accent: ${p => p.theme.color.accent};
+    --del: ${p => p.theme.color.del};
     --spacing: ${p => p.theme.spacingSmall};
 
     @media ${p => p.theme.media.small} {
@@ -25,6 +26,7 @@ const GlobalStyles = createGlobalStyle`
       --color: ${p => p.theme.color.light};
       --secondary-background: ${p => p.theme.color.secondaryBgDark};
       --accent: ${p => p.theme.color.accentDark};
+      --del: ${p => p.theme.color.delDark};
     }
   }
 
@@ -133,6 +135,15 @@ const GlobalStyles = createGlobalStyle`
     position: absolute;
     white-space: nowrap;
     width: 1px;
+  }
+
+  del {
+    color: var(--del);
+    text-decoration: line-through;
+  }
+
+  ins {
+    text-decoration: none;
   }
 `;
 

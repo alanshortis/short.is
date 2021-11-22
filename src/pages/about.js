@@ -13,8 +13,9 @@ const About = () => (
       </PostMeta>
       <PostBody>
         <p className="intro">
-          I’m Alan Shortis—a front end developer based in Nottingham. I like CSS more than JavaScript, design
-          systems more than chaos, and accessibility more than exclusion.
+          I’m Alan Shortis—a front end developer based in <del>London</del> <del>Nottingham</del>{' '}
+          <ins>Leicester</ins>. I like CSS more than JavaScript, design systems more than chaos, and
+          accessibility more than exclusion.
         </p>
         <p>
           I specialise in building user interfaces with HTML, CSS, and JavaScript. I have been a developer
