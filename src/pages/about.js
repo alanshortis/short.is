@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { A, Layout } from '../components';
 import { PostArticle, PostMeta, PostBody } from '../components/PostLayout';
 
@@ -25,7 +26,12 @@ const About = () => (
         <p>
           This site uses <A href="https://nextjs.org/">Next.js</A>,{' '}
           <A href="https://styled-components.com/">styled components</A>, and{' '}
-          <A href="https://developer.mozilla.org/en-US/docs/Web/Web_Components">web components</A>.
+          <A href="https://developer.mozilla.org/en-US/docs/Web/Web_Components">web components</A>. For some
+          more information on using web components with Next.js, read{' '}
+          <Link href="http://localhost:3000/writing/next.js-with-web-components-and-a-0kb-bundle">
+            <a>Next.js with web components and a 0kb bundle</a>
+          </Link>
+          .
         </p>
         <p>
           Find me on{' '}
