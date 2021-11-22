@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { A, Layout } from '../components';
 import { PostArticle, PostMeta, PostBody } from '../components/PostLayout';
 
@@ -13,24 +14,24 @@ const About = () => (
       </PostMeta>
       <PostBody>
         <p className="intro">
-          I’m Alan Shortis—a front end developer based in Nottingham. I like CSS more than JavaScript, design
-          systems more than chaos, and accessibility more than exclusion.
+          I’m Alan Shortis—a front end developer based in <del>London</del> <del>Nottingham</del>{' '}
+          <ins>Leicester</ins>.
         </p>
         <p>
-          I specialise in building user interfaces with HTML, CSS, and JavaScript. I have been a developer
-          professionally in some capacity for almost 15 years, though I made my first websites in the late
-          90s. They were terrible, even by the standards of Geocities.
-        </p>
-        <p>
-          My preference for front end development was founded in being a design hobbyist who used the internet
-          to show off derivative ideas. Across my career I have also worked with Classic ASP, .net, PHP, and
-          SQL in my brief time as an analyst, but building accessible user interfaces for people is where I
-          have settled.
+          I specialise in building scalable and accessible design systems and websites using HTML, CSS, and
+          JavaScript. I have been a developer professionally in some capacity for almost 15 years working with
+          Classic ASP, .net, PHP, and SQL before settling on front end. The combination of code, design, and
+          empathy for end users is what I love.
         </p>
         <p>
           This site uses <A href="https://nextjs.org/">Next.js</A>,{' '}
           <A href="https://styled-components.com/">styled components</A>, and{' '}
-          <A href="https://developer.mozilla.org/en-US/docs/Web/Web_Components">web components</A>.
+          <A href="https://developer.mozilla.org/en-US/docs/Web/Web_Components">web components</A>. For some
+          more information on using web components with Next.js, read{' '}
+          <Link href="http://localhost:3000/writing/next.js-with-web-components-and-a-0kb-bundle">
+            <a>Next.js with web components and a 0kb bundle</a>
+          </Link>
+          .
         </p>
         <p>
           Find me on{' '}

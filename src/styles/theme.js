@@ -11,6 +11,8 @@ const theme = {
     secondaryBgDark: 'hsl(0, 0%, 18%)',
     accent: 'hsl(0, 63%, 45%)',
     accentDark: 'hsl(0, 63%, 65%)',
+    del: 'hsl(0, 0%, 42%)',
+    delDark: 'hsl(0, 0%, 54%)',
   },
   font: {
     family: '"Helvetica Neue", Helvetica, Arial, sans-serif',
