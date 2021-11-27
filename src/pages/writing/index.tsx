@@ -11,6 +11,9 @@ export async function getStaticProps(): Promise<GetStaticPropsResult<PostList>> 
   };
 }
 
+export const config = {
+  unstable_runtimeJS: false,
+};
 const Writing: NextPage<PostList> = ({ posts }) => (
   <Layout title="Writing">
     <h1>Writing</h1>

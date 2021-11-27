@@ -67,6 +67,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   };
 };
 
+export const config = {
+  unstable_runtimeJS: false,
+};
 type Props = Omit<Post, 'slug' | 'content'>;
 
 const WrtingPost: FC<Props> = ({ title, date, intro, nextPost, prevPost, updated, mdxContent }) => (
