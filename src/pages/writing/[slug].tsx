@@ -1,9 +1,9 @@
 /* eslint-disable no-param-reassign */
 import type { FC } from 'react';
 import type { GetStaticPaths, GetStaticProps } from 'next';
+import Head from 'next/head';
 import type { MDXRemoteSerializeResult } from 'next-mdx-remote';
 import dynamic from 'next/dynamic';
-import Head from 'next/head';
 import { serialize } from 'next-mdx-remote/serialize';
 import codeExtra from 'remark-code-extra';
 import externalLinks from 'remark-external-links';
@@ -70,19 +70,26 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 export const config = {
   unstable_runtimeJS: false,
 };
+
 type Props = Omit<Post, 'slug' | 'content'>;
 
 const WrtingPost: FC<Props> = ({ title, date, intro, nextPost, prevPost, updated, mdxContent }) => (
-  <Layout title={title} intro={intro}>
+  <>
     <Head>
-      <script src="/js/code-block.js" async />
+      {nextPost && <link rel="prefetch" href={`writing/${nextPost.slug}`} />}
+      {prevPost && <link rel="prefetch" href={`writing/${prevPost.slug}`} />}
     </Head>
-    <PostDate date={date} updated={updated} />
-    <h1>{title}</h1>
-    <p>{intro}</p>
-    <Mdx {...mdxContent} />
-    <NextPrev nextPost={nextPost} prevPost={prevPost} />
-  </Layout>
+    <Layout title={title} intro={intro}>
+      <Head>
+        <script src="/js/code-block.js" async />
+      </Head>
+      <PostDate date={date} updated={updated} />
+      <h1>{title}</h1>
+      <p>{intro}</p>
+      <Mdx {...mdxContent} />
+      <NextPrev nextPost={nextPost} prevPost={prevPost} />
+    </Layout>
+  </>
 );
 
 export default WrtingPost;
