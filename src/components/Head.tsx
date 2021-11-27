@@ -11,8 +11,13 @@ export const Head: FC<HeadInfo> = ({ title, intro }) => {
   return (
     <NextHead>
       <title>{pageTitle}</title>
-      <meta name="description" content={intro || meta.description} />
-      {/* TODO: OG meta tags */}
+      <meta name="description" content={description} />
+      <meta property="og:title" content={pageTitle} />
+      <meta property="og:description" content={description} />
+      <meta property="og:url" content={meta.url + router.asPath} />
+      {/* <meta property="og:image" content="/img/og.png" /> */}
+      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:creator" content={meta.twitter} />
     </NextHead>
   );
 };
