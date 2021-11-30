@@ -3,6 +3,10 @@ import { createGlobalStyle } from 'styled-components';
 export const Global = createGlobalStyle`
   :root {
     font-size: 93.75%;
+    --background: ${p => p.theme.color.light};
+    --foreground: ${p => p.theme.color.dark};
+    /* TODO */
+    --spacing: calc(${p => p.theme.spacing} / 1);
 
     @media ${p => p.theme.media.small} {
       font-size: 100%;
@@ -10,12 +14,18 @@ export const Global = createGlobalStyle`
 
     @media ${p => p.theme.media.medium} {
       font-size: 106.25%;
+      --spacing: ${p => p.theme.spacing};
+    }
+
+    & body.dark {
+      --background: ${p => p.theme.color.dark};
+      --foreground: ${p => p.theme.color.light};
     }
   }
 
   *, *::before, *::after {
     border: 0;
-    box-sizing: inherit;
+    box-sizing: border-box;
     font-size: 100%;
     font-weight: normal;
     margin: 0;
@@ -29,12 +39,11 @@ export const Global = createGlobalStyle`
   }
 
   body {
-    background-color: ${p => p.theme.color.dark};
-    box-sizing: border-box;
-    color: ${p => p.theme.color.light};
+    background-color: var(--background);
+    color: var(--foreground);
     font-family: ${p => p.theme.font.family};
     font-weight: ${p => p.theme.font.weight};
-    line-height: 1.75;
+    line-height: 1;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -47,7 +56,17 @@ export const Global = createGlobalStyle`
   #__next {
     display: flex;
     flex-direction: column;
+    margin: 0 auto;
+    max-width: 90rem;
     min-height: 100vh;
+    padding: 0 1rem;
+    width: 100%;
+    @media ${p => p.theme.media.small} {
+      padding: 0 2rem;
+    }
+    @media ${p => p.theme.media.medium} {
+      padding: 0 3rem;
+    }
   }
 
   ul, ol {

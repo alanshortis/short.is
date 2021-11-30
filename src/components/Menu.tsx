@@ -4,15 +4,29 @@ import { useRouter } from 'next/router';
 import styled from 'styled-components';
 import type { MenuItem } from '../types';
 
+const StyledNav = styled.nav`
+  display: inline-block;
+`;
+
 const StyledList = styled.ul`
   margin: 0;
   li {
     display: inline;
     margin-left: 1rem;
+    position: relative;
   }
 
-  [aria-current='page'] {
-    color: red;
+  [aria-current='page']::after {
+    --dot: 7px;
+    --half-dot: 3.5px;
+    background-color: currentColor;
+    border-radius: var(--dot);
+    content: '';
+    height: var(--dot);
+    left: calc(50% - var(--half-dot));
+    position: absolute;
+    top: calc(150% - var(--half-dot));
+    width: var(--dot);
   }
 `;
 
@@ -26,7 +40,7 @@ export const Menu: FC = () => {
   const router = useRouter();
 
   return (
-    <nav>
+    <StyledNav>
       <StyledList role="menubar">
         {pages.map((page: MenuItem) => {
           const isCurrent = router.pathname.startsWith(page.path);
@@ -42,6 +56,6 @@ export const Menu: FC = () => {
           );
         })}
       </StyledList>
-    </nav>
+    </StyledNav>
   );
 };

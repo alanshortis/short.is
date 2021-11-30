@@ -12,8 +12,11 @@ const SchemeToggle = dynamic(() => import('./SchemeToggle'), {
 });
 
 const StyledFooter = styled.footer`
+  border-top: ${p => p.theme.borderSize} solid currentColor;
   display: flex;
   justify-content: space-between;
+  margin-top: var(--spacing);
+  padding: var(--spacing) 0;
 `;
 
 export const Footer: FC = () => {
@@ -21,8 +24,9 @@ export const Footer: FC = () => {
 
   return (
     <StyledFooter>
-      <span>{year}</span>
-      <span>{author}</span>
+      <span>
+        &copy; {year} {author}
+      </span>
       <a href="#top">Back to top</a>
       <SchemeToggle />
     </StyledFooter>

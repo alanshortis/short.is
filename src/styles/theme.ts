@@ -7,9 +7,10 @@ const breakpoints = {
 
 export const theme = {
   color: {
-    light: 'hsl(0, 0%, 93%)',
-    dark: 'hsl(0, 0%, 13%)',
-    accent: '#dd6969',
+    light: 'hsl(0, 0%, 100%)',
+    dark: 'hsl(0, 0%, 0%)',
+    // mid: 'hsl(0, 0%, 50%)',
+    // accent: 'hsl(24, 95%, 59%)',
   },
   media: {
     small: `(min-width: ${breakpoints.small}px)`,
@@ -17,9 +18,11 @@ export const theme = {
     shouldAnimate: '(prefers-reduced-motion: no-preference)',
   },
   font: {
-    family: '-apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;',
+    family: '"Helvetica Neue", Helvetica, Arial, sans-serif;',
     familyMono: '"SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace',
     weight: 'normal',
     weightBold: 'bold',
   },
+  spacing: '2rem',
+  borderSize: '0.25rem',
 };
