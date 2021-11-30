@@ -10,11 +10,15 @@ export const Head: FC<HeadInfo> = ({ title, intro }) => {
   const meta = useContext(MetaContext);
   const pageTitle = title ? `${title} — ${meta.title}` : meta.title;
   const description = intro || meta.description;
+  const fonts = ['Inter-Medium-subset', 'Inter-Bold-subset'];
 
   return (
     <NextHead>
       <title>{pageTitle}</title>
-      <link rel="preload" href="/js/scheme-toggle.js" />
+      <link rel="preload" href="/js/scheme-toggle.js" as="script" />
+      {fonts.map(font => (
+        <link rel="preload" href={`/fonts/${font}.woff2`} as="font" type="font/woff2" crossOrigin="" />
+      ))}
       <meta name="description" content={description} />
       <meta property="og:title" content={pageTitle} />
       <meta property="og:description" content={description} />

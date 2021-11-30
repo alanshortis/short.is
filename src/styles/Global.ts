@@ -1,6 +1,20 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const Global = createGlobalStyle`
+  @font-face {
+    font-family: ${p => p.theme.font.face};
+    src: url(/fonts/Inter-Medium-subset.woff2) format("woff2");
+    font-display: swap;
+    font-weight: ${p => p.theme.font.weight};
+  }
+
+  @font-face {
+    font-family: ${p => p.theme.font.face};
+    src: url(/fonts/Inter-Bold-subset.woff2) format("woff2");
+    font-display: swap;
+    font-weight: ${p => p.theme.font.weightBold};
+  }
+
   :root {
     font-size: 93.75%;
     --background: ${p => p.theme.color.light};

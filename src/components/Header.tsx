@@ -22,6 +22,7 @@ const StyledHeader = styled.header`
   }
 `;
 const StyledTitle = styled.a`
+  cursor: pointer;
   font-size: 1.777rem;
   font-weight: ${p => p.theme.font.weightBold};
 `;

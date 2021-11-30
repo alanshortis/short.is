@@ -19,7 +19,7 @@ export const config = {
 const Writing: NextPage<PostList> = ({ posts }) => (
   <>
     <Head>
-      <link rel="prefetch" href="/js/code-block.js" />
+      <link rel="prefetch" href="/js/code-block.js" as="script" />
     </Head>
     <Layout title="Writing">
       <h1>Writing</h1>

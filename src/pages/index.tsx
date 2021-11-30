@@ -6,6 +6,9 @@ export const config = {
   unstable_runtimeJS: false,
 };
 
+const str =
+  '\'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,.?!@£$#€%^&*()-_—+={}[]<>~``""\\/|;:→←↑↗';
+
 const Home: NextPage = () => (
   <>
     <Head>
@@ -14,7 +17,8 @@ const Home: NextPage = () => (
       <link rel="prefetch" href="/photography" />
     </Head>
     <Layout>
-      <p>Home</p>
+      <h1>Home</h1>
+      <p>{str}</p>
     </Layout>
   </>
 );
