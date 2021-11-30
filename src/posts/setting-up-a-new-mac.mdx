@@ -1,6 +1,7 @@
 ---
 title: 'Setting up a new Mac'
 date: '2021-07-31'
+updated: '2021-11-30'
 intro: "Whether you're starting a new job or buying your own hardware, it's pretty normal for a couple of years to pass between new machines and the set up required to start writing code. This is how I do it."
 ---
 
@@ -244,6 +245,7 @@ It's a good idea to get [Node.js](https://nodejs.org/en/) installed right away. 
 # You can install a specific version: brew install node@14
 brew install node
 brew install nvm
+brew install python3
 
 # Check Node and NPM have installed if you like
 node -v
@@ -253,6 +255,8 @@ npm -v
 npm i -g yarn
 npm i -g lighthouse
 npm i -g nodemon
+npm i -g typescript
+npm i -g glyphhanger
 ```
 
 Before we can install all the desktop apps we want we need to extend what's available to us by installing a new 'tap', [homebrew-cask-versions](https://github.com/Homebrew/homebrew-cask-versions):
@@ -328,6 +332,23 @@ I like to keep a separate `.aliases` file as I tinker with it pretty often. To d
 ```bash shell
 [ -f .aliases ] && source .aliases
 ```
+
+# <<<<<<< Updated upstream
+
+These are some of my aliases. It includes an alias to open my aliases. See if you can spot the ones added when I had a faulty keyboard on my 2016 MacBook Pro:
+
+```bash shell
+alias c="clear"
+alias g="git"
+alias gitt="git"
+alias gittt="git"
+alias gir="git"
+alias aliases="cd ~ && code .aliases"
+alias dev="npm run dev"
+alias as="cd ~/Sites/short.is && npm run dev"
+```
+
+> > > > > > > Stashed changes
 
 ### z
 
