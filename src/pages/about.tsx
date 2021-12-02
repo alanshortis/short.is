@@ -7,7 +7,7 @@ export const config = {
 
 const About: NextPage = () => (
   <Layout title="About">
-    <p>About</p>
+    <h1>About</h1>
   </Layout>
 );
 

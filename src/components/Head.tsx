@@ -15,7 +15,6 @@ export const Head: FC<HeadInfo> = ({ title, intro }) => {
   return (
     <NextHead>
       <title>{pageTitle}</title>
-      <link rel="preload" href="/js/scheme-toggle.js" as="script" />
       {fonts.map(font => (
         <link rel="preload" href={`/fonts/${font}.woff2`} as="font" type="font/woff2" crossOrigin="" />
       ))}
