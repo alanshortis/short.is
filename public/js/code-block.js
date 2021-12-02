@@ -3,7 +3,7 @@ if ('customElements' in window && 'clipboard' in navigator) {
     'code-block',
     class extends HTMLElement {
       connectedCallback() {
-        this.innerHTML = `<div>
+        this.innerHTML = `<div class="code-block">
           ${this.innerHTML}
           <div>
             <button type="button">Copy</button>

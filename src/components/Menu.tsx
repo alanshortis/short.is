@@ -22,6 +22,7 @@ const StyledList = styled.ul`
     background-color: currentColor;
     border-radius: var(--dot);
     content: '';
+    cursor: default;
     height: var(--dot);
     left: calc(50% - var(--half-dot));
     position: absolute;

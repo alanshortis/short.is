@@ -119,7 +119,20 @@ export const Global = createGlobalStyle`
   }
 
   h1, h2, h3, h4 {
-    font-size: 4.209rem;
+    font-size: 3.052rem;
     font-weight: ${p => p.theme.font.weightBold};
+    hyphens: auto;
+  }
+
+  h2 {
+    font-size: 2.441rem;
+  }
+
+  h3 {
+    font-size: 1.953rem;
+  }
+
+  h4 {
+    font-size: 1.563rem;
   }
 `;

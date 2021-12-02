@@ -9,6 +9,7 @@ export const theme = {
   color: {
     light: 'hsl(0, 0%, 100%)',
     dark: 'hsl(0, 0%, 0%)',
+    overlay: 'hsla(0, 0%, 50%, 5%)',
     // mid: 'hsl(0, 0%, 50%)',
     // accent: 'hsl(24, 95%, 59%)',
   },
@@ -26,4 +27,5 @@ export const theme = {
   },
   spacing: '2rem',
   borderSize: '0.25rem',
+  radius: '0.25rem',
 };

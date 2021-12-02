@@ -9,7 +9,7 @@ For nearly 10 years, media queries have been commonplace in styling webistes for
 
 ## Defining responsive
 
-What are we responding to? Until recently, a 'responsive' site would adapt based on the viewport size and _maybe_ provide print styles. We can and should respond to much more than that, and there are media queries that can provide information on a user's preferences or hardware.
+What are we responding to? Until recently, a 'responsive' site would adapt based on the viewport size, and not much else. We can and should respond to much more than that, and there are media queries that can provide information on a user's preferences or hardware.
 
 Each example will be written in CSS, but it's possible to use media queries in JavaScript too, with [`window.matchMedia()`](https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia).
 
@@ -131,6 +131,8 @@ body {
   font-family: Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 ```
+
+> **Note:** This is just an example of potential use. You should never use `@import` in CSS; it's a huge performance bottleneck.
 
 The same result in HTML:
 
