@@ -3,6 +3,7 @@ export { ExampleEmbed } from './ExampleEmbed';
 export { Footer } from './Footer';
 export { Head } from './Head';
 export { Header } from './Header';
+export { Label } from './Label';
 export { Layout } from './Layout';
 export { Menu } from './Menu';
 export { NextPrev } from './NextPrev';

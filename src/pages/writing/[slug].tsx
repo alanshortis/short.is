@@ -65,15 +65,6 @@ const WrtingPost: FC<Props> = ({ title, date, intro, nextPost, prevPost, updated
             {/* It's upset about the components prop and I don't have the energy right now. */}
             {/* @ts-ignore */}
             <Mdx {...mdxContent} components={components as ReactNode} />
-            <ShadowBox>
-              <p>
-                If you have found this post useful, please consider{' '}
-                <A href="https://www.buymeacoffee.com/alanshortis" rel="me">
-                  buying me a coffee
-                </A>
-                .
-              </p>
-            </ShadowBox>
           </PostBody>
           <NextPrev nextPost={nextPost} prevPost={prevPost} />
         </PostArticle>
