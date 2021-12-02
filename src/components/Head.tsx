@@ -16,7 +16,14 @@ export const Head: FC<HeadInfo> = ({ title, intro }) => {
     <NextHead>
       <title>{pageTitle}</title>
       {fonts.map(font => (
-        <link rel="preload" href={`/fonts/${font}.woff2`} as="font" type="font/woff2" crossOrigin="" />
+        <link
+          key={font}
+          rel="preload"
+          href={`/fonts/${font}.woff2`}
+          as="font"
+          type="font/woff2"
+          crossOrigin=""
+        />
       ))}
       <meta name="description" content={description} />
       <meta property="og:title" content={pageTitle} />

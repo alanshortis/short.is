@@ -39,8 +39,8 @@ const WrtingPost: FC<Props> = ({ title, date, intro, nextPost, prevPost, updated
   return (
     <>
       <Head>
-        {nextPost && <link rel="prefetch" href={`writing/${nextPost.slug}`} />}
-        {prevPost && <link rel="prefetch" href={`writing/${prevPost.slug}`} />}
+        {nextPost && <link rel="prefetch" href={`/writing/${nextPost.slug}`} />}
+        {prevPost && <link rel="prefetch" href={`/writing/${prevPost.slug}`} />}
         <script src="/js/code-block.js" async />
       </Head>
       <Layout title={title} intro={intro}>
