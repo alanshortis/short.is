@@ -1,5 +1,4 @@
 export { A } from './A';
-export { Coffee } from './Coffee';
 export { ExampleEmbed } from './ExampleEmbed';
 export { Footer } from './Footer';
 export { Head } from './Head';
@@ -7,7 +6,7 @@ export { Header } from './Header';
 export { Layout } from './Layout';
 export { Menu } from './Menu';
 export { NextPrev } from './NextPrev';
-export { OldPost } from './OldPost';
 export { Post } from './Post';
 export { PostDate } from './PostDate';
+export { ShadowBox } from './ShadowBox';
 export { VisuallyHidden } from './VisuallyHidden';

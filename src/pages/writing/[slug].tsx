@@ -6,7 +6,7 @@ import dynamic from 'next/dynamic';
 import type { Post } from '../../types';
 import { allPostsFrontMatter } from '../../data/all-posts';
 import { postData } from '../../data/post';
-import { Coffee, ExampleEmbed, Layout, NextPrev, OldPost, PostDate } from '../../components';
+import { A, ExampleEmbed, Layout, NextPrev, PostDate, ShadowBox } from '../../components';
 import { PostArticle, PostBody, PostMeta } from '../../components/PostLayout';
 import { daysSince } from '../../helpers';
 
@@ -48,17 +48,32 @@ const WrtingPost: FC<Props> = ({ title, date, intro, nextPost, prevPost, updated
       </Head>
       <Layout title={title} intro={intro}>
         <PostArticle>
-          {isOld && <OldPost />}
           <PostMeta>
             <PostDate date={date} updated={updated} />
             <h1>{title}</h1>
           </PostMeta>
           <PostBody>
             <p className="intro">{intro}</p>
+            {isOld && (
+              <ShadowBox>
+                <p>
+                  This post is more than two years old. Some approaches, dependencies, and best practices may
+                  no longer be recommended.
+                </p>
+              </ShadowBox>
+            )}
             {/* It's upset about the components prop and I don't have the energy right now. */}
             {/* @ts-ignore */}
             <Mdx {...mdxContent} components={components as ReactNode} />
-            <Coffee />
+            <ShadowBox>
+              <p>
+                If you have found this post useful, please consider{' '}
+                <A href="https://www.buymeacoffee.com/alanshortis" rel="me">
+                  buying me a coffee
+                </A>
+                .
+              </p>
+            </ShadowBox>
           </PostBody>
           <NextPrev nextPost={nextPost} prevPost={prevPost} />
         </PostArticle>

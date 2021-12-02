@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { shadowBox } from './ShadowBox';
 
 export const PostArticle = styled.article`
   column-gap: calc(var(--spacing) * 2);
@@ -97,33 +98,7 @@ export const PostBody = styled.div`
   }
 
   .code-block {
-    background-color: var(--secondaryBackground);
-    border: 1px solid currentColor;
-    margin-bottom: calc(var(--spacing) * 2);
-    position: relative;
-    width: calc(100% - var(--spacing) / 2);
-    ::after {
-      background-image: linear-gradient(
-        -45deg,
-        currentColor 5.56%,
-        transparent 5.56%,
-        transparent 50%,
-        currentColor 50%,
-        currentColor 55.56%,
-        transparent 55.56%,
-        transparent 100%
-      );
-      background-position: fixed;
-      /* Yes, magic numbers. But decimals from em or rem make it look janky. */
-      background-size: 10px 10px;
-      content: '';
-      height: 100%;
-      left: calc(var(--spacing) / 2);
-      position: absolute;
-      top: calc(var(--spacing) / 2);
-      width: 100%;
-      z-index: -1;
-    }
+    ${shadowBox};
     pre {
       margin-bottom: calc(var(--spacing) / 2);
       overflow-x: scroll;
