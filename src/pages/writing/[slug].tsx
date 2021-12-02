@@ -1,17 +1,12 @@
-/* eslint-disable no-param-reassign */
 import type { FC } from 'react';
 import type { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import type { MDXRemoteSerializeResult } from 'next-mdx-remote';
 import dynamic from 'next/dynamic';
-import { serialize } from 'next-mdx-remote/serialize';
-import codeExtra from 'remark-code-extra';
-import externalLinks from 'remark-external-links';
-import highlight from 'remark-highlight.js';
 import type { Post } from '../../types';
-import { allPostsFrontMatter, postContent } from '../../data/posts';
+import { allPostsFrontMatter } from '../../data/all-posts';
+import { postData } from '../../data/post';
 import { Layout, NextPrev, OldPost, PostDate } from '../../components';
-import { PostStyles } from '../../styles/Post';
 import { daysSince } from '../../helpers';
 
 /** Prevent `Expected server HTML to contain a matching <pre> in <code-block>` error.
@@ -31,43 +26,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   return { paths, fallback: false };
 };
 
-// Yuck. 'remark-code-extra' doesn't have types, so...
-type RemarkNode = {
-  data: {
-    hName: string;
-    hProperties: string[];
-  };
-};
-
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const fileContent = postContent(params?.slug as string);
-  const mdxContent = await serialize(fileContent.content, {
-    mdxOptions: {
-      remarkPlugins: [
-        externalLinks,
-        highlight,
-        [
-          codeExtra,
-          {
-            transform: {
-              transform: (node: RemarkNode): void => {
-                node.data.hName = 'code-block'; // Wrap each code block in this web component.
-                node.data.hProperties = []; // Get rid of the 'classname' attr.
-              },
-            },
-          },
-        ],
-      ],
-    },
-  });
-
-  return {
-    props: {
-      ...fileContent,
-      mdxContent,
-    },
-  };
-};
+export const getStaticProps: GetStaticProps = ctx => postData(ctx);
 
 export const config = {
   unstable_runtimeJS: false,
@@ -85,7 +44,6 @@ const WrtingPost: FC<Props> = ({ title, date, intro, nextPost, prevPost, updated
         <script src="/js/code-block.js" async />
       </Head>
       <Layout title={title} intro={intro}>
-        <PostStyles />
         {isOld && <OldPost />}
         <PostDate date={date} updated={updated} />
         <h1>{title}</h1>

@@ -1,7 +1,7 @@
 import type { NextPage, GetStaticPropsResult } from 'next';
 import Head from 'next/head';
 import { Layout, Post } from '../../components';
-import { allPostsFrontMatter } from '../../data/posts';
+import { allPostsFrontMatter } from '../../data/all-posts';
 import type { PostList } from '../../types';
 
 export async function getStaticProps(): Promise<GetStaticPropsResult<PostList>> {

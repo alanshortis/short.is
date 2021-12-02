@@ -10,6 +10,5 @@
 declare namespace JSX {
   interface IntrinsicElements {
     'scheme-toggle': any;
-    'code-block': any;
   }
 }
