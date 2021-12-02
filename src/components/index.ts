@@ -1,5 +1,6 @@
 export { A } from './A';
 export { Coffee } from './Coffee';
+export { ExampleEmbed } from './ExampleEmbed';
 export { Footer } from './Footer';
 export { Head } from './Head';
 export { Header } from './Header';

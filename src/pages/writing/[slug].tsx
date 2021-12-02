@@ -1,4 +1,4 @@
-import type { FC } from 'react';
+import type { FC, ReactNode } from 'react';
 import type { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import type { MDXRemoteSerializeResult } from 'next-mdx-remote';
@@ -6,7 +6,7 @@ import dynamic from 'next/dynamic';
 import type { Post } from '../../types';
 import { allPostsFrontMatter } from '../../data/all-posts';
 import { postData } from '../../data/post';
-import { Coffee, Layout, NextPrev, OldPost, PostDate } from '../../components';
+import { Coffee, ExampleEmbed, Layout, NextPrev, OldPost, PostDate } from '../../components';
 import { PostArticle, PostBody, PostMeta } from '../../components/PostLayout';
 import { daysSince } from '../../helpers';
 
@@ -33,6 +33,8 @@ export const config = {
   unstable_runtimeJS: false,
 };
 
+const components = { ExampleEmbed };
+
 type Props = Omit<Post, 'slug' | 'content'>;
 
 const WrtingPost: FC<Props> = ({ title, date, intro, nextPost, prevPost, updated, mdxContent }) => {
@@ -53,7 +55,9 @@ const WrtingPost: FC<Props> = ({ title, date, intro, nextPost, prevPost, updated
           </PostMeta>
           <PostBody>
             <p className="intro">{intro}</p>
-            <Mdx {...mdxContent} />
+            {/* It's upset about the components prop and I don't have the energy right now. */}
+            {/* @ts-ignore */}
+            <Mdx {...mdxContent} components={components as ReactNode} />
             <Coffee />
           </PostBody>
           <NextPrev nextPost={nextPost} prevPost={prevPost} />

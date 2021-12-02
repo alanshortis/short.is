@@ -14,6 +14,7 @@ const StyledHeader = styled.header`
   position: sticky;
   top: 0;
   width: 100%;
+  z-index: 1;
   div {
     align-items: baseline;
     display: flex;

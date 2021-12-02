@@ -36,7 +36,7 @@ export const PostBody = styled.div`
     line-height: 1.563;
     margin-bottom: var(--spacing);
     code {
-      background-color: ${p => p.theme.color.overlay};
+      background-color: var(--secondaryBackground);
       border-radius: ${p => p.theme.radius};
       padding: calc(var(--spacing) / 8);
     }
@@ -97,17 +97,43 @@ export const PostBody = styled.div`
   }
 
   .code-block {
-    background-color: ${p => p.theme.color.overlay};
-    border-radius: ${p => p.theme.radius};
-    margin-bottom: var(--spacing);
-    padding: calc(var(--spacing) / 4);
+    background-color: var(--secondaryBackground);
+    border: 1px solid currentColor;
+    margin-bottom: calc(var(--spacing) * 2);
+    position: relative;
+    width: calc(100% - var(--spacing) / 2);
+    ::after {
+      background-image: linear-gradient(
+        -45deg,
+        currentColor 5.56%,
+        transparent 5.56%,
+        transparent 50%,
+        currentColor 50%,
+        currentColor 55.56%,
+        transparent 55.56%,
+        transparent 100%
+      );
+      background-position: fixed;
+      /* Yes, magic numbers. But decimals from em or rem make it look janky. */
+      background-size: 10px 10px;
+      content: '';
+      height: 100%;
+      left: calc(var(--spacing) / 2);
+      position: absolute;
+      top: calc(var(--spacing) / 2);
+      width: 100%;
+      z-index: -1;
+    }
     pre {
       margin-bottom: calc(var(--spacing) / 2);
       overflow-x: scroll;
+      padding: calc(var(--spacing) / 4);
     }
     div {
+      border-top: 1px solid currentColor;
       display: flex;
       justify-content: flex-end;
+      padding: calc(var(--spacing) / 4);
     }
     button {
       font-size: 0.8rem;

@@ -19,6 +19,7 @@ export const Global = createGlobalStyle`
     font-size: 93.75%;
     --background: ${p => p.theme.color.light};
     --foreground: ${p => p.theme.color.dark};
+    --secondaryBackground: ${p => p.theme.color.lessLight};
     /* TODO */
     --spacing: calc(${p => p.theme.spacing} / 1);
 
@@ -34,6 +35,7 @@ export const Global = createGlobalStyle`
     & body.dark {
       --background: ${p => p.theme.color.dark};
       --foreground: ${p => p.theme.color.light};
+      --secondaryBackground: ${p => p.theme.color.lessDark};
     }
   }
 
