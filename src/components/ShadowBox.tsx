@@ -4,9 +4,10 @@ import styled, { css } from 'styled-components';
 // This is a bit like a mixin. But, I need it in a component and
 // in some nested CSS which I can't abstract out, so here we are
 export const shadowBox = css`
-  background-color: var(--secondaryBackground);
+  background-color: var(--background);
   border: 1px solid currentColor;
   margin-bottom: calc(var(--spacing) * 2);
+  padding: calc(var(--spacing) / 4);
   position: relative;
   width: calc(100% - var(--spacing) / 2);
   ::after {
@@ -22,7 +23,7 @@ export const shadowBox = css`
     );
     background-position: fixed;
     /* Yes, magic numbers. But decimals from em or rem make it look janky. */
-    background-size: 10px 10px;
+    background-size: 8px 8px;
     content: '';
     height: 100%;
     left: calc(var(--spacing) / 2);
@@ -35,7 +36,6 @@ export const shadowBox = css`
 
 const Box = styled.div`
   ${shadowBox};
-  padding: calc(var(--spacing) / 4);
   && p {
     margin-bottom: 0;
   }

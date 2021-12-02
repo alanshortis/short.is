@@ -19,9 +19,7 @@ export const Global = createGlobalStyle`
     font-size: 93.75%;
     --background: ${p => p.theme.color.light};
     --foreground: ${p => p.theme.color.dark};
-    --secondaryBackground: ${p => p.theme.color.lessLight};
-    /* TODO */
-    --spacing: calc(${p => p.theme.spacing} / 1);
+    --spacing: ${p => p.theme.spacing};
 
     @media ${p => p.theme.media.small} {
       font-size: 100%;
@@ -35,7 +33,6 @@ export const Global = createGlobalStyle`
     & body.dark {
       --background: ${p => p.theme.color.dark};
       --foreground: ${p => p.theme.color.light};
-      --secondaryBackground: ${p => p.theme.color.lessDark};
     }
   }
 
@@ -66,7 +63,8 @@ export const Global = createGlobalStyle`
   }
 
   ::selection {
-    background-color: currentColor;
+    background-color: ${p => p.theme.color.accent};
+    color: var(--background);
   }
 
   #__next {

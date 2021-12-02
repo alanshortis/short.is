@@ -6,8 +6,8 @@ import dynamic from 'next/dynamic';
 import type { Post } from '../../types';
 import { allPostsFrontMatter } from '../../data/all-posts';
 import { postData } from '../../data/post';
-import { A, ExampleEmbed, Layout, NextPrev, PostDate, ShadowBox } from '../../components';
-import { PostArticle, PostBody, PostMeta } from '../../components/PostLayout';
+import { ExampleEmbed, Layout, NextPrev, PostDate, ShadowBox } from '../../components';
+import { PostArticle, PostBody, PostMeta, PostTitle } from '../../components/PostLayout';
 import { daysSince } from '../../helpers';
 
 /** Prevent `Expected server HTML to contain a matching <pre> in <code-block>` error.
@@ -49,8 +49,8 @@ const WrtingPost: FC<Props> = ({ title, date, intro, nextPost, prevPost, updated
       <Layout title={title} intro={intro}>
         <PostArticle>
           <PostMeta>
+            <PostTitle>{title}</PostTitle>
             <PostDate date={date} updated={updated} />
-            <h1>{title}</h1>
           </PostMeta>
           <PostBody>
             <p className="intro">{intro}</p>

@@ -3,8 +3,13 @@ import styled from 'styled-components';
 import { dateFormat, daysSince } from '../helpers';
 import { Label } from '.';
 
-const NewLabel = styled.span`
-  margin-left: var(--spacing);
+const StyledPostDate = styled(Label)`
+  display: flex;
+  column-gap: var(--spacing);
+  justify-content: space-between;
+  @media ${p => p.theme.media.small} {
+    justify-content: flex-start;
+  }
 `;
 
 interface Props {
@@ -17,10 +22,10 @@ export const PostDate: FC<Props> = ({ date, updated }) => {
   const isUpdated = updated && daysSince(updated) < 228;
 
   return (
-    <Label>
+    <StyledPostDate>
       <time dateTime={date}>{dateFormat(date)}</time>
-      {isNew && <NewLabel>New</NewLabel>}
-      {isUpdated && !isNew && <NewLabel>Updated</NewLabel>}
-    </Label>
+      {isNew && <span>New</span>}
+      {isUpdated && !isNew && <span>Updated</span>}
+    </StyledPostDate>
   );
 };

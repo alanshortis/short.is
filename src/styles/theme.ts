@@ -11,6 +11,7 @@ export const theme = {
     dark: 'hsl(0, 0%, 3%)',
     lessLight: 'hsl(63, 100%, 95%)',
     lessDark: 'hsl(0, 0%, 5%)',
+    accent: 'hsl(24, 95%, 59%)',
   },
   media: {
     small: `(min-width: ${breakpoints.small}px)`,
