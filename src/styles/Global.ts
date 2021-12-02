@@ -118,10 +118,6 @@ export const Global = createGlobalStyle`
     font: inherit;
   }
 
-  main {
-    flex: 1;
-  }
-
   h1, h2, h3, h4 {
     font-size: 4.209rem;
     font-weight: ${p => p.theme.font.weightBold};
