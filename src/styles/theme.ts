@@ -2,7 +2,7 @@ export type ThemeType = typeof theme;
 
 const breakpoints = {
   small: 600,
-  medium: 800,
+  medium: 900,
 };
 
 export const theme = {
