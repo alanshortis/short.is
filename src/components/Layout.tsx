@@ -5,6 +5,7 @@ import { Head, Header, Footer } from '.';
 
 const StyledMain = styled.main`
   flex: 1;
+  scroll-margin-top: calc(var(--spacing) * 4);
 `;
 
 export const Layout: FC<HeadInfo> = ({ children, title, intro }) => (
