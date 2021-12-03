@@ -38,6 +38,7 @@ export const ShadowBox = styled.div<{ isNegative?: boolean }>`
     p.isNegative &&
     css`
       background-color: var(--foreground);
+      border-color: var(--foreground);
       color: var(--background);
     `}
   && p {

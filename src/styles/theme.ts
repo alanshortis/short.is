@@ -8,9 +8,7 @@ const breakpoints = {
 export const theme = {
   color: {
     light: 'hsl(63, 100%, 97%)',
-    dark: 'hsl(0, 0%, 3%)',
-    lessLight: 'hsl(63, 100%, 95%)',
-    lessDark: 'hsl(0, 0%, 5%)',
+    dark: 'hsl(63, 100%, 3%)',
     accent: 'hsl(24, 95%, 59%)',
   },
   media: {

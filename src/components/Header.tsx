@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
-import { Logo, Menu, VisuallyHidden } from '.';
+import { Logo, Menu } from '.';
 
 const StyledHeader = styled.header`
   align-items: center;
@@ -25,9 +25,6 @@ export const Header: FC = () => (
         <Logo />
       </a>
     </Link>
-    <VisuallyHidden>
-      <a href="#main">Skip to main content</a>
-    </VisuallyHidden>
     <Menu />
   </StyledHeader>
 );
