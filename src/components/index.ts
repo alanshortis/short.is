@@ -5,6 +5,7 @@ export { Head } from './Head';
 export { Header } from './Header';
 export { Label } from './Label';
 export { Layout } from './Layout';
+export { Logo } from './Logo';
 export { Menu } from './Menu';
 export { NextPrev } from './NextPrev';
 export { Post } from './Post';

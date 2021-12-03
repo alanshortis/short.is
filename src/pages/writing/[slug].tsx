@@ -49,19 +49,19 @@ const WrtingPost: FC<Props> = ({ title, date, intro, nextPost, prevPost, updated
       <Layout title={title} intro={intro}>
         <PostArticle>
           <PostMeta>
-            <PostTitle>{title}</PostTitle>
-            <PostDate date={date} updated={updated} />
-          </PostMeta>
-          <PostBody>
-            <p className="intro">{intro}</p>
             {isOld && (
-              <ShadowBox>
+              <ShadowBox isNegative>
                 <p>
                   This post is more than two years old. Some approaches, dependencies, and best practices may
                   no longer be recommended.
                 </p>
               </ShadowBox>
             )}
+            <PostTitle>{title}</PostTitle>
+            <PostDate date={date} updated={updated} />
+          </PostMeta>
+          <PostBody>
+            <p className="intro">{intro}</p>
             {/* It's upset about the components prop and I don't have the energy right now. */}
             {/* @ts-ignore */}
             <Mdx {...mdxContent} components={components as ReactNode} />

@@ -26,7 +26,7 @@ const StyledList = styled.ul`
     height: var(--dot);
     left: calc(50% - var(--half-dot));
     position: absolute;
-    top: calc(150% - var(--half-dot));
+    top: var(--spacing);
     width: var(--dot);
   }
 `;
