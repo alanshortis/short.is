@@ -42,6 +42,7 @@ export const ShadowBox = styled.div<{ isNegative?: boolean }>`
       color: var(--background);
     `}
   && p {
+    line-height: 1.563;
     margin-bottom: 0;
   }
 `;
