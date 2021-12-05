@@ -48,7 +48,6 @@ const StyledList = styled.ul`
 const pages: MenuItem[] = [
   { title: 'Writing', path: '/writing' },
   { title: 'Photography', path: '/photography' },
-  { title: 'About', path: '/about' },
 ];
 
 export const Menu: FC = () => {
