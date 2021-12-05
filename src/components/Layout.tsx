@@ -1,18 +1,31 @@
 import type { FC } from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import type { HeadInfo } from '../types';
 import { Head, Header, Footer } from '.';
 
-const StyledMain = styled.main`
+const slide = keyframes`
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
+
+const Main = styled.main`
   flex: 1;
-  scroll-margin-top: calc(var(--spacing) * 4);
+  opacity: 1;
+  transform: translateY(0);
+  @media ${p => p.theme.media.shouldAnimate} {
+    animation: ${slide} 500ms ease 200ms 1 forwards;
+    opacity: 0;
+    transform: translateY(1rem);
+  }
 `;
 
 export const Layout: FC<HeadInfo> = ({ children, title, intro }) => (
   <>
     <Head title={title} intro={intro} />
     <Header />
-    <StyledMain id="main">{children}</StyledMain>
+    <Main id="main">{children}</Main>
     <Footer />
   </>
 );
