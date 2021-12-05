@@ -55,25 +55,20 @@ if ('customElements' in window) {
         const label = `Switch to ${this.schemeNotInUse()} theme`;
 
         this.innerHTML = `
-          <svg width="0" height="0" class="sprite" style="display: none;">
-            <symbol fill="none" id="dt" viewbox="0 0 17 17" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M8.5 17a8.5 8.5 0 1 1 0-17 8.5 8.5 0 0 1 0 17ZM1.062 8.5A7.437 7.437 0 0 1 8.5 1.062v14.876A7.438 7.438 0 0 1 1.062 8.5Z" fill="currentColor"/></symbol>
-          </svg>
           <style>
-            button {
+            .dm-toggle {
               height: 1.25rem;
               letter-spacing: 2px;
               text-transform: uppercase;
               margin-bottom: -2px;
             }
-            svg.icon {
+            .dm-toggle svg {
               width: 1.25rem;
               height: 1.25rem;
             }
           </style>
-          <button type="button" title="${label}" aria-label="${label}">
-            <svg class="icon">
-              <use href="#dt"></use>
-            </svg>
+          <button class="dm-toggle" type="button" title="${label}" aria-label="${label}">
+            <svg fill="none" aria-hidden="true" id="dt" viewbox="0 0 17 17" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M8.5 17a8.5 8.5 0 1 1 0-17 8.5 8.5 0 0 1 0 17ZM1.062 8.5A7.437 7.437 0 0 1 8.5 1.062v14.876A7.438 7.438 0 0 1 1.062 8.5Z" fill="currentColor"/></svg>
           </button>
         `;
 
