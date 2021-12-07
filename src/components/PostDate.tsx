@@ -15,17 +15,19 @@ const StyledPostDate = styled(Label)`
 interface Props {
   date: string;
   updated?: string;
+  isLatest?: boolean;
 }
 
-export const PostDate: FC<Props> = ({ date, updated }) => {
+export const PostDate: FC<Props> = ({ date, updated, isLatest = false }) => {
   const isNew = daysSince(date) < 228;
-  const isUpdated = updated && daysSince(updated) < 228;
+  const isUpdated = !isNew && updated && daysSince(updated) < 228;
 
   return (
     <StyledPostDate>
       <time dateTime={date}>{dateFormat(date)}</time>
-      {isNew && <span>New</span>}
-      {isUpdated && !isNew && <span>Updated</span>}
+      {isLatest && <span>Latest</span>}
+      {isNew && !isLatest && <span>New</span>}
+      {isUpdated && !isLatest && <span>Updated</span>}
     </StyledPostDate>
   );
 };

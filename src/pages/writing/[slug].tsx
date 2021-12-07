@@ -6,8 +6,8 @@ import dynamic from 'next/dynamic';
 import type { Post } from '../../types';
 import { allPostsFrontMatter } from '../../data/all-posts';
 import { postData } from '../../data/post';
-import { ExampleEmbed, Layout, NextPrev, PostDate, ShadowBox } from '../../components';
-import { PostArticle, PostBody, PostMeta, PostTitle } from '../../components/PostLayout';
+import { ExampleEmbed, Grid, Layout, NextPrev, PostDate, ShadowBox } from '../../components';
+import { PostBody, PostMeta, PostTitle } from '../../components/PostLayout';
 import { daysSince } from '../../helpers';
 
 /** Prevent `Expected server HTML to contain a matching <pre> in <code-block>` error.
@@ -47,7 +47,7 @@ const WrtingPost: FC<Props> = ({ title, date, intro, nextPost, prevPost, updated
         <script src="/js/code-block.js" async />
       </Head>
       <Layout title={title} intro={intro}>
-        <PostArticle>
+        <Grid>
           <PostMeta>
             {isOld && (
               <ShadowBox isNegative>
@@ -67,7 +67,7 @@ const WrtingPost: FC<Props> = ({ title, date, intro, nextPost, prevPost, updated
             <Mdx {...mdxContent} components={components as ReactNode} />
           </PostBody>
           <NextPrev nextPost={nextPost} prevPost={prevPost} />
-        </PostArticle>
+        </Grid>
       </Layout>
     </>
   );

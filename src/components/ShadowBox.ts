@@ -5,7 +5,7 @@ import styled, { css } from 'styled-components';
 export const shadowBox = css<{ isNegative?: boolean }>`
   background-color: var(--background);
   border: 1px solid currentColor;
-  margin-bottom: calc(var(--spacing) * 2);
+  margin-bottom: calc(var(--spacing) * 1.5);
   padding: calc(var(--spacing) / 4);
   position: relative;
   width: calc(100% - var(--spacing) / 2);
@@ -20,7 +20,6 @@ export const shadowBox = css<{ isNegative?: boolean }>`
       transparent 55.56%,
       transparent 100%
     );
-    /* Yes, magic numbers. But decimals from em or rem make it look janky. */
     background-size: 8px 8px;
     content: '';
     height: 100%;
@@ -41,7 +40,7 @@ export const ShadowBox = styled.div<{ isNegative?: boolean }>`
       border-color: var(--foreground);
       color: var(--background);
     `}
-  && p {
+  p:only-of-type, p:last-of-type {
     line-height: 1.563;
     margin-bottom: 0;
   }

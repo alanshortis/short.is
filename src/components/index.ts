@@ -1,6 +1,7 @@
 export { A } from './A';
 export { ExampleEmbed } from './ExampleEmbed';
 export { Footer } from './Footer';
+export { Grid } from './Grid';
 export { Head } from './Head';
 export { Header } from './Header';
 export { Label } from './Label';
