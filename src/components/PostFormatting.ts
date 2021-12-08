@@ -29,6 +29,7 @@ export const PostFormatting = styled.div`
 
   a {
     text-decoration: underline;
+    white-space: nowrap;
     &[href^='http']:not([href*='short.is'])::after {
       content: '↗';
       display: inline-block;

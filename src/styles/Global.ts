@@ -40,7 +40,7 @@ export const Global = createGlobalStyle`
     border: 0;
     box-sizing: border-box;
     font-size: 100%;
-    font-weight: normal;
+    font-weight: inherit;
     margin: 0;
     padding: 0;
   }
@@ -122,6 +122,7 @@ export const Global = createGlobalStyle`
     font-size: 3.052rem;
     font-weight: ${p => p.theme.font.weightBold};
     hyphens: auto;
+    line-height: 1.25;
   }
 
   h2 {
