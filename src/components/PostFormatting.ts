@@ -30,7 +30,7 @@ export const PostFormatting = styled.div`
   a {
     text-decoration: underline;
     white-space: nowrap;
-    &[href^='http']:not([href*='short.is'])::after {
+    &[href^='http']:not([href*='short.is']):not(.no-arrow)::after {
       content: '↗';
       display: inline-block;
       font-family: ${p => p.theme.font.familyMono};
