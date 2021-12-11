@@ -5,6 +5,7 @@ import styled, { css } from 'styled-components';
 export const shadowBox = css<{ isNegative?: boolean }>`
   background-color: var(--background);
   border: 1px solid currentColor;
+  display: block;
   margin-bottom: calc(var(--spacing) * 1.5);
   padding: calc(var(--spacing) / 4);
   position: relative;

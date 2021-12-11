@@ -19,6 +19,7 @@ const StyledLink = styled.a<{ isNewer?: boolean }>`
     font-weight: ${p => p.theme.font.weightBold};
   }
   ${Label} {
+    display: block;
     margin-bottom: var(--spacing);
   }
 `;

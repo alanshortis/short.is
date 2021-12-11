@@ -4,12 +4,7 @@ import { dateFormat, daysSince } from '../helpers';
 import { Label } from '.';
 
 const StyledPostDate = styled(Label)`
-  display: flex;
-  column-gap: var(--spacing);
-  justify-content: space-between;
-  @media ${p => p.theme.media.small} {
-    justify-content: flex-start;
-  }
+  line-height: 2.08rem;
 `;
 
 interface Props {
@@ -24,8 +19,8 @@ export const PostDate: FC<Props> = ({ date, updated }) => {
   return (
     <StyledPostDate>
       <time dateTime={date}>{dateFormat(date)}</time>
-      {isNew && <span>New</span>}
-      {isUpdated && <span>Updated</span>}
+      {isNew && <span> &middot; New</span>}
+      {isUpdated && <span> &middot; Updated</span>}
     </StyledPostDate>
   );
 };

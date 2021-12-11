@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import Link from 'next/link';
-import { A, Grid, Layout } from '../components';
-import { PostBody, PostMeta } from '../components/PostLayout';
+import { A, Layout, PostFormatting } from '../components';
+import { Full, Grid, PageBody } from '../components/Grid';
 
 export const config = {
   unstable_runtimeJS: false,
@@ -11,10 +11,10 @@ const About: NextPage = () => (
   <>
     <Layout title="About">
       <Grid>
-        <PostMeta>
+        <Full>
           <h1>About</h1>
-        </PostMeta>
-        <PostBody>
+        </Full>
+        <PageBody as={PostFormatting}>
           <p className="intro">
             I&#39;m Alan Shortis—a front end developer and occasional photo taker based in <del>London</del>{' '}
             <del>Nottingham</del> <ins>Leicester</ins>.
@@ -57,7 +57,7 @@ const About: NextPage = () => (
             </A>
             .
           </p>
-        </PostBody>
+        </PageBody>
       </Grid>
     </Layout>
   </>

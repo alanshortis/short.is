@@ -94,6 +94,7 @@ export const Global = createGlobalStyle`
 
   a {
     color: currentColor;
+    cursor: pointer;
     text-decoration: none;
   }
 

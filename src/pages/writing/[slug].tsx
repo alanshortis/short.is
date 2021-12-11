@@ -1,23 +1,15 @@
-import type { FC, ReactNode } from 'react';
+import type { FC } from 'react';
 import type { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
-import type { MDXRemoteSerializeResult } from 'next-mdx-remote';
-import dynamic from 'next/dynamic';
+import { MDXRemote } from 'next-mdx-remote';
+import { serialize } from 'next-mdx-remote/serialize';
+import externalLinks from 'remark-external-links';
+import highlight from 'remark-highlight.js';
 import type { Post } from '../../types';
-import { allPostsFrontMatter } from '../../data/all-posts';
-import { postData } from '../../data/post';
-import { ExampleEmbed, Grid, Layout, NextPrev, PostDate, ShadowBox } from '../../components';
-import { PostBody, PostMeta, PostTitle } from '../../components/PostLayout';
+import { allPostsFrontMatter, postContent } from '../../data/all-posts';
+import { ExampleEmbed, Layout, NextPrev, PostFormatting, PostDate, ShadowBox } from '../../components';
+import { Aside, Full, Grid, PageBody } from '../../components/Grid';
 import { daysSince } from '../../helpers';
-
-/** Prevent `Expected server HTML to contain a matching <pre> in <code-block>` error.
- *  MDX code blocks are wrapped in a web component, which doesn't exist in node so we
- *  need to ensure we only attempt to render on the client in dev. Server rendering
- *  is fine and required in production as we're generating a totally static site.
- */
-const Mdx = dynamic<MDXRemoteSerializeResult>(() => import('next-mdx-remote').then(mod => mod.MDXRemote), {
-  ssr: process.env.NODE_ENV === 'production',
-});
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = allPostsFrontMatter.map(post => ({
@@ -27,7 +19,21 @@ export const getStaticPaths: GetStaticPaths = async () => {
   return { paths, fallback: false };
 };
 
-export const getStaticProps: GetStaticProps = ctx => postData(ctx);
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const fileContent = postContent(params?.slug as string);
+  const mdxContent = await serialize(fileContent.content, {
+    mdxOptions: {
+      remarkPlugins: [externalLinks, highlight],
+    },
+  });
+
+  return {
+    props: {
+      ...fileContent,
+      mdxContent,
+    },
+  };
+};
 
 export const config = {
   unstable_runtimeJS: false,
@@ -44,11 +50,10 @@ const WrtingPost: FC<Props> = ({ title, date, intro, nextPost, prevPost, updated
       <Head>
         {nextPost && <link rel="prefetch" href={`/writing/${nextPost.slug}`} />}
         {prevPost && <link rel="prefetch" href={`/writing/${prevPost.slug}`} />}
-        <script src="/js/code-block.js" async />
       </Head>
       <Layout title={title} intro={intro}>
         <Grid>
-          <PostMeta>
+          <Full>
             {isOld && (
               <ShadowBox isNegative>
                 <p>
@@ -57,15 +62,15 @@ const WrtingPost: FC<Props> = ({ title, date, intro, nextPost, prevPost, updated
                 </p>
               </ShadowBox>
             )}
-            <PostTitle>{title}</PostTitle>
+            <h1>{title}</h1>
+          </Full>
+          <Aside>
             <PostDate date={date} updated={updated} />
-          </PostMeta>
-          <PostBody>
+          </Aside>
+          <PageBody as={PostFormatting}>
             <p className="intro">{intro}</p>
-            {/* It's upset about the components prop and I don't have the energy right now. */}
-            {/* @ts-ignore */}
-            <Mdx {...mdxContent} components={components as ReactNode} />
-          </PostBody>
+            <MDXRemote {...mdxContent} components={components} />
+          </PageBody>
           <NextPrev nextPost={nextPost} prevPost={prevPost} />
         </Grid>
       </Layout>

@@ -15,7 +15,8 @@ export const PostFormatting = styled.div`
     line-height: 1.563;
     margin-bottom: var(--spacing);
     code {
-      border-radius: ${p => p.theme.radius};
+      border: 1px solid currentColor;
+      margin: 0 calc(var(--spacing) / 8);
       padding: calc(var(--spacing) / 8);
     }
     &.intro {
@@ -45,7 +46,7 @@ export const PostFormatting = styled.div`
 
   ul,
   ol {
-    padding-left: calc(var(--spacing) / 2);
+    padding-left: var(--spacing);
   }
 
   li {
@@ -92,25 +93,19 @@ export const PostFormatting = styled.div`
     line-height: 1.5;
     .hljs-comment {
       font-style: italic;
+      opacity: 0.5;
     }
   }
 
-  .code-block {
+  pre {
     ${shadowBox};
-    pre {
-      margin-bottom: calc(var(--spacing) / 2);
+    code {
+      display: block;
       overflow-x: scroll;
-      padding: calc(var(--spacing) / 4);
-    }
-    div {
-      display: flex;
-      justify-content: flex-end;
-      padding: calc(var(--spacing) / 4) 0;
-      padding-bottom: 0;
-    }
-    button {
-      font-size: 0.8rem;
-      text-transform: uppercase;
+      scrollbar-width: none;
+      &::-webkit-scrollbar {
+        display: none;
+      }
     }
   }
 `;

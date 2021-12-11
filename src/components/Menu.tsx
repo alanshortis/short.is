@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
 import styled from 'styled-components';
+import { Label } from '.';
 import type { MenuItem } from '../types';
 
 const SchemeToggle = dynamic(() => import('./SchemeToggle'), {
