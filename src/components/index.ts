@@ -9,7 +9,6 @@ export { Layout } from './Layout';
 export { Logo } from './Logo';
 export { Menu } from './Menu';
 export { NextPrev } from './NextPrev';
-export { Post } from './Post';
 export { PostDate } from './PostDate';
 export { PostFormatting } from './PostFormatting';
 export { ShadowBox } from './ShadowBox';
