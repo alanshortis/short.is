@@ -78,13 +78,11 @@ export const PostFormatting = styled.div`
   }
 
   blockquote {
+    border-left: ${p => p.theme.borderSize} solid currentColor;
     display: inline-flex;
     margin: 0 calc(var(--spacing) / 2);
     margin-bottom: var(--spacing);
-    &::before {
-      content: '> ';
-      margin-right: calc(var(--spacing) / 2);
-    }
+    padding-left: calc(var(--spacing) / 2);
   }
 
   code {

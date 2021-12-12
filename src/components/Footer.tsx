@@ -8,7 +8,6 @@ const StyledFooter = styled.footer`
   border-top: ${p => p.theme.borderSize} solid currentColor;
   display: flex;
   justify-content: space-between;
-  margin-top: var(--spacing);
   padding: var(--spacing) 0;
 `;
 

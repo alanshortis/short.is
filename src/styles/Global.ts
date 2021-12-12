@@ -75,6 +75,9 @@ export const Global = createGlobalStyle`
     min-height: 100vh;
     padding: 0 1rem;
     width: 100%;
+    @supports (min-height: -webkit-fill-available) {
+      min-height: -webkit-fill-available;
+    }
     @media ${p => p.theme.media.small} {
       padding: 0 2rem;
     }
@@ -119,22 +122,25 @@ export const Global = createGlobalStyle`
     font: inherit;
   }
 
-  h1, h2, h3, h4 {
+  h1, .h1, h2, h3, h4 {
     font-size: 3.052rem;
     font-weight: ${p => p.theme.font.weightBold};
     hyphens: auto;
     line-height: 1.25;
+    @media ${p => p.theme.media.small} {
+      hyphens: none;
+    }
   }
 
-  h2 {
+  h2, .h2  {
     font-size: 2.441rem;
   }
 
-  h3 {
+  h3, .h3 {
     font-size: 1.953rem;
   }
 
-  h4 {
+  h4, .h4 {
     font-size: 1.563rem;
   }
 `;

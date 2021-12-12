@@ -22,7 +22,6 @@ export const Aside = styled.div`
 
 export const PageBody = styled.div`
   grid-column: 1 / -1;
-  margin-bottom: var(--spacing);
   @media ${p => p.theme.media.medium} {
     grid-column: 6 / 13;
   }

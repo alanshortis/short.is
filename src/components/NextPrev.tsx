@@ -6,6 +6,7 @@ import { VisuallyHidden, Label } from '.';
 
 const StyledLink = styled.a<{ isNewer?: boolean }>`
   grid-column-end: span 1;
+  margin-bottom: var(--spacing);
   text-align: ${p => (p.isNewer ? 'right' : 'left')};
   @media ${p => p.theme.media.medium} {
     grid-column-end: span 6;
