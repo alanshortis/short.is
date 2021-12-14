@@ -47,10 +47,6 @@ const About: NextPage = () => (
             <A href="https://github.com/alanshortis" rel="me">
               GitHub
             </A>
-            ,{' '}
-            <A href="https://www.instagram.com/ashortis/" rel="me">
-              Instagram
-            </A>
             , and{' '}
             <A href="https://twitter.com/alanshortis" rel="me">
               Twitter
