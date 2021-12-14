@@ -2,7 +2,7 @@ import type { FC } from 'react';
 import { useContext } from 'react';
 import styled from 'styled-components';
 import { MetaContext } from '../data/meta';
-import { Label } from '.';
+import { A, Label } from '.';
 
 const StyledFooter = styled.footer`
   border-top: ${p => p.theme.borderSize} solid currentColor;
@@ -19,9 +19,9 @@ export const Footer: FC = () => {
       <p>
         &copy; {year} {author}
       </p>
-      <a href="#top">
-        <Label>Top &uarr;</Label>
-      </a>
+      <Label>
+        <A href="/writing/feed.xml">RSS</A> &middot; <a href="#top">Top &uarr;</a>
+      </Label>
     </StyledFooter>
   );
 };

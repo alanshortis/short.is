@@ -4,9 +4,14 @@ import styled from 'styled-components';
 import { Layout, PostFormatting, PostDate } from '../../components';
 import { Full, Grid, PageBody } from '../../components/Grid';
 import { allPostsFrontMatter } from '../../data/all-posts';
+import { generateRss } from '../../feed/generate-rss';
 import type { PostList } from '../../types';
 
 export async function getStaticProps(): Promise<GetStaticPropsResult<PostList>> {
+  if (process.env.NODE_ENV === 'production') {
+    generateRss();
+  }
+
   return {
     props: {
       posts: allPostsFrontMatter,

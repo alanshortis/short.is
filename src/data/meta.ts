@@ -1,6 +1,6 @@
 import { createContext } from 'react';
 
-const meta = Object.freeze({
+export const meta = Object.freeze({
   author: 'Alan Shortis',
   description: 'Alan Shortis is a front end developer',
   email: 'hello@short.is',
