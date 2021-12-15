@@ -29,9 +29,11 @@ export const Head: FC<HeadInfo> = ({ title, intro }) => {
       <meta property="og:title" content={pageTitle} />
       <meta property="og:description" content={description} />
       <meta property="og:url" content={meta.url + router.asPath} />
-      {/* <meta property="og:image" content="/img/og.png" /> */}
+      <meta property="og:image" content="/icons/og.png" />
       <meta name="twitter:card" content="summary" />
       <meta name="twitter:creator" content={meta.twitter} />
+      <link rel="icon" type="image/png" href="/icons/favicon.png" />
+      <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg" />
     </NextHead>
   );
 };
