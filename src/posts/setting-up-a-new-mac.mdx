@@ -1,7 +1,7 @@
 ---
 title: 'Setting up a new Mac'
 date: '2021-07-31'
-updated: '2021-11-30'
+updated: '2021-12-16'
 intro: "Whether you're starting a new job or buying your own hardware, it's pretty normal for a couple of years to pass between new machines and the set up required to start writing code. This is how I do it."
 ---
 
@@ -245,7 +245,6 @@ It's a good idea to get [Node.js](https://nodejs.org/en/) installed right away. 
 # You can install a specific version: brew install node@14
 brew install node
 brew install nvm
-brew install python3
 
 # Check Node and NPM have installed if you like
 node -v
@@ -256,7 +255,6 @@ npm i -g yarn
 npm i -g lighthouse
 npm i -g nodemon
 npm i -g typescript
-npm i -g glyphhanger
 ```
 
 Before we can install all the desktop apps we want we need to extend what's available to us by installing a new 'tap', [homebrew-cask-versions](https://github.com/Homebrew/homebrew-cask-versions):
@@ -268,10 +266,8 @@ brew tap homebrew/cask-versions
 Time for our desktop apps:
 
 ```bash shell
-# Browers
+# Browser
 brew install --cask firefox-developer-edition
-brew install --cask google-chrome
-brew install --cask google-chrome-canary
 
 # Deveopment stuff
 brew install --cask hyper
@@ -281,11 +277,13 @@ brew install --cask visual-studio-code
 # Design/visual stuff
 brew install --cask adobe-creative-cloud
 brew install --cask figma
+brew install --cask imageoptim
 brew install --cask vuescan
 
 # Other stuff
 brew install --cask slack
 brew install --cask spotify
+brew install --cask trainerroad
 ```
 
 ## A better terminal
@@ -325,7 +323,7 @@ It'll only take a few seconds to install, and once it's finished the command pro
 
 Aliases are amazing. If you have long or complex commands that you need run frequently, like starting a server and a web application at the same time while moving between working directories, you can make a very short alias instead. You can also make aliases that are so small they almost seem pointless, but everyone likes a marginal gain.
 
-Oh My Zsh includes a few, e.g. `g` being short for `git` and `gco` being short for `git checkout`. To add your own, open `.zshrc` from your user folder (you'll need to open it from finder, and you will have needed to already have made hidden files visible) and at the bottom of the file there are some examples you can edit or replace.
+To add your own, open `.zshrc` from your user folder (you'll need to open it from finder, and you will have needed to already have made hidden files visible) and at the bottom of the file there are some examples you can edit or replace.
 
 I like to keep a separate `.aliases` file as I tinker with it pretty often. To do this, create that file in your user directory, then refer to it in `.zshrc` in place of the aliases already there:
 
