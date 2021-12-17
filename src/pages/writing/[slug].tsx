@@ -7,9 +7,9 @@ import externalLinks from 'remark-external-links';
 import highlight from 'remark-highlight.js';
 import type { Post } from '../../types';
 import { allPostsFrontMatter, postContent } from '../../data/all-posts';
-import { ExampleEmbed, Layout, NextPrev, PostFormatting, PostDate, ShadowBox } from '../../components';
 import { Aside, Full, Grid, PageBody } from '../../components/Grid';
 import { daysSince } from '../../helpers';
+import { ExampleEmbed, Layout, NextPrev, PostFormatting, PostMeta, ShadowBox } from '../../components';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = allPostsFrontMatter.map(post => ({
@@ -65,7 +65,7 @@ const WrtingPost: FC<Props> = ({ title, date, intro, nextPost, prevPost, updated
             <h1>{title}</h1>
           </Full>
           <Aside>
-            <PostDate date={date} updated={updated} />
+            <PostMeta date={date} title={title} updated={updated} />
           </Aside>
           <PageBody as={PostFormatting}>
             <p className="intro">{intro}</p>

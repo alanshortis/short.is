@@ -11,5 +11,6 @@ export { Menu } from './Menu';
 export { NextPrev } from './NextPrev';
 export { PostDate } from './PostDate';
 export { PostFormatting } from './PostFormatting';
+export { PostMeta } from './PostMeta';
 export { ShadowBox } from './ShadowBox';
 export { VisuallyHidden } from './VisuallyHidden';

@@ -13,8 +13,8 @@ interface Props {
 }
 
 export const PostDate: FC<Props> = ({ date, updated }) => {
-  const isNew = daysSince(date) < 228;
-  const isUpdated = !isNew && updated && daysSince(updated) < 228;
+  const isNew = daysSince(date) < 28;
+  const isUpdated = !isNew && updated && daysSince(updated) < 28;
 
   return (
     <StyledPostDate>

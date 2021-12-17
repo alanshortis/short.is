@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const StyledLogo = styled.svg`
   fill: currentColor;
-  width: 3rem;
+  height: 2rem;
 `;
 
 export const Logo: FC = () => (
