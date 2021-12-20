@@ -47,12 +47,12 @@ const Writing: NextPage<PostList> = ({ posts }) => (
         <h1>Writing</h1>
       </Full>
       <PageBody>
-        {posts.map(({ slug, date, updated, title, intro }) => (
+        {posts.map(({ slug, date, title, intro }) => (
           <Link key={slug} href={`/writing/${slug}`} passHref>
             <StyledPost as="a">
               <h2 className="h3">{title}</h2>
               <p>
-                <PostDate date={date} updated={updated} />
+                <PostDate date={date} />
               </p>
               <p>{intro}</p>
             </StyledPost>

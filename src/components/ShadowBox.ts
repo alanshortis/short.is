@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 // This is a bit like a mixin. But, I need it in a component and
 // in some nested CSS which I can't abstract out, so here we are
-export const shadowBox = css<{ isNegative?: boolean }>`
+export const shadowBox = css`
   background-color: var(--background);
   border: 1px solid currentColor;
   display: block;
@@ -32,16 +32,10 @@ export const shadowBox = css<{ isNegative?: boolean }>`
   }
 `;
 
-export const ShadowBox = styled.div<{ isNegative?: boolean }>`
+export const ShadowBox = styled.div`
   ${shadowBox};
-  ${p =>
-    p.isNegative &&
-    css`
-      background-color: var(--foreground);
-      border-color: var(--foreground);
-      color: var(--background);
-    `}
-  p:only-of-type, p:last-of-type {
+  p:only-of-type,
+  p:last-of-type {
     line-height: 1.563;
     margin-bottom: 0;
   }

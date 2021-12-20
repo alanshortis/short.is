@@ -9,7 +9,7 @@ export const theme = {
   color: {
     light: 'hsl(63, 100%, 97%)',
     dark: 'hsl(63, 100%, 3%)',
-    accent: 'hsl(24, 95%, 59%)',
+    mid: 'hsl(63, 100%, 50%)',
   },
   media: {
     small: `(min-width: ${breakpoints.small}px)`,

@@ -8,7 +8,6 @@ import { A, Label, PostDate } from '.';
 interface Props {
   date: string;
   title: string;
-  updated?: string;
 }
 
 const Sticker = styled.div`
@@ -23,7 +22,7 @@ const StyledP = styled.p`
   margin-top: calc(Var(--spacing) / 4);
 `;
 
-export const PostMeta: FC<Props> = ({ date, title, updated }) => {
+export const PostMeta: FC<Props> = ({ date, title }) => {
   const router = useRouter();
   const meta = useContext(MetaContext);
   const shareUrl = meta.url + router.asPath;
@@ -32,7 +31,7 @@ export const PostMeta: FC<Props> = ({ date, title, updated }) => {
 
   return (
     <Sticker>
-      <PostDate date={date} updated={updated} />
+      <PostDate date={date} />
       <StyledP>
         <Label>
           <A href={twitterUrl}>Tweet</A> &middot;{' '}

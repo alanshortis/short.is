@@ -8,8 +8,7 @@ import highlight from 'remark-highlight.js';
 import type { Post } from '../../types';
 import { allPostsFrontMatter, postContent } from '../../data/all-posts';
 import { Aside, Full, Grid, PageBody } from '../../components/Grid';
-import { daysSince } from '../../helpers';
-import { ExampleEmbed, Layout, NextPrev, PostFormatting, PostMeta, ShadowBox } from '../../components';
+import { ExampleEmbed, Layout, NextPrev, PostFormatting, PostMeta } from '../../components';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = allPostsFrontMatter.map(post => ({
@@ -43,39 +42,28 @@ const components = { ExampleEmbed };
 
 type Props = Omit<Post, 'slug' | 'content'>;
 
-const WrtingPost: FC<Props> = ({ title, date, intro, nextPost, prevPost, updated, mdxContent }) => {
-  const isOld = daysSince(date) > 729;
-  return (
-    <>
-      <Head>
-        {nextPost && <link rel="prefetch" href={`/writing/${nextPost.slug}`} />}
-        {prevPost && <link rel="prefetch" href={`/writing/${prevPost.slug}`} />}
-      </Head>
-      <Layout title={title} intro={intro}>
-        <Grid>
-          <Full>
-            {isOld && (
-              <ShadowBox isNegative>
-                <p>
-                  This post is more than two years old. Some approaches, dependencies, and best practices may
-                  no longer be recommended.
-                </p>
-              </ShadowBox>
-            )}
-            <h1>{title}</h1>
-          </Full>
-          <Aside>
-            <PostMeta date={date} title={title} updated={updated} />
-          </Aside>
-          <PageBody as={PostFormatting}>
-            <p className="intro">{intro}</p>
-            <MDXRemote {...mdxContent} components={components} />
-          </PageBody>
-          <NextPrev nextPost={nextPost} prevPost={prevPost} />
-        </Grid>
-      </Layout>
-    </>
-  );
-};
+const WrtingPost: FC<Props> = ({ title, date, intro, nextPost, prevPost, updated, mdxContent }) => (
+  <>
+    <Head>
+      {nextPost && <link rel="prefetch" href={`/writing/${nextPost.slug}`} />}
+      {prevPost && <link rel="prefetch" href={`/writing/${prevPost.slug}`} />}
+    </Head>
+    <Layout title={title} intro={intro}>
+      <Grid>
+        <Full>
+          <h1>{title}</h1>
+        </Full>
+        <Aside>
+          <PostMeta date={date} title={title} updated={updated} />
+        </Aside>
+        <PageBody as={PostFormatting}>
+          <p className="intro">{intro}</p>
+          <MDXRemote {...mdxContent} components={components} />
+        </PageBody>
+        <NextPrev nextPost={nextPost} prevPost={prevPost} />
+      </Grid>
+    </Layout>
+  </>
+);
 
 export default WrtingPost;

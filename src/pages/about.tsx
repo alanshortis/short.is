@@ -40,6 +40,10 @@ const About: NextPage = () => (
           </p>
           <p>
             Find me on{' '}
+            <A href="https://www.are.na/alan-shortis" rel="me">
+              Are.na
+            </A>
+            ,{' '}
             <A href="https://codepen.io/alanshortis" rel="me">
               CodePen
             </A>

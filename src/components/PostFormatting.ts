@@ -41,6 +41,9 @@ export const PostFormatting = styled.div`
       left: -2px;
       speak: never;
       text-decoration: none;
+      @supports (content: 'x' / 'y') {
+        content: '↗' / 'Link opens in a new tab';
+      }
     }
   }
 
