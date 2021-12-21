@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import type { MDXRemoteSerializeResult } from 'next-mdx-remote';
 
 export interface HeadInfo {
@@ -33,9 +32,13 @@ export interface PostList {
 export interface Photo {
   id: string;
   url: string;
-  camera: string;
-  film: string;
-  lens?: string;
+  metadata: {
+    location: string;
+    year: number;
+    camera: string;
+    film: string;
+    lens?: string;
+  };
 }
 
 export interface PhotoList {
@@ -43,10 +46,14 @@ export interface PhotoList {
 }
 
 export interface CloudinaryResponse {
+  // eslint-disable-next-line camelcase
   public_id: string;
+  // eslint-disable-next-line camelcase
   secure_url: string;
   context: {
     custom: {
+      location: string;
+      year: number;
       camera: string;
       film: string;
       lens?: string;

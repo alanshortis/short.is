@@ -15,11 +15,7 @@ export const config = {
   unstable_runtimeJS: false,
 };
 
-interface Props {
-  photos: PhotoList;
-}
-
-const Photography: NextPage<Props> = ({ photos }) => (
+const Photography: NextPage<PhotoList> = ({ photos }) => (
   <Layout title="Photography">
     <h1>Photography</h1>
     <pre>{JSON.stringify(photos, undefined, 2)}</pre>
