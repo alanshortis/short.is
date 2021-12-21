@@ -1,6 +1,7 @@
 import type { NextPage, GetStaticPropsResult } from 'next';
 import { allPhotos } from '../../data/cloudinary';
 import { Layout } from '../../components';
+import { Full, Grid, PageBody } from '../../components/Grid';
 import type { PhotoList } from '../../types';
 
 export async function getStaticProps(): Promise<GetStaticPropsResult<PhotoList>> {
@@ -17,8 +18,14 @@ export const config = {
 
 const Photography: NextPage<PhotoList> = ({ photos }) => (
   <Layout title="Photography">
-    <h1>Photography</h1>
-    <pre>{JSON.stringify(photos, undefined, 2)}</pre>
+    <Grid>
+      <Full>
+        <h1>Photography</h1>
+      </Full>
+      <PageBody>
+        <pre>{JSON.stringify(photos, undefined, 2)}</pre>
+      </PageBody>
+    </Grid>
   </Layout>
 );
 

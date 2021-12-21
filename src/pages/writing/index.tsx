@@ -35,6 +35,7 @@ const StyledPost = styled(PostFormatting)`
     padding: 0;
     margin-bottom: calc(var(--spacing) / 2);
   }
+  &:last-of-type,
   p:last-of-type {
     margin-bottom: 0;
   }

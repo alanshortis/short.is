@@ -15,7 +15,6 @@ const StyledLink = styled.a<{ isNewer?: boolean }>`
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    padding-bottom: calc(var(--spacing) / 2);
     font-size: 1.25rem;
     font-weight: ${p => p.theme.font.weightBold};
   }
