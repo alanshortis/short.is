@@ -42,7 +42,7 @@ const components = { ExampleEmbed };
 
 type Props = Omit<Post, 'slug' | 'content'>;
 
-const WrtingPost: FC<Props> = ({ title, date, intro, nextPost, prevPost, updated, mdxContent }) => (
+const WrtingPost: FC<Props> = ({ title, date, intro, nextPost, prevPost, mdxContent }) => (
   <>
     <Head>
       {nextPost && <link rel="prefetch" href={`/writing/${nextPost.slug}`} />}
@@ -54,7 +54,7 @@ const WrtingPost: FC<Props> = ({ title, date, intro, nextPost, prevPost, updated
           <h1>{title}</h1>
         </Full>
         <Aside>
-          <PostMeta date={date} title={title} updated={updated} />
+          <PostMeta date={date} title={title} />
         </Aside>
         <PageBody as={PostFormatting}>
           <p className="intro">{intro}</p>
