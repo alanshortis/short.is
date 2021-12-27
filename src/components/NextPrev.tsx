@@ -17,6 +17,7 @@ const StyledLink = styled.a<{ isNewer?: boolean }>`
     white-space: nowrap;
     font-size: 1.25rem;
     font-weight: ${p => p.theme.font.weightBold};
+    line-height: 1.563;
   }
   ${Label} {
     display: block;
