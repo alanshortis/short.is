@@ -21,7 +21,7 @@ Open the default terminal and run each of these commands:
 
 ### Finder
 
-```bash shell
+```bash
 # Set sidebar icon size to medium
 defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 2
 
@@ -89,7 +89,7 @@ defaults write com.apple.finder WarnOnEmptyTrash -bool false
 
 ### User Experience
 
-```bash shell
+```bash
 # Set the icon size of Dock items
 defaults write com.apple.dock tilesize -int 36
 
@@ -159,7 +159,7 @@ defaults write com.apple.dock wvous-br-modifier -int 0
 
 ### Screenshots
 
-```bash shell
+```bash
 # Save screenshots to {user}/Pictures instead of Desktop
 defaults write com.apple.screencapture location -string "${HOME}/Pictures"
 
@@ -172,7 +172,7 @@ defaults write com.apple.screencapture disable-shadow -bool true
 
 ### Miscellaneous
 
-```bash shell
+```bash
 # Use Graphite Highlight Color
 defaults write NSGlobalDomain AppleHighlightColor -string "0.780400 0.815700 0.858800"
 
@@ -209,7 +209,7 @@ Nothing will take effect until the Finder and Dock have been killed. It's best t
 
 If for some reason you want to see what any of these options are set to (probably useful if you already have your mouse tracking speed but you'd like to script it), you can replace `write` with `read` for any command. Though, something needs to have been set at some time to get a result:
 
-```bash shell
+```bash
 defaults read -g com.apple.mouse.scaling
 # '3'
 ```
@@ -230,7 +230,7 @@ If you've recently parted ways with a Mac make sure you delete keys from any ser
 
 Open the terminal and paste this command to install Homebrew or copy the command from the Homebrew website if you'd prefer, following the prompts:
 
-```bash shell
+```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
@@ -240,7 +240,7 @@ Once this is done (it'll take a while), you can quickly verify that things are a
 
 It's a good idea to get [Node.js](https://nodejs.org/en/) installed right away. It's the foundation of almost all front end development now, and will also install `npm` which we'll need to get some global packages and for setting up our terminal later:
 
-```bash shell
+```bash
 # Install Node.js
 # You can install a specific version: brew install node@14
 brew install node
@@ -261,13 +261,13 @@ npm i -g glyphhanger
 
 Before we can install all the desktop apps we want we need to extend what's available to us by installing a new 'tap', [homebrew-cask-versions](https://github.com/Homebrew/homebrew-cask-versions):
 
-```bash shell
+```bash
 brew tap homebrew/cask-versions
 ```
 
 Time for our desktop apps:
 
-```bash shell
+```bash
 # Browser
 brew install --cask firefox-developer-edition
 
@@ -298,7 +298,7 @@ We already installed [Hyper](https://hyper.is/) using Homebrew, so let's set it 
 
 I like the [One Dark](https://hyper.is/store/hyper-one-dark) theme for everything, and like everything else in this guide we don't even need to leave the terminal to install this and a few other plugins:
 
-```bash shell
+```bash
 # One Dark theme for Hyper
 hyper i hyper-one-dark
 
@@ -315,7 +315,7 @@ There are plenty of other [plugins](https://hyper.is/plugins/newest) and [themes
 
 macOS uses zsh by default now, but I like to use [Oh My Zsh](https://ohmyz.sh/) as it comes with a lot of useful extras. Install it via the terminal, or copy the command from their website if you'd prefer:
 
-```bash shell
+```bash
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
@@ -329,13 +329,13 @@ To add your own, open `.zshrc` from your user folder (you'll need to open it fro
 
 I like to keep a separate `.aliases` file as I tinker with it pretty often. To do this, create that file in your user directory, then refer to it in `.zshrc` in place of the aliases already there:
 
-```bash shell
+```bash
 [ -f .aliases ] && source .aliases
 ```
 
 These are some of my aliases. It includes an alias to open my aliases. See if you can spot the ones added when I had a faulty keyboard on my 2016 MacBook Pro:
 
-```bash shell
+```bash
 alias c="clear"
 alias g="git"
 alias gitt="git"
@@ -354,7 +354,7 @@ For example, if you visit a folder `~/Sites/design/design-system` pretty often, 
 
 This isn't something we can magically install from the terminal, but it's still not very difficult. Download `z.sh` from the [GitHub repository](https://github.com/rupa/z) and save it as is in your user folder (the same place as your aliases and `.zshrc`). Next, open `.zshrc` again and add a reference to it at the bottom of the file:
 
-```bash shell
+```bash
 # Include z
 . ~/z.sh
 zstyle ':completion:*' menu select
@@ -376,13 +376,13 @@ I love this because I don't need to keep a mental model of what's where, I just 
 
 Install, or copy the command from the [GitHub repository](https://github.com/zsh-users/zsh-autosuggestions/):
 
-```bash shell
+```bash
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 ```
 
 Then, add to the plugin list in `.zshrc`:
 
-```bash shell
+```bash
 plugins=(git zsh-autosuggestions)
 ```
 
@@ -402,7 +402,7 @@ fontFamily: "MesloLGS NF",
 
 Next, [install the theme itself](https://github.com/romkatv/powerlevel10k#oh-my-zsh) and apply it:
 
-```bash shell
+```bash
 # Download the theme
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
 
