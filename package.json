@@ -8,7 +8,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint src/**/*.{tsx,ts}; tsc --noEmit"
+    "lint": "eslint src/**/*.{tsx,ts}; tsc --noEmit",
+    "new": "node new.js"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",
