@@ -7,7 +7,7 @@ export const shadowBox = css`
   border: 1px solid currentColor;
   display: block;
   margin-bottom: calc(var(--spacing) * 1.5);
-  padding: calc(var(--spacing) / 4);
+  padding: calc(var(--spacing) / 2);
   position: relative;
   width: calc(100% - var(--spacing) / 2);
   ::after {
