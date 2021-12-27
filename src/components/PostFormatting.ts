@@ -15,8 +15,6 @@ export const PostFormatting = styled.div`
     line-height: 1.563;
     margin-bottom: var(--spacing);
     code {
-      border: 1px solid currentColor;
-      margin: 0 calc(var(--spacing) / 8);
       padding: calc(var(--spacing) / 8);
     }
     &.intro {
@@ -31,7 +29,7 @@ export const PostFormatting = styled.div`
   a {
     text-decoration: underline;
     white-space: nowrap;
-    &[href^='http']:not([href*='short.is']):not(.no-arrow)::after {
+    &[href^='http']:not([href*='short.is'])::after {
       content: '↗';
       display: inline-block;
       font-family: ${p => p.theme.font.familyMono};
@@ -39,7 +37,6 @@ export const PostFormatting = styled.div`
       margin-left: 0.25em;
       position: relative;
       left: -2px;
-      speak: never;
       text-decoration: none;
       @supports (content: 'x' / 'y') {
         content: '↗' / 'Link opens in a new tab';
@@ -66,9 +63,8 @@ export const PostFormatting = styled.div`
   img {
     display: flex;
     margin: 0 auto;
-    margin-bottom: var(--spacing);
+    margin: calc(var(--spacing) * 2) auto;
     max-width: 100%;
-    text-align: center;
   }
 
   ins {
