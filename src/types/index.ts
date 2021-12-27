@@ -28,35 +28,3 @@ export interface Post extends FrontMatter {
 export interface PostList {
   posts: FrontMatter[];
 }
-
-export interface Photo {
-  id: string;
-  url: string;
-  metadata: {
-    location: string;
-    year: number;
-    camera: string;
-    film: string;
-    lens?: string;
-  };
-}
-
-export interface PhotoList {
-  photos: Photo[];
-}
-
-export interface CloudinaryResponse {
-  // eslint-disable-next-line camelcase
-  public_id: string;
-  // eslint-disable-next-line camelcase
-  secure_url: string;
-  context: {
-    custom: {
-      location: string;
-      year: number;
-      camera: string;
-      film: string;
-      lens?: string;
-    };
-  };
-}
