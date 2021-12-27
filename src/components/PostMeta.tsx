@@ -7,7 +7,8 @@ import { A, Label, PostDate } from '.';
 
 interface Props {
   date: string;
-  title: string;
+  title?: string;
+  hasSharing?: boolean;
 }
 
 const Sticker = styled.div`
@@ -22,7 +23,7 @@ const StyledP = styled.p`
   margin-top: calc(Var(--spacing) / 4);
 `;
 
-export const PostMeta: FC<Props> = ({ date, title }) => {
+export const PostMeta: FC<Props> = ({ date, title, hasSharing }) => {
   const router = useRouter();
   const meta = useContext(MetaContext);
   const shareUrl = meta.url + router.asPath;
@@ -32,12 +33,14 @@ export const PostMeta: FC<Props> = ({ date, title }) => {
   return (
     <Sticker>
       <PostDate date={date} />
-      <StyledP>
-        <Label>
-          <A href={twitterUrl}>Tweet</A> &middot;{' '}
-          <A href="https://www.buymeacoffee.com/alanshortis">Buy me a coffee</A>
-        </Label>
-      </StyledP>
+      {hasSharing && (
+        <StyledP>
+          <Label>
+            <A href={twitterUrl}>Tweet</A> &middot;{' '}
+            <A href="https://www.buymeacoffee.com/alanshortis">Buy me a coffee</A>
+          </Label>
+        </StyledP>
+      )}
     </Sticker>
   );
 };

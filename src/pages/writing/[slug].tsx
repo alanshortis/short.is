@@ -54,7 +54,7 @@ const WrtingPost: FC<Props> = ({ title, date, intro, nextPost, prevPost, mdxCont
           <h1>{title}</h1>
         </Full>
         <Aside>
-          <PostMeta date={date} title={title} />
+          <PostMeta date={date} title={title} hasSharing />
         </Aside>
         <PageBody as={PostFormatting}>
           <p className="intro">{intro}</p>

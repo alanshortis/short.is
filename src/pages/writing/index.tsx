@@ -1,8 +1,8 @@
 import type { NextPage, GetStaticPropsResult } from 'next';
 import Link from 'next/link';
 import styled from 'styled-components';
-import { Layout, PostFormatting, PostDate } from '../../components';
-import { Full, Grid, PageBody } from '../../components/Grid';
+import { Layout, PostFormatting, PostDate, PostMeta } from '../../components';
+import { Aside, Full, Grid, PageBody } from '../../components/Grid';
 import { allPostsFrontMatter } from '../../data/all-posts';
 import { generateRss } from '../../feed/generate-rss';
 import type { PostList } from '../../types';
@@ -25,11 +25,6 @@ export const config = {
 
 const StyledPost = styled(PostFormatting)`
   display: block;
-  margin-bottom: var(--spacing);
-  padding-bottom: var(--spacing);
-  &:not(:last-child) {
-    border-bottom: ${p => p.theme.borderSize} solid currentColor;
-  }
   h2,
   p {
     padding: 0;
@@ -41,25 +36,41 @@ const StyledPost = styled(PostFormatting)`
   }
 `;
 
+const ReadMore = styled.p`
+  text-align: right;
+  text-decoration: underline;
+  white-space: nowrap;
+  &::after {
+    content: '→';
+    display: inline-block;
+    margin-left: 0.25rem;
+    text-decoration: none;
+  }
+`;
+
 const Writing: NextPage<PostList> = ({ posts }) => (
   <Layout title="Writing">
     <Grid>
       <Full>
         <h1>Writing</h1>
       </Full>
-      <PageBody>
-        {posts.map(({ slug, date, title, intro }) => (
-          <Link key={slug} href={`/writing/${slug}`} passHref>
-            <StyledPost as="a">
-              <h2 className="h3">{title}</h2>
-              <p>
+      {posts.map(({ slug, date, title, intro }) => (
+        <>
+          <Aside>
+            <PostMeta date={date} />
+          </Aside>
+          <PageBody>
+            <Link key={slug} href={`/writing/${slug}`} passHref>
+              <StyledPost as="a">
                 <PostDate date={date} />
-              </p>
-              <p>{intro}</p>
-            </StyledPost>
-          </Link>
-        ))}
-      </PageBody>
+                <h2 className="h3">{title}</h2>
+                <p>{intro}</p>
+                <ReadMore>Read more</ReadMore>
+              </StyledPost>
+            </Link>
+          </PageBody>
+        </>
+      ))}
     </Grid>
   </Layout>
 );
