@@ -4,20 +4,13 @@ import { useRouter } from 'next/router';
 import styled from 'styled-components';
 import { MetaContext } from '../data/meta';
 import { A, Label, PostDate } from '.';
+import { Sticker } from './Grid';
 
 interface Props {
   date: string;
   title?: string;
   hasSharing?: boolean;
 }
-
-const Sticker = styled.div`
-  @media ${p => p.theme.media.medium} {
-    grid-column: 1 / 6;
-    position: sticky;
-    top: 8rem;
-  }
-`;
 
 const StyledP = styled.p`
   margin-top: calc(Var(--spacing) / 4);

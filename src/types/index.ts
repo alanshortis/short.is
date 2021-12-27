@@ -16,6 +16,7 @@ export interface FrontMatter {
   updated?: string;
   intro: string;
   slug: string;
+  year: string;
 }
 
 export interface Post extends FrontMatter {

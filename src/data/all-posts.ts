@@ -15,12 +15,15 @@ export const postCount = allPostFileNames.length;
 
 // The front matter of all posts.
 export const allPostsFrontMatter: FrontMatter[] = allPostFileNames
-  .map(
-    (fileName): FrontMatter => ({
-      ...(fileContent(fileName).data as FrontMatter),
+  .map((fileName): FrontMatter => {
+    const { data } = fileContent(fileName);
+
+    return {
+      ...(data as FrontMatter),
       slug: path.basename(fileName, EXT),
-    })
-  )
+      year: data.date.substring(0, 4),
+    };
+  })
   .sort((a, b) => (new Date(a.date) < new Date(b.date) ? 1 : -1));
 
 // The front matter for the requested, next, and previous posts, and the content.

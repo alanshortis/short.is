@@ -27,3 +27,11 @@ export const PageBody = styled.div`
     grid-column: 6 / 13;
   }
 `;
+
+export const Sticker = styled.div`
+  @media ${p => p.theme.media.medium} {
+    grid-column: 1 / 6;
+    position: sticky;
+    top: 8rem;
+  }
+`;

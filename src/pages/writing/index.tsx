@@ -1,8 +1,8 @@
 import type { NextPage, GetStaticPropsResult } from 'next';
 import Link from 'next/link';
 import styled from 'styled-components';
-import { Layout, PostFormatting, PostDate, PostMeta } from '../../components';
-import { Aside, Full, Grid, PageBody } from '../../components/Grid';
+import { Layout, PostFormatting, PostDate, Label } from '../../components';
+import { Aside, Full, Grid, PageBody, Sticker } from '../../components/Grid';
 import { allPostsFrontMatter } from '../../data/all-posts';
 import { generateRss } from '../../feed/generate-rss';
 import type { PostList } from '../../types';
@@ -54,10 +54,14 @@ const Writing: NextPage<PostList> = ({ posts }) => (
       <Full>
         <h1>Writing</h1>
       </Full>
-      {posts.map(({ slug, date, title, intro }) => (
+      {posts.map(({ slug, date, title, intro, year }) => (
         <>
           <Aside>
-            <PostMeta date={date} />
+            <Sticker>
+              <Label as="time" dateTime={year}>
+                {year}
+              </Label>
+            </Sticker>
           </Aside>
           <PageBody>
             <Link key={slug} href={`/writing/${slug}`} passHref>
