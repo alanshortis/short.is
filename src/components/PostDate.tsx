@@ -9,11 +9,14 @@ const StyledPostDate = styled(Label)`
 
 interface Props {
   date: string;
+  year?: string;
 }
 
-export const PostDate: FC<Props> = ({ date }) => (
+export const PostDate: FC<Props> = ({ date, year }) => (
   <StyledPostDate>
-    <time dateTime={date}>{dateFormat(date)}</time>
+    <time dateTime={date}>
+      {dateFormat(date)} {year && year}
+    </time>
     {daysSince(date) < 14 && <span> &middot; New</span>}
   </StyledPostDate>
 );

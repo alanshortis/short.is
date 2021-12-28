@@ -7,8 +7,8 @@ import externalLinks from 'remark-external-links';
 import highlight from 'remark-highlight.js';
 import type { Post } from '../../types';
 import { allPostsFrontMatter, postContent } from '../../data/all-posts';
-import { Aside, Full, Grid, PageBody } from '../../components/Grid';
-import { ExampleEmbed, Layout, NextPrev, PostFormatting, PostMeta } from '../../components';
+import { Aside, Full, Grid, PageBody, Sticker } from '../../components/Grid';
+import { ExampleEmbed, Layout, NextPrev, PostFormatting, PostDate, PostShare } from '../../components';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = allPostsFrontMatter.map(post => ({
@@ -38,11 +38,15 @@ export const config = {
   unstable_runtimeJS: false,
 };
 
-const components = { ExampleEmbed };
-
-type Props = Omit<Post, 'slug' | 'content'>;
-
-const WrtingPost: FC<Props> = ({ title, date, intro, nextPost, prevPost, mdxContent }) => (
+const WrtingPost: FC<Omit<Post, 'slug' | 'content'>> = ({
+  title,
+  date,
+  intro,
+  nextPost,
+  prevPost,
+  mdxContent,
+  year,
+}) => (
   <>
     <Head>
       {nextPost && <link rel="prefetch" href={`/writing/${nextPost.slug}`} />}
@@ -54,11 +58,14 @@ const WrtingPost: FC<Props> = ({ title, date, intro, nextPost, prevPost, mdxCont
           <h1>{title}</h1>
         </Full>
         <Aside>
-          <PostMeta date={date} title={title} hasSharing />
+          <Sticker>
+            <PostDate date={date} year={year} />
+            <PostShare title={title} />
+          </Sticker>
         </Aside>
         <PageBody as={PostFormatting}>
           <p className="intro">{intro}</p>
-          <MDXRemote {...mdxContent} components={components} />
+          <MDXRemote {...mdxContent} components={{ ExampleEmbed }} />
         </PageBody>
         <NextPrev nextPost={nextPost} prevPost={prevPost} />
       </Grid>

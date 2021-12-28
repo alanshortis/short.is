@@ -1,4 +1,5 @@
 import type { NextPage, GetStaticPropsResult } from 'next';
+import { Fragment } from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
 import { Layout, PostFormatting, PostDate, Label } from '../../components';
@@ -55,16 +56,16 @@ const Writing: NextPage<PostList> = ({ posts }) => (
         <h1>Writing</h1>
       </Full>
       {posts.map(({ slug, date, title, intro, year }) => (
-        <>
+        <Fragment key={slug}>
           <Aside>
             <Sticker>
-              <Label as="time" dateTime={year}>
+              <Label as="time" dateTime={year} aria-hidden>
                 {year}
               </Label>
             </Sticker>
           </Aside>
           <PageBody>
-            <Link key={slug} href={`/writing/${slug}`} passHref>
+            <Link href={`/writing/${slug}`} passHref>
               <StyledPost as="a">
                 <PostDate date={date} />
                 <h2 className="h3">{title}</h2>
@@ -73,7 +74,7 @@ const Writing: NextPage<PostList> = ({ posts }) => (
               </StyledPost>
             </Link>
           </PageBody>
-        </>
+        </Fragment>
       ))}
     </Grid>
   </Layout>
