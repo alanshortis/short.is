@@ -1,4 +1,5 @@
 export { A } from './A';
+export { ConditionalWrapper } from './ConditionalWrapper';
 export { ExampleEmbed } from './ExampleEmbed';
 export { Footer } from './Footer';
 export { Grid } from './Grid';

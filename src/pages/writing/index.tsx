@@ -2,7 +2,7 @@ import type { NextPage, GetStaticPropsResult } from 'next';
 import { Fragment } from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
-import { Layout, PostFormatting, PostDate, Label } from '../../components';
+import { ConditionalWrapper, Layout, PostFormatting, PostDate, Label } from '../../components';
 import { Aside, Full, Grid, PageBody, Sticker } from '../../components/Grid';
 import { allPostsFrontMatter } from '../../data/all-posts';
 import { generateRss } from '../../feed/generate-rss';
@@ -43,41 +43,58 @@ const ReadMore = styled.p`
   white-space: nowrap;
   &::after {
     content: '→';
+    font-size: 0.8rem;
     display: inline-block;
     margin-left: 0.25rem;
     text-decoration: none;
   }
 `;
 
-const Writing: NextPage<PostList> = ({ posts }) => (
-  <Layout title="Writing">
-    <Grid>
-      <Full>
-        <h1>Writing</h1>
-      </Full>
-      {posts.map(({ slug, date, title, intro, year }) => (
-        <Fragment key={slug}>
-          <Aside>
-            <Sticker>
-              <Label as="time" dateTime={year} aria-hidden>
-                {year}
-              </Label>
-            </Sticker>
-          </Aside>
-          <PageBody>
-            <Link href={`/writing/${slug}`} passHref>
-              <StyledPost as="a">
-                <PostDate date={date} />
-                <h2 className="h3">{title}</h2>
-                <p>{intro}</p>
-                <ReadMore>Read more</ReadMore>
-              </StyledPost>
-            </Link>
-          </PageBody>
-        </Fragment>
-      ))}
-    </Grid>
-  </Layout>
-);
+const Writing: NextPage<PostList> = ({ posts }) => {
+  return (
+    <Layout title="Writing">
+      <Grid>
+        <Full>
+          <h1>Writing</h1>
+        </Full>
+        {posts.map(({ slug, date, title, intro, year }, i, arr) => {
+          const prevYear = i === 0 ? 0 : arr[i - 1].year;
+          const isNewYear = prevYear !== year;
+
+          return (
+            <Fragment key={slug}>
+              <ConditionalWrapper
+                condition={isNewYear}
+                wrapper={children => <div style={{ color: 'red' }}>{children}</div>}
+              >
+                <>
+                  <Aside>
+                    {year !== prevYear && (
+                      <Sticker>
+                        <Label as="time" dateTime={year} aria-hidden>
+                          {year}
+                        </Label>
+                      </Sticker>
+                    )}
+                  </Aside>
+                  <PageBody>
+                    <Link href={`/writing/${slug}`} passHref>
+                      <StyledPost as="a">
+                        <PostDate date={date} />
+                        <h2 className="h3">{title}</h2>
+                        <p>{intro}</p>
+                        <ReadMore>Read more</ReadMore>
+                      </StyledPost>
+                    </Link>
+                  </PageBody>
+                </>
+              </ConditionalWrapper>
+            </Fragment>
+          );
+        })}
+      </Grid>
+    </Layout>
+  );
+};
 
 export default Writing;
