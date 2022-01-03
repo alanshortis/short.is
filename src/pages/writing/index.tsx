@@ -2,9 +2,9 @@ import type { NextPage, GetStaticPropsResult } from 'next';
 import { Fragment } from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
-import { ConditionalWrapper, Layout, PostFormatting, PostDate, Label } from '../../components';
+import { Layout, PostDate, Label } from '../../components';
 import { Aside, Full, Grid, PageBody, Sticker } from '../../components/Grid';
-import { allPostsFrontMatter } from '../../data/all-posts';
+import { allPostsFrontMatter, postYears } from '../../data/all-posts';
 import { generateRss } from '../../feed/generate-rss';
 import type { PostList } from '../../types';
 
@@ -16,6 +16,7 @@ export async function getStaticProps(): Promise<GetStaticPropsResult<PostList>> 
   return {
     props: {
       posts: allPostsFrontMatter,
+      years: postYears,
     },
   };
 }
@@ -24,77 +25,43 @@ export const config = {
   unstable_runtimeJS: false,
 };
 
-const StyledPost = styled(PostFormatting)`
+const StyledPost = styled.a`
   display: block;
-  h2,
-  p {
-    padding: 0;
-    margin-bottom: calc(var(--spacing) / 2);
-  }
-  &:last-of-type,
-  p:last-of-type {
-    margin-bottom: 0;
-  }
 `;
 
-const ReadMore = styled.p`
-  text-align: right;
-  text-decoration: underline;
-  white-space: nowrap;
-  &::after {
-    content: '→';
-    font-size: 0.8rem;
-    display: inline-block;
-    margin-left: 0.25rem;
-    text-decoration: none;
-  }
-`;
-
-const Writing: NextPage<PostList> = ({ posts }) => {
-  return (
-    <Layout title="Writing">
-      <Grid>
-        <Full>
-          <h1>Writing</h1>
-        </Full>
-        {posts.map(({ slug, date, title, intro, year }, i, arr) => {
-          const prevYear = i === 0 ? 0 : arr[i - 1].year;
-          const isNewYear = prevYear !== year;
-
-          return (
-            <Fragment key={slug}>
-              <ConditionalWrapper
-                condition={isNewYear}
-                wrapper={children => <div style={{ color: 'red' }}>{children}</div>}
-              >
-                <>
-                  <Aside>
-                    {year !== prevYear && (
-                      <Sticker>
-                        <Label as="time" dateTime={year} aria-hidden>
-                          {year}
-                        </Label>
-                      </Sticker>
-                    )}
-                  </Aside>
-                  <PageBody>
-                    <Link href={`/writing/${slug}`} passHref>
-                      <StyledPost as="a">
-                        <PostDate date={date} />
-                        <h2 className="h3">{title}</h2>
-                        <p>{intro}</p>
-                        <ReadMore>Read more</ReadMore>
-                      </StyledPost>
-                    </Link>
-                  </PageBody>
-                </>
-              </ConditionalWrapper>
-            </Fragment>
-          );
-        })}
-      </Grid>
-    </Layout>
-  );
-};
+const Writing: NextPage<PostList> = ({ posts, years }) => (
+  <Layout title="Writing">
+    <Grid>
+      <Full>
+        <h1>Writing</h1>
+      </Full>
+      {years.map(year => (
+        <Fragment key={year}>
+          <Aside>
+            <Sticker>
+              <Label as="time" dateTime={year} aria-hidden>
+                {year}
+              </Label>
+            </Sticker>
+          </Aside>
+          <PageBody>
+            {posts
+              .filter(post => post.year === year)
+              .map(post => (
+                <Link href={`/writing/${post.slug}`} key={post.slug} passHref>
+                  <StyledPost>
+                    <PostDate date={post.date} />
+                    <h2 className="h3">{post.title}</h2>
+                    <p>{post.intro}</p>
+                    <Label>Read more &rarr;</Label>
+                  </StyledPost>
+                </Link>
+              ))}
+          </PageBody>
+        </Fragment>
+      ))}
+    </Grid>
+  </Layout>
+);
 
 export default Writing;

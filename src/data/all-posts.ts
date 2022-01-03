@@ -26,6 +26,11 @@ export const allPostsFrontMatter: FrontMatter[] = allPostFileNames
   })
   .sort((a, b) => (new Date(a.date) < new Date(b.date) ? 1 : -1));
 
+// What years have a post been made?
+export const postYears = allPostsFrontMatter
+  .map(post => post.year)
+  .filter((year, idx, arr) => arr.indexOf(year) === idx);
+
 // The front matter for the requested, next, and previous posts, and the content.
 export const postContent = (slug: string): Omit<Post, 'mdxContent'> => {
   const thisPost = allPostsFrontMatter.findIndex(post => post.slug === slug);

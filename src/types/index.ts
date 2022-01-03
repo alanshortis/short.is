@@ -28,4 +28,5 @@ export interface Post extends FrontMatter {
 
 export interface PostList {
   posts: FrontMatter[];
+  years: string[];
 }

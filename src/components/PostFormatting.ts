@@ -20,8 +20,8 @@ export const PostFormatting = styled.div`
     &.intro {
       font-size: 1.333rem;
     }
-    p:only-child,
-    p:last-of-type {
+    &:only-child,
+    &:last-child {
       margin-bottom: 0;
     }
   }
