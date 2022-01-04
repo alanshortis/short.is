@@ -56,8 +56,8 @@ export const Global = createGlobalStyle`
   }
 
   ::selection {
-    background-color: ${p => p.theme.color.mid};
-    color: ${p => p.theme.color.dark};
+    background-color: var(--foreground);
+    color: var(--background);
   }
 
   #__next {
