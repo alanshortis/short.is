@@ -6,7 +6,6 @@ import { VisuallyHidden, Label } from '.';
 
 const StyledLink = styled.a<{ isNewer?: boolean }>`
   grid-column-end: span 1;
-  margin-bottom: var(--spacing);
   text-align: ${p => (p.isNewer ? 'right' : 'left')};
   @media ${p => p.theme.media.medium} {
     grid-column-end: span 6;
@@ -16,12 +15,12 @@ const StyledLink = styled.a<{ isNewer?: boolean }>`
     text-overflow: ellipsis;
     white-space: nowrap;
     font-size: 1.25rem;
-    font-weight: ${p => p.theme.font.weightBold};
+    font-variation-settings: 'wght' ${p => p.theme.font.weightBold};
     line-height: 1.563;
   }
   ${Label} {
     display: block;
-    margin-bottom: var(--spacing);
+    margin-bottom: calc(var(--spacing) / 2);
   }
 `;
 

@@ -10,9 +10,6 @@ const allPostFileNames = fs.readdirSync(POSTS_DIR).filter(file => path.extname(f
 // The parsed file contents (front matter and post body).
 const fileContent = (fileName: string) => matter(fs.readFileSync(path.join(POSTS_DIR, fileName)));
 
-// How many posts?
-export const postCount = allPostFileNames.length;
-
 // The front matter of all posts.
 export const allPostsFrontMatter: FrontMatter[] = allPostFileNames
   .map((fileName): FrontMatter => {

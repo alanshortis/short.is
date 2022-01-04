@@ -48,7 +48,7 @@ export const Global = createGlobalStyle`
     background-color: var(--background);
     color: var(--foreground);
     font-family: ${p => p.theme.font.family};
-    font-weight: ${p => p.theme.font.weight};
+    font-variation-settings: 'wght' ${p => p.theme.font.weight};
     line-height: 1;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;

@@ -1,6 +1,7 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { Layout } from '../components';
+import { Layout, PostFormatting } from '../components';
+import { Full, Grid, PageBody } from '../components/Grid';
 
 export const config = {
   unstable_runtimeJS: false,
@@ -13,10 +14,14 @@ const Home: NextPage = () => (
       <link rel="prefetch" href="/about" />
     </Head>
     <Layout>
-      <p>
-        {'abcdefghijklmnopqrstuvwyzABCDEFGHIJKLMNOPQRSTUVWYZ0123456789,./<>?`~[];\'\\:"|!@£$%^&*()—-_=+{}§±'}
-        &copy;&larr;&rarr;&uarr;&darr;&middot;↗
-      </p>
+      <Grid>
+        <Full>
+          <h1>About</h1>
+        </Full>
+        <PageBody as={PostFormatting}>
+          <p>&copy;&larr;&rarr;&uarr;&darr;&middot;↗</p>
+        </PageBody>
+      </Grid>
     </Layout>
   </>
 );

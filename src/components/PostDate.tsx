@@ -1,11 +1,6 @@
 import type { FC } from 'react';
-import styled from 'styled-components';
 import { dateFormat, daysSince } from '../helpers';
 import { Label } from '.';
-
-const StyledPostDate = styled(Label)`
-  line-height: 2.08rem;
-`;
 
 interface Props {
   date: string;
@@ -13,10 +8,8 @@ interface Props {
 }
 
 export const PostDate: FC<Props> = ({ date, year }) => (
-  <StyledPostDate>
-    <time dateTime={date}>
-      {dateFormat(date)} {year && year}
-    </time>
+  <Label as="time" dateTime={date}>
+    {dateFormat(date)} {year && year}
     {daysSince(date) < 14 && <span> &middot; New</span>}
-  </StyledPostDate>
+  </Label>
 );

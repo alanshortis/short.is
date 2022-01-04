@@ -2,7 +2,7 @@ import type { NextPage, GetStaticPropsResult } from 'next';
 import { Fragment } from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
-import { Layout, PostDate, Label } from '../../components';
+import { Layout, PostFormatting, PostDate, Label } from '../../components';
 import { Aside, Full, Grid, PageBody, Sticker } from '../../components/Grid';
 import { allPostsFrontMatter, postYears } from '../../data/all-posts';
 import { generateRss } from '../../feed/generate-rss';
@@ -25,8 +25,14 @@ export const config = {
   unstable_runtimeJS: false,
 };
 
-const StyledPost = styled.a`
+const StyledPost = styled(PostFormatting)`
   display: block;
+  &:not(:last-of-type) {
+    margin-bottom: var(--spacing);
+  }
+  h3 {
+    padding-top: calc(var(--spacing) / 2);
+  }
 `;
 
 const Writing: NextPage<PostList> = ({ posts, years }) => (
@@ -39,11 +45,7 @@ const Writing: NextPage<PostList> = ({ posts, years }) => (
         <Fragment key={year}>
           <Aside>
             <Sticker>
-              <h2>
-                <Label as="time" dateTime={year}>
-                  {year}
-                </Label>
-              </h2>
+              <Label as="h2">{year}</Label>
             </Sticker>
           </Aside>
           <PageBody>
@@ -51,11 +53,11 @@ const Writing: NextPage<PostList> = ({ posts, years }) => (
               .filter(post => post.year === year)
               .map(post => (
                 <Link href={`/writing/${post.slug}`} key={post.slug} passHref>
-                  <StyledPost>
+                  <StyledPost as="a">
                     <PostDate date={post.date} />
                     <h3>{post.title}</h3>
                     <p>{post.intro}</p>
-                    <Label>Read more &rarr;</Label>
+                    <Label toTheRight>Read more &rarr;</Label>
                   </StyledPost>
                 </Link>
               ))}

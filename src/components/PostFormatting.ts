@@ -80,7 +80,7 @@ export const PostFormatting = styled.div`
       content: '';
       position: absolute;
       right: 0;
-      top: 50%;
+      top: calc(50% + 1px);
       width: 100%;
     }
   }
