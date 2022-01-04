@@ -3,16 +3,9 @@ import { createGlobalStyle } from 'styled-components';
 export const Global = createGlobalStyle`
   @font-face {
     font-family: ${p => p.theme.font.face};
-    src: url(/fonts/Inter-Medium-subset.woff2) format("woff2");
+    src: url(/fonts/manrope.woff2) format("woff2");
     font-display: swap;
-    font-weight: ${p => p.theme.font.weight};
-  }
-
-  @font-face {
-    font-family: ${p => p.theme.font.face};
-    src: url(/fonts/Inter-Bold-subset.woff2) format("woff2");
-    font-display: swap;
-    font-weight: ${p => p.theme.font.weightBold};
+    font-weight: 200 800;
   }
 
   :root {
@@ -106,7 +99,7 @@ export const Global = createGlobalStyle`
   }
 
   em {
-    font-style: italic;
+    font-variation-settings: 'ital' 1;
   }
 
   code,
@@ -124,8 +117,9 @@ export const Global = createGlobalStyle`
 
   h1, .h1, h2, h3, h4 {
     font-size: 3.052rem;
-    font-weight: ${p => p.theme.font.weightBold};
+    font-variation-settings: 'wght' ${p => p.theme.font.weightBold};
     hyphens: auto;
+    letter-spacing: -2px;
     line-height: 1.25;
     @media ${p => p.theme.media.small} {
       hyphens: none;

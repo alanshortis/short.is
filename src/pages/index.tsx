@@ -10,9 +10,14 @@ const Home: NextPage = () => (
   <>
     <Head>
       <link rel="prefetch" href="/writing" />
-      <link rel="prefetch" href="/photography" />
+      <link rel="prefetch" href="/about" />
     </Head>
-    <Layout />
+    <Layout>
+      <p>
+        {'abcdefghijklmnopqrstuvwyzABCDEFGHIJKLMNOPQRSTUVWYZ0123456789,./<>?`~[];\'\\:"|!@£$%^&*()—-_=+{}§±'}
+        &copy;&larr;&rarr;&uarr;&darr;&middot;↗
+      </p>
+    </Layout>
   </>
 );
 

@@ -30,16 +30,16 @@ export const PostFormatting = styled.div`
     text-decoration: underline;
     white-space: nowrap;
     &[href^='http']:not([href*='short.is'])::after {
-      content: '↗';
+      content: '↑';
       display: inline-block;
-      font-family: ${p => p.theme.font.familyMono};
-      font-size: 0.833rem;
+      font-size: 0.8rem;
       margin-left: 0.25em;
       position: relative;
       left: -2px;
       text-decoration: none;
+      transform: rotate(45deg);
       @supports (content: 'x' / 'y') {
-        content: '↗' / 'Link opens in a new tab';
+        content: '↑' / 'Link opens in a new tab';
       }
     }
   }
@@ -72,8 +72,17 @@ export const PostFormatting = styled.div`
   }
 
   del {
-    text-decoration: line-through;
     opacity: 0.5;
+    position: relative;
+    text-decoration: none;
+    &::before {
+      border-bottom: 4px solid currentColor;
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 50%;
+      width: 100%;
+    }
   }
 
   blockquote {
@@ -87,6 +96,7 @@ export const PostFormatting = styled.div`
   code {
     font-family: ${p => p.theme.font.familyMono};
     font-size: 0.8rem;
+    font-weight: ${p => p.theme.font.weightMono};
     line-height: 1.5;
     .hljs-comment {
       font-style: italic;
