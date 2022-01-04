@@ -39,9 +39,11 @@ const Writing: NextPage<PostList> = ({ posts, years }) => (
         <Fragment key={year}>
           <Aside>
             <Sticker>
-              <Label as="time" dateTime={year} aria-hidden>
-                {year}
-              </Label>
+              <h2>
+                <Label as="time" dateTime={year}>
+                  {year}
+                </Label>
+              </h2>
             </Sticker>
           </Aside>
           <PageBody>
@@ -51,7 +53,7 @@ const Writing: NextPage<PostList> = ({ posts, years }) => (
                 <Link href={`/writing/${post.slug}`} key={post.slug} passHref>
                   <StyledPost>
                     <PostDate date={post.date} />
-                    <h2 className="h3">{post.title}</h2>
+                    <h3>{post.title}</h3>
                     <p>{post.intro}</p>
                     <Label>Read more &rarr;</Label>
                   </StyledPost>
