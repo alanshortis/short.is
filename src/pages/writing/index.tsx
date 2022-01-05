@@ -1,8 +1,6 @@
 import type { NextPage, GetStaticPropsResult } from 'next';
 import { Fragment } from 'react';
-import Link from 'next/link';
-import styled from 'styled-components';
-import { Layout, PostFormatting, PostDate, Label } from '../../components';
+import { Layout, PostIndexItem, Label } from '../../components';
 import { Aside, Full, Grid, PageBody, Sticker } from '../../components/Grid';
 import { allPostsFrontMatter, postYears } from '../../data/all-posts';
 import { generateRss } from '../../feed/generate-rss';
@@ -25,16 +23,6 @@ export const config = {
   unstable_runtimeJS: false,
 };
 
-const StyledPost = styled(PostFormatting)`
-  display: block;
-  &:not(:last-of-type) {
-    margin-bottom: var(--spacing);
-  }
-  h3 {
-    padding-top: calc(var(--spacing) / 2);
-  }
-`;
-
 const Writing: NextPage<PostList> = ({ posts, years }) => (
   <Layout title="Writing">
     <Grid>
@@ -52,14 +40,13 @@ const Writing: NextPage<PostList> = ({ posts, years }) => (
             {posts
               .filter(post => post.year === year)
               .map(post => (
-                <Link href={`/writing/${post.slug}`} key={post.slug} passHref>
-                  <StyledPost as="a">
-                    <PostDate date={post.date} />
-                    <h3>{post.title}</h3>
-                    <p>{post.intro}</p>
-                    <Label toTheRight>Read more &rarr;</Label>
-                  </StyledPost>
-                </Link>
+                <PostIndexItem
+                  key={post.slug}
+                  slug={post.slug}
+                  date={post.date}
+                  title={post.title}
+                  intro={post.intro}
+                />
               ))}
           </PageBody>
         </Fragment>

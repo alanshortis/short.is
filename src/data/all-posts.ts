@@ -26,7 +26,10 @@ export const allPostsFrontMatter: FrontMatter[] = allPostFileNames
 // What years have a post been made?
 export const postYears = allPostsFrontMatter
   .map(post => post.year)
-  .filter((year, idx, arr) => arr.indexOf(year) === idx);
+  .filter((year, idx, arr) => arr.indexOf(year) === idx) as string[];
+
+// Just the latest post, please.
+export const latestPost: FrontMatter = allPostsFrontMatter[0];
 
 // The front matter for the requested, next, and previous posts, and the content.
 export const postContent = (slug: string): Omit<Post, 'mdxContent'> => {
