@@ -1,9 +1,8 @@
 import type { NextPage, GetStaticPropsResult } from 'next';
 import Head from 'next/head';
-import Link from 'next/link';
 import type { LatestContent } from '../types';
 import { latestPost } from '../data/all-posts';
-import { Label, Layout, PostFormatting, PostIndexItem } from '../components';
+import { Layout, PostIndexItem } from '../components';
 import { Aside, Grid, PageBody } from '../components/Grid';
 
 export async function getStaticProps(): Promise<GetStaticPropsResult<LatestContent>> {
