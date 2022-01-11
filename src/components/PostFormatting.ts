@@ -76,11 +76,11 @@ export const PostFormatting = styled.div`
     position: relative;
     text-decoration: none;
     &::before {
-      border-bottom: 4px solid currentColor;
+      border-bottom: ${p => p.theme.borderSize} solid currentColor;
       content: '';
       position: absolute;
       right: 0;
-      top: calc(50% + 1px);
+      top: 50%;
       width: 100%;
     }
   }
