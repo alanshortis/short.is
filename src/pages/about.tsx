@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import { A, Layout, PostFormatting } from '../components';
+import { Layout, PostFormatting } from '../components';
 import { Full, Grid, PageBody } from '../components/Grid';
 
 export const config = {
@@ -25,21 +25,21 @@ const About: NextPage = () => (
           </p>
           <p>
             Find me on{' '}
-            <A href="https://www.are.na/alan-shortis" rel="me">
+            <a href="https://www.are.na/alan-shortis" rel="me">
               Are.na
-            </A>
+            </a>
             ,{' '}
-            <A href="https://codepen.io/alanshortis" rel="me">
+            <a href="https://codepen.io/alanshortis" rel="me">
               CodePen
-            </A>
+            </a>
             ,{' '}
-            <A href="https://github.com/alanshortis" rel="me">
+            <a href="https://github.com/alanshortis" rel="me">
               GitHub
-            </A>
+            </a>
             , and{' '}
-            <A href="https://twitter.com/alanshortis" rel="me">
+            <a href="https://twitter.com/alanshortis" rel="me">
               Twitter
-            </A>
+            </a>
             .
           </p>
         </PageBody>

@@ -1,6 +1,5 @@
 import type { FC } from 'react';
 import styled from 'styled-components';
-import { A } from '.';
 
 const EmbedContainer = styled.div`
   margin-bottom: var(--spacing);
@@ -19,6 +18,7 @@ const EmbedContainer = styled.div`
     font-size: 0.8rem;
     justify-content: space-between;
     padding: calc(var(--spacing) / 4) 0;
+    text-decoration: none;
   }
 `;
 
@@ -30,9 +30,9 @@ interface Props {
 export const ExampleEmbed: FC<Props> = ({ title, url }) => (
   <EmbedContainer>
     <iframe title={title} src={url} frameBorder="no" allowFullScreen={false} loading="lazy" />
-    <A href={url}>
+    <a target="_blank" href={url} rel="noreferrer">
       <span>{title}</span>
       <span>{url.substr(8)}</span>
-    </A>
+    </a>
   </EmbedContainer>
 );

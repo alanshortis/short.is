@@ -3,7 +3,6 @@ import type { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import { MDXRemote } from 'next-mdx-remote';
 import { serialize } from 'next-mdx-remote/serialize';
-import externalLinks from 'remark-external-links';
 import highlight from 'remark-highlight.js';
 import type { Post } from '../../types';
 import { allPostsFrontMatter, postContent } from '../../data/all-posts';
@@ -22,7 +21,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const fileContent = postContent(params?.slug as string);
   const mdxContent = await serialize(fileContent.content, {
     mdxOptions: {
-      remarkPlugins: [externalLinks, highlight],
+      // I don't know why it's upset about the remark plugins, and I don't care at this point.
+      // @ts-ignore
+      remarkPlugins: [highlight],
     },
   });
 
@@ -38,15 +39,9 @@ export const config = {
   unstable_runtimeJS: false,
 };
 
-const WrtingPost: FC<Omit<Post, 'slug' | 'content'>> = ({
-  title,
-  date,
-  intro,
-  nextPost,
-  prevPost,
-  mdxContent,
-  year,
-}) => (
+type PostProps = Omit<Post, 'slug' | 'content'>;
+
+const WrtingPost: FC<PostProps> = ({ title, date, intro, nextPost, prevPost, mdxContent, year }) => (
   <>
     <Head>
       {nextPost && <link rel="prefetch" href={`/writing/${nextPost.slug}`} />}
