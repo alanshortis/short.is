@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-export const Grid = styled.article`
+export const Grid = styled.div`
   display: grid;
-  gap: calc(var(--spacing) * 2) var(--spacing);
+  gap: calc(var(--spacing) * 2);
   grid-template-columns: repeat(2, minmax(0, 1fr));
   margin-bottom: calc(var(--spacing) * 2);
   @media ${p => p.theme.media.medium} {

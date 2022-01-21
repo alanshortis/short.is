@@ -36,7 +36,7 @@ const Writing: NextPage<PostList> = ({ posts, years }) => (
               <Label as="h2">{year}</Label>
             </Sticker>
           </Aside>
-          <PageBody>
+          <PageBody as="article">
             {posts
               .filter(post => post.year === year)
               .map(post => (

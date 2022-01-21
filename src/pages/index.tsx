@@ -1,9 +1,10 @@
 import type { NextPage, GetStaticPropsResult } from 'next';
 import Head from 'next/head';
+import Link from 'next/link';
 import type { LatestContent } from '../types';
 import { latestPost } from '../data/all-posts';
-import { Layout, PostIndexItem } from '../components';
-import { Aside, Grid, PageBody } from '../components/Grid';
+import { Label, Layout, PostIndexItem, ShadowBox } from '../components';
+import { Grid, Full } from '../components/Grid';
 
 export async function getStaticProps(): Promise<GetStaticPropsResult<LatestContent>> {
   return {
@@ -28,15 +29,21 @@ const Home: NextPage<LatestContent> = ({ latestWriting }) => {
       </Head>
       <Layout>
         <Grid>
-          <Aside>
+          <Full>
             <h1>Alan Shortis</h1>
-          </Aside>
+          </Full>
+          <Full>
+            <Label as="h2">
+              Front end developer &middot;{' '}
+              <Link href="/about">
+                <a>About &rarr;</a>
+              </Link>
+            </Label>
+          </Full>
         </Grid>
-        <Grid>
-          <PageBody>
-            <PostIndexItem slug={slug} date={date} title={title} intro={intro} year={year} hasBorder />
-          </PageBody>
-        </Grid>
+        <ShadowBox>
+          <PostIndexItem slug={slug} date={date} title={title} intro={intro} year={year} />
+        </ShadowBox>
       </Layout>
     </>
   );
