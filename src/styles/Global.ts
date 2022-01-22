@@ -9,17 +9,17 @@ export const Global = createGlobalStyle`
   }
 
   :root {
-    font-size: 93.75%;
+    font-size: 100%;
     --background: ${p => p.theme.color.light};
     --foreground: ${p => p.theme.color.dark};
     --spacing: ${p => p.theme.spacing};
 
     @media ${p => p.theme.media.small} {
-      font-size: 100%;
+      font-size: 106.25%;
     }
 
     @media ${p => p.theme.media.medium} {
-      font-size: 106.25%;
+      font-size: 112.5%;
       --spacing: ${p => p.theme.spacing};
     }
 
@@ -39,6 +39,7 @@ export const Global = createGlobalStyle`
   }
 
   html {
+    height: 100%;
     @media ${p => p.theme.media.shouldAnimate} {
       scroll-behavior: smooth;
     }
@@ -49,6 +50,7 @@ export const Global = createGlobalStyle`
     color: var(--foreground);
     font-family: ${p => p.theme.font.family};
     font-variation-settings: 'wght' ${p => p.theme.font.weight};
+    height: 100%;
     line-height: 1;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;

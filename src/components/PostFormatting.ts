@@ -72,7 +72,7 @@ export const PostFormatting = styled.div`
   }
 
   del {
-    opacity: 0.5;
+    opacity: 0.6;
     position: relative;
     text-decoration: none;
     &::before {

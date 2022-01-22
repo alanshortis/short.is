@@ -60,6 +60,7 @@ if ('customElements' in window) {
               height: 1.5rem;
               text-transform: uppercase;
               margin-bottom: -2px;
+              width: 1.5rem;
             }
             .dm-toggle svg {
               width: 1.25rem;
