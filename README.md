@@ -3,3 +3,5 @@
 # short.is
 
 A personal website, written with Next.js, TypeScript, styled components, and web components.
+
+Configured to exclude the usual bundle of JavaScript from production builds, the production site is only HTML, CSS, and a single optional web component.
