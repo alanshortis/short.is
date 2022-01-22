@@ -45,10 +45,7 @@ const StyledList = styled.ul`
   }
 `;
 
-const pages: MenuItem[] = [
-  { title: 'Writing', path: '/writing' },
-  { title: 'About', path: '/about' },
-];
+const pages: MenuItem[] = [{ title: 'Writing', path: '/writing' }];
 
 export const Menu: FC = () => {
   const router = useRouter();

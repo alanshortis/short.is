@@ -14,10 +14,14 @@ const StyledPost = styled(PostFormatting)`
   }
 `;
 
-export const PostIndexItem: FC<FrontMatter> = ({ slug, date, title, intro, year }) => (
+interface Props extends FrontMatter {
+  isLatest?: boolean;
+}
+
+export const PostIndexItem: FC<Props> = ({ slug, date, title, intro, isLatest }) => (
   <Link href={`/writing/${slug}`} passHref>
     <StyledPost as="a">
-      <PostDate date={date} year={year} />
+      {isLatest ? <Label>Latest writing</Label> : <PostDate date={date} />}
       <h3>{title}</h3>
       <p>{intro}</p>
       <Label toTheRight>Read more &rarr;</Label>
