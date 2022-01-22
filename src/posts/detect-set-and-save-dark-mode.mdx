@@ -1,8 +1,6 @@
 ---
 title: 'Detect, set and save Dark Mode'
 date: '2019-10-27'
-updated: '2020-12-29'
-hasToc: true
 intro: 'Dark Mode is mainstream. Supporting it is reasonably easy, but what about giving users the option to contradict their OS settings and remembering that choice?'
 ---
 
@@ -188,8 +186,6 @@ Doing it in this order sets a bit of a hierarchy for the scheme to use:
 Now we've put all of these parts together, we have a site that can handle dark mode if set in the OS settings but also allows the user to have what they want.
 
 Everything we have covered (plus a little more styling) is included in this pen. Saving the preferred scheme with `localStorage` works even in this embedded iFrame:
-
-(December 2020: It appears that Chrome is now preventing interaction with `localStorage` when embedded in an iframe, so if this example doesn't work as expected please click the URL below the frame to pop the example out into its own window.)
 
 <ExampleEmbed title="Dark Mode" url="https://examples.short.is/dark-mode/final/" />
 

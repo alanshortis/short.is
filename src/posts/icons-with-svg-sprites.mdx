@@ -1,7 +1,6 @@
 ---
 title: 'Icons with SVG Sprites'
 date: '2017-02-21'
-hasToc: true
 intro: 'First there were sprite sheets. Then icon fonts. Then SVGs. Now there are SVG sprites. Do we finally have the solution?'
 ---
 
@@ -65,7 +64,7 @@ To display each icon (which is now a path in an SVG) we need to add the entire S
 </body>
 ```
 
-Note that the SVG is included inside an element that is hidden: `display: none;`. This isn't because your icons will appear on the page, it's just because the appended SVG element will take up some space.
+Note that the SVG is included inside an element that is hidden: `display: none;`. This isn't because your icons will appear on the page, it's just because the appended SVG element will take up some space and it'll tell a screen reader not to even try and find something to announce.
 
 To display the individual icons we need the `use` element within an SVG to get a path in our sprite by ID:
 

@@ -1,9 +1,10 @@
-.DS_Store
-.env.local
-.cache
-.next
-npm-debug.log*
 node_modules
-public/writing/feed.xml
+.next
+.env
 out
-*.report.html
+.DS_Store
+yarn-debug.log*
+yarn-error.log*
+*.tsbuildinfo
+
+public/writing/*
