@@ -57,8 +57,7 @@ if ('customElements' in window) {
         this.innerHTML = `
           <style>
             .dm-toggle {
-              height: 1.25rem;
-              letter-spacing: 2px;
+              height: 1.5rem;
               text-transform: uppercase;
               margin-bottom: -2px;
             }
