@@ -11,11 +11,6 @@ import { allPostsFrontMatter, postContent } from '../../data/all-posts';
 import { Aside, Full, Grid, PageBody, Sticker } from '../../components/Grid';
 import { ExampleEmbed, Label, Layout, NextPrev, PostFormatting, PostDate } from '../../components';
 
-const WritingLink = styled.a`
-  display: inline-block;
-  margin-top: calc(var(--spacing) / 2);
-`;
-
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = allPostsFrontMatter.map(post => ({
     params: { slug: post.slug },
@@ -62,11 +57,6 @@ const WrtingPost: FC<PostProps> = ({ title, date, intro, nextPost, prevPost, mdx
         <Aside>
           <Sticker>
             <PostDate date={date} year={year} />
-            <Label>
-              <Link href="/writing" passHref>
-                <WritingLink>&larr; All writing</WritingLink>
-              </Link>
-            </Label>
           </Sticker>
         </Aside>
         <PageBody as={PostFormatting}>
