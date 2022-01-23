@@ -31,19 +31,15 @@ const Home: NextPage<LatestContent> = ({ latestWriting }) => {
             <h1>Alan Shortis</h1>
           </Full>
           <PageBody as={PostFormatting}>
-            <p className="intro">
-              I&#39;m Alan Shortis—a front end developer based in <del>London</del> <del>Nottingham</del>{' '}
-              <ins>Leicester</ins>.
-            </p>
+            <h2 className="intro">
+              I&#39;m a front end developer based in <del>London</del> <del>Nottingham</del>{' '}
+              <ins>Leicester</ins>, currently working for{' '}
+              <a href="https://playsportsnetwork.com/">Play Sports Network</a>.
+            </h2>
             <p>
               I like building scalable, accessible, and performant design systems and websites using HTML,
               CSS, and JavaScript. The combination of code, design, and empathy for end users is what makes me
               want to do my best work.
-            </p>
-            <p>
-              This website was built using TypeScript, Next.js, and Styled Components for developer experience
-              but leans heavily on platform features and progressive enhancement. There is no bundle; the only
-              JavaScript being a single optional web component.
             </p>
             <p>
               Find me on{' '}

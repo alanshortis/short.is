@@ -5,10 +5,14 @@ import { MetaContext } from '../data/meta';
 import { Label } from '.';
 
 const StyledFooter = styled.footer`
+  --safe-area-inset-bottom: env(safe-area-inset-bottom);
   border-top: ${p => p.theme.borderSize} solid currentColor;
   display: flex;
   justify-content: space-between;
   padding: var(--spacing) 0;
+  @supports (padding-bottom: env(safe-area-inset-bottom)) {
+    padding-bottom: calc(var(--safe-area-inset-bottom) + var(--spacing));
+  }
 `;
 
 export const Footer: FC = () => {

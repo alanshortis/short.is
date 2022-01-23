@@ -17,13 +17,17 @@ export const PostFormatting = styled.div`
     code {
       padding: calc(var(--spacing) / 8);
     }
-    &.intro {
-      font-size: 1.333rem;
-    }
     &:only-child,
     &:last-child {
       margin-bottom: 0;
     }
+  }
+
+  .intro {
+    font-size: 1.333rem;
+    font-variation-settings: 'wght' ${p => p.theme.font.weight};
+    letter-spacing: initial;
+    padding-top: 0;
   }
 
   a {

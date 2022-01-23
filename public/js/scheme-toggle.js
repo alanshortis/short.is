@@ -58,7 +58,6 @@ if ('customElements' in window) {
           <style>
             .dm-toggle {
               height: 1.5rem;
-              text-transform: uppercase;
               margin-bottom: -2px;
               width: 1.5rem;
             }
