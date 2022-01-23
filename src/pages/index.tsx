@@ -41,11 +41,6 @@ const Home: NextPage<LatestContent> = ({ latestWriting }) => {
               want to do my best work.
             </p>
             <p>
-              This website was built using TypeScript, Next.js, and Styled Components for developer experience
-              but leans heavily on platform features and progressive enhancement. There is no bundle; the only
-              JavaScript being a single optional web component.
-            </p>
-            <p>
               Find me on{' '}
               <a href="https://www.are.na/alan-shortis" rel="me">
                 Are.na
