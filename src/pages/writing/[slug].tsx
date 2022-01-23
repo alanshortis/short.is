@@ -1,15 +1,13 @@
 import type { FC } from 'react';
 import type { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
-import Link from 'next/link';
-import styled from 'styled-components';
 import { MDXRemote } from 'next-mdx-remote';
 import { serialize } from 'next-mdx-remote/serialize';
 import highlight from 'remark-highlight.js';
 import type { Post } from '../../types';
 import { allPostsFrontMatter, postContent } from '../../data/all-posts';
 import { Aside, Full, Grid, PageBody, Sticker } from '../../components/Grid';
-import { ExampleEmbed, Label, Layout, NextPrev, PostFormatting, PostDate } from '../../components';
+import { ExampleEmbed, Layout, NextPrev, PostFormatting, PostDate } from '../../components';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = allPostsFrontMatter.map(post => ({
