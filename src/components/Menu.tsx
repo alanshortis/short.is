@@ -11,7 +11,6 @@ const SchemeToggle = dynamic(() => import('./SchemeToggle'), {
 
 const Container = styled.div`
   display: flex;
-  column-gap: calc(var(--spacing) / 2);
   align-items: center;
 `;
 
@@ -24,6 +23,7 @@ const StyledNav = styled.nav`
 
 const StyledList = styled.ul`
   margin: 0;
+  margin-right: calc(var(--spacing) / 2);
   li {
     display: inline;
     margin-left: 1rem;
