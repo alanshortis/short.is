@@ -1,0 +1,82 @@
+---
+title: 'Building a better menu with roles and ARIA state'
+date: '2022-01-25'
+intro: 'Using roles and ARIA can take a menu from a list of fairly innocuous items to something that is very clearly a menu.'
+---
+
+Probably the most commonly mentioned or memed HTML faux pas is using `div` when a better choice of element is `button`. Divs are free of semantics; they just serve as a nondescript box in which to put things, and the browser or screen reader doesn't know what that box represents. While adding a `click` event to a `div` works in that clicking it will perform the expected action, you lose all the semantics and accessibility extras that come for free just by using the correct HTML element.
+
+Most developers know that when building a menu the most appropriate element is an unordered list (`ul`) with list items for each menu item (`li`). A menu is pretty much a list so this is mostly fine, but there is so much more that can be done to make the intent of the list absolutely clear.
+
+## Implied roles
+
+All HTML elements have a role assigned by default (though `div` and `span` have a role of 'null'). The `button` element has the role of 'button', `ul` is a 'list', and elements like `main` and `header` have a role of 'landmark'. In the majority of cases simply using the correct element is enough to have the correct roles. They're usually pretty self explanatory.
+
+## Explicit roles
+
+`div` has an implied role of 'null' because there is no semantic meaning. If for some reason you needed to build a list of items using `div` you can explicitly define its role as `listitem` and a parent as `list`:
+
+```HTML
+<div role="list">
+  <div role="listitem">Arial</div>
+  <div role="listitem">Helvetica</div>
+</div>
+```
+
+This is not something you should do unless it's absolutely unavoidable. Implied roles are always better than explicit.
+
+> Using role is encouraged in [React Testing Library](https://testing-library.com/docs/dom-testing-library/cheatsheet/#queries) when getting elements rendered in a test. `getByRole` helps you keep semantics in mind when testing a component, whereas `getByText` and `getByTestId` are based on some arbitrary characteristic of the element that has nothing to do with what the element actually is.
+
+## ARIA states
+
+`aria-` attributes can be added to HTML elements to define a state. You might have a button that performs an action and whose appearance changes once it's been clicked to indicate that the action has happened. Just a visual change to the button isn't really enough to properly add that state to the markup.
+
+There are many [ARIA states](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes) and the one most appropriate to this scenario is `aria-pressed`:
+
+```HTML
+<button type="button" aria-pressed="true">Download fonts</button>
+```
+
+> This isn't interchangeable with in-app state management, but you could set the attribute value at the same time as setting state to keep things synchronised.
+
+## Building the menu
+
+With a combination of explicit roles and aria attributes we can make a menu that is better understood by browsers and screen readers.
+
+Let's look at the entire menu then break it down:
+
+```HTML
+<ul role="menubar">
+  <li role="none">
+    <a href="/arial" class="menu-item" role="menuitem">Arial</a>
+  </li>
+  <li role="none">
+    <a href="/helvetica" class="menu-item" role="menuitem" aria-current="page">Helvetica</a>
+  </li>
+</ul>
+```
+
+- Menus are usually a list of links, but here we're explicitly setting the role of the unordered list to 'menubar'.
+- Like any other list we use `li` for all items. As this is really only a container for the link itself we add a role of 'none' to remove any semantics.
+- The link itself is an `a` element with the explicit role of 'menuitem'.
+- State which menuitem is currently active with the `aria-current` attribute. In this case it's given the value 'page' but could be set to another [value](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current) more appropriate to what's being represented, like 'step', 'location' or 'date'.
+
+### Styling
+
+This article isn't about styling, but it's important to note that using ARIA attributes for selectors can help enforce the meaning and importance of the state they represent:
+
+```css
+.menu-item {
+  color: var(--type);
+}
+
+.menu-item[aria-current='page'] {
+  color: var(--accent);
+}
+```
+
+> Note: Colour isn't always the best method for making something look distinct from what's around it. Some other marker that's visible regardless of colour blindness or contrast can help keep things extra accessible.
+
+## Inspecting roles in the browser
+
+There is an accessibility tree in the dev tools for both [Chrome](https://developer.chrome.com/blog/full-accessibility-tree/) and [Firefox](https://developer.mozilla.org/en-US/docs/Tools/Accessibility_inspector) which is excellent for seeing how the page is structured, what elements represent, and catching common mistakes. If you're ever unsure what role an element implicitly has this is the place to look.
