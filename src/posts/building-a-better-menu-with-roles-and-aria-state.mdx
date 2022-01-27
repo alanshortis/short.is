@@ -1,20 +1,20 @@
 ---
 title: 'Building a better menu with roles and ARIA state'
 date: '2022-01-25'
-intro: 'Using roles and ARIA can take a menu from a list of fairly innocuous items to something that is very clearly a menu.'
+intro: 'Using roles and ARIA can take a menu from a list of fairly innocuous items to something that is semantically very clearly a menu.'
 ---
 
-Probably the most commonly mentioned or memed HTML faux pas is using `div` when a better choice of element is `button`. Divs are free of semantics; they just serve as a nondescript box in which to put things, and the browser or screen reader doesn't know what that box represents. While adding a `click` event to a `div` works in that clicking it will perform the expected action, you lose all the semantics and accessibility extras that come for free just by using the correct HTML element.
+One of the most commonly mentioned and memed HTML faux pas is using `div` when a better choice of element is `button`. Divs are free of semantics; they just serve as a nondescript box in which to put things, and the browser or screen reader doesn't know what that box represents. While adding a `click` event to a `div` works in that clicking it will perform the expected action, you lose all the semantics and accessibility extras that come for free just by using the correct HTML element.
 
-Most developers know that when building a menu the most appropriate element is an unordered list (`ul`) with list items for each menu item (`li`). A menu is pretty much a list so this is mostly fine, but there is so much more that can be done to make the intent of the list absolutely clear.
+Most developers know that when building a menu the most appropriate element is an unordered list (`ul`) with list items for each menu item (`li`). A menu is pretty much a list so this is mostly fine, but there is more that can be done to make the purpose of the list absolutely clear.
 
 ## Implied roles
 
-All HTML elements have a role assigned by default (though `div` and `span` have a role of 'null'). The `button` element has the role of 'button', `ul` is a 'list', and elements like `main` and `header` have a role of 'landmark'. In the majority of cases simply using the correct element is enough to have the correct roles. They're usually pretty self explanatory.
+All HTML elements have a role assigned by default (though `div` and `span` have a role of 'null'). The `button` element has the role of 'button', `ul` is a 'list', and elements like `main` and `header` have a role of 'landmark'. In the majority of cases the right HTML element will provide the right roles, but HTML provides a way to override.
 
 ## Explicit roles
 
-`div` has an implied role of 'null' because there is no semantic meaning. If for some reason you needed to build a list of items using `div` you can explicitly define its role as `listitem` and a parent as `list`:
+`div` has an implied role of 'null' because there is no semantic meaning. If for some reason you needed to build a list of items using `div` and not `ul`/`li` you can explicitly define the role of each item as `listitem` and a parent as `list`:
 
 ```HTML
 <div role="list">
@@ -25,19 +25,23 @@ All HTML elements have a role assigned by default (though `div` and `span` have 
 
 This is not something you should do unless it's absolutely unavoidable. Implied roles are always better than explicit.
 
-> Using role is encouraged in [React Testing Library](https://testing-library.com/docs/dom-testing-library/cheatsheet/#queries) when getting elements rendered in a test. `getByRole` helps you keep semantics in mind when testing a component, whereas `getByText` and `getByTestId` are based on some arbitrary characteristic of the element that has nothing to do with what the element actually is.
+## Role in unit tests
+
+In [React Testing Library](https://testing-library.com/docs/dom-testing-library/cheatsheet/#queries) selecting by role is encouraged when getting elements rendered in a test.
+
+Using `getByText` and `getByTestId` are based on some arbitrary characteristic of the element that has nothing to do with what it actually is. `getByRole` ensures the semantics of your HTML count; if you change the element to something with an inappropriate role the test will fail. This can take your tests from being focussed only on function to being concerned with how the component is built and used.
 
 ## ARIA states
 
-`aria-` attributes can be added to HTML elements to define a state. You might have a button that performs an action and whose appearance changes once it's been clicked to indicate that the action has happened. Just a visual change to the button isn't really enough to properly add that state to the markup.
+`aria-` attributes can be added to HTML elements to define a state. You might have a button that performs an action and whose appearance changes once it's been clicked to indicate that the action has happened. Just a visual change to the button isn't enough to set that change of state in the markup.
 
-There are many [ARIA states](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes) and the one most appropriate to this scenario is `aria-pressed`:
+There are many [ARIA states](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes). The one most appropriate to this scenario is `aria-pressed`:
 
 ```HTML
 <button type="button" aria-pressed="true">Download fonts</button>
 ```
 
-> This isn't interchangeable with in-app state management, but you could set the attribute value at the same time as setting state to keep things synchronised.
+> This isn't interchangeable with in-app state management, but you should set the attribute value at the same time as setting state to keep things synchronised.
 
 ## Building the menu
 
@@ -75,8 +79,8 @@ This article isn't about styling, but it's important to note that using ARIA att
 }
 ```
 
-> Note: Colour isn't always the best method for making something look distinct from what's around it. Some other marker that's visible regardless of colour blindness or contrast can help keep things extra accessible.
+> Colour isn't always the best method for making something look distinct from what's around it. Some other marker that's visible regardless of colour blindness or contrast can help keep things extra accessible.
 
 ## Inspecting roles in the browser
 
-There is an accessibility tree in the dev tools for both [Chrome](https://developer.chrome.com/blog/full-accessibility-tree/) and [Firefox](https://developer.mozilla.org/en-US/docs/Tools/Accessibility_inspector) which is excellent for seeing how the page is structured, what elements represent, and catching common mistakes. If you're ever unsure what role an element implicitly has this is the place to look.
+The accessibility inspector in [Firefox](https://developer.mozilla.org/en-US/docs/Tools/Accessibility_inspector) provides a view of the page structure separate from the DOM. Rather than a tree of HTML tags the page is described by nested roles. Any accessibility issues (expected page structure, click events on an element with the wrong role, etc.) are highlighted so it's a great tool for quickly auditing before releasing.
