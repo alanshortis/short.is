@@ -7,8 +7,8 @@ const breakpoints = {
 
 export const theme = {
   color: {
-    light: 'hsl(63, 100%, 97%)',
-    dark: 'hsl(63, 0%, 3%)',
+    light: 'hsl(0, 0%, 97%)',
+    dark: 'hsl(0, 0%, 3%)',
   },
   media: {
     small: `(min-width: ${breakpoints.small}px)`,
