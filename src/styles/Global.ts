@@ -111,13 +111,11 @@ export const Global = createGlobalStyle`
   h1, .h1, h2, h3, h4 {
     font-size: 2.441rem;
     font-variation-settings: 'wght' ${p => p.theme.font.weightBold};
-    hyphens: auto;
     letter-spacing: -0.025em;
     line-height: 1.25;
     text-indent: -0.055em;
     @media ${p => p.theme.media.small} {
       font-size: 3.052rem;
-      hyphens: none;
     }
   }
 
