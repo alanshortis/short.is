@@ -9,6 +9,8 @@ export const theme = {
   color: {
     light: 'hsl(0, 0%, 97%)',
     dark: 'hsl(0, 0%, 3%)',
+    header: 'hsla(0, 0%, 97%, 0.7)',
+    headerDark: 'hsla(0, 0%, 3%, 0.9)',
   },
   media: {
     small: `(min-width: ${breakpoints.small}px)`,

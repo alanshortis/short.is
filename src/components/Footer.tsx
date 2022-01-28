@@ -2,7 +2,7 @@ import type { FC } from 'react';
 import { useContext } from 'react';
 import styled from 'styled-components';
 import { MetaContext } from '../data/meta';
-import { Label } from '.';
+import { Container, Label } from '.';
 
 const StyledFooter = styled.footer`
   --safe-area-inset-bottom: env(safe-area-inset-bottom);
@@ -19,13 +19,15 @@ export const Footer: FC = () => {
   const { year, author } = useContext(MetaContext);
 
   return (
-    <StyledFooter>
-      <p>
-        &copy; {year} {author}
-      </p>
-      <Label>
-        <a href="/writing/feed.xml">RSS</a> &middot; <a href="#top">Top &uarr;</a>
-      </Label>
-    </StyledFooter>
+    <Container>
+      <StyledFooter>
+        <p>
+          &copy; {year} {author}
+        </p>
+        <Label>
+          <a href="/writing/feed.xml">RSS</a> &middot; <a href="#top">Top &uarr;</a>
+        </Label>
+      </StyledFooter>
+    </Container>
   );
 };

@@ -12,6 +12,7 @@ export const Global = createGlobalStyle`
     font-size: 100%;
     --background: ${p => p.theme.color.light};
     --foreground: ${p => p.theme.color.dark};
+    --header-background: ${p => p.theme.color.header};
     --spacing: ${p => p.theme.spacing};
 
     @media ${p => p.theme.media.small} {
@@ -20,12 +21,12 @@ export const Global = createGlobalStyle`
 
     @media ${p => p.theme.media.medium} {
       font-size: 112.5%;
-      --spacing: ${p => p.theme.spacing};
     }
 
     & body.dark {
       --background: ${p => p.theme.color.dark};
       --foreground: ${p => p.theme.color.light};
+      --header-background: ${p => p.theme.color.headerDark};
     }
   }
 
@@ -65,19 +66,9 @@ export const Global = createGlobalStyle`
   #__next {
     display: flex;
     flex-direction: column;
-    margin: 0 auto;
-    max-width: 90rem;
     min-height: 100vh;
-    padding: 0 1rem;
-    width: 100%;
     @supports (min-height: -webkit-fill-available) {
       min-height: -webkit-fill-available;
-    }
-    @media ${p => p.theme.media.small} {
-      padding: 0 2rem;
-    }
-    @media ${p => p.theme.media.medium} {
-      padding: 0 3rem;
     }
   }
 
