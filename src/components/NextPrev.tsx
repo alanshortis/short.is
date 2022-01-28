@@ -5,10 +5,13 @@ import type { Post } from '../types';
 import { VisuallyHidden, Label } from '.';
 
 const StyledLink = styled.a<{ isNewer?: boolean }>`
-  grid-column-end: span 1;
+  grid-column: 1 / -1;
   text-align: ${p => (p.isNewer ? 'right' : 'left')};
+  @media ${p => p.theme.media.small} {
+    grid-column: ${p => (p.isNewer ? '2 / 2' : '1 / 1')};
+  }
   @media ${p => p.theme.media.medium} {
-    grid-column-end: span 6;
+    grid-column: ${p => (p.isNewer ? '7 / 13' : '1 / 6')};
   }
   p {
     overflow: hidden;
