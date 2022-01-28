@@ -9,6 +9,8 @@ export const theme = {
   color: {
     light: 'hsl(0, 0%, 97%)',
     dark: 'hsl(0, 0%, 3%)',
+    header: 'hsla(0, 0%, 97%, 0.7)',
+    headerDark: 'hsla(0, 0%, 3%, 0.9)',
   },
   media: {
     small: `(min-width: ${breakpoints.small}px)`,
@@ -19,7 +21,7 @@ export const theme = {
     face: 'Inter',
     family: 'Inter, "Helvetica Neue", Helvetica, Arial, sans-serif;',
     familyMono: '"SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace',
-    weight: 500,
+    weight: 400,
     weightBold: 700,
     weightMono: 400,
   },

@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import styled, { keyframes } from 'styled-components';
 import type { HeadInfo } from '../types';
-import { Head, Header, Footer } from '.';
+import { Container, Head, Header, Footer } from '.';
 
 const slide = keyframes`
   100% {
@@ -25,7 +25,9 @@ export const Layout: FC<HeadInfo> = ({ children, title, intro }) => (
   <>
     <Head title={title} intro={intro} />
     <Header />
-    <Main id="main">{children}</Main>
+    <Container>
+      <Main id="main">{children}</Main>
+    </Container>
     <Footer />
   </>
 );

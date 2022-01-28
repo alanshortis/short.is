@@ -12,6 +12,7 @@ export const Global = createGlobalStyle`
     font-size: 100%;
     --background: ${p => p.theme.color.light};
     --foreground: ${p => p.theme.color.dark};
+    --header-background: ${p => p.theme.color.header};
     --spacing: ${p => p.theme.spacing};
 
     @media ${p => p.theme.media.small} {
@@ -20,12 +21,12 @@ export const Global = createGlobalStyle`
 
     @media ${p => p.theme.media.medium} {
       font-size: 112.5%;
-      --spacing: ${p => p.theme.spacing};
     }
 
     & body.dark {
       --background: ${p => p.theme.color.dark};
       --foreground: ${p => p.theme.color.light};
+      --header-background: ${p => p.theme.color.headerDark};
     }
   }
 
@@ -65,19 +66,9 @@ export const Global = createGlobalStyle`
   #__next {
     display: flex;
     flex-direction: column;
-    margin: 0 auto;
-    max-width: 90rem;
     min-height: 100vh;
-    padding: 0 1rem;
-    width: 100%;
     @supports (min-height: -webkit-fill-available) {
       min-height: -webkit-fill-available;
-    }
-    @media ${p => p.theme.media.small} {
-      padding: 0 2rem;
-    }
-    @media ${p => p.theme.media.medium} {
-      padding: 0 3rem;
     }
   }
 
@@ -118,24 +109,36 @@ export const Global = createGlobalStyle`
   }
 
   h1, .h1, h2, h3, h4 {
-    font-size: 3.052rem;
+    font-size: 2.441rem;
     font-variation-settings: 'wght' ${p => p.theme.font.weightBold};
     hyphens: auto;
+    letter-spacing: -0.025em;
     line-height: 1.25;
+    text-indent: -0.055em;
     @media ${p => p.theme.media.small} {
+      font-size: 3.052rem;
       hyphens: none;
     }
   }
 
   h2, .h2  {
-    font-size: 2.441rem;
+    font-size: 1.953rem;
+    @media ${p => p.theme.media.small} {
+      font-size: 2.441rem;
+    }
   }
 
   h3, .h3 {
-    font-size: 1.953rem;
+    font-size: 1.563rem;
+    @media ${p => p.theme.media.small} {
+      font-size: 1.953rem;
+    }
   }
 
   h4, .h4 {
-    font-size: 1.563rem;
+    font-size: 1rem;
+    @media ${p => p.theme.media.small} {
+      font-size: 1.563rem;
+    }
   }
 `;
