@@ -8,6 +8,14 @@ One of the most commonly mentioned and memed HTML faux pas is using `div` when a
 
 Most developers know that when building a menu the most appropriate element is an unordered list (`ul`) with list items for each menu item (`li`). A menu is pretty much a list so this is mostly fine, but there is more that can be done to make the purpose of the list absolutely clear.
 
+## Why do semantics matter?
+
+The dictionary defines semantic as: 'relating to meaning in language or logic.' While you could build a page using only `div` that looks good, there is no meaning in the structure that can be read by any technology that presents the page to people.
+
+Blind or partially sighted people use screen readers to have websites read to them aloud. The screen reader interprets the meaning behind an element on a website from the HTML tag used and the role that tag has, and can then give context to each part of the page as it gets focus. A list composed from `div` might look like a list visually, but a screen reader can't tell a user that they're interacting with a list.
+
+Screen readers are just one example. Browsers have reading modes, and search engines rank pages with good semantics better than those without as they can better understand what's being crawled.
+
 ## Implied roles
 
 All HTML elements have a role assigned by default (though `div` and `span` have a role of 'null'). The `button` element has the role of 'button', `ul` is a 'list', and elements like `main` and `header` have a role of 'landmark'. In the majority of cases the right HTML element will provide the right roles, but HTML provides a way to override.
