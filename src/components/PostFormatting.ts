@@ -36,7 +36,6 @@ export const PostFormatting = styled.div`
     &[href^='http']:not([href*='short.is'])::after {
       content: '↑';
       display: inline-block;
-      font-size: 0.8rem;
       margin-left: 0.25em;
       position: relative;
       left: -2px;
