@@ -3,7 +3,7 @@ import { createGlobalStyle } from 'styled-components';
 export const Global = createGlobalStyle`
   @font-face {
     font-family: ${p => p.theme.font.face};
-    src: url(/fonts/manrope.woff2) format("woff2");
+    src: url(/fonts/inter.woff2) format("woff2");
     font-display: swap;
     font-weight: 200 800;
   }
@@ -121,7 +121,6 @@ export const Global = createGlobalStyle`
     font-size: 3.052rem;
     font-variation-settings: 'wght' ${p => p.theme.font.weightBold};
     hyphens: auto;
-    letter-spacing: -2px;
     line-height: 1.25;
     @media ${p => p.theme.media.small} {
       hyphens: none;

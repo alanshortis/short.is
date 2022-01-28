@@ -31,6 +31,11 @@ const Home: NextPage<LatestContent> = ({ latestWriting }) => {
             <h1>Alan Shortis</h1>
           </Full>
           <PageBody as={PostFormatting}>
+            <p>
+              {
+                'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-=!@£$%^&*()_+#[]{};\'\\:"|,./<>?—←→↗↑↓'
+              }
+            </p>
             <h2 className="intro">
               I&#39;m a front end developer based in <del>London</del> <del>Nottingham</del>{' '}
               <ins>Leicester</ins>, currently working for{' '}
