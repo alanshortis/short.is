@@ -1,7 +1,7 @@
 {
   "name": "short.is",
   "description": "Alan Shortis is a web developer.",
-  "version": "5.1.0",
+  "version": "5.1.1",
   "author": "Alan Shortis",
   "private": true,
   "scripts": {
