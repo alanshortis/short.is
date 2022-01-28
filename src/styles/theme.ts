@@ -16,8 +16,8 @@ export const theme = {
     shouldAnimate: '(prefers-reduced-motion: no-preference)',
   },
   font: {
-    face: 'Manrope',
-    family: 'Manrope, "Helvetica Neue", Helvetica, Arial, sans-serif;',
+    face: 'Inter',
+    family: 'Inter, "Helvetica Neue", Helvetica, Arial, sans-serif;',
     familyMono: '"SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace',
     weight: 600,
     weightBold: 800,
