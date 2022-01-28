@@ -19,7 +19,7 @@ export const theme = {
     face: 'Inter',
     family: 'Inter, "Helvetica Neue", Helvetica, Arial, sans-serif;',
     familyMono: '"SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace',
-    weight: 500,
+    weight: 400,
     weightBold: 700,
     weightMono: 400,
   },
