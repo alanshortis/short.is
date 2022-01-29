@@ -70,6 +70,11 @@ export const PostFormatting = styled.div`
     max-width: 100%;
   }
 
+  abbr {
+    border-bottom: 1px dashed currentColor;
+    text-decoration: none;
+  }
+
   ins {
     text-decoration: none;
   }

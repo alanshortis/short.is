@@ -58,7 +58,7 @@ const WrtingPost: FC<PostProps> = ({ title, date, intro, nextPost, prevPost, mdx
           </Sticker>
         </Aside>
         <PageBody as={PostFormatting}>
-          <p className="intro">{intro}</p>
+          <p className="intro" dangerouslySetInnerHTML={{ __html: intro }} />
           <MDXRemote {...mdxContent} components={{ ExampleEmbed }} />
         </PageBody>
         <NextPrev nextPost={nextPost} prevPost={prevPost} />
