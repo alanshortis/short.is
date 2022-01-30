@@ -3,6 +3,7 @@
   "parserOptions": {
     "project": "tsconfig.json"
   },
+  "ignorePatterns": ["new.ts"],
   "rules": {
     "@typescript-eslint/ban-ts-comment": 0,
     "import/no-cycle": 0,
