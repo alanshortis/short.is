@@ -9,7 +9,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint src/**/*.{tsx,ts}; tsc --noEmit",
-    "new": "node new.js"
+    "new": "deno run --allow-write --allow-read new.ts"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",
