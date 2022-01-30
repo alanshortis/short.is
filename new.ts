@@ -21,4 +21,4 @@ const answer = await ask.input({
 });
 
 const slug = encodeURIComponent(answer.title!.split(' ').join('-').toLowerCase());
-await Deno.writeTextFile(`${PATH}/${slug}.${EXT}`, template(answer.title!), { create: false });
+await Deno.writeTextFile(`${PATH}/${slug}.${EXT}`, template(answer.title!));
