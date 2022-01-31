@@ -23,7 +23,7 @@ export const PostIndexItem: FC<Props> = ({ slug, date, title, intro, isLatest })
     <StyledPost as="a">
       {isLatest ? <Label>Latest writing</Label> : <PostDate date={date} />}
       <h3>{title}</h3>
-      <p>{intro}</p>
+      <p dangerouslySetInnerHTML={{ __html: intro }} />
       <Label toTheRight>Read more &rarr;</Label>
     </StyledPost>
   </Link>
