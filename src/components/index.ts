@@ -1,3 +1,4 @@
+export { Coffee } from './Coffee';
 export { Container } from './Container';
 export { ExampleEmbed } from './ExampleEmbed';
 export { Footer } from './Footer';
