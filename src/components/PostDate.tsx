@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import { dateFormat, daysSince } from '../helpers';
+import { dateFormat } from '../helpers';
 import { Label } from '.';
 
 interface Props {
@@ -9,7 +9,6 @@ interface Props {
 
 export const PostDate: FC<Props> = ({ date, year }) => (
   <Label as="time" dateTime={date}>
-    {dateFormat(date)} {year && year}
-    {daysSince(date) < 14 && <span> &middot; New</span>}
+    {dateFormat(date, year)}
   </Label>
 );
