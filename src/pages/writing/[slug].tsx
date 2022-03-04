@@ -41,7 +41,7 @@ export const config = {
 
 type PostProps = Omit<Post, 'slug' | 'content'>;
 
-const WrtingPost: FC<PostProps> = ({ title, date, intro, nextPost, prevPost, mdxContent, year }) => (
+const WrtingPost: FC<PostProps> = ({ title, date, intro, nextPost, prevPost, mdxContent }) => (
   <>
     <Head>
       {nextPost && <link rel="prefetch" href={`/writing/${nextPost.slug}`} />}
@@ -54,7 +54,7 @@ const WrtingPost: FC<PostProps> = ({ title, date, intro, nextPost, prevPost, mdx
         </Full>
         <Aside>
           <Sticker>
-            <PostDate date={date} year={year} />
+            <PostDate date={date} hasYear />
           </Sticker>
         </Aside>
         <PageBody as={PostFormatting}>
