@@ -4,11 +4,11 @@ import { Label } from '.';
 
 interface Props {
   date: string;
-  year?: string;
+  hasYear?: boolean;
 }
 
-export const PostDate: FC<Props> = ({ date, year }) => (
+export const PostDate: FC<Props> = ({ date, hasYear }) => (
   <Label as="time" dateTime={date}>
-    {dateFormat(date, year)}
+    {dateFormat(date, hasYear)}
   </Label>
 );

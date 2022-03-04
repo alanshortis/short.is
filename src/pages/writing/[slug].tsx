@@ -54,7 +54,7 @@ const WrtingPost: FC<PostProps> = ({ title, date, intro, nextPost, prevPost, mdx
         </Full>
         <Aside>
           <Sticker>
-            <PostDate date={date} year={year} />
+            <PostDate date={date} hasYear />
           </Sticker>
         </Aside>
         <PageBody as={PostFormatting}>
