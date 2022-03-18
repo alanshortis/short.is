@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const Container = styled.div<{ fillHeight?: boolean }>`
+  flex: ${p => (p.fillHeight ? '1' : 'initial')};
   margin: 0 auto;
   max-width: 90rem;
   padding: 0 var(--spacing);
