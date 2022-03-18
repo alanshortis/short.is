@@ -34,15 +34,15 @@ export const PostFormatting = styled.div`
     text-decoration: underline;
     white-space: nowrap;
     &[href^='http']:not([href*='short.is'])::after {
-      content: '↑';
+      content: '↗';
       display: inline-block;
-      margin-left: 0.25em;
+      font-size: 0.8rem;
+      margin-left: 0.25rem;
       position: relative;
       left: -2px;
       text-decoration: none;
-      transform: rotate(45deg);
       @supports (content: 'x' / 'y') {
-        content: '↑' / 'Link opens in a new tab';
+        content: '↗' / 'Link opens in a new tab';
       }
     }
   }
