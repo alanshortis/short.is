@@ -2,7 +2,7 @@ import type { FC } from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
 import type { FrontMatter } from '../types';
-import { Label, PostFormatting, PostDate } from '.';
+import { Arrow, Label, PostFormatting, PostDate } from '.';
 
 const StyledPost = styled(PostFormatting)`
   display: block;
@@ -24,7 +24,9 @@ export const PostIndexItem: FC<Props> = ({ slug, date, title, intro, isLatest })
       {isLatest ? <Label>Latest writing</Label> : <PostDate date={date} />}
       <h3>{title}</h3>
       <p dangerouslySetInnerHTML={{ __html: intro }} />
-      <Label toTheRight>Read more &rarr;</Label>
+      <Label toTheRight>
+        <Arrow>Read more</Arrow>
+      </Label>
     </StyledPost>
   </Link>
 );

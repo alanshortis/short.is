@@ -2,7 +2,7 @@ import type { FC } from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
 import type { Post } from '../types';
-import { VisuallyHidden, Label } from '.';
+import { Arrow, Label, VisuallyHidden } from '.';
 
 const StyledLink = styled.a<{ isNewer?: boolean }>`
   grid-column: 1 / -1;
@@ -35,7 +35,9 @@ export const NextPrev: FC<Props> = ({ nextPost, prevPost }) => (
     {prevPost ? (
       <Link href={`/writing/${prevPost.slug}`} passHref>
         <StyledLink>
-          <Label>&larr; Older</Label>
+          <Label>
+            <Arrow direction="left">Older</Arrow>
+          </Label>
           <p className="h4">{prevPost.title}</p>
         </StyledLink>
       </Link>
@@ -45,7 +47,9 @@ export const NextPrev: FC<Props> = ({ nextPost, prevPost }) => (
     {nextPost && (
       <Link href={`/writing/${nextPost.slug}`} passHref>
         <StyledLink isNewer>
-          <Label>Newer &rarr;</Label>
+          <Label>
+            <Arrow>Newer</Arrow>
+          </Label>
           <p className="h4">{nextPost.title}</p>
         </StyledLink>
       </Link>
