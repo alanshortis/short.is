@@ -25,7 +25,7 @@ export const Layout: FC<HeadInfo> = ({ children, title, intro }) => (
   <>
     <Head title={title} intro={intro} />
     <Header />
-    <Container>
+    <Container fillHeight>
       <Main id="main">{children}</Main>
     </Container>
     <Footer />
