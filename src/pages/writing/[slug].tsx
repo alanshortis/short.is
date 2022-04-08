@@ -59,7 +59,7 @@ const WrtingPost: FC<PostProps> = ({ title, date, intro, nextPost, prevPost, mdx
         </Full>
         <Aside>
           <Sticker>
-            <PostDate date={date} hasYear /> <ShareButton />
+            <PostDate date={date} hasYear /> <ShareButton title={title} url="some url" />
           </Sticker>
         </Aside>
         <PageBody as={PostFormatting}>

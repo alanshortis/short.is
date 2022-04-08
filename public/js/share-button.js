@@ -2,6 +2,14 @@ if ('share' in navigator) {
   customElements.define(
     'share-button',
     class extends HTMLElement {
+      get shareUrl() {
+        return this.getAttribute('url');
+      }
+
+      get shareTitle() {
+        return this.getAttribute('title');
+      }
+
       connectedCallback() {
         this.render();
       }
@@ -16,10 +24,14 @@ if ('share' in navigator) {
 
       listeners() {
         this.querySelector('button').addEventListener('click', async () => {
-          await navigator.share({
-            text: 'Title — short.is',
-            url: 'https://short.is/path',
-          });
+          try {
+            await navigator.share({
+              text: `${this.shareTitle} — short.is`,
+              url: this.shareUrl,
+            });
+          } catch (e) {
+            console.warn(e);
+          }
         });
       }
     }
