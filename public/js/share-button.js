@@ -14,7 +14,17 @@ if ('share' in navigator) {
 
       render() {
         this.innerHTML = `
-          &nbsp;&middot;&nbsp;<button type="button">share</button>
+          <style>
+            .sb-label {
+              display: inline-block;
+              font-size: 0.8rem;
+              font-variation-settings: 'wght' 400;
+              letter-spacing: 2px;
+              line-height: 1.563;
+              text-transform: uppercase;
+            }
+          </style>
+          &middot; <button type="button" class="sb-label">Share</button>
         `;
 
         this.listeners();
@@ -24,7 +34,7 @@ if ('share' in navigator) {
         this.querySelector('button').addEventListener('click', async () => {
           try {
             await navigator.share({
-              text: `${this.shareTitle} — short.is`,
+              text: this.shareTitle,
               url: this.shareUrl,
             });
           } catch (e) {

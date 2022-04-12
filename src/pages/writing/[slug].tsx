@@ -1,7 +1,6 @@
 import type { FC } from 'react';
 import type { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
-import dynamic from 'next/dynamic';
 import { MDXRemote } from 'next-mdx-remote';
 import { serialize } from 'next-mdx-remote/serialize';
 import highlight from 'remark-highlight.js';
@@ -9,10 +8,6 @@ import type { Post } from '../../types';
 import { allPostsFrontMatter, postContent } from '../../data/all-posts';
 import { Aside, Full, Grid, PageBody, Sticker } from '../../components/Grid';
 import { Coffee, ExampleEmbed, Layout, NextPrev, PostFormatting, PostDate } from '../../components';
-
-const ShareButton = dynamic(() => import('../../components/ShareButton'), {
-  ssr: process.env.NODE_ENV === 'production',
-});
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = allPostsFrontMatter.map(post => ({
@@ -59,7 +54,7 @@ const WrtingPost: FC<PostProps> = ({ title, date, intro, nextPost, prevPost, mdx
         </Full>
         <Aside>
           <Sticker>
-            <PostDate date={date} hasYear /> <ShareButton />
+            <PostDate date={date} hasYear hasShare />
           </Sticker>
         </Aside>
         <PageBody as={PostFormatting}>
