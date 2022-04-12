@@ -2,12 +2,10 @@ if ('share' in navigator) {
   customElements.define(
     'share-button',
     class extends HTMLElement {
-      get shareUrl() {
-        return this.getAttribute('url');
-      }
-
-      get shareTitle() {
-        return this.getAttribute('title');
+      constructor() {
+        super();
+        this.shareUrl = window.location.href;
+        this.shareTitle = document.getElementsByTagName('title')[0].innerText;
       }
 
       connectedCallback() {
