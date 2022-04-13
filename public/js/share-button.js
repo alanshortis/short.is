@@ -1,4 +1,4 @@
-if ('share' in navigator) {
+if ('customElements' in window && 'share' in navigator) {
   customElements.define(
     'share-button',
     class extends HTMLElement {
