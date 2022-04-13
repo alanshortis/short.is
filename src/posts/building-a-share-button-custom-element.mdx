@@ -1,0 +1,173 @@
+---
+title: 'Building a share button custom element'
+date: '2022-04-12'
+intro: 'Web components are gaining traction. Building a custom element to implement the Web Share API is both a simple introduction and an opportunity to use the platform to our advantage.'
+---
+
+## Web components
+
+Web components can be hard to understand. We have React and other frameworks that allow us to work in components, so why consider a web component to add a feature?
+
+React and other frameworks are JavaScript libraries that provide features on top of the web platform. They're not standardised, just like the syntax used in jQuery isn't standard and requires the jQuery library to be available.
+
+Many would argue that advances in JavaScript have made jQuery less necessary. While Web Components aren't quite making React obsolete yet, it's the same principle.
+
+Web components is a set of technologies including custom elements, shadow DOM, and templates. In this article we're only going to look at custom elements.
+
+## Web share API
+
+Although [support looks poor](https://caniuse.com/?search=navigator.share), the Web Share API has good support where expected: in browsers native to mobile and desktop operating systems.
+
+You've likely seen the API in use in [Wordle](https://www.nytimes.com/games/wordle/index.html) (which is also a web component): In a supporting browser, the share button opens the operating systems native share menu. The menu shows recent contacts and apps installed on the specific device, offering a sharing experience far beyond any that could be built into an app. Another example of using the platform to give the best experience.
+
+## Separation of concerns
+
+When jQuery started to take over the world, the term **Separation of concerns** was widely used to explain how different parts of a web site or app should be kept separate so they can be moved and modified with minimal impact on other parts. Back then, it looked a bit like this:
+
+_DIAGRAM OF HTML, CSS, JS concerns_
+
+HTML should be separated from CSS should be separated from JavaScript.
+
+This approach has fallen out of favour since the arrival of React. Mixing HTML (written as JSX, but it's still HTML) and JavaScript is now standard. CSS-in-JS takes this even further. A component contains its structure (HTML), styling (CSS) and behaviour (JavaScript) making the complete component portable and encapsulated. Separation of concerns now looks like this:
+
+_DIAGRAM OF COMPONENT CONCERNS_
+
+## Custom elements
+
+As part of web components, custom elements allow you to create your own elements that can be used alongside any existing HTML elements. Those elements can contain content, styles, and functionality very much like a React component that browsers understand directly without a library or framework required.
+
+The simplest possible custom element could look like this:
+
+```JS
+class MyElement extends HTMLElement {
+  connectedCallback() {
+    this.innerHTML = 'This is a <em>custom element</em>.'
+  }
+}
+
+customElements.define('my-element', MyElement);
+```
+
+The `define` method on `customElements` expects two arguments. First, a [DOMString](https://developer.mozilla.org/en-US/docs/Web/API/DOMString) that represents the name of the custom element. It must contain a hyphen. Next is a class where everything about the custom element is defined. There is nothing particularly special about this class, except the `connectedCallback` method. This is called once the custom element has been rendered.
+
+This new custom element can be used just like any existing HTML element:
+
+```html
+<my-element></my-element>
+```
+
+<ExampleEmbed
+  title="A first custom element"
+  url="https://examples.short.is/building-a-share-button-custom-element/1/"
+/>
+
+This is a custom element! It doesn't do much, and in this case you might be wondering what the point of all of this is but from here we can run with the implementation of our share button. Using browser developer tools, you can see the element name in the DOM alongside other HTML elements, and the children inside.
+
+### Adding some functionality
+
+If were adding functionality to a button, we'd use the DOM API to query the `document` to select the button and add an event listener to it, running a callback when the event is fired. In a custom element, it's largely the same except we use `this` in place of `document` to query within the custom element:
+
+```JS
+class BeepBoop extends HTMLElement {
+  connectedCallback() {
+    this.innerHTML = '<button type="button">Beep</button>';
+
+    this.listeners();
+  }
+
+  listeners() {
+    this.querySelector('button').addEventListener('click', () => {
+      console.log('Boop');
+    })
+  }
+}
+
+customElements.define('beep-boop', BeepBoop);
+```
+
+<ExampleEmbed
+  title="A custom element with a click handler"
+  url="https://examples.short.is/building-a-share-button-custom-element/2/"
+/>
+
+### Adding the web share API
+
+Let's get into the updated code right away, then break it down:
+
+```JS
+class ShareButton extends HTMLElement {
+  constructor() {
+    super();
+
+    this.shareUrl = window.location.href;
+    this.shareTitle = document.getElementsByTagName('title')[0].innerText;
+  }
+
+  connectedCallback() {
+    this.innerHTML = `
+      <style>
+        .my-button {
+          background-color: black;
+          border-radius: 4px;
+          border: 0;
+          color: white;
+          cursor: pointer;
+          display: block;
+          padding: 1em 2rem;
+        }
+      </style>
+
+      <button class="my-button" type="button">Share</button>
+    `;
+
+    this.listeners();
+  }
+
+  listeners() {
+    this.querySelector('button').addEventListener('click', async () => {
+      try {
+        await navigator.share({
+          text: this.shareTitle,
+          url: this.shareUrl,
+        });
+      } catch (e) {
+        console.error(e);
+      }
+    });
+  }
+}
+
+customElements.define('my-element', ShareButton);
+```
+
+- We've added a constructor so we can define a couple of variables for sharing. We get the current URL and the text of the `title` attribute from the current page. It's possible to pass properties in to a custom element, much like passing props to a React component. That might be a better option if you want finer control over what exactly gets shared but as everything we write into a custom element is just JavaScript that has direct access to the DOM, we can take advantage of that.
+- We've replaced the console log in our listener with the web share API. It's an `async` function that waits for user interaction on the share menu that's opened.
+- The share API needs to be in a `try catch`. Even a 'happy path' needs this as cancelling sharing falls into the catch block. In this simplified example we just log the issue to the console; a larger app might want to handle the various errors around cancellation, failures, etc. and log them appropriately.
+- Styling can be approached in a couple of ways: using CSS within the app that renders the component and selecting by the tag name of the custom element as well using existing class names in the component, or just adding styles to the inner HTML in the component directly as we've done here.
+
+> Properly encapsulated styles can be achieved via the shadow DOM, which isn't covered in this article. Styles added to the a custom element in this way will leak into the app it's rendered in, so be careful.
+
+<ExampleEmbed
+  title="A custom element for the share API"
+  url="https://examples.short.is/building-a-share-button-custom-element/3/"
+/>
+
+### Browser support
+
+Support for web components is excellent but the web share API has narrower support, more aligned with browsers produced by OS vendors. It's fairly trivial to check for support of JavaScript features, then skip the definition of the custom element entirely:
+
+```JS
+if ('customElements' in window && 'share' in navigator) {
+  customElements.define('my-element', ShareButton);
+}
+```
+
+If the code behind a custom element hasn't been defined, browsers are smart enough to just ignore an element that isn't recognised. Put another way, if a browser doesn't support custom elements or share nothing will be rendered.
+
+If the examples show a message instead of the share button, check the [support table](https://caniuse.com/?search=navigator.share) and try a different browser. Rendering these error messages in a real world app is not desirable. Either handle sharing via a different method, or don't render the button.
+
+## Wrapping up
+
+This example barely scratches the surface of what web components can do, but adding a share button requires an awareness of browser support, and adding functionality specific to a UI element. All of this can be wrapped into one custom element.
+
+Web components are not some strange curiosity that no one uses. They've been adopted by the likes of Adobe, Sales Force, and YouTube in high traffic production apps as changes in React 18 makes their use simpler than ever before.
