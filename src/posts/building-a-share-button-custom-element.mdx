@@ -1,5 +1,5 @@
 ---
-title: 'Building a share button custom element'
+title: 'Building a share button as a custom element'
 date: '2022-04-12'
 intro: 'Web components are gaining traction. Building a custom element to implement the Web Share API is both a simple introduction and an opportunity to use the platform to our advantage.'
 ---
@@ -24,13 +24,13 @@ You've likely seen the API in use in [Wordle](https://www.nytimes.com/games/word
 
 When jQuery started to take over the world, the term **Separation of concerns** was widely used to explain how different parts of a web site or app should be kept separate so they can be moved and modified with minimal impact on other parts. Back then, it looked a bit like this:
 
-_DIAGRAM OF HTML, CSS, JS concerns_
+<Concerns />
 
 HTML should be separated from CSS should be separated from JavaScript.
 
 This approach has fallen out of favour since the arrival of React. Mixing HTML (written as JSX, but it's still HTML) and JavaScript is now standard. CSS-in-JS takes this even further. A component contains its structure (HTML), styling (CSS) and behaviour (JavaScript) making the complete component portable and encapsulated. Separation of concerns now looks like this:
 
-_DIAGRAM OF COMPONENT CONCERNS_
+<Concerns asComponent />
 
 ## Custom elements
 
