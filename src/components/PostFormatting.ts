@@ -123,4 +123,8 @@ export const PostFormatting = styled.div`
       }
     }
   }
+
+  strong {
+    font-variation-settings: 'wght' ${p => p.theme.font.weightBold};
+  }
 `;
