@@ -13,12 +13,12 @@ const EmbedContainer = styled.div`
     }
   }
   a {
-    display: flex;
-    flex-wrap: wrap;
+    display: block;
     font-size: 0.8rem;
-    justify-content: space-between;
+    line-height: 1rem;
+    overflow-x: scroll;
     padding: calc(var(--spacing) / 4) 0;
-    text-decoration: none;
+    text-align: right;
   }
 `;
 
@@ -31,8 +31,7 @@ export const ExampleEmbed: FC<Props> = ({ title, url }) => (
   <EmbedContainer>
     <iframe title={title} src={url} frameBorder="no" allowFullScreen={false} loading="lazy" />
     <a target="_blank" href={url} rel="noreferrer">
-      <span>{title}</span>
-      <span>{url.substr(8)}</span>
+      {url.substring(8)}
     </a>
   </EmbedContainer>
 );

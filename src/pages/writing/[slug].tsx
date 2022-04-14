@@ -7,7 +7,8 @@ import highlight from 'remark-highlight.js';
 import type { Post } from '../../types';
 import { allPostsFrontMatter, postContent } from '../../data/all-posts';
 import { Aside, Full, Grid, PageBody, Sticker } from '../../components/Grid';
-import { Coffee, ExampleEmbed, Layout, NextPrev, PostFormatting, PostDate } from '../../components';
+import { Coffee, Layout, NextPrev, PostFormatting, PostDate } from '../../components';
+import { Concerns, ExampleEmbed } from '../../components/writing';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = allPostsFrontMatter.map(post => ({
@@ -59,7 +60,7 @@ const WrtingPost: FC<PostProps> = ({ title, date, intro, nextPost, prevPost, mdx
         </Aside>
         <PageBody as={PostFormatting}>
           <p className="intro" dangerouslySetInnerHTML={{ __html: intro }} />
-          <MDXRemote {...mdxContent} components={{ ExampleEmbed }} />
+          <MDXRemote {...mdxContent} components={{ Concerns, ExampleEmbed }} />
           <Coffee />
         </PageBody>
         <NextPrev nextPost={nextPost} prevPost={prevPost} />
