@@ -17,12 +17,15 @@ const ConcernContainer = styled.div`
 `;
 
 const StyledConcern = styled.div<{ asComponent?: boolean }>`
+  --animation-speed: ${p => (p.asComponent ? '20s' : '10s')};
+  --size: ${p => (p.asComponent ? '10rem' : '5rem')};
+
   align-items: center;
-  aspect-ratio: 1 / 1;
   display: flex;
+  height: var(--size);
   justify-content: center;
   position: relative;
-  width: ${p => (p.asComponent ? '10rem' : '5rem')};
+  width: var(--size);
   &::after {
     content: '';
     border-radius: 100%;
@@ -30,7 +33,7 @@ const StyledConcern = styled.div<{ asComponent?: boolean }>`
     inset: 0;
     position: absolute;
     @media ${p => p.theme.media.shouldAnimate} {
-      animation: ${spinMeRightRound} 10s infinite linear;
+      animation: ${spinMeRightRound} var(--animation-speed) infinite linear;
     }
   }
   &:not(:last-child) {

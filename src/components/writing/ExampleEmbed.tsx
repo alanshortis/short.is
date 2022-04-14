@@ -13,7 +13,9 @@ const EmbedContainer = styled.div`
     }
   }
   a {
+    display: block;
     font-size: 0.8rem;
+    line-height: 1rem;
     padding: calc(var(--spacing) / 4) 0;
     text-align: right;
   }
