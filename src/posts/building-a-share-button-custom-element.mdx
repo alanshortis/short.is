@@ -68,15 +68,18 @@ If we were adding functionality to a button,we'd use the DOM API to query the `d
 ```JS
 class BeepBoop extends HTMLElement {
   connectedCallback() {
-    this.innerHTML = '<button type="button">Beep</button>';
+    this.innerHTML = `
+      <button type="button">Beep</button>
+      <p></p>
+    `;
 
     this.listeners();
   }
 
   listeners() {
     this.querySelector('button').addEventListener('click', () => {
-      console.log('Boop');
-    })
+      this.querySelector('p').innerText = 'Boop';
+    });
   }
 }
 
