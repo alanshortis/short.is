@@ -49,12 +49,13 @@ export const PostFormatting = styled.div`
 
   ul,
   ol {
-    padding-left: var(--spacing);
+    padding-left: ${p => `calc(var(--spacing) - ${p.theme.borderSize})`};
   }
 
   li {
     list-style: decimal;
     margin-bottom: calc(var(--spacing) / 4);
+    padding-left: calc(var(--spacing) / 4);
   }
 
   ul {

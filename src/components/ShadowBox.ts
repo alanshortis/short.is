@@ -11,8 +11,8 @@ export const shadowBox = css`
   position: relative;
   width: calc(100% - var(--spacing) / 2);
   &::after {
-    background-image: linear-gradient(
-      -45deg,
+    background-image: repeating-linear-gradient(
+      45deg,
       var(--foreground) 5.56%,
       transparent 5.56%,
       transparent 50%,
@@ -34,9 +34,4 @@ export const shadowBox = css`
 
 export const ShadowBox = styled.div`
   ${shadowBox};
-  p:only-of-type,
-  p:last-of-type {
-    line-height: 1.563;
-    margin-bottom: 0;
-  }
 `;
