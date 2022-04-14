@@ -1,18 +1,18 @@
 ---
 title: 'Building a share button custom element'
-date: '2022-04-12'
+date: '2022-04-14'
 intro: 'The web share API allows access to the native share menu from a web page. Custom elements are the perfect technology add this capability to your site or app.'
 ---
 
 ## Web share API
 
-Although [support looks poor](https://caniuse.com/?search=navigator.share), the Web Share API where you'd expect it to: in browsers native to mobile and desktop operating systems.
+Although [support looks poor](https://caniuse.com/?search=navigator.share), the Web Share API works where you'd expect it to: in browsers native to mobile and desktop operating systems.
 
 You've likely seen the API in use in [Wordle](https://www.nytimes.com/games/wordle/index.html). In a supporting browser, the share button opens the operating systems native share menu. The menu shows recent contacts and apps installed on the specific device, offering a sharing experience far beyond any that could be built into an app. Using the platform for predictable and reliable performance and experience.
 
 ## Custom elements
 
-Custom elements are part of web components, and allow us to make self contained elements that work alongside the standard set included in HTML. Similar to React components, they can contain all their markup, styling, and logic and can be reused.
+Custom elements are part of web components, and allow us to make self contained elements that work alongside the standard set included in HTML. Similar to React components, they can contain all their markup, styling, and logic.
 
 So why bother with a custom element when React already does this? React and similar frameworks use JavaScript to provide features on top of the web platform. They're not standardised, just like the syntax used in jQuery isn't standard and requires the jQuery library to be available.
 
@@ -144,9 +144,9 @@ Let's break down everything that's been added:
 - Added a constructor and defined a couple of variables for sharing, getting the current URL and the text of the `title` attribute from the current page. It's possible to pass properties in to a custom element, much like passing props to a React component, and that might be a better option if you want finer control over what exactly gets shared. As everything we write into a custom element is just JavaScript that has direct access to the DOM, it's simplest to just get hold of the share information directly.
 - Replaced the console log in our listener with the web share API. It's an `async` function that waits for user interaction on the share menu that's opened. Once a share option is selected, the text and URL will be passed along as appropriate.
 - The share API needs to be in a `try catch`. Even a bare bones happy path implementation needs this as cancelling the share menu falls into the catch block, despite not being an error. In this simplified example we just log the issue to the console.
-- Styling has been added directly, and this works exactly like any other CSS, with a selector that aligns with the element to be styled. You can also add styles to the app that renders the custom element in the same ways as styling any other element.
+- Styling has been added directly, and this works exactly like any other CSS, with a selector that aligns with the element to be styled. You can also add styles to the app that renders the custom element in the same way as styling any other element.
 
-> Encapsulated styles can be achieved via the shadow DOM, another part of web components. It's not this article, but be aware that styles added as above will also apply in the app it's rendered in, and vice versa.
+> Encapsulated styles can be achieved via the shadow DOM, another part of web components, which is not covered in this article. Be aware that styles added in a custom element will also apply in the app it's rendered in, and vice versa.
 
 <ExampleEmbed
   title="A custom element for the share API"
@@ -163,7 +163,7 @@ if ('customElements' in window && 'share' in navigator) {
 }
 ```
 
-If the code behind a custom element isn't defined, browsers are smart enough to just ignore an element that isn't recognised. Put another way, if a browser doesn't support custom elements or share nothing will be rendered.
+If the code behind a custom element isn't defined, browsers are smart enough to just ignore an element that isn't recognised. Put another way, if a browser doesn't support custom elements or the web share API nothing will be rendered.
 
 Any children of the custom element (that is, any content inside the custom element's tags, not content defined inside the class object) will still be rendered.
 
