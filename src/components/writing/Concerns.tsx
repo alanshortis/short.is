@@ -17,12 +17,12 @@ const ConcernContainer = styled.div`
 `;
 
 const StyledConcern = styled.div<{ asComponent?: boolean }>`
-  --animation-speed: ${p => (p.asComponent ? '20s' : '10s')};
-  --size: ${p => (p.asComponent ? '10rem' : '5rem')};
+  --animation-speed: ${p => (p.asComponent ? '20s' : '15s')};
+  --size: ${p => (p.asComponent ? '7.5rem' : '5rem')};
 
   align-items: center;
+  aspect-ratio: 1 / 1;
   display: flex;
-  height: var(--size);
   justify-content: center;
   position: relative;
   width: var(--size);

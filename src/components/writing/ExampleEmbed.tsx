@@ -16,6 +16,7 @@ const EmbedContainer = styled.div`
     display: block;
     font-size: 0.8rem;
     line-height: 1rem;
+    overflow-x: scroll;
     padding: calc(var(--spacing) / 4) 0;
     text-align: right;
   }
