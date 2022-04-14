@@ -34,9 +34,4 @@ export const shadowBox = css`
 
 export const ShadowBox = styled.div`
   ${shadowBox};
-  p:only-of-type,
-  p:last-of-type {
-    line-height: 1.563;
-    margin-bottom: 0;
-  }
 `;
