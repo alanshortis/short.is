@@ -11,8 +11,8 @@ export const shadowBox = css`
   position: relative;
   width: calc(100% - var(--spacing) / 2);
   &::after {
-    background-image: linear-gradient(
-      -45deg,
+    background-image: repeating-linear-gradient(
+      45deg,
       var(--foreground) 5.56%,
       transparent 5.56%,
       transparent 50%,
