@@ -8,7 +8,11 @@ intro: 'The web share API allows access to the native share menu from a web page
 
 Although [support looks poor](https://caniuse.com/?search=navigator.share), the Web Share API works where you'd expect it to: in browsers native to mobile and desktop operating systems.
 
-You've likely seen the API in use in [Wordle](https://www.nytimes.com/games/wordle/index.html). In a supporting browser, the share button opens the operating systems native share menu. The menu shows recent contacts and apps installed on the specific device, offering a sharing experience far beyond any that could be built into an app. Using the platform for predictable and reliable performance and experience.
+You've likely seen the API in use in [Wordle](https://www.nytimes.com/games/wordle/index.html). In a supporting browser, clicking or touching a share button pops open a menu that is native to the operating system. The menu shows recent contacts and apps installed on the specific device that can be used to share. This offers an experience far beyond any that could be built into an app, using the platform for predictable and reliable performance and experience.
+
+The Web Share API allows us to define the URL of the resource to be shared, as well as any text that should go along with it. In the case of Wordle, it's the grid that shows how well (or badly) your game went. In this implementation, it'll be the title and URL of the current page.
+
+The API can do much more than this. See [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Web_Share_API) for more details.
 
 ## Custom elements
 
@@ -171,4 +175,4 @@ Any children of the custom element (that is, any content inside the custom eleme
 
 This example barely scratches the surface of what custom elements and the wider web components spec can do, but with the web share API's particular requirements for browser support and implementation, it's a great way to add this feature to your site.
 
-Web components are not some strange curiosity that no one uses. They've been adopted by the likes of Adobe, Sales Force, and YouTube in high traffic production apps. There is even a great library of UI components called [Shoelace](https://shoelace.style/).
+Web components are not some strange curiosity that no one uses. They've been adopted by teams at Adobe and Salesforce, and YouTube in web components all the way down. There is even a great library of UI components called [Shoelace](https://shoelace.style/). It's a great time to consider them as a viable option for your next project.
