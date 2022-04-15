@@ -1,7 +1,7 @@
 ---
 title: 'Building a share button custom element'
 date: '2022-04-14'
-intro: 'The web share API allows access to the native share menu from a web page. Custom elements are the perfect technology add this capability to your site or app.'
+intro: 'The web share API allows access to the native share menu from a web page, and a custom element is a great way to add this capability to your site or app.'
 ---
 
 ## Web share API
@@ -16,7 +16,7 @@ The API can do much more than this. See [MDN](https://developer.mozilla.org/en-U
 
 ## Custom elements
 
-Custom elements are part of web components, and allow us to make self contained elements that work alongside the standard set included in HTML. Similar to React components, they can contain all their markup, styling, and logic.
+Custom elements are part of web components, and allow us to make self-contained elements that work alongside the standard set included in HTML. Similar to React components, they can contain all their markup, styling, and logic.
 
 So why bother with a custom element when React already does this? React and similar frameworks use JavaScript to provide features on top of the web platform. They're not standardised, just like the syntax used in jQuery isn't standard and requires the jQuery library to be available.
 
@@ -30,7 +30,7 @@ When jQuery started to take over the world, **Separation of concerns** was a ter
 
 HTML should be separated from CSS should be separated from JavaScript.
 
-This is still a perfectly valid approach if you're building websites in a particular way. But in React (and others, but lets stick with React) it has fallen out of favour. Mixing HTML (written as JSX) and JavaScript is how components and pages are built, with even CSS being consumed by JavaScript. A component contains its structure (HTML), styling (CSS) and behaviour (JavaScript) making the complete component portable and encapsulated:
+This is still a perfectly valid approach if you're building websites in a particular way. But in React (and others, but let's stick with React) it has fallen out of favour. Mixing HTML (written as JSX) and JavaScript is how components and pages are built, with even CSS being consumed by JavaScript. A component contains its structure (HTML), styling (CSS) and behaviour (JavaScript) making the complete component portable and encapsulated:
 
 <Concerns asComponent />
 
@@ -67,7 +67,7 @@ This is a custom element! It doesn't do anything, but from here we can run with 
 
 ### Adding some functionality
 
-If we were adding functionality to a button,we'd use the DOM API to query the `document` to select the button, add an event listener to it, and run a callback when the event is fired. In a custom element it's largely the same except we use `this` in place of `document` to query within the custom element:
+If we were adding functionality to a button, we'd use the DOM API to query the `document` to select the button, add an event listener to it, and run a callback when the event is fired. In a custom element it's largely the same except we use `this` in place of `document` to query within the custom element:
 
 ```JS
 class BeepBoop extends HTMLElement {
@@ -147,7 +147,7 @@ Let's break down everything that's been added:
 
 - Added a constructor and defined a couple of variables for sharing, getting the current URL and the text of the `title` attribute from the current page. It's possible to pass properties in to a custom element, much like passing props to a React component, and that might be a better option if you want finer control over what exactly gets shared. As everything we write into a custom element is just JavaScript that has direct access to the DOM, it's simplest to just get hold of the share information directly.
 - Replaced the console log in our listener with the web share API. It's an `async` function that waits for user interaction on the share menu that's opened. Once a share option is selected, the text and URL will be passed along as appropriate.
-- The share API needs to be in a `try catch`. Even a bare bones happy path implementation needs this as cancelling the share menu falls into the catch block, despite not being an error. In this simplified example we just log the issue to the console.
+- The share API needs to be in a `try catch`. Even a bare-bones happy path implementation needs this as cancelling the share menu falls into the catch block, despite not being an error. In this simplified example, we just log the issue to the console.
 - Styling has been added directly, and this works exactly like any other CSS, with a selector that aligns with the element to be styled. You can also add styles to the app that renders the custom element in the same way as styling any other element.
 
 > Encapsulated styles can be achieved via the shadow DOM, another part of web components, which is not covered in this article. Be aware that styles added in a custom element will also apply in the app it's rendered in, and vice versa.
