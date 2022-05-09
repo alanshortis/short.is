@@ -45,20 +45,11 @@ const Home: NextPage<LatestContent> = ({ latestWriting }) => {
               Find me on{' '}
               <a href="https://www.are.na/alan-shortis" rel="me">
                 Are.na
+              </a>{' '}
+              and{' '}
+              <a href="https://glass.photo/alan" rel="me">
+                Glass.
               </a>
-              ,{' '}
-              <a href="https://codepen.io/alanshortis" rel="me">
-                CodePen
-              </a>
-              ,{' '}
-              <a href="https://github.com/alanshortis" rel="me">
-                GitHub
-              </a>
-              , and{' '}
-              <a href="https://twitter.com/alanshortis" rel="me">
-                Twitter
-              </a>
-              .
             </p>
           </PageBody>
           <PageBody>
