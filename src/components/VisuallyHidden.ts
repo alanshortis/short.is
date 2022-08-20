@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const VisuallyHidden = styled.span`
+export const visuallyHidden = css`
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
   height: 1px;
@@ -8,4 +8,8 @@ export const VisuallyHidden = styled.span`
   position: absolute;
   white-space: nowrap;
   width: 1px;
+`;
+
+export const VisuallyHidden = styled.span`
+  ${visuallyHidden};
 `;

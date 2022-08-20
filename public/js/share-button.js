@@ -14,16 +14,6 @@ if ('customElements' in window && 'share' in navigator) {
 
       render() {
         this.innerHTML = `
-          <style>
-            .sb-label {
-              display: inline-block;
-              font-size: 0.8rem;
-              font-variation-settings: 'wght' 400;
-              letter-spacing: 2px;
-              line-height: 1.563;
-              text-transform: uppercase;
-            }
-          </style>
           &middot; <button type="button" class="sb-label">Share</button>
         `;
 

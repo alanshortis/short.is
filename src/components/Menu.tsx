@@ -1,13 +1,9 @@
 import type { FC } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import dynamic from 'next/dynamic';
 import styled from 'styled-components';
 import type { MenuItem } from '../types';
-
-const SchemeToggle = dynamic(() => import('./SchemeToggle'), {
-  ssr: process.env.NODE_ENV === 'production',
-});
+import { activeMarker } from '.';
 
 const Container = styled.div`
   display: flex;
@@ -31,17 +27,7 @@ const StyledList = styled.ul`
   }
 
   [aria-current='page']::after {
-    --dot: 7px;
-    --half-dot: 3.5px;
-    background-color: currentColor;
-    border-radius: var(--dot);
-    content: '';
-    cursor: default;
-    height: var(--dot);
-    left: calc(50% - var(--half-dot));
-    position: absolute;
-    top: var(--spacing);
-    width: var(--dot);
+    ${activeMarker};
   }
 `;
 
@@ -69,7 +55,6 @@ export const Menu: FC = () => {
           })}
         </StyledList>
       </StyledNav>
-      <SchemeToggle />
     </Container>
   );
 };

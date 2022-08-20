@@ -1,3 +1,4 @@
+export { activeMarker } from './Active';
 export { Arrow } from './Arrow';
 export { Coffee } from './Coffee';
 export { Container } from './Container';
@@ -14,4 +15,4 @@ export { PostDate } from './PostDate';
 export { PostFormatting } from './PostFormatting';
 export { PostIndexItem } from './PostIndexItem';
 export { ShadowBox } from './ShadowBox';
-export { VisuallyHidden } from './VisuallyHidden';
+export { visuallyHidden, VisuallyHidden } from './VisuallyHidden';
