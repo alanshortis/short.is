@@ -1,8 +1,11 @@
 import type { FC } from 'react';
-import { useContext } from 'react';
+import dynamic from 'next/dynamic';
 import styled from 'styled-components';
-import { MetaContext } from '../data/meta';
 import { Container, Label } from '.';
+
+const SchemeToggle = dynamic(() => import('./SchemeToggle'), {
+  ssr: process.env.NODE_ENV === 'production',
+});
 
 const StyledFooter = styled.footer`
   --safe-area-inset-bottom: env(safe-area-inset-bottom);
@@ -15,19 +18,13 @@ const StyledFooter = styled.footer`
   }
 `;
 
-export const Footer: FC = () => {
-  const { year, author } = useContext(MetaContext);
-
-  return (
-    <Container>
-      <StyledFooter>
-        <p>
-          &copy; {year} {author}
-        </p>
-        <Label>
-          <a href="/writing/feed.xml">RSS</a> &middot; <a href="#top">Top &uarr;</a>
-        </Label>
-      </StyledFooter>
-    </Container>
-  );
-};
+export const Footer: FC = () => (
+  <Container>
+    <StyledFooter>
+      <SchemeToggle />
+      <Label>
+        <a href="/writing/feed.xml">RSS</a> &middot; <a href="#top">Top &uarr;</a>
+      </Label>
+    </StyledFooter>
+  </Container>
+);
