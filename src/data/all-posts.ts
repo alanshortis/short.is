@@ -4,7 +4,7 @@ import matter from 'gray-matter';
 import type { Post, FrontMatter } from '../types';
 
 const EXT = '.mdx';
-const POSTS_DIR = path.join(process.cwd(), 'src/posts');
+const POSTS_DIR = path.join(process.cwd(), 'src/posts/writing');
 const allPostFileNames = fs.readdirSync(POSTS_DIR).filter(file => path.extname(file) === EXT);
 
 // The parsed file contents (front matter and post body).
