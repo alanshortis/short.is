@@ -42,13 +42,13 @@ if ('customElements' in window) {
 
       render() {
         this.innerHTML = `
-          <fieldset>
+          <fieldset class="st-fields">
             <legend>Colour scheme</legend>
               ${this.schemes
                 .map(
                   scheme => `
-                <label for="${scheme}-radio">${scheme}</label>
-                <input type="radio" id="${scheme}-radio" value="${scheme}" name="scheme">
+                  <input type="radio" id="${scheme}-radio" value="${scheme}" name="scheme">
+                  <label for="${scheme}-radio">${scheme}</label>
               `
                 )
                 .join('')}
