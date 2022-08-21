@@ -33,3 +33,12 @@ export interface PostList {
 export interface LatestContent {
   latestWriting: FrontMatter;
 }
+
+export interface DailyPost {
+  date: string;
+  content: string;
+}
+
+export interface DailyList {
+  dailies: DailyPost[];
+}
