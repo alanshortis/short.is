@@ -32,8 +32,8 @@ const Home: NextPage<LatestContent> = ({ latestWriting }) => {
           </Full>
           <PageBody as={PostFormatting}>
             <h2 className="intro">
-              I&#39;m a front end developer based in <del>London</del> <del>Nottingham</del>{' '}
-              <ins>Leicester</ins>, currently working for <a href="https://monzo.com/">Monzo</a>.
+              I&#39;m a front end developer based in <del>London</del> Nottingham, currently working for{' '}
+              <a href="https://monzo.com/">Monzo</a>.
             </h2>
             <p>
               I like building scalable, accessible, and performant design systems and websites using HTML,
