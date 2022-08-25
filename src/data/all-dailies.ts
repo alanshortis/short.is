@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import type { DailyPost } from '../types';
+import { serialize } from 'next-mdx-remote/serialize';
 
 // const EXT = '.mdx';
 const DAILY_DIR = path.join(process.cwd(), 'src/posts/daily/2022/08');
@@ -9,17 +9,19 @@ const allDailyFileNames = fs.readdirSync(DAILY_DIR);
 
 const fileContent = (fileName: string) => matter(fs.readFileSync(path.join(DAILY_DIR, fileName)));
 
-// All dailies in full.
-export const allDailies: DailyPost[] = allDailyFileNames
-  .map((fileName): DailyPost => {
+export const allDailies = await Promise.all(
+  allDailyFileNames.map(async fileName => {
     const { data, content } = fileContent(fileName);
+    const { title, date } = data;
+    const mdxContent = await serialize(content);
 
     return {
-      title: data.title,
-      date: data.date,
+      title,
+      date,
       content,
+      mdxContent,
     };
-  })
-  .sort((a, b) => (new Date(a.date) < new Date(b.date) ? 1 : -1));
 
-// NEED TO ENSURE serialise has resolved.
+    // .sort((a, b) => (new Date(a.date) < new Date(b.date) ? 1 : -1));
+  })
+);

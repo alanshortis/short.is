@@ -2,9 +2,9 @@ import type { FC } from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
 import type { FrontMatter } from '../types';
-import { Arrow, Label, PostFormatting, PostDate } from '.';
+import { Arrow, Label, PostList, PostDate } from '.';
 
-const StyledPost = styled(PostFormatting)`
+const StyledPost = styled(PostList)`
   display: block;
   &:not(:last-of-type) {
     margin-bottom: var(--spacing);

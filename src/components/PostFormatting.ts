@@ -129,3 +129,7 @@ export const PostFormatting = styled.div`
     font-variation-settings: 'wght' ${p => p.theme.font.weightBold};
   }
 `;
+
+export const PostList = styled(PostFormatting)`
+  padding-bottom: calc(var(--spacing) * 2);
+`;

@@ -38,6 +38,7 @@ export interface DailyPost {
   title: number;
   date: string;
   content: string;
+  mdxContent: MDXRemoteSerializeResult<Record<string, unknown>>;
 }
 
 export interface DailyList {

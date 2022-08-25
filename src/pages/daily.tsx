@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
 import type { NextPage, GetStaticPropsResult } from 'next';
-import { Layout, DailyTitle } from '../components';
+import { MDXRemote } from 'next-mdx-remote';
+import { Layout, DailyTitle, PostList } from '../components';
 import { Aside, Full, Grid, PageBody, Sticker } from '../components/Grid';
 import { DailyList, DailyPost } from '../types';
 import { allDailies } from '../data/all-dailies';
@@ -17,7 +18,7 @@ export const config = {
   unstable_runtimeJS: false,
 };
 
-const Daily: NextPage<DailyList> = ({ dailies }) => (
+const Daily: NextPage<Omit<DailyList, 'content'>> = ({ dailies }) => (
   <Layout title="Writing">
     <Grid>
       <Full>
@@ -31,7 +32,9 @@ const Daily: NextPage<DailyList> = ({ dailies }) => (
                 <DailyTitle dailyTitle={daily.title} dailyDate={daily.date} />
               </Sticker>
             </Aside>
-            <PageBody as="article">{daily.content}</PageBody>
+            <PageBody as={PostList}>
+              <MDXRemote {...daily.mdxContent} />
+            </PageBody>
           </Fragment>
         );
       })}
