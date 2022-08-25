@@ -7,9 +7,11 @@ import { DailyList, DailyPost } from '../types';
 import { allDailies } from '../data/all-dailies';
 
 export async function getStaticProps(): Promise<GetStaticPropsResult<DailyList>> {
+  const sortedDailies = allDailies.sort((a, b) => (new Date(a.date) < new Date(b.date) ? 1 : -1));
+
   return {
     props: {
-      dailies: allDailies,
+      dailies: sortedDailies,
     },
   };
 }

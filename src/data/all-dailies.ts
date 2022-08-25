@@ -21,7 +21,5 @@ export const allDailies = await Promise.all(
       content,
       mdxContent,
     };
-
-    // .sort((a, b) => (new Date(a.date) < new Date(b.date) ? 1 : -1));
   })
 );
