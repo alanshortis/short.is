@@ -8,21 +8,12 @@ const template = require('./templates');
 const PATH = path.join(__dirname, '../', 'src/posts');
 const streak = Math.ceil((new Date().getTime() - new Date('2022-08-17').getTime()) / (1000 * 3600 * 24));
 const today = new Date().toISOString().slice(0, 10);
-const postYear = today.slice(0, 4);
-const postMonth = today.slice(5, 7);
 
-const createDaily = async () => {
-  const filePath = path.join(PATH, 'daily', postYear, postMonth);
+const createPost = async (type, title) => {
+  const filePath = path.join(PATH, type);
+  const fileName = type === 'daily' ? today : encodeURIComponent(title.split(' ').join('-').toLowerCase());
 
-  await fs.mkdir(filePath, { recursive: true });
-  await fs.writeFile(`${filePath}/${today}.mdx`, template.daily(streak, today));
-};
-
-const createWriting = async title => {
-  const filePath = path.join(PATH, 'writing');
-  const slug = encodeURIComponent(title.split(' ').join('-').toLowerCase());
-
-  await fs.writeFile(`${filePath}/${slug}.mdx`, template.writing(title, today));
+  await fs.writeFile(`${filePath}/${fileName}.mdx`, template[type](title, today));
 };
 
 const create = async () => {
@@ -43,11 +34,9 @@ const create = async () => {
     },
   ]);
 
-  if (what.postType === 'daily') {
-    createDaily();
-  } else {
-    createWriting(what.postTitle);
-  }
+  const postTitle = what.postType === 'daily' ? streak : what.postTitle;
+
+  createPost(what.postType, postTitle);
 };
 
 create();
