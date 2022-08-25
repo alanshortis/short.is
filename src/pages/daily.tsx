@@ -20,7 +20,7 @@ export const config = {
   unstable_runtimeJS: false,
 };
 
-const Daily: NextPage<Omit<DailyList, 'content'>> = ({ dailies }) => (
+const Daily: NextPage<DailyList> = ({ dailies }) => (
   <Layout title="Writing">
     <Grid>
       <Full>
