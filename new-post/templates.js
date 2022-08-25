@@ -5,7 +5,8 @@ intro: ''
 ---
 `;
 
-const daily = date => `---
+const daily = (streak, date) => `---
+title: ${streak}
 date: '${date}'
 ---
 `;

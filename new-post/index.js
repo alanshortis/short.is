@@ -6,6 +6,7 @@ const prompts = require('prompts');
 const template = require('./templates');
 
 const PATH = path.join(__dirname, '../', 'src/posts');
+const streak = Math.ceil((new Date().getTime() - new Date('2022-08-17').getTime()) / (1000 * 3600 * 24));
 const today = new Date().toISOString().slice(0, 10);
 const postYear = today.slice(0, 4);
 const postMonth = today.slice(5, 7);
@@ -14,7 +15,7 @@ const createDaily = async () => {
   const filePath = path.join(PATH, 'daily', postYear, postMonth);
 
   await fs.mkdir(filePath, { recursive: true });
-  await fs.writeFile(`${filePath}/${today}.mdx`, template.daily(today));
+  await fs.writeFile(`${filePath}/${today}.mdx`, template.daily(streak, today));
 };
 
 const createWriting = async title => {

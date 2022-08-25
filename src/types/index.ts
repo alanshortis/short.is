@@ -35,6 +35,7 @@ export interface LatestContent {
 }
 
 export interface DailyPost {
+  title: number;
   date: string;
   content: string;
 }
