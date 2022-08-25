@@ -1,7 +1,6 @@
+import { Fragment } from 'react';
 import type { NextPage, GetStaticPropsResult } from 'next';
-import { MDXRemote } from 'next-mdx-remote';
-import { serialize } from 'next-mdx-remote/serialize';
-import { Layout, Label } from '../components';
+import { Layout, DailyTitle } from '../components';
 import { Aside, Full, Grid, PageBody, Sticker } from '../components/Grid';
 import { DailyList, DailyPost } from '../types';
 import { allDailies } from '../data/all-dailies';
@@ -18,34 +17,26 @@ export const config = {
   unstable_runtimeJS: false,
 };
 
-const Daily: NextPage = ({ dailies }) => (
+const Daily: NextPage<DailyList> = ({ dailies }) => (
   <Layout title="Writing">
-    {dailies.map((daily: DailyPost) => {
-      return (
-        <>
-          <p>{daily.date}</p>
-          <p>{daily.content}</p>
-        </>
-      );
-    })}
-    {/* <Grid>
+    <Grid>
       <Full>
         <h1>Daily</h1>
       </Full>
-      <Aside>
-        <Sticker>
-          <Label as="h2">(Daily date)</Label>
-        </Sticker>
-      </Aside>
-      <PageBody as="article">
-        <p>Blah blah blah</p>
-      </PageBody>
-    </Grid> */}
+      {dailies.map((daily: DailyPost) => {
+        return (
+          <Fragment key={daily.date}>
+            <Aside>
+              <Sticker>
+                <DailyTitle dailyTitle={daily.title} dailyDate={daily.date} />
+              </Sticker>
+            </Aside>
+            <PageBody as="article">{daily.content}</PageBody>
+          </Fragment>
+        );
+      })}
+    </Grid>
   </Layout>
 );
 
 export default Daily;
-
-// TODO: Recursively get file names from daily folder.
-// Format MDX content for each post.
-// Other post formatting.

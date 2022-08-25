@@ -15,8 +15,11 @@ export const allDailies: DailyPost[] = allDailyFileNames
     const { data, content } = fileContent(fileName);
 
     return {
+      title: data.title,
       date: data.date,
       content,
     };
   })
   .sort((a, b) => (new Date(a.date) < new Date(b.date) ? 1 : -1));
+
+// NEED TO ENSURE serialise has resolved.
