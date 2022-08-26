@@ -40,16 +40,6 @@ const Home: NextPage<LatestContent> = ({ latestWriting }) => {
               CSS, and JavaScript. The combination of code, design, and empathy for end users is what makes me
               want to do my best work.
             </p>
-            <p>
-              Find me on{' '}
-              <a href="https://www.are.na/alan-shortis" rel="me">
-                Are.na
-              </a>{' '}
-              and{' '}
-              <a href="https://glass.photo/alan" rel="me">
-                Glass.
-              </a>
-            </p>
           </PageBody>
           <PageBody>
             <ShadowBox>

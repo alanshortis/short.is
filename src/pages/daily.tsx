@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import type { NextPage, GetStaticPropsResult } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
-import { Layout, DailyTitle, PostList } from '../components';
+import { Layout, PostList, PostDate, Label } from '../components';
 import { Aside, Full, Grid, PageBody, Sticker } from '../components/Grid';
 import { DailyList, DailyPost } from '../types';
 import { allDailies } from '../data/all-dailies';
@@ -31,7 +31,9 @@ const Daily: NextPage<DailyList> = ({ dailies }) => (
           <Fragment key={daily.date}>
             <Aside>
               <Sticker>
-                <DailyTitle dailyTitle={daily.title} dailyDate={daily.date} />
+                <Label as="h2">
+                  <PostDate prefix={`#${daily.title}`} date={daily.date} hasYear />
+                </Label>
               </Sticker>
             </Aside>
             <PageBody as={PostList}>

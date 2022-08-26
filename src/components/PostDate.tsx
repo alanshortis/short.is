@@ -9,13 +9,15 @@ const ShareButton = dynamic(() => import('./ShareButton'), {
 
 interface Props {
   date: string;
+  prefix?: string;
   hasShare?: boolean;
   hasYear?: boolean;
 }
 
-export const PostDate: FC<Props> = ({ date, hasShare, hasYear }) => (
-  <Label as="time" dateTime={date}>
-    {dateFormat(date, hasYear)}
+export const PostDate: FC<Props> = ({ date, prefix, hasShare, hasYear }) => (
+  <Label>
+    {prefix && <span>{prefix} &middot; </span>}
+    <time dateTime={date}>{dateFormat(date, hasYear)}</time>
     {hasShare && <ShareButton />}
   </Label>
 );
