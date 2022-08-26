@@ -131,5 +131,7 @@ export const PostFormatting = styled.div`
 `;
 
 export const PostList = styled(PostFormatting)`
-  padding-bottom: calc(var(--spacing) * 2);
+  &:not(:last-of-type) {
+    padding-bottom: calc(var(--spacing) * 2);
+  }
 `;
