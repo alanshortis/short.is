@@ -2,6 +2,11 @@ import styled from 'styled-components';
 import { shadowBox } from './ShadowBox';
 
 export const PostFormatting = styled.div`
+  time {
+    display: inline-block;
+    margin-bottom: var(--spacing);
+  }
+
   h2,
   h3 {
     padding-top: var(--spacing);

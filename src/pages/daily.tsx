@@ -31,12 +31,11 @@ const Daily: NextPage<DailyList> = ({ dailies }) => (
           <Fragment key={daily.date}>
             <Aside>
               <Sticker>
-                <Label as="h2">
-                  <PostDate prefix={`#${daily.title}`} date={daily.date} hasYear />
-                </Label>
+                <Label as="h2">#{daily.title}</Label>
               </Sticker>
             </Aside>
             <PageBody as={PostList}>
+              <PostDate date={daily.date} hasYear />
               <MDXRemote {...daily.mdxContent} />
             </PageBody>
           </Fragment>
