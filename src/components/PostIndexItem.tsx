@@ -2,9 +2,9 @@ import type { FC } from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
 import type { FrontMatter } from '../types';
-import { Arrow, Label, PostFormatting, PostDate } from '.';
+import { Arrow, Label, PostList, PostDate } from '.';
 
-const StyledPost = styled(PostFormatting)`
+const StyledPost = styled(PostList)`
   display: block;
   &:not(:last-of-type) {
     margin-bottom: var(--spacing);
@@ -21,7 +21,9 @@ interface Props extends FrontMatter {
 export const PostIndexItem: FC<Props> = ({ slug, date, title, intro, isLatest }) => (
   <Link href={`/writing/${slug}`} passHref>
     <StyledPost as="a">
-      {isLatest ? <Label>Latest writing</Label> : <PostDate date={date} />}
+      <span>
+        <PostDate date={date} prefix={isLatest ? 'Latest writing' : ''} hasYear={isLatest} />
+      </span>
       <h3>{title}</h3>
       <p dangerouslySetInnerHTML={{ __html: intro }} />
       <Label toTheRight>

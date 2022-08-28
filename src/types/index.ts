@@ -1,5 +1,7 @@
 import type { MDXRemoteSerializeResult } from 'next-mdx-remote';
 
+type Mdx = MDXRemoteSerializeResult<Record<string, unknown>>;
+
 export interface HeadInfo {
   title?: string;
   intro?: string;
@@ -20,7 +22,7 @@ export interface FrontMatter {
 
 export interface Post extends FrontMatter {
   content: string;
-  mdxContent: MDXRemoteSerializeResult<Record<string, unknown>>;
+  mdxContent: Mdx;
   nextPost?: FrontMatter;
   prevPost?: FrontMatter;
 }
@@ -32,4 +34,14 @@ export interface PostList {
 
 export interface LatestContent {
   latestWriting: FrontMatter;
+}
+
+export interface DailyPost {
+  title: number;
+  date: string;
+  mdxContent: Mdx;
+}
+
+export interface DailyList {
+  dailies: DailyPost[];
 }

@@ -8,12 +8,14 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint src/**/*.{tsx,ts}; tsc --noEmit"
+    "lint": "eslint src/**/*.{tsx,ts}; tsc --noEmit",
+    "new": "node new-post"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",
     "next": "^12.1.0",
     "next-mdx-remote": "^3.0.7",
+    "prompts": "^2.4.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "remark-highlight.js": "^7.0.1",

@@ -19,7 +19,6 @@ const StyledNav = styled.nav`
 
 const StyledList = styled.ul`
   margin: 0;
-  margin-right: calc(var(--spacing) / 2);
   li {
     display: inline;
     margin-left: 1rem;
@@ -31,7 +30,10 @@ const StyledList = styled.ul`
   }
 `;
 
-const pages: MenuItem[] = [{ title: 'Writing', path: '/writing' }];
+const pages: MenuItem[] = [
+  { title: 'Writing', path: '/writing' },
+  { title: 'Daily', path: '/daily' },
+];
 
 export const Menu: FC = () => {
   const router = useRouter();
