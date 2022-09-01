@@ -41,6 +41,9 @@ const huh = async () => {
 
   const postTitle = what.postType === 'daily' ? streak : what.postTitle;
 
+  exec(`git checkout -b ${what.postType}/${postTitle}`);
+  exec('code .');
+
   createPost(what.postType, postTitle);
 };
 
