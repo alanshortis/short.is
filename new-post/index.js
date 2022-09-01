@@ -13,11 +13,15 @@ const today = new Date().toISOString().slice(0, 10);
 const createPost = async (type, title) => {
   const filePath = path.join(PATH, type);
   const fileName = type === 'daily' ? today : encodeURIComponent(title.split(' ').join('-').toLowerCase());
+  const fullPath = `${filePath}/${fileName}.mdx`;
 
-  await fs.writeFile(`${filePath}/${fileName}.mdx`, template[type](title, today));
+  exec(`git checkout -b ${type}/${title}`, async () => {
+    await fs.writeFile(fullPath, template[type](title, today));
+    exec(`code ${fullPath}`);
+  });
 };
 
-const create = async () => {
+const huh = async () => {
   const what = await prompts([
     {
       type: 'select',
@@ -37,10 +41,7 @@ const create = async () => {
 
   const postTitle = what.postType === 'daily' ? streak : what.postTitle;
 
-  exec(`git checkout -b ${what.postType}/${postTitle}`);
-  exec('code .');
-
   createPost(what.postType, postTitle);
 };
 
-create();
+huh();
