@@ -1,12 +1,13 @@
 /* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-var-requires */
 const fs = require('fs/promises');
+const { exec } = require('child_process');
 const path = require('path');
 const prompts = require('prompts');
 const template = require('./templates');
 
 const PATH = path.join(__dirname, '../', 'src/posts');
-const streak = Math.ceil((new Date().getTime() - new Date('2022-08-17').getTime()) / (1000 * 3600 * 24));
+const streak = Math.ceil((new Date().getTime() - new Date('2022-07-17').getTime()) / (1000 * 3600 * 24));
 const today = new Date().toISOString().slice(0, 10);
 
 const createPost = async (type, title) => {
@@ -35,6 +36,9 @@ const create = async () => {
   ]);
 
   const postTitle = what.postType === 'daily' ? streak : what.postTitle;
+
+  exec(`git checkout -b ${what.postType}/${postTitle}`);
+  exec('code .');
 
   createPost(what.postType, postTitle);
 };
