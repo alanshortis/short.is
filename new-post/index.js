@@ -15,7 +15,7 @@ const createPost = async (type, title) => {
   const fileName = type === 'daily' ? today : encodeURIComponent(title.split(' ').join('-').toLowerCase());
   const fullPath = `${filePath}/${fileName}.mdx`;
 
-  exec(`git checkout -b ${type}/${title}`, async () => {
+  exec(`git checkout -b ${type}/${fileName}`, async () => {
     await fs.writeFile(fullPath, template[type](title, today));
     exec(`code ${fullPath}`);
   });
