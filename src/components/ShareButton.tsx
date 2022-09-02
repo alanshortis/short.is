@@ -4,6 +4,7 @@ import { createGlobalStyle } from 'styled-components';
 
 const ShareStyles = createGlobalStyle`
   .sb-label {
+    color: var(--accent);
     display: inline-block;
     font-size: 0.8rem;
     font-variation-settings: 'wght' 400;

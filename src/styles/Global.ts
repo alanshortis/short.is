@@ -27,6 +27,7 @@ export const Global = createGlobalStyle`
     & body.dark {
       --background: ${p => p.theme.color.dark};
       --foreground: ${p => p.theme.color.light};
+      --accent: ${p => p.theme.color.accentDark};
       --header-background: ${p => p.theme.color.headerDark};
     }
   }
