@@ -2,11 +2,6 @@ import styled from 'styled-components';
 import { shadowBox } from './ShadowBox';
 
 export const PostFormatting = styled.div`
-  time {
-    display: inline-block;
-    margin-bottom: var(--spacing);
-  }
-
   h2,
   h3 {
     padding-top: var(--spacing);
@@ -36,6 +31,7 @@ export const PostFormatting = styled.div`
   }
 
   a {
+    color: var(--accent);
     text-decoration: underline;
     white-space: nowrap;
     &[href^='http']:not([href*='short.is'])::after {
@@ -120,6 +116,7 @@ export const PostFormatting = styled.div`
 
   pre {
     ${shadowBox};
+    margin-bottom: calc(var(--spacing) * 1.5);
     code {
       display: block;
       overflow-x: scroll;

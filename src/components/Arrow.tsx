@@ -24,6 +24,7 @@ const variant = (direction?: Direction) => {
 export const Arrow = styled(Label)<{ direction?: Direction }>`
   &::${p => (p.direction === 'left' ? 'before' : 'after')} {
     ${p => variant(p.direction)};
+    color: var(--accent);
     display: inline-block;
     @media ${p => p.theme.media.shouldAnimate} {
       animation: ${p => point(p.direction)} 2s infinite ease;

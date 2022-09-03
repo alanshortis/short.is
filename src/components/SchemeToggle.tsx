@@ -15,12 +15,10 @@ const SchemeToggleStyles = createGlobalStyle`
       color: currentColor;
       cursor: pointer;
       display: inline-block;
+      min-width: 3.5rem;
       padding: calc(var(--spacing) / 8) 0;
       position: relative;
       text-align: center;
-      &:not(:first-of-type)::before {
-        content: ' · ';
-      }
     }
     input {
       display: none;

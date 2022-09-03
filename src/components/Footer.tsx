@@ -18,12 +18,19 @@ const StyledFooter = styled.footer`
   }
 `;
 
+const Up = styled.span`
+  color: var(--accent);
+`;
+
 export const Footer: FC = () => (
   <Container>
     <StyledFooter>
       <SchemeToggle />
       <Label>
-        <a href="/writing/feed.xml">RSS</a> &middot; <a href="#top">Top &uarr;</a>
+        <a href="/writing/feed.xml">RSS</a> &middot;{' '}
+        <a href="#top">
+          Top <Up>&uarr;</Up>
+        </a>
       </Label>
     </StyledFooter>
   </Container>

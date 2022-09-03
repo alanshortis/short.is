@@ -12,6 +12,7 @@ export const Global = createGlobalStyle`
     font-size: 100%;
     --background: ${p => p.theme.color.light};
     --foreground: ${p => p.theme.color.dark};
+    --accent: ${p => p.theme.color.accent};
     --header-background: ${p => p.theme.color.header};
     --spacing: ${p => p.theme.spacing};
 
@@ -26,6 +27,7 @@ export const Global = createGlobalStyle`
     & body.dark {
       --background: ${p => p.theme.color.dark};
       --foreground: ${p => p.theme.color.light};
+      --accent: ${p => p.theme.color.accentDark};
       --header-background: ${p => p.theme.color.headerDark};
     }
   }
