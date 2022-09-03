@@ -116,6 +116,7 @@ export const PostFormatting = styled.div`
 
   pre {
     ${shadowBox};
+    margin-bottom: calc(var(--spacing) * 1.5);
     code {
       display: block;
       overflow-x: scroll;
