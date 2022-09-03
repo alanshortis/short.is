@@ -46,6 +46,11 @@ const Home: NextPage<LatestContent> = ({ latestWriting }) => {
               <PostIndexItem slug={slug} date={date} title={title} intro={intro} year={year} isLatest />
             </ShadowBox>
           </PageBody>
+          <PageBody as={PostFormatting}>
+            Find me on <a href="https://github.com/alanshortis">GitHub</a>,{' '}
+            <a href="https://codepen.io/alanshortis">CodePen</a>, and{' '}
+            <a href="https://twitter.com/alanshortis">Twitter</a>.
+          </PageBody>
         </Grid>
       </Layout>
     </>
