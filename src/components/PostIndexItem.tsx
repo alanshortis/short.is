@@ -21,9 +21,7 @@ interface Props extends FrontMatter {
 export const PostIndexItem: FC<Props> = ({ slug, date, title, intro, isLatest }) => (
   <Link href={`/writing/${slug}`} passHref>
     <StyledPost as="a">
-      <span>
-        <PostDate date={date} prefix={isLatest ? 'Latest writing' : ''} hasYear={isLatest} />
-      </span>
+      <PostDate date={date} prefix={isLatest ? 'Latest writing' : ''} hasYear={isLatest} />
       <h3>{title}</h3>
       <p dangerouslySetInnerHTML={{ __html: intro }} />
       <Label toTheRight>
