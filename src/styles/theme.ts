@@ -12,7 +12,7 @@ export const theme = {
     header: 'hsla(0, 0%, 97%, 0.5)',
     headerDark: 'hsla(0, 0%, 3%, 0.7)',
     accent: 'hsl(10, 100%, 43%)',
-    accentDark: 'hsl(24, 100%, 50%)',
+    accentDark: 'hsl(19, 100%, 50%)',
   },
   media: {
     small: `(min-width: ${breakpoints.small}px)`,
