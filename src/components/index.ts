@@ -1,4 +1,5 @@
 export { activeMarker } from './Active';
+export { AgeWarning } from './AgeWarning';
 export { Arrow } from './Arrow';
 export { Coffee } from './Coffee';
 export { Container } from './Container';
