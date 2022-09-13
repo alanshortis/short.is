@@ -25,7 +25,7 @@ const SchemeToggleStyles = createGlobalStyle`
       &:checked + label::after {
         ${activeMarker}
       }
-      &:focus + label {
+      &:focus-within + label {
         outline: 2px solid var(--accent);
       }
     }
