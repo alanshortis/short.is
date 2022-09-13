@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
-import { Container, Logo, Menu, VisuallyHidden } from '.';
+import { Container, Logo, Menu, Skip, VisuallyHidden } from '.';
 
 const StyledHeader = styled.header`
   background-color: var(--background);
@@ -36,6 +36,7 @@ export const Header: FC = () => (
             <Logo />
           </a>
         </Link>
+        <Skip />
         <Menu />
       </MenuContent>
     </Container>
