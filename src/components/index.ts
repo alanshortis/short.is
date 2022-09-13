@@ -16,4 +16,5 @@ export { PostDate } from './PostDate';
 export { PostFormatting, PostList } from './PostFormatting';
 export { PostIndexItem } from './PostIndexItem';
 export { ShadowBox } from './ShadowBox';
+export { Skip } from './Skip';
 export { visuallyHidden, VisuallyHidden } from './VisuallyHidden';

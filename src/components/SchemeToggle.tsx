@@ -21,9 +21,12 @@ const SchemeToggleStyles = createGlobalStyle`
       text-align: center;
     }
     input {
-      display: none;
+      ${visuallyHidden};
       &:checked + label::after {
         ${activeMarker}
+      }
+      &:focus + label {
+        outline: 2px solid var(--accent);
       }
     }
     legend {
