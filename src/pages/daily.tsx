@@ -28,7 +28,7 @@ export const config = {
 };
 
 const Daily: NextPage<DailyList> = ({ dailies }) => (
-  <Layout title="Writing">
+  <Layout title="Daily">
     <Grid>
       <Full>
         <h1>Daily</h1>
