@@ -1,9 +1,14 @@
 import type { FC } from 'react';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
 import type { MenuItem } from '../types';
 import { activeMarker } from '.';
+
+const LinkPrefetch = dynamic(() => import('./LinkPrefetch'), {
+  ssr: process.env.NODE_ENV === 'production',
+});
 
 const Container = styled.div`
   display: flex;
@@ -39,24 +44,28 @@ export const Menu: FC = () => {
   const router = useRouter();
 
   return (
-    <Container>
-      <StyledNav>
-        <StyledList role="menubar">
-          {pages.map((page: MenuItem) => {
-            const isCurrent = router.pathname.startsWith(page.path);
+    <>
+      <Container>
+        <StyledNav>
+          <StyledList role="menubar">
+            {pages.map((page: MenuItem) => {
+              const isCurrent = router.pathname.startsWith(page.path);
 
-            return (
-              <li key={page.path} role="none">
-                <Link href={page.path}>
-                  <a role="menuitem" aria-current={isCurrent ? 'page' : 'false'}>
-                    {page.title}
-                  </a>
-                </Link>
-              </li>
-            );
-          })}
-        </StyledList>
-      </StyledNav>
-    </Container>
+              return (
+                <li key={page.path} role="none">
+                  <LinkPrefetch>
+                    <Link href={page.path}>
+                      <a role="menuitem" aria-current={isCurrent ? 'page' : 'false'}>
+                        {page.title}
+                      </a>
+                    </Link>
+                  </LinkPrefetch>
+                </li>
+              );
+            })}
+          </StyledList>
+        </StyledNav>
+      </Container>
+    </>
   );
 };

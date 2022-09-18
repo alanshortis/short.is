@@ -36,6 +36,7 @@ class ShortisDocument extends Document {
         <body>
           <Main />
           <NextScript />
+          <script src="/js/link-prefetch.js" />
         </body>
       </Html>
     );

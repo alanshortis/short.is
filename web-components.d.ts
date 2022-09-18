@@ -11,5 +11,6 @@ declare namespace JSX {
   interface IntrinsicElements {
     'scheme-toggle': any;
     'share-button': any;
+    'link-prefetch': any;
   }
 }
