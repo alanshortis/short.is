@@ -1,5 +1,4 @@
 import type { NextPage, GetStaticPropsResult } from 'next';
-import Head from 'next/head';
 import type { LatestContent } from '../types';
 import { latestPost } from '../data/all-posts';
 import { Layout, PostFormatting, PostIndexItem, ShadowBox } from '../components';
@@ -21,10 +20,6 @@ const Home: NextPage<LatestContent> = ({ latestWriting }) => {
   const { slug, date, title, intro, year } = latestWriting;
   return (
     <>
-      <Head>
-        <link rel="prefetch" href="/writing" />
-        <link rel="prefetch" href={`/writing/${slug}`} />
-      </Head>
       <Layout>
         <Grid>
           <Full>
