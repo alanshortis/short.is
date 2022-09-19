@@ -31,7 +31,7 @@ const StyledWc = styled.div`
   }
 `;
 
-const ClickTimer = (): FC => (
+const ClickTimer: FC = () => (
   <StyledWc>
     <Head>
       <script src="/js/click-timer.js" />
