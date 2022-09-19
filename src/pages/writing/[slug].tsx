@@ -9,7 +9,7 @@ import { daysSince } from '../../helpers';
 import type { Post } from '../../types';
 import { allPostsFrontMatter, postContent } from '../../data/all-posts';
 import { Aside, Full, Grid, PageBody, Sticker } from '../../components/Grid';
-import { Coffee, Layout, NextPrev, PostFormatting, PostDate, Warning } from '../../components';
+import { Layout, NextPrev, PostFormatting, PostDate, Warning } from '../../components';
 import { Concerns, ExampleEmbed } from '../../components/writing';
 
 const ClickTimer = dynamic(() => import('../../components/writing/ClickTimer'), {
@@ -71,7 +71,6 @@ const WrtingPost: FC<PostProps> = ({ title, date, intro, nextPost, prevPost, mdx
             {isOld && <Warning>This post is more than 2 years old</Warning>}
             <p className="intro" dangerouslySetInnerHTML={{ __html: intro }} />
             <MDXRemote {...mdxContent} components={{ Concerns, ExampleEmbed, ClickTimer }} />
-            <Coffee />
           </PageBody>
           <NextPrev nextPost={nextPost} prevPost={prevPost} />
         </Grid>

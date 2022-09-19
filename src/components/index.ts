@@ -1,6 +1,5 @@
 export { activeMarker } from './Active';
 export { Arrow } from './Arrow';
-export { Coffee } from './Coffee';
 export { Container } from './Container';
 export { Footer } from './Footer';
 export { Grid } from './Grid';
