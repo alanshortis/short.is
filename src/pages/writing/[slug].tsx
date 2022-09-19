@@ -56,9 +56,8 @@ const WrtingPost: FC<PostProps> = ({ title, date, intro, nextPost, prevPost, mdx
     ExampleEmbed,
   };
 
-  // Ugh, I know. I only need this component in this post
-  // and this brittle approach is good enough for now.
-  if (date === '2022-09-18') {
+  // TODO: Add a field in front matter to determine required web components
+  if (date === '2022-09-19') {
     components = {
       ...components,
       ClickTimer,

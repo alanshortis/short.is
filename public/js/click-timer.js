@@ -33,7 +33,7 @@ if ('customElements' in window) {
             <dd>Average delay:</dd>
             <dt id="avg"></span></dt>
           </dl>
-          <p id="discalimer">&nbsp;</p>
+          <p id="disclaimer">Move away from the button between clicks</p>
         `;
 
         this.listeners();
@@ -43,7 +43,7 @@ if ('customElements' in window) {
         const button = this.querySelector('button');
         const lastSpan = this.querySelector('#last');
         const avgSpan = this.querySelector('#avg');
-        const discalimer = this.querySelector('#discalimer');
+        const disclaimer = this.querySelector('#disclaimer');
 
         button.addEventListener('mouseover', () => {
           this.isHovered = true;
@@ -52,7 +52,7 @@ if ('customElements' in window) {
 
         button.addEventListener('mouseout', () => {
           this.isHovered = false;
-          discalimer.innerHTML = '&nbsp;';
+          disclaimer.style.visibility = 'hidden';
         });
 
         button.addEventListener('click', () => {
@@ -62,12 +62,12 @@ if ('customElements' in window) {
             this.hoverTimes.push(this.clickedAt - this.hoveredAt);
 
             lastSpan.textContent = `${this.hoverTimes.at(-1)}ms`;
-            avgSpan.textContent = `${this.averageTime()}ms over ${this.attempts} click${
+            avgSpan.textContent = `${this.averageTime()}ms, ${this.attempts} click${
               this.attempts === 1 ? '' : 's'
             }`;
-            discalimer.innerHTML = '&nbsp;';
+            disclaimer.style.visibility = 'hidden';
           } else {
-            discalimer.textContent = 'Remember to move away from the button between clicks';
+            disclaimer.style.visibility = 'visible';
           }
         });
       }
