@@ -9,8 +9,9 @@
 
 declare namespace JSX {
   interface IntrinsicElements {
+    'click-timer': any;
+    'link-prefetch': any;
     'scheme-toggle': any;
     'share-button': any;
-    'link-prefetch': any;
   }
 }

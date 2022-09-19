@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { shadowBox } from './ShadowBox';
+import { Warning } from '.';
 
 export const PostFormatting = styled.div`
   h2,
@@ -129,6 +130,10 @@ export const PostFormatting = styled.div`
 
   strong {
     font-variation-settings: 'wght' ${p => p.theme.font.weightBold};
+  }
+
+  ${Warning} {
+    margin-bottom: var(--spacing);
   }
 `;
 

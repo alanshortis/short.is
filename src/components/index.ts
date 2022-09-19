@@ -1,5 +1,4 @@
 export { activeMarker } from './Active';
-export { AgeWarning } from './AgeWarning';
 export { Arrow } from './Arrow';
 export { Coffee } from './Coffee';
 export { Container } from './Container';
@@ -7,7 +6,7 @@ export { Footer } from './Footer';
 export { Grid } from './Grid';
 export { Head } from './Head';
 export { Header } from './Header';
-export { Label } from './Label';
+export { label, Label, warning, Warning } from './Label';
 export { Layout } from './Layout';
 export { Logo } from './Logo';
 export { Menu } from './Menu';
