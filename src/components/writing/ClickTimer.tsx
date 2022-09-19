@@ -1,10 +1,9 @@
 import type { FC } from 'react';
 import Head from 'next/head';
 import styled from 'styled-components';
-import { label } from '..';
+import { label, warning } from '..';
 
 const StyledWc = styled.div`
-  border: 1px dashed var(--foreground);
   text-align: center;
   margin-bottom: var(--spacing);
   padding: var(--spacing);
@@ -18,16 +17,17 @@ const StyledWc = styled.div`
     border-radius: 4px;
     margin-bottom: var(--spacing);
   }
-  dl,
-  p {
-    ${label}
-  }
   dl {
+    ${label}
     margin-bottom: calc(var(--spacing) / 2);
     dd,
     dt {
       display: inline;
     }
+  }
+  p {
+    ${warning};
+    visibility: hidden;
   }
 `;
 

@@ -7,7 +7,6 @@ export const label = css`
   font-variation-settings: 'wght' ${p => p.theme.font.weight};
   letter-spacing: 2px;
   line-height: 1.563;
-  text-align: ${p => (p.toTheRight ? 'right' : 'inherit')};
   text-transform: uppercase;
   && {
     text-decoration: none;
@@ -17,4 +16,20 @@ export const label = css`
 export const Label = styled.span<{ toTheRight?: boolean }>`
   ${label};
   text-align: ${p => (p.toTheRight ? 'right' : 'inherit')};
+`;
+
+export const warning = css`
+  ${label};
+  &::before {
+    color: var(--accent);
+    content: '△';
+    margin-right: calc(var(--spacing) / 4);
+    @supports (content: x / y) {
+      content: '△' / 'Warning';
+    }
+  }
+`;
+
+export const Warning = styled.span`
+  ${warning};
 `;

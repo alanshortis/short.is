@@ -5,10 +5,11 @@ import dynamic from 'next/dynamic';
 import { MDXRemote } from 'next-mdx-remote';
 import { serialize } from 'next-mdx-remote/serialize';
 import highlight from 'remark-highlight.js';
+import { daysSince } from '../../helpers';
 import type { Post } from '../../types';
 import { allPostsFrontMatter, postContent } from '../../data/all-posts';
 import { Aside, Full, Grid, PageBody, Sticker } from '../../components/Grid';
-import { AgeWarning, Coffee, Layout, NextPrev, PostFormatting, PostDate } from '../../components';
+import { Coffee, Layout, NextPrev, PostFormatting, PostDate, Warning } from '../../components';
 import { Concerns, ExampleEmbed } from '../../components/writing';
 
 const ClickTimer = dynamic(() => import('../../components/writing/ClickTimer'), {
@@ -48,6 +49,8 @@ export const config = {
 type PostProps = Omit<Post, 'slug' | 'content'>;
 
 const WrtingPost: FC<PostProps> = ({ title, date, intro, nextPost, prevPost, mdxContent }) => {
+  const isOld = daysSince(date) > 730;
+
   let components = {
     Concerns,
     ExampleEmbed,
@@ -79,7 +82,7 @@ const WrtingPost: FC<PostProps> = ({ title, date, intro, nextPost, prevPost, mdx
             </Sticker>
           </Aside>
           <PageBody as={PostFormatting}>
-            <AgeWarning date={date} />
+            {isOld && <Warning>This post is more than 2 years old</Warning>}
             <p className="intro" dangerouslySetInnerHTML={{ __html: intro }} />
             <MDXRemote {...mdxContent} components={components} />
             <Coffee />
