@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const Label = styled.span<{ toTheRight?: boolean }>`
+export const label = css`
   display: block;
   font-size: 0.8rem;
   font-variant-numeric: tabular-nums;
@@ -12,4 +12,9 @@ export const Label = styled.span<{ toTheRight?: boolean }>`
   && {
     text-decoration: none;
   }
+`;
+
+export const Label = styled.span<{ toTheRight?: boolean }>`
+  ${label};
+  text-align: ${p => (p.toTheRight ? 'right' : 'inherit')};
 `;

@@ -1,6 +1,7 @@
 import type { FC } from 'react';
 import type { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
+import dynamic from 'next/dynamic';
 import { MDXRemote } from 'next-mdx-remote';
 import { serialize } from 'next-mdx-remote/serialize';
 import highlight from 'remark-highlight.js';
@@ -9,6 +10,10 @@ import { allPostsFrontMatter, postContent } from '../../data/all-posts';
 import { Aside, Full, Grid, PageBody, Sticker } from '../../components/Grid';
 import { AgeWarning, Coffee, Layout, NextPrev, PostFormatting, PostDate } from '../../components';
 import { Concerns, ExampleEmbed } from '../../components/writing';
+
+const ClickTimer = dynamic(() => import('../../components/writing/ClickTimer'), {
+  ssr: process.env.NODE_ENV === 'production',
+});
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = allPostsFrontMatter.map(post => ({
@@ -42,32 +47,48 @@ export const config = {
 
 type PostProps = Omit<Post, 'slug' | 'content'>;
 
-const WrtingPost: FC<PostProps> = ({ title, date, intro, nextPost, prevPost, mdxContent }) => (
-  <>
-    <Head>
-      {nextPost && <link rel="prefetch" href={`/writing/${nextPost.slug}`} />}
-      {prevPost && <link rel="prefetch" href={`/writing/${prevPost.slug}`} />}
-    </Head>
-    <Layout title={title} intro={intro}>
-      <Grid>
-        <Full>
-          <h1>{title}</h1>
-        </Full>
-        <Aside>
-          <Sticker>
-            <PostDate date={date} hasYear hasShare />
-          </Sticker>
-        </Aside>
-        <PageBody as={PostFormatting}>
-          <AgeWarning date={date} />
-          <p className="intro" dangerouslySetInnerHTML={{ __html: intro }} />
-          <MDXRemote {...mdxContent} components={{ Concerns, ExampleEmbed }} />
-          <Coffee />
-        </PageBody>
-        <NextPrev nextPost={nextPost} prevPost={prevPost} />
-      </Grid>
-    </Layout>
-  </>
-);
+const WrtingPost: FC<PostProps> = ({ title, date, intro, nextPost, prevPost, mdxContent }) => {
+  let components = {
+    Concerns,
+    ExampleEmbed,
+  };
+
+  // Ugh, I know. I only need this component in this post
+  // and this brittle approach is good enough for now.
+  if (date === '2022-09-18') {
+    components = {
+      ...components,
+      ClickTimer,
+    };
+  }
+
+  return (
+    <>
+      <Head>
+        {nextPost && <link rel="prefetch" href={`/writing/${nextPost.slug}`} />}
+        {prevPost && <link rel="prefetch" href={`/writing/${prevPost.slug}`} />}
+      </Head>
+      <Layout title={title} intro={intro}>
+        <Grid>
+          <Full>
+            <h1>{title}</h1>
+          </Full>
+          <Aside>
+            <Sticker>
+              <PostDate date={date} hasYear hasShare />
+            </Sticker>
+          </Aside>
+          <PageBody as={PostFormatting}>
+            <AgeWarning date={date} />
+            <p className="intro" dangerouslySetInnerHTML={{ __html: intro }} />
+            <MDXRemote {...mdxContent} components={components} />
+            <Coffee />
+          </PageBody>
+          <NextPrev nextPost={nextPost} prevPost={prevPost} />
+        </Grid>
+      </Layout>
+    </>
+  );
+};
 
 export default WrtingPost;
