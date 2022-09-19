@@ -20,6 +20,8 @@ This worked fine, but is not at all dynamic. We have to make an assumption that 
 
 ## Making prefetching smarter
 
+> It'll become clear pretty quickly that this approach is only workable on a device with a pointing device, like a mouse or trackpad. The focus on using a hover state to detect intent to visit a page is completely unworkable on a touch device.
+
 There is a delay between a link being hovered and being clicked. Hovering is a good hint that there is a click coming, either right away or at some point later, and loading the linked page in the background while resources are free will speed up the page transition when it's needed.
 
 Click the button below a few times to see the delay between the `mouseover` event and the following `click` event, and an average of all attempts. Try and click naturally.
