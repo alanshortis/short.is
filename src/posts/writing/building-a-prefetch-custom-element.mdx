@@ -8,7 +8,7 @@ intro: 'Prefetching a resource that you might need is a well supported part of t
 
 Resource Hints in HTML are a set of strategies for improving loading of pages and assets. [Prefetch](https://developer.mozilla.org/en-US/docs/Glossary/Prefetch) is one such strategy and can start the downloading content that is likely to be needed at some time in the future in the background.
 
-Prefetching is an HTML feature, and requires no JavaScript. Until recently, this website used `preconnect` on the home page for the `/writing` page as it was the main source of any content. It was as simple as adding an element to the document head:
+Prefetching is an HTML feature, and requires no JavaScript. Until recently, this website used prefetching on the home page for the `/writing` page as it was the main source of any content. It was as simple as adding an element to the document head:
 
 ```html
 <link rel="prefetch" href="/writing" />
@@ -82,7 +82,7 @@ Custom elements are class based, so in this case we extend the built in `HTMLEle
 
 The approach above does a good job of describing the code inside the custom element. One thing of note is the relatively new options object that is passed as a third argument to `addEventListener`. Using [once](https://caniuse.com/once-event-listener) ensures that the event is fired only once. Without this we would needlessly keep appending elements to the head on every hover.
 
-Compared to JSX the native DOM API can feel a little clunky, especially when creating an element to append. It's a worth tradeoff as this entire implementation is less than 1kb. React 16 and React DOM is [more than 30kb](https://gist.github.com/Restuta/cda69e50a853aa64912d) before any custom code.
+Compared to JSX the native DOM API can feel a little clunky, especially when creating an element to append. It's a worthy tradeoff as this entire implementation is less than 1kb. React 16 and React DOM is [more than 30kb](https://gist.github.com/Restuta/cda69e50a853aa64912d) before any custom code.
 
 Once defined, the custom element should wrap any link whose destination should be prefetched:
 
@@ -94,7 +94,7 @@ Once defined, the custom element should wrap any link whose destination should b
 
 ### Browser support
 
-Support for both [prefetch](https://caniuse.com/link-rel-prefetch) and [custom elements](https://caniuse.com/custom-elementsv1) is good. Safari is behind, though prefetch being behind a flag suggests it'll have stable soon.
+Support for both [prefetch](https://caniuse.com/link-rel-prefetch) and [custom elements](https://caniuse.com/custom-elementsv1) is good. Safari is behind, though prefetch being behind a flag suggests it'll have stable support soon.
 
 I don't think there is any benefit to trying to sniff for support for prefetching before appending the link element. It's certainly a more expensive operation than appending an element that current Safari versions can just ignore.
 
@@ -107,6 +107,7 @@ This idea is definitely not mature and there are a few known problems:
 - There is no error handling
 - The fairly limited time for prefetching means this approach favours sites and connections that are already fast
 - Setting wider bounds on the hover area would increase the window of time for prefetching, but would also increase complexity
+- If there are multiple links to the same page, hovering each would append a duplicate `link` element
 - Touch devices don't really have the concept of hovering, so any kind of hint is near impossible to get
 
 The bottom line, as always, is to build sites that are naturally fast and light in the first place.
