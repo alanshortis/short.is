@@ -1,0 +1,118 @@
+---
+title: 'Building a prefetch custom element'
+date: '2022-09-18'
+intro: "Tools like Gatsby do some clever prefetching when it seems very likely you'll click a link. The intent is to speed up page loads, but is the huge bundle of required JS part of the speed problem?"
+---
+
+## What is prefetching
+
+<< RESOURCE HINTS >>
+
+There are a few strategies for speeding up the loading of pages and resources those pages need. [Prefetch](https://developer.mozilla.org/en-US/docs/Glossary/Prefetch) is useful for downloading content in the background that is likely to be needed at some time in the future, so it's fair to say that pages linked from other pages fall into that category.
+
+Prefetching is an HTML feature, and required no JavaScript if there is no need for anything dynamic. Until recently, this website used `preconnect` on the home page for the `/writing` page as it was the main source of any content. It was as simple as adding an element to the document head:
+
+```html
+<link rel="prefetch" href="/writing" />
+```
+
+Once the home page was loaded, the browser would then prefect the writing page when it was done with any tasks that have a higher priority; loading and rendering the current page.
+
+This works fine, but is not at all dynamic. We have to make an assumption that this page is likely to be visited and this assumption is weaker the more pages a website has.
+
+## Making prefetching smarter
+
+There is a short period of time between a link being hovered and being clicked. Hovering is a pretty clear hint that there is a click coming, either right away or at some point later.
+
+The time between hovering and clicking is longer than you might expect. Click the button below a few times to see the delay, and an average of all your clicks. Try and click naturally.
+
+<ClickTimer />
+
+My own rudimentary testing has showed that it's hard to get a hover time under 200ms, and for more normal point-and-click it's closer to 600ms.
+
+## Building a custom element
+
+We don't need to use React or any other library to make prefetching dynamic. We can encapsulate everything needed into a custom element to append a `link` tag to the document head, and the browser will initiate the prefetch.
+
+It's really easy to over-engineer this kind of thing. This implementation is very stripped back to just what is needed to make the idea work. There is definitely room for improvement, which we'll get into later.
+
+If you're not familiar with custom elements, I have written about them before in [Building a share button custom element](/writing/building-a-share-button-custom-element) which includes a reduced example of the simplest possible element. It might be helpful to read that first.
+
+### Requirements
+
+Before we dive into code, let's list some requirements:
+
+- Create a custom element to wrap any links we want to prefetch
+- Select the anchor element inside the custom element
+- Select the `head` element of the document
+- Create a new `link` element, and set its attributes:
+  - Set `rel` to `preload`
+  - set `href` to the `href` of the anchor element we already selected
+- On `mouseover` on the selected anchor element, append the created `link` to the `head`
+
+We don't need to do anything special to initiate the prefetch; the browser will handle that when the element is appended just as it would for a hardcoded link element.
+
+### Custom element source
+
+There isn't anything too complex in this custom element. Let's look at the whole source and then break it down.
+
+```javascript
+if ('customElements' in window) {
+  customElements.define(
+    'link-prefetch',
+    class extends HTMLElement {
+      connectedCallback() {
+        const aElem = this.querySelector('a');
+        const headElem = document.querySelector('head');
+        const linkElem = document.createElement('link');
+
+        linkElem.rel = 'prefetch';
+        linkElem.href = aElem.href;
+
+        aElem.addEventListener(
+          'mouseover',
+          () => {
+            headElem.appendChild(linkElem);
+          },
+          { once: true }
+        );
+      }
+    }
+  );
+}
+```
+
+Custom elements are class based, so in this case we just need to extend the built in `HTMLElement`. The `connectedCallback` method is called automatically, and with this being a small and synchronous operation it can all stay within this method.
+
+Out list of requirements above does a good job of describing the code inside the custom element. One thing of note is the relatively new options object that is passed as a third argument to the event listener. Here we use [once](https://caniuse.com/once-event-listener) to ensure that the event is fired only once. Without this, we could needlessly keep appending elements to the head that do nothing.
+
+In a world of JSX the native DOM API can feel a little clunky, especially when creating an element to append. Let's not fall into the trap of putting DX ahead of UX; this entire implementation is less than 1kb, React 16 and React DOM is [more than 30kb](https://gist.github.com/Restuta/cda69e50a853aa64912d) before any custom code.
+
+Once defined, the custom element should wrap any link that should be prefetched:
+
+```html
+<link-prefetch>
+  <a href="/writing" />
+</link-prefetch>
+```
+
+### Browser support
+
+Support for both [prefetch](https://caniuse.com/link-rel-prefetch) and [custom elements](https://caniuse.com/custom-elementsv1) is good. Safari is behind on this feature, though the feature being behind a flag suggests it'll be here soon.
+
+I don't think there is much benefit to trying to sniff for support for prefetching as it's certainly a more expensive operation than appending an element that Safari will simply ignore.
+
+As with all custom elements, we check for `customElements` in the `window` object before we try and register. If the element isn't registered, the browser will just ignore the unknown `<link-prefetch>` element. HTML is very good at ignoring nonsense: we can all learn from that.
+
+## Going further
+
+There are problems:
+
+- There is no error handling at all
+- The fairly limited time the prefetch has to complete means this favours sites and connections that are already fast
+- The link element is appended (and prefetch starts) when the link inside the custom element is hovered. Setting wider bounds on the hover area would increase the window of time for prefetching
+- Touch devices don't really have the concept of hovering, so any kind of hint is near impossible to get
+
+Some testing of download times for prefetched pages vs hover time look favourable but this is far from a scientific approach. Worst case scenario is an extra 1kb of code for users and a lesson learned for this developer, but I'm not completely convinced this is a workable solution.
+
+The bottom line, as always, is to build sites that are naturally fast and light in the first place.
