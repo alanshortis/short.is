@@ -51,19 +51,6 @@ type PostProps = Omit<Post, 'slug' | 'content'>;
 const WrtingPost: FC<PostProps> = ({ title, date, intro, nextPost, prevPost, mdxContent }) => {
   const isOld = daysSince(date) > 730;
 
-  let components = {
-    Concerns,
-    ExampleEmbed,
-  };
-
-  // TODO: Add a field in front matter to determine required web components
-  if (date === '2022-09-19') {
-    components = {
-      ...components,
-      ClickTimer,
-    };
-  }
-
   return (
     <>
       <Head>
@@ -83,7 +70,7 @@ const WrtingPost: FC<PostProps> = ({ title, date, intro, nextPost, prevPost, mdx
           <PageBody as={PostFormatting}>
             {isOld && <Warning>This post is more than 2 years old</Warning>}
             <p className="intro" dangerouslySetInnerHTML={{ __html: intro }} />
-            <MDXRemote {...mdxContent} components={components} />
+            <MDXRemote {...mdxContent} components={{ Concerns, ExampleEmbed, ClickTimer }} />
             <Coffee />
           </PageBody>
           <NextPrev nextPost={nextPost} prevPost={prevPost} />
