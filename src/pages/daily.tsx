@@ -38,7 +38,7 @@ const Daily: NextPage<DailyList> = ({ dailies }) => (
           <Fragment key={daily.date}>
             <Aside>
               <Sticker>
-                <Label as="h2">#{daily.title.toString().padStart(2, 0)}</Label>
+                <Label as="h2">#{daily.title.toString().padStart(2, '0')}</Label>
               </Sticker>
             </Aside>
             <PageBody as={PostList}>
