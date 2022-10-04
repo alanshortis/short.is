@@ -23,7 +23,7 @@ if ('customElements' in window) {
       }
 
       render() {
-        this.innerHTML = `
+        this.innerHTML = /*html*/ `
           <button type="button">Click</button>
           <dl>
             <dd>Click delay:</dd>

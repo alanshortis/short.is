@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 if ('customElements' in window && 'share' in navigator) {
   customElements.define(
     'share-button',
@@ -13,7 +14,7 @@ if ('customElements' in window && 'share' in navigator) {
       }
 
       render() {
-        this.innerHTML = `
+        this.innerHTML = /*html*/ `
           &middot; <button type="button" class="sb-label">Share</button>
         `;
 

@@ -41,12 +41,12 @@ if ('customElements' in window) {
       }
 
       render() {
-        this.innerHTML = `
+        this.innerHTML = /*html*/ `
           <fieldset class="st-fields">
             <legend>Colour scheme</legend>
               ${this.schemes
                 .map(
-                  scheme => `
+                  scheme => /*html*/ `
                   <input type="radio" id="${scheme}-radio" value="${scheme}" name="scheme">
                   <label for="${scheme}-radio">${scheme}</label>
               `
