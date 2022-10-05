@@ -32,6 +32,7 @@ const StyledList = styled.ul`
 
 const pages: MenuItem[] = [
   { title: 'Writing', path: '/writing' },
+  { title: 'Photography', path: '/photography' },
   { title: 'Daily', path: '/daily' },
 ];
 
