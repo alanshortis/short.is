@@ -15,6 +15,7 @@ export const Head: FC<HeadInfo> = ({ title, intro }) => {
     <NextHead>
       <title>{pageTitle}</title>
       <link rel="preload" href="/fonts/inter.woff2" as="font" type="font/woff2" crossOrigin="" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta name="description" content={description} />
       <meta property="og:title" content={pageTitle} />
       <meta property="og:description" content={description} />
