@@ -14,6 +14,7 @@ const EmbedContainer = styled.div`
   }
   a {
     display: block;
+    color: currentColor;
     font-size: 0.8rem;
     line-height: 1rem;
     overflow-x: scroll;
