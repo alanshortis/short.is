@@ -33,7 +33,6 @@ export const PostFormatting = styled.div`
 
   a {
     color: var(--accent);
-    text-decoration: underline;
     white-space: nowrap;
     &[href^='http']:not([href*='short.is'])::after {
       content: '↗';
@@ -87,8 +86,9 @@ export const PostFormatting = styled.div`
     position: relative;
     text-decoration: none;
     &::before {
-      border-bottom: ${p => p.theme.borderSize} solid currentColor;
+      border-bottom: ${p => p.theme.borderSize} solid var(--accent);
       content: '';
+      opacity: 1;
       position: absolute;
       right: 0;
       top: 50%;
