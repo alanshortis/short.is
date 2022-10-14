@@ -2,10 +2,10 @@ import { Fragment } from 'react';
 import type { NextPage, GetStaticPropsResult } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
 import styled from 'styled-components';
-import { Layout, PostList, PostDate, Label } from '../components';
-import { Aside, Full, Grid, PageBody, Sticker } from '../components/Grid';
-import { DailyList, DailyPost } from '../types';
-import { allDailies } from '../data/all-dailies';
+import { Layout, PostList, PostDate, Label } from '../../components';
+import { Aside, Full, Grid, PageBody, Sticker } from '../../components/Grid';
+import { DailyList, DailyPost } from '../../types';
+import { allDailies } from '../../data/all-dailies';
 
 const DailyContent = styled.article`
   ${Label} {
