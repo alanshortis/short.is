@@ -37,6 +37,7 @@ export interface LatestContent {
 }
 
 export interface DailyPost {
+  content: string;
   day: string;
   date: string;
   mdxContent: Mdx;

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Layout, PostList, Label } from '../../components';
 import { Aside, Full, Grid, PageBody, Sticker } from '../../components/Grid';
 import { DailyPost } from '../../types';
-import { allDailies } from '../../data/all-dailies';
+import { allDailies, dailyContent } from '../../data/all-dailies';
 
 const DailyContent = styled.article`
   ${Label} {
@@ -20,6 +20,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
+  console.log(dailyContent(params?.day));
+
   return {
     props: {
       day: params?.day,
