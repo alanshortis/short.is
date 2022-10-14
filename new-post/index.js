@@ -13,7 +13,7 @@ const today = new Date().toISOString().slice(0, 10);
 
 const createPost = async (type, title) => {
   const filePath = path.join(PATH, type);
-  const fileName = type === 'daily' ? today : encodeURIComponent(title.split(' ').join('-').toLowerCase());
+  const fileName = type === 'daily' ? streak : encodeURIComponent(title.split(' ').join('-').toLowerCase());
   const fullPath = `${filePath}/${fileName}.mdx`;
 
   if (fs.existsSync(fullPath)) {
