@@ -2,7 +2,8 @@ import type { NextPage, GetStaticProps, GetStaticPaths } from 'next';
 import styled from 'styled-components';
 import { Layout, PostList, Label } from '../../components';
 import { Aside, Full, Grid, PageBody, Sticker } from '../../components/Grid';
-import { DailyList } from '../../types';
+import { DailyPost } from '../../types';
+import { allDailies } from '../../data/all-dailies';
 
 const DailyContent = styled.article`
   ${Label} {
@@ -11,14 +12,9 @@ const DailyContent = styled.article`
 `;
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = [
-    {
-      params: { day: '101' },
-    },
-    {
-      params: { day: '1' },
-    },
-  ];
+  const paths = allDailies.map(daily => ({
+    params: { day: daily.day },
+  }));
 
   return { paths, fallback: false };
 };
@@ -35,7 +31,7 @@ export const config = {
   unstable_runtimeJS: false,
 };
 
-const Daily: NextPage<DailyList> = ({ day }) => (
+const Daily: NextPage<DailyPost> = ({ day }) => (
   <Layout title="Daily">
     <Grid>
       <Full>

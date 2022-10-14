@@ -40,7 +40,7 @@ const Daily: NextPage<DailyList> = ({ dailies }) => (
               <Sticker>
                 <Label as="h2">
                   <span aria-hidden>#</span>
-                  {daily.title.padStart(2, '0')}
+                  {daily.day.padStart(2, '0')}
                 </Label>
               </Sticker>
             </Aside>

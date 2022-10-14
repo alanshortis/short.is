@@ -14,11 +14,11 @@ export const dailyCount = fs.readdirSync(DAILY_DIR).length;
 export const allDailies = await Promise.all(
   allDailyFileNames.map(async (fileName): Promise<DailyPost> => {
     const { data, content } = fileContent(fileName);
-    const { title, date } = data;
+    const { day, date } = data;
     const mdxContent = await serialize(content);
 
     return {
-      title,
+      day,
       date,
       mdxContent,
     };
