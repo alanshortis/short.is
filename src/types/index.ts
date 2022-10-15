@@ -43,6 +43,12 @@ export interface DailyPost {
   mdxContent: Mdx;
 }
 
+export interface DailyPostMdx {
+  day: string;
+  date: string;
+  mdxContent: Mdx;
+}
+
 export interface DailyList {
-  dailies: DailyPost[];
+  dailies: DailyPostMdx[];
 }

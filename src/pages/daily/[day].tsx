@@ -1,6 +1,9 @@
 import type { NextPage, GetStaticProps, GetStaticPaths } from 'next';
 import styled from 'styled-components';
-import { Layout, PostList, Label } from '../../components';
+import { MDXRemote } from 'next-mdx-remote';
+import { serialize } from 'next-mdx-remote/serialize';
+import Link from 'next/link';
+import { Arrow, Layout, PostDate, PostFormatting, Label } from '../../components';
 import { Aside, Full, Grid, PageBody, Sticker } from '../../components/Grid';
 import { DailyPost } from '../../types';
 import { allDailies, dailyContent } from '../../data/all-dailies';
@@ -20,11 +23,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  console.log(dailyContent(params?.day));
+  const fileContent = dailyContent(params?.day as string);
+  const mdxContent = await serialize(fileContent.content);
 
   return {
     props: {
-      day: params?.day,
+      ...fileContent,
+      mdxContent,
     },
   };
 };
@@ -33,7 +38,7 @@ export const config = {
   unstable_runtimeJS: false,
 };
 
-const Daily: NextPage<DailyPost> = ({ day }) => (
+const Daily: NextPage<DailyPost> = ({ day, date, mdxContent }) => (
   <Layout title="Daily">
     <Grid>
       <Full>
@@ -44,13 +49,20 @@ const Daily: NextPage<DailyPost> = ({ day }) => (
       </Full>
       <Aside>
         <Sticker>
-          <Label as="h2">13 October 2022</Label>
+          <PostDate date={date} hasYear hasShare />
         </Sticker>
       </Aside>
-      <PageBody as={PostList}>
+      <PageBody as={PostFormatting}>
         <DailyContent>
-          <p>hi</p>
+          <MDXRemote {...mdxContent} />
         </DailyContent>
+      </PageBody>
+      <PageBody>
+        <Link href="/daily">
+          <a>
+            <Arrow direction="left">More dailies</Arrow>
+          </a>
+        </Link>
       </PageBody>
     </Grid>
   </Layout>

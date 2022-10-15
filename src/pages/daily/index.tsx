@@ -1,10 +1,11 @@
 import { Fragment } from 'react';
 import type { NextPage, GetStaticPropsResult } from 'next';
+import Link from 'next/link';
 import { MDXRemote } from 'next-mdx-remote';
 import styled from 'styled-components';
-import { Layout, PostList, PostDate, Label } from '../../components';
+import { Layout, PostList, PostDate, Label, VisuallyHidden, Arrow } from '../../components';
 import { Aside, Full, Grid, PageBody, Sticker } from '../../components/Grid';
-import { DailyList, DailyPost } from '../../types';
+import { DailyList, DailyPostMdx } from '../../types';
 import { allDailies } from '../../data/all-dailies';
 
 const DailyContent = styled.article`
@@ -12,6 +13,10 @@ const DailyContent = styled.article`
     margin-bottom: var(--spacing);
   }
 `;
+
+// const DailyLink = styled.a`
+//   color: var(--accent);
+// `;
 
 export async function getStaticProps(): Promise<GetStaticPropsResult<DailyList>> {
   const sortedDailies = allDailies.sort((a, b) => (new Date(a.date) < new Date(b.date) ? 1 : -1));
@@ -33,14 +38,18 @@ const Daily: NextPage<DailyList> = ({ dailies }) => (
       <Full>
         <h1>Daily</h1>
       </Full>
-      {dailies.map((daily: DailyPost) => {
+      {dailies.map((daily: DailyPostMdx) => {
         return (
           <Fragment key={daily.date}>
             <Aside>
               <Sticker>
                 <Label as="h2">
-                  <span aria-hidden>#</span>
-                  {daily.day.padStart(2, '0')}
+                  <Link href={`/daily/${daily.day}`}>
+                    <Arrow as="a">
+                      <span aria-hidden>#</span>
+                      {daily.day} <VisuallyHidden>Permalink</VisuallyHidden>
+                    </Arrow>
+                  </Link>
                 </Label>
               </Sticker>
             </Aside>
