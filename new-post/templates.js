@@ -6,7 +6,7 @@ intro: ''
 `;
 
 const daily = (streak, date) => `---
-title: ${streak}
+day: '${streak}'
 date: '${date}'
 ---
 `;

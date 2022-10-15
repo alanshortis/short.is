@@ -37,11 +37,18 @@ export interface LatestContent {
 }
 
 export interface DailyPost {
-  title: number;
+  content: string;
+  day: string;
+  date: string;
+  mdxContent: Mdx;
+}
+
+export interface DailyPostMdx {
+  day: string;
   date: string;
   mdxContent: Mdx;
 }
 
 export interface DailyList {
-  dailies: DailyPost[];
+  dailies: DailyPostMdx[];
 }
