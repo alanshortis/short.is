@@ -45,10 +45,12 @@ const Daily: NextPage<DailyList> = ({ dailies }) => (
               <Sticker>
                 <Label as="h2">
                   <Link href={`/daily/${daily.day}`}>
-                    <Arrow as="a">
-                      <span aria-hidden>#</span>
-                      {daily.day} <VisuallyHidden>Permalink</VisuallyHidden>
-                    </Arrow>
+                    <a>
+                      <Arrow>
+                        <span aria-hidden>#</span>
+                        {daily.day} <VisuallyHidden>Permalink</VisuallyHidden>
+                      </Arrow>
+                    </a>
                   </Link>
                 </Label>
               </Sticker>
