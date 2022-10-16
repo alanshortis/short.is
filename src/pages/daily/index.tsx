@@ -57,7 +57,7 @@ const Daily: NextPage<DailyList> = ({ dailies }) => (
                   <MDXRemote {...daily.mdxContent} />
                 </DailyContent>
               </PostFormatting>
-              <Link href={`/daily/${daily.day}`}>
+              <Link href={`/daily/${daily.day}`} passHref>
                 <Permalink>
                   <Arrow>Permalink</Arrow>
                 </Permalink>
