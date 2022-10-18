@@ -3,8 +3,9 @@ import type { NextPage, GetStaticPropsResult } from 'next';
 import Link from 'next/link';
 import { MDXRemote } from 'next-mdx-remote';
 import styled from 'styled-components';
-import { Layout, PostDate, Label, Arrow, PostFormatting } from '../../components';
+import { Layout, PostDate, Label, PostList } from '../../components';
 import { Aside, Full, Grid, PageBody, Sticker } from '../../components/Grid';
+import { LinkIcon } from '../../components/icons';
 import { DailyList, DailyPostMdx } from '../../types';
 import { allDailies } from '../../data/all-dailies';
 
@@ -15,8 +16,9 @@ const DailyContent = styled.article`
 `;
 
 const Permalink = styled.a`
-  float: right;
-  margin-top: var(--spacing);
+  position: relative;
+  // MAGIC NUMBERS!
+  top: 1px;
 `;
 
 export async function getStaticProps(): Promise<GetStaticPropsResult<DailyList>> {
@@ -45,23 +47,20 @@ const Daily: NextPage<DailyList> = ({ dailies }) => (
             <Aside>
               <Sticker>
                 <Label as="h2">
-                  <span aria-hidden>#</span>
-                  {daily.day}
+                  <Link href={`/daily/${daily.day}`} passHref>
+                    <Permalink>
+                      <span aria-hidden>#</span>
+                      {daily.day} &middot; <LinkIcon />
+                    </Permalink>
+                  </Link>
                 </Label>
               </Sticker>
             </Aside>
-            <PageBody>
-              <PostFormatting>
-                <DailyContent>
-                  <PostDate date={daily.date} hasYear />
-                  <MDXRemote {...daily.mdxContent} />
-                </DailyContent>
-              </PostFormatting>
-              <Link href={`/daily/${daily.day}`} passHref>
-                <Permalink>
-                  <Arrow>Permalink</Arrow>
-                </Permalink>
-              </Link>
+            <PageBody as={PostList}>
+              <DailyContent>
+                <PostDate date={daily.date} hasYear />
+                <MDXRemote {...daily.mdxContent} />
+              </DailyContent>
             </PageBody>
           </Fragment>
         );
