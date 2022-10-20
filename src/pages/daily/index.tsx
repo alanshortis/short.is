@@ -15,18 +15,14 @@ const DailyContent = styled.article`
   }
 `;
 
-const Permalink = styled.a`
-  position: relative;
-  // MAGIC NUMBERS!
-  top: 1px;
-`;
-
 export async function getStaticProps(): Promise<GetStaticPropsResult<DailyList>> {
-  const sortedDailies = allDailies.sort((a, b) => (new Date(a.date) < new Date(b.date) ? 1 : -1));
+  // const sortedDailies = allDailies.sort((a, b) => (new Date(a.date) < new Date(b.date) ? 1 : -1));
+
+  const dailies = allDailies(0, 1);
 
   return {
     props: {
-      dailies: sortedDailies,
+      dailies,
     },
   };
 }
@@ -37,21 +33,22 @@ export const config = {
 
 const Daily: NextPage<DailyList> = ({ dailies }) => (
   <Layout title="Daily">
+    {console.log(dailies)}
     <Grid>
       <Full>
         <h1>Daily</h1>
       </Full>
-      {dailies.map((daily: DailyPostMdx) => {
+      {/* {dailies.map((daily: DailyPostMdx) => {
         return (
           <Fragment key={daily.date}>
             <Aside>
               <Sticker>
                 <Label as="h2">
                   <Link href={`/daily/${daily.day}`} passHref>
-                    <Permalink>
+                    <a>
                       <span aria-hidden>#</span>
                       {daily.day} &middot; <LinkIcon />
-                    </Permalink>
+                    </a>
                   </Link>
                 </Label>
               </Sticker>
@@ -64,7 +61,7 @@ const Daily: NextPage<DailyList> = ({ dailies }) => (
             </PageBody>
           </Fragment>
         );
-      })}
+      })} */}
     </Grid>
   </Layout>
 );
