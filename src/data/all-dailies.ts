@@ -6,7 +6,6 @@ import { DailyPost } from '../types';
 
 const EXT = '.mdx';
 const DAILY_DIR = path.join(process.cwd(), 'src/posts/daily');
-const PER_PAGE = 25;
 const allDailyFileNames = fs.readdirSync(DAILY_DIR);
 
 const fileContent = (fileName: string) => matter(fs.readFileSync(path.join(DAILY_DIR, fileName)));
@@ -14,53 +13,31 @@ const fileContent = (fileName: string) => matter(fs.readFileSync(path.join(DAILY
 // How many posts?
 export const dailyCount = fs.readdirSync(DAILY_DIR).length;
 
+// How many per page?
+export const PER_PAGE = 25;
+
 // How many pages?
 export const pageCount = dailyCount / PER_PAGE;
 
-// Every daily post, please.
-// export const allDailies = await Promise.all(
-//   allDailyFileNames.map(async (fileName): Promise<Omit<DailyPost, 'content'>> => {
-//     const { data, content } = fileContent(fileName);
-//     const { day, date } = data;
-//     const mdxContent = await serialize(content);
+// Posts are in files, named by the day. Strip the file extension and make a number.
+export const postDays = allDailyFileNames.map(fileName => Number(fileName.replace(EXT, '')));
 
-//     return {
-//       day,
-//       date,
-//       mdxContent,
-//     };
-//   })
-// );
+// An array of posts in a range, with parsed MDX content.
+export const dailyPosts = async (offset = 0, count = PER_PAGE): Promise<DailyPost[]> => {
+  // Sort the post days then slice to return just the range of posts we need.
+  const postsInRange = postDays.sort((a, b) => b - a).slice(offset, offset + count);
 
-export const allDailies = (offset = 0, count = PER_PAGE): Array<unknown> => {
-  const posts = allDailyFileNames
-    .map(fileName => {
-      const { data } = fileContent(fileName);
+  // Put the filename back together, get the front matter and content, return.
+  const postContent = await Promise.all(
+    postsInRange.map(async postDay => {
+      const fileName = `${postDay.toString() + EXT}`;
+      const { data, content } = fileContent(fileName);
       const { day, date } = data;
+      const mdxContent = await serialize(content);
 
-      return { day, date };
+      return { day, date, mdxContent };
     })
-    .sort((a, b) => (new Date(a.date) < new Date(b.date) ? 1 : -1));
+  );
 
-  const postsSubset = posts.slice(offset, offset + count);
-
-  return postsSubset;
+  return postContent;
 };
-
-// Just the requested post's frontmatter and content.
-// export const dailyContent = (day: string): Omit<DailyPost, 'mdxContent'> => {
-//   const thisPost = allDailies.findIndex(daily => daily.day === day);
-
-//   return {
-//     ...(allDailies[thisPost] as DailyPost),
-//     content: fileContent(`${day}${EXT}`).content,
-//   };
-// };
-
-// TODO (test after each step)
-// - Change `allDailies` to a function.
-// - Sort the posts that are returned in this function.
-// - Accept an argument for the first post (by 'day') to return.
-// - Accept an argument for the number of posts to return.
-// - Replace `dailyContent` with the `allDailies` function, using the args to get one post.
-// - Remove serialise from the view.

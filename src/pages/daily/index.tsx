@@ -6,8 +6,8 @@ import styled from 'styled-components';
 import { Layout, PostDate, Label, PostList } from '../../components';
 import { Aside, Full, Grid, PageBody, Sticker } from '../../components/Grid';
 import { LinkIcon } from '../../components/icons';
-import { DailyList, DailyPostMdx } from '../../types';
-import { allDailies } from '../../data/all-dailies';
+import { DailyList, DailyPost } from '../../types';
+import { dailyPosts } from '../../data/all-dailies';
 
 const DailyContent = styled.article`
   ${Label} {
@@ -16,13 +16,9 @@ const DailyContent = styled.article`
 `;
 
 export async function getStaticProps(): Promise<GetStaticPropsResult<DailyList>> {
-  // const sortedDailies = allDailies.sort((a, b) => (new Date(a.date) < new Date(b.date) ? 1 : -1));
-
-  const dailies = allDailies(0, 1);
-
   return {
     props: {
-      dailies,
+      dailies: await dailyPosts(),
     },
   };
 }
@@ -33,12 +29,11 @@ export const config = {
 
 const Daily: NextPage<DailyList> = ({ dailies }) => (
   <Layout title="Daily">
-    {console.log(dailies)}
     <Grid>
       <Full>
         <h1>Daily</h1>
       </Full>
-      {/* {dailies.map((daily: DailyPostMdx) => {
+      {dailies.map((daily: DailyPost) => {
         return (
           <Fragment key={daily.date}>
             <Aside>
@@ -61,7 +56,7 @@ const Daily: NextPage<DailyList> = ({ dailies }) => (
             </PageBody>
           </Fragment>
         );
-      })} */}
+      })}
     </Grid>
   </Layout>
 );
