@@ -1,24 +1,14 @@
-import { Fragment } from 'react';
 import type { NextPage, GetStaticPropsResult } from 'next';
-import Link from 'next/link';
-import { MDXRemote } from 'next-mdx-remote';
-import styled from 'styled-components';
-import { Layout, PostDate, Label, PostList } from '../../components';
-import { Aside, Full, Grid, PageBody, Sticker } from '../../components/Grid';
-import { LinkIcon } from '../../components/icons';
-import { DailyList, DailyPost } from '../../types';
-import { dailyPosts } from '../../data/all-dailies';
-
-const DailyContent = styled.article`
-  ${Label} {
-    margin-bottom: var(--spacing);
-  }
-`;
+import { DailyPage } from '../../components';
+import { DailyList } from '../../types';
+import { dailyPosts, pageCount } from '../../data/all-dailies';
 
 export async function getStaticProps(): Promise<GetStaticPropsResult<DailyList>> {
   return {
     props: {
       dailies: await dailyPosts(),
+      currentPage: '1',
+      totalPages: pageCount.toString(),
     },
   };
 }
@@ -27,38 +17,6 @@ export const config = {
   unstable_runtimeJS: false,
 };
 
-const Daily: NextPage<DailyList> = ({ dailies }) => (
-  <Layout title="Daily">
-    <Grid>
-      <Full>
-        <h1>Daily</h1>
-      </Full>
-      {dailies.map((daily: DailyPost) => {
-        return (
-          <Fragment key={daily.date}>
-            <Aside>
-              <Sticker>
-                <Label as="h2">
-                  <Link href={`/daily/${daily.day}`} passHref>
-                    <a>
-                      <span aria-hidden>#</span>
-                      {daily.day} &middot; <LinkIcon />
-                    </a>
-                  </Link>
-                </Label>
-              </Sticker>
-            </Aside>
-            <PageBody as={PostList}>
-              <DailyContent>
-                <PostDate date={daily.date} hasYear />
-                <MDXRemote {...daily.mdxContent} />
-              </DailyContent>
-            </PageBody>
-          </Fragment>
-        );
-      })}
-    </Grid>
-  </Layout>
-);
+const Daily: NextPage<DailyList> = p => <DailyPage {...p} />;
 
 export default Daily;

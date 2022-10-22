@@ -11,18 +11,19 @@ const allDailyFileNames = fs.readdirSync(DAILY_DIR);
 const fileContent = (fileName: string) => matter(fs.readFileSync(path.join(DAILY_DIR, fileName)));
 
 // How many posts?
-export const dailyCount = fs.readdirSync(DAILY_DIR).length;
+export const dailyCount = allDailyFileNames.length;
 
 // How many per page?
-export const PER_PAGE = 25;
+export const PER_PAGE = 10;
 
 // How many pages?
-export const pageCount = dailyCount / PER_PAGE;
+export const pageCount = Math.ceil(dailyCount / PER_PAGE);
 
 // Posts are in files, named by the day. Strip the file extension and make a number.
 export const postDays = allDailyFileNames.map(fileName => Number(fileName.replace(EXT, '')));
 
 // An array of posts in a range, with parsed MDX content.
+// Using the offset and count args, can get a single post.
 export const dailyPosts = async (offset = 0, count = PER_PAGE): Promise<DailyPost[]> => {
   // Sort the post days then slice to return just the range of posts we need.
   const postsInRange = postDays.sort((a, b) => b - a).slice(offset, offset + count);

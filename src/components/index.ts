@@ -1,6 +1,7 @@
 export { activeMarker } from './Active';
 export { Arrow } from './Arrow';
 export { Container } from './Container';
+export { DailyPage } from './DailyPage';
 export { Footer } from './Footer';
 export { Grid } from './Grid';
 export { Head } from './Head';

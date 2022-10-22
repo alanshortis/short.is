@@ -44,4 +44,6 @@ export interface DailyPost {
 
 export interface DailyList {
   dailies: DailyPost[];
+  currentPage: string;
+  totalPages: string;
 }
