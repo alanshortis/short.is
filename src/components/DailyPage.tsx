@@ -1,11 +1,16 @@
 import type { FC } from 'react';
 import { Fragment } from 'react';
+import styled from 'styled-components';
 import Link from 'next/link';
 import { MDXRemote } from 'next-mdx-remote';
 import { Label, Layout, PostDate, PostList } from '.';
 import { Aside, Full, Grid, PageBody, Sticker } from './Grid';
 import { LinkIcon } from './icons';
 import { DailyList, DailyPost } from '../types';
+
+const Content = styled.div`
+  margin-top: var(--spacing);
+`;
 
 export const DailyPage: FC<DailyList> = ({ dailies, currentPage, totalPages }) => (
   <Layout title={`Daily: ${currentPage}`}>
@@ -31,7 +36,9 @@ export const DailyPage: FC<DailyList> = ({ dailies, currentPage, totalPages }) =
             <PageBody as={PostList}>
               <article>
                 <PostDate date={daily.date} hasYear />
-                <MDXRemote {...daily.mdxContent} />
+                <Content>
+                  <MDXRemote {...daily.mdxContent} />
+                </Content>
               </article>
               <p>
                 {currentPage} / {totalPages}
