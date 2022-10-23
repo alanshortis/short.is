@@ -3,7 +3,7 @@ import { Fragment } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 import { MDXRemote } from 'next-mdx-remote';
-import { Label, Layout, PostDate, PostList } from '.';
+import { Label, Layout, Pagination, PostDate, PostList } from '.';
 import { Aside, Full, Grid, PageBody, Sticker } from './Grid';
 import { LinkIcon } from './icons';
 import { DailyList, DailyPost } from '../types';
@@ -40,13 +40,11 @@ export const DailyPage: FC<DailyList> = ({ dailies, currentPage, totalPages }) =
                   <MDXRemote {...daily.mdxContent} />
                 </Content>
               </article>
-              <p>
-                {currentPage} / {totalPages}
-              </p>
             </PageBody>
           </Fragment>
         );
       })}
     </Grid>
+    <Pagination currentPage={Number(currentPage)} totalPages={Number(totalPages)} />
   </Layout>
 );
