@@ -3,7 +3,7 @@ import { Fragment } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 import { MDXRemote } from 'next-mdx-remote';
-import { Label, Layout, Pagination, PostDate, PostList } from '.';
+import { Arrow, Label, Layout, Pagination, PostDate, PostList } from '.';
 import { Aside, Full, Grid, PageBody, Sticker } from './Grid';
 import { LinkIcon } from './icons';
 import { DailyList, DailyPost } from '../types';
@@ -24,12 +24,14 @@ export const DailyPage: FC<DailyList> = ({ dailies, currentPage, totalPages }) =
             <Aside>
               <Sticker>
                 <Label as="h2">
-                  <Link href={`/daily/${daily.day}`} passHref>
-                    <a>
-                      <span aria-hidden>#</span>
-                      {daily.day} &middot; <LinkIcon />
-                    </a>
-                  </Link>
+                  <Arrow>
+                    <Link href={`/daily/${daily.day}`} passHref>
+                      <a>
+                        <span aria-hidden>#</span>
+                        {daily.day}
+                      </a>
+                    </Link>
+                  </Arrow>
                 </Label>
               </Sticker>
             </Aside>
