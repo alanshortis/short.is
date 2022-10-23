@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
-import { Arrow, Label } from '.';
+import { Arrow, Label, VisuallyHidden } from '.';
 
 const StyledNav = styled.nav`
   display: flex;
@@ -24,15 +24,17 @@ const StyledNav = styled.nav`
 interface Props {
   currentPage: number;
   totalPages: number;
-  route?: string;
+  route?: `/${string}/`;
 }
 
 export const Pagination: FC<Props> = ({ currentPage, totalPages, route = '/daily/page/' }) => (
   <StyledNav>
     {currentPage > 1 ? (
       <Arrow direction="left">
-        <Link href={`${route}/${currentPage - 1}`}>
-          <a>Previous</a>
+        <Link href={`${route}${currentPage - 1}`}>
+          <a>
+            Previous <VisuallyHidden>page</VisuallyHidden>
+          </a>
         </Link>
       </Arrow>
     ) : (
@@ -43,8 +45,10 @@ export const Pagination: FC<Props> = ({ currentPage, totalPages, route = '/daily
     </Label>
     {currentPage < totalPages ? (
       <Arrow>
-        <Link href={`${route}/${currentPage + 1}`}>
-          <a>Next</a>
+        <Link href={`${route}${currentPage + 1}`}>
+          <a>
+            Next <VisuallyHidden>page</VisuallyHidden>
+          </a>
         </Link>
       </Arrow>
     ) : (
