@@ -7,12 +7,13 @@ const path = require('path');
 const prompts = require('prompts');
 const template = require('./templates');
 
-const PATH = path.join(__dirname, '../', 'src/posts');
+const DATA_PATH = path.join(__dirname, '../', 'src/data/daily-days.ts');
+const POSTS_PATH = path.join(__dirname, '../', 'src/posts');
 const streak = Math.ceil((new Date().getTime() - new Date('2022-08-17').getTime()) / (1000 * 3600 * 24));
 const today = new Date().toISOString().slice(0, 10);
 
 const createPost = async (type, title) => {
-  const filePath = path.join(PATH, type);
+  const filePath = path.join(POSTS_PATH, type);
   const fileName = type === 'daily' ? streak : encodeURIComponent(title.split(' ').join('-').toLowerCase());
   const fullPath = `${filePath}/${fileName}.mdx`;
 
@@ -22,6 +23,15 @@ const createPost = async (type, title) => {
   }
 
   exec(`git checkout -b ${type}/${type === 'daily' ? title : fileName}`, async () => {
+    // Write an array of daily days because it's faster than trying
+    // to use the file system when we render all daily posts.
+    if (type === 'daily') {
+      const dailyDay = Array(streak)
+        .fill(0)
+        .map((_, i) => i + 1);
+      await fsPromises.writeFile(DATA_PATH, template.list(dailyDay));
+      exec(`prettier --write ${DATA_PATH}`);
+    }
     await fsPromises.writeFile(fullPath, template[type](title, today));
     exec(`code ${fullPath}`);
   });
