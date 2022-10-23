@@ -13,7 +13,7 @@ const Content = styled.div`
 `;
 
 export const DailyPage: FC<DailyList> = ({ dailies, currentPage, totalPages }) => (
-  <Layout title={`Daily: ${currentPage}`}>
+  <Layout title={`Daily, page ${currentPage}`}>
     <Grid>
       <Full>
         <h1>Daily</h1>
