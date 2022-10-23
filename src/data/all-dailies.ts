@@ -8,13 +8,13 @@ import { dailyDays } from './daily-days';
 const EXT = '.mdx';
 const DAILY_DIR = path.join(process.cwd(), 'src/posts/daily');
 
-// Make a new one, because `dailyDays` is frozen.
-const dailyPostDays = [...dailyDays];
-
 const fileContent = (fileName: string) => matter(fs.readFileSync(path.join(DAILY_DIR, fileName)));
 
+// Make a new one, because `dailyDays` is frozen.
+export const postDays = [...dailyDays];
+
 // How many posts?
-export const dailyCount = dailyPostDays.length;
+export const dailyCount = postDays.length;
 
 // How many per page?
 export const PER_PAGE = 10;
@@ -26,7 +26,7 @@ export const pageCount = Math.ceil(dailyCount / PER_PAGE);
 // Using the offset and count args, can get a single post.
 export const dailyPosts = async (offset = 0, count = PER_PAGE): Promise<DailyPost[]> => {
   // Sort the post days then slice to return just the range of posts we need.
-  const postsInRange = dailyPostDays.sort((a, b) => b - a).slice(offset, offset + count);
+  const postsInRange = postDays.sort((a, b) => b - a).slice(offset, offset + count);
 
   // Put the filename back together, get the front matter and content, return.
   const postContent = await Promise.all(
