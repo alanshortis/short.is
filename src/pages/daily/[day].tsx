@@ -1,12 +1,10 @@
 import type { NextPage, GetStaticProps, GetStaticPaths } from 'next';
 import styled from 'styled-components';
 import { MDXRemote } from 'next-mdx-remote';
-import { serialize } from 'next-mdx-remote/serialize';
-import Link from 'next/link';
-import { Arrow, Layout, PostDate, PostFormatting, Label } from '../../components';
+import { Layout, PostDate, PostFormatting, Label } from '../../components';
 import { Aside, Full, Grid, PageBody, Sticker } from '../../components/Grid';
 import { DailyPost } from '../../types';
-import { allDailies, dailyContent } from '../../data/all-dailies';
+import { dailyCount, dailyPosts, postDays } from '../../data/all-dailies';
 
 const DailyContent = styled.article`
   ${Label} {
@@ -15,22 +13,20 @@ const DailyContent = styled.article`
 `;
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = allDailies.map(daily => ({
-    params: { day: daily.day },
+  const paths = postDays.map(dayNumber => ({
+    params: { day: dayNumber.toString() },
   }));
 
   return { paths, fallback: false };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const fileContent = dailyContent(params?.day as string);
-  const mdxContent = await serialize(fileContent.content);
+  const offset = dailyCount - Number(params?.day);
+  const [daily] = await dailyPosts(offset, 1);
+  const { day, date, mdxContent } = daily;
 
   return {
-    props: {
-      ...fileContent,
-      mdxContent,
-    },
+    props: { day, date, mdxContent },
   };
 };
 
@@ -56,13 +52,6 @@ const Daily: NextPage<DailyPost> = ({ day, date, mdxContent }) => (
         <DailyContent>
           <MDXRemote {...mdxContent} />
         </DailyContent>
-      </PageBody>
-      <PageBody>
-        <Link href="/daily">
-          <a>
-            <Arrow direction="left">More dailies</Arrow>
-          </a>
-        </Link>
       </PageBody>
     </Grid>
   </Layout>

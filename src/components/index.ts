@@ -1,6 +1,7 @@
 export { activeMarker } from './Active';
 export { Arrow } from './Arrow';
 export { Container } from './Container';
+export { DailyPage } from './DailyPage';
 export { Footer } from './Footer';
 export { Grid } from './Grid';
 export { Head } from './Head';
@@ -10,6 +11,7 @@ export { Layout } from './Layout';
 export { Logo } from './Logo';
 export { Menu } from './Menu';
 export { NextPrev } from './NextPrev';
+export { Pagination } from './Pagination';
 export { PostDate } from './PostDate';
 export { PostFormatting, PostList } from './PostFormatting';
 export { PostIndexItem } from './PostIndexItem';
