@@ -1,8 +1,7 @@
 import type { NextPage, GetStaticProps, GetStaticPaths } from 'next';
 import styled from 'styled-components';
 import { MDXRemote } from 'next-mdx-remote';
-import Link from 'next/link';
-import { Arrow, Layout, PostDate, PostFormatting, Label } from '../../components';
+import { Layout, PostDate, PostFormatting, Label } from '../../components';
 import { Aside, Full, Grid, PageBody, Sticker } from '../../components/Grid';
 import { DailyPost } from '../../types';
 import { dailyCount, dailyPosts, postDays } from '../../data/all-dailies';
@@ -53,13 +52,6 @@ const Daily: NextPage<DailyPost> = ({ day, date, mdxContent }) => (
         <DailyContent>
           <MDXRemote {...mdxContent} />
         </DailyContent>
-      </PageBody>
-      <PageBody>
-        <Link href="/daily">
-          <a>
-            <Arrow direction="left">More dailies</Arrow>
-          </a>
-        </Link>
       </PageBody>
     </Grid>
   </Layout>
