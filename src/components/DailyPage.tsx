@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { MDXRemote } from 'next-mdx-remote';
 import { Arrow, Label, Layout, Pagination, PostDate, PostList } from '.';
 import { Aside, Full, Grid, PageBody, Sticker } from './Grid';
-import { LinkIcon } from './icons';
 import { DailyList, DailyPost } from '../types';
 
 const Content = styled.div`
