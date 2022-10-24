@@ -41,7 +41,8 @@ export const Pagination: FC<Props> = ({ currentPage, totalPages, route = '/daily
       <span />
     )}
     <Label>
-      Page {currentPage} of {totalPages}
+      <VisuallyHidden>Page </VisuallyHidden>
+      {currentPage} of {totalPages}
     </Label>
     {currentPage < totalPages ? (
       <Arrow>
