@@ -25,8 +25,8 @@ export const pageCount = Math.ceil(dailyCount / PER_PAGE);
 // An array of posts in a range, with parsed MDX content.
 // Using the offset and count args, can get a single post.
 export const dailyPosts = async (offset = 0, count = PER_PAGE): Promise<DailyPost[]> => {
-  // Sort the post days then slice to return just the range of posts we need.
-  const postsInRange = postDays.sort((a, b) => b - a).slice(offset, offset + count);
+  // Slice post days to return just the range of posts we need.
+  const postsInRange = postDays.slice(offset, offset + count);
 
   // Put the filename back together, get the front matter and content, return.
   const postContent = await Promise.all(

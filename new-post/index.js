@@ -26,10 +26,10 @@ const createPost = async (type, title) => {
     // Write an array of daily days because it's faster than trying
     // to use the file system when we render all daily posts.
     if (type === 'daily') {
-      const dailyDay = Array(streak)
-        .fill(0)
-        .map((_, i) => i + 1);
-      await fsPromises.writeFile(DATA_PATH, template.list(dailyDay));
+      const dailyDays = Array(streak)
+        .fill(streak)
+        .map((day, i) => day - i);
+      await fsPromises.writeFile(DATA_PATH, template.list(dailyDays));
       exec(`prettier --write ${DATA_PATH}`);
     }
     await fsPromises.writeFile(fullPath, template[type](title, today));
