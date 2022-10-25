@@ -24,7 +24,7 @@ const Home: NextPage<LatestContent> = ({ latestWriting }) => {
       <Head>
         <link rel="prefetch" href="/writing" />
         <link rel="prefetch" href="/daily" />
-        <link rel="prefetch" href={slug} />
+        <link rel="prefetch" href={`/writing/${slug}`} />
       </Head>
       <Layout>
         <Grid>
