@@ -48,7 +48,7 @@ export const Menu: FC = () => {
 
               return (
                 <li key={page.path} role="none">
-                  <Link href={page.path}>
+                  <Link href={page.path} legacyBehavior>
                     <a role="menuitem" aria-current={isCurrent ? 'page' : 'false'}>
                       {page.title}
                     </a>

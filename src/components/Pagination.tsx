@@ -32,9 +32,7 @@ export const Pagination: FC<Props> = ({ currentPage, totalPages, route = '/daily
     {currentPage > 1 ? (
       <Arrow direction="left">
         <Link href={`${route}${currentPage - 1}`}>
-          <a>
-            Previous <VisuallyHidden>page</VisuallyHidden>
-          </a>
+          Previous <VisuallyHidden>page</VisuallyHidden>
         </Link>
       </Arrow>
     ) : (
@@ -47,9 +45,7 @@ export const Pagination: FC<Props> = ({ currentPage, totalPages, route = '/daily
     {currentPage < totalPages ? (
       <Arrow>
         <Link href={`${route}${currentPage + 1}`}>
-          <a>
-            Next <VisuallyHidden>page</VisuallyHidden>
-          </a>
+          Next <VisuallyHidden>page</VisuallyHidden>
         </Link>
       </Arrow>
     ) : (

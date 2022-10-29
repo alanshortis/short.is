@@ -19,7 +19,7 @@ interface Props extends FrontMatter {
 }
 
 export const PostIndexItem: FC<Props> = ({ slug, date, title, intro, isLatest }) => (
-  <Link href={`/writing/${slug}`} passHref>
+  <Link href={`/writing/${slug}`} passHref legacyBehavior>
     <StyledPost as="a">
       <PostDate date={date} prefix={isLatest ? 'Latest writing' : ''} hasYear={isLatest} />
       <h3>{title}</h3>

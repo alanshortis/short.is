@@ -25,10 +25,8 @@ export const DailyPage: FC<DailyList> = ({ dailies, currentPage, totalPages }) =
                 <Label as="h2">
                   <Arrow>
                     <Link href={`/daily/${daily.day}`} passHref>
-                      <a>
-                        <span aria-hidden>#</span>
-                        {daily.day}
-                      </a>
+                      <span aria-hidden>#</span>
+                      {daily.day}
                     </Link>
                   </Arrow>
                 </Label>

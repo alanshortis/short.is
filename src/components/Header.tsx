@@ -31,10 +31,8 @@ export const Header: FC = () => (
     <Container>
       <MenuContent>
         <Link href="/">
-          <a>
-            <VisuallyHidden>Alan Shortis</VisuallyHidden>
-            <Logo />
-          </a>
+          <VisuallyHidden>Alan Shortis</VisuallyHidden>
+          <Logo />
         </Link>
         <Skip />
         <Menu />

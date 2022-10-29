@@ -33,7 +33,7 @@ export const NextPrev: FC<Props> = ({ nextPost, prevPost }) => (
   <>
     <VisuallyHidden as="h2">More posts</VisuallyHidden>
     {prevPost ? (
-      <Link href={`/writing/${prevPost.slug}`} passHref>
+      <Link href={`/writing/${prevPost.slug}`} passHref legacyBehavior>
         <StyledLink>
           <Label>
             <Arrow direction="left">Older</Arrow>
@@ -45,7 +45,7 @@ export const NextPrev: FC<Props> = ({ nextPost, prevPost }) => (
       <StyledLink as="div" />
     )}
     {nextPost && (
-      <Link href={`/writing/${nextPost.slug}`} passHref>
+      <Link href={`/writing/${nextPost.slug}`} passHref legacyBehavior>
         <StyledLink isNewer>
           <Label>
             <Arrow>Newer</Arrow>
