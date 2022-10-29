@@ -7,6 +7,10 @@ export interface HeadInfo {
   intro?: string;
 }
 
+export interface LayoutProps extends HeadInfo {
+  children?: React.ReactNode;
+}
+
 export type MenuItem = {
   title: string;
   path: string;

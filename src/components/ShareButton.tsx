@@ -1,8 +1,8 @@
 import type { FC } from 'react';
 import Head from 'next/head';
-import { createGlobalStyle } from 'styled-components';
+import styled from 'styled-components';
 
-const ShareStyles = createGlobalStyle`
+const StyledShare = styled.span`
   .sb-label {
     color: var(--accent);
     display: inline-block;
@@ -15,13 +15,12 @@ const ShareStyles = createGlobalStyle`
 `;
 
 const ShareButton: FC = () => (
-  <>
+  <StyledShare>
     <Head>
       <script src="/js/share-button.js" />
     </Head>
-    <ShareStyles />
     <share-button />
-  </>
+  </StyledShare>
 );
 
 export default ShareButton;

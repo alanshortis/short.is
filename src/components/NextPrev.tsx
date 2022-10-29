@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import type { Post } from '../types';
 import { Arrow, Label, VisuallyHidden } from '.';
 
-const StyledLink = styled.a<{ isNewer?: boolean }>`
+const StyledLink = styled(Link)<{ isNewer?: boolean }>`
   grid-column: 1 / -1;
   text-align: ${p => (p.isNewer ? 'right' : 'left')};
   @media ${p => p.theme.media.small} {
@@ -33,26 +33,22 @@ export const NextPrev: FC<Props> = ({ nextPost, prevPost }) => (
   <>
     <VisuallyHidden as="h2">More posts</VisuallyHidden>
     {prevPost ? (
-      <Link href={`/writing/${prevPost.slug}`} passHref legacyBehavior>
-        <StyledLink>
-          <Label>
-            <Arrow direction="left">Older</Arrow>
-          </Label>
-          <p className="h4">{prevPost.title}</p>
-        </StyledLink>
-      </Link>
+      <StyledLink href={`/writing/${prevPost.slug}`}>
+        <Label>
+          <Arrow direction="left">Older</Arrow>
+        </Label>
+        <p className="h4">{prevPost.title}</p>
+      </StyledLink>
     ) : (
       <StyledLink as="div" />
     )}
     {nextPost && (
-      <Link href={`/writing/${nextPost.slug}`} passHref legacyBehavior>
-        <StyledLink isNewer>
-          <Label>
-            <Arrow>Newer</Arrow>
-          </Label>
-          <p className="h4">{nextPost.title}</p>
-        </StyledLink>
-      </Link>
+      <StyledLink href={`/writing/${nextPost.slug}`} isNewer>
+        <Label>
+          <Arrow>Newer</Arrow>
+        </Label>
+        <p className="h4">{nextPost.title}</p>
+      </StyledLink>
     )}
   </>
 );

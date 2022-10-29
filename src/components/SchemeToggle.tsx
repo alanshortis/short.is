@@ -1,9 +1,9 @@
 import type { FC } from 'react';
 import Head from 'next/head';
-import { createGlobalStyle } from 'styled-components';
+import styled from 'styled-components';
 import { visuallyHidden, activeMarker } from '.';
 
-const SchemeToggleStyles = createGlobalStyle`
+const StyledSchemeToggle = styled.div`
   .st-fields {
     font-size: 0.8rem;
     font-variation-settings: 'wght' ${p => p.theme.font.weight};
@@ -36,13 +36,12 @@ const SchemeToggleStyles = createGlobalStyle`
 `;
 
 const SchemeToggle: FC = () => (
-  <>
+  <StyledSchemeToggle>
     <Head>
       <script src="/js/scheme-toggle.js" />
     </Head>
-    <SchemeToggleStyles />
     <scheme-toggle />
-  </>
+  </StyledSchemeToggle>
 );
 
 export default SchemeToggle;

@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import styled, { keyframes } from 'styled-components';
-import type { HeadInfo } from '../types';
+import type { LayoutProps } from '../types';
 import { Container, Head, Header, Footer } from '.';
 
 const slide = keyframes`
@@ -21,7 +21,7 @@ const Main = styled.main`
   }
 `;
 
-export const Layout: FC<HeadInfo> = ({ children, title, intro }) => (
+export const Layout: FC<LayoutProps> = ({ children, title, intro }) => (
   <>
     <Head title={title} intro={intro} />
     <Header />
