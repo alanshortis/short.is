@@ -1,14 +1,14 @@
 import type { NextPage, GetStaticPropsResult } from 'next';
 import Head from 'next/head';
 import type { LatestContent } from '../types';
-import { latestPost } from '../data/writing';
+import { latestWriting } from '../data/writing';
 import { Layout, PostFormatting, PostIndexItem, ShadowBox } from '../components';
 import { Grid, Full, PageBody } from '../components/Grid';
 
 export async function getStaticProps(): Promise<GetStaticPropsResult<LatestContent>> {
   return {
     props: {
-      latestWriting: latestPost,
+      latestWritingPost: latestWriting,
     },
   };
 }
@@ -17,8 +17,8 @@ export const config = {
   unstable_runtimeJS: false,
 };
 
-const Home: NextPage<LatestContent> = ({ latestWriting }) => {
-  const { slug, date, title, intro, year } = latestWriting;
+const Home: NextPage<LatestContent> = ({ latestWritingPost }) => {
+  const { slug, date, title, intro, year } = latestWritingPost;
   return (
     <>
       <Head>

@@ -33,7 +33,7 @@ export interface PostList {
 }
 
 export interface LatestContent {
-  latestWriting: FrontMatter;
+  latestWritingPost: FrontMatter;
 }
 
 export interface DailyPost {
