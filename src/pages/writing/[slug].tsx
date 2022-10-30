@@ -7,7 +7,7 @@ import { serialize } from 'next-mdx-remote/serialize';
 import highlight from 'remark-highlight.js';
 import { daysSince } from '../../helpers';
 import type { Post } from '../../types';
-import { allPostsFrontMatter, postContent } from '../../data/all-posts';
+import { allPostsFrontMatter, postContent } from '../../data/writing';
 import { Aside, Full, Grid, PageBody, Sticker } from '../../components/Grid';
 import { Layout, NextPrev, PostFormatting, PostDate, Warning } from '../../components';
 import { Concerns, ExampleEmbed } from '../../components/writing';

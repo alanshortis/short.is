@@ -1,7 +1,7 @@
 import type { NextPage, GetStaticPropsResult } from 'next';
 import Head from 'next/head';
 import type { LatestContent } from '../types';
-import { latestPost } from '../data/all-posts';
+import { latestPost } from '../data/writing';
 import { Layout, PostFormatting, PostIndexItem, ShadowBox } from '../components';
 import { Grid, Full, PageBody } from '../components/Grid';
 

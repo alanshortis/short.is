@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { allPostsFrontMatter } from '../data/all-posts';
+import { allPostsFrontMatter } from '../data/writing';
 import { meta } from '../data/meta';
 
 const FEED_OUTPUT_PATH = path.join(process.cwd(), 'public/writing');

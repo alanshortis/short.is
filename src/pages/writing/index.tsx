@@ -2,7 +2,7 @@ import type { NextPage, GetStaticPropsResult } from 'next';
 import { Fragment } from 'react';
 import { Layout, PostIndexItem, Label } from '../../components';
 import { Aside, Full, Grid, PageBody, Sticker } from '../../components/Grid';
-import { allPostsFrontMatter, postYears } from '../../data/all-posts';
+import { allPostsFrontMatter, postYears } from '../../data/writing';
 import { generateRss } from '../../feed/generate-rss';
 import type { PostList } from '../../types';
 
