@@ -1,6 +1,8 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
+import { serialize } from 'next-mdx-remote/serialize';
+import highlight from 'remark-highlight.js';
 import type { Post, FrontMatter } from '../types';
 import { writingSlugs } from './writing-slugs';
 
@@ -32,12 +34,19 @@ export const writingYears = allWritingFrontMatter
 export const latestWriting: FrontMatter = allWritingFrontMatter[0];
 
 // The full content for the requested, next, and previous posts.
-export const writingContent = (slug: string): Omit<Post, 'mdxContent'> => {
+export const writingContent = async (slug: string): Promise<Post> => {
   const thisPost = allWritingFrontMatter.findIndex(post => post.slug === slug);
+  const mdxContent = await serialize(fileContent(`${slug}${EXT}`).content, {
+    mdxOptions: {
+      // I don't know why it's upset about the remark plugins, and I don't care at this point.
+      // @ts-ignore
+      remarkPlugins: [highlight],
+    },
+  });
 
   return {
     ...(allWritingFrontMatter[thisPost] as FrontMatter),
-    content: fileContent(`${slug}${EXT}`).content,
+    mdxContent,
     nextPost: allWritingFrontMatter[thisPost - 1] || null,
     prevPost: allWritingFrontMatter[thisPost + 1] || null,
   };

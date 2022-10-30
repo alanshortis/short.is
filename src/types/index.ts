@@ -21,7 +21,6 @@ export interface FrontMatter {
 }
 
 export interface Post extends FrontMatter {
-  content: string;
   mdxContent: Mdx;
   nextPost?: FrontMatter;
   prevPost?: FrontMatter;

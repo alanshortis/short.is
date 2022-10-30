@@ -3,8 +3,6 @@ import type { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
 import { MDXRemote } from 'next-mdx-remote';
-import { serialize } from 'next-mdx-remote/serialize';
-import highlight from 'remark-highlight.js';
 import { daysSince } from '../../helpers';
 import type { Post } from '../../types';
 import { allWritingFrontMatter, writingContent } from '../../data/writing';
@@ -25,19 +23,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const fileContent = writingContent(params?.slug as string);
-  const mdxContent = await serialize(fileContent.content, {
-    mdxOptions: {
-      // I don't know why it's upset about the remark plugins, and I don't care at this point.
-      // @ts-ignore
-      remarkPlugins: [highlight],
-    },
-  });
+  const fileContent = await writingContent(params?.slug as string);
 
   return {
     props: {
       ...fileContent,
-      mdxContent,
     },
   };
 };
