@@ -4,7 +4,7 @@ import { MDXRemote } from 'next-mdx-remote';
 import { Layout, PostDate, PostFormatting, Label } from '../../components';
 import { Aside, Full, Grid, PageBody, Sticker } from '../../components/Grid';
 import { DailyPost } from '../../types';
-import { dailyCount, dailyPosts, postDays } from '../../data/all-dailies';
+import { dailyCount, dailyPosts, postDays } from '../../data/daily';
 
 const DailyContent = styled.article`
   ${Label} {

@@ -1,7 +1,7 @@
 import type { NextPage, GetStaticPropsResult } from 'next';
 import { DailyPage } from '../../components';
 import { DailyList } from '../../types';
-import { dailyPosts, pageCount } from '../../data/all-dailies';
+import { dailyPosts, pageCount } from '../../data/daily';
 
 export async function getStaticProps(): Promise<GetStaticPropsResult<DailyList>> {
   return {

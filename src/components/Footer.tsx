@@ -27,7 +27,6 @@ export const Footer: FC = () => (
     <StyledFooter>
       <SchemeToggle />
       <Label>
-        <a href="/writing/feed.xml">RSS</a> &middot;{' '}
         <a href="#top">
           Top <Up>&uarr;</Up>
         </a>
