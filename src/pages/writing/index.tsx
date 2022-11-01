@@ -3,17 +3,14 @@ import { Fragment } from 'react';
 import { Layout, PostIndexItem, Label } from '../../components';
 import { Aside, Full, Grid, PageBody, Sticker } from '../../components/Grid';
 import { allWritingFrontMatter, writingYears } from '../../data/writing';
-import { generateRss } from '../../feed/generate-rss';
 import type { PostList } from '../../types';
 
 export async function getStaticProps(): Promise<GetStaticPropsResult<PostList>> {
-  if (process.env.NODE_ENV === 'production') {
-    generateRss();
-  }
-
   return {
     props: {
       posts: allWritingFrontMatter,
+      // TODO: I need to work this out but it's late
+      // @ts-ignore
       years: writingYears,
     },
   };
