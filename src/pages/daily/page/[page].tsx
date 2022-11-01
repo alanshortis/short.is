@@ -1,7 +1,7 @@
 import type { NextPage, GetStaticPaths, GetStaticProps } from 'next';
 import { DailyPage } from '../../../components';
 import { DailyList } from '../../../types';
-import { dailyPosts, pageCount, PER_PAGE } from '../../../data/all-dailies';
+import { dailyPosts, pageCount, PER_PAGE } from '../../../data/daily';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   // This is a bit weird. I know I want n pages, so I need an array of those
