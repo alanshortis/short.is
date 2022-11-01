@@ -1,3 +1,4 @@
+/* DO NOT EDIT, IDIOT */
 export const writingSlugs: Readonly<string[]> = Object.freeze([
   'building-a-prefetch-custom-element',
   'building-a-share-button-custom-element',

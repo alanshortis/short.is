@@ -1,6 +1,6 @@
 import type { MDXRemoteSerializeResult } from 'next-mdx-remote';
 
-type Mdx = MDXRemoteSerializeResult<Record<string, unknown>>;
+export type Mdx = MDXRemoteSerializeResult<Record<string, unknown>>;
 
 export interface HeadInfo {
   title?: string;

@@ -24,7 +24,8 @@ export const latestWriting: FrontMatter = allWritingFrontMatter[0];
 
 export const writingContent = async (slug: string): Promise<Post> => {
   const thisPost = allWritingFrontMatter.findIndex(post => post.slug === slug);
-  const mdxContent = await mdxSerialize(WRITING_DIR, slug);
+  const { content } = fileContent(WRITING_DIR, slug + EXT);
+  const mdxContent = await mdxSerialize(content);
 
   return {
     ...(allWritingFrontMatter[thisPost] as FrontMatter),

@@ -1,8 +1,7 @@
 import path from 'path';
-import { serialize } from 'next-mdx-remote/serialize';
 import { DailyPost } from '../types';
 import { dailyDays } from './daily-days';
-import { fileContent, EXT } from './post-utils';
+import { EXT, fileContent, mdxSerialize } from './post-utils';
 
 const DAILY_DIR = path.join(process.cwd(), 'src/posts/daily');
 
@@ -19,7 +18,7 @@ export const dailyPosts = async (offset = 0, count = PER_PAGE): Promise<DailyPos
       const fileName = `${postDay.toString() + EXT}`;
       const { data, content } = fileContent(DAILY_DIR, fileName);
       const { day, date } = data;
-      const mdxContent = await serialize(content);
+      const mdxContent = await mdxSerialize(content);
 
       return { day, date, mdxContent };
     })
