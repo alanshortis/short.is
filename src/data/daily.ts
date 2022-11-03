@@ -20,7 +20,7 @@ export const dailyPosts = async (offset = 0, count = PER_PAGE): Promise<DailyPos
       const { day, date } = data;
       const mdxContent = await mdxSerialize(content);
 
-      return { day, date, mdxContent };
+      return { day, date, mdxContent, count: dailyCount };
     })
   );
 

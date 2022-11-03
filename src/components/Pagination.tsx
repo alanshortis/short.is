@@ -6,6 +6,7 @@ import { Arrow, Label, VisuallyHidden } from '.';
 const StyledNav = styled.nav`
   display: flex;
   margin-bottom: calc(var(--spacing) * 2);
+  margin-top: auto;
   span {
     display: flex;
     flex: 1;
@@ -25,31 +26,35 @@ interface Props {
   currentPage: number;
   totalPages: number;
   route?: `/${string}/`;
+  hideCount?: boolean;
 }
 
-export const Pagination: FC<Props> = ({ currentPage, totalPages, route = '/daily/page/' }) => (
+export const Pagination: FC<Props> = ({
+  currentPage,
+  totalPages,
+  route = '/daily/page/',
+  hideCount = false,
+}) => (
   <StyledNav>
     {currentPage > 1 ? (
       <Arrow direction="left">
         <Link href={`${route}${currentPage - 1}`}>
-          <a>
-            Previous <VisuallyHidden>page</VisuallyHidden>
-          </a>
+          <a>Previous</a>
         </Link>
       </Arrow>
     ) : (
       <span />
     )}
-    <Label>
-      <VisuallyHidden>Page </VisuallyHidden>
-      {currentPage} of {totalPages}
-    </Label>
+    {!hideCount && (
+      <Label>
+        <VisuallyHidden>Page </VisuallyHidden>
+        {currentPage} of {totalPages}
+      </Label>
+    )}
     {currentPage < totalPages ? (
       <Arrow>
         <Link href={`${route}${currentPage + 1}`}>
-          <a>
-            Next <VisuallyHidden>page</VisuallyHidden>
-          </a>
+          <a>Next</a>
         </Link>
       </Arrow>
     ) : (

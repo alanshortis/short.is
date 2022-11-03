@@ -11,7 +11,9 @@ const slide = keyframes`
 `;
 
 const Main = styled.main`
+  display: flex;
   flex: 1;
+  flex-direction: column;
   opacity: 1;
   transform: translateY(0);
   @media ${p => p.theme.media.shouldAnimate} {
