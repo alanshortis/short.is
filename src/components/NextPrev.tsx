@@ -36,7 +36,7 @@ export const NextPrev: FC<Props> = ({ nextPost, prevPost }) => (
       <Link href={`/writing/${prevPost.slug}`} passHref>
         <StyledLink>
           <Label>
-            <Arrow direction="left">Older</Arrow>
+            <Arrow direction="left">Previous</Arrow>
           </Label>
           <p className="h4">{prevPost.title}</p>
         </StyledLink>
@@ -48,7 +48,7 @@ export const NextPrev: FC<Props> = ({ nextPost, prevPost }) => (
       <Link href={`/writing/${nextPost.slug}`} passHref>
         <StyledLink isNewer>
           <Label>
-            <Arrow>Newer</Arrow>
+            <Arrow>Next</Arrow>
           </Label>
           <p className="h4">{nextPost.title}</p>
         </StyledLink>

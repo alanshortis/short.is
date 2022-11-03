@@ -39,10 +39,12 @@ export interface DailyPost {
   day: string;
   date: string;
   mdxContent: Mdx;
+  count: number;
 }
 
 export interface DailyList {
   dailies: DailyPost[];
   currentPage: string;
   totalPages: string;
+  title?: string;
 }

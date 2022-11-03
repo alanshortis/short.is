@@ -11,8 +11,8 @@ const Content = styled.div`
   margin-top: var(--spacing);
 `;
 
-export const DailyPage: FC<DailyList> = ({ dailies, currentPage, totalPages }) => (
-  <Layout title={`Daily, page ${currentPage}`}>
+export const DailyPage: FC<DailyList> = ({ dailies, currentPage, totalPages, title = 'Daily' }) => (
+  <Layout title={title}>
     <Grid>
       <Full>
         <h1>Daily</h1>
