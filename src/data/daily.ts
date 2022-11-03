@@ -10,7 +10,7 @@ export const dailyCount = postDays.length;
 export const PER_PAGE = 10;
 export const pageCount = Math.ceil(dailyCount / PER_PAGE);
 
-export const dailyPosts = async (offset = 0, count = PER_PAGE): Promise<Omit<DailyPost, 'count'>[]> => {
+export const dailyPosts = async (offset = 0, count = PER_PAGE): Promise<DailyPost[]> => {
   const postsInRange = postDays.slice(offset, offset + count);
 
   const postContent = await Promise.all(
@@ -20,7 +20,7 @@ export const dailyPosts = async (offset = 0, count = PER_PAGE): Promise<Omit<Dai
       const { day, date } = data;
       const mdxContent = await mdxSerialize(content);
 
-      return { day, date, mdxContent };
+      return { day, date, mdxContent, count: dailyCount };
     })
   );
 

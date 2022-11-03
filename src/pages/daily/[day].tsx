@@ -23,10 +23,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const offset = dailyCount - Number(params?.day);
   const [daily] = await dailyPosts(offset, 1);
-  const { day, date, mdxContent } = daily;
+  const { day, date, mdxContent, count } = daily;
 
   return {
-    props: { day, date, mdxContent, count: dailyCount },
+    props: { day, date, mdxContent, count },
   };
 };
 
