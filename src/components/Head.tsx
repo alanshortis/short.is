@@ -14,7 +14,15 @@ export const Head: FC<HeadInfo> = ({ title, intro }) => {
   return (
     <NextHead>
       <title>{pageTitle}</title>
-      <link rel="preload" href="/fonts/inter.woff2" as="font" type="font/woff2" crossOrigin="" />
+      <link rel="preload" href="/fonts/soehne-buch-subset.woff2" as="font" type="font/woff2" crossOrigin="" />
+      <link
+        rel="preload"
+        href="/fonts/soehne-halbfett-subset.woff2"
+        as="font"
+        type="font/woff2"
+        crossOrigin=""
+      />
+      <link rel="preload" href="/fonts/soehne-mono-subset.woff2" as="font" type="font/woff2" crossOrigin="" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta name="description" content={description} />
       <meta property="og:title" content={pageTitle} />
