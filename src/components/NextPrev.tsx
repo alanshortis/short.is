@@ -18,7 +18,7 @@ const StyledLink = styled.a<{ isNewer?: boolean }>`
     text-overflow: ellipsis;
     white-space: nowrap;
     font-size: 1.25rem;
-    font-variation-settings: 'wght' ${p => p.theme.font.weightBold};
+    font-weight: ${p => p.theme.font.weightBold};
     line-height: 1.563;
   }
   ${Label} {

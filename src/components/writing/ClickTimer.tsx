@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { label, warning } from '..';
 
 const StyledWc = styled.div`
+  font-family: ${p => p.theme.font.familyMono};
   text-align: center;
   margin-bottom: var(--spacing);
   padding: var(--spacing);

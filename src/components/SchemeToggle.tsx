@@ -6,7 +6,8 @@ import { visuallyHidden, activeMarker } from '.';
 const SchemeToggleStyles = createGlobalStyle`
   .st-fields {
     font-size: 0.8rem;
-    font-variation-settings: 'wght' ${p => p.theme.font.weight};
+    font-family: ${p => p.theme.font.faceMono};
+    font-weight: ${p => p.theme.font.weight};
     letter-spacing: 2px;
     margin: 0;
     padding: 0;

@@ -5,6 +5,7 @@ import styled, { css } from 'styled-components';
 export const shadowBox = css`
   background-color: var(--background);
   border: 1px solid currentColor;
+  border-radius: ${p => p.theme.radius};
   display: block;
   margin-bottom: calc(var(--spacing) * 0.5);
   padding: calc(var(--spacing) / 2);

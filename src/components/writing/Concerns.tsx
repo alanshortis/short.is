@@ -23,6 +23,7 @@ const StyledConcern = styled.div<{ asComponent?: boolean }>`
   align-items: center;
   aspect-ratio: 1 / 1;
   display: flex;
+  font-family: ${p => p.theme.font.familyMono};
   justify-content: center;
   position: relative;
   width: var(--size);

@@ -3,13 +3,27 @@ import { createGlobalStyle } from 'styled-components';
 export const Global = createGlobalStyle`
   @font-face {
     font-family: ${p => p.theme.font.face};
-    src: url(/fonts/inter.woff2) format("woff2");
+    src: url(/fonts/soehne-buch-subset.woff2) format("woff2");
     font-display: swap;
-    font-weight: 200 800;
+    font-weight: ${p => p.theme.font.weight};
+  }
+
+  @font-face {
+    font-family: ${p => p.theme.font.face};
+    src: url(/fonts/soehne-halbfett-subset.woff2) format("woff2");
+    font-display: swap;
+    font-weight: ${p => p.theme.font.weightBold};
+  }
+
+  @font-face {
+    font-family: ${p => p.theme.font.faceMono};
+    src: url(/fonts/soehne-mono-buch-subset.woff2) format("woff2");
+    font-display: swap;
+    font-weight: ${p => p.theme.font.weight};
   }
 
   :root {
-    font-size: 100%;
+    font-size: 105%;
     --background: ${p => p.theme.color.light};
     --foreground: ${p => p.theme.color.dark};
     --accent: ${p => p.theme.color.accent};
@@ -17,11 +31,11 @@ export const Global = createGlobalStyle`
     --spacing: ${p => p.theme.spacing};
 
     @media ${p => p.theme.media.small} {
-      font-size: 106.25%;
+      font-size: 111.25%;
     }
 
     @media ${p => p.theme.media.medium} {
-      font-size: 112.5%;
+      font-size: 117.5%;
     }
 
     & body.dark {
@@ -52,7 +66,8 @@ export const Global = createGlobalStyle`
     background-color: var(--background);
     color: var(--foreground);
     font-family: ${p => p.theme.font.family};
-    font-variation-settings: 'wght' ${p => p.theme.font.weight};
+    font-feature-settings: "ss01", "ss02", 'zero', 'tnum';
+    font-weight: ${p => p.theme.font.weight};
     height: 100%;
     line-height: 1;
     text-rendering: optimizeLegibility;
@@ -94,7 +109,7 @@ export const Global = createGlobalStyle`
   }
 
   em {
-    font-variation-settings: 'ital' 1;
+    font-style: normal;
   }
 
   code,
@@ -112,8 +127,7 @@ export const Global = createGlobalStyle`
 
   h1, .h1, h2, h3, h4 {
     font-size: 2.441rem;
-    font-variation-settings: 'wght' ${p => p.theme.font.weightBold};
-    letter-spacing: -0.025em;
+    font-weight: ${p => p.theme.font.weightBold};
     line-height: 1.25;
     text-indent: -0.055em;
     @media ${p => p.theme.media.small} {

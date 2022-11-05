@@ -2,10 +2,10 @@ import styled, { css } from 'styled-components';
 
 export const label = css`
   display: block;
+  font-family: ${p => p.theme.font.faceMono};
   font-size: 0.8rem;
-  font-variant-numeric: tabular-nums;
-  font-variation-settings: 'wght' ${p => p.theme.font.weight};
-  letter-spacing: 2px;
+  font-weight: ${p => p.theme.font.weight};
+  letter-spacing: 1px;
   line-height: 1.563;
   text-transform: uppercase;
   && {
