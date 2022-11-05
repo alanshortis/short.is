@@ -3,21 +3,21 @@ import { createGlobalStyle } from 'styled-components';
 export const Global = createGlobalStyle`
   @font-face {
     font-family: ${p => p.theme.font.face};
-    src: url(/fonts/soehne-buch.woff2) format("woff2");
+    src: url(/fonts/soehne-buch-subset.woff2) format("woff2");
     font-display: swap;
     font-weight: ${p => p.theme.font.weight};
   }
 
   @font-face {
     font-family: ${p => p.theme.font.face};
-    src: url(/fonts/soehne-halbfett.woff2) format("woff2");
+    src: url(/fonts/soehne-halbfett-subset.woff2) format("woff2");
     font-display: swap;
     font-weight: ${p => p.theme.font.weightBold};
   }
 
   @font-face {
     font-family: ${p => p.theme.font.faceMono};
-    src: url(/fonts/soehne-mono-buch.woff2) format("woff2");
+    src: url(/fonts/soehne-mono-buch-subset.woff2) format("woff2");
     font-display: swap;
     font-weight: ${p => p.theme.font.weight};
   }

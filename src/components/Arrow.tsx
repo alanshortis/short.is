@@ -32,7 +32,3 @@ export const Arrow = styled(Label)<{ direction?: Direction }>`
     }
   }
 `;
-
-/* TODO:
-   - Subset
-*/
