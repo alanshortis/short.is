@@ -16,6 +16,8 @@ export const PostFormatting = styled.div`
     line-height: 1.563;
     margin-bottom: var(--spacing);
     code {
+      background-color: ${p => p.theme.color.inlineCodeBackground};
+      border-radius: ${p => p.theme.radius};
       padding: calc(var(--spacing) / 8);
     }
     &:only-child,
@@ -26,7 +28,7 @@ export const PostFormatting = styled.div`
 
   .intro {
     font-size: 1.333rem;
-    font-variation-settings: 'wght' ${p => p.theme.font.weight};
+    font-weight: ${p => p.theme.font.weight};
     letter-spacing: initial;
     padding-top: 0;
   }
@@ -36,7 +38,9 @@ export const PostFormatting = styled.div`
     white-space: nowrap;
     &[href^='http']:not([href*='short.is'])::after {
       content: '↗';
+      bottom: 4px;
       display: inline-block;
+      font-family: ${p => p.theme.font.faceMono};
       font-size: 0.8rem;
       margin-left: 0.25rem;
       position: relative;
@@ -50,7 +54,7 @@ export const PostFormatting = styled.div`
 
   ul,
   ol {
-    padding-left: ${p => `calc(var(--spacing) - ${p.theme.borderSize})`};
+    padding-left: calc(var(--spacing) / 2);
   }
 
   li {
@@ -129,7 +133,7 @@ export const PostFormatting = styled.div`
   }
 
   strong {
-    font-variation-settings: 'wght' ${p => p.theme.font.weightBold};
+    font-weight: ${p => p.theme.font.weightBold};
   }
 
   ${Warning} {

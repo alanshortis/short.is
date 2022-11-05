@@ -7,12 +7,13 @@ const breakpoints = {
 
 export const theme = {
   color: {
-    light: 'hsl(0, 0%, 97%)',
-    dark: 'hsl(0, 0%, 3%)',
+    light: 'hsl(0, 0%, 98%)',
+    dark: 'hsl(0, 0%, 2%)',
     header: 'hsla(0, 0%, 97%, 0.5)',
     headerDark: 'hsla(0, 0%, 3%, 0.7)',
     accent: 'hsl(10, 100%, 43%)',
     accentDark: 'hsl(19, 100%, 50%)',
+    inlineCodeBackground: 'hsla(10, 100%, 43%, 0.25)',
   },
   media: {
     small: `(min-width: ${breakpoints.small}px)`,
@@ -20,9 +21,11 @@ export const theme = {
     shouldAnimate: '(prefers-reduced-motion: no-preference)',
   },
   font: {
-    face: 'Inter',
-    family: 'Inter, "Helvetica Neue", Helvetica, Arial, sans-serif;',
-    familyMono: '"SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace',
+    face: 'Sohne',
+    faceBold: 'Sohne',
+    faceMono: 'SohneMono',
+    family: 'Sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;',
+    familyMono: 'SohneMono, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace',
     weight: 400,
     weightBold: 700,
     weightMono: 400,

@@ -20,6 +20,9 @@ const StyledFooter = styled.footer`
 
 const Up = styled.span`
   color: var(--accent);
+  display: inline-block;
+  font-family: ${p => p.theme.font.faceMono};
+  transform: rotate(90deg);
 `;
 
 export const Footer: FC = () => (
@@ -28,7 +31,7 @@ export const Footer: FC = () => (
       <SchemeToggle />
       <Label>
         <a href="#top">
-          Top <Up>&uarr;</Up>
+          Top <Up>←</Up>
         </a>
       </Label>
     </StyledFooter>

@@ -7,7 +7,7 @@ const DAILY_DIR = path.join(process.cwd(), 'src/posts/daily');
 
 export const postDays = [...dailyDays];
 export const dailyCount = postDays.length;
-export const PER_PAGE = 10;
+export const PER_PAGE = 7;
 export const pageCount = Math.ceil(dailyCount / PER_PAGE);
 
 export const dailyPosts = async (offset = 0, count = PER_PAGE): Promise<DailyPost[]> => {

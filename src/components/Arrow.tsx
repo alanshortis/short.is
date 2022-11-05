@@ -26,8 +26,13 @@ export const Arrow = styled(Label)<{ direction?: Direction }>`
     ${p => variant(p.direction)};
     color: var(--accent);
     display: inline-block;
+    font-family: ${p => p.theme.font.familyMono};
     @media ${p => p.theme.media.shouldAnimate} {
       animation: ${p => point(p.direction)} 2s infinite ease;
     }
   }
 `;
+
+/* TODO:
+   - Subset
+*/
