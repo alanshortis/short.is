@@ -26,12 +26,12 @@ if ('customElements' in window) {
         this.innerHTML = /*html*/ `
           <button type="button">Click</button>
           <dl>
-            <dd>Click delay:</dd>
-            <dt id="last"></span></dt>
+            <dt>Click delay:</dt>
+            <dd id="last"></dd>
           </dl>
           <dl>
-            <dd>Average delay:</dd>
-            <dt id="avg"></span></dt>
+            <dt>Average delay:</dt>
+            <dd id="avg"></dd>
           </dl>
           <p id="disclaimer">Move away from the button between clicks</p>
         `;
