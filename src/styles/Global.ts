@@ -22,6 +22,12 @@ export const Global = createGlobalStyle`
     font-weight: ${p => p.theme.font.weight};
   }
 
+  @font-face {
+    font-family: 'WarnTriangle';
+    src: local("Arial");
+    unicode-range: U+25B4;
+  }
+
   :root {
     font-size: 105%;
     --background: ${p => p.theme.color.light};
