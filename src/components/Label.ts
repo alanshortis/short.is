@@ -23,6 +23,8 @@ export const warning = css`
   &::before {
     color: var(--accent);
     content: '△';
+    font-family: 'WarnTriangle';
+    font-size: 1rem;
     margin-right: calc(var(--spacing) / 4);
     @supports (content: x / y) {
       content: '△' / 'Warning';
