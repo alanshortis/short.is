@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 export const label = css`
   display: block;
   font-family: ${p => p.theme.font.faceMono};
+  font-feature-settings: 'zero', 'tnum';
   font-size: 0.8rem;
   font-weight: ${p => p.theme.font.weight};
   letter-spacing: 1px;

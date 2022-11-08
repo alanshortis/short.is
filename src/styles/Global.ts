@@ -35,6 +35,7 @@ export const Global = createGlobalStyle`
     --accent: ${p => p.theme.color.accent};
     --header-background: ${p => p.theme.color.header};
     --spacing: ${p => p.theme.spacing};
+    --inline-code-background: ${p => p.theme.color.inlineCodeBackground};
 
     @media ${p => p.theme.media.small} {
       font-size: 111.25%;
@@ -49,6 +50,7 @@ export const Global = createGlobalStyle`
       --foreground: ${p => p.theme.color.light};
       --accent: ${p => p.theme.color.accentDark};
       --header-background: ${p => p.theme.color.headerDark};
+      --inline-code-background: ${p => p.theme.color.inlineCodeBackgroundDark};
     }
   }
 
@@ -72,7 +74,7 @@ export const Global = createGlobalStyle`
     background-color: var(--background);
     color: var(--foreground);
     font-family: ${p => p.theme.font.family};
-    font-feature-settings: "ss01", "ss02", 'zero', 'tnum';
+    font-feature-settings: "ss01", "ss02";
     font-weight: ${p => p.theme.font.weight};
     height: 100%;
     line-height: 1;
