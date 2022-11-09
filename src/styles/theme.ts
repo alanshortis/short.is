@@ -7,13 +7,14 @@ const breakpoints = {
 
 export const theme = {
   color: {
-    light: 'hsl(0, 0%, 98%)',
+    light: 'hsl(0, 0%, 88%)',
     dark: 'hsl(0, 0%, 2%)',
-    header: 'hsla(0, 0%, 97%, 0.5)',
-    headerDark: 'hsla(0, 0%, 3%, 0.7)',
+    header: 'hsla(0, 0%, 88%, 0.5)',
+    headerDark: 'hsla(0, 0%, 2%, 0.7)',
     accent: 'hsl(10, 100%, 43%)',
     accentDark: 'hsl(19, 100%, 50%)',
-    inlineCodeBackground: 'hsla(10, 100%, 43%, 0.25)',
+    inlineCodeBackground: 'hsla(10, 100%, 43%, 0.125)',
+    inlineCodeBackgroundDark: 'hsla(19, 100%, 50%, 0.25)',
   },
   media: {
     small: `(min-width: ${breakpoints.small}px)`,

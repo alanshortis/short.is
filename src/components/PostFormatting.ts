@@ -16,9 +16,9 @@ export const PostFormatting = styled.div`
     line-height: 1.563;
     margin-bottom: var(--spacing);
     code {
-      background-color: ${p => p.theme.color.inlineCodeBackground};
+      background-color: var(--inline-code-background);
       border-radius: ${p => p.theme.radius};
-      padding: calc(var(--spacing) / 8);
+      padding: calc(var(--spacing) / 12) calc(var(--spacing) / 6);
     }
     &:only-child,
     &:last-child {
