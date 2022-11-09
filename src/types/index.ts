@@ -55,6 +55,12 @@ export interface Book {
   url: string;
 }
 
+export interface Band {
+  name: string;
+  url: string;
+}
+
 export interface AboutData {
   nowReading: Book;
+  recentMusic: Band[];
 }
