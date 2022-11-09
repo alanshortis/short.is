@@ -10,9 +10,5 @@ export const googleBooks = async (): Promise<Book> => {
   const { title, previewLink: url } = volumeInfo;
   const [author] = volumeInfo.authors;
 
-  return {
-    title,
-    author,
-    url,
-  };
+  return { title, author, url };
 };
