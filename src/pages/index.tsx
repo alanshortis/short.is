@@ -1,9 +1,19 @@
 import type { NextPage, GetStaticPropsResult } from 'next';
 import Head from 'next/head';
+import Link from 'next/link';
+import styled from 'styled-components';
 import type { LatestContent } from '../types';
 import { latestWriting } from '../data/writing';
-import { Layout, PostFormatting, PostIndexItem, ShadowBox } from '../components';
+import { Arrow, Layout, PostFormatting, PostIndexItem, ShadowBox } from '../components';
 import { Grid, Full, PageBody } from '../components/Grid';
+
+const StyledLink = styled.a`
+  display: inline-block;
+  margin-left: calc(var(--spacing) / 2);
+  && {
+    color: var(--foreground);
+  }
+`;
 
 export async function getStaticProps(): Promise<GetStaticPropsResult<LatestContent>> {
   return {
@@ -33,24 +43,19 @@ const Home: NextPage<LatestContent> = ({ latestWritingPost }) => {
           </Full>
           <PageBody as={PostFormatting}>
             <h2 className="intro">
-              I&#39;m a front end developer based in <del>London</del> Nottingham, currently working for{' '}
+              I&#39;m a front end developer based in <del>London</del> Nottingham, working for{' '}
               <a href="https://monzo.com/">Monzo</a>.
+              <Link href="/about" passHref>
+                <StyledLink>
+                  <Arrow>Tell me more</Arrow>
+                </StyledLink>
+              </Link>
             </h2>
-            <p>
-              I like building scalable, accessible, and performant design systems and websites using HTML,
-              CSS, and JavaScript. The combination of code, design, and empathy for end users is what makes me
-              want to do my best work.
-            </p>
           </PageBody>
           <PageBody>
             <ShadowBox>
               <PostIndexItem slug={slug} date={date} title={title} intro={intro} year={year} isLatest />
             </ShadowBox>
-          </PageBody>
-          <PageBody as={PostFormatting}>
-            Find me on <a href="https://github.com/alanshortis">GitHub</a>,{' '}
-            <a href="https://codepen.io/alanshortis">CodePen</a>, and{' '}
-            <a href="https://twitter.com/alanshortis">Twitter</a>.
           </PageBody>
         </Grid>
       </Layout>
