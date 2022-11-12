@@ -8,8 +8,6 @@ import { Arrow, Layout, PostFormatting, PostIndexItem, ShadowBox } from '../comp
 import { Grid, Full, PageBody } from '../components/Grid';
 
 const StyledLink = styled.a`
-  display: inline-block;
-  margin-left: calc(var(--spacing) / 2);
   && {
     color: var(--foreground);
   }
@@ -34,6 +32,7 @@ const Home: NextPage<LatestContent> = ({ latestWritingPost }) => {
       <Head>
         <link rel="prefetch" href="/writing" />
         <link rel="prefetch" href="/daily" />
+        <link rel="prefetch" href="/about" />
         <link rel="prefetch" href={`/writing/${slug}`} />
       </Head>
       <Layout>
@@ -43,14 +42,16 @@ const Home: NextPage<LatestContent> = ({ latestWritingPost }) => {
           </Full>
           <PageBody as={PostFormatting}>
             <h2 className="intro">
-              I&#39;m a front end developer based in <del>London</del> Nottingham, working for{' '}
+              I&#39;m a front end developer based in <del>London</del> Nottingham, currently working for{' '}
               <a href="https://monzo.com/">Monzo</a>.
+            </h2>
+            <p>
               <Link href="/about" passHref>
                 <StyledLink>
                   <Arrow>Tell me more</Arrow>
                 </StyledLink>
               </Link>
-            </h2>
+            </p>
           </PageBody>
           <PageBody>
             <ShadowBox>
