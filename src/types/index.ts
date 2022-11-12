@@ -55,12 +55,12 @@ export interface Book {
   url: string;
 }
 
-export interface Band {
+export interface WebisteLink {
   name: string;
   url: string;
 }
 
 export interface AboutData {
   nowReading: Book;
-  recentMusic: Band[];
+  recentMusic: WebisteLink[];
 }
