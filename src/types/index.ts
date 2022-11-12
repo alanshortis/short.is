@@ -48,3 +48,19 @@ export interface DailyList {
   totalPages: string;
   title?: string;
 }
+
+export interface Book {
+  title: string;
+  author: string;
+  url: string;
+}
+
+export interface WebisteLink {
+  name: string;
+  url: string;
+}
+
+export interface AboutData {
+  nowReading: Book;
+  recentMusic: WebisteLink[];
+}
