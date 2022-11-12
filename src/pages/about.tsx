@@ -63,7 +63,7 @@ const About: NextPage<AboutData> = ({ nowReading, recentMusic }) => {
             <p>
               <code>short.is</code> is written in TypeScript using <a href="https://nextjs.org/">Next.js</a>{' '}
               and <a href="https://styled-components.com/">Styled Components</a>. The usual client-side bundle
-              containing React is omited, with any interactivity delivered via Web Components. This gives me
+              containing React is omitted, with any interactivity delivered via Web Components. This gives me
               the nice DX, and you the bare minimum of bytes.
             </p>
             <p>
