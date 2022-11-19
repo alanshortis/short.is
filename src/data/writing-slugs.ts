@@ -1,5 +1,6 @@
 /* DO NOT EDIT, IDIOT */
 export const writingSlugs: Readonly<string[]> = Object.freeze([
+  'dark-mode-support-for-your-favicon',
   'building-a-prefetch-custom-element',
   'building-a-share-button-custom-element',
   'building-a-better-menu-with-roles-and-aria-state',
