@@ -1,17 +1,9 @@
 import type { NextPage, GetStaticPropsResult } from 'next';
 import Head from 'next/head';
-import Link from 'next/link';
-import styled from 'styled-components';
 import type { LatestContent } from '../types';
 import { latestWriting } from '../data/writing';
-import { Arrow, Layout, PostFormatting, PostIndexItem, ShadowBox } from '../components';
+import { Layout, PostFormatting, PostIndexItem, ShadowBox } from '../components';
 import { Grid, Full, PageBody } from '../components/Grid';
-
-const StyledLink = styled.a`
-  && {
-    color: var(--foreground);
-  }
-`;
 
 export async function getStaticProps(): Promise<GetStaticPropsResult<LatestContent>> {
   return {
@@ -45,13 +37,6 @@ const Home: NextPage<LatestContent> = ({ latestWritingPost }) => {
               I&#39;m a front end developer based in <del>London</del> Nottingham, currently working for{' '}
               <a href="https://monzo.com/">Monzo</a>.
             </h2>
-            <p>
-              <Link href="/about" passHref>
-                <StyledLink>
-                  <Arrow>Tell me more</Arrow>
-                </StyledLink>
-              </Link>
-            </p>
           </PageBody>
           <PageBody>
             <ShadowBox>
