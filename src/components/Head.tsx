@@ -10,33 +10,32 @@ export const Head: FC<HeadInfo> = ({ title, intro }) => {
   const meta = useContext(MetaContext);
   const pageTitle = title ? `${title} — ${meta.title}` : meta.title;
   const description = intro || meta.description;
+  const fonts = ['soehne-buch-subset', 'soehne-halbfett-subset', 'soehne-mono-buch-subset'];
 
   return (
     <NextHead>
       <title>{pageTitle}</title>
-      <link rel="preload" href="/fonts/soehne-buch-subset.woff2" as="font" type="font/woff2" crossOrigin="" />
-      <link
-        rel="preload"
-        href="/fonts/soehne-halbfett-subset.woff2"
-        as="font"
-        type="font/woff2"
-        crossOrigin=""
-      />
-      <link
-        rel="preload"
-        href="/fonts/soehne-mono-buch-subset.woff2"
-        as="font"
-        type="font/woff2"
-        crossOrigin=""
-      />
+      {fonts.map(font => (
+        <link
+          key={font}
+          rel="preload"
+          href={`/fonts/${font}.woff2`}
+          as="font"
+          type="font/woff2"
+          crossOrigin=""
+        />
+      ))}
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta name="description" content={description} />
       <meta property="og:title" content={pageTitle} />
       <meta property="og:description" content={description} />
       <meta property="og:url" content={meta.url + router.asPath} />
-      <meta property="og:image" content="/icons/og.png" />
-      <meta name="twitter:card" content="summary" />
+      <meta property="og:image" content={`${meta.url}/icons/og.png`} />
+      <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:creator" content={meta.twitter} />
+      <meta name="twitter:title" content={pageTitle} />
+      <meta name="twitter:description" content={description} />
+      <meta name="twitter:image" content={`${meta.url}/icons/og.png`} />
       <link rel="icon" type="image/png" href="/icons/favicon.png" />
       <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg" />
     </NextHead>
