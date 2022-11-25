@@ -92,7 +92,7 @@ const SchemeToggle = dynamic(() => import('../components/SchemeToggle'), {
 
 ## TypeScript
 
-When using Next.js with TypeScript there is one more small step. If you start rendering custom elements in JSX TypeScript will be (rightly) complain that you're attempting to use an HTML element that doesn't exist. While this is only a type error and the app will still run locally, a producting build of Next in TypeScript will fail if there are type errors.
+When using Next.js with TypeScript there is one more small step. If you start rendering custom elements in JSX TypeScript will (rightly) complain that you're attempting to use an HTML element that doesn't exist. While this is only a type error and the app will still run locally, a producting build of Next in TypeScript will fail if there are type errors.
 
 At the root of the project, create a new declaration file `web-components.d.ts`. In this file we will extend the JSX namespace and add the web component tag to the elements it's aware of:
 
