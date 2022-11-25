@@ -90,10 +90,20 @@ const SchemeToggle = dynamic(() => import('../components/SchemeToggle'), {
 });
 ```
 
-And that's it.
+## TypeScript
+
+When using Next.js with TypeScript there is one more small step. If you start rendering custom elements in JSX TypeScript will be (rightly) complain that you're attempting to use an HTML element that doesn't exist. While this is only a type error and the app will still run locally, a producting build of Next in TypeScript will fail if there are type errors.
+
+At the root of the project, create a new declaration file `web-components.d.ts`. In this file we will extend the JSX namespace and add the web component tag to the elements it's aware of:
+
+```typescript
+declare namespace JSX {
+  interface IntrinsicElements {
+    'scheme-toggle': any;
+  }
+}
+```
 
 ## Conclusion
 
 We can have all the benefits of the JAM stack when developing without transferring non-essential JavaScript to the user. The production build delivers static HTML and CSS with just 1.35kb on non-essential JavaScript (which could be marginally less if I added a step to minify it). This, combined with a little extra optimisation (subsetting and preloading font files, using webp images) leads to a fast and accessible site with a perfect lighthouse score.
-
-The repository for this site where all these ideas are in use can be found on [GitHub](https://github.com/alanshortis/short.is).
