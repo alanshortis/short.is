@@ -2,13 +2,15 @@ import type { NextPage, GetStaticPropsResult } from 'next';
 import Head from 'next/head';
 import type { LatestContent } from '../types';
 import { latestWriting } from '../data/writing';
-import { Layout, PostFormatting, PostIndexItem, ShadowBox } from '../components';
+import { selectedDailyPosts } from '../data/daily';
+import { Layout, PostFormatting, PostIndexItem, SelectedDailies, ShadowBox } from '../components';
 import { Grid, Full, PageBody } from '../components/Grid';
 
 export async function getStaticProps(): Promise<GetStaticPropsResult<LatestContent>> {
   return {
     props: {
       latestWritingPost: latestWriting,
+      selectedDailies: await selectedDailyPosts(),
     },
   };
 }
@@ -17,7 +19,7 @@ export const config = {
   unstable_runtimeJS: false,
 };
 
-const Home: NextPage<LatestContent> = ({ latestWritingPost }) => {
+const Home: NextPage<LatestContent> = ({ latestWritingPost, selectedDailies }) => {
   const { slug, date, title, intro, year } = latestWritingPost;
   return (
     <>
@@ -41,6 +43,7 @@ const Home: NextPage<LatestContent> = ({ latestWritingPost }) => {
           <PageBody>
             <ShadowBox>
               <PostIndexItem slug={slug} date={date} title={title} intro={intro} year={year} isLatest />
+              <SelectedDailies selectedDailies={selectedDailies} />
             </ShadowBox>
           </PageBody>
         </Grid>

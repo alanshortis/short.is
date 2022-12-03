@@ -15,6 +15,7 @@ export { Pagination } from './Pagination';
 export { PostDate } from './PostDate';
 export { PostFormatting, PostList } from './PostFormatting';
 export { PostIndexItem } from './PostIndexItem';
+export { SelectedDailies } from './SelectedDailies';
 export { ShadowBox } from './ShadowBox';
 export { SiteList } from './SiteList';
 export { Skip } from './Skip';

@@ -31,13 +31,10 @@ export interface PostList {
   years: string[];
 }
 
-export interface LatestContent {
-  latestWritingPost: FrontMatter;
-}
-
 export interface DailyPost {
   day: string;
   date: string;
+  title: string;
   mdxContent: Mdx;
   count: number;
 }
@@ -63,4 +60,9 @@ export interface WebisteLink {
 export interface AboutData {
   nowReading: Book;
   recentMusic: WebisteLink[];
+}
+
+export interface LatestContent {
+  latestWritingPost: FrontMatter;
+  selectedDailies: DailyPost[];
 }
