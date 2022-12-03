@@ -17,10 +17,10 @@ export const dailyPosts = async (offset = 0, count = PER_PAGE): Promise<DailyPos
     postsInRange.map(async postDay => {
       const fileName = `${postDay.toString() + EXT}`;
       const { data, content } = fileContent(DAILY_DIR, fileName);
-      const { day, date } = data;
+      const { day, date, title } = data;
       const mdxContent = await mdxSerialize(content);
 
-      return { day, date, mdxContent, count: dailyCount };
+      return { day, date, title, mdxContent, count: dailyCount };
     })
   );
 
