@@ -5,7 +5,7 @@ import { Arrow, Label, VisuallyHidden } from '.';
 
 const StyledNav = styled.nav`
   display: flex;
-  margin-bottom: calc(var(--spacing) * 2);
+  margin-bottom: var(--spacing);
   margin-top: auto;
   span {
     display: flex;

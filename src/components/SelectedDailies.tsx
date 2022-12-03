@@ -30,7 +30,7 @@ export const SelectedDailies: FC<Props> = ({ selectedDailies }) => (
   <Container>
     <Label>Selected Dailies</Label>
     {selectedDailies.map(({ day, title }) => (
-      <Link href={`daily/${day}`}>
+      <Link href={`/daily/${day}`} key={day}>
         <a>
           <h3 className="h4">
             <span className="number">#{day}</span>: {title}
