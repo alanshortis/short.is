@@ -4,7 +4,7 @@ export const Grid = styled.div`
   display: grid;
   gap: calc(var(--spacing) * 2);
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  margin-bottom: calc(var(--spacing) * 2);
+  margin-bottom: var(--spacing);
   @media ${p => p.theme.media.medium} {
     grid-template-columns: repeat(12, minmax(0, 1fr));
   }
