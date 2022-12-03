@@ -74,7 +74,7 @@ export const Global = createGlobalStyle`
     background-color: var(--background);
     color: var(--foreground);
     font-family: ${p => p.theme.font.family};
-    font-feature-settings: "ss01", "ss02";
+    font-feature-settings: "ss01", "ss02", "tnum";
     font-weight: ${p => p.theme.font.weight};
     height: 100%;
     line-height: 1;

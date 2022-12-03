@@ -1,6 +1,7 @@
 import path from 'path';
 import { DailyPost } from '../types';
 import { dailyDays } from './daily-days';
+import { selectedDailies } from './selected-dailies';
 import { EXT, fileContent, mdxSerialize } from './post-utils';
 
 const DAILY_DIR = path.join(process.cwd(), 'src/posts/daily');
@@ -10,8 +11,8 @@ export const dailyCount = postDays.length;
 export const PER_PAGE = 7;
 export const pageCount = Math.ceil(dailyCount / PER_PAGE);
 
-export const dailyPosts = async (offset = 0, count = PER_PAGE): Promise<DailyPost[]> => {
-  const postsInRange = postDays.slice(offset, offset + count);
+export const dailyPosts = async (offset = 0, count = PER_PAGE, selected = false): Promise<DailyPost[]> => {
+  const postsInRange = selected ? selectedDailies : postDays.slice(offset, offset + count);
 
   const postContent = await Promise.all(
     postsInRange.map(async postDay => {
@@ -26,3 +27,5 @@ export const dailyPosts = async (offset = 0, count = PER_PAGE): Promise<DailyPos
 
   return postContent;
 };
+
+export const selectedDailyPosts = async (): Promise<DailyPost[]> => dailyPosts(0, PER_PAGE, true);
