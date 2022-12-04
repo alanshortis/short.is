@@ -11,6 +11,7 @@ const Container = styled.div`
   }
   a {
     display: block;
+    font-weight: ${p => p.theme.font.weightBold};
     & + a {
       margin-top: calc(var(--spacing) / 4);
     }
@@ -31,13 +32,13 @@ interface Props {
 
 export const SelectedDailies: FC<Props> = ({ selectedDailies }) => (
   <Container>
-    <Label className="header">Selected Dailies</Label>
+    <Label className="header" as="h2">
+      Selected Dailies
+    </Label>
     {selectedDailies.map(({ day, title }) => (
       <Link href={`/daily/${day}`} key={day}>
-        <a>
-          <h3 className="h4">
-            <span className="number">#{day}</span>: {title}
-          </h3>
+        <a className="h4">
+          <span className="number">#{day}</span>: {title}
         </a>
       </Link>
     ))}

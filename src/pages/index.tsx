@@ -3,7 +3,7 @@ import Head from 'next/head';
 import type { LatestContent } from '../types';
 import { latestWriting } from '../data/writing';
 import { selectedDailyPosts } from '../data/daily';
-import { Layout, PostFormatting, PostIndexItem, SelectedDailies, ShadowBox } from '../components';
+import { Label, Layout, PostFormatting, PostIndexItem, SelectedDailies, ShadowBox } from '../components';
 import { Grid, Full, PageBody } from '../components/Grid';
 
 export async function getStaticProps(): Promise<GetStaticPropsResult<LatestContent>> {
@@ -35,13 +35,14 @@ const Home: NextPage<LatestContent> = ({ latestWritingPost, selectedDailies }) =
             <h1>Alan Shortis</h1>
           </Full>
           <PageBody as={PostFormatting}>
-            <h2 className="intro">
+            <p className="intro">
               I&#39;m a front end developer based in <del>London</del> Nottingham, currently working for{' '}
               <a href="https://monzo.com/">Monzo</a>.
-            </h2>
+            </p>
           </PageBody>
           <PageBody>
             <ShadowBox>
+              <Label as="h2">Latest writing</Label>
               <PostIndexItem slug={slug} date={date} title={title} intro={intro} year={year} isLatest />
               <SelectedDailies selectedDailies={selectedDailies} />
             </ShadowBox>
