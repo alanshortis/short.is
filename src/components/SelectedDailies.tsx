@@ -14,6 +14,9 @@ const Container = styled.div`
     & + a {
       margin-top: calc(var(--spacing) / 4);
     }
+    &:last-child {
+      margin-top: var(--spacing);
+    }
   }
   .number {
     display: inline-block;
