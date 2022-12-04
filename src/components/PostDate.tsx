@@ -16,14 +16,12 @@ const Time = styled.time`
 
 interface Props {
   date: string;
-  prefix?: string;
   hasShare?: boolean;
   hasYear?: boolean;
 }
 
-export const PostDate: FC<Props> = ({ date, prefix, hasShare, hasYear }) => (
+export const PostDate: FC<Props> = ({ date, hasShare, hasYear }) => (
   <Label>
-    {prefix && <span>{prefix} &middot; </span>}
     <Time dateTime={date} dangerouslySetInnerHTML={{ __html: dateFormat(date, hasYear) }} />
     {hasShare && <ShareButton />}
   </Label>
