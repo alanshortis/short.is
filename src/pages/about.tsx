@@ -54,10 +54,6 @@ const About: NextPage<AboutData> = ({ nowReading, recentMusic }) => {
                 Learning <a href="https://go.dev/">Go</a>, and thinking of learning{' '}
                 <a href="https://en.wikipedia.org/wiki/Go_(game)">Go</a>
               </li>
-              <li>
-                Following a regimented plan on <a href="https://www.trainerroad.com/">TrainerRoad</a> to
-                enable my daydreams of Italian roads
-              </li>
               <li>Working through all Jim Jarmusch movies</li>
             </ul>
             <h3>This site</h3>
