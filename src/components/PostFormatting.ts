@@ -93,9 +93,8 @@ export const PostFormatting = styled.div`
     position: relative;
     text-decoration: none;
     &::before {
-      border-bottom: ${p => p.theme.borderSize} solid var(--accent);
+      border-bottom: ${p => p.theme.borderSize} solid currentColor;
       content: '';
-      opacity: 1;
       position: absolute;
       right: 0;
       top: 50%;
