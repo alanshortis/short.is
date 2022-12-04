@@ -2,11 +2,11 @@ import type { FC } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 import type { DailyPost } from '../types';
-import { Label } from '.';
+import { Arrow, Label } from '.';
 
 const Container = styled.div`
   margin-top: var(--spacing);
-  ${Label} {
+  .header {
     margin-bottom: calc(var(--spacing) / 2);
   }
   a {
@@ -28,7 +28,7 @@ interface Props {
 
 export const SelectedDailies: FC<Props> = ({ selectedDailies }) => (
   <Container>
-    <Label>Selected Dailies</Label>
+    <Label className="header">Selected Dailies</Label>
     {selectedDailies.map(({ day, title }) => (
       <Link href={`/daily/${day}`} key={day}>
         <a>
@@ -38,5 +38,10 @@ export const SelectedDailies: FC<Props> = ({ selectedDailies }) => (
         </a>
       </Link>
     ))}
+    <Link href="/daily" passHref>
+      <Label as="a" toTheRight>
+        <Arrow>More Dailies</Arrow>
+      </Label>
+    </Link>
   </Container>
 );
