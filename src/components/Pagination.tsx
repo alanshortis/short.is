@@ -7,6 +7,7 @@ const StyledNav = styled.nav`
   display: flex;
   margin-bottom: var(--spacing);
   margin-top: auto;
+  padding-top: var(--spacing);
   span {
     display: flex;
     flex: 1;
