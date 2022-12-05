@@ -9,20 +9,21 @@ const Container = styled.div`
   .header {
     margin-bottom: calc(var(--spacing) / 2);
   }
-  a {
+  .h4 {
     display: block;
     font-weight: ${p => p.theme.font.weightBold};
-    & + a {
-      margin-top: calc(var(--spacing) / 4);
-    }
-    &:last-child {
-      margin-top: var(--spacing);
-    }
+    line-height: 1.5em;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
   .number {
     display: inline-block;
     text-align: right;
     width: 4ch;
+  }
+  ${Arrow} {
+    margin-top: var(--spacing);
   }
 `;
 
@@ -43,9 +44,9 @@ export const SelectedDailies: FC<Props> = ({ selectedDailies }) => (
       </Link>
     ))}
     <Link href="/daily" passHref>
-      <Label as="a" toTheRight>
-        <Arrow>More Dailies</Arrow>
-      </Label>
+      <Arrow as="a" toTheRight>
+        More Dailies
+      </Arrow>
     </Link>
   </Container>
 );
