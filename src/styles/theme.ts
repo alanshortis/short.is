@@ -11,9 +11,10 @@ export const theme = {
     dark: 'hsl(0, 0%, 2%)',
     header: 'hsla(0, 0%, 88%, 0.5)',
     headerDark: 'hsla(0, 0%, 2%, 0.7)',
-    accent: 'hsl(10, 100%, 43%)',
+    // https://en.wikipedia.org/wiki/International_orange
+    accent: 'hsl(3, 88%, 39%)',
     accentDark: 'hsl(19, 100%, 50%)',
-    inlineCodeBackground: 'hsla(10, 100%, 43%, 0.125)',
+    inlineCodeBackground: 'hsla(3, 88%, 39%, 0.25)',
     inlineCodeBackgroundDark: 'hsla(19, 100%, 50%, 0.25)',
   },
   media: {

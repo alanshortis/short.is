@@ -38,6 +38,7 @@ export const PostFormatting = styled.div`
 
   a {
     color: var(--accent);
+    text-decoration: underline;
     white-space: nowrap;
     &[href^='http']:not([href*='short.is'])::after {
       content: '↗';
