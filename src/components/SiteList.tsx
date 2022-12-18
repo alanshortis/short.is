@@ -4,9 +4,10 @@ import type { WebisteLink } from '../types';
 interface Props {
   intro: string;
   items: WebisteLink[];
+  isMe?: boolean;
 }
 
-export const SiteList: FC<Props> = ({ intro, items }) => (
+export const SiteList: FC<Props> = ({ intro, items, isMe = false }) => (
   <>
     {intro}{' '}
     {items.map(({ name, url }, idx, arr) => {
@@ -14,7 +15,9 @@ export const SiteList: FC<Props> = ({ intro, items }) => (
       return (
         <span key={url}>
           {isLast && 'and '}
-          <a href={url}>{name}</a>
+          <a href={url} rel={isMe ? 'me' : ''}>
+            {name}
+          </a>
           {!isLast && ', '}
         </span>
       );
