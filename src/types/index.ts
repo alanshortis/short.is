@@ -55,6 +55,7 @@ export interface Book {
 export interface WebisteLink {
   name: string;
   url: string;
+  isMe?: boolean;
 }
 
 export interface AboutData {
