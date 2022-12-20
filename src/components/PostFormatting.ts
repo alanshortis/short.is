@@ -31,9 +31,6 @@ export const PostFormatting = styled.div`
     font-weight: ${p => p.theme.font.weight};
     letter-spacing: initial;
     padding-top: 0;
-    &:only-of-type {
-      margin-bottom: 0;
-    }
   }
 
   a {
