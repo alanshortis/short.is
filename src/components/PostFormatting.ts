@@ -7,6 +7,9 @@ export const PostFormatting = styled.div`
   h3 {
     padding-top: var(--spacing);
     margin-bottom: var(--spacing);
+    &:first-child {
+      padding-top: 0;
+    }
   }
 
   p,
