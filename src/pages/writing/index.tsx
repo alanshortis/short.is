@@ -7,7 +7,9 @@ import type { PostList } from '../../types';
 import { generateWritingFeed } from '../../feeds';
 
 export async function getStaticProps(): Promise<GetStaticPropsResult<PostList>> {
-  generateWritingFeed();
+  if (process.env.NODE_ENV === 'production') {
+    generateWritingFeed();
+  }
 
   return {
     props: {
