@@ -5,7 +5,9 @@ import { dailyPosts, pageCount } from '../../data/daily';
 import { generateDailyFeed } from '../../feeds';
 
 export async function getStaticProps(): Promise<GetStaticPropsResult<DailyList>> {
-  generateDailyFeed();
+  if (process.env.NODE_ENV === 'production') {
+    generateDailyFeed();
+  }
 
   return {
     props: {
