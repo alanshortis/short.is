@@ -7,4 +7,5 @@ yarn-debug.log*
 yarn-error.log*
 *.tsbuildinfo
 
-public/writing/*
+public/writing.xml
+public/daily.xml
