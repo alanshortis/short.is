@@ -23,13 +23,13 @@ const Main = styled.main`
   }
 `;
 
-export const Layout: FC<HeadInfo> = ({ children, title, intro }) => (
+export const Layout: FC<HeadInfo> = ({ children, title, intro, feedUrl }) => (
   <>
     <Head title={title} intro={intro} />
     <Header />
     <Container fillHeight>
       <Main id="main">{children}</Main>
     </Container>
-    <Footer />
+    <Footer feedUrl={feedUrl} />
   </>
 );

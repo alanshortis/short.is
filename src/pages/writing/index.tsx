@@ -4,8 +4,11 @@ import { Layout, PostIndexItem, Label } from '../../components';
 import { Aside, Full, Grid, PageBody, Sticker } from '../../components/Grid';
 import { allWritingFrontMatter, writingYears } from '../../data/writing';
 import type { PostList } from '../../types';
+import { generateWritingFeed } from '../../feeds';
 
 export async function getStaticProps(): Promise<GetStaticPropsResult<PostList>> {
+  generateWritingFeed();
+
   return {
     props: {
       posts: allWritingFrontMatter,
@@ -21,7 +24,7 @@ export const config = {
 };
 
 const Writing: NextPage<PostList> = ({ posts, years }) => (
-  <Layout title="Writing">
+  <Layout title="Writing" feedUrl="writing.xml">
     <Grid>
       <Full>
         <h1>Writing</h1>

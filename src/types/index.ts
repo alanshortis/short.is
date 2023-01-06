@@ -5,6 +5,7 @@ export type Mdx = MDXRemoteSerializeResult<Record<string, unknown>>;
 export interface HeadInfo {
   title?: string;
   intro?: string;
+  feedUrl?: string;
 }
 
 export type MenuItem = {
