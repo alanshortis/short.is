@@ -24,7 +24,7 @@ export const config = {
 };
 
 const Writing: NextPage<PostList> = ({ posts, years }) => (
-  <Layout title="Writing">
+  <Layout title="Writing" feedUrl="writing.xml">
     <Grid>
       <Full>
         <h1>Writing</h1>

@@ -25,11 +25,20 @@ const Up = styled.span`
   transform: rotate(90deg);
 `;
 
-export const Footer: FC = () => (
+interface Props {
+  feedUrl?: string;
+}
+
+export const Footer: FC<Props> = ({ feedUrl }) => (
   <Container>
     <StyledFooter>
       <SchemeToggle />
       <Label>
+        {feedUrl && (
+          <span>
+            <a href={`/${feedUrl}`}>RSS</a> &middot;{' '}
+          </span>
+        )}
         <a href="#top">
           Top <Up>←</Up>
         </a>
