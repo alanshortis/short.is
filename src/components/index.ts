@@ -6,7 +6,7 @@ export { Footer } from './Footer';
 export { Grid } from './Grid';
 export { Head } from './Head';
 export { Header } from './Header';
-export { label, Label, warning, Warning } from './Label';
+export { label, Label } from './Label';
 export { Layout } from './Layout';
 export { Logo } from './Logo';
 export { Menu } from './Menu';
