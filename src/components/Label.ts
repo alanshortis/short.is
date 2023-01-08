@@ -18,21 +18,3 @@ export const Label = styled.span<{ toTheRight?: boolean }>`
   ${label};
   text-align: ${p => (p.toTheRight ? 'right' : 'inherit')};
 `;
-
-export const warning = css`
-  ${label};
-  &::before {
-    color: var(--accent);
-    content: '△';
-    font-family: 'WarnTriangle';
-    font-size: 1rem;
-    margin-right: calc(var(--spacing) / 4);
-    @supports (content: x / y) {
-      content: '△' / 'Warning';
-    }
-  }
-`;
-
-export const Warning = styled.span`
-  ${warning};
-`;

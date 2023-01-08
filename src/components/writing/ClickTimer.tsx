@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import Head from 'next/head';
 import styled from 'styled-components';
-import { label, warning } from '..';
+import { label } from '..';
 
 const StyledWc = styled.div`
   font-family: ${p => p.theme.font.familyMono};
@@ -27,7 +27,7 @@ const StyledWc = styled.div`
     }
   }
   p {
-    ${warning};
+    ${label};
     visibility: hidden;
   }
 `;
