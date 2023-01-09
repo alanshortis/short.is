@@ -60,7 +60,7 @@ export interface WebisteLink {
 }
 
 export interface AboutData {
-  nowReading: Book;
+  nowReading: Book[];
   recentMusic: WebisteLink[];
 }
 
