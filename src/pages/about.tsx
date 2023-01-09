@@ -1,7 +1,7 @@
 import type { NextPage, GetStaticPropsResult } from 'next';
 import { useContext } from 'react';
 import type { AboutData } from '../types';
-import { Layout, PostFormatting, SiteList } from '../components';
+import { Layout, NowReading, PostFormatting, SiteList } from '../components';
 import { Full, Grid, PageBody } from '../components/Grid';
 import { googleBooks } from '../data/google-books';
 import { lastfm } from '../data/lastfm';
@@ -44,7 +44,8 @@ const About: NextPage<AboutData> = ({ nowReading, recentMusic }) => {
             <h3>Now</h3>
             <ul>
               <li>
-                Reading <a href={nowReading.url}>{nowReading.title}</a> by {nowReading.author}
+                <NowReading nowReading={nowReading} />
+                {/* Reading <a href={nowReading.url}>{nowReading.title}</a> by {nowReading.author} */}
               </li>
               <li>
                 <SiteList items={recentMusic} intro="Listening to" />

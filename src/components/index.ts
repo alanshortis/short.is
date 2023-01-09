@@ -11,6 +11,7 @@ export { Layout } from './Layout';
 export { Logo } from './Logo';
 export { Menu } from './Menu';
 export { NextPrev } from './NextPrev';
+export { NowReading } from './NowReading';
 export { Pagination } from './Pagination';
 export { PostDate } from './PostDate';
 export { PostFormatting, PostList } from './PostFormatting';
