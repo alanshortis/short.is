@@ -137,6 +137,23 @@ export const PostFormatting = styled.div`
   strong {
     font-weight: ${p => p.theme.font.weightBold};
   }
+
+  table {
+    border-collapse: collapse;
+    min-width: 100%;
+    th {
+      font-weight: ${p => p.theme.font.weightBold};
+      text-align: left;
+    }
+
+    th,
+    td {
+      border: 1px solid currentColor;
+      line-height: 1.563;
+      padding: calc(var(--spacing) / 4);
+      vertical-align: top;
+    }
+  }
 `;
 
 export const PostList = styled(PostFormatting)`
