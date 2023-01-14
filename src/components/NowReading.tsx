@@ -1,4 +1,5 @@
 import type { FC } from 'react';
+import { Fragment } from 'react';
 import { Book } from '../types';
 
 interface Props {
@@ -14,13 +15,11 @@ export const NowReading: FC<Props> = ({ nowReading }) => {
         const oneBook = arr.length === 1;
 
         return (
-          <>
+          <Fragment key={url}>
             {isLast && !oneBook && 'and '}
-            <span key={url}>
-              <a href={url}>{title}</a> by {author}
-              {!isLast && !oneBook && ', '}
-            </span>
-          </>
+            <a href={url}>{title}</a> by {author}
+            {!isLast && !oneBook && ', '}
+          </Fragment>
         );
       })}
     </>

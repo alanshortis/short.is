@@ -26,7 +26,5 @@ export const googleBooks = async (): Promise<Book[]> => {
     url: volumeInfo.previewLink,
   }));
 
-  console.log(volumes);
-
   return volumes;
 };
