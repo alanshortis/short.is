@@ -9,7 +9,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint src/**/*.{tsx,ts}; tsc --noEmit",
-    "new": "node new-post"
+    "new": "node new-post",
+    "clean": "node new-post/branch-clean"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",
