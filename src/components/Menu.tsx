@@ -8,7 +8,7 @@ interface MenuItem {
 
 const menuItems: Readonly<MenuItem[]> = [
   { name: 'Daily', path: '/daily' },
-  { name: 'About', path: '/about' },
+  { name: 'Now', path: '/now' },
 ];
 
 export const Menu: FC = () => (
