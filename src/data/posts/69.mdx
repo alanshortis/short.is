@@ -1,0 +1,11 @@
+---
+day: '69'
+date: '2022-10-24'
+title: 'On rule breaking'
+---
+
+Back on <a href="/daily/11">day 11</a> I made a few rules for daily posts, including 'No way to link to a particular post and no pagination'. That's been broken already.
+
+Permalinks and pagination is here for Daily posts, with zero client JS. There are likely some build performance issues on the way as every post is stored in its own `.mdx` file but the bottleneck of reading the file system to get all the posts names has been removed by updating a flat array of post numbers.
+
+I think the broken rules were totally valid at that time, but it's surprising how quickly the single-threaded list of daily posts got unmanageable. Tags and categorisation would be too manual to add at this point and searching would probably require too much load on the server or client (and a desire to write all that code). And with pictures not really being about writing, I think the remaining rules are safe.
