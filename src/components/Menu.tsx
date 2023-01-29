@@ -1,4 +1,3 @@
-import type { FC } from 'react';
 import Link from 'next/link';
 
 interface MenuItem {
@@ -11,7 +10,7 @@ const menuItems: Readonly<MenuItem[]> = [
   { name: 'Now', path: '/now' },
 ];
 
-export const Menu: FC = () => (
+export const Menu = () => (
   <nav>
     <ul>
       {menuItems.map(item => (

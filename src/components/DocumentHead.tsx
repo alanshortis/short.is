@@ -1,4 +1,3 @@
-import type { FC } from 'react';
 import NextHead from 'next/head';
 import { useRouter } from 'next/router';
 import { useMeta } from '@/context';
@@ -8,7 +7,7 @@ interface Props {
   intro?: string;
 }
 
-export const DocumentHead: FC<Props> = ({ title, intro }) => {
+export const DocumentHead = ({ title, intro }: Props) => {
   const router = useRouter();
   const meta = useMeta();
   const pageTitle = title ? `${title}—${meta.title}` : meta.title;

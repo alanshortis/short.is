@@ -1,5 +1,8 @@
-import type { FC, ReactNode } from 'react';
 import React, { createContext, useContext } from 'react';
+
+interface Props {
+  children: React.ReactNode;
+}
 
 export const meta = {
   author: 'Alan Shortis',
@@ -11,7 +14,7 @@ export const meta = {
 
 const MetaContext = createContext(meta);
 
-export const MetaProvider: FC<{ children: ReactNode }> = ({ children }) => (
+export const MetaProvider = ({ children }: Props) => (
   <MetaContext.Provider value={meta}>{children}</MetaContext.Provider>
 );
 
