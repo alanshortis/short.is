@@ -5,7 +5,7 @@ import matter, { type GrayMatterFile } from 'gray-matter';
 import { serialize } from 'next-mdx-remote/serialize';
 import { postDays } from './post-days';
 
-type Mdx = MDXRemoteSerializeResult<Record<string, unknown>>;
+export type Mdx = MDXRemoteSerializeResult<Record<string, unknown>>;
 
 export interface DailyPost {
   day: string;

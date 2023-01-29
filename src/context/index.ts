@@ -1,1 +1,1 @@
-export { useMeta, MetaProvider } from './meta';
+export { useMeta, MetaProvider, meta } from './meta';

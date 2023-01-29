@@ -1,8 +1,13 @@
 import type { NextPage, GetStaticProps } from 'next';
 import { type DailyList, getDailyPosts, pageCount } from '@/data';
+import { generateDailyFeed } from '@/feeds';
 import { DailyPage } from '@/components';
 
 export const getStaticProps: GetStaticProps<DailyList> = async () => {
+  if (process.env.NODE_ENV === 'production') {
+    generateDailyFeed();
+  }
+
   return {
     props: {
       dailies: await getDailyPosts(),

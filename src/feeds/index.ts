@@ -1,0 +1,1 @@
+export { generateDailyFeed } from './daily';

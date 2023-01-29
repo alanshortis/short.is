@@ -7,6 +7,7 @@ import { type DailyList } from '@/data';
 export const DailyPage: FC<DailyList> = ({ dailies, currentPage, totalPages }) => (
   <PageLayout title="Daily">
     <h1>Daily</h1>
+    <a href="/daily.xml">Feed</a>
     <div>
       {dailies.map(daily => (
         <article key={daily.day}>

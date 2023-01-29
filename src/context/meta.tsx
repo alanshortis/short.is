@@ -1,7 +1,8 @@
 import type { FC, ReactNode } from 'react';
 import React, { createContext, useContext } from 'react';
 
-const meta = {
+export const meta = {
+  author: 'Alan Shortis',
   title: 'Alan Shortis',
   twitter: '@alanshortis',
   description: 'Alan Shortis is a web developer',
