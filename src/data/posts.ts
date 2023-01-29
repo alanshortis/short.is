@@ -7,11 +7,12 @@ import { postDays } from './post-days';
 
 type Mdx = MDXRemoteSerializeResult<Record<string, unknown>>;
 
-interface DailyPost {
+export interface DailyPost {
   day: string;
   date: string;
   title: string;
   mdxContent: Mdx;
+  postCount?: number;
 }
 
 export interface DailyList {

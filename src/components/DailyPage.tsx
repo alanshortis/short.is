@@ -11,7 +11,7 @@ export const DailyPage: FC<DailyList> = ({ dailies, currentPage, totalPages }) =
       {dailies.map(daily => (
         <article key={daily.day}>
           <h2>
-            <Link href={`/daily/page/${daily.day}`}>{daily.day}</Link>
+            <Link href={`/daily/${daily.day}`}>{daily.day}</Link>
           </h2>
           <time dateTime={daily.date}>{daily.date}</time>
           <MDXRemote {...daily.mdxContent} />
