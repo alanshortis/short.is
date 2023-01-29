@@ -1,9 +1,9 @@
 import type { NextPage, GetStaticPropsResult } from 'next';
 import { PageLayout } from '@/layouts';
-import { type LastFmBand, type GoodreadsBook, getLastfm, getGoodreads } from '@/data';
+import { type LastFmArtist, type GoodreadsBook, getLastfm, getGoodreads } from '@/data';
 
 interface Props {
-  recentMusic: LastFmBand[];
+  recentMusic: LastFmArtist[];
   nowReading: GoodreadsBook[];
 }
 

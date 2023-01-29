@@ -6,21 +6,20 @@ export interface GoodreadsBook {
   url: string;
 }
 
-const mock: GoodreadsBook[] = [
-  { author: 'George Orwell', title: 'Down and out in Paris and London', url: '/g' },
-  { author: 'Naomi Klien', title: 'The Shock Doctrine', url: '/n' },
-];
-
 export const getGoodreads = async (): Promise<GoodreadsBook[]> => {
-  if (process.env.OFFLINE === '1') return mock;
-
-  const bookData = [];
+  if (process.env.OFFLINE === '1') {
+    return [
+      { author: 'George Orwell', title: 'Down and out in Paris and London', url: '/g' },
+      { author: 'Naomi Klien', title: 'The Shock Doctrine', url: '/n' },
+    ];
+  }
 
   const res = await fetch(`https://www.goodreads.com/user/show/${process.env.GOODREADS_USER}`);
   const data = await res.text();
   const $ = cheerio.load(data);
 
   const updates = $('.Updates');
+  const bookData = [];
 
   for (let i = 0; i < updates.length; i++) {
     bookData.push({
