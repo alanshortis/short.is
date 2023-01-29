@@ -30,3 +30,7 @@ export const getStaticProps: GetStaticProps<DailyList> = async ({ params }) => {
 const Page: NextPage<DailyList> = p => <DailyPage {...p} />;
 
 export default Page;
+
+export const config = {
+  unstable_runtimeJS: false,
+};

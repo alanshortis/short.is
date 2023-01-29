@@ -38,3 +38,7 @@ const Day: NextPage<Props> = ({ day, date, mdxContent, postCount }) => (
 );
 
 export default Day;
+
+export const config = {
+  unstable_runtimeJS: false,
+};

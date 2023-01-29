@@ -35,3 +35,7 @@ const Now: NextPage<Props> = ({ recentMusic, nowReading }) => (
 );
 
 export default Now;
+
+export const config = {
+  unstable_runtimeJS: false,
+};
