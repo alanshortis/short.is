@@ -11,8 +11,8 @@ export const getStaticProps: GetStaticProps<DailyList> = async () => {
   return {
     props: {
       dailies: await getDailyPosts(),
-      currentPage: '1',
-      totalPages: pageCount.toString(),
+      currentPage: 1,
+      totalPages: pageCount,
     },
   };
 };

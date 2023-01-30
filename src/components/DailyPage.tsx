@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { MDXRemote } from 'next-mdx-remote';
 import { PageLayout } from '@/layouts';
 import { type DailyList } from '@/data';
-import { PostDate } from '@/components';
+import { Pagination, PostDate } from '@/components';
 
 export const DailyPage = ({ dailies, currentPage, totalPages }: DailyList) => (
   <PageLayout title="Daily">
@@ -19,8 +19,6 @@ export const DailyPage = ({ dailies, currentPage, totalPages }: DailyList) => (
         </article>
       ))}
     </div>
-    <p>
-      Page {currentPage} of {totalPages}
-    </p>
+    <Pagination currentPage={Number(currentPage)} totalPages={Number(totalPages)} />
   </PageLayout>
 );

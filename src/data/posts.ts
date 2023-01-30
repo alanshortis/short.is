@@ -17,8 +17,8 @@ export interface DailyPost {
 
 export interface DailyList {
   dailies: DailyPost[];
-  currentPage: string;
-  totalPages: string;
+  currentPage: number;
+  totalPages: number;
 }
 
 const days = [...postDays];
