@@ -3,7 +3,6 @@ import path from 'path';
 import fs from 'fs';
 import matter, { type GrayMatterFile } from 'gray-matter';
 import { serialize } from 'next-mdx-remote/serialize';
-import { postDays } from './post-days';
 
 export type Mdx = MDXRemoteSerializeResult<Record<string, unknown>>;
 
@@ -21,9 +20,10 @@ export interface DailyList {
   totalPages: number;
 }
 
-const days = [...postDays];
-export const postCount = days.length;
+const FOLDER = 'src/data/posts';
 export const PER_PAGE = 7;
+export const postCount = fs.readdirSync(FOLDER).length;
+export const postDays = Array.from({ length: postCount }, (_, i) => i + 1).reverse();
 export const pageCount = Math.ceil(postCount / PER_PAGE);
 
 const fileContent = (dir: string, fileName: string): GrayMatterFile<Buffer> => {
@@ -38,12 +38,12 @@ const mdxSerialize = async (content: string): Promise<Mdx> => {
 };
 
 export const getDailyPosts = async (offset = 0, limit = PER_PAGE): Promise<DailyPost[]> => {
-  const postsInRange = days.slice(offset, offset + limit);
+  const postsInRange = postDays.slice(offset, offset + limit);
 
   const postContent = await Promise.all(
     postsInRange.map(async postDay => {
-      const fileName = `${postDay.toString() + '.mdx'}`;
-      const { data, content } = fileContent(path.join(process.cwd(), 'src/data/posts'), fileName);
+      const fileName = `${postDay + '.mdx'}`;
+      const { data, content } = fileContent(path.join(process.cwd(), FOLDER), fileName);
       const { day, date, title } = data;
       const mdxContent = await mdxSerialize(content);
 
