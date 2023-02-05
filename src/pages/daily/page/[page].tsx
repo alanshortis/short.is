@@ -16,13 +16,14 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps<DailyList> = async ({ params }) => {
-  const offset = PER_PAGE * (Number(params?.page) - 1);
+  const currentPage = Number(params?.page);
+  const offset = PER_PAGE * (currentPage - 1);
 
   return {
     props: {
       dailies: await getDailyPosts(offset),
-      currentPage: params?.page as string,
-      totalPages: pageCount.toString(),
+      totalPages: pageCount,
+      currentPage,
     },
   };
 };
