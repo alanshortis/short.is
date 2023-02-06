@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "new": "node new.js"
+    "new": "ts-node new.ts"
   },
   "dependencies": {
     "@types/node": "18.11.18",
