@@ -4,9 +4,9 @@ import { generateDailyFeed } from '@/feeds';
 import { DailyPage } from '@/components';
 
 export const getStaticProps: GetStaticProps<DailyList> = async () => {
-  // if (process.env.NODE_ENV === 'production') {
-  generateDailyFeed();
-  // }
+  if (process.env.NODE_ENV === 'production') {
+    generateDailyFeed();
+  }
 
   return {
     props: {
