@@ -1,8 +1,7 @@
 import Link from 'next/link';
-import { MDXRemote } from 'next-mdx-remote';
 import { PageLayout } from '@/layouts';
 import { type DailyList } from '@/data';
-import { Pagination, PostDate } from '@/components';
+import { Markdown, Pagination, PostDate } from '@/components';
 
 export const DailyPage = ({ dailies, currentPage, totalPages }: DailyList) => (
   <PageLayout title="Daily">
@@ -15,7 +14,7 @@ export const DailyPage = ({ dailies, currentPage, totalPages }: DailyList) => (
             <Link href={`/daily/${daily.day}`}>{daily.day}</Link>
           </h2>
           <PostDate date={daily.date} />
-          <MDXRemote {...daily.mdxContent} />
+          <Markdown>{daily.content}</Markdown>
         </article>
       ))}
     </div>

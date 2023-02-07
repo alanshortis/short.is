@@ -1,8 +1,7 @@
 import type { NextPage, GetStaticPaths, GetStaticProps } from 'next';
-import { MDXRemote } from 'next-mdx-remote';
 import { type DailyPost, postDays, postCount, getDailyPosts } from '@/data';
 import { PageLayout } from '@/layouts';
-import { Pagination, PostDate } from '@/components';
+import { Markdown, Pagination, PostDate } from '@/components';
 
 interface Props extends DailyPost {
   postCount: number;
@@ -19,18 +18,18 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const offset = postCount - Number(params?.day);
   const [daily] = await getDailyPosts(offset, 1);
-  const { day, date, mdxContent } = daily;
+  const { day, date, content } = daily;
 
   return {
-    props: { day, date, mdxContent, postCount },
+    props: { day, date, postCount, content },
   };
 };
 
-const Day: NextPage<Props> = ({ day, date, mdxContent, postCount }) => (
+const Day: NextPage<Props> = ({ day, date, postCount, content }) => (
   <PageLayout title={`#${day}`}>
     <h1>{day}</h1>
     <PostDate date={date} />
-    <MDXRemote {...mdxContent} />
+    <Markdown>{content}</Markdown>
     <Pagination currentPage={Number(day)} totalPages={postCount} path="/daily/" label="Day" />
   </PageLayout>
 );

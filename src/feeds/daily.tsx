@@ -1,9 +1,9 @@
 import React from 'react';
 import fs from 'fs';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { MDXRemote } from 'next-mdx-remote';
 import { postCount, getDailyPosts } from '@/data';
 import { meta } from '@/context';
+import { Markdown } from '@/components';
 
 interface FeedPost {
   date: string;
@@ -32,11 +32,7 @@ const dailyXml = (
       <updated>${new Date(post.date).toISOString()}</updated>
       <id>${meta.url}/daily/${post.day}</id>
       <content type="html">
-        <![CDATA[
-        <div>
-          ${post.content}
-        </div>
-      ]]>
+        <![CDATA[${post.content}]]>
       </content>
     </entry>`
     )
@@ -45,14 +41,12 @@ const dailyXml = (
 `;
 
 export const generateDailyFeed = async (): Promise<void> => {
-  console.log('called');
-
   const allPosts = await getDailyPosts(0, postCount);
-  const formattedPosts = allPosts.map(({ date, day, title, mdxContent }) => ({
+  const formattedPosts = allPosts.map(({ date, day, title, content }) => ({
     date,
     day,
     title,
-    content: renderToStaticMarkup(<MDXRemote {...mdxContent} />),
+    content: renderToStaticMarkup(<Markdown>{content}</Markdown>),
   }));
 
   const updated = formattedPosts[0].date;

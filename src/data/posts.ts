@@ -10,6 +10,7 @@ export interface DailyPost {
   day: string;
   date: string;
   title: string;
+  content: string;
   mdxContent: Mdx;
   postCount?: number;
 }
@@ -47,7 +48,7 @@ export const getDailyPosts = async (offset = 0, limit = PER_PAGE): Promise<Daily
       const { day, date, title } = data;
       const mdxContent = await mdxSerialize(content);
 
-      return { day, date, title, mdxContent };
+      return { day, date, title, mdxContent, content };
     })
   );
 
