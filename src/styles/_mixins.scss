@@ -1,0 +1,5 @@
+@mixin should-animate {
+  @media (prefers-reduced-motion: no-preference) {
+    @content;
+  }
+}
