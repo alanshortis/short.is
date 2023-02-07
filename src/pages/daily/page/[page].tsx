@@ -2,10 +2,7 @@ import type { NextPage, GetStaticProps, GetStaticPaths } from 'next';
 import { type DailyList, getDailyPosts, pageCount, PER_PAGE } from '@/data';
 import { DailyPage } from '@/components';
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  // This is a bit weird. I know I want n pages, so I need an array of those
-  // page numbers to generate them. There is no need for `page/1`, so from
-  // `page/2` up to the value of `pageCount`.
+export const getStaticPaths: GetStaticPaths = () => {
   const paths = Array(pageCount - 1)
     .fill(2)
     .map((page, i) => {
@@ -15,13 +12,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
   return { paths, fallback: false };
 };
 
-export const getStaticProps: GetStaticProps<DailyList> = async ({ params }) => {
+export const getStaticProps: GetStaticProps<DailyList> = ({ params }) => {
   const currentPage = Number(params?.page);
   const offset = PER_PAGE * (currentPage - 1);
 
   return {
     props: {
-      dailies: await getDailyPosts(offset),
+      dailies: getDailyPosts(offset),
       totalPages: pageCount,
       currentPage,
     },

@@ -3,14 +3,14 @@ import { type DailyList, getDailyPosts, pageCount } from '@/data';
 import { generateDailyFeed } from '@/feeds';
 import { DailyPage } from '@/components';
 
-export const getStaticProps: GetStaticProps<DailyList> = async () => {
+export const getStaticProps: GetStaticProps<DailyList> = () => {
   if (process.env.NODE_ENV === 'production') {
     generateDailyFeed();
   }
 
   return {
     props: {
-      dailies: await getDailyPosts(),
+      dailies: getDailyPosts(),
       currentPage: 1,
       totalPages: pageCount,
     },

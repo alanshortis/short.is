@@ -7,7 +7,7 @@ interface Props extends DailyPost {
   postCount: number;
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths = () => {
   const paths = postDays.map(dayNumber => ({
     params: { day: dayNumber.toString() },
   }));
@@ -15,9 +15,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
   return { paths, fallback: false };
 };
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getStaticProps: GetStaticProps = ({ params }) => {
   const offset = postCount - Number(params?.day);
-  const [daily] = await getDailyPosts(offset, 1);
+  const [daily] = getDailyPosts(offset, 1);
   const { day, date, content } = daily;
 
   return {
