@@ -73,3 +73,6 @@ if ('customElements' in window) {
     }
   );
 }
+
+// ONE HOUR
+// TS WEB COMPONENTS, DON'T TRANSPILE THE CLASS
