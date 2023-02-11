@@ -1,11 +1,10 @@
 /* eslint-disable @next/next/no-sync-scripts */
-import type { FC } from 'react';
 import Head from 'next/head';
 
-const SchemeToggle: FC = () => (
+const SchemeToggle = () => (
   <>
     <Head>
-      <script src="/js/scheme-toggle.js" />
+      <script src="/scheme-toggle.js" />
     </Head>
     <scheme-toggle />
   </>
