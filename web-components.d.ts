@@ -5,8 +5,9 @@
  * here stops the complier from being quite so *dramatic*.
  */
 
+type Wc = React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
 declare namespace JSX {
   interface IntrinsicElements {
-    'scheme-toggle': any;
+    'scheme-toggle': Wc;
   }
 }
