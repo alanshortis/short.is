@@ -1,6 +1,18 @@
 .markdown {
   p {
     margin-bottom: 1em;
-    text-align: justify;
+  }
+
+  strong {
+    font-weight: bold;
+  }
+
+  h2,
+  h3 {
+    padding-top: 1rem;
+    margin-bottom: 1rem;
+    &:first-child {
+      padding-top: 0;
+    }
   }
 }

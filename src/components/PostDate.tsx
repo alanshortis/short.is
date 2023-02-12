@@ -11,7 +11,7 @@ export const PostDate = ({ date }: Props) => {
   const year = d.getFullYear();
 
   return (
-    <time dateTime={date} className="label">
+    <time dateTime={date} className="label spaced">
       {day} {month} {year}
     </time>
   );
