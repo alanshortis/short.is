@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { VisuallyHidden } from '@/components';
 
 interface Props {
   currentPage: number;
@@ -9,10 +10,18 @@ interface Props {
 
 export const Pagination = ({ currentPage, totalPages, path = '/daily/page/', label = 'Page' }: Props) => (
   <nav>
-    {currentPage > 1 && <Link href={`${path}${currentPage - 1}`}>Previous</Link>}
-    <p>
-      {label} {currentPage} of {totalPages}
+    {currentPage > 1 && (
+      <Link href={`${path}${currentPage - 1}`} className="label">
+        Previous
+      </Link>
+    )}
+    <p className="label">
+      <VisuallyHidden>{label}</VisuallyHidden> {currentPage} of {totalPages}
     </p>
-    {currentPage < totalPages && <Link href={`${path}${currentPage + 1}`}>Next</Link>}
+    {currentPage < totalPages && (
+      <Link href={`${path}${currentPage + 1}`} className="label">
+        Next
+      </Link>
+    )}
   </nav>
 );

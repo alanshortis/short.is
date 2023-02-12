@@ -1,3 +1,5 @@
+import styles from './styles.module.scss';
+
 interface Props {
   date: string;
 }
@@ -9,7 +11,7 @@ export const PostDate = ({ date }: Props) => {
   const year = d.getFullYear();
 
   return (
-    <time dateTime={date}>
+    <time dateTime={date} className="label">
       {day} {month} {year}
     </time>
   );

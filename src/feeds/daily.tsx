@@ -1,4 +1,3 @@
-import React from 'react';
 import fs from 'fs';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { postCount, getDailyPosts } from '@/data';

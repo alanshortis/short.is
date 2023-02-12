@@ -1,9 +1,11 @@
 import Link from 'next/link';
-import { Menu } from './Menu';
+import { Menu, Logo } from '.';
 
 export const Header = () => (
-  <header>
-    <Link href="/">LOGO?</Link>
+  <header className="container">
+    <Link href="/">
+      <Logo />
+    </Link>
     <Menu />
   </header>
 );

@@ -28,7 +28,7 @@ export const DocumentHead = ({ title, intro }: Props) => {
       <meta name="twitter:description" content={description} />
       {/* <meta name="twitter:image" content={`${meta.url}/icons/og.png`} /> */}
       {/* <link rel="icon" type="image/png" href="/icons/favicon.png" /> */}
-      {/* <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg" /> */}
+      <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg" />
     </NextHead>
   );
 };

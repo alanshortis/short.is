@@ -15,7 +15,9 @@ export const Menu = () => (
     <ul>
       {menuItems.map(item => (
         <li key={item.path}>
-          <Link href={item.path}>{item.name}</Link>
+          <Link href={item.path} className="label">
+            {item.name}
+          </Link>
         </li>
       ))}
     </ul>
