@@ -17,12 +17,12 @@ export const Menu = () => {
 
   return (
     <nav>
-      <ul className={styles.menu}>
+      <ul role="menubar" className={styles.menu}>
         {menuItems.map(item => {
           const isCurrent = router.pathname.startsWith(item.path);
           return (
-            <li key={item.path}>
-              <Link href={item.path} aria-current={isCurrent ? 'page' : 'false'}>
+            <li key={item.path} role="none">
+              <Link href={item.path} role="menuitem" aria-current={isCurrent ? 'page' : 'false'}>
                 {item.name}
               </Link>
             </li>

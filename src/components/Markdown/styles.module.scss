@@ -1,18 +1,85 @@
 .markdown {
-  p {
-    margin-bottom: 1em;
-  }
-
-  strong {
-    font-weight: bold;
-  }
-
   h2,
   h3 {
     padding-top: 1rem;
     margin-bottom: 1rem;
     &:first-child {
       padding-top: 0;
+    }
+  }
+
+  p,
+  ul,
+  ol,
+  blockquote {
+    margin-bottom: 1rem;
+    &:only-child,
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  a {
+    text-decoration: underline;
+    white-space: nowrap;
+    &[href^='http']:not([href*='short.is'])::after {
+      content: '↗';
+      bottom: 4px;
+      display: inline-block;
+      font-size: var(--step--1);
+      margin-left: 0.25rem;
+      position: relative;
+      left: -2px;
+      text-decoration: none;
+      @supports (content: 'x' / 'y') {
+        content: '↗' / 'Link opens in a new tab';
+      }
+    }
+  }
+
+  ul,
+  ol {
+    padding-left: 2rem;
+  }
+
+  li {
+    list-style: decimal;
+    margin-bottom: 0.25rem;
+    padding-left: 0.25rem;
+  }
+
+  ul {
+    li {
+      list-style: disc;
+    }
+  }
+
+  blockquote {
+    border-left: 8px solid currentColor;
+    display: inline-flex;
+    margin: 0 2rem;
+    margin-bottom: 1rem;
+    padding-left: 2rem;
+  }
+
+  strong {
+    font-weight: bold;
+  }
+
+  table {
+    border-collapse: collapse;
+    min-width: 100%;
+    th {
+      font-weight: bold;
+      text-align: left;
+    }
+
+    th,
+    td {
+      border: 1px solid currentColor;
+      line-height: 1.563;
+      padding: 0.25rem;
+      vertical-align: top;
     }
   }
 }

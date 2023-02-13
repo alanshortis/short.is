@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import classnames from 'classnames';
 import { Menu } from '@/components';
 import styles from './styles.module.scss';
 
