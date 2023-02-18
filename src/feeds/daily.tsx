@@ -1,8 +1,8 @@
 import fs from 'fs';
 import { renderToStaticMarkup } from 'react-dom/server';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import { postCount, getDailyPosts } from '@/data';
-import { meta } from '@/context';
-import { Markdown } from '@/components';
 
 interface FeedPost {
   date: string;
@@ -14,22 +14,22 @@ interface FeedPost {
 const dailyXml = (
   formattedPosts: FeedPost[],
   updated: string
-): string => `<feed xmlns="http://www.w3.org/2005/Atom">
-  <title>${meta.title}</title>
-  <link href="${meta.url}/daily.xml" rel="self"/>
-  <link href="${meta.url}/daily"/>
+): string => /*xml*/ `<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Alan Shortis—Daily</title>
+  <link href="https://short.is/daily.xml" rel="self"/>
+  <link href="https://short.is/daily"/>
   <updated>${new Date(updated).toISOString()}</updated>
-  <id>${meta.url}/</id>
+  <id>https://short.is/</id>
   <author>
-    <name>${meta.author}</name>
+    <name>Alan Shortis</name>
   </author>
   ${formattedPosts
     .map(
-      (post: FeedPost) => `<entry>
+      (post: FeedPost) => /*xml*/ `<entry>
       <title>#${post.day}</title>
-      <link href="${meta.url}/daily/${post.day}"/>
+      <link href="https://short.is/daily/${post.day}"/>
       <updated>${new Date(post.date).toISOString()}</updated>
-      <id>${meta.url}/daily/${post.day}</id>
+      <id>https://short.is/daily/${post.day}</id>
       <content type="html">
         <![CDATA[${post.content}]]>
       </content>
@@ -45,7 +45,7 @@ export const generateDailyFeed = async (): Promise<void> => {
     date,
     day,
     title,
-    content: renderToStaticMarkup(<Markdown>{content}</Markdown>),
+    content: renderToStaticMarkup(<ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>),
   }));
 
   const updated = formattedPosts[0].date;
