@@ -12,7 +12,7 @@ title: 'On '
 
 const today = new Date().toISOString().slice(0, 10);
 const day = Math.ceil((new Date().getTime() - new Date('2022-08-17').getTime()) / (1000 * 3600 * 24));
-const fullPath = `${path.join(__dirname, 'src/data/posts')}/${day}.mdx`;
+const fullPath = `${path.join(__dirname, 'src/data/posts')}/${day}.md`;
 
 const createPost = async (): Promise<void> => {
   if (fs.existsSync(fullPath)) {
