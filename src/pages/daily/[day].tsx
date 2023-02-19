@@ -18,15 +18,15 @@ export const getStaticPaths: GetStaticPaths = () => {
 export const getStaticProps: GetStaticProps = ({ params }) => {
   const offset = postCount - Number(params?.day);
   const [daily] = getDailyPosts(offset, 1);
-  const { day, date, content } = daily;
+  const { day, date, content, title } = daily;
 
   return {
-    props: { day, date, postCount, content },
+    props: { day, date, postCount, content, title },
   };
 };
 
-const Day: NextPage<Props> = ({ day, date, postCount, content }) => (
-  <PageLayout title={`#${day}`}>
+const Day: NextPage<Props> = ({ day, date, postCount, content, title }) => (
+  <PageLayout title={`#${day}`} intro={title}>
     <h1>{day}</h1>
     <PostDate date={date} />
     <Markdown>{content}</Markdown>

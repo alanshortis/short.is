@@ -5,14 +5,14 @@ if ('customElements' in window && !customElements.get('scheme-toggle')) {
     class extends HTMLElement {
       STORAGE_KEY = 'scheme';
       MQ_DARK = window.matchMedia('(prefers-color-scheme: dark)');
-      state = 'auto';
       schemes = ['light', 'auto', 'dark'];
+      state = 'auto';
 
       connectedCallback() {
         this.setInitialScheme();
       }
 
-      setState(scheme: string) {
+      setState(scheme) {
         const { classList } = document.body;
 
         this.state = scheme;
@@ -34,14 +34,14 @@ if ('customElements' in window && !customElements.get('scheme-toggle')) {
       setInitialScheme() {
         const storedScheme = localStorage.getItem(this.STORAGE_KEY);
 
-        this.setState(storedScheme || 'auto');
+        this.setState(this.schemes.includes(storedScheme) ? storedScheme : 'auto');
         this.render();
       }
 
       render() {
         this.innerHTML = /*html*/ `
-          <fieldset class="st-fields">
-            <legend>Colour scheme</legend>
+          <fieldset>
+            <legend class="hidden">Colour scheme</legend>
               ${this.schemes
                 .map(
                   scheme => /*html*/ `

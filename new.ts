@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import { exec } from 'child_process';
 
-const template = (day: number, date: string): string => `---
+const template = (day: number, date: string) => `---
 day: '${day}'
 date: '${date}'
 title: 'On '

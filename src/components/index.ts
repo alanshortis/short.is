@@ -1,5 +1,6 @@
 export { DailyPage } from './DailyPage';
 export { DocumentHead } from './DocumentHead';
+export { Footer } from './Footer/';
 export { Header } from './Header/';
 export { Logo } from './Logo/';
 export { Markdown } from './Markdown/';
