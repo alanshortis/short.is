@@ -1,5 +1,5 @@
 import dynamic from 'next/dynamic';
-import { DocumentHead, Header, Logo } from '@/components';
+import { DocumentHead, Header } from '@/components';
 import styles from './styles.module.scss';
 
 const SchemeToggle = dynamic(() => import('@/components/SchemeToggle'), {
@@ -19,7 +19,6 @@ export const PageLayout = ({ title, intro, children }: Props) => (
     <main>{children}</main>
     <footer>
       <SchemeToggle />
-      <Logo />
       <a href="/daily.xml" className="label">
         RSS Feed
       </a>

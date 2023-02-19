@@ -3,7 +3,7 @@ import { PageLayout } from '@/layouts';
 
 const Home: NextPage = () => (
   <PageLayout>
-    <h1>Home</h1>
+    <h1 className="hidden">Home</h1>
   </PageLayout>
 );
 

@@ -1,11 +1,12 @@
 import Link from 'next/link';
-import { Menu } from '@/components';
-import styles from './styles.module.scss';
+import { Logo, Menu } from '@/components';
+import styles from './Header.module.scss';
 
 export const Header = () => (
   <header className={styles.header}>
     <Link href="/">
-      <p>Alan Shortis</p>
+      <span className="hidden">Alan Shortis</span>
+      <Logo />
     </Link>
     <Menu />
   </header>

@@ -1,5 +1,6 @@
+@forward './animation';
 @forward './fonts';
-@use './mixins' as m;
+@use './mixins' as *;
 
 :root {
   --dark: hsl(0, 0%, 5%);
@@ -36,7 +37,7 @@
 
 html {
   height: 100%;
-  @include m.should-animate {
+  @include should-animate {
     scroll-behavior: smooth;
   }
 }
@@ -61,18 +62,25 @@ body {
 #__next {
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
-  max-width: 75rem;
-  min-height: -webkit-fill-available;
   min-height: 100vh;
-  padding: 0 var(--step-1);
-  width: 100%;
+  min-height: -webkit-fill-available;
 }
 
 main {
   display: flex;
   flex: 1;
   flex-direction: column;
+  margin: 0 auto;
+  max-width: 75rem;
+  padding: 0 var(--step-1);
+  width: 100%;
+  opacity: 1;
+  transform: translateY(0);
+  @include should-animate {
+    animation: slide 500ms ease 200ms 1 forwards;
+    opacity: 0;
+    transform: translateY(1rem);
+  }
 }
 
 a {
@@ -95,17 +103,6 @@ h3 {
   font-size: var(--step-3);
 }
 
-.label {
-  font-feature-settings: 'zero', 'tnum';
-  font-size: var(--step--1);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  &.spaced {
-    display: inline-block;
-    margin-bottom: 1rem;
-  }
-}
-
 ul,
 ol {
   margin: 0;
@@ -113,4 +110,25 @@ ol {
   li {
     list-style: none;
   }
+}
+
+.label {
+  font-feature-settings: 'zero', 'tnum';
+  font-size: var(--step--2);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  &.spaced {
+    display: inline-block;
+    margin-bottom: 1rem;
+  }
+}
+
+.hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
 }

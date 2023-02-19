@@ -1,0 +1,17 @@
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--step-5) 0;
+  margin-top: auto;
+  span {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    &:first-of-type {
+      justify-content: flex-start;
+    }
+    &:last-of-type {
+      justify-content: flex-end;
+    }
+  }
+}

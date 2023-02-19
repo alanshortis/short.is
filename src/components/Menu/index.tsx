@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import styles from './styles.module.scss';
+import styles from './Menu.module.scss';
 
 interface MenuItem {
   name: string;
@@ -9,7 +9,7 @@ interface MenuItem {
 
 const menuItems: Readonly<MenuItem[]> = [
   { name: 'Daily', path: '/daily' },
-  { name: 'Now', path: '/now' },
+  { name: 'About', path: '/about' },
 ];
 
 export const Menu = () => {

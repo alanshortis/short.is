@@ -1,6 +1,5 @@
 import Link from 'next/link';
-import { VisuallyHidden } from '@/components';
-import styles from './styles.module.scss';
+import styles from './Pagination.module.scss';
 
 interface Props {
   currentPage: number;
@@ -11,18 +10,26 @@ interface Props {
 
 export const Pagination = ({ currentPage, totalPages, path = '/daily/page/', label = 'Page' }: Props) => (
   <nav className={styles.pagination}>
-    {currentPage > 1 && (
-      <Link href={`${path}${currentPage - 1}`} className="label">
-        &larr; Previous
-      </Link>
+    {currentPage > 1 ? (
+      <span>
+        <Link href={`${path}${currentPage - 1}`} className="label">
+          &larr; Previous <span className="hidden">{label}</span>
+        </Link>
+      </span>
+    ) : (
+      <span />
     )}
-    <p className="label">
-      <VisuallyHidden>{label}</VisuallyHidden> {currentPage} of {totalPages}
-    </p>
-    {currentPage < totalPages && (
-      <Link href={`${path}${currentPage + 1}`} className="label">
-        Next &rarr;
-      </Link>
+    <span className="label">
+      <span className="hidden">{label}</span> {currentPage} of {totalPages}
+    </span>
+    {currentPage < totalPages ? (
+      <span>
+        <Link href={`${path}${currentPage + 1}`} className="label">
+          Next <span className="hidden">{label}</span> &rarr;
+        </Link>
+      </span>
+    ) : (
+      <span />
     )}
   </nav>
 );

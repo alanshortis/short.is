@@ -21,18 +21,20 @@
 
   a {
     text-decoration: underline;
+    text-decoration-skip-ink: none;
     white-space: nowrap;
+
     &[href^='http']:not([href*='short.is'])::after {
-      content: '↗';
-      bottom: 4px;
+      content: '→';
       display: inline-block;
       font-size: var(--step--1);
       margin-left: 0.25rem;
       position: relative;
       left: -2px;
       text-decoration: none;
+      transform: rotate(-45deg);
       @supports (content: 'x' / 'y') {
-        content: '↗' / 'Link opens in a new tab';
+        content: '→' / 'Link opens in a new tab';
       }
     }
   }

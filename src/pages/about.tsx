@@ -16,9 +16,9 @@ export async function getStaticProps(): Promise<GetStaticPropsResult<Props>> {
   };
 }
 
-const Now: NextPage<Props> = ({ recentMusic, nowReading }) => (
+const About: NextPage<Props> = ({ recentMusic, nowReading }) => (
   <PageLayout title="Now">
-    <h1>NOW!</h1>
+    <h1 className="hidden">About</h1>
     <ul>
       {recentMusic.map(artist => (
         <li key={artist.url}>
@@ -34,7 +34,7 @@ const Now: NextPage<Props> = ({ recentMusic, nowReading }) => (
   </PageLayout>
 );
 
-export default Now;
+export default About;
 
 export const config = {
   unstable_runtimeJS: false,

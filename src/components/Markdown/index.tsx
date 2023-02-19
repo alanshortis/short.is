@@ -1,6 +1,6 @@
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import styles from './styles.module.scss';
+import styles from './Markdown.module.scss';
 
 interface Props {
   children: string;
