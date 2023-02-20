@@ -5,11 +5,14 @@ const SchemeToggle = dynamic(() => import('@/components/SchemeToggle/'), {
   ssr: process.env.NODE_ENV === 'production',
 });
 
+const thisYear = new Date().getFullYear();
+
 export const Footer = () => (
   <footer className={styles.footer}>
     <SchemeToggle />
     <p className="label">
-      <a href="/daily.xml">RSS</a> &middot; &copy; {new Date().getFullYear()} Alan Shortis
+      &copy; 2009—{thisYear} Alan Shortis &middot; <a href="/daily.xml">RSS</a> &middot;{' '}
+      <a href="#top">Top</a> &uarr;
     </p>
   </footer>
 );

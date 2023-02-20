@@ -7,7 +7,7 @@
     display: flex;
     align-items: center;
     & + li {
-      margin-left: 1rem;
+      margin-left: var(--step--2);
     }
   }
   a {

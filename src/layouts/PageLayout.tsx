@@ -10,7 +10,7 @@ export const PageLayout = ({ title, intro, children }: Props) => (
   <>
     <DocumentHead title={title} intro={intro} />
     <Header />
-    <main>{children}</main>
+    <main id="top">{children}</main>
     <Footer />
   </>
 );
