@@ -11,8 +11,7 @@ export const Footer = () => (
   <footer className={styles.footer}>
     <SchemeToggle />
     <p className="label">
-      &copy; 2009—{thisYear} Alan Shortis &middot; <a href="/daily.xml">RSS</a> &middot;{' '}
-      <a href="#top">Top</a> &uarr;
+      &copy;2007—{thisYear} Alan Shortis &middot; <a href="/daily.xml">RSS Feed</a>
     </p>
   </footer>
 );

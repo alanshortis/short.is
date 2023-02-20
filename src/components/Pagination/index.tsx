@@ -4,28 +4,26 @@ import styles from './Pagination.module.scss';
 interface Props {
   currentPage: number;
   totalPages: number;
-  path?: `/${string}/`;
-  label?: 'Page' | 'Day';
 }
 
-export const Pagination = ({ currentPage, totalPages, path = '/daily/page/', label = 'Page' }: Props) => (
+export const Pagination = ({ currentPage, totalPages }: Props) => (
   <nav className={styles.pagination}>
-    {currentPage > 1 ? (
+    {currentPage < totalPages ? (
       <span>
-        <Link href={`${path}${currentPage - 1}`} className="label">
-          &larr;&nbsp; Previous <span className="hidden">{label}</span>
+        <Link href={`/daily/page/${currentPage + 1}`} className="label">
+          &larr;&nbsp; Older <span className="hidden"></span>
         </Link>
       </span>
     ) : (
       <span />
     )}
     <span className="label">
-      <span className="hidden">{label}</span> {currentPage} of {totalPages}
+      <span className="hidden">Page</span> {currentPage} of {totalPages}
     </span>
-    {currentPage < totalPages ? (
+    {currentPage > 1 ? (
       <span>
-        <Link href={`${path}${currentPage + 1}`} className="label">
-          Next <span className="hidden">{label}</span> &nbsp;&rarr;
+        <Link href={`/daily/page/${currentPage - 1}`} className="label">
+          Newer <span className="hidden"></span> &nbsp;&rarr;
         </Link>
       </span>
     ) : (
