@@ -40,12 +40,12 @@ if ('customElements' in window && !customElements.get('scheme-toggle')) {
 
       render() {
         this.innerHTML = /*html*/ `
-          <fieldset>
+          <fieldset class="label">
             <legend class="hidden">Colour scheme</legend>
               ${this.schemes
                 .map(
                   scheme => /*html*/ `
-                  <input type="radio" id="${scheme}-radio" value="${scheme}" name="scheme">
+                  <input type="radio" id="${scheme}-radio" value="${scheme}" name="scheme" class="hidden">
                   <label for="${scheme}-radio">${scheme}</label>
               `
                 )

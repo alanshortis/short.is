@@ -13,7 +13,7 @@ export const Pagination = ({ currentPage, totalPages, path = '/daily/page/', lab
     {currentPage > 1 ? (
       <span>
         <Link href={`${path}${currentPage - 1}`} className="label">
-          &larr; Previous <span className="hidden">{label}</span>
+          &larr;&nbsp; Previous <span className="hidden">{label}</span>
         </Link>
       </span>
     ) : (
@@ -25,7 +25,7 @@ export const Pagination = ({ currentPage, totalPages, path = '/daily/page/', lab
     {currentPage < totalPages ? (
       <span>
         <Link href={`${path}${currentPage + 1}`} className="label">
-          Next <span className="hidden">{label}</span> &rarr;
+          Next <span className="hidden">{label}</span> &nbsp;&rarr;
         </Link>
       </span>
     ) : (

@@ -7,3 +7,4 @@ export { Markdown } from './Markdown/';
 export { Menu } from './Menu/';
 export { Pagination } from './Pagination/';
 export { PostDate } from './PostDate';
+export { default as SchemeToggle } from './SchemeToggle/';

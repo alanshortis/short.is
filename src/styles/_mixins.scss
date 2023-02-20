@@ -9,3 +9,16 @@
     @content;
   }
 }
+
+@mixin active-indicator {
+  &::after {
+    background-color: currentColor;
+    border-radius: 50%;
+    content: '';
+    height: 0.34em;
+    left: calc(50% - 0.17em);
+    position: absolute;
+    top: 2em;
+    width: 0.34em;
+  }
+}

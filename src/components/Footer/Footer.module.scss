@@ -1,6 +1,20 @@
+@use '~/src/styles/mixins' as *;
+
 .footer {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
+  gap: var(--step-2);
   justify-content: space-between;
   padding: var(--step-2);
+  fieldset {
+    display: flex;
+    gap: var(--step--2);
+  }
+  label {
+    position: relative;
+  }
+  input:checked + label {
+    @include active-indicator;
+  }
 }

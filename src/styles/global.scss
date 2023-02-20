@@ -72,7 +72,7 @@ main {
   flex-direction: column;
   margin: 0 auto;
   max-width: 75rem;
-  padding: 0 var(--step-1);
+  padding: 0 var(--step-2);
   width: 100%;
   opacity: 1;
   transform: translateY(0);
@@ -117,6 +117,7 @@ ol {
   font-size: var(--step--2);
   text-transform: uppercase;
   letter-spacing: 2px;
+  // line-height: 1em;
   &.spaced {
     display: inline-block;
     margin-bottom: 1rem;

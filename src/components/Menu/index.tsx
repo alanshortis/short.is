@@ -22,7 +22,12 @@ export const Menu = () => {
           const isCurrent = router.pathname.startsWith(item.path);
           return (
             <li key={item.path} role="none">
-              <Link href={item.path} role="menuitem" aria-current={isCurrent ? 'page' : 'false'}>
+              <Link
+                href={item.path}
+                className="label"
+                role="menuitem"
+                aria-current={isCurrent ? 'page' : 'false'}
+              >
                 {item.name}
               </Link>
             </li>
