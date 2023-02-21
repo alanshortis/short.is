@@ -10,9 +10,11 @@ export const DailyPage = ({ dailies, currentPage, totalPages }: DailyList) => (
     <div>
       {dailies.map(daily => (
         <article key={daily.day} className={styles.dailyPage}>
-          <h2 className={`${styles.subTitle} label`}>
-            <Link href={`/daily/${daily.day}`}>#{daily.day}</Link>
-          </h2>
+          <div className={styles.subTitle}>
+            <h2 className={styles.day}>
+              <Link href={`/daily/${daily.day}`}>#{daily.day}</Link>
+            </h2>
+          </div>
           <div className={styles.mainContent}>
             <PostDate date={daily.date} /> &middot;{' '}
             <h3 className={`${styles.subTitle} label`}>{daily.title}</h3>

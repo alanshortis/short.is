@@ -12,4 +12,8 @@
   svg {
     display: block;
   }
+  @include medium {
+    position: sticky;
+    top: 0;
+  }
 }
