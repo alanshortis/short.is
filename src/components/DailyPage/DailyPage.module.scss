@@ -12,37 +12,28 @@
 
 .day {
   font-family: Signifier;
-  font-size: calc(var(--step-5) * 1.75);
+  font-size: calc(var(--step-5) * 2);
   line-height: 1;
 }
 
 .title {
-  grid-column: 1 / -1;
   display: inline;
   font-weight: normal;
+  grid-column: 1 / -1;
+  pointer-events: none;
   position: sticky;
   top: 0;
   @include medium {
     grid-column: 1 / 6;
   }
 }
+
 .mainContent {
   grid-column: 1 / -1;
   @include medium {
     grid-column: 6 / 13;
   }
-}
-.subTitle {
-  display: inline;
-  font-weight: normal;
-  a {
-    text-decoration: none;
-  }
-}
-.sticker {
-  @include medium {
-    grid-column: 1 / 6;
-    position: sticky;
-    top: 8rem;
+  header {
+    margin-bottom: var(--step-2);
   }
 }

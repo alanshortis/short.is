@@ -113,17 +113,13 @@ ol {
 }
 
 .label {
+  display: inline-block;
   font-feature-settings: 'zero', 'tnum';
   font-size: var(--step--2);
+  font-weight: normal;
+  line-height: 1;
   text-transform: uppercase;
   letter-spacing: 2px;
-  &.spaced {
-    display: inline-block;
-    margin-bottom: 2em;
-  }
-  a {
-    text-decoration: underline;
-  }
 }
 
 .hidden {
