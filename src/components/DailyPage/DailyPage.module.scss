@@ -4,7 +4,7 @@
   display: grid;
   gap: var(--step-1);
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  margin-top: calc(var(--step-5) * 2);
+  margin-top: calc(var(--step-5) * 4);
   @include medium {
     grid-template-columns: repeat(12, minmax(0, 1fr));
   }
@@ -20,9 +20,6 @@
   display: inline;
   font-weight: normal;
   grid-column: 1 / -1;
-  pointer-events: none;
-  position: sticky;
-  top: 0;
   @include medium {
     grid-column: 1 / 6;
   }

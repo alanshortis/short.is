@@ -1,4 +1,5 @@
 import dynamic from 'next/dynamic';
+import { RssIcon } from '@/components';
 import styles from './Footer.module.scss';
 
 const SchemeToggle = dynamic(() => import('@/components/SchemeToggle/'), {
@@ -11,7 +12,11 @@ export const Footer = () => (
   <footer className={styles.footer}>
     <SchemeToggle />
     <p className="label">
-      &copy;2007—{thisYear} Alan Shortis &middot; <a href="/daily.xml">RSS Feed</a>
+      &copy;2007—{thisYear} Alan Shortis &middot;{' '}
+      <a href="/daily.xml" title="RSS Feed">
+        <RssIcon />
+        <span className="hidden">RSS Feed</span>
+      </a>
     </p>
   </footer>
 );

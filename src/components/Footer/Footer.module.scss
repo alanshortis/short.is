@@ -1,8 +1,12 @@
 .footer {
   align-items: center;
+  background-color: hsla(0, 0, 50%, 7.5%);
+  border-radius: 4px;
   display: flex;
   flex-wrap: wrap;
   gap: var(--step-4);
   justify-content: space-between;
+  margin: var(--step-2);
+  margin-top: 0;
   padding: var(--step-2);
 }

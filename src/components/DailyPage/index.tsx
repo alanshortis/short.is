@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { PageLayout } from '@/layouts';
 import { type DailyList } from '@/data';
-import { Markdown, Pagination, PostDate } from '@/components';
+import { LinkIcon, Markdown, Pagination, PostDate } from '@/components';
 import styles from './DailyPage.module.scss';
 
 export const DailyPage = ({ dailies, currentPage, totalPages }: DailyList) => (
@@ -15,9 +15,10 @@ export const DailyPage = ({ dailies, currentPage, totalPages }: DailyList) => (
           </div>
           <div className={styles.mainContent}>
             <header>
-              <PostDate date={daily.date} /> &middot; <h3 className="label">{daily.title}</h3> &middot;{' '}
-              <Link className="label" href={`/daily/${daily.day}`}>
-                &rarr;
+              <PostDate date={daily.date} /> <span className="label">&middot;</span>{' '}
+              <Link className="label" href={`/daily/${daily.day}`} title="Open this specific post">
+                <LinkIcon />
+                <span className="hidden">Open this specific post</span>
               </Link>
             </header>
             <Markdown>{daily.content}</Markdown>
