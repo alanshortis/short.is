@@ -1,5 +1,5 @@
 import dynamic from 'next/dynamic';
-import { RssIcon } from '@/components';
+import { RssIcon } from '@/components/Icons';
 import styles from './Footer.module.scss';
 
 const SchemeToggle = dynamic(() => import('@/components/SchemeToggle/'), {

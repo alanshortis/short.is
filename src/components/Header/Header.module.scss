@@ -1,19 +1,12 @@
-@use '../../styles/mixins' as *;
+@use '~/src/styles/mixins' as *;
 
 .header {
-  align-items: center;
-  background-color: var(--background);
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-bottom: var(--step--2);
-  padding: var(--step-2);
-  z-index: 1;
+  @include bar;
   svg {
     display: block;
   }
   @include medium {
     position: sticky;
-    top: 0;
+    top: var(--step-2);
   }
 }

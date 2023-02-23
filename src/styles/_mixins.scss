@@ -22,3 +22,16 @@
     width: 0.34em;
   }
 }
+
+@mixin bar {
+  align-items: center;
+  backdrop-filter: blur(10px);
+  background-color: var(--overlay);
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: var(--step-2);
+  padding: var(--step-2);
+  z-index: 1;
+}

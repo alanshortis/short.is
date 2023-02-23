@@ -8,6 +8,3 @@ export { Menu } from './Menu/';
 export { Pagination } from './Pagination/';
 export { PostDate } from './PostDate';
 export { default as SchemeToggle } from './SchemeToggle/';
-
-export { LinkIcon } from './LinkIcon/';
-export { RssIcon } from './RssIcon/';

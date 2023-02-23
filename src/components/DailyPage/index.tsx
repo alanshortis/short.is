@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import { PageLayout } from '@/layouts';
 import { type DailyList } from '@/data';
-import { LinkIcon, Markdown, Pagination, PostDate } from '@/components';
+import { Markdown, Pagination, PostDate } from '@/components';
+import { LinkIcon } from '@/components/Icons';
 import styles from './DailyPage.module.scss';
 
 export const DailyPage = ({ dailies, currentPage, totalPages }: DailyList) => (

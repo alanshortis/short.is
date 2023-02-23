@@ -3,8 +3,10 @@
 @use './mixins' as *;
 
 :root {
-  --dark: hsl(0, 0%, 7%);
-  --light: hsl(0, 0%, 93%);
+  --dark: hsl(100, 30%, 7%);
+  --light: hsl(100, 30%, 93%);
+  --overlay: hsla(100, 30%, 50%, 5%);
+  --radius: 8px;
 
   --background: var(--light);
   --foreground: var(--dark);

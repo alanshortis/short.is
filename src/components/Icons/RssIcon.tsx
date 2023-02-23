@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import styles from '../LinkIcon/LinkIcon.module.scss';
+import styles from './Icons.module.scss';
 
 export const RssIcon: FC = () => (
   <svg

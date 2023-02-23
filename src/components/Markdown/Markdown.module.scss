@@ -1,28 +1,24 @@
 .markdown {
-  h2,
   h3 {
-    padding-top: 1rem;
-    margin-bottom: 1rem;
+    padding-top: var(--step-2);
+    margin-bottom: var(--step-2);
     &:first-child {
       padding-top: 0;
     }
   }
 
-  p,
-  ul,
-  ol,
-  blockquote {
-    margin-bottom: 1em;
-    &:only-child,
-    &:last-child {
-      margin-bottom: 0;
-    }
+  strong {
+    font-weight: bold;
+  }
+
+  * + :where(ol, ul, p) {
+    margin-top: var(--step-2);
   }
 
   a {
     text-decoration: underline;
     text-decoration-skip-ink: none;
-    white-space: nowrap;
+    // white-space: nowrap;
 
     &[href^='http']:not([href*='short.is'])::after {
       content: '→';
@@ -41,13 +37,13 @@
 
   ul,
   ol {
-    padding-left: 2rem;
+    padding-left: var(--step-2);
   }
 
   li {
     list-style: decimal;
-    margin-bottom: 0.25rem;
-    padding-left: 0.25rem;
+    margin-bottom: calc(var(--step--2) / 2);
+    padding-left: var(--step--2);
   }
 
   ul {
@@ -57,21 +53,19 @@
   }
 
   blockquote {
-    border-left: 8px solid currentColor;
-    display: inline-flex;
-    margin: 0 2rem;
-    margin-bottom: 1rem;
-    padding-left: 2rem;
-  }
-
-  strong {
-    font-weight: bold;
+    background-color: var(--overlay);
+    border-left: 2px solid currentColor;
+    border-radius: 0 var(--radius) var(--radius) 0;
+    display: block;
+    margin: var(--step-4);
+    padding: var(--step-2);
   }
 
   table {
     border-collapse: collapse;
     min-width: 100%;
     th {
+      background-color: var(--overlay);
       font-weight: bold;
       text-align: left;
     }
@@ -80,7 +74,7 @@
     td {
       border: 1px solid currentColor;
       line-height: 1.563;
-      padding: 0.25rem;
+      padding: calc(var(--step--2) / 2);
       vertical-align: top;
     }
   }

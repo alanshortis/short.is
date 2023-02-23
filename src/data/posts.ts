@@ -16,7 +16,7 @@ export interface DailyList {
 }
 
 const FOLDER = 'src/data/posts';
-export const PER_PAGE = 10;
+export const PER_PAGE = 7;
 export const postCount = fs.readdirSync(FOLDER).length;
 export const postDays = Array.from({ length: postCount }, (_, i) => i + 1).reverse();
 export const pageCount = Math.ceil(postCount / PER_PAGE);
