@@ -18,8 +18,6 @@
   a {
     text-decoration: underline;
     text-decoration-skip-ink: none;
-    // white-space: nowrap;
-
     &[href^='http']:not([href*='short.is'])::after {
       content: '→';
       display: inline-block;
@@ -78,4 +76,8 @@
       vertical-align: top;
     }
   }
+}
+
+.large {
+  font-size: var(--step-2);
 }

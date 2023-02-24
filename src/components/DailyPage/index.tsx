@@ -1,32 +1,32 @@
+import { Fragment } from 'react';
 import Link from 'next/link';
 import { PageLayout } from '@/layouts';
 import { type DailyList } from '@/data';
 import { Markdown, Pagination, PostDate } from '@/components';
 import { LinkIcon } from '@/components/Icons';
-import styles from './DailyPage.module.scss';
+import styles from '@/layouts/PageLayout.module.scss';
 
 export const DailyPage = ({ dailies, currentPage, totalPages }: DailyList) => (
-  <PageLayout title="Daily">
-    <h1 className="hidden">Daily</h1>
-    <div>
-      {dailies.map(daily => (
-        <article key={daily.day} className={styles.dailyPage}>
-          <div className={styles.title}>
-            <h2 className={styles.day}>#{daily.day}</h2>
-          </div>
-          <div className={styles.mainContent}>
-            <header>
-              <PostDate date={daily.date} /> <span className="label">&middot;</span>{' '}
-              <Link className="label" href={`/daily/${daily.day}`} title="Open this specific post">
-                <LinkIcon />
-                <span className="hidden">Open this specific post</span>
-              </Link>
-            </header>
-            <Markdown>{daily.content}</Markdown>
-          </div>
+  <PageLayout
+    title="Daily"
+    paginationComponent={<Pagination currentPage={currentPage} totalPages={totalPages} />}
+  >
+    {dailies.map(daily => (
+      <Fragment key={daily.day}>
+        <div className={styles.title}>
+          <h2 className={styles.day}>#{daily.day}</h2>
+        </div>
+        <article className={styles.mainContent}>
+          <header>
+            <PostDate date={daily.date} /> <span className="label">&middot;</span>{' '}
+            <Link className="label" href={`/daily/${daily.day}`} title="Open this specific post">
+              <LinkIcon />
+              <span className="hidden">Open this specific post</span>
+            </Link>
+          </header>
+          <Markdown>{daily.content}</Markdown>
         </article>
-      ))}
-    </div>
-    <Pagination currentPage={Number(currentPage)} totalPages={Number(totalPages)} />
+      </Fragment>
+    ))}
   </PageLayout>
 );

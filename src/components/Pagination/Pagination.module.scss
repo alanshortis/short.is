@@ -1,9 +1,8 @@
 .pagination {
   display: flex;
   justify-content: space-between;
-  padding: var(--step-5) 0;
-  padding-top: calc(var(--step-5) * 4);
   margin-top: auto;
+  padding-top: calc(var(--step-5) * 4);
   span {
     display: flex;
     flex: 1;
