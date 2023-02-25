@@ -1,7 +1,7 @@
 import type { NextPage, GetStaticPropsResult } from 'next';
 import { PageLayout } from '@/layouts';
 import { type LastFmArtist, type GoodreadsBook, getLastfm, getGoodreads } from '@/data';
-import { Markdown } from '@/components';
+import { NowReading, RecentMusic } from '@/components';
 import layoutStyles from '@/layouts/PageLayout.module.scss';
 import contentStyles from '@/components/Markdown/Markdown.module.scss';
 
@@ -35,18 +35,31 @@ const About: NextPage<Props> = ({ recentMusic, nowReading }) => (
       </p>
       <h3>Now</h3>
       <ul>
-        {recentMusic.map(artist => (
-          <li key={artist.url}>
-            <a href={artist.url}>{artist.name}</a>
-          </li>
-        ))}
-        {nowReading.map(book => (
-          <li key={book.url}>
-            <a href={book.url}>{book.title}</a> by {book.author}
-          </li>
-        ))}
+        <li>
+          <RecentMusic recentMusic={recentMusic} />
+        </li>
+        <li>
+          <NowReading nowReading={nowReading} />
+        </li>
+        <li>
+          Watching{' '}
+          <a href="https://tv.apple.com/gb/show/severance/umc.cmc.1srk2goyh2q2zdxcx605w8vtx">Serverance</a>
+        </li>
+        <li>
+          Still playing <a href="https://www.rockstargames.com/reddeadredemption2/">Red Dead Redemption II</a>
+        </li>
+        <li>Editing film scans</li>
+        <li>Building a photo section for this site</li>
       </ul>
-      <h3>Elsewhere</h3>
+      <h3>This site</h3>
+      <p>
+        Written in TypeScript using Next.js and CSS Modules, with web components for the minimal client-side
+        JavaScript
+      </p>
+      <p>
+        The fonts are Sohne and Sohne Mono from{' '}
+        <a href="https://klim.co.nz/retail-fonts/soehne/">Klim Type Foundry</a>.
+      </p>
     </article>
   </PageLayout>
 );

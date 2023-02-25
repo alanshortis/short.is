@@ -1,8 +1,13 @@
+@use '~/src/styles/mixins.scss' as *;
+
 .pagination {
   display: flex;
   justify-content: space-between;
   margin-top: auto;
-  padding-top: calc(var(--step-5) * 4);
+  padding-top: var(--step-5);
+  @include medium {
+    padding-top: calc(var(--step-5) * 4);
+  }
   span {
     display: flex;
     flex: 1;
