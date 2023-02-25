@@ -11,7 +11,7 @@
     font-weight: bold;
   }
 
-  * + :where(ol, ul, p) {
+  * + :where(ol, ul, p, h3) {
     margin-top: var(--spacer);
   }
 
