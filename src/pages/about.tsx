@@ -21,8 +21,8 @@ export async function getStaticProps(): Promise<GetStaticPropsResult<Props>> {
 
 const About: NextPage<Props> = ({ recentMusic, nowReading }) => (
   <PageLayout title="About">
-    <div className={layoutStyles.title}>
-      <h2 className={layoutStyles.day}>Hi</h2>
+    <div className={layoutStyles.aside}>
+      <h2>Hi</h2>
     </div>
     <article className={`${layoutStyles.mainContent} ${contentStyles.markdown}`}>
       <p className={contentStyles.large}>
@@ -32,6 +32,10 @@ const About: NextPage<Props> = ({ recentMusic, nowReading }) => (
       <p>
         I like building scalable, accessible, and performant design systems and websites; the combination of
         code, design, and empathy for end users is what makes me want to do my best work.
+      </p>
+      <p>
+        Right now I primarily work on internal tooling that helps keep Monzo secure. Outside of work I like
+        design, photography, music, and cycling with enthusiasum far outweighing ability.
       </p>
       <h3>Now</h3>
       <ul>
@@ -48,17 +52,20 @@ const About: NextPage<Props> = ({ recentMusic, nowReading }) => (
         <li>
           Still playing <a href="https://www.rockstargames.com/reddeadredemption2/">Red Dead Redemption II</a>
         </li>
-        <li>Editing film scans</li>
+        <li>
+          Editing film scans with <a href="https://www.negativelabpro.com/">Negative Lab Pro</a>
+        </li>
         <li>Building a photo section for this site</li>
       </ul>
       <h3>This site</h3>
       <p>
-        Written in TypeScript using Next.js and CSS Modules, with web components for the minimal client-side
-        JavaScript
+        Over engineered behind the scenes to deliver a bare minimum to visitors. This site is written in
+        TypeScript and uses Next.js and CSS Modules. Content is written in markdown and aspects of the Now
+        section above are gathered via APIs and scraping at build time. The tiny amount of client JavaScript
+        is contained within a single web component.
       </p>
       <p>
-        The fonts are Sohne and Sohne Mono from{' '}
-        <a href="https://klim.co.nz/retail-fonts/soehne/">Klim Type Foundry</a>.
+        The fonts are Sohne and Epicene, both from <a href="https://klim.co.nz">Klim Type Foundry</a>.
       </p>
     </article>
   </PageLayout>
