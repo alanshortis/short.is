@@ -3,7 +3,6 @@
 .grid {
   display: grid;
   gap: var(--step-5) var(--step-0);
-  grid-template-columns: repeat(2, minmax(0, 1fr));
   margin-top: calc(var(--step-5) * 4);
   @include medium {
     grid-template-columns: repeat(12, minmax(0, 1fr));
@@ -11,12 +10,8 @@
   }
 }
 
-.full {
-  grid-column: 1 / -1;
-}
-
 .day {
-  font-family: 'Epicene';
+  font-family: Epicene, Georgia, 'Times New Roman', Times, serif;
   font-size: calc(var(--step-5) * 2);
   line-height: 1;
 }
@@ -24,15 +19,13 @@
 .title {
   display: inline;
   font-weight: normal;
-  grid-column: 1 / -1;
-  text-indent: 6px;
+  text-indent: 8px;
   @include medium {
     grid-column: 1 / 6;
   }
 }
 
 .mainContent {
-  grid-column: 1 / -1;
   margin-bottom: calc(var(--step-5) * 2);
   @include medium {
     grid-column: 6 / 13;

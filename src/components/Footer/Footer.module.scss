@@ -3,6 +3,6 @@
 .footer {
   @include bar;
   flex-wrap: wrap;
-  gap: var(--step-4);
+  gap: var(--spacer);
   margin-top: calc(var(--step-5) * 2);
 }

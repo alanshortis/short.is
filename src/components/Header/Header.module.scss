@@ -8,6 +8,6 @@
   }
   @include medium {
     position: sticky;
-    top: var(--step-2);
+    top: var(--spacer);
   }
 }

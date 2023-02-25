@@ -17,11 +17,11 @@
   src: url(/fonts/test-epicene-display-regular-italic.woff2) format('woff2');
   font-display: swap;
   font-weight: normal;
+  font-style: italic;
 }
 
 /*
 - Font families
-- Spcer variable
 - Move some values to SCSS vars?
 - Arrows from mono font, unicode range
 - Buy Epicene, subset
