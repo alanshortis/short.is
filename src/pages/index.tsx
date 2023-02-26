@@ -5,8 +5,7 @@ const Home: NextPage = () => (
   // <PageLayout>
   //   <h1 className="hidden">Home</h1>
   <>
-    <p>abcdefghijklmnoöpqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 æ Æ</p>
-    <p>—!@£$#€%^&*()\\//?~`-_=+ &lsquo; &rsquo; &ldquo; &rdquo;|;:{'<>'}&copy; ← → &apos; ƒ × °</p>
+    <p>abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890</p>
   </>
   // </PageLayout>
 );
