@@ -12,7 +12,7 @@ if ('customElements' in window && !customElements.get('scheme-toggle')) {
         this.setInitialScheme();
       }
 
-      setState(scheme) {
+      setState(scheme: string) {
         const { classList } = document.body;
 
         this.state = scheme;
@@ -32,9 +32,9 @@ if ('customElements' in window && !customElements.get('scheme-toggle')) {
       }
 
       setInitialScheme() {
-        const storedScheme = localStorage.getItem(this.STORAGE_KEY);
+        const storedScheme: string | null = localStorage.getItem(this.STORAGE_KEY);
 
-        this.setState(this.schemes.includes(storedScheme) ? storedScheme : 'auto');
+        this.setState(this.schemes.includes(Boolean(storedScheme)) ? storedScheme : 'auto');
         this.render();
       }
 
