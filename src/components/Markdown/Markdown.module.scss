@@ -75,6 +75,15 @@
       vertical-align: top;
     }
   }
+
+  del {
+    text-decoration-color: var(--strike);
+    text-decoration-thickness: 5px;
+  }
+
+  ins {
+    text-decoration: none;
+  }
 }
 
 .large {

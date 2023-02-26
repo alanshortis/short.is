@@ -15,6 +15,8 @@
   --dark: hsl(100, 30%, 7%);
   --light: hsl(100, 30%, 93%);
   --overlay: hsla(100, 30%, 50%, 10%);
+  --strike: hsla(100, 30%, 7%, 75%);
+
   --radius: 8px;
   --spacer: var(--step-2);
 
@@ -24,6 +26,7 @@
   & body.dark {
     --background: var(--dark);
     --foreground: var(--light);
+    --strike: hsla(100, 30%, 93%, 75%);
   }
 }
 
