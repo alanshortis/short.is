@@ -26,8 +26,8 @@ const About: NextPage<Props> = ({ recentMusic, nowReading }) => (
     </div>
     <article className={`${layoutStyles.mainContent} ${contentStyles.markdown}`}>
       <p className={contentStyles.large}>
-        I&#39;m Alan Shortis—a front end developer based in Nottingham, currently working for{' '}
-        <a href="https://monzo.com/">Monzo</a>.
+        I&#39;m Alan Shortis—a front end developer based in <del>London</del> <ins>Nottingham</ins>, currently
+        working for <a href="https://monzo.com/">Monzo</a>.
       </p>
       <p>
         I like building scalable, accessible, and performant design systems and websites; the combination of
@@ -59,13 +59,13 @@ const About: NextPage<Props> = ({ recentMusic, nowReading }) => (
       </ul>
       <h3>This site</h3>
       <p>
-        Over engineered behind the scenes to deliver a bare minimum to visitors. This site is written in
-        TypeScript and uses Next.js and CSS Modules. Content is written in markdown and aspects of the Now
+        Over engineered behind the scenes to deliver the bare minimum bytes to visitors. This site is written
+        in TypeScript and uses Next.js and CSS Modules. Content is written in markdown and aspects of the Now
         section above are gathered via APIs and scraping at build time. The tiny amount of client JavaScript
         is contained within a single web component.
       </p>
       <p>
-        The fonts are Sohne and Epicene, both from <a href="https://klim.co.nz">Klim Type Foundry</a>.
+        The fonts are Söhne and Epicene from <a href="https://klim.co.nz">Klim Type Foundry</a>.
       </p>
     </article>
   </PageLayout>
