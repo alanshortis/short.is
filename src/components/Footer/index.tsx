@@ -7,25 +7,32 @@ const SchemeToggle = dynamic(() => import('@/components/SchemeToggle/'), {
 
 const thisYear = new Date().getFullYear();
 
+const socials = [
+  {
+    name: 'Arena',
+    url: 'https://www.are.na/alan-shortis',
+  },
+  {
+    name: 'CodePen',
+    url: 'https://codepen.io/alanshortis',
+  },
+  {
+    name: 'Mastodon',
+    url: 'https://social.lol/@shortis',
+  },
+];
+
 export const Footer = () => (
   <footer className={styles.footer}>
     <div>
-      <ul className="label">
-        <li>
-          <a href="https://www.are.na/alan-shortis" rel="me">
-            Arena
-          </a>
-        </li>
-        <li>
-          <a href="https://codepen.io/alanshortis" rel="me">
-            CodePen
-          </a>
-        </li>
-        <li>
-          <a href="https://social.lol/@shortis" rel="me">
-            Mastodon
-          </a>
-        </li>
+      <ul className="label" role="menubar">
+        {socials.map(item => (
+          <li role="none" key={item.url}>
+            <a href={item.url} rel="me" role="menuitem">
+              {item.name}
+            </a>
+          </li>
+        ))}
       </ul>
       <p className="label">
         &copy;{thisYear} Alan Shortis &middot;{' '}
