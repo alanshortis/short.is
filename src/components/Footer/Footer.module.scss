@@ -2,7 +2,26 @@
 
 .footer {
   @include bar;
+  align-items: flex-end;
   flex-wrap: wrap;
   gap: var(--spacer);
   margin-top: calc(var(--step-5) * 2);
+  @include medium {
+    margin-top: calc(var(--step-5) * 2);
+  }
+  div {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacer);
+    li {
+      display: flex;
+      align-items: center;
+      & + li {
+        margin-top: calc(var(--step--2) / 2);
+      }
+    }
+    a {
+      @include link-arrow;
+    }
+  }
 }

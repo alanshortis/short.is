@@ -6,14 +6,15 @@ interface Props {
   intro?: string;
   children: React.ReactNode;
   paginationComponent?: React.ReactNode;
+  hideTitle?: boolean;
 }
 
-export const PageLayout = ({ title, intro, children, paginationComponent }: Props) => (
+export const PageLayout = ({ title, intro, children, paginationComponent, hideTitle = false }: Props) => (
   <>
     <DocumentHead title={title} intro={intro} />
     <Header />
     <main id="top">
-      <h1 className="hidden">{title}</h1>
+      {!hideTitle && <h1 className="hidden">{title}</h1>}
       <div className={styles.grid}>{children}</div>
       {paginationComponent}
     </main>

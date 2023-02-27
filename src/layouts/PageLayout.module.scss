@@ -7,16 +7,17 @@
   @include medium {
     grid-template-columns: repeat(12, minmax(0, 1fr));
     gap: calc(var(--step-5) * 4) var(--step-0);
+    padding: 0 var(--step-2);
   }
 }
 
 .aside {
   display: inline;
   font-weight: normal;
-  text-indent: 8px;
   @include medium {
     grid-column: 1 / 6;
   }
+  h1,
   h2 {
     font-family: Epicene, Georgia, 'Times New Roman', Times, serif;
     font-size: calc(var(--step-5) * 2);

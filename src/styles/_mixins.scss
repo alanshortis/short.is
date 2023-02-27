@@ -27,11 +27,29 @@
   align-items: center;
   backdrop-filter: blur(10px);
   background-color: var(--overlay);
-  border-radius: var(--radius);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: var(--spacer);
   padding: var(--spacer);
   z-index: 1;
+  @include medium {
+    border-radius: var(--radius);
+    margin: var(--spacer);
+  }
+}
+
+@mixin link-arrow {
+  &[href^='http']:not([href*='short.is'])::after {
+    content: '→';
+    display: inline-block;
+    font-size: var(--step--1);
+    margin-left: 0.25rem;
+    position: relative;
+    left: -2px;
+    text-decoration: none;
+    transform: rotate(-45deg);
+    @supports (content: 'x' / 'y') {
+      content: '→' / 'Link opens in a new tab';
+    }
+  }
 }

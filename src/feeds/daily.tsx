@@ -26,7 +26,7 @@ const dailyXml = (
   ${formattedPosts
     .map(
       (post: FeedPost) => /*xml*/ `<entry>
-      <title>#${post.day}</title>
+      <title>${post.day}</title>
       <link href="https://short.is/daily/${post.day}"/>
       <updated>${new Date(post.date).toISOString()}</updated>
       <id>https://short.is/daily/${post.day}</id>

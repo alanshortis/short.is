@@ -1,5 +1,9 @@
+@use '~/src/styles/mixins' as *;
+
 .markdown {
   h3 {
+    font-size: var(--step-3);
+    font-weight: bold;
     padding-top: var(--spacer);
     margin-bottom: var(--spacer);
     &:first-child {
@@ -17,19 +21,7 @@
 
   a {
     text-decoration: underline;
-    &[href^='http']:not([href*='short.is'])::after {
-      content: '→';
-      display: inline-block;
-      font-size: var(--step--1);
-      margin-left: 0.25rem;
-      position: relative;
-      left: -2px;
-      text-decoration: none;
-      transform: rotate(-45deg);
-      @supports (content: 'x' / 'y') {
-        content: '→' / 'Link opens in a new tab';
-      }
-    }
+    @include link-arrow;
   }
 
   ul,

@@ -22,7 +22,7 @@ export async function getStaticProps(): Promise<GetStaticPropsResult<Props>> {
 const About: NextPage<Props> = ({ recentMusic, nowReading }) => (
   <PageLayout title="About">
     <div className={layoutStyles.aside}>
-      <h2>Hi</h2>
+      <h2>Hello</h2>
     </div>
     <article className={`${layoutStyles.mainContent} ${contentStyles.markdown}`}>
       <p className={contentStyles.large}>
@@ -35,7 +35,7 @@ const About: NextPage<Props> = ({ recentMusic, nowReading }) => (
       </p>
       <p>
         Right now I primarily work on internal tooling that helps keep Monzo secure. Outside of work I like
-        design, photography, music, and cycling with enthusiasum far outweighing ability.
+        design, photography, music, and cycling, with my enthusiasum far outweighing my ability.
       </p>
       <h3>Now</h3>
       <ul>
@@ -60,9 +60,8 @@ const About: NextPage<Props> = ({ recentMusic, nowReading }) => (
       <h3>This site</h3>
       <p>
         Over engineered behind the scenes to deliver the bare minimum bytes to visitors. This site is written
-        in TypeScript and uses Next.js and CSS Modules. Content is written in markdown and aspects of the Now
-        section above are gathered via APIs and scraping at build time. The tiny amount of client JavaScript
-        is contained within a single web component.
+        in TypeScript and uses Next.js and CSS Modules. Content is written in markdown and the tiny amount of
+        client JavaScript is contained within a single web component.
       </p>
       <p>
         The fonts are Söhne and Epicene from <a href="https://klim.co.nz">Klim Type Foundry</a>.

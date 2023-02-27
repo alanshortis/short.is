@@ -17,7 +17,7 @@
   --overlay: hsla(100, 30%, 50%, 10%);
   --strike: hsla(100, 30%, 7%, 75%);
 
-  --radius: 8px;
+  --radius: 4px;
   --spacer: var(--step-2);
 
   --background: var(--light);
@@ -92,21 +92,6 @@ main {
 a {
   text-decoration: none;
   color: currentColor;
-}
-
-h1,
-h2,
-h3 {
-  font-size: var(--step-5);
-  font-weight: bold;
-}
-
-h2 {
-  font-size: var(--step-4);
-}
-
-h3 {
-  font-size: var(--step-3);
 }
 
 ul,

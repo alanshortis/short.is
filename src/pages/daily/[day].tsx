@@ -27,9 +27,9 @@ export const getStaticProps: GetStaticProps = ({ params }) => {
 };
 
 const Day: NextPage<Props> = ({ day, date, content, title, postCount }) => (
-  <PageLayout title={`#${day}`} intro={title}>
+  <PageLayout title={`#${day}`} intro={title} hideTitle>
     <div className={styles.aside}>
-      <h2>{day}</h2>
+      <h1>{day}</h1>
     </div>
     <article className={styles.mainContent}>
       <header>
