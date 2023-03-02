@@ -24,17 +24,14 @@
 }
 
 @mixin bar {
-  align-items: center;
   backdrop-filter: blur(10px);
   background-color: var(--overlay);
   display: flex;
-  flex-direction: row;
+  gap: var(--spacer);
   justify-content: space-between;
   padding: var(--spacer);
-  z-index: 1;
   @include medium {
     border-radius: var(--radius);
-    margin: var(--spacer);
   }
 }
 
