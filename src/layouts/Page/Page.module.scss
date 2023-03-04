@@ -4,7 +4,6 @@
 .grid {
   display: grid;
   gap: var(--step-5) var(--step-0);
-  margin-top: calc(var(--step-5) * 4);
   @include medium {
     grid-template-columns: repeat(12, minmax(0, 1fr));
     gap: calc(var(--step-5) * 4) var(--step-0);
@@ -13,8 +12,7 @@
 }
 
 .aside {
-  display: inline;
-  font-weight: normal;
+  // display: inline;
   @include medium {
     grid-column: 1 / 6;
   }
@@ -31,9 +29,7 @@
   margin-bottom: calc(var(--step-5) * 2);
   @include medium {
     grid-column: 6 / 13;
-    &:not(:only-of-type) {
-      margin-bottom: 0;
-    }
+    margin-bottom: 0;
   }
   header {
     margin-bottom: var(--step-2);
@@ -44,7 +40,7 @@
   display: flex;
   flex: 1;
   flex-direction: column;
-  margin: 0 auto;
+  margin: calc(var(--step-5) * 2) auto;
   max-width: 75rem;
   padding: 0 var(--spacer);
   width: 100%;
