@@ -36,6 +36,7 @@
 }
 
 @mixin link-arrow {
+  white-space: nowrap;
   &[href^='http']:not([href*='short.is'])::after {
     content: '→';
     display: inline-block;

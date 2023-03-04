@@ -1,38 +1,9 @@
-@forward '~/src/styles/animation';
 @use '~/src/styles/mixins.scss' as *;
 
-.grid {
-  display: grid;
-  gap: var(--step-5) var(--step-0);
-  @include medium {
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    gap: calc(var(--step-5) * 4) var(--step-0);
-    padding: 0 var(--step-2);
-  }
-}
-
-.aside {
-  // display: inline;
-  @include medium {
-    grid-column: 1 / 6;
-  }
-  h1,
-  h2 {
-    font-family: Epicene, Georgia, 'Times New Roman', Times, serif;
-    font-size: calc(var(--step-5) * 2);
-    font-style: italic;
-    line-height: 1;
-  }
-}
-
-.mainContent {
-  margin-bottom: calc(var(--step-5) * 2);
-  @include medium {
-    grid-column: 6 / 13;
-    margin-bottom: 0;
-  }
-  header {
-    margin-bottom: var(--step-2);
+@keyframes slide {
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -46,9 +17,43 @@
   width: 100%;
   opacity: 1;
   transform: translateY(0);
+  @include medium {
+    margin: calc(var(--step-5) * 4) auto;
+  }
   @include should-animate {
     animation: slide 500ms ease 200ms 1 forwards;
     opacity: 0;
     transform: translateY(1rem);
+  }
+}
+
+.grid {
+  display: grid;
+  gap: var(--step-5) var(--step-0);
+  @include medium {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: calc(var(--step-5) * 4) var(--step-0);
+    padding: 0 var(--step-2);
+  }
+}
+
+.title {
+  font-family: Epicene, Georgia, 'Times New Roman', Times, serif;
+  font-size: calc(var(--step-5) * 2);
+  font-style: italic;
+  line-height: 1em;
+  @include medium {
+    grid-column: 1 / 6;
+  }
+}
+
+.content {
+  margin-bottom: calc(var(--step-5) * 2);
+  @include medium {
+    grid-column: 6 / 13;
+    margin-bottom: 0;
+  }
+  header {
+    margin-bottom: var(--step-2);
   }
 }

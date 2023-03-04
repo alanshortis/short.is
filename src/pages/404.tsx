@@ -5,10 +5,8 @@ import contentStyles from '@/components/Markdown/Markdown.module.scss';
 
 const NotFound: NextPage = () => (
   <Page title="404">
-    <div className={layoutStyles.aside}>
-      <h2>404</h2>
-    </div>
-    <article className={`${layoutStyles.mainContent} ${contentStyles.markdown}`}>
+    <h2 className={layoutStyles.title}>404</h2>
+    <article className={`${layoutStyles.content} ${contentStyles.markdown}`}>
       <p className={contentStyles.large}>Whatever you&rsquo;re looking for is not here.</p>
       <p>
         short.is used to be a domain shortening service, so there is a chance you followed a link with the

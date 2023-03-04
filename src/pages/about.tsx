@@ -21,10 +21,8 @@ export async function getStaticProps(): Promise<GetStaticPropsResult<Props>> {
 
 const About: NextPage<Props> = ({ recentMusic, nowReading }) => (
   <Page title="About">
-    <div className={layoutStyles.aside}>
-      <h2>Hello</h2>
-    </div>
-    <article className={`${layoutStyles.mainContent} ${contentStyles.markdown}`}>
+    <h2 className={layoutStyles.title}>Hello</h2>
+    <article className={`${layoutStyles.content} ${contentStyles.markdown}`}>
       <p className={contentStyles.large}>
         I&#39;m Alan Shortis—a front end developer based in <del>London</del> <ins>Nottingham</ins>, currently
         working for <a href="https://monzo.com/">Monzo</a>.
