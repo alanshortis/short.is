@@ -1,8 +1,8 @@
 import type { NextPage, GetStaticPaths, GetStaticProps } from 'next';
 import { type DailyPost, postDays, postCount, getDailyPosts } from '@/data';
-import { PageLayout } from '@/layouts';
+import { Page } from '@/layouts';
 import { Markdown, PostDate } from '@/components';
-import styles from '@/layouts/PageLayout.module.scss';
+import styles from '@/layouts/Page/Page.module.scss';
 
 interface Props extends DailyPost {
   postCount: number;
@@ -27,7 +27,7 @@ export const getStaticProps: GetStaticProps = ({ params }) => {
 };
 
 const Day: NextPage<Props> = ({ day, date, content, title, postCount }) => (
-  <PageLayout title={`#${day}`} intro={title} hideTitle>
+  <Page title={`#${day}`} intro={title} hideTitle>
     <div className={styles.aside}>
       <h1>{day}</h1>
     </div>
@@ -37,7 +37,7 @@ const Day: NextPage<Props> = ({ day, date, content, title, postCount }) => (
       </header>
       <Markdown>{content}</Markdown>
     </article>
-  </PageLayout>
+  </Page>
 );
 
 export default Day;

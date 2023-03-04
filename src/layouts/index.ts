@@ -1,1 +1,2 @@
-export { PageLayout } from './PageLayout';
+export { Page } from './Page/';
+export { Full } from './Full/';

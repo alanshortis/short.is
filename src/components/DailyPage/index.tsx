@@ -1,15 +1,12 @@
 import { Fragment } from 'react';
 import Link from 'next/link';
-import { PageLayout } from '@/layouts';
+import { Page } from '@/layouts';
 import { type DailyList } from '@/data';
 import { Markdown, Pagination, PostDate } from '@/components';
-import styles from '@/layouts/PageLayout.module.scss';
+import styles from '@/layouts/Page/Page.module.scss';
 
 export const DailyPage = ({ dailies, currentPage, totalPages }: DailyList) => (
-  <PageLayout
-    title="Daily"
-    paginationComponent={<Pagination currentPage={currentPage} totalPages={totalPages} />}
-  >
+  <Page title="Daily" paginationComponent={<Pagination currentPage={currentPage} totalPages={totalPages} />}>
     {dailies.map(daily => (
       <Fragment key={daily.day}>
         <div className={styles.aside}>
@@ -25,5 +22,5 @@ export const DailyPage = ({ dailies, currentPage, totalPages }: DailyList) => (
         </article>
       </Fragment>
     ))}
-  </PageLayout>
+  </Page>
 );

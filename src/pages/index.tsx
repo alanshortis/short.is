@@ -1,10 +1,10 @@
 import type { NextPage } from 'next';
-import { PageLayout } from '@/layouts';
+import { Full } from '@/layouts';
 
 const Home: NextPage = () => (
-  <PageLayout>
+  <Full>
     <h1 className="hidden">Home</h1>
-  </PageLayout>
+  </Full>
 );
 
 export default Home;

@@ -1,8 +1,8 @@
 import type { NextPage, GetStaticPropsResult } from 'next';
-import { PageLayout } from '@/layouts';
+import { Page } from '@/layouts';
 import { type LastFmArtist, type GoodreadsBook, getLastfm, getGoodreads } from '@/data';
 import { NowReading, RecentMusic } from '@/components';
-import layoutStyles from '@/layouts/PageLayout.module.scss';
+import layoutStyles from '@/layouts/Page/Page.module.scss';
 import contentStyles from '@/components/Markdown/Markdown.module.scss';
 
 interface Props {
@@ -20,7 +20,7 @@ export async function getStaticProps(): Promise<GetStaticPropsResult<Props>> {
 }
 
 const About: NextPage<Props> = ({ recentMusic, nowReading }) => (
-  <PageLayout title="About">
+  <Page title="About">
     <div className={layoutStyles.aside}>
       <h2>Hello</h2>
     </div>
@@ -67,7 +67,7 @@ const About: NextPage<Props> = ({ recentMusic, nowReading }) => (
         The fonts are Söhne and Epicene from <a href="https://klim.co.nz">Klim Type Foundry</a>.
       </p>
     </article>
-  </PageLayout>
+  </Page>
 );
 
 export default About;
