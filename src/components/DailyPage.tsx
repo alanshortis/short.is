@@ -9,13 +9,11 @@ export const DailyPage = ({ dailies, currentPage, totalPages }: DailyList) => (
   <Page title="Daily" paginationComponent={<Pagination currentPage={currentPage} totalPages={totalPages} />}>
     {dailies.map(daily => (
       <Fragment key={daily.day}>
-        <Link
-          className={`${styles.title} label`}
-          href={`/daily/${daily.day}`}
-          title="Open this specific post"
-        >
-          <h2>{daily.day}</h2>
-        </Link>
+        <div className={styles.title}>
+          <Link href={`/daily/${daily.day}`} title="Open this specific post">
+            <h2>{daily.day}</h2>
+          </Link>
+        </div>
         <article className={styles.content}>
           <header>
             <PostDate date={daily.date} />
