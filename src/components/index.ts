@@ -1,4 +1,4 @@
-export { DailyPage } from './DailyPage/';
+export { DailyPage } from './DailyPage';
 export { DocumentHead } from './DocumentHead';
 export { Footer } from './Footer/';
 export { Header } from './Header/';
