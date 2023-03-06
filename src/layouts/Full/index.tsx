@@ -1,4 +1,4 @@
-import { DocumentHead, Footer, Header } from '@/components';
+import { DocumentHead, Header } from '@/components';
 import styles from './Full.module.scss';
 
 interface Props {
@@ -12,6 +12,5 @@ export const Full = ({ children }: Props) => (
     <main id="top" className={styles.main}>
       {children}
     </main>
-    <Footer />
   </>
 );

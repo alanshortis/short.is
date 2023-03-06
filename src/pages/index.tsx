@@ -1,18 +1,20 @@
 import type { NextPage } from 'next';
+import dynamic from 'next/dynamic';
 import { Full } from '@/layouts';
-import styles from '@/layouts/Full/Full.module.scss';
+import Link from 'next/link';
+
+const SchemeToggle = dynamic(() => import('@/components/SchemeToggle/'), {
+  ssr: process.env.NODE_ENV === 'production',
+});
+
+const thisYear = new Date().getFullYear();
 
 const Home: NextPage = () => (
   <Full>
-    <h1 className="hidden">Home</h1>
-    <div className={styles.grid}>
-      <div>1</div>
-      <div>
-        <div className={styles.orb}></div>
-      </div>
-      <div>3</div>
-      <div>4</div>
-    </div>
+    <h1>Alan Shortis</h1>
+    <Link href="/about">About</Link>
+    <SchemeToggle />
+    <p className="label">&copy;{thisYear} Alan Shortis</p>
   </Full>
 );
 
