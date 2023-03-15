@@ -16,10 +16,6 @@ const socials = [
     name: 'CodePen',
     url: 'https://codepen.io/alanshortis',
   },
-  {
-    name: 'Mastodon',
-    url: 'https://social.lol/@shortis',
-  },
 ];
 
 export const Footer = () => (
