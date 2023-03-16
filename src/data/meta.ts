@@ -12,9 +12,8 @@ export const meta = Object.freeze({
     { name: 'CodePen', url: 'https://codepen.io/alanshortis', isMe: true },
     { name: 'GitHub', url: 'https://github.com/alanshortis' },
     { name: 'LinkedIn', url: 'https://www.linkedin.com/in/alan-shortis-575a1b35/', isMe: true },
-    { name: 'Mastodon', url: 'https://social.lol/@shortis/', isMe: true },
     // { name: 'Strava', url: 'https://www.strava.com/athletes/138800', isMe: true },
-    // { name: 'Twitter', url: 'https://twitter.com/alanshortis', isMe: true },
+    { name: 'Twitter', url: 'https://twitter.com/alanshortis', isMe: true },
   ],
 });
 
