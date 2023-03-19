@@ -21,7 +21,6 @@
 
   a {
     text-decoration: underline;
-    @include link-arrow;
   }
 
   ul,
@@ -76,8 +75,10 @@
   ins {
     text-decoration: none;
   }
-}
 
-.large {
-  font-size: var(--step-2);
+  p {
+    &.large {
+      font-size: var(--step-2);
+    }
+  }
 }

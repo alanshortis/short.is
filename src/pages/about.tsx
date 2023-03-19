@@ -55,15 +55,6 @@ const About: NextPage<Props> = ({ recentMusic, nowReading }) => (
         </li>
         <li>Building a photo section for this site</li>
       </ul>
-      <h3>This site</h3>
-      <p>
-        Over engineered behind the scenes to deliver the bare minimum bytes to visitors. This site is written
-        in TypeScript and uses Next.js and CSS Modules. Content is written in markdown and the tiny amount of
-        client JavaScript is contained within a single web component.
-      </p>
-      <p>
-        The fonts are Söhne and Epicene from <a href="https://klim.co.nz">Klim Type Foundry</a>.
-      </p>
     </article>
   </Page>
 );

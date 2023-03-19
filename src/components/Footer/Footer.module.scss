@@ -27,8 +27,5 @@
         margin-top: calc(var(--step--2) / 2);
       }
     }
-    a {
-      @include link-arrow;
-    }
   }
 }

@@ -34,20 +34,3 @@
     border-radius: var(--radius);
   }
 }
-
-@mixin link-arrow {
-  white-space: nowrap;
-  &[href^='http']:not([href*='short.is'])::after {
-    content: '→';
-    display: inline-block;
-    font-size: var(--step--1);
-    margin-left: 0.25rem;
-    position: relative;
-    left: -2px;
-    text-decoration: none;
-    transform: rotate(-45deg);
-    @supports (content: 'x' / 'y') {
-      content: '→' / 'Link opens in a new tab';
-    }
-  }
-}
