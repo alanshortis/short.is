@@ -33,7 +33,7 @@ const Home: NextPage<Props> = ({ latestPost }) => (
       </p>
       <p>
         <span className={styles.serif}>{latestPost.day}</span>{' '}
-        <Link href="/daily">{latestPost.title} &rarr;</Link>
+        <Link href={`/daily/${latestPost.day}`}>{latestPost.title} &rarr;</Link>
       </p>
     </Full>
     <Footer />
