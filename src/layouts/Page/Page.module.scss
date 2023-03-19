@@ -38,10 +38,9 @@
 }
 
 .title {
+  @include type-serif;
   display: inline;
-  font-family: Epicene, Georgia, 'Times New Roman', Times, serif;
   font-size: calc(var(--step-5) * 2);
-  font-style: italic;
   line-height: 1em;
   @include medium {
     grid-column: 1 / 6;

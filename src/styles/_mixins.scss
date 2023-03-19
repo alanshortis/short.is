@@ -1,5 +1,6 @@
 @mixin type-serif {
   font-family: Epicene, Georgia, 'Times New Roman', Times, serif;
+  font-style: italic;
 }
 
 @mixin should-animate {
