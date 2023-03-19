@@ -1,29 +1,18 @@
-import type { FC } from 'react';
-import dynamic from 'next/dynamic';
-import { Label } from '.';
-
-const ShareButton = dynamic(() => import('./ShareButton'), {
-  ssr: process.env.NODE_ENV === 'production',
-});
+import styles from './styles.module.scss';
 
 interface Props {
   date: string;
-  hasShare?: boolean;
-  hasYear?: boolean;
 }
 
-export const PostDate: FC<Props> = ({ date, hasShare, hasYear }) => {
+export const PostDate = ({ date }: Props) => {
   const d = new Date(date);
   const day = d.getDate().toString();
   const month = d.toLocaleString('en-GB', { month: 'long' });
-  const year = hasYear ? d.getFullYear() : '';
+  const year = d.getFullYear();
 
   return (
-    <Label>
-      <time dateTime={date}>
-        {day} {month} {year}
-      </time>
-      {hasShare && <ShareButton />}
-    </Label>
+    <time dateTime={date} className="label spaced">
+      {day} {month} {year}
+    </time>
   );
 };

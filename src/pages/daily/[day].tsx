@@ -1,18 +1,14 @@
-import type { NextPage, GetStaticProps, GetStaticPaths } from 'next';
-import styled from 'styled-components';
-import { MDXRemote } from 'next-mdx-remote';
-import { Layout, Pagination, PostDate, PostFormatting, Label } from '../../components';
-import { Aside, Full, Grid, PageBody, Sticker } from '../../components/Grid';
-import { DailyPost } from '../../types';
-import { dailyCount, dailyPosts, postDays } from '../../data/daily';
+import type { NextPage, GetStaticPaths, GetStaticProps } from 'next';
+import { type DailyPost, postDays, postCount, getDailyPosts } from '@/data';
+import { Page } from '@/layouts';
+import { Markdown, PostDate } from '@/components';
+import styles from '@/layouts/Page/Page.module.scss';
 
-const DailyContent = styled.article`
-  ${Label} {
-    margin-bottom: var(--spacing);
-  }
-`;
+interface Props extends DailyPost {
+  postCount: number;
+}
 
-export const getStaticPaths: GetStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths = () => {
   const paths = postDays.map(dayNumber => ({
     params: { day: dayNumber.toString() },
   }));
@@ -20,42 +16,30 @@ export const getStaticPaths: GetStaticPaths = async () => {
   return { paths, fallback: false };
 };
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const offset = dailyCount - Number(params?.day);
-  const [daily] = await dailyPosts(offset, 1);
-  const { day, date, mdxContent, count } = daily;
+export const getStaticProps: GetStaticProps = ({ params }) => {
+  const offset = postCount - Number(params?.day);
+  const [daily] = getDailyPosts(offset, 1);
+  const { day, date, content, title } = daily;
 
   return {
-    props: { day, date, mdxContent, count },
+    props: { day, date, content, title, postCount },
   };
 };
+
+const Day: NextPage<Props> = ({ day, date, content, title, postCount }) => (
+  <Page title={`#${day}`} intro={title} hideTitle>
+    <h1 className={styles.title}>{day}</h1>
+    <article className={styles.content}>
+      <header>
+        <PostDate date={date} />
+      </header>
+      <Markdown>{content}</Markdown>
+    </article>
+  </Page>
+);
+
+export default Day;
 
 export const config = {
   unstable_runtimeJS: false,
 };
-
-const Daily: NextPage<DailyPost> = ({ day, date, mdxContent, count }) => (
-  <Layout title={`Daily #${day}`}>
-    <Grid>
-      <Full>
-        <h1>
-          <span aria-hidden>#</span>
-          {day}
-        </h1>
-      </Full>
-      <Aside>
-        <Sticker>
-          <PostDate date={date} hasYear hasShare />
-        </Sticker>
-      </Aside>
-      <PageBody as={PostFormatting}>
-        <DailyContent>
-          <MDXRemote {...mdxContent} />
-        </DailyContent>
-      </PageBody>
-    </Grid>
-    <Pagination currentPage={Number(day)} totalPages={count} route="/daily/" hideCount />
-  </Layout>
-);
-
-export default Daily;

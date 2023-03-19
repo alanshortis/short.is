@@ -1,51 +1,26 @@
-import type { FC } from 'react';
 import { Fragment } from 'react';
-import styled from 'styled-components';
 import Link from 'next/link';
-import { MDXRemote } from 'next-mdx-remote';
-import { Arrow, Label, Layout, Pagination, PostDate, PostList } from '.';
-import { Aside, Full, Grid, PageBody, Sticker } from './Grid';
-import { DailyList, DailyPost } from '../types';
+import { Page } from '@/layouts';
+import { type DailyList } from '@/data';
+import { Markdown, Pagination, PostDate } from '@/components';
+import styles from '@/layouts/Page/Page.module.scss';
 
-const Content = styled.div`
-  margin-top: var(--spacing);
-`;
-
-export const DailyPage: FC<DailyList> = ({ dailies, currentPage, totalPages, title = 'Daily' }) => (
-  <Layout title={title} feedUrl="daily.xml">
-    <Grid>
-      <Full>
-        <h1>Daily</h1>
-      </Full>
-      {dailies.map((daily: DailyPost) => {
-        return (
-          <Fragment key={daily.date}>
-            <Aside>
-              <Sticker>
-                <Label as="h2">
-                  <Arrow>
-                    <Link href={`/daily/${daily.day}`} passHref>
-                      <a>
-                        <span aria-hidden>#</span>
-                        {daily.day}
-                      </a>
-                    </Link>
-                  </Arrow>
-                </Label>
-              </Sticker>
-            </Aside>
-            <PageBody as={PostList}>
-              <article>
-                <PostDate date={daily.date} hasYear />
-                <Content>
-                  <MDXRemote {...daily.mdxContent} />
-                </Content>
-              </article>
-            </PageBody>
-          </Fragment>
-        );
-      })}
-    </Grid>
-    <Pagination currentPage={Number(currentPage)} totalPages={Number(totalPages)} />
-  </Layout>
+export const DailyPage = ({ dailies, currentPage, totalPages }: DailyList) => (
+  <Page title="Daily" paginationComponent={<Pagination currentPage={currentPage} totalPages={totalPages} />}>
+    {dailies.map(daily => (
+      <Fragment key={daily.day}>
+        <div className={styles.title}>
+          <Link href={`/daily/${daily.day}`} title="Open this specific post">
+            <h2>{daily.day}</h2>
+          </Link>
+        </div>
+        <article className={styles.content}>
+          <header>
+            <PostDate date={daily.date} />
+          </header>
+          <Markdown>{daily.content}</Markdown>
+        </article>
+      </Fragment>
+    ))}
+  </Page>
 );

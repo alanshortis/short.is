@@ -1,17 +1,6 @@
 import type { AppProps } from 'next/app';
-import type { FC } from 'react';
-import { StrictMode } from 'react';
-import { ThemeProvider } from 'styled-components';
-import { Global } from '../styles/Global';
-import { theme } from '../styles/theme';
+import '@/styles/global.scss';
 
-const Shortis: FC<AppProps> = ({ Component, pageProps }) => (
-  <StrictMode>
-    <ThemeProvider theme={theme}>
-      <Global />
-      <Component {...pageProps} />
-    </ThemeProvider>
-  </StrictMode>
-);
+const Shortis = ({ Component, pageProps }: AppProps) => <Component {...pageProps} />;
 
 export default Shortis;

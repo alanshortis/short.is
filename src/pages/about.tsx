@@ -1,78 +1,62 @@
 import type { NextPage, GetStaticPropsResult } from 'next';
-import { useContext } from 'react';
-import type { AboutData } from '../types';
-import { Layout, NowReading, PostFormatting, SiteList } from '../components';
-import { Full, Grid, PageBody } from '../components/Grid';
-import { googleBooks } from '../data/google-books';
-import { lastfm } from '../data/lastfm';
-import { MetaContext } from '../data/meta';
+import { Page } from '@/layouts';
+import { type LastFmArtist, type GoodreadsBook, getLastfm, getGoodreads } from '@/data';
+import { NowReading, RecentMusic } from '@/components';
+import layoutStyles from '@/layouts/Page/Page.module.scss';
+import contentStyles from '@/components/Markdown/Markdown.module.scss';
 
-export async function getStaticProps(): Promise<GetStaticPropsResult<AboutData>> {
+interface Props {
+  recentMusic: LastFmArtist[];
+  nowReading: GoodreadsBook[];
+}
+
+export async function getStaticProps(): Promise<GetStaticPropsResult<Props>> {
   return {
     props: {
-      nowReading: await googleBooks(),
-      recentMusic: await lastfm(),
+      recentMusic: await getLastfm(),
+      nowReading: await getGoodreads(),
     },
   };
 }
 
+const About: NextPage<Props> = ({ recentMusic, nowReading }) => (
+  <Page title="About">
+    <h2 className={layoutStyles.title}>Hello</h2>
+    <article className={`${layoutStyles.content} ${contentStyles.markdown}`}>
+      <p className={contentStyles.large}>
+        I&#39;m Alan Shortis—a front end developer based in <del>London</del> <ins>Nottingham</ins>, currently
+        working for <a href="https://monzo.com/">Monzo</a>.
+      </p>
+      <p>
+        I like building scalable, accessible, and performant design systems and websites; the combination of
+        code, design, and empathy for end users is what makes me want to do my best work.
+      </p>
+      <p>
+        Right now I primarily work on internal tooling that helps keep Monzo secure. Outside of work I like
+        design, photography, music, and cycling, with my enthusiasum far outweighing my ability.
+      </p>
+      <h3>Now</h3>
+      <ul>
+        <li>
+          <RecentMusic recentMusic={recentMusic} />
+        </li>
+        <li>
+          <NowReading nowReading={nowReading} />
+        </li>
+        <li>Watching Succession and Ted Lasso</li>
+        <li>Still playing Red Dead Redemption II</li>
+        <li>Editing film scans with Negative Lab Pro</li>
+        <li>
+          This is a work in progress. I am working on a photo section and eventually I&rsquo;d like to figure
+          out what a homepage is for
+        </li>
+      </ul>
+    </article>
+  </Page>
+);
+
+export default About;
+
 export const config = {
   unstable_runtimeJS: false,
 };
-
-const About: NextPage<AboutData> = ({ nowReading, recentMusic }) => {
-  const meta = useContext(MetaContext);
-
-  return (
-    <>
-      <Layout title="About">
-        <Grid>
-          <Full>
-            <h1>About</h1>
-          </Full>
-          <PageBody as={PostFormatting}>
-            <h2 className="intro">Building for the web with HTML, CSS, and JavaScript. In that order.</h2>
-            <p>
-              I&#39;m Alan Shortis, a front end developer based in <del>London</del> Nottingham currently
-              working for <a href="https://monzo.com/">Monzo</a>. I like building scalable, accessible, and
-              performant design systems and websites; the combination of code, design, and empathy for end
-              users is what makes me want to do my best work.
-            </p>
-            <p>
-              <SiteList items={meta.social} intro="Find me on" />
-            </p>
-            <h3>Now</h3>
-            <ul>
-              <li>
-                <NowReading nowReading={nowReading} />
-                {/* Reading <a href={nowReading.url}>{nowReading.title}</a> by {nowReading.author} */}
-              </li>
-              <li>
-                <SiteList items={recentMusic} intro="Listening to" />
-              </li>
-              <li>Exploring the wilderness in Red Dead Redemption II</li>
-              <li>
-                Learning <a href="https://go.dev/">Go</a>, and thinking of learning{' '}
-                <a href="https://en.wikipedia.org/wiki/Go_(game)">Go</a>
-              </li>
-              <li>Working through all Jim Jarmusch movies</li>
-            </ul>
-            <h3>This site</h3>
-            <p>
-              <code>short.is</code> is written in TypeScript using <a href="https://nextjs.org/">Next.js</a>{' '}
-              and <a href="https://styled-components.com/">Styled Components</a>. The usual client-side bundle
-              containing React is omitted, with any interactivity delivered via Web Components. This gives me
-              the nice DX, and you the bare minimum of bytes.
-            </p>
-            <p>
-              The fonts are Sohne and Sohne Mono from{' '}
-              <a href="https://klim.co.nz/retail-fonts/soehne/">Klim Type Foundry</a>.
-            </p>
-          </PageBody>
-        </Grid>
-      </Layout>
-    </>
-  );
-};
-
-export default About;

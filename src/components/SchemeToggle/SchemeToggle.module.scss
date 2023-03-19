@@ -1,0 +1,15 @@
+@use '~/src/styles/mixins' as *;
+
+.schemeToggle {
+  fieldset {
+    display: flex;
+    gap: var(--step--2);
+  }
+  label {
+    cursor: pointer;
+    position: relative;
+  }
+  input:checked + label {
+    @include active-indicator;
+  }
+}

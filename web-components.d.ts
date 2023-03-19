@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 /** What's this?
  *
  * TS gets upset with web components as it can't see these elements
@@ -7,11 +5,9 @@
  * here stops the complier from being quite so *dramatic*.
  */
 
+type Wc = React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
 declare namespace JSX {
   interface IntrinsicElements {
-    'click-timer': any;
-    'link-prefetch': any;
-    'scheme-toggle': any;
-    'share-button': any;
+    'scheme-toggle': Wc;
   }
 }

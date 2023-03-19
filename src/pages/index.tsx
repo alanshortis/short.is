@@ -1,56 +1,47 @@
-import type { NextPage, GetStaticPropsResult } from 'next';
+import type { NextPage, GetStaticProps } from 'next';
+import { type DailyPost, getDailyPosts } from '@/data';
 import Head from 'next/head';
-import type { LatestContent } from '../types';
-import { latestWriting } from '../data/writing';
-import { selectedDailyPosts } from '../data/daily';
-import { Label, Layout, PostFormatting, PostIndexItem, SelectedDailies, ShadowBox } from '../components';
-import { Grid, Full, PageBody } from '../components/Grid';
+import { Full } from '@/layouts';
+import { Footer } from '@/components';
+import Link from 'next/link';
+import styles from './index.module.scss';
 
-export async function getStaticProps(): Promise<GetStaticPropsResult<LatestContent>> {
-  return {
-    props: {
-      latestWritingPost: latestWriting,
-      selectedDailies: await selectedDailyPosts(),
-    },
-  };
+interface Props {
+  latestPost: DailyPost;
 }
+
+export const getStaticProps: GetStaticProps = ({ params }) => {
+  const [latestPost] = getDailyPosts(0, 1);
+
+  return {
+    props: { latestPost },
+  };
+};
+
+const Home: NextPage<Props> = ({ latestPost }) => (
+  <>
+    <Head>
+      <link rel="prefetch" href="/daily" />
+      <link rel="prefetch" href="/about" />
+    </Head>
+    <Full className={styles.home}>
+      <h1>
+        <span className={styles.serif}>Alan Shortis</span>
+      </h1>
+      <p>
+        <Link href="/about">About &rarr;</Link> <Link href="/daily">Daily &rarr;</Link>{' '}
+      </p>
+      <p>
+        <span className={styles.serif}>{latestPost.day}</span>{' '}
+        <Link href={`/daily/${latestPost.day}`}>{latestPost.title} &rarr;</Link>
+      </p>
+    </Full>
+    <Footer />
+  </>
+);
+
+export default Home;
 
 export const config = {
   unstable_runtimeJS: false,
 };
-
-const Home: NextPage<LatestContent> = ({ latestWritingPost, selectedDailies }) => {
-  const { slug, date, title, intro, year } = latestWritingPost;
-  return (
-    <>
-      <Head>
-        <link rel="prefetch" href="/writing" />
-        <link rel="prefetch" href="/daily" />
-        <link rel="prefetch" href="/about" />
-        <link rel="prefetch" href={`/writing/${slug}`} />
-      </Head>
-      <Layout>
-        <Grid>
-          <Full>
-            <h1>Alan Shortis</h1>
-          </Full>
-          <PageBody as={PostFormatting}>
-            <p className="intro">
-              I&#39;m a front end developer based in <del>London</del> Nottingham, currently working for{' '}
-              <a href="https://monzo.com/">Monzo</a>.
-            </p>
-          </PageBody>
-          <PageBody>
-            <ShadowBox>
-              <Label as="h2">Latest writing</Label>
-              <PostIndexItem slug={slug} date={date} title={title} intro={intro} year={year} isLatest />
-              <SelectedDailies selectedDailies={selectedDailies} />
-            </ShadowBox>
-          </PageBody>
-        </Grid>
-      </Layout>
-    </>
-  );
-};
-
-export default Home;

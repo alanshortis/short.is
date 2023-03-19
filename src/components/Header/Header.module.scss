@@ -1,0 +1,17 @@
+@use '~/src/styles/mixins' as *;
+
+.header {
+  @include bar;
+  align-items: center;
+  margin-bottom: 0;
+  z-index: 1;
+  svg {
+    display: block;
+  }
+  @include medium {
+    position: sticky;
+    top: var(--spacer);
+    margin: var(--spacer);
+    margin-bottom: 0;
+  }
+}

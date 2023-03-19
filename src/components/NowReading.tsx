@@ -1,9 +1,9 @@
 import type { FC } from 'react';
 import { Fragment } from 'react';
-import { Book } from '../types';
+import { GoodreadsBook } from '../data';
 
 interface Props {
-  nowReading: Book[];
+  nowReading: GoodreadsBook[];
 }
 
 export const NowReading: FC<Props> = ({ nowReading }) => {

@@ -1,0 +1,106 @@
+@forward './fonts';
+@use './mixins' as *;
+
+:root {
+  --step--2: clamp(0.69rem, calc(0.63rem + 0.26vw), 0.87rem);
+  --step--1: clamp(0.83rem, calc(0.76rem + 0.31vw), 1.04rem);
+  --step-0: clamp(1rem, calc(0.91rem + 0.38vw), 1.25rem);
+  --step-1: clamp(1.2rem, calc(1.09rem + 0.45vw), 1.5rem);
+  --step-2: clamp(1.44rem, calc(1.31rem + 0.54vw), 1.8rem);
+  --step-3: clamp(1.73rem, calc(1.58rem + 0.65vw), 2.16rem);
+  --step-4: clamp(2.07rem, calc(1.89rem + 0.78vw), 2.59rem);
+  --step-5: clamp(2.49rem, calc(2.27rem + 0.94vw), 3.11rem);
+
+  --dark: hsl(100, 30%, 7%);
+  --light: hsl(100, 30%, 93%);
+  --overlay: hsla(100, 30%, 50%, 7%);
+  --strike: hsla(100, 30%, 7%, 75%);
+
+  --radius: 4px;
+  --spacer: var(--step-2);
+
+  --background: var(--light);
+  --foreground: var(--dark);
+
+  & body.dark {
+    --background: var(--dark);
+    --foreground: var(--light);
+    --strike: hsla(100, 30%, 93%, 75%);
+  }
+}
+
+*,
+*::before,
+*::after {
+  border: 0;
+  box-sizing: border-box;
+  font-size: 100%;
+  font-weight: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: 100%;
+  @include should-animate {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: Sohne, Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: var(--step-0);
+  font-weight: normal;
+  line-height: 1.5;
+  min-height: 100%;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: var(--foreground);
+  color: var(--background);
+}
+
+#__next {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+a {
+  text-decoration: none;
+  color: currentColor;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  li {
+    list-style: none;
+  }
+}
+
+.label {
+  display: inline-block;
+  font-feature-settings: 'zero', 'tnum';
+  font-size: var(--step--2);
+  font-weight: normal;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}

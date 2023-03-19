@@ -1,27 +1,26 @@
-import type { NextPage, GetStaticPropsResult } from 'next';
-import { DailyPage } from '../../components';
-import { DailyList } from '../../types';
-import { dailyPosts, pageCount } from '../../data/daily';
-import { generateDailyFeed } from '../../feeds';
+import type { NextPage, GetStaticProps } from 'next';
+import { type DailyList, getDailyPosts, pageCount } from '@/data';
+import { generateDailyFeed } from '@/feeds';
+import { DailyPage } from '@/components';
 
-export async function getStaticProps(): Promise<GetStaticPropsResult<DailyList>> {
+export const getStaticProps: GetStaticProps<DailyList> = () => {
   if (process.env.NODE_ENV === 'production') {
     generateDailyFeed();
   }
 
   return {
     props: {
-      dailies: await dailyPosts(),
-      currentPage: '1',
-      totalPages: pageCount.toString(),
+      dailies: getDailyPosts(),
+      currentPage: 1,
+      totalPages: pageCount,
     },
   };
-}
-
-export const config = {
-  unstable_runtimeJS: false,
 };
 
 const Daily: NextPage<DailyList> = p => <DailyPage {...p} />;
 
 export default Daily;
+
+export const config = {
+  unstable_runtimeJS: false,
+};

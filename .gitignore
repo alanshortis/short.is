@@ -1,11 +1,12 @@
 node_modules
 .next
-.env.local
 out
+build
 .DS_Store
 yarn-debug.log*
 yarn-error.log*
 *.tsbuildinfo
-
-public/writing.xml
-public/daily.xml
+next-env.d.ts
+.env.local
+public/*.xml
+public/*.js
