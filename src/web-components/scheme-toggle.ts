@@ -34,7 +34,12 @@ if ('customElements' in window && !customElements.get('scheme-toggle')) {
       setInitialScheme() {
         const storedScheme: string | null = localStorage.getItem(this.STORAGE_KEY);
 
-        this.setState(this.schemes.includes(storedScheme) ? storedScheme : 'auto');
+        if (!!storedScheme && this.schemes.includes(storedScheme)) {
+          this.setState(storedScheme);
+        } else {
+          this.setState('auto');
+        }
+
         this.render();
       }
 
