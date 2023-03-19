@@ -21,6 +21,6 @@ const Daily: NextPage<DailyList> = p => <DailyPage {...p} />;
 
 export default Daily;
 
-export const config = {
-  unstable_runtimeJS: false,
-};
+// export const config = {
+//   unstable_runtimeJS: false,
+// };

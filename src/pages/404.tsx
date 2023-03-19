@@ -18,6 +18,6 @@ const NotFound: NextPage = () => (
 
 export default NotFound;
 
-export const config = {
-  unstable_runtimeJS: false,
-};
+// export const config = {
+//   unstable_runtimeJS: false,
+// };

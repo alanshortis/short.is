@@ -57,6 +57,6 @@ const About: NextPage<Props> = ({ recentMusic, nowReading }) => (
 
 export default About;
 
-export const config = {
-  unstable_runtimeJS: false,
-};
+// export const config = {
+//   unstable_runtimeJS: false,
+// };

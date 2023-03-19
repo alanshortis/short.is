@@ -42,6 +42,6 @@ const Home: NextPage<Props> = ({ latestPost }) => (
 
 export default Home;
 
-export const config = {
-  unstable_runtimeJS: false,
-};
+// export const config = {
+//   unstable_runtimeJS: false,
+// };

@@ -40,6 +40,6 @@ const Day: NextPage<Props> = ({ day, date, content, title, postCount }) => (
 
 export default Day;
 
-export const config = {
-  unstable_runtimeJS: false,
-};
+// export const config = {
+//   unstable_runtimeJS: false,
+// };
