@@ -43,16 +43,9 @@ const About: NextPage<Props> = ({ recentMusic, nowReading }) => (
         <li>
           <NowReading nowReading={nowReading} />
         </li>
-        <li>
-          Watching{' '}
-          <a href="https://tv.apple.com/gb/show/severance/umc.cmc.1srk2goyh2q2zdxcx605w8vtx">Serverance</a>
-        </li>
-        <li>
-          Still playing <a href="https://www.rockstargames.com/reddeadredemption2/">Red Dead Redemption II</a>
-        </li>
-        <li>
-          Editing film scans with <a href="https://www.negativelabpro.com/">Negative Lab Pro</a>
-        </li>
+        <li>Watching Succession and Ted Lasso</li>
+        <li>Still playing Red Dead Redemption II</li>
+        <li>Editing film scans with Negative Lab Pro</li>
         <li>
           This is a work in progress. I am working on a photo section and eventually I&rsquo;d like to figure
           out what a homepage is for
