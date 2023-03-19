@@ -1,0 +1,17 @@
+@use '~/src/styles/mixins.scss' as *;
+
+.serif {
+  @include type-serif;
+  font-size: 12vw;
+}
+
+.home {
+  line-height: 1em;
+  font-size: 10vw;
+  text-align: justify;
+  h1,
+  p {
+    width: 100%;
+    text-align: left;
+  }
+}

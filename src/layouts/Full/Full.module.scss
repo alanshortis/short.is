@@ -1,6 +1,14 @@
+@use '~/src/styles/mixins.scss' as *;
+
 .main {
+  align-items: center;
   display: flex;
-  flex: 1;
   flex-direction: column;
+  flex: 1;
+  justify-content: center;
+  padding: calc(var(--step-5) * 2) var(--spacer);
   width: 100%;
+  @include medium {
+    padding: calc(var(--step-5) * 2) calc(var(--spacer) * 2);
+  }
 }

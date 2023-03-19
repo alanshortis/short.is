@@ -53,7 +53,10 @@ const About: NextPage<Props> = ({ recentMusic, nowReading }) => (
         <li>
           Editing film scans with <a href="https://www.negativelabpro.com/">Negative Lab Pro</a>
         </li>
-        <li>Building a photo section for this site</li>
+        <li>
+          This is a work in progress. I am working on a photo section and eventually I&rsquo;d like to figure
+          out what a homepage is for
+        </li>
       </ul>
     </article>
   </Page>

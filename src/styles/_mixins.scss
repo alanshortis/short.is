@@ -1,3 +1,7 @@
+@mixin type-serif {
+  font-family: Epicene, Georgia, 'Times New Roman', Times, serif;
+}
+
 @mixin should-animate {
   @media (prefers-reduced-motion: no-preference) {
     @content;

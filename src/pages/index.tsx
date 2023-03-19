@@ -1,27 +1,42 @@
-import type { NextPage } from 'next';
+import type { NextPage, GetStaticProps } from 'next';
+import { type DailyPost, getDailyPosts } from '@/data';
 import Head from 'next/head';
-import Link from 'next/link';
-import dynamic from 'next/dynamic';
 import { Full } from '@/layouts';
+import { Footer } from '@/components';
+import Link from 'next/link';
+import styles from './index.module.scss';
 
-const SchemeToggle = dynamic(() => import('@/components/SchemeToggle/'), {
-  ssr: process.env.NODE_ENV === 'production',
-});
+interface Props {
+  latestPost: DailyPost;
+}
 
-const thisYear = new Date().getFullYear();
+export const getStaticProps: GetStaticProps = ({ params }) => {
+  const [latestPost] = getDailyPosts(0, 1);
 
-const Home: NextPage = () => (
+  return {
+    props: { latestPost },
+  };
+};
+
+const Home: NextPage<Props> = ({ latestPost }) => (
   <>
     <Head>
       <link rel="prefetch" href="/daily" />
       <link rel="prefetch" href="/about" />
     </Head>
-    <Full>
-      <h1>Alan Shortis</h1>
-      <Link href="/about">About</Link>
-      <SchemeToggle />
-      <p className="label">&copy;{thisYear} Alan Shortis</p>
+    <Full className={styles.home}>
+      <h1>
+        <span className={styles.serif}>Alan Shortis</span>
+      </h1>
+      <p>
+        <Link href="/about">About &rarr;</Link> <Link href="/daily">Daily &rarr;</Link>{' '}
+      </p>
+      <p>
+        <span className={styles.serif}>{latestPost.day}</span>{' '}
+        <Link href="/daily">{latestPost.title} &rarr;</Link>
+      </p>
     </Full>
+    <Footer />
   </>
 );
 
