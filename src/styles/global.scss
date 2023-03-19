@@ -54,6 +54,7 @@ body {
   font-size: var(--step-0);
   font-weight: normal;
   line-height: 1.5;
+  min-height: 100%;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -68,7 +69,6 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  min-height: -webkit-fill-available;
 }
 
 a {
