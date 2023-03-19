@@ -1,5 +1,4 @@
 module.exports = {
-  target: 'serverless',
   reactStrictMode: true,
   redirects: async () => {
     return [
