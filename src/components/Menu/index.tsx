@@ -9,6 +9,7 @@ interface MenuItem {
 
 const menuItems: Readonly<MenuItem[]> = [
   { name: 'Daily', path: '/daily' },
+  { name: 'Photography', path: '/photography' },
   { name: 'About', path: '/about' },
 ];
 
