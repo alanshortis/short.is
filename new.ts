@@ -22,6 +22,7 @@ const createPost = async (): Promise<void> => {
 
   exec(`git checkout -b daily/${day}`, async (): Promise<void> => {
     await fsPromises.writeFile(fullPath, template(day, today));
+    exec(`code ${fullPath}`);
   });
 };
 
