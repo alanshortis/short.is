@@ -1,4 +1,5 @@
 import type { NextPage, GetStaticPropsResult } from 'next';
+import c from 'classnames';
 import { Page } from '@/layouts';
 import { type LastFmArtist, type GoodreadsBook, getLastfm, getGoodreads } from '@/data';
 import { NowReading, RecentMusic } from '@/components';
@@ -22,7 +23,7 @@ export async function getStaticProps(): Promise<GetStaticPropsResult<Props>> {
 const About: NextPage<Props> = ({ recentMusic, nowReading }) => (
   <Page title="About">
     <h2 className={layoutStyles.title}>Hello</h2>
-    <article className={`${layoutStyles.content} ${contentStyles.markdown}`}>
+    <article className={c(layoutStyles.content, contentStyles.markdown)}>
       <p className={contentStyles.large}>
         I&#39;m Alan Shortis—a front end developer based in <del>London</del> <ins>Nottingham</ins>, currently
         working for <a href="https://monzo.com/">Monzo</a>.

@@ -1,3 +1,4 @@
+import c from 'classnames';
 import { DocumentHead, Header } from '@/components';
 import styles from './Full.module.scss';
 
@@ -10,7 +11,7 @@ export const Full = ({ children, className }: Props) => (
   <>
     <DocumentHead />
     <Header />
-    <main id="top" className={`${styles.main} ${className}`}>
+    <main id="top" className={c(styles.main, className)}>
       {children}
     </main>
   </>
