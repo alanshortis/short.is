@@ -16,7 +16,7 @@ export const Menu = () => {
   const router = useRouter();
 
   return (
-    <nav>
+    <nav aria-label="Main menu">
       <ul role="menubar" className={styles.menu}>
         {menuItems.map(item => {
           const isCurrent = router.pathname.startsWith(item.path);
