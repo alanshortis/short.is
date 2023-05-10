@@ -7,7 +7,7 @@ interface Props {
 }
 
 export const Pagination = ({ currentPage, totalPages }: Props) => (
-  <nav className={styles.pagination}>
+  <nav className={styles.pagination} aria-label="Pagination">
     {currentPage < totalPages ? (
       <span>
         <Link href={`/daily/page/${currentPage + 1}`} className="label">
