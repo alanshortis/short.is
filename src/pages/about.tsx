@@ -44,13 +44,9 @@ const About: NextPage<Props> = ({ recentMusic, nowReading }) => (
         <li>
           <NowReading nowReading={nowReading} />
         </li>
-        <li>Watching Succession and Ted Lasso</li>
-        <li>Still playing Red Dead Redemption II</li>
+        <li>Watching Succession, Ted Lasso, and Barry</li>
         <li>Editing film scans with Negative Lab Pro</li>
-        <li>
-          This is a work in progress. I am working on a photo section and eventually I&rsquo;d like to figure
-          out what a homepage is for
-        </li>
+        <li>Making plans for Colorado and Wyoming</li>
       </ul>
     </article>
   </Page>
