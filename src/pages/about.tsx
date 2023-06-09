@@ -44,9 +44,8 @@ const About: NextPage<Props> = ({ recentMusic, nowReading }) => (
         <li>
           <NowReading nowReading={nowReading} />
         </li>
-        <li>Watching Succession, Ted Lasso, and Barry</li>
+        <li>Watching The Wire</li>
         <li>Editing film scans with Negative Lab Pro</li>
-        <li>Making plans for Colorado and Wyoming</li>
       </ul>
     </article>
   </Page>
