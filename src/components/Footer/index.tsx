@@ -13,6 +13,10 @@ const socials = [
     url: 'https://www.are.na/alan-shortis',
   },
   {
+    name: 'Bluesky',
+    url: 'https://bsky.app/profile/short.is',
+  },
+  {
     name: 'CodePen',
     url: 'https://codepen.io/alanshortis',
   },

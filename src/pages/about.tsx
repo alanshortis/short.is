@@ -33,7 +33,7 @@ const About: NextPage<Props> = ({ recentMusic, nowReading }) => (
         code, design, and empathy for end users is what makes me want to do my best work.
       </p>
       <p>
-        Right now I primarily work on internal tooling that helps keep Monzo secure. Outside of work I like
+        I am primarily working on internal tooling that helps keep Monzo secure. Outside of work I like
         design, photography, music, and cycling, with my enthusiasum far outweighing my ability.
       </p>
       <h3>Now</h3>
@@ -44,8 +44,9 @@ const About: NextPage<Props> = ({ recentMusic, nowReading }) => (
         <li>
           <NowReading nowReading={nowReading} />
         </li>
-        <li>Watching The Wire</li>
+        <li>Watching The Sopranos for maybe the dozenth time</li>
         <li>Editing film scans with Negative Lab Pro</li>
+        <li>Gym most days</li>
       </ul>
     </article>
   </Page>
