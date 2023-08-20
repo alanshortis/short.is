@@ -1,4 +1,5 @@
 import type { NextPage, GetStaticPropsResult } from 'next';
+
 import c from 'classnames';
 import { Page } from '@/layouts';
 import { type LastFmArtist, type GoodreadsBook, getLastfm, getGoodreads } from '@/data';
@@ -10,6 +11,14 @@ interface Props {
   recentMusic: LastFmArtist[];
   nowReading: GoodreadsBook[];
 }
+
+const socials = [
+  { url: 'https://www.are.na/alan-shortis', name: 'Arena' },
+  { url: 'https://codepen.io/alanshortis', name: 'Codepen' },
+  { url: 'https://www.discogs.com/user/alanshortis', name: 'Discogs' },
+  { url: 'https://www.last.fm/user/a_________s', name: 'Last.fm' },
+  { url: 'https://www.setlist.fm/user/alanshortis', name: 'Setlist.fm' },
+];
 
 export async function getStaticProps(): Promise<GetStaticPropsResult<Props>> {
   return {
@@ -44,9 +53,19 @@ const About: NextPage<Props> = ({ recentMusic, nowReading }) => (
         <li>
           <NowReading nowReading={nowReading} />
         </li>
-        <li>Watching The Sopranos and The Bear</li>
-        <li>Still absolutely obsessed with exploring the wilderness od Read Dead Redemption II</li>
+        <li>Watching The Bear</li>
+        <li>Still absolutely obsessed with exploring the wilderness of Read Dead Redemption II</li>
         <li>Editing film scans with Negative Lab Pro</li>
+      </ul>
+      <h3>Elsewhere</h3>
+      <ul>
+        {socials.map(({ url, name }) => (
+          <li key={url}>
+            <a href={url} target="_blank" rel="noreferrer">
+              {name}
+            </a>
+          </li>
+        ))}
       </ul>
     </article>
   </Page>
