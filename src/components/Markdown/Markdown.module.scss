@@ -87,7 +87,6 @@
 
   figure {
     display: block;
-    // margin: calc(var(--spacer) * 2) auto 0;
     margin: 0 auto;
     img {
       max-width: 100%;
@@ -97,5 +96,14 @@
       margin-top: 1em;
       opacity: 0.5;
     }
+  }
+
+  code {
+    background-color: var(--code-bg);
+    border-radius: var(--radius);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: var(--step--1);
+    font-weight: bold;
+    padding: 0.25rem 0.5rem;
   }
 }
