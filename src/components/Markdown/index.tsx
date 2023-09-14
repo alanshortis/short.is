@@ -8,6 +8,7 @@ interface Props {
 }
 
 export const Markdown = ({ children }: Props) => (
+  // @ts-expect-error
   <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]} className={styles.markdown}>
     {children}
   </ReactMarkdown>
