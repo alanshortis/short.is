@@ -1,6 +1,9 @@
 @use '~/src/styles/mixins' as *;
 
 .markdown {
+  display: flex;
+  flex-direction: column;
+
   h3 {
     font-size: var(--step-3);
     font-weight: bold;
@@ -15,7 +18,7 @@
     font-weight: bold;
   }
 
-  * + :where(ol, ul, p, h3) {
+  * + :where(ol, ul, p, h3, img) {
     margin-top: var(--spacer);
   }
 
@@ -79,6 +82,20 @@
   p {
     &.large {
       font-size: var(--step-2);
+    }
+  }
+
+  figure {
+    display: block;
+    // margin: calc(var(--spacer) * 2) auto 0;
+    margin: 0 auto;
+    img {
+      max-width: 100%;
+    }
+    figcaption {
+      font-size: var(--step--2);
+      margin-top: 1em;
+      opacity: 0.5;
     }
   }
 }
