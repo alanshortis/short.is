@@ -1,5 +1,6 @@
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw';
 import styles from './Markdown.module.scss';
 
 interface Props {
@@ -7,7 +8,8 @@ interface Props {
 }
 
 export const Markdown = ({ children }: Props) => (
-  <ReactMarkdown remarkPlugins={[remarkGfm]} className={styles.markdown}>
+  // @ts-expect-error
+  <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]} className={styles.markdown}>
     {children}
   </ReactMarkdown>
 );
