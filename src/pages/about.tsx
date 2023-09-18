@@ -12,13 +12,13 @@ interface Props {
   nowReading: GoodreadsBook[];
 }
 
-const socials = [
-  { url: 'https://www.are.na/alan-shortis', name: 'Arena' },
-  { url: 'https://codepen.io/alanshortis', name: 'Codepen' },
-  { url: 'https://www.discogs.com/user/alanshortis', name: 'Discogs' },
-  { url: 'https://www.last.fm/user/a_________s', name: 'Last.fm' },
-  { url: 'https://www.setlist.fm/user/alanshortis', name: 'Setlist.fm' },
-];
+// const socials = [
+//   { url: 'https://www.are.na/alan-shortis', name: 'Arena' },
+//   { url: 'https://codepen.io/alanshortis', name: 'Codepen' },
+//   { url: 'https://www.discogs.com/user/alanshortis', name: 'Discogs' },
+//   { url: 'https://www.last.fm/user/a_________s', name: 'Last.fm' },
+//   { url: 'https://www.setlist.fm/user/alanshortis', name: 'Setlist.fm' },
+// ];
 
 export async function getStaticProps(): Promise<GetStaticPropsResult<Props>> {
   return {
@@ -53,11 +53,15 @@ const About: NextPage<Props> = ({ recentMusic, nowReading }) => (
         <li>
           <NowReading nowReading={nowReading} />
         </li>
-        <li>Watching The Bear</li>
+        <li>Watching Six Feet Under</li>
         <li>Still absolutely obsessed with exploring the wilderness of Read Dead Redemption II</li>
-        <li>Editing film scans with Negative Lab Pro</li>
+        <li>
+          Still editing film scans with Negative Lab Pro, for the long-awaited photography section of this
+          site
+        </li>
+        <li>Recovering from more COVID</li>
       </ul>
-      <h3>Elsewhere</h3>
+      {/* <h3>Elsewhere</h3>
       <ul>
         {socials.map(({ url, name }) => (
           <li key={url}>
@@ -66,7 +70,7 @@ const About: NextPage<Props> = ({ recentMusic, nowReading }) => (
             </a>
           </li>
         ))}
-      </ul>
+      </ul> */}
     </article>
   </Page>
 );
