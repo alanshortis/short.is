@@ -9,6 +9,7 @@ export enum Camera {
 export enum Lens {
   BRONICA = 'Zenzanon 80mm f/2.8',
   LEICA_50 = 'Leica Summicron 50mm f/2',
+  VOIGHTLANDER_15 = 'Voightlander Heliar 15mm f/4.5',
 }
 
 export enum Film {
