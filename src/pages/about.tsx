@@ -59,7 +59,7 @@ const About: NextPage<Props> = ({ recentMusic, nowReading }) => (
           Still editing film scans with Negative Lab Pro, for the long-awaited photography section of this
           site
         </li>
-        <li>Recovering from more COVID</li>
+        <li>Starting the long process of learning Go, so I can diversify my career</li>
       </ul>
       {/* <h3>Elsewhere</h3>
       <ul>
