@@ -3,12 +3,12 @@ import { DocumentHead, Header } from '@/components';
 import styles from './Full.module.scss';
 
 interface Props {
-  title: string;
+  title?: string;
   children: React.ReactNode;
   className?: string;
 }
 
-export const Full = ({ children, className, title }: Props) => (
+export const Full = ({ children, className, title = '' }: Props) => (
   <>
     <DocumentHead title={title} />
     <Header />
