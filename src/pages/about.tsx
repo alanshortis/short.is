@@ -12,14 +12,6 @@ interface Props {
   nowReading: GoodreadsBook[];
 }
 
-// const socials = [
-//   { url: 'https://www.are.na/alan-shortis', name: 'Arena' },
-//   { url: 'https://codepen.io/alanshortis', name: 'Codepen' },
-//   { url: 'https://www.discogs.com/user/alanshortis', name: 'Discogs' },
-//   { url: 'https://www.last.fm/user/a_________s', name: 'Last.fm' },
-//   { url: 'https://www.setlist.fm/user/alanshortis', name: 'Setlist.fm' },
-// ];
-
 export async function getStaticProps(): Promise<GetStaticPropsResult<Props>> {
   return {
     props: {
@@ -53,24 +45,10 @@ const About: NextPage<Props> = ({ recentMusic, nowReading }) => (
         <li>
           <NowReading nowReading={nowReading} />
         </li>
-        <li>Watching Six Feet Under</li>
-        <li>Still absolutely obsessed with exploring the wilderness of Read Dead Redemption II</li>
-        <li>
-          Still editing film scans with Negative Lab Pro, for the long-awaited photography section of this
-          site
-        </li>
+        <li>Watching Atlanta</li>
+        <li>Struggling with colour theory, and trying to squeeze the right tones from film</li>
         <li>Starting the long process of learning Go, so I can diversify my career</li>
       </ul>
-      {/* <h3>Elsewhere</h3>
-      <ul>
-        {socials.map(({ url, name }) => (
-          <li key={url}>
-            <a href={url} target="_blank" rel="noreferrer">
-              {name}
-            </a>
-          </li>
-        ))}
-      </ul> */}
     </article>
   </Page>
 );
