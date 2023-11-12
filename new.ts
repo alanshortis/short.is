@@ -2,6 +2,7 @@ import fsPromises from 'fs/promises';
 import fs from 'fs';
 import path from 'path';
 import { exec } from 'child_process';
+import chalk from 'chalk';
 
 const template = (day: number, date: string) => `---
 day: '${day}'
@@ -16,7 +17,7 @@ const fullPath = `${path.join(__dirname, 'src/data/posts')}/${day}.md`;
 
 const createPost = async (): Promise<void> => {
   if (fs.existsSync(fullPath)) {
-    console.error('\x1b[31m%s\x1b[0m', '⛔️ Did you already write this one?');
+    console.error(chalk.bold('⛔️ Did you already write this one?'));
     process.exit();
   }
 
