@@ -1,8 +1,12 @@
 import 'dotenv/config';
 import fs from 'fs';
-import { PutObjectCommand, S3Client, CreateMultipartUploadCommand } from '@aws-sdk/client-s3';
+import chalk from 'chalk';
+import { HeadObjectCommand, PutObjectCommand, S3Client } from '@aws-sdk/client-s3';
 
+const PHOTO_DIR = './photos';
 const { AWS_KEY, AWS_SECRET, AWS_BUCKET } = process.env;
+
+const fileNames = fs.readdirSync(PHOTO_DIR);
 
 const client = new S3Client({
   credentials: {
@@ -12,25 +16,36 @@ const client = new S3Client({
   region: 'eu-west-2',
 });
 
-const fileName = 'test1.png';
-const fileContent = fs.readFileSync(`./photos/${fileName}`);
+export const put = async (fileName: string) => {
+  const fileContent = fs.readFileSync(`./photos/${fileName}`);
 
-export const upload = async () => {
-  const command = new PutObjectCommand({
+  const bucketParams = {
     Bucket: AWS_BUCKET,
-    // Bucket: 'fsdgsdgd',
     Key: fileName,
+  };
+
+  try {
+    const headCommand = new HeadObjectCommand(bucketParams);
+    const { $metadata } = await client.send(headCommand);
+    if ($metadata.httpStatusCode === 200) {
+      console.log(`🫨  ${chalk.yellow(`${fileName} already uploaded`)}`);
+      return;
+    }
+  } catch (err) {}
+
+  console.log(`🔄 Uploading ${chalk.blue(fileName)}`);
+
+  const putCommand = new PutObjectCommand({
+    ...bucketParams,
     Body: fileContent,
   });
 
-  console.log(`🖼️ ${fileName} uploading...`);
-
   try {
-    await client.send(command);
-    console.log(`✅ ${fileName} done`);
+    await client.send(putCommand);
+    console.log(`✅ ${chalk.bold(`${chalk.green(fileName)} uploaded`)}`);
   } catch (err) {
-    console.error(`😧 Error: ${err}`);
+    console.error(`💔 ${chalk.red(chalk.bold('Error:'))} ${err}`);
   }
 };
 
-upload();
+fileNames.forEach(fileName => put(fileName));
