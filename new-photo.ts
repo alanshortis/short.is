@@ -5,7 +5,6 @@ import { HeadObjectCommand, PutObjectCommand, S3Client } from '@aws-sdk/client-s
 
 const PHOTO_DIR = './photos';
 const { AWS_KEY, AWS_SECRET, AWS_BUCKET } = process.env;
-
 const fileNames = fs.readdirSync(PHOTO_DIR);
 
 const client = new S3Client({
@@ -48,4 +47,6 @@ export const put = async (fileName: string) => {
   }
 };
 
-fileNames.forEach(fileName => put(fileName));
+for (const fileName of fileNames) {
+  put(fileName);
+}
