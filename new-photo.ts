@@ -41,12 +41,14 @@ export const put = async (fileName: string) => {
 
   try {
     await client.send(putCommand);
-    console.log(`✅ ${chalk.bold(`${chalk.green(fileName)} uploaded`)}`);
+    console.log(`✅ ${chalk.bold(`${chalk.green(fileName)} uploaded`)}\n`);
   } catch (err) {
-    console.error(`💔 ${chalk.red(chalk.bold('Error:'))} ${err}`);
+    console.error(`💔 ${chalk.red(chalk.bold('Error:'))} ${err}\n`);
   }
 };
 
-for (const fileName of fileNames) {
-  put(fileName);
-}
+(async () => {
+  for (const fileName of fileNames) {
+    await put(fileName);
+  }
+})();
