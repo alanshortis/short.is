@@ -13,7 +13,7 @@
   flex-direction: column;
   margin: calc(var(--step-5) * 2) auto;
   max-width: 80rem;
-  padding: 0 var(--spacer);
+  padding: 0 calc(var(--spacer) / 2);
   width: 100%;
   opacity: 1;
   transform: translateY(0);
