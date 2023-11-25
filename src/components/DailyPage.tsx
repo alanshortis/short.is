@@ -10,13 +10,13 @@ export const DailyPage = ({ dailies, currentPage, totalPages }: DailyList) => (
     {dailies.map(daily => (
       <Fragment key={daily.day}>
         <div className={styles.title}>
-          <Link href={`/daily/${daily.day}`} title="Open this specific post">
-            <h2>{daily.day}</h2>
-          </Link>
+          <h2>{daily.day}</h2>
         </div>
         <article className={styles.content}>
           <header>
-            <PostDate date={daily.date} />
+            <Link href={`/daily/${daily.day}`} title="Open this specific post">
+              <PostDate date={daily.date} />
+            </Link>
           </header>
           <Markdown>{daily.content}</Markdown>
         </article>
