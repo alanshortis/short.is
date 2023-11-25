@@ -4,6 +4,7 @@
   margin: calc(var(--step-5) * 2) auto;
   padding: 0 calc(var(--spacer) / 2);
   width: 100%;
+  @include slide-in;
   @include medium {
     padding: calc(var(--step-5) * 2) calc(var(--spacer) * 2);
   }

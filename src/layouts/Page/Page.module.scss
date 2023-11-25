@@ -15,15 +15,9 @@
   max-width: 80rem;
   padding: 0 calc(var(--spacer) / 2);
   width: 100%;
-  opacity: 1;
-  transform: translateY(0);
+  @include slide-in;
   @include medium {
     margin: calc(var(--step-5) * 4) auto;
-  }
-  @include should-animate {
-    animation: slide 500ms ease 200ms 1 forwards;
-    opacity: 0;
-    transform: translateY(1rem);
   }
 }
 

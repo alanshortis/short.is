@@ -1,3 +1,4 @@
+import c from 'classnames';
 import { DocumentHead, Footer, Header } from '@/components';
 import styles from './Page.module.scss';
 
@@ -13,7 +14,7 @@ export const Page = ({ title, intro, children, paginationComponent, hideTitle = 
   <>
     <DocumentHead title={title} intro={intro} />
     <Header />
-    <main id="top" className={styles.main}>
+    <main id="top" className={c(styles.main, 'slide')}>
       {!hideTitle && <h1 className="hidden">{title}</h1>}
       <div className={styles.grid}>{children}</div>
       {paginationComponent}
