@@ -8,7 +8,6 @@ interface Photo {
   ratio: Ratio;
   location: string;
   year: number;
-  color: boolean;
 }
 
 export const photos: Photo[] = [
@@ -19,6 +18,5 @@ export const photos: Photo[] = [
     location: 'New York',
     year: 2007,
     ratio: Ratio.SIXSIX,
-    color: false,
   },
 ];

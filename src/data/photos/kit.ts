@@ -8,7 +8,7 @@ export enum Camera {
 
 export enum Lens {
   BRONICA = 'Zenzanon 80mm f/2.8',
-  LEICA_50 = 'Leica Summicron 50mm f/2',
+  LEICA_50 = 'Leica Summicron 50mm f/2 v3',
   VOIGHTLANDER_15 = 'Voightlander Heliar 15mm f/4.5',
 }
 
@@ -18,6 +18,7 @@ export enum Film {
   DELTA_400 = 'Ilford Delta 400',
   EKTAR_100 = 'Kodak Ektar 100',
   PORTRA_400 = 'Kodak Portra 400',
+  TMAX_3200 = 'Kodak T-Max 3200',
 }
 
 export enum Ratio {
