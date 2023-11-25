@@ -3,8 +3,6 @@ import { type DailyPost, getDailyPosts } from '@/data';
 import Head from 'next/head';
 import { Full } from '@/layouts';
 import { Footer } from '@/components';
-import Link from 'next/link';
-import styles from './index.module.scss';
 
 interface Props {
   latestPost: DailyPost;
@@ -23,18 +21,10 @@ const Home: NextPage<Props> = ({ latestPost }) => (
     <Head>
       <link rel="prefetch" href="/daily" />
       <link rel="prefetch" href="/about" />
+      <link rel="prefetch" href="/photography" />
     </Head>
-    <Full className={styles.home}>
-      <h1>
-        <span className={styles.serif}>Alan Shortis</span>
-      </h1>
-      <p>
-        <Link href="/about">About &rarr;</Link> <Link href="/daily">Daily &rarr;</Link>{' '}
-      </p>
-      <p>
-        <span className={styles.serif}>{latestPost.day}</span>{' '}
-        <Link href={`/daily/${latestPost.day}`}>{latestPost.title} &rarr;</Link>
-      </p>
+    <Full>
+      <h1>Alan Shortis</h1>
     </Full>
     <Footer />
   </>
