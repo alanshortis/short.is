@@ -1,32 +1,29 @@
-import type { NextPage } from 'next';
+import type { NextPage, GetStaticProps } from 'next';
 import { Full } from '@/layouts';
 import { Footer } from '@/components';
 import styles from './Photography.module.scss';
+import { type Photo, shuffledPhotos } from '../../data';
 
-const Photography: NextPage = () => (
+interface Props {
+  photos: Photo[];
+}
+
+export const getStaticProps: GetStaticProps<Props> = () => {
+  return {
+    props: {
+      photos: shuffledPhotos,
+    },
+  };
+};
+
+const Photography: NextPage<Props> = ({ photos }) => (
   <>
     <Full title="Photography">
       <article>
         <div className={styles.masonry}>
-          <div style={{ aspectRatio: '3 / 2' }}></div>
-          <div style={{ aspectRatio: '7 / 6' }}></div>
-          <div style={{ aspectRatio: '7 / 6' }}></div>
-          <div style={{ aspectRatio: '6 / 6' }}></div>
-          <div style={{ aspectRatio: '6 / 7' }}></div>
-          <div style={{ aspectRatio: '7 / 6' }}></div>
-          <div style={{ aspectRatio: '2 / 3' }}></div>
-          <div style={{ aspectRatio: '6 / 6' }}></div>
-          <div style={{ aspectRatio: '7 / 6' }}></div>
-          <div style={{ aspectRatio: '3 / 2' }}></div>
-          <div style={{ aspectRatio: '6 / 6' }}></div>
-          <div style={{ aspectRatio: '3 / 2' }}></div>
-          <div style={{ aspectRatio: '7 / 6' }}></div>
-          <div style={{ aspectRatio: '7 / 6' }}></div>
-          <div style={{ aspectRatio: '6 / 6' }}></div>
-          <div style={{ aspectRatio: '6 / 7' }}></div>
-          <div style={{ aspectRatio: '7 / 6' }}></div>
-          <div style={{ aspectRatio: '3 / 2' }}></div>
-          <div style={{ aspectRatio: '6 / 6' }}></div>
+          {photos.map(photo => (
+            <div key={photo.id} style={{ aspectRatio: photo.ratio }}></div>
+          ))}
         </div>
       </article>
     </Full>

@@ -9,3 +9,4 @@ export {
   postCount,
   postDays,
 } from './posts';
+export { type Photo, shuffledPhotos } from './photos';
