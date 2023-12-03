@@ -1,6 +1,6 @@
 export enum Camera {
   BRONICA = 'Bronica EC-TL',
-  FUJI_67 = 'Fuji GW670',
+  FUJI_67 = 'Fuji GW670II',
   HOLGA_SF = 'Holga 120SF',
   HOLGA_TLR = 'Holga 120TLR',
   LEICA_M6 = 'Leica M6',
