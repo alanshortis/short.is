@@ -11,22 +11,26 @@
   --step-4: clamp(2.07rem, calc(1.89rem + 0.78vw), 2.59rem);
   --step-5: clamp(2.49rem, calc(2.27rem + 0.94vw), 3.11rem);
 
-  --dark: hsl(100, 30%, 7%);
-  --light: hsl(100, 30%, 93%);
-  --overlay: hsla(100, 30%, 50%, 7%);
+  --accent: hsl(8, 67%, 20%);
+  --dark: hsl(100, 0%, 7%);
+  --light: hsl(100, 0%, 93%);
   --code-bg: hsla(100, 30%, 50%, 17%);
-  --strike: hsla(100, 30%, 7%, 75%);
-
+  --overlay: transparent;
   --radius: 4px;
   --spacer: var(--step-2);
 
-  --background: var(--light);
-  --foreground: var(--dark);
+  --foreground: var(--light);
+  --background: var(--accent);
+
+  & body.light {
+    --background: var(--light);
+    --overlay: hsla(100, 0%, 50%, 7%);
+  }
 
   & body.dark {
     --background: var(--dark);
     --foreground: var(--light);
-    --strike: hsla(100, 30%, 93%, 75%);
+    --overlay: hsla(100, 0%, 50%, 7%);
   }
 }
 

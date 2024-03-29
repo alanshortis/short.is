@@ -38,9 +38,9 @@
 }
 
 .title {
-  @include type-serif;
   display: inline;
-  font-size: calc(var(--step-5) * 2);
+  font-size: calc(var(--step-3) * 2);
+  font-weight: bold;
   line-height: 1em;
   @include medium {
     grid-column: 1 / 6;

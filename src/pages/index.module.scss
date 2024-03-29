@@ -1,17 +1,10 @@
 @use '~/src/styles/mixins.scss' as *;
 
-.serif {
-  @include type-serif;
-  font-size: 12vw;
-}
-
-.home {
-  line-height: 1em;
-  font-size: 10vw;
-  text-align: justify;
-  h1,
-  p {
-    width: 100%;
-    text-align: left;
-  }
+.orb {
+  aspect-ratio: 1 / 1;
+  background-image: linear-gradient(-225deg, currentColor, var(--background));
+  border-radius: 50%;
+  box-shadow: inset 0 0 15vh 0 hsl(100, 0%, 7%, 50%), 15vw 15vh 3vh -3vh hsl(100, 0%, 7%, 50%);
+  width: 75vw;
+  max-width: 25rem;
 }
