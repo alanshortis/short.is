@@ -19,11 +19,12 @@
   --radius: 4px;
   --spacer: var(--step-2);
 
-  --foreground: var(--dark);
+  --foreground: var(--light);
   --background: var(--accent);
 
   & body.light {
     --background: var(--light);
+    --foreground: var(--dark);
     --overlay: hsla(100, 0%, 50%, 7%);
   }
 
