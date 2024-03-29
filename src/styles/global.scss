@@ -24,6 +24,7 @@
 
   & body.light {
     --background: var(--light);
+    --foreground: var(--dark);
     --overlay: hsla(100, 0%, 50%, 7%);
   }
 
