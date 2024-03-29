@@ -26,8 +26,8 @@ const About: NextPage<Props> = ({ recentMusic, nowReading }) => (
     <h2 className={layoutStyles.title}>Hello</h2>
     <article className={c(layoutStyles.content, contentStyles.markdown)}>
       <p className={contentStyles.large}>
-        I&#39;m Alan Shortis—a front end developer based in <del>London</del> <ins>Nottingham</ins>, currently
-        working for <a href="https://monzo.com/">Monzo</a>.
+        I&#39;m Alan Shortis—a front end developer based in Nottingham, currently working for{' '}
+        <a href="https://monzo.com/">Monzo</a>.
       </p>
       <p>
         I like building scalable, accessible, and performant design systems and websites; the combination of
