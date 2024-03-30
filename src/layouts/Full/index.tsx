@@ -1,17 +1,16 @@
-import c from 'classnames';
 import { DocumentHead, Header } from '@/components';
 import styles from './Full.module.scss';
 
 interface Props {
   children: React.ReactNode;
-  className?: string;
+  title?: string;
 }
 
-export const Full = ({ children, className }: Props) => (
+export const Full = ({ children, title = '' }: Props) => (
   <>
-    <DocumentHead />
+    <DocumentHead title={title} />
     <Header />
-    <main id="top" className={c(styles.main, className)}>
+    <main id="top" className={styles.main}>
       {children}
     </main>
   </>

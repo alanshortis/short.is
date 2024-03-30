@@ -1,0 +1,22 @@
+@use '~/src/styles/mixins.scss' as *;
+
+.masonry {
+  @include slide-in;
+  columns: 4 15rem;
+  column-gap: 2rem;
+  div {
+    background: var(--foreground);
+    color: var(--background);
+    display: inline-block;
+    margin-bottom: 2rem;
+    opacity: 0.25;
+    width: 100%;
+    max-width: 500px;
+    vertical-align: bottom;
+  }
+}
+
+// 375
+// 750
+// 1500
+// 3000

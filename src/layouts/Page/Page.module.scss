@@ -1,13 +1,7 @@
 @use '~/src/styles/mixins.scss' as *;
 
-@keyframes slide {
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 .main {
+  @include slide-in;
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -19,11 +13,6 @@
   transform: translateY(0);
   @include medium {
     margin: calc(var(--step-5) * 4) auto;
-  }
-  @include should-animate {
-    animation: slide 500ms ease 200ms 1 forwards;
-    opacity: 0;
-    transform: translateY(1rem);
   }
 }
 
