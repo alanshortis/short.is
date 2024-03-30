@@ -45,9 +45,9 @@ const About: NextPage<Props> = ({ recentMusic, nowReading }) => (
         <li>
           <NowReading nowReading={nowReading} />
         </li>
-        <li>Watching Atlanta</li>
-        <li>Struggling with colour theory, and trying to squeeze the right tones from film</li>
-        <li>Starting the long process of learning Go, so I can diversify my career</li>
+        <li>Watching The Wire</li>
+        <li>Struggling with colour theory</li>
+        <li>Learning Go</li>
       </ul>
     </article>
   </Page>
