@@ -11,3 +11,4 @@ next-env.d.ts
 public/*.xml
 public/*.js
 photos
+!src/data/photos
