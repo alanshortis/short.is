@@ -1,5 +1,5 @@
 import { DocumentHead, Footer, Header } from '@/components';
-import styles from './Page.module.scss';
+import styles from './PageLayout.module.scss';
 
 interface Props {
   title?: string;
@@ -9,7 +9,7 @@ interface Props {
   hideTitle?: boolean;
 }
 
-export const Page = ({ title, intro, children, paginationComponent, hideTitle = false }: Props) => (
+export const PageLayout = ({ title, intro, children, paginationComponent, hideTitle = false }: Props) => (
   <>
     <DocumentHead title={title} intro={intro} />
     <Header />

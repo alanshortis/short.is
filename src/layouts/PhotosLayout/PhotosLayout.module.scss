@@ -1,7 +1,20 @@
 @use '~/src/styles/mixins.scss' as *;
 
-.masonry {
+.main {
   @include slide-in;
+  @include medium {
+    margin: calc(var(--step-5) * 4) auto;
+  }
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  margin: calc(var(--step-5) * 2) auto;
+  max-width: 80rem;
+  padding: 0 var(--spacer);
+  width: 100%;
+}
+
+.masonry {
   columns: 4 15rem;
   column-gap: 2rem;
   div {
@@ -15,8 +28,3 @@
     vertical-align: bottom;
   }
 }
-
-// 375
-// 750
-// 1500
-// 3000

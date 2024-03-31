@@ -1,12 +1,12 @@
 import { DocumentHead, Header } from '@/components';
-import styles from './Full.module.scss';
+import styles from './HomeLayout.module.scss';
 
 interface Props {
   children: React.ReactNode;
   title?: string;
 }
 
-export const Full = ({ children, title = '' }: Props) => (
+export const HomeLayout = ({ children, title = '' }: Props) => (
   <>
     <DocumentHead title={title} />
     <Header />

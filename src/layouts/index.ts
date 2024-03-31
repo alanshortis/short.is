@@ -1,2 +1,3 @@
-export { Page } from './Page/';
-export { Full } from './Full/';
+export { HomeLayout } from './HomeLayout';
+export { PageLayout } from './PageLayout';
+export { PhotosLayout } from './PhotosLayout';

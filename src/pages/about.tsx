@@ -1,10 +1,10 @@
 import type { NextPage, GetStaticPropsResult } from 'next';
 
 import c from 'classnames';
-import { Page } from '@/layouts';
+import { PageLayout } from '@/layouts';
 import { type LastFmArtist, type GoodreadsBook, getLastfm, getGoodreads } from '@/data';
 import { NowReading, RecentMusic } from '@/components';
-import layoutStyles from '@/layouts/Page/Page.module.scss';
+import layoutStyles from '@/layouts/PageLayout/PageLayout.module.scss';
 import contentStyles from '@/components/Markdown/Markdown.module.scss';
 
 interface Props {
@@ -22,7 +22,7 @@ export async function getStaticProps(): Promise<GetStaticPropsResult<Props>> {
 }
 
 const About: NextPage<Props> = ({ recentMusic, nowReading }) => (
-  <Page title="About">
+  <PageLayout title="About">
     <h2 className={layoutStyles.title}>Hello</h2>
     <article className={c(layoutStyles.content, contentStyles.markdown)}>
       <p className={contentStyles.large}>
@@ -50,7 +50,7 @@ const About: NextPage<Props> = ({ recentMusic, nowReading }) => (
         <li>Learning Go</li>
       </ul>
     </article>
-  </Page>
+  </PageLayout>
 );
 
 export default About;

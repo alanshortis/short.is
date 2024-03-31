@@ -1,7 +1,6 @@
 import type { NextPage, GetStaticProps } from 'next';
-import { Page } from '@/layouts';
+import { PhotosLayout } from '@/layouts';
 import { Footer } from '@/components';
-import styles from './photography.module.scss';
 import { type Photo, shuffledPhotos } from '../../data';
 
 interface Props {
@@ -18,15 +17,11 @@ export const getStaticProps: GetStaticProps<Props> = () => {
 
 const Photography: NextPage<Props> = ({ photos }) => (
   <>
-    <Page title="Photography">
-      <article>
-        <div className={styles.masonry}>
-          {photos.map(photo => (
-            <div key={photo.id} style={{ aspectRatio: photo.ratio }}></div>
-          ))}
-        </div>
-      </article>
-    </Page>
+    <PhotosLayout title="Photography">
+      {photos.map(photo => (
+        <div key={photo.id} style={{ aspectRatio: photo.ratio }}></div>
+      ))}
+    </PhotosLayout>
     <Footer />
   </>
 );

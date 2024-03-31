@@ -1,11 +1,11 @@
 import type { NextPage } from 'next';
 import c from 'classnames';
-import { Page } from '@/layouts';
-import layoutStyles from '@/layouts/Page/Page.module.scss';
+import { PageLayout } from '@/layouts';
+import layoutStyles from '@/layouts/PageLayout/PageLayout.module.scss';
 import contentStyles from '@/components/Markdown/Markdown.module.scss';
 
 const NotFound: NextPage = () => (
-  <Page title="404">
+  <PageLayout title="404">
     <h2 className={layoutStyles.title}>404</h2>
     <article className={c(layoutStyles.content, contentStyles.markdown)}>
       <p className={contentStyles.large}>Whatever you&rsquo;re looking for is not here.</p>
@@ -14,7 +14,7 @@ const NotFound: NextPage = () => (
         hope of seeing something cool. This probably isn&rsquo;t it.
       </p>
     </article>
-  </Page>
+  </PageLayout>
 );
 
 export default NotFound;
