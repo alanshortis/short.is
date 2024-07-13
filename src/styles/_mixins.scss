@@ -9,28 +9,3 @@
     @content;
   }
 }
-
-@mixin active-indicator {
-  &::after {
-    background-color: currentColor;
-    border-radius: 50%;
-    content: '';
-    height: 0.34em;
-    left: calc(50% - 0.17em);
-    position: absolute;
-    top: 2em;
-    width: 0.34em;
-  }
-}
-
-@mixin bar {
-  backdrop-filter: blur(10px);
-  background-color: var(--overlay);
-  display: flex;
-  gap: var(--spacer);
-  justify-content: space-between;
-  padding: var(--spacer);
-  @include medium {
-    border-radius: var(--radius);
-  }
-}
