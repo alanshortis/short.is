@@ -1,35 +1,25 @@
 {
   "name": "short.is",
-  "version": "7.0.0",
+  "version": "8.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "new-photo": "ts-node new-photo.ts"
+    "lint": "next lint"
   },
   "dependencies": {
-    "@types/node": "^18.11.18",
-    "@types/react": "^18.0.27",
-    "@types/react-dom": "^18.0.10",
-    "classnames": "^2.3.2",
-    "dotenv": "^16.3.1",
-    "eslint": "^8.32.0",
-    "eslint-config-next": "^13.1.6",
-    "next": "^13.1.6",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-markdown": "^8.0.5",
-    "rehype-raw": "^7.0.0",
-    "remark-gfm": "^3.0.1",
-    "sass": "^1.58.0",
-    "typescript": "^4.9.4"
+    "next": "14.2.5",
+    "react": "^18",
+    "react-dom": "^18"
   },
   "devDependencies": {
-    "@aws-sdk/client-s3": "^3.449.0"
-  },
-  "peerDependencies": {
-    "ts-node": "^10.9.1"
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.5",
+    "sass": "^1.77.8",
+    "typescript": "^5"
   }
 }
