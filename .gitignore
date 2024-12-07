@@ -1,0 +1,8 @@
+.DS_Store
+.next
+.yarn
+build
+node_modules
+next-env.d.ts
+out
+yarn-error.log
