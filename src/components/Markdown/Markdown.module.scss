@@ -1,0 +1,7 @@
+@use '~/src/styles/mixins' as *;
+
+.markdown {
+  * + :where(p) {
+    margin-top: var(--spacer);
+  }
+}

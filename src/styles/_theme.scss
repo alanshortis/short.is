@@ -1,4 +1,18 @@
 :root {
-  --background: #171717;
+  --step--2: clamp(0.69rem, calc(0.63rem + 0.26vw), 0.87rem);
+  --step--1: clamp(0.83rem, calc(0.76rem + 0.31vw), 1.04rem);
+  --step-0: clamp(1rem, calc(0.91rem + 0.38vw), 1.25rem);
+  --step-1: clamp(1.2rem, calc(1.09rem + 0.45vw), 1.5rem);
+  --step-2: clamp(1.44rem, calc(1.31rem + 0.54vw), 1.8rem);
+  --step-3: clamp(1.73rem, calc(1.58rem + 0.65vw), 2.16rem);
+  --step-4: clamp(2.07rem, calc(1.89rem + 0.78vw), 2.59rem);
+  --step-5: clamp(2.49rem, calc(2.27rem + 0.94vw), 3.11rem);
+
+  --spacer: var(--step-1);
+
+  --font-family: Helvetica, sans-serif;
+  --font-family-mono: 'Nudica', monospace;
+
+  --background: #111;
   --foreground: #ffffff;
 }

@@ -1,7 +1,6 @@
 import { type Metadata } from 'next';
 import { type FC } from 'react';
-import '../styles/globals.scss';
-import { Menu } from '@/components';
+import '@/styles/globals.scss';
 
 export const metadata: Metadata = {
   title: 'Alan Shortis',
@@ -15,11 +14,8 @@ interface Props {
 const RootLayout: FC<Props> = ({ children }) => (
   <html lang="en_GB">
     <body>
-      <header>
-        <Menu />
-      </header>
+      <header>Header</header>
       <main>{children}</main>
-      <footer>Footer</footer>
     </body>
   </html>
 );

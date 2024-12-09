@@ -1,0 +1,10 @@
+---
+title: 'Some other test'
+date: '2024-12-03'
+---
+
+I have just moved back to a town I used to live in after moving away for around 9 months. The end of a relationship comes with a lot of admin, and moving house for the 6th time in 10 years is the least welcome part of the whole ordeal.
+
+Getting a haircut at the same barbers I used to visit, and noticing that the picture of the barber and his girlfriend that he kept on the mirror is now gone (leaving just the polaroids of his biggest carp catches) was a strange parallel. Confirmed by a chat about how expensive rent is these days.
+
+I am well aware.
