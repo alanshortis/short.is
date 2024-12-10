@@ -1,11 +1,6 @@
 @forward './theme';
 @forward './fonts';
-
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
+@forward './reset';
 
 html,
 body {
@@ -26,9 +21,4 @@ body {
 
 main {
   flex: 1;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
 }
