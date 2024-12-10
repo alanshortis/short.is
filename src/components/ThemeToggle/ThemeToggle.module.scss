@@ -3,7 +3,27 @@
 .toggle {
   display: flex;
   gap: var(--spacer);
-  button {
-    @include label;
+  border: 0;
+  legend {
+    @include visually-hidden;
+  }
+  label {
+    cursor: pointer;
+    position: relative;
+  }
+  input {
+    @include visually-hidden;
+    &:checked + label {
+      &::after {
+        background-color: currentColor;
+        border-radius: 50%;
+        content: '';
+        height: 0.3em;
+        left: calc(50% - 0.15em);
+        position: absolute;
+        top: 2em;
+        width: 0.3em;
+      }
+    }
   }
 }

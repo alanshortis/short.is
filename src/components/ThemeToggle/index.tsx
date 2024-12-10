@@ -4,10 +4,8 @@ import { type FC, Fragment } from 'react';
 import { useTheme } from '@/hooks';
 import styles from './ThemeToggle.module.scss';
 
-const schemes = ['light', 'auto', 'dark'];
-
 export const ThemeToggle: FC = () => {
-  const { scheme, setScheme } = useTheme();
+  const { schemes, scheme, setScheme } = useTheme();
 
   return (
     <fieldset className={styles.toggle}>
