@@ -1,0 +1,14 @@
+@use '~/src/styles/mixins' as *;
+
+.splitContainer {
+  @include slide-in;
+  display: flex;
+  flex-direction: column;
+  padding: var(--spacer);
+  @include break {
+    flex-direction: row;
+  }
+  div {
+    flex: 1;
+  }
+}

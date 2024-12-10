@@ -8,11 +8,16 @@
   --step-4: clamp(2.07rem, calc(1.89rem + 0.78vw), 2.59rem);
   --step-5: clamp(2.49rem, calc(2.27rem + 0.94vw), 3.11rem);
 
-  --spacer: var(--step-1);
+  --spacer: var(--step-0);
 
-  --font-family: Helvetica, sans-serif;
+  --font-family: 'Safiro', sans-serif;
   --font-family-mono: 'Nudica', monospace;
 
-  --background: #111;
-  --foreground: #ffffff;
+  --background: #000;
+  --foreground: #fff;
+
+  & body[data-scheme='light'] {
+    --background: #fff;
+    --foreground: #000;
+  }
 }
