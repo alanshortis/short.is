@@ -1,7 +1,59 @@
 @use '~/src/styles/mixins' as *;
 
 .markdown {
-  * + :where(p) {
+  * + :where(p, ol, ul, blockquote, h2, h3) {
     margin-top: var(--spacer);
+  }
+
+  h2,
+  h3 {
+    font-size: var(--step-3);
+    font-weight: bold;
+    padding-top: var(--spacer);
+    margin-bottom: var(--spacer);
+  }
+
+  h3 {
+    font-size: var(--step-2);
+  }
+
+  h2 + h3 {
+    padding-top: 0;
+  }
+
+  em {
+    font-style: italic;
+  }
+
+  strong,
+  b {
+    font-weight: bold;
+  }
+
+  a {
+    text-decoration: underline;
+  }
+
+  ul,
+  ol {
+    padding-left: calc(var(--spacer) * 2);
+  }
+
+  li {
+    list-style: decimal;
+    margin-bottom: calc(var(--step--2) / 2);
+  }
+
+  ul {
+    li {
+      list-style: disc;
+    }
+  }
+
+  blockquote {
+    border-left: 2px solid currentColor;
+    display: block;
+    margin: var(--spacer);
+    padding: var(--spacer);
   }
 }
