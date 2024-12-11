@@ -2,9 +2,9 @@
 
 import { type FC, Fragment } from 'react';
 import { useTheme } from '@/hooks';
-import styles from './ThemeToggle.module.scss';
+import styles from './SchemeToggle.module.scss';
 
-export const ThemeToggle: FC = () => {
+export const SchemeToggle: FC = () => {
   const { schemes, scheme, setScheme } = useTheme();
 
   return (
@@ -15,7 +15,6 @@ export const ThemeToggle: FC = () => {
           <input
             type="radio"
             id={`${thiSscheme}-radio`}
-            value="${scheme}"
             name="scheme"
             checked={thiSscheme === scheme}
             onChange={() => setScheme(thiSscheme)}

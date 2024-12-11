@@ -16,7 +16,7 @@ const RootLayout: FC<Props> = ({ children }) => (
   <html lang="en_GB">
     <body>
       <Header />
-      {children}
+      <main>{children}</main>
       <Footer />
     </body>
   </html>

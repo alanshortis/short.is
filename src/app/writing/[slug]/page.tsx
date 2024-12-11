@@ -12,11 +12,15 @@ const Post: NextPage<Props> = async ({ params }) => {
   const { title, date, content } = getPost(slug);
 
   return (
-    <main className={styles.container}>
-      <h1>{title}</h1>
-      <PostDate date={date} />
-      <Markdown content={content} />
-    </main>
+    <article className={styles.container}>
+      <h1 className={styles.title}>{title}</h1>
+      <div className={styles.meta}>
+        <PostDate date={date} />
+      </div>
+      <div className={styles.content}>
+        <Markdown content={content} />
+      </div>
+    </article>
   );
 };
 

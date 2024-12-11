@@ -1,23 +1,17 @@
 'use client';
 
-import { type FC, useState, useEffect } from 'react';
+import { type FC } from 'react';
+import { useClock } from '@/hooks';
 import styles from './Clock.module.scss';
 
 export const Clock: FC = () => {
-  const [time, setTime] = useState(new Date());
-  const [hour12, setHour12] = useState(false);
+  const { time, is24Hour, setIs24Hour } = useClock();
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setTime(new Date());
-    }, 1000);
-
-    return () => clearInterval(timer);
-  });
+  const formattedTime = time.toLocaleTimeString('en-GB', { hour12: !is24Hour });
 
   return (
-    <button type="button" onClick={() => setHour12(!hour12)}>
-      <time className={styles.clock}>{time.toLocaleTimeString('en-GB', { hour12 })}</time>
+    <button type="button" onClick={() => setIs24Hour(!is24Hour)}>
+      <time className={styles.clock}>{formattedTime}</time>
     </button>
   );
 };

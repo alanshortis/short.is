@@ -2,5 +2,30 @@
 
 .container {
   @include slide-in;
-  padding: var(--spacer);
+  display: grid;
+  gap: calc(var(--spacer) * 2) var(--spacer);
+  grid-auto-rows: min-content;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  width: 100%;
+  max-width: 75rem;
+  padding: 0 var(--spacer);
+}
+
+.title {
+  font-style: italic;
+  grid-column: 1 / -1;
+}
+
+.meta {
+  grid-column: 1 / -1;
+  @include break {
+    grid-column: 1 / 6;
+  }
+}
+
+.content {
+  grid-column: 1 / -1;
+  @include break {
+    grid-column: 6 / -1;
+  }
 }

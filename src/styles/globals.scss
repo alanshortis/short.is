@@ -20,5 +20,17 @@ body {
 }
 
 main {
+  display: flex;
+  justify-content: center;
   flex: 1;
+}
+
+::selection {
+  background: var(--accent);
+}
+
+h1 {
+  font-size: var(--step-5);
+  font-weight: bold;
+  line-height: 1.25;
 }

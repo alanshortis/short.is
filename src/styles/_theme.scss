@@ -1,23 +1,27 @@
 :root {
-  --step--2: clamp(0.69rem, calc(0.63rem + 0.26vw), 0.87rem);
-  --step--1: clamp(0.83rem, calc(0.76rem + 0.31vw), 1.04rem);
-  --step-0: clamp(1rem, calc(0.91rem + 0.38vw), 1.25rem);
-  --step-1: clamp(1.2rem, calc(1.09rem + 0.45vw), 1.5rem);
-  --step-2: clamp(1.44rem, calc(1.31rem + 0.54vw), 1.8rem);
-  --step-3: clamp(1.73rem, calc(1.58rem + 0.65vw), 2.16rem);
-  --step-4: clamp(2.07rem, calc(1.89rem + 0.78vw), 2.59rem);
-  --step-5: clamp(2.49rem, calc(2.27rem + 0.94vw), 3.11rem);
+  --step--2: clamp(0.6944rem, 0.6856rem + 0.0444vw, 0.72rem);
+  --step--1: clamp(0.8333rem, 0.8101rem + 0.1159vw, 0.9rem);
+  --step-0: clamp(1rem, 0.9565rem + 0.2174vw, 1.125rem);
+  --step-1: clamp(1.2rem, 1.1283rem + 0.3587vw, 1.4063rem);
+  --step-2: clamp(1.44rem, 1.3295rem + 0.5527vw, 1.7578rem);
+  --step-3: clamp(1.728rem, 1.5648rem + 0.8161vw, 2.1973rem);
+  --step-4: clamp(2.0736rem, 1.8395rem + 1.1704vw, 2.7466rem);
+  --step-5: clamp(2.4883rem, 2.1597rem + 1.6433vw, 3.4332rem);
 
   --spacer: var(--step-0);
 
   --font-family: 'Safiro', sans-serif;
   --font-family-mono: 'Nudica', monospace;
 
-  --background: #000;
-  --foreground: #fff;
+  --light: hsl(141, 21%, 92%);
+  --dark: hsl(141, 21%, 8%);
+
+  --background: var(--dark);
+  --foreground: var(--light);
+  --accent: hsl(28, 83%, 50%);
 
   & body[data-scheme='light'] {
-    --background: #fff;
-    --foreground: #000;
+    --background: var(--light);
+    --foreground: var(--dark);
   }
 }
