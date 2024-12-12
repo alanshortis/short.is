@@ -20,17 +20,19 @@ body {
 }
 
 main {
-  display: flex;
-  justify-content: center;
   flex: 1;
 }
 
 ::selection {
   background: var(--accent);
+  color: var(--foreground);
 }
 
 h1 {
   font-size: var(--step-5);
   font-weight: bold;
   line-height: 1.25;
+  text-indent: -0.1em;
+  text-wrap: balance;
+  line-height: 1;
 }

@@ -1,7 +1,6 @@
 @use '~/src/styles/mixins' as *;
 
 .container {
-  @include slide-in;
   display: grid;
   gap: calc(var(--spacer) * 2) var(--spacer);
   grid-auto-rows: min-content;
@@ -9,6 +8,7 @@
   width: 100%;
   max-width: 75rem;
   padding: 0 var(--spacer);
+  @include slide-in;
 }
 
 .title {

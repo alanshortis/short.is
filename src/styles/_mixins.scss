@@ -18,6 +18,7 @@
 }
 
 @mixin slide-in {
+  opacity: 1;
   @at-root {
     @keyframes slide {
       100% {
@@ -26,7 +27,6 @@
       }
     }
   }
-  opacity: 1;
   @include should-animate {
     animation: slide 500ms ease 200ms 1 forwards;
     opacity: 0;

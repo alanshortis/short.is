@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 export const useClock = () => {
   const [time, setTime] = useState(new Date());
-  const [is24Hour, setIs24Hour] = useState(true);
+  const [is12Hour, setIs12Hour] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -12,5 +12,5 @@ export const useClock = () => {
     return () => clearInterval(timer);
   });
 
-  return { time, is24Hour, setIs24Hour };
+  return { time, is12Hour, setIs12Hour };
 };

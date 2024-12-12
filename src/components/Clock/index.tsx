@@ -5,13 +5,11 @@ import { useClock } from '@/hooks';
 import styles from './Clock.module.scss';
 
 export const Clock: FC = () => {
-  const { time, is24Hour, setIs24Hour } = useClock();
-
-  const formattedTime = time.toLocaleTimeString('en-GB', { hour12: !is24Hour });
+  const { time, is12Hour, setIs12Hour } = useClock();
 
   return (
-    <button type="button" onClick={() => setIs24Hour(!is24Hour)}>
-      <time className={styles.clock}>{formattedTime}</time>
+    <button type="button" onClick={() => setIs12Hour(!is12Hour)}>
+      <time className={styles.clock}>{time.toLocaleTimeString('en-GB', { hour12: is12Hour })}</time>
     </button>
   );
 };

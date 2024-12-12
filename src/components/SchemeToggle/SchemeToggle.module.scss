@@ -14,7 +14,7 @@
   input {
     @include visually-hidden;
     &:checked + label::after {
-      background-color: currentColor;
+      background-color: var(--accent);
       border-radius: 50%;
       content: '';
       height: 0.3em;
