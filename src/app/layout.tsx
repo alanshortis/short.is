@@ -15,11 +15,9 @@ interface Props {
 const RootLayout: FC<Props> = ({ children }) => (
   <html lang="en_GB">
     <body>
-      <div className="inner">
-        <Header />
-        <main>{children}</main>
-        <Footer />
-      </div>
+      <Header />
+      <main>{children}</main>
+      <Footer />
     </body>
   </html>
 );
