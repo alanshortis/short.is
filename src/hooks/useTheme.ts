@@ -1,9 +1,7 @@
 import { useState, useEffect } from 'react';
 
-const schemes = ['light', 'auto', 'dark'];
-const MEDIA_QUERY = window.matchMedia('(prefers-color-scheme: dark)');
-
 export const useTheme = () => {
+  const schemes = ['light', 'auto', 'dark'];
   const [schemeState, setSchemeState] = useState<(typeof schemes)[number]>(
     window.localStorage.getItem('scheme') || 'auto'
   );
@@ -15,14 +13,14 @@ export const useTheme = () => {
   useEffect(() => {
     setSchemeDataset(schemeState);
 
-    MEDIA_QUERY.addEventListener('change', event => {
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
       if (schemeState === 'auto') {
         setSchemeDataset(event.matches ? 'dark' : 'light');
       }
     });
 
     return () => {
-      MEDIA_QUERY.removeEventListener('change', () => {});
+      window.matchMedia('(prefers-color-scheme: dark)').removeEventListener('change', () => {});
     };
   }, [schemeState]);
 

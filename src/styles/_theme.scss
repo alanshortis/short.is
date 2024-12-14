@@ -19,15 +19,14 @@
   --dark: hsl(0, 0%, 2%);
 
   --background: var(--dark);
-  --secondary-background: hsl(0, 0%, 15%);
+  --secondary-background: hsla(0, 0%, 90%, 0.125);
   --foreground: var(--light);
   --accent: hsl(18.6, 100%, 50%);
-  --divider: hsl(0, 0%, 15%);
+  --divider: hsla(18.6, 100%, 50%, 0.125);
 
   & body[data-scheme='light'] {
     --background: var(--light);
-    --secondary-background: hsl(0, 0%, 85%);
+    --secondary-background: hsla(0, 0%, 2%, 0.05);
     --foreground: var(--dark);
-    --divider: hsl(0, 0%, 85%);
   }
 }

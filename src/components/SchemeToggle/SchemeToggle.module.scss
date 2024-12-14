@@ -1,9 +1,10 @@
 @use '~/src/styles/mixins' as *;
 
 .toggle {
+  border: 0;
   display: flex;
   gap: var(--spacer);
-  border: 0;
+  margin-right: -2px;
   legend {
     @include visually-hidden;
   }

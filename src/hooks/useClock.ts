@@ -2,7 +2,9 @@ import { useState, useEffect } from 'react';
 
 export const useClock = () => {
   const [time, setTime] = useState(new Date());
-  const [is12Hour, setIs12Hour] = useState(false);
+  const [is12HourState, setIs12HourState] = useState<boolean>(
+    window.localStorage.getItem('clockMode') === '12hour'
+  );
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -12,5 +14,14 @@ export const useClock = () => {
     return () => clearInterval(timer);
   });
 
-  return { time, is12Hour, setIs12Hour };
+  const setIs12Hour = () => {
+    setIs12HourState(!is12HourState);
+    window.localStorage.setItem('clockMode', is12HourState ? '24hour' : '12hour');
+  };
+
+  return {
+    time,
+    is12Hour: is12HourState,
+    setIs12Hour,
+  };
 };

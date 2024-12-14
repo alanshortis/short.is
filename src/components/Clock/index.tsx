@@ -8,8 +8,8 @@ export const Clock: FC = () => {
   const { time, is12Hour, setIs12Hour } = useClock();
 
   return (
-    <button type="button" onClick={() => setIs12Hour(!is12Hour)}>
-      <time className={styles.clock}>{time.toLocaleTimeString('en-GB', { hour12: is12Hour })}</time>
+    <button type="button" className={styles.clock} onClick={() => setIs12Hour()}>
+      <time>{time.toLocaleTimeString('en-GB', { hour12: is12Hour })}</time>
     </button>
   );
 };

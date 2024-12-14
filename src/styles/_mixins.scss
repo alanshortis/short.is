@@ -10,6 +10,12 @@
   }
 }
 
+@mixin narrow {
+  @media (min-width: 400px) {
+    @content;
+  }
+}
+
 @mixin label {
   font-feature-settings: 'tnum';
   font-size: var(--step--1);

@@ -45,7 +45,7 @@
 
   ul,
   ol {
-    padding-left: calc(var(--spacer) * 2);
+    padding-left: var(--spacer);
   }
 
   li {

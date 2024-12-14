@@ -2,4 +2,6 @@
 
 .date {
   @include label;
+  display: block;
+  text-indent: -1px;
 }

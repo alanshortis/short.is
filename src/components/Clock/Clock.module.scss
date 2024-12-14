@@ -3,4 +3,5 @@
 .clock {
   @include label;
   color: var(--foreground);
+  margin-right: -3px;
 }
