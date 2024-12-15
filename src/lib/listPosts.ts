@@ -6,7 +6,6 @@ interface Post {
   title: string;
   date: string;
   slug: string;
-  content: string;
 }
 
 const FOLDER = 'src/posts';
@@ -16,15 +15,15 @@ export const listPosts = (): Array<Post> => {
     .readdirSync(FOLDER)
     .map(filename => {
       const file = path.join(process.cwd(), FOLDER, filename);
-      const { data, content } = matter(fs.readFileSync(file));
+      const { data } = matter(fs.readFileSync(file));
       return {
         title: data.title,
         date: data.date,
         slug: filename.replace(/\.md$/, ''),
-        content,
       };
     })
-    .sort((a, b) => b.date.localeCompare(a.date));
+    .sort((a, b) => b.date.localeCompare(a.date))
+    .filter(post => new Date(post.date) <= new Date());
 
   return posts;
 };
