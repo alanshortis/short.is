@@ -1,11 +1,13 @@
-@use '~/src/styles/mixins' as *;
-
 .footer {
-  @include label;
   align-items: center;
   display: flex;
   flex-wrap: wrap;
   gap: var(--spacer);
   justify-content: space-between;
   padding: var(--spacer) 0;
+  p {
+    font-weight: bold;
+    font-style: italic;
+    margin: 0;
+  }
 }

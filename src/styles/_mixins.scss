@@ -19,7 +19,7 @@
 @mixin label {
   font-feature-settings: 'tnum';
   font-size: var(--step--1);
-  letter-spacing: 2px;
+  letter-spacing: 3px;
   text-transform: uppercase;
 }
 
@@ -37,6 +37,29 @@
     animation: slide 500ms ease 200ms 1 forwards;
     opacity: 0;
     transform: translateY(1rem);
+  }
+}
+
+@mixin active-indicator {
+  aspect-ratio: 1;
+  background-color: var(--accent);
+  border-radius: 50%;
+  content: '';
+  height: 0.33em;
+  left: calc(50% - 0.175em);
+  opacity: 1;
+  position: absolute;
+  top: 1.66em;
+  @at-root {
+    @keyframes fade {
+      100% {
+        opacity: 1;
+      }
+    }
+  }
+  @include should-animate {
+    animation: fade ease 500ms 1 forwards;
+    opacity: 0;
   }
 }
 

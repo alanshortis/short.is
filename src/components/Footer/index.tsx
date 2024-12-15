@@ -4,7 +4,7 @@ import { SchemeToggle } from '@/components';
 
 export const Footer: FC = () => (
   <footer className={styles.footer}>
-    Alan Shortis
+    <p>Alan Shortis</p>
     <SchemeToggle />
   </footer>
 );
