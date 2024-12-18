@@ -1,11 +1,12 @@
 @use '~/src/styles/mixins' as *;
 
 .container {
+  border: 1px solid var(--divider);
+  border-width: 1px 0;
   display: grid;
   gap: calc(var(--spacer) * 2) var(--spacer);
   grid-auto-rows: min-content;
   grid-template-columns: repeat(12, minmax(0, 1fr));
-  padding: calc(var(--spacer) * 2) 0;
   @include slide-in;
 }
 

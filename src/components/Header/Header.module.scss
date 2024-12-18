@@ -2,6 +2,7 @@
 
 .header {
   align-items: center;
+  border-bottom: 1px solid var(--divider);
   display: flex;
   justify-content: space-between;
   padding: var(--spacer) 0;
