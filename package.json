@@ -10,6 +10,7 @@
     "new": "tsx new.ts"
   },
   "dependencies": {
+    "classnames": "^2.5.1",
     "gray-matter": "^4.0.3",
     "next": "15.0.4",
     "react": "^19.0.0",
