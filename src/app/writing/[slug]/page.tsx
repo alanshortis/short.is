@@ -31,6 +31,11 @@ const Post: NextPage<Props> = async ({ params }) => {
         <div className={styles.content}>
           <Markdown content={content} />
         </div>
+        <div className={styles.grid}>
+          {Array.from(Array(12)).map((_, idx) => (
+            <span key={idx} />
+          ))}
+        </div>
       </article>
     </main>
   );
