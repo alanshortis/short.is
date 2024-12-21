@@ -1,20 +1,25 @@
-import { useState, useEffect, useLayoutEffect } from 'react';
+import { useEffect, useLayoutEffect, useMemo, useState } from 'react';
 
 export const useTheme = () => {
-  const schemes = ['light', 'auto', 'dark'];
-  const [schemeState, setSchemeState] = useState<(typeof schemes)[number]>('auto');
+  const schemes = ['light', 'auto', 'dark'] as const;
+  type Schemes = (typeof schemes)[number];
+  const [schemeState, setSchemeState] = useState<Schemes>('auto');
+  const click = useMemo(() => new Audio('/click.mp3'), []);
 
   const setSchemeDataset = (scheme: string) => {
     document.body.dataset.scheme = scheme;
   };
 
-  const handlesetScheme = (scheme: string) => {
+  const handlesetScheme = (scheme: Schemes) => {
     setSchemeState(scheme);
+    click.play();
     window.localStorage.setItem('scheme', scheme);
   };
 
   useLayoutEffect(() => {
-    setSchemeState(window.localStorage.getItem('scheme') || 'auto');
+    // I'm not smart enough to fix this properly
+    const savedScheme = window.localStorage.getItem('scheme') as Schemes;
+    setSchemeState(savedScheme || 'auto');
   }, []);
 
   useEffect(() => {
