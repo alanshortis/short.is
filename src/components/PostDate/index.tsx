@@ -7,6 +7,6 @@ interface Props {
 
 export const PostDate: FC<Props> = ({ date }) => (
   <time dateTime={date} className={styles.date}>
-    {date.replaceAll('-', ':')}
+    {new Date(date).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}
   </time>
 );

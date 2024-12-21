@@ -3,7 +3,7 @@
 .splitContainer {
   display: flex;
   flex-direction: column;
-  padding: var(--spacer);
+  padding: var(--step-1);
   @include slide-in;
   @include break {
     flex-direction: row;

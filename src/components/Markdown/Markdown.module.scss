@@ -2,15 +2,15 @@
 
 .markdown {
   * + :where(p, ol, ul, blockquote, h2, h3) {
-    margin-top: var(--spacer);
+    margin-top: var(--step-1);
   }
 
   h2,
   h3 {
     font-size: var(--step-3);
     font-weight: bold;
-    padding-top: var(--spacer);
-    margin-bottom: var(--spacer);
+    padding-top: var(--step-1);
+    margin-bottom: var(--step-1);
   }
 
   h3 {
@@ -46,7 +46,7 @@
 
   ul,
   ol {
-    padding-left: var(--spacer);
+    padding-left: var(--step-1);
   }
 
   li {
@@ -63,7 +63,7 @@
   blockquote {
     border-left: 2px solid currentColor;
     display: block;
-    margin: var(--spacer);
-    padding: var(--spacer);
+    margin: var(--step-1);
+    padding: var(--step-1);
   }
 }

@@ -2,6 +2,7 @@ import '@/styles/globals.scss';
 import { type Metadata } from 'next';
 import { type FC } from 'react';
 import { Header, Footer } from '@/components';
+import styles from './page.module.scss';
 
 export const metadata: Metadata = {
   title: 'Alan Shortis',
@@ -14,7 +15,7 @@ interface Props {
 
 const RootLayout: FC<Props> = ({ children }) => (
   <html lang="en_GB">
-    <body className="home">
+    <body>
       <Header />
       {children}
       <Footer />

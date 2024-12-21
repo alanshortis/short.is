@@ -22,22 +22,17 @@ const Post: NextPage<Props> = async ({ params }) => {
   const { title, date, content } = getPost(slug);
 
   return (
-    <main>
-      <article className={styles.container}>
-        <h1 className={styles.title}>{title}</h1>
-        <div className={styles.meta}>
-          <PostDate date={date} />
-        </div>
-        <div className={styles.content}>
-          <Markdown content={content} />
-        </div>
-        <div className={styles.grid}>
-          {Array.from(Array(12)).map((_, idx) => (
-            <span key={idx} />
-          ))}
-        </div>
-      </article>
-    </main>
+    <article className={styles.container}>
+      <header className={styles.title}>
+        <h1>{title}</h1>
+      </header>
+      <aside className={styles.meta}>
+        <PostDate date={date} />
+      </aside>
+      <div className={styles.content}>
+        <Markdown content={content} />
+      </div>
+    </article>
   );
 };
 
