@@ -2,7 +2,6 @@ import '@/styles/globals.scss';
 import { type Metadata } from 'next';
 import { type FC } from 'react';
 import { Header, Footer } from '@/components';
-import styles from './page.module.scss';
 
 export const metadata: Metadata = {
   title: 'Alan Shortis',
