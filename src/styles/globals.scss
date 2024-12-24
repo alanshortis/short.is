@@ -39,7 +39,3 @@ body {
   background: var(--accent);
   color: var(--light);
 }
-
-:is(a, button):focus-visible {
-  @include focus-outline;
-}
