@@ -1,11 +1,11 @@
 'use client';
 
 import { type FC, Fragment } from 'react';
-import { useTheme } from '@/hooks';
+import { useScheme } from '@/hooks';
 import styles from './SchemeToggle.module.scss';
 
 export const SchemeToggle: FC = () => {
-  const { schemes, scheme, setScheme } = useTheme();
+  const { schemes, scheme, setScheme } = useScheme();
 
   return (
     <fieldset className={styles.toggle}>

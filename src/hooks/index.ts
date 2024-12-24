@@ -1,2 +1,2 @@
 export { useClock } from './useClock';
-export { useTheme } from './useTheme';
+export { useScheme } from './useScheme';

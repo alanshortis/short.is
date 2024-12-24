@@ -1,6 +1,6 @@
 import { useEffect, useLayoutEffect, useMemo, useState } from 'react';
 
-export const useTheme = () => {
+export const useScheme = () => {
   const schemes = ['light', 'auto', 'dark'] as const;
   type Schemes = (typeof schemes)[number];
   const [schemeState, setSchemeState] = useState<Schemes>('auto');
