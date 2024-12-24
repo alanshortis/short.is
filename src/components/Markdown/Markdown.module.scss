@@ -36,7 +36,7 @@
   }
 
   code {
-    background-color: var(--secondary-background);
+    background-color: var(--code-background);
     border-radius: 0.25em;
     color: var(--accent);
     font-size: var(--step--1);
@@ -63,7 +63,8 @@
   blockquote {
     border-left: 2px solid currentColor;
     display: block;
-    margin: var(--step-1);
+    font-style: italic;
+    margin: 0 var(--step-1);
     padding: var(--step-1);
   }
 }

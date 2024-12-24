@@ -17,5 +17,8 @@
     &:checked + label::after {
       @include active-indicator;
     }
+    &:focus-visible + label {
+      @include focus-outline;
+    }
   }
 }

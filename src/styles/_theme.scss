@@ -16,14 +16,16 @@
   --dark: hsl(0, 0%, 5%);
 
   --background: var(--dark);
-  --secondary-background: hsla(0, 0%, 90%, 0.125);
+  --secondary-background: hsl(29, 57%, 10%);
+  --code-background: hsla(29, 57%, 46%, 0.125);
   --foreground: var(--light);
-  --accent: hsl(18.6, 100%, 50%);
-  --divider: hsla(18.6, 100%, 50%, 0.05);
+  --accent: hsl(29, 57%, 46%);
+  --divider: hsla(29, 57%, 46%, 0.125);
 
   & body[data-scheme='light'] {
     --background: var(--light);
-    --secondary-background: hsla(0, 0%, 2%, 0.05);
+    --secondary-background: hsl(29, 57%, 80%);
+    --code-background: hsla(29, 57%, 46%, 0.125);
     --foreground: var(--dark);
   }
 }

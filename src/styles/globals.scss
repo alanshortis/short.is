@@ -31,11 +31,15 @@ body {
     margin: 0 var(--step-5);
   }
   &:has(main.home) {
-    background-color: var(--accent);
+    background-color: var(--secondary-background);
   }
 }
 
 ::selection {
   background: var(--accent);
   color: var(--light);
+}
+
+:is(a, button):focus-visible {
+  @include focus-outline;
 }
