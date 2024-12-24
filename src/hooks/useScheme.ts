@@ -1,10 +1,10 @@
-import { useEffect, useLayoutEffect, useMemo, useState } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 
 export const useScheme = () => {
   const schemes = ['light', 'auto', 'dark'] as const;
   type Schemes = (typeof schemes)[number];
   const [schemeState, setSchemeState] = useState<Schemes>('auto');
-  const click = useMemo(() => new Audio('/click.mp3'), []);
+  const [click, setClick] = useState<HTMLAudioElement | null>(null);
 
   const setSchemeDataset = (scheme: string) => {
     document.body.dataset.scheme = scheme;
@@ -12,7 +12,7 @@ export const useScheme = () => {
 
   const handlesetScheme = (scheme: Schemes) => {
     setSchemeState(scheme);
-    click.play();
+    click?.play();
     window.localStorage.setItem('scheme', scheme);
   };
 
@@ -23,6 +23,7 @@ export const useScheme = () => {
   }, []);
 
   useEffect(() => {
+    setClick(new Audio('/click.mp3'));
     setSchemeDataset(schemeState);
 
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
