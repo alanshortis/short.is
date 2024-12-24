@@ -1,14 +1,7 @@
 @use '~/src/styles/mixins' as *;
 
-.splitContainer {
-  display: flex;
-  flex-direction: column;
-  padding: var(--step-1);
+.container {
+  display: grid;
+  grid-template-columns: subgrid;
   @include slide-in;
-  @include break {
-    flex-direction: row;
-  }
-  div {
-    flex: 1;
-  }
 }

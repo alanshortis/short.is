@@ -16,3 +16,5 @@ I once worked with someone who believed that anyone writing code for public cons
 Many Canadian-trained engineers wear an [Iron Ring](https://en.wikipedia.org/wiki/Iron_Ring) as a reminder of their obligations and the ethics of their profession. Wearing a reminder and the ceremony that goes with it surely changes the way they think about how to solve the engineering problems they face while avoiding harm.
 
 Obviously there are levels; a bridge failing offers much more risk to people than a website not working, but when websites manage healthcare, banking, benefits, and other essential services are not built to a standard, we need to think about what we're doing.
+
+_Update, December 2024:_ W3C have published [Ethical Web Principles](https://www.w3.org/TR/ethical-web-principles/), which is worth reading.

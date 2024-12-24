@@ -61,7 +61,8 @@
   }
 
   blockquote {
-    border-left: 2px solid currentColor;
+    background-color: var(--secondary-background);
+    border-left: 2px solid var(--accent);
     display: block;
     font-style: italic;
     margin: 0 var(--step-1);

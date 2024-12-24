@@ -58,7 +58,7 @@
     }
   }
   @include should-animate {
-    animation: fade ease 500ms 1 forwards;
+    animation: fade ease 200ms 1 forwards;
     opacity: 0;
   }
 }
