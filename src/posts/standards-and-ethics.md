@@ -6,8 +6,8 @@ date: '2023-10-23'
 Three times today alone, a choice by engineers to roll-their-own solution to a problem that has established standards made something simple MUCH harder than it should have been:
 
 - Royal Mail making a form entirely JavaScript powered and not using standard form elements led to it being almost totally unresponsive with validation errors blocking submission but nothing in the UI to give any feedback at all
-- Ticketmaster building a weird custom `select` element that didn't work with the keyboard, and every `option` within having a scroll event that prevented seeing more options with the wheel or trackpad
-- NowTV on Apple TV not using the standard search or login dialogs, making normal features like searching by voice or the keyboard on your phone impossible. This leaves the virtual keyboard on screen as the only option, which is not only much harder to use but also encourages weaker passwords
+- Ticketmaster building a weird custom `select` element that didn't work with the keyboard, and every `option` within having a scroll event that prevented seeing more options with the wheel or trackpad. Though in the case of Ticketmaster, this is the least of their ethical missteps
+- NowTV on Apple TV not using the standard search or login dialogs, making normal features like searching by voice or the keyboard on your phone unavailable. This leaves the virtual keyboard on screen as the only option, which is not only much harder to use but also encourages weaker passwords
 
 Every one of these is more work for a worse experience for users AND the engineers who built them. Failure from conception to delivery, from product owners, designers, engineers, and testers. How have we managed to lose sight of the truth that the simplest solution is usually the best?
 
@@ -17,4 +17,4 @@ Many Canadian-trained engineers wear an [Iron Ring](https://en.wikipedia.org/wik
 
 Obviously there are levels; a bridge failing offers much more risk to people than a website not working, but when websites manage healthcare, banking, benefits, and other essential services are not built to a standard, we need to think about what we're doing.
 
-_Update, December 2024:_ W3C have published [Ethical Web Principles](https://www.w3.org/TR/ethical-web-principles/), which is worth reading.
+> Since writing this, W3C have published [Ethical Web Principles](https://www.w3.org/TR/ethical-web-principles/), which is worth reading.
