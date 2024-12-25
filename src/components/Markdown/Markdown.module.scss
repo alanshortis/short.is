@@ -40,8 +40,8 @@
     border-radius: 0.25em;
     color: var(--accent);
     font-size: var(--step--1);
-    margin: 0 0.125em;
-    padding: 0.125em 0.5em;
+    margin: 0 calc(var(--step--2) / 2);
+    padding: calc(var(--step--2) / 2);
   }
 
   ul,
@@ -61,11 +61,12 @@
   }
 
   blockquote {
-    background-color: var(--secondary-background);
+    background-color: var(--code-background);
     border-left: 2px solid var(--accent);
     display: block;
     font-style: italic;
-    margin: 0 var(--step-1);
+    margin-left: var(--step-1);
+    margin-right: var(--step-1);
     padding: var(--step-1);
   }
 }

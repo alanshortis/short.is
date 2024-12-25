@@ -12,11 +12,10 @@
 
   --font-family: 'Safiro', 'Helvetica Neue', Helvetica, sans-serif;
 
-  --light: hsl(0, 0%, 90%);
-  --dark: hsl(0, 0%, 5%);
+  --light: hsl(0, 0%, 95%);
+  --dark: hsl(0, 0%, 2.5%);
 
   --background: var(--dark);
-  --secondary-background: hsl(29, 57%, 10%);
   --code-background: hsla(29, 57%, 46%, 0.125);
   --foreground: var(--light);
   --accent: hsl(29, 57%, 46%);
@@ -24,7 +23,6 @@
 
   & body[data-scheme='light'] {
     --background: var(--light);
-    --secondary-background: hsl(29, 57%, 80%);
     --code-background: hsla(29, 57%, 46%, 0.125);
     --foreground: var(--dark);
   }

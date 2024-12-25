@@ -29,9 +29,6 @@ body {
   @include narrow {
     margin: 0 var(--step-5);
   }
-  &:has(main.home) {
-    background-color: var(--secondary-background);
-  }
 }
 
 ::selection {
