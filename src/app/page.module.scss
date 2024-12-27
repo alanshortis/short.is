@@ -2,6 +2,71 @@
 
 .container {
   display: grid;
+  row-gap: var(--step-5);
+  grid-column: 1 / -1;
   grid-template-columns: subgrid;
+  grid-auto-rows: min-content;
   @include slide-in;
+}
+
+.intro {
+  grid-column: 1 / -1;
+  h1 {
+    font-size: var(--step-5);
+    font-style: italic;
+  }
+  del {
+    opacity: 0.9;
+    font-style: strike-through;
+    text-decoration-thickness: 2px;
+  }
+  ins {
+    text-decoration: none;
+  }
+}
+
+.postList {
+  grid-column: 1 / -1;
+  @include break {
+    grid-column: 7 / -1;
+  }
+  h2 {
+    @include visually-hidden;
+  }
+  ol {
+    display: flex;
+    flex-direction: column;
+    gap: var(--step-2);
+  }
+}
+
+.post {
+  background-color: var(--background);
+  border: 1px solid currentColor;
+  display: block;
+  margin-bottom: var(--step-0);
+  position: relative;
+  time {
+    border-top: 1px solid currentColor;
+    padding: var(--step--2);
+  }
+  h3 {
+    padding: var(--step--2);
+  }
+  @include hatching;
+}
+
+.A {
+  grid-column: 1 / -1;
+  background: url('/0255.jpg') no-repeat center center, var(--accent);
+  background-blend-mode: multiply;
+  background-clip: text;
+  background-color: var(--accent);
+  background-size: contain;
+  color: transparent;
+  font-size: 60vw;
+  font-size: clamp(10rem, 80vw, 50rem);
+  font-weight: bold;
+  line-height: 1em;
+  text-align: center;
 }
