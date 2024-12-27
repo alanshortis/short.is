@@ -1,0 +1,7 @@
+@use '~/src/styles/mixins' as *;
+
+.date {
+  @include label;
+  display: block;
+  text-indent: -1px;
+}

@@ -1,0 +1,19 @@
+@use '~/src/styles/mixins' as *;
+
+.post {
+  background-color: var(--background);
+  border: 1px solid currentColor;
+  display: block;
+  margin-bottom: var(--step-0);
+  position: relative;
+  transition: transform 200ms ease;
+  time {
+    border-top: 1px solid currentColor;
+    padding: var(--step--2);
+  }
+  h3 {
+    padding: var(--step--2);
+    text-wrap: balance;
+  }
+  @include hatching;
+}

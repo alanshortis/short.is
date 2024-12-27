@@ -1,0 +1,14 @@
+---
+title: 'Grace Hopper and doing the right thing'
+date: '2022-11-12'
+---
+
+> It's easier to ask forgiveness than it is to get permission
+
+A phrase attributed to [Grace Hopper](https://en.wikipedia.org/wiki/Grace_Hopper), whose work should make her as well known as Alan Turing.
+
+The quote is constantly misused with the central point being lost in order to justify doing what is right for yourself and not for a wider team. When Grace Hopper said this, it was in reference to working in a large hierarchical organisation where doing something new _with_ permission would require approval at many levels and never go anywhere. By not asking permission and working in the best interests of the organisation you can avoid the red tape that would make it impossible. Asking forgiveness for something that has a demonstrable net positive impact.
+
+This is not the same as breaking established norms within a team to make your life or the life of your immediate co-workers easier in the short term. It's not a get-out-of-jail-free card that you can throw down after selfishly taking a short cut.
+
+Ten Bullets by Tom Sachs is not just a [short film](https://youtu.be/49p1JVLHUos), but a perfect small [zine](https://store.tomsachs.com/products/ten-bullets-zine) that is a pocket handbook for his studio assistants. The first words upon opening it are 'Creativity is the Enemy'. Even in art, a team should work in the same direction to meet the end goal. There is a time and place for carving your own path.

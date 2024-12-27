@@ -1,35 +1,36 @@
 {
   "name": "short.is",
-  "version": "7.0.0",
+  "version": "8.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "new-photo": "ts-node new-photo.ts"
+    "new": "tsx new.ts"
   },
   "dependencies": {
-    "@types/node": "^18.11.18",
-    "@types/react": "^18.0.27",
-    "@types/react-dom": "^18.0.10",
-    "classnames": "^2.3.2",
-    "dotenv": "^16.3.1",
-    "eslint": "^8.32.0",
-    "eslint-config-next": "^13.1.6",
-    "next": "^13.1.6",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-markdown": "^8.0.5",
-    "rehype-raw": "^7.0.0",
-    "remark-gfm": "^3.0.1",
-    "sass": "^1.58.0",
-    "typescript": "^4.9.4"
+    "classnames": "^2.5.1",
+    "gray-matter": "^4.0.3",
+    "next": "15.0.4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-markdown": "^9.0.1",
+    "sass": "^1.82.0"
   },
   "devDependencies": {
-    "@aws-sdk/client-s3": "^3.449.0"
+    "@types/jest": "^29.5.14",
+    "@types/node": "^20",
+    "@types/prompts": "^2.4.9",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "chalk": "^5.3.0",
+    "eslint": "^8",
+    "eslint-config-next": "15.0.4",
+    "prompts": "^2.4.2",
+    "typescript": "^5"
   },
   "peerDependencies": {
-    "ts-node": "^10.9.1"
+    "tsx": "^4.19.2"
   }
 }

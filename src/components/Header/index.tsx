@@ -1,11 +1,14 @@
-import { Logo } from '@/components';
+import { type FC } from 'react';
+import Link from 'next/link';
+import { Clock, Logo } from '@/components';
 import styles from './Header.module.scss';
 
-export const Header = () => (
+export const Header: FC = () => (
   <header className={styles.header}>
-    <div>
-      <span className="hidden">Alan Shortis</span>
+    <span className={styles.hidden}>Alan Shortis</span>
+    <Link href="/">
       <Logo />
-    </div>
+    </Link>
+    <Clock />
   </header>
 );
