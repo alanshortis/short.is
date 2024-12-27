@@ -52,21 +52,7 @@
   }
   h3 {
     padding: var(--step--2);
+    text-wrap: balance;
   }
   @include hatching;
-}
-
-.A {
-  grid-column: 1 / -1;
-  background: url('/0255.jpg') no-repeat center center, var(--accent);
-  background-blend-mode: multiply;
-  background-clip: text;
-  background-color: var(--accent);
-  background-size: contain;
-  color: transparent;
-  font-size: 60vw;
-  font-size: clamp(10rem, 80vw, 50rem);
-  font-weight: bold;
-  line-height: 1em;
-  text-align: center;
 }

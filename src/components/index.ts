@@ -1,3 +1,4 @@
+export { A } from './A';
 export { Clock } from './Clock';
 export { Footer } from './Footer';
 export { Header } from './Header';

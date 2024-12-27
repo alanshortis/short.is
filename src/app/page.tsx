@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import Link from 'next/link';
 import { listPosts } from '@/lib';
-import { PostDate } from '@/components';
+import { A, PostDate } from '@/components';
 import styles from './page.module.scss';
 
 const Home: NextPage = () => {
@@ -9,9 +9,7 @@ const Home: NextPage = () => {
 
   return (
     <main className={styles.container}>
-      <div className={styles.A} aria-hidden>
-        A
-      </div>
+      <A />
       <div className={styles.intro}>
         <h1>Alan Shortis</h1>
         <p>
