@@ -1,7 +1,6 @@
 import type { NextPage } from 'next';
-import Link from 'next/link';
 import { listPosts } from '@/lib';
-import { A, PostDate } from '@/components';
+import { A, PostBox } from '@/components';
 import styles from './page.module.scss';
 
 const Home: NextPage = () => {
@@ -22,10 +21,7 @@ const Home: NextPage = () => {
           {posts.map(post => (
             <article key={post.title}>
               <li>
-                <Link href={`/writing/${post.slug}`} className={styles.post}>
-                  <h3>{post.title}</h3>
-                  <PostDate date={post.date} />
-                </Link>
+                <PostBox href={`/writing/${post.slug}`} title={post.title} date={post.date} />
               </li>
             </article>
           ))}
