@@ -9,7 +9,9 @@ export const Clock: FC = () => {
 
   return (
     <button type="button" className={styles.clock} onClick={() => setIs12Hour()}>
-      <time>{time.toLocaleTimeString('en-GB', { hour12: is12Hour })}</time>
+      <time dateTime={time.toString()} suppressHydrationWarning>
+        {time.toLocaleTimeString('en-GB', { hour12: is12Hour })}
+      </time>
     </button>
   );
 };
