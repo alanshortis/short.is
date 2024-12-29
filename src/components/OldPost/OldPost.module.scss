@@ -1,0 +1,11 @@
+@use '~/src/styles/mixins' as *;
+
+.old {
+  background-color: var(--background);
+  border: 2px solid var(--accent);
+  margin-bottom: var(--step-5);
+  padding: var(--step-0);
+  position: relative;
+  @include label;
+  @include hatching(var(--accent));
+}

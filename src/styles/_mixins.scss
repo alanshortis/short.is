@@ -78,7 +78,7 @@
   outline-offset: 4px;
 }
 
-@mixin hatching {
+@mixin hatching($color: currentColor) {
   margin-right: var(--step-0);
   &::after {
     content: '';
@@ -90,14 +90,14 @@
     z-index: -1;
     background: linear-gradient(
       -45deg,
-      currentColor 1%,
+      $color 1%,
       transparent 1%,
       transparent 49%,
-      currentColor 49%,
-      currentColor 55%,
+      $color 49%,
+      $color 55%,
       transparent 55%,
       transparent 99%,
-      currentColor 99%
+      $color 99%
     );
     background-size: 0.5rem 0.5rem;
   }

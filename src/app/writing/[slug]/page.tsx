@@ -1,6 +1,6 @@
 import type { NextPage, Metadata } from 'next';
 import { getPost } from '@/lib';
-import { Markdown, PostDate } from '@/components';
+import { Markdown, OldPost, PostDate } from '@/components';
 import styles from './writing.module.scss';
 
 interface Props {
@@ -19,7 +19,7 @@ export const generateMetadata = async ({ params }: Props): Promise<Metadata> => 
 
 const Post: NextPage<Props> = async ({ params }) => {
   const slug = (await params).slug;
-  const { title, date, content } = getPost(slug);
+  const { title, date, content, showAgeWarning } = getPost(slug);
 
   return (
     <article className={styles.container}>
@@ -30,6 +30,7 @@ const Post: NextPage<Props> = async ({ params }) => {
         <PostDate date={date} />
       </aside>
       <div className={styles.content}>
+        {showAgeWarning && <OldPost />}
         <Markdown content={content} />
       </div>
     </article>
