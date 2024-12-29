@@ -8,6 +8,7 @@ import chalk from 'chalk';
 const postTemplate = (title: string, date: string) => `---
 title: '${title}'
 date: '${date}'
+showAgeWarning: true
 ---
 `;
 

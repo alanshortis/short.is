@@ -1,6 +1,7 @@
 ---
 title: 'Two years off'
 date: '2022-11-07'
+showAgeWarning: false
 ---
 
 Proposal: nothing new for two years. No more _new_ approaches to building websites, no more films, books, TV shows, albums, and most importantly no more podcasts. Things that exist can be maintained and iterated, so you can get your new Joe Rogan episodes if that's something you need, but sales of expensive microphones on boom arms in the faces of boring drones with nothing to say will take a hit under this policy. Sorry Shure.

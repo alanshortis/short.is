@@ -1,6 +1,7 @@
 ---
 title: 'Grace Hopper and doing the right thing'
 date: '2022-11-12'
+showAgeWarning: false
 ---
 
 > It's easier to ask forgiveness than it is to get permission
