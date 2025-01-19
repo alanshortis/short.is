@@ -1,8 +1,20 @@
 import type { FC } from 'react';
 import styles from './OldPost.module.scss';
 
-export const OldPost: FC = () => (
-  <div className={styles.old}>
-    <p>This post is more than two years old and may no longer be relevant or accurate</p>
-  </div>
-);
+interface Props {
+  postDate: string;
+}
+
+export const OldPost: FC<Props> = ({ postDate }) => {
+  const postAgeYears = Math.ceil(
+    (new Date(postDate).getTime() - new Date().getTime()) / (365 * 24 * 60 * 60 * 1000)
+  );
+
+  console.log(postAgeYears);
+
+  return postAgeYears <= -2 ? (
+    <div className={styles.old}>
+      <p>This post is more than {Math.abs(postAgeYears)} years old</p>
+    </div>
+  ) : null;
+};

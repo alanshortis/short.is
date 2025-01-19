@@ -3,6 +3,7 @@
 .post {
   background-color: var(--background);
   border: 1px solid currentColor;
+  border-radius: var(--radius);
   display: block;
   margin-bottom: var(--step-0);
   position: relative;
