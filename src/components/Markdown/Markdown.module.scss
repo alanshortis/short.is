@@ -41,15 +41,14 @@
     color: var(--accent);
     font-size: var(--step--1);
     font-weight: bold;
-    margin: 0 calc(var(--step--2) / 2);
-    padding: calc(var(--step--2) / 2);
+    // margin: 0 calc(var(--step--2) / 2);
+    padding: calc(var(--step--2) / 4) calc(var(--step--2) / 2);
   }
 
   pre {
-    background-color: var(--code-background);
+    background-color: var(--code-block-background);
     border: 1px solid var(--divider);
-    margin-left: var(--step-0);
-    margin-right: var(--step-0);
+    margin: var(--step-5) 0;
     overflow-x: auto;
     padding: var(--step--1) var(--step-1);
     position: relative;
