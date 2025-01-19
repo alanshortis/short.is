@@ -19,7 +19,7 @@ export const generateMetadata = async ({ params }: Props): Promise<Metadata> => 
 
 const Post: NextPage<Props> = async ({ params }) => {
   const slug = (await params).slug;
-  const { title, date, content, showAgeWarning } = getPost(slug);
+  const { title, date, content } = getPost(slug);
 
   return (
     <article className={styles.container}>
@@ -30,7 +30,7 @@ const Post: NextPage<Props> = async ({ params }) => {
         <PostDate date={date} />
       </aside>
       <div className={styles.content}>
-        {showAgeWarning && <OldPost />}
+        <OldPost postDate={date} />
         <Markdown content={content} />
       </div>
     </article>
