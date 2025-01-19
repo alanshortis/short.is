@@ -37,10 +37,10 @@
 
   code {
     background-color: var(--code-background);
+    border: 1px solid var(--divider);
     border-radius: var(--radius);
     color: var(--accent);
     font-size: var(--step--1);
-    font-weight: bold;
     padding: calc(var(--step--2) / 4) calc(var(--step--2) / 2);
   }
 
@@ -48,15 +48,15 @@
     background-color: var(--code-block-background);
     border: 1px solid var(--divider);
     border-radius: var(--radius);
-    margin: var(--step-5) 0;
+    line-height: 1.25;
+    // margin: var(--step-5) 0;
     overflow-x: auto;
-    padding: var(--step--1) var(--step-1);
+    padding: var(--step--2);
     position: relative;
     code {
       all: unset;
       color: var(--accent);
       font-size: var(--step--1);
-      font-weight: bold;
     }
   }
 
