@@ -20,9 +20,9 @@
   time {
     text-wrap: balance;
     mix-blend-mode: difference;
-    filter: invert(1);
-    [data-scheme='dark'] & {
-      filter: invert(0);
+    filter: invert(0);
+    [data-scheme='light'] & {
+      filter: invert(1);
     }
   }
   @include hatching;
