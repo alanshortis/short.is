@@ -27,17 +27,24 @@ export const useScheme = () => {
   }, []);
 
   useEffect(() => {
+    const controller = new AbortController();
     setClick(new Audio('/click.mp3'));
     setSchemeDataset(schemeState);
 
-    window.matchMedia(SCHEME_MQ).addEventListener('change', event => {
-      if (schemeState === 'auto') {
-        setSchemeDataset(event.matches ? 'dark' : 'light');
+    window.matchMedia(SCHEME_MQ).addEventListener(
+      'change',
+      event => {
+        if (schemeState === 'auto') {
+          setSchemeDataset(event.matches ? 'dark' : 'light');
+        }
+      },
+      {
+        signal: controller.signal,
       }
-    });
+    );
 
     return () => {
-      window.matchMedia(SCHEME_MQ).removeEventListener('change', () => {});
+      controller.abort();
     };
   }, [schemeState]);
 
