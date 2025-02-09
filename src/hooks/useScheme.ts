@@ -7,9 +7,12 @@ export const useScheme = () => {
   const [schemeState, setSchemeState] = useState<Schemes>('auto');
   const [click, setClick] = useState<HTMLAudioElement | null>(null);
 
-  // Set the value of `data-scheme` on the `html` element
   const setSchemeDataset = (scheme: string) => {
-    document.documentElement.dataset.scheme = scheme;
+    if (scheme === 'auto') {
+      scheme = window.matchMedia(SCHEME_MQ).matches ? 'dark' : 'light';
+    } else {
+      document.documentElement.dataset.scheme = scheme;
+    }
   };
 
   const handlesetScheme = (scheme: Schemes) => {
@@ -19,7 +22,6 @@ export const useScheme = () => {
   };
 
   useLayoutEffect(() => {
-    // I'm not smart enough to fix this properly
     const savedScheme = window.localStorage.getItem('scheme') as Schemes;
     setSchemeState(savedScheme || 'auto');
   }, []);

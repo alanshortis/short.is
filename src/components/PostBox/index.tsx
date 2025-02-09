@@ -11,7 +11,7 @@ interface Props {
 
 export const PostBox: FC<Props> = ({ href, title, date }) => (
   <Link href={href} className={styles.post}>
-    <h3>{title}</h3>
     <PostDate date={date} />
+    <h3>{title}</h3>
   </Link>
 );
