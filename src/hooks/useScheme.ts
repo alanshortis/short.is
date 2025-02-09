@@ -9,7 +9,7 @@ export const useScheme = () => {
 
   const setSchemeDataset = (scheme: string) => {
     if (scheme === 'auto') {
-      scheme = window.matchMedia(SCHEME_MQ).matches ? 'dark' : 'light';
+      document.documentElement.dataset.scheme = window.matchMedia(SCHEME_MQ).matches ? 'dark' : 'light';
     } else {
       document.documentElement.dataset.scheme = scheme;
     }
