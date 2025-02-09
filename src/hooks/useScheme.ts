@@ -7,9 +7,12 @@ export const useScheme = () => {
   const [schemeState, setSchemeState] = useState<Schemes>('auto');
   const [click, setClick] = useState<HTMLAudioElement | null>(null);
 
-  // Set the value of `data-scheme` on the `html` element
   const setSchemeDataset = (scheme: string) => {
-    document.documentElement.dataset.scheme = scheme;
+    if (scheme === 'auto') {
+      document.documentElement.dataset.scheme = window.matchMedia(SCHEME_MQ).matches ? 'dark' : 'light';
+    } else {
+      document.documentElement.dataset.scheme = scheme;
+    }
   };
 
   const handlesetScheme = (scheme: Schemes) => {
@@ -19,23 +22,29 @@ export const useScheme = () => {
   };
 
   useLayoutEffect(() => {
-    // I'm not smart enough to fix this properly
     const savedScheme = window.localStorage.getItem('scheme') as Schemes;
     setSchemeState(savedScheme || 'auto');
   }, []);
 
   useEffect(() => {
+    const controller = new AbortController();
     setClick(new Audio('/click.mp3'));
     setSchemeDataset(schemeState);
 
-    window.matchMedia(SCHEME_MQ).addEventListener('change', event => {
-      if (schemeState === 'auto') {
-        setSchemeDataset(event.matches ? 'dark' : 'light');
+    window.matchMedia(SCHEME_MQ).addEventListener(
+      'change',
+      event => {
+        if (schemeState === 'auto') {
+          setSchemeDataset(event.matches ? 'dark' : 'light');
+        }
+      },
+      {
+        signal: controller.signal,
       }
-    });
+    );
 
     return () => {
-      window.matchMedia(SCHEME_MQ).removeEventListener('change', () => {});
+      controller.abort();
     };
   }, [schemeState]);
 
