@@ -27,8 +27,7 @@
 
   --background: light-dark(var(--light), var(--dark));
   --foreground: light-dark(var(--dark), var(--light));
-  --code-background: hsla(29, 57%, 46%, 0.125);
-  --code-block-background: hsla(29, 57%, 46%, 0.025);
+  --code-background: hsla(0, 0%, 46%, 0.0625);
   --accent: hsl(29, 57%, 46%);
-  --divider: hsla(29, 57%, 46%, 0.125);
+  --divider: hsla(0, 0%, 46%, 0.125);
 }
