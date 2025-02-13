@@ -1,15 +1,13 @@
 @use '~/src/styles/mixins' as *;
 
 .old {
-  color-scheme: dark;
-  background-color: var(--accent);
-  border: 2px solid var(--accent);
+  background-color: var(--foreground);
   border-radius: var(--radius);
-  color: var(--foreground);
+  color: var(--background);
   margin-bottom: var(--step-5);
-  padding: var(--step--2) var(--step-0);
+  padding: var(--step--2);
   position: relative;
   text-wrap: balance;
   @include label;
-  @include hatching(var(--accent));
+  @include hatching(var(--foreground));
 }

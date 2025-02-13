@@ -10,6 +10,7 @@
     font-size: var(--step-3);
     font-weight: bold;
     padding-top: var(--step-1);
+    line-height: 1.25em;
     margin-bottom: var(--step-1);
   }
 
@@ -31,31 +32,31 @@
   }
 
   a {
-    color: var(--accent);
     font-weight: bold;
+    text-decoration: underline;
+    &:hover {
+      text-decoration: none;
+    }
   }
 
   code {
     background-color: var(--code-background);
     border: 1px solid var(--divider);
     border-radius: var(--radius);
-    color: var(--accent);
     font-size: var(--step--1);
     padding: calc(var(--step--2) / 4) calc(var(--step--2) / 2);
   }
 
   pre {
-    background-color: var(--code-block-background);
+    background-color: var(--code-background);
     border: 1px solid var(--divider);
     border-radius: var(--radius);
-    line-height: 1.25;
-    // margin: var(--step-5) 0;
+    line-height: 1;
     overflow-x: auto;
     padding: var(--step--2);
     position: relative;
     code {
       all: unset;
-      color: var(--accent);
       font-size: var(--step--1);
     }
   }
@@ -78,7 +79,7 @@
 
   blockquote {
     background-color: var(--code-background);
-    border-left: 2px solid var(--accent);
+    border-left: 2px solid currentColor;
     display: block;
     font-style: italic;
     margin-left: var(--step-1);

@@ -1,8 +1,6 @@
 @mixin bg($filename) {
-  background: url($filename) no-repeat center center, var(--accent);
-  background-blend-mode: multiply;
+  background: url($filename) no-repeat center center, currentColor;
   background-clip: text;
-  background-color: var(--accent);
   background-size: contain;
 }
 
@@ -15,6 +13,7 @@
   font-weight: bold;
   line-height: 1em;
   text-align: center;
+  -webkit-text-stroke: 2px var(--divider);
 }
 
 .pier {

@@ -4,7 +4,7 @@ import { type FC, useEffect, useState } from 'react';
 import c from 'classnames';
 import styles from './A.module.scss';
 
-const backgrounds = ['lift', 'lift', 'lift', 'lift', 'bar', 'planes', 'station', 'pier'];
+const backgrounds = ['lift', 'bar', 'planes', 'station', 'pier'];
 
 export const A: FC = () => {
   const [background, setBackground] = useState(backgrounds[0]);
