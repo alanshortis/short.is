@@ -1,7 +1,6 @@
 ---
 title: 'Make your own website'
 date: '2019-11-22'
-showAgeWarning: true
 ---
 
 There is a bit of a backlash against the likes of [Medium](https://www.medium.com) happening, and for developers it goes deeper than their paywall and irritating clutter clogging up the page when you first visit. Writing about this industry is a great thing to do—with new concepts and approaches unfolding constantly, we're all googling questions every single day. Plus, if you're anything like me, writing about a subject while figuring it out is a great way to learn.

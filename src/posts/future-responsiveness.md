@@ -1,7 +1,6 @@
 ---
 title: 'Future responsiveness'
 date: '2020-02-15'
-showAgeWarning: true
 ---
 
 For nearly 10 years, media queries have been commonplace in styling websites for use across screen sizes and devices. The question 'should this site be responsive' is going away because, yes, in all but the rarest of cases, a website should be responsive to provide a good user experience. It's not just about mobile.

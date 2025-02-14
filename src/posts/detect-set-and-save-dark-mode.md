@@ -1,7 +1,6 @@
 ---
 title: 'Detect, set and save Dark Mode'
 date: '2019-10-27'
-showAgeWarning: true
 ---
 
 ## The media query

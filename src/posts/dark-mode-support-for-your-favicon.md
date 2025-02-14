@@ -1,7 +1,6 @@
 ---
 title: 'Dark mode support for your favicon'
 date: '2022-11-19'
-showAgeWarning: true
 ---
 
 Most brand icons can be represented with an SVG, and support for SVG favicons is very good. The SVG you make for a favicon will work like any other, so you can use the `prefers-color-scheme` media query to adapt to the scheme in use by the browser.

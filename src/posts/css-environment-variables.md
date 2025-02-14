@@ -1,7 +1,6 @@
 ---
 title: 'CSS environment variables'
 date: '2021-01-18'
-showAgeWarning: true
 ---
 
 With the introduction of the infamous notch and the removal of the home button on the iPhone X, it became necessary to consider scenarios where parts of the operating system's UI or even the absence of the display itself could interfere with a design and layout.

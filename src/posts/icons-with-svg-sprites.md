@@ -1,7 +1,6 @@
 ---
 title: 'Icons with SVG Sprites'
 date: '2017-02-21'
-showAgeWarning: true
 ---
 
 Icons have been an important aspect of UI design for a very long time, and approaches to loading and displaying icons has evolved.

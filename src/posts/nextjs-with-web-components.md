@@ -1,7 +1,6 @@
 ---
 title: 'Next.js with web components and a 0kb bundle'
 date: '2021-06-11'
-showAgeWarning: true
 ---
 
 Over the years this website has used four different static site generators. Three of them required just too much compromise for either myself as developer, or for end users:

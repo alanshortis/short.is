@@ -1,7 +1,6 @@
 ---
 title: 'Imposter syndrome'
 date: '2022-11-04'
-showAgeWarning: false
 ---
 
 Feeling comfortable and settled? Use these tricks to boost your imposter syndrome:
