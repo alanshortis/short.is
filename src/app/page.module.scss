@@ -7,21 +7,8 @@
   grid-template-columns: subgrid;
   grid-auto-rows: min-content;
   @include slide-in;
-}
-
-.intro {
-  grid-column: 1 / -1;
   h1 {
-    font-size: var(--step-5);
-    font-style: italic;
-  }
-  del {
-    opacity: 0.5;
-    font-style: strike-through;
-    text-decoration-thickness: 2px;
-  }
-  ins {
-    text-decoration: none;
+    @include visually-hidden;
   }
 }
 
