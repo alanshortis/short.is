@@ -2,7 +2,7 @@
 
 .codeBlock {
   border: 1px solid var(--divider);
-  border-radius: var(--radius);
+  border-radius: 0.5em 0.5em var(--radius) var(--radius);
   margin-top: var(--step-1);
   pre {
     background-color: var(--code-background);
@@ -21,22 +21,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: var(--divider);
   padding: var(--step--2);
+  svg {
+    color: var(--divider);
+  }
   button {
     @include label;
     font-size: var(--step--2);
     cursor: pointer;
-  }
-}
-
-.dumbDots {
-  display: flex;
-  gap: 0.25em;
-  span {
-    width: 0.5em;
-    height: 0.5em;
-    border-radius: 50%;
-    background-color: currentColor;
   }
 }

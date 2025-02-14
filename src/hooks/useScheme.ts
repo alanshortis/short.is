@@ -5,7 +5,6 @@ export const useScheme = () => {
   const schemes = ['light', 'auto', 'dark'] as const;
   type Schemes = (typeof schemes)[number];
   const [schemeState, setSchemeState] = useState<Schemes>('auto');
-  const [click, setClick] = useState<HTMLAudioElement | null>(null);
 
   const setSchemeDataset = (scheme: string) => {
     if (scheme === 'auto') {
@@ -17,7 +16,6 @@ export const useScheme = () => {
 
   const handlesetScheme = (scheme: Schemes) => {
     setSchemeState(scheme);
-    click?.play();
     window.localStorage.setItem('scheme', scheme);
   };
 
@@ -28,7 +26,6 @@ export const useScheme = () => {
 
   useEffect(() => {
     const controller = new AbortController();
-    setClick(new Audio('/click.mp3'));
     setSchemeDataset(schemeState);
 
     window.matchMedia(SCHEME_MQ).addEventListener(
