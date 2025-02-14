@@ -1,6 +1,7 @@
 import { type FC } from 'react';
 import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
+import rehypeSlug from 'rehype-slug';
 import styles from './Markdown.module.scss';
 import { Link, CodeBlock } from './renderers';
 
@@ -15,7 +16,11 @@ export const Markdown: FC<Props> = ({ content }) => {
   };
 
   return (
-    <ReactMarkdown className={styles.markdown} components={components} rehypePlugins={[rehypeRaw]}>
+    <ReactMarkdown
+      className={styles.markdown}
+      components={components}
+      rehypePlugins={[rehypeRaw, rehypeSlug]}
+    >
       {content}
     </ReactMarkdown>
   );
