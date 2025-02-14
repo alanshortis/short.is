@@ -9,20 +9,13 @@ const Home: NextPage = () => {
   return (
     <main className={styles.container}>
       <A />
-      <div className={styles.intro}>
-        <h1>Alan Shortis</h1>
-        <p>
-          Web engineer based in <del>London</del> <ins>Nottingham</ins>
-        </p>
-      </div>
+      <h1>Alan Shortis is a web engineer</h1>
       <div className={styles.postList}>
         <h2>Writing</h2>
         <ol>
           {posts.map(post => (
             <li key={post.title}>
-              <article>
-                <PostBox href={`/writing/${post.slug}`} title={post.title} date={post.date} />
-              </article>
+              <PostBox href={`/writing/${post.slug}`} title={post.title} date={post.date} />
             </li>
           ))}
         </ol>
