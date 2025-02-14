@@ -3,5 +3,5 @@
 .date {
   @include label;
   display: block;
-  text-indent: -1px;
+  line-height: 1.5rem;
 }

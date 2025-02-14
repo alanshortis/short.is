@@ -1,6 +1,6 @@
 import type { NextPage, Metadata } from 'next';
 import { getPost } from '@/lib';
-import { Markdown, OldPost, PostDate } from '@/components';
+import { Markdown, PostDate, TableOfContents } from '@/components';
 import styles from './writing.module.scss';
 
 interface Props {
@@ -28,9 +28,9 @@ const Post: NextPage<Props> = async ({ params }) => {
       </header>
       <aside className={styles.meta}>
         <PostDate date={date} />
+        <TableOfContents content={content} />
       </aside>
       <div className={styles.content}>
-        <OldPost postDate={date} />
         <Markdown content={content} />
       </div>
     </article>
