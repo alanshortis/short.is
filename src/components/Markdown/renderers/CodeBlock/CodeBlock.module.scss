@@ -1,0 +1,42 @@
+@use '~/src/styles/mixins' as *;
+
+.codeBlock {
+  border: 1px solid var(--divider);
+  border-radius: var(--radius);
+  margin-top: var(--step-1);
+  pre {
+    background-color: var(--code-background);
+    line-height: 1;
+    overflow-x: auto;
+    padding: var(--step--2);
+    position: relative;
+    code {
+      all: unset;
+      font-size: var(--step--1);
+    }
+  }
+}
+
+.blockHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--divider);
+  padding: var(--step--2);
+  button {
+    @include label;
+    font-size: var(--step--2);
+    cursor: pointer;
+  }
+}
+
+.dumbDots {
+  display: flex;
+  gap: 0.25em;
+  span {
+    width: 0.5em;
+    height: 0.5em;
+    border-radius: 50%;
+    background-color: currentColor;
+  }
+}

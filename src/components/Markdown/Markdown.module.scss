@@ -1,7 +1,7 @@
 @use '~/src/styles/mixins' as *;
 
 .markdown {
-  * + :where(p, ol, ul, blockquote, pre, h2, h3) {
+  * + :where(p, ol, ul, blockquote, h2, h3) {
     margin-top: var(--step-1);
   }
 
@@ -45,20 +45,6 @@
     border-radius: var(--radius);
     font-size: var(--step--1);
     padding: calc(var(--step--2) / 4) calc(var(--step--2) / 2);
-  }
-
-  pre {
-    background-color: var(--code-background);
-    border: 1px solid var(--divider);
-    border-radius: var(--radius);
-    line-height: 1;
-    overflow-x: auto;
-    padding: var(--step--2);
-    position: relative;
-    code {
-      all: unset;
-      font-size: var(--step--1);
-    }
   }
 
   ul,

@@ -2,7 +2,7 @@ import { type FC } from 'react';
 import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 import styles from './Markdown.module.scss';
-import { Link } from './renderers/Link';
+import { Link, CodeBlock } from './renderers';
 
 interface Props {
   content: string;
@@ -11,6 +11,7 @@ interface Props {
 export const Markdown: FC<Props> = ({ content }) => {
   const components = {
     a: Link,
+    pre: CodeBlock,
   };
 
   return (

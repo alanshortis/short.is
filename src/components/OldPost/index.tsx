@@ -10,8 +10,6 @@ export const OldPost: FC<Props> = ({ postDate }) => {
     (new Date(postDate).getTime() - new Date().getTime()) / (365 * 24 * 60 * 60 * 1000)
   );
 
-  console.log(postAgeYears);
-
   return postAgeYears <= -2 ? (
     <div className={styles.old}>
       <p>This post is more than {Math.abs(postAgeYears)} years old</p>
