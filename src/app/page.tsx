@@ -20,9 +20,7 @@ const Home: NextPage = () => {
         <ol>
           {posts.map(post => (
             <li key={post.title}>
-              <article>
-                <PostBox href={`/writing/${post.slug}`} title={post.title} date={post.date} />
-              </article>
+              <PostBox href={`/writing/${post.slug}`} title={post.title} date={post.date} />
             </li>
           ))}
         </ol>
