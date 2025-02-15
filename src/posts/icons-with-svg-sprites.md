@@ -1,9 +1,8 @@
 ---
 title: 'Icons with SVG Sprites'
 date: '2017-02-21'
+intro: 'Icons have been an important aspect of UI design for a very long time, and approaches to loading and displaying icons have evolved.'
 ---
-
-Icons have been an important aspect of UI design for a very long time, and approaches to loading and displaying icons has evolved.
 
 Sprites are nothing new. When icons were png or gif it was common to compile them all into a single image and use CSS to reveal only the icon required. This was good for limiting HTTP requests, but a bit of a faff to reveal the icon which relied on magic numbers.
 
@@ -90,4 +89,4 @@ We can use CSS to style these icons rather than using the inline styling more co
 }
 ```
 
-This is a basic introduction to get started with SVG Sprites as an icon system. There is plenty of space for refinement around how the sprite is included in your site and how the icons are styled, both of which will vary depending on your stack, design, audience and intent.
+This is a basic introduction to get started with SVG Sprites as an icon system. There is plenty of space for refinement around how the sprite is included in your site and how the icons are styled, both of which will vary depending on your stack, design, and intent.

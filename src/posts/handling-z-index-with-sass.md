@@ -1,6 +1,7 @@
 ---
 title: 'Handling z-index with SASS'
 date: '2016-06-05'
+intro: 'Use SASS to make your z-index values easier to manage, or so complex that no one will ever touch them again.'
 ---
 
 `z-index` is not a particularly interesting CSS property, but it is one of the most misunderstood. What seems to be a very simple concept on the surface can be maddeningly frustrating at times. This article is not about the intricacies of `z-index`; Philip Walton explains the quirks better than I can in [this excellent and detailed post](https://philipwalton.com/articles/what-no-one-told-you-about-z-index/).

@@ -1,6 +1,7 @@
 ---
 title: 'Next.js with web components and a 0kb bundle'
 date: '2021-06-11'
+intro: "The consequence of being comfortable with React is the need to accept a JavaScript bundle. If you can live with some limitations, it doesn't have to be that way."
 ---
 
 Over the years this website has used four different static site generators. Three of them required just too much compromise for either myself as developer, or for end users:

@@ -1,6 +1,7 @@
 ---
 title: 'CSS environment variables'
 date: '2021-01-18'
+intro: "Viewports aren't just predictable black rectangles anymore. If you need to adapt your design to the quirks of the device, CSS environment variables can help"
 ---
 
 With the introduction of the infamous notch and the removal of the home button on the iPhone X, it became necessary to consider scenarios where parts of the operating system's UI or even the absence of the display itself could interfere with a design and layout.

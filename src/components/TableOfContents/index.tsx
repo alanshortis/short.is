@@ -3,9 +3,10 @@ import styles from './TableOfContents.module.scss';
 
 interface Props {
   content: string;
+  hasIntro: boolean;
 }
 
-export const TableOfContents: FC<Props> = ({ content }) => {
+export const TableOfContents: FC<Props> = ({ content, hasIntro }) => {
   const markdownTitles = content.match(/^(#+)\s+(.*)$/gm);
 
   if (!markdownTitles) {
@@ -28,6 +29,11 @@ export const TableOfContents: FC<Props> = ({ content }) => {
     <nav className={styles.toc}>
       <h2 className={styles.title}>Table of contents</h2>
       <ol>
+        {hasIntro && (
+          <li>
+            <a href="#">Introduction</a>
+          </li>
+        )}
         {tableOfContents.map(({ level, text, anchor }) => (
           <li key={anchor} className={styles[`level${level}`]}>
             <a href={`#${anchor}`}>{text}</a>

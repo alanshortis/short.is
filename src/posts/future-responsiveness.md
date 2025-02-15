@@ -1,6 +1,7 @@
 ---
 title: 'Future responsiveness'
 date: '2020-02-15'
+intro: "Responsive design is no longer just about screen sizes, it's about adapting to user preferences and hardware capabilities"
 ---
 
 For nearly 10 years, media queries have been commonplace in styling websites for use across screen sizes and devices. The question 'should this site be responsive' is going away because, yes, in all but the rarest of cases, a website should be responsive to provide a good user experience. It's not just about mobile.
@@ -18,6 +19,8 @@ The `prefers-color-scheme` [media query](https://developer.mozilla.org/en-US/doc
 Ideally, not only would different themes be provided but also a means to toggle between them and persist the chosen theme on repeat visits.
 
 ## Motion
+
+### CSS
 
 The `prefers-reduced-motion` [media query](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion) can tell us if the user has opted to have less motion/animation in the operating system, which is especially important for people with motion-triggered vestibular spectrum disorder.
 
@@ -83,7 +86,7 @@ If using SASS, a great way to handle this is to place all animations inside a mi
 
 It's not always necessary to stop animations entirely; you could speed them up, slow them down, or just simplify. Animation can be very effective in showing that something has changed or is happening, more than a sudden change. Choose your strategy on a case-by-case basis.
 
-### In HTML
+### HTML
 
 You can use this in the `picture` element as well as in CSS. In this example, we can show a still image by default, or show the animated version if the user has no preference for motion:
 
