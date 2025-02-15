@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import { listPosts } from '@/lib';
-import { A, PostBox } from '@/components';
+import { A, PostBox, ReadingList } from '@/components';
 import styles from './page.module.scss';
 
 const Home: NextPage = () => {
@@ -11,7 +11,10 @@ const Home: NextPage = () => {
       <A />
       <h1>Alan Shortis is a web engineer</h1>
       <div className={styles.postList}>
-        <h2>Writing</h2>
+        <div className={styles.sectionHeader}>
+          <h2>Writing</h2>
+          <p>Things I have written, with varying degrees of quality</p>
+        </div>
         <ol>
           {posts.map(post => (
             <li key={post.title} className={post.featured ? styles.featured : ''}>
@@ -20,6 +23,7 @@ const Home: NextPage = () => {
           ))}
         </ol>
       </div>
+      <ReadingList />
     </main>
   );
 };
