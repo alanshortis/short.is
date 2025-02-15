@@ -1,7 +1,7 @@
 ---
 title: 'Detect, set and save Dark Mode'
 date: '2019-10-27'
-showAgeWarning: true
+intro: 'Dark mode is an accessibility concern, and support for it is growing. While we can just follow the operating system settings, we should also give users the option to choose.'
 ---
 
 ## The media query

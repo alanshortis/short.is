@@ -1,7 +1,6 @@
 ---
 title: 'Spotify wrapped and the observer effect'
 date: '2024-12-05'
-showAgeWarning: false
 ---
 
 Around this time every year, whatever social media is plastered with statistics from Spotify wrapped, where people are very happy with the evidence that, yes, they are a fan of the music they like. If these statistics are your own they can be moderately interesting. If they're someone else's, they're not at all.

@@ -5,6 +5,7 @@ import matter from 'gray-matter';
 interface Post {
   title: string;
   date: string;
+  intro?: string;
   content: string;
 }
 
@@ -13,11 +14,12 @@ const FOLDER = 'src/posts';
 export const getPost = (slug: string): Post => {
   const file = path.join(process.cwd(), FOLDER, `${slug}.md`);
   const { data, content } = matter(fs.readFileSync(file));
-  const { title, date } = data;
+  const { title, date, intro } = data;
 
   return {
-    title: title,
-    date: date,
+    title,
+    date,
+    intro,
     content,
   };
 };

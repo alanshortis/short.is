@@ -28,7 +28,8 @@
       height: 100%;
     }
     @include break {
-      li:first-of-type {
+      li:first-of-type,
+      .featured {
         grid-column-end: span 2;
       }
     }

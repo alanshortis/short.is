@@ -1,7 +1,7 @@
 ---
 title: 'Make your own website'
 date: '2019-11-22'
-showAgeWarning: true
+intro: "Truly owning your own content matters more than ever. Rather than using the platform that is popular in the present and possibly dead in the future is not reliable. Here's how to make your own website."
 ---
 
 There is a bit of a backlash against the likes of [Medium](https://www.medium.com) happening, and for developers it goes deeper than their paywall and irritating clutter clogging up the page when you first visit. Writing about this industry is a great thing to do—with new concepts and approaches unfolding constantly, we're all googling questions every single day. Plus, if you're anything like me, writing about a subject while figuring it out is a great way to learn.
@@ -18,9 +18,11 @@ The more I use it, the more I love [Eleventy](https://www.11ty.dev/). In buildin
 
 Writing totally plain HTML and CSS is pretty rare now, but I love the idea of starting a project not with `npm i` but with `touch index.html`. Write the exact code that the browser will use and eliminate all third party dependencies. This sounds like it'd be a lot of fun, like going back to my roots, but it also presents issues with CSS vendor prefixes and minification; those things we have automated away.
 
+There will be a lot of discourse online about why some options are bad and why some are the best. Keep performance and accessibility in mind and it really doesn't matter. And don't be too taken with bench tests that show why one choice is so much faster than another; it's very unlikely you're going to be rendering thousands of pages in a few seconds. Optimise for writing before anything else.
+
 ## Prepare your content
 
-I'd always opt for Markdown when writing. It's very light, unobtrusive, supports inline code and code blocks, can be massively augmented with [MDX](https://mdxjs.com/), can understand HTML, and can be written in all kinds of editors very quickly. It also keeps your content very portable and readable even it's not parsed.
+I'd always opt for Markdown when writing. It's very light, unobtrusive, supports inline code and code blocks, can be massively augmented with [MDX](https://mdxjs.com/), can understand HTML, and can be written in all kinds of editors very quickly. It also keeps your content very portable and readable even when it's not parsed.
 
 If you really love using a CMS, there are plenty of headless options that will let you keep your rich editor and still produce a static site via the JAM stack.
 
@@ -28,7 +30,7 @@ If you really love using a CMS, there are plenty of headless options that will l
 
 The appearance and code is where you can really show what you can do. Use it to show off, appeal to peers and recruiters, but don't overdo it. A site comprised of mostly static text doesn't need complex state management, containers, and heavy animation libraries. An incredibly fast and accessible site will show that you know what really counts.
 
-Most importantly - build _something_, deliver it, then iterate. If you're the only one ever touching the code, allow yourself to take some shortcuts if it gets it out faster.
+Most importantly - build _something_, deliver it, then iterate. If you're the only one ever touching the code, allow yourself to take some shortcuts if it gets it out faster. Unless you really love to write tests, this is not a case where test coverage really matters.
 
 I promise you, the very site you're reading this on is very far from perfect and will never be finished, whatever 'finished' means in this industry.
 
@@ -36,7 +38,7 @@ I promise you, the very site you're reading this on is very far from perfect and
 
 ## Deploy
 
-This is easy. [GitHub Pages](https://pages.github.com/), [Netlify](https://www.netlify.com/) or [Vercel](https://vercel.com/). If you need more power, you've probably made things too complex.
+[GitHub Pages](https://pages.github.com/), [Netlify](https://www.netlify.com/) or [Vercel](https://vercel.com/). If you need more power, you've probably made things too complex.
 
 ## What next?
 

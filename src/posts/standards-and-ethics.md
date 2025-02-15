@@ -1,7 +1,6 @@
 ---
 title: 'Standards and ethics'
 date: '2023-10-23'
-showAgeWarning: false
 ---
 
 Three times today alone, a choice by engineers to roll-their-own solution to a problem that has established standards made something simple MUCH harder than it should have been:
