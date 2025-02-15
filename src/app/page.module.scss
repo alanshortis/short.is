@@ -7,38 +7,17 @@
   grid-template-columns: subgrid;
   grid-auto-rows: min-content;
   @include slide-in;
-  h1 {
-    @include visually-hidden;
-  }
+}
+
+.title {
+  grid-column: 1 / -1;
+  @include visually-hidden;
 }
 
 .postList {
   grid-column: 1 / -1;
-  grid-template-columns: subgrid;
-  ol {
-    display: grid;
-    gap: var(--step-2);
-    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
-    grid-auto-rows: 1fr;
-    li,
-    a {
-      height: 100%;
-    }
-    @include break {
-      li:first-of-type,
-      .featured {
-        grid-column-end: span 2;
-      }
-    }
-  }
-}
-
-.sectionHeader {
-  h2 {
-    font-size: var(--step-4);
-    margin-bottom: var(--step-0);
-  }
-  p {
-    margin-bottom: var(--step-5);
-  }
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: var(--step-2);
+  grid-auto-rows: 1fr;
 }

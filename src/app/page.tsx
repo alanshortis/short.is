@@ -9,21 +9,13 @@ const Home: NextPage = () => {
   return (
     <main className={styles.container}>
       <A />
-      <h1>Alan Shortis is a web engineer</h1>
+      <h1 className={styles.title}>Alan Shortis is a web engineer</h1>
       <div className={styles.postList}>
-        <div className={styles.sectionHeader}>
-          <h2>Writing</h2>
-          <p>Things I have written, with varying degrees of quality</p>
-        </div>
-        <ol>
-          {posts.map(post => (
-            <li key={post.title} className={post.featured ? styles.featured : ''}>
-              <PostBox href={`/writing/${post.slug}`} title={post.title} date={post.date} />
-            </li>
-          ))}
-        </ol>
+        {posts.map(({ title, slug, date, featured }) => (
+          <PostBox key={title} href={`/writing/${slug}`} title={title} date={date} isFeatured={featured} />
+        ))}
       </div>
-      <ReadingList />
+      {/* <ReadingList /> */}
     </main>
   );
 };

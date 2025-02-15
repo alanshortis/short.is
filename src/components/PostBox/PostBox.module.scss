@@ -1,29 +1,28 @@
 @use '~/src/styles/mixins' as *;
 
 .post {
-  background-image: linear-gradient(to top, var(--foreground) 50%, var(--background) 50%);
-  background-size: 100% 200%;
-  background-position: top;
-  border: 1px solid currentColor;
+  background-color: var(--background);
+  border: 1px solid var(--divider);
   border-radius: var(--radius);
   display: flex;
   flex-direction: column;
   gap: var(--step-0);
   margin-bottom: var(--step-0);
-  padding: var(--step--2);
   position: relative;
-  transition: background-position 0.5s ease;
+  height: 100%;
+  padding: var(--step--2);
+  transition: border-color 250ms;
   &:hover {
-    background-position: bottom;
+    border-color: currentColor;
   }
-  h3,
-  time {
-    text-wrap: balance;
-    mix-blend-mode: difference;
-    filter: invert(0);
-    [data-scheme='light'] & {
-      filter: invert(1);
-    }
+  h1 {
+    font-size: var(--step-1);
   }
   @include hatching;
+}
+
+.featured {
+  @include break {
+    grid-column: span 2;
+  }
 }
