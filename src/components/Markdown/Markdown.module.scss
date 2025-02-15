@@ -34,8 +34,9 @@
   a {
     font-weight: bold;
     text-decoration: underline;
+    transition: text-decoration-color 250ms;
     &:hover {
-      text-decoration: none;
+      text-decoration-color: var(--divider);
     }
   }
 
