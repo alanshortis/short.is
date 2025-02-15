@@ -6,5 +6,6 @@ export { Logo } from './Logo';
 export { Markdown } from './Markdown';
 export { PostBox } from './PostBox';
 export { PostDate } from './PostDate';
+export { ReadingList } from './ReadingList';
 export { SchemeToggle } from './SchemeToggle';
 export { TableOfContents } from './TableOfContents';
