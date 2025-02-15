@@ -29,4 +29,19 @@
   --foreground: light-dark(var(--dark), var(--light));
   --code-background: light-dark(hsla(0, 0%, 46%, 0.0625), hsla(0, 0%, 46%, 0.125));
   --divider: light-dark(hsla(0, 0%, 46%, 0.125), hsla(0, 0%, 46%, 0.5));
+
+  // Safari versions that don't support this are a bit too recent to risk it
+  @supports not (color: light-dark(white, black)) {
+    --background: var(--dark);
+    --foreground: var(--light);
+    --code-background: hsla(0, 0%, 46%, 0.125);
+    --divider: hsla(0, 0%, 46%, 0.5);
+
+    &[data-scheme='light'] {
+      --background: var(--light);
+      --foreground: var(--dark);
+      --code-background: hsla(0, 0%, 46%, 0.0625);
+      --divider: hsla(0, 0%, 46%, 0.125);
+    }
+  }
 }
