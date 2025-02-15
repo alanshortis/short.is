@@ -14,7 +14,7 @@ const Home: NextPage = () => {
         <h2>Writing</h2>
         <ol>
           {posts.map(post => (
-            <li key={post.title}>
+            <li key={post.title} className={post.featured ? styles.featured : ''}>
               <PostBox href={`/writing/${post.slug}`} title={post.title} date={post.date} />
             </li>
           ))}

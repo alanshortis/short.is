@@ -5,6 +5,7 @@ import matter from 'gray-matter';
 interface Post {
   title: string;
   date: string;
+  featured?: boolean;
   slug: string;
 }
 
@@ -19,6 +20,7 @@ export const listPosts = (): Array<Post> => {
       return {
         title: data.title,
         date: data.date,
+        featured: data.featured,
         slug: filename.replace(/\.md$/, ''),
       };
     })
