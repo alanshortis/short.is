@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import { listPosts } from '@/lib';
-import { A, PostBox, ReadingList } from '@/components';
+import { A, PostBox } from '@/components';
 import styles from './page.module.scss';
 
 const Home: NextPage = () => {
@@ -15,7 +15,6 @@ const Home: NextPage = () => {
           <PostBox key={title} href={`/writing/${slug}`} title={title} date={date} isFeatured={featured} />
         ))}
       </div>
-      {/* <ReadingList /> */}
     </main>
   );
 };
