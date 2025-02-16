@@ -11,13 +11,16 @@ export const ReadingList: FC = () => (
     <div className={styles.linkList}>
       {readingList.map(({ url, title, author, type }) => (
         <article key={url}>
-          <a href={url} target="_blank" rel="noopener noreferrer">
+          <a href={url} className={styles.link} target="_blank" rel="noopener noreferrer">
             <p className={styles.type}>{type}</p>
-            <h3>{title}</h3>
-            <p className={styles.author}>by {author}</p>
+            <h1>{title}</h1>
+            <p className={styles.author}>
+              <i>by</i> {author}
+            </p>
           </a>
         </article>
       ))}
+      <div className={styles.shadow}> </div>
     </div>
   </div>
 );
