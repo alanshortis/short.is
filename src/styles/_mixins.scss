@@ -10,6 +10,14 @@
   }
 }
 
+@mixin post-link-title {
+  h1 {
+    font-size: var(--step-1);
+    line-height: 1.25;
+    text-wrap: balance;
+  }
+}
+
 @mixin narrow {
   @media (min-width: 400px) {
     @content;
@@ -100,5 +108,21 @@
       $color 99%
     );
     background-size: 0.5rem 0.5rem;
+  }
+}
+
+@mixin depth($color: currentColor) {
+  --offset: calc(var(--step--2) / 2);
+  position: relative;
+  &::after {
+    border: 1px solid $color;
+    border-radius: var(--radius);
+    content: '';
+    height: 100%;
+    left: var(--offset);
+    position: absolute;
+    top: var(--offset);
+    width: 100%;
+    z-index: -1;
   }
 }

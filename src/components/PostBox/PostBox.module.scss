@@ -15,9 +15,7 @@
   &:hover {
     border-color: currentColor;
   }
-  h1 {
-    font-size: var(--step-1);
-  }
+  @include post-link-title;
   @include hatching;
 }
 
