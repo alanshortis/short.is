@@ -13,7 +13,7 @@ interface Props {
 }
 
 const RootLayout: FC<Props> = ({ children }) => (
-  <html lang="en_GB">
+  <html lang="en-GB">
     <body>
       <Header />
       {children}
