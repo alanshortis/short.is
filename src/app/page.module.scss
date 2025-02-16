@@ -19,5 +19,6 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
   gap: var(--step-2);
+  gap: calc(var(--step-2) + var(--step--2)) var(--step-2);
   grid-auto-rows: 1fr;
 }
