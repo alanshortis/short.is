@@ -1,0 +1,38 @@
+---
+layout: '../../layouts/post.astro'
+title: 'Dark mode support for your favicon'
+pubDate: '2022-11-19'
+description: "Accommodating dark mode doesn't have to be limited to the confines of the viewport; you can adapt your brand's icon to remain prominent in the browser UI, too"
+---
+
+Most brand icons can be represented with an SVG, and support for SVG favicons is very good. The SVG you make for a favicon will work like any other, so you can use the `prefers-color-scheme` media query to adapt to the scheme in use by the browser.
+
+The icon for this website is a simple circle on a transparent background. If the OS and browser prefers a dark colour scheme I can change the `fill` of the `circle` accordingly:
+
+```SVG
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style> circle { fill: #050505; } @media (prefers-color-scheme: dark) { circle { fill: #e0e0e0; } }</style>
+  <circle cx="16" cy="16" r="7" />
+</svg>
+```
+
+- Select the `circle` SVG element
+- Set the `fill` to a lighter colour option
+- If the media query matches a 'dark' colour scheme, change the fill colour
+
+## Safari ruining the party
+
+Safari doesn't support SVG favicons, so create a fallback `png` favicon and pick the variation you prefer. Apple seem to be aware of the light/dark icon scenario though; a white background is placed behind a dark icon when the OS is in dark mode.
+
+```html
+<link rel="icon" type="image/png" href="/icons/favicon.png" />
+<link rel="icon" type="image/svg+xml" href="/icons/favicon.svg" />
+```
+
+By adding the SVG version after the PNG, you can ensure that browsers that support SVG favicons will use it, and those that don't will skip over it and use the PNG.
+
+There is the sledgehammer option of using JavaScript to read `prefers-color-scheme` and updating the path to your icon. While it works in all browsers that support colour schemes, it's too much complication for an issue that is solved everywhere already, one way or another.
+
+## Overriding the colour scheme
+
+Websites with support for a dark mode sometimes have a toggle to change between schemes independent of the OS setting. There is one in the footer of this site. I don't believe contradicting the OS setting is appropriate here though; the appearance of the browser is beyond the scope of your website and will not change if someone picks your light mode when the OS is dark, and vice versa. The result of the media query in the SVG is relevant to the browser UI, not the website.

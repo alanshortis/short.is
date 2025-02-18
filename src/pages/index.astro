@@ -1,0 +1,34 @@
+---
+import Base from '../layouts/base.astro';
+import PostDate from '../components/PostDate.astro';
+import { readingList } from './reading/readingList.ts'
+
+const allPosts = Object.values(import.meta.glob('./writing/*.md', { eager: true }))
+  .sort((a, b) => b.frontmatter.pubDate.localeCompare(a.frontmatter.pubDate));
+---
+
+<Base pageTitle="Alan Shortis">
+  <h1>Alan Shortis</h1>
+
+  <div>
+    {allPosts.map(post => (
+      <article>
+        <a href={post.url}>
+          <h1>{post.frontmatter.title}</h1>
+          <PostDate date={post.frontmatter.pubDate} />
+        </a>
+      </article>
+    ))}
+  </div>
+  <div>
+    {readingList.map(post => (
+      <article>
+        <a href={post.url} target="_blank" rel="noopener noreferrer">
+          <p>{post.type}</p>
+          <h1>{post.title}</h1>
+          <p>{post.author}</p>
+        </a>
+      </article>
+      )
+    )}
+</Base>

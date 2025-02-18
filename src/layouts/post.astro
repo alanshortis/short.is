@@ -1,0 +1,23 @@
+---
+import Base from './base.astro'
+import TableOfContents from '../components/TableOfContents.astro'
+import PostDate from '../components/PostDate.astro'
+import type { Headings, PostFrontMatter } from '../types'
+
+interface Props {
+  frontmatter: PostFrontMatter;
+  headings: Headings;
+}
+
+const { frontmatter, headings } = Astro.props;
+---
+
+<Base pageTitle={`Alan Shortis | ${frontmatter.title}`}>
+  <article>
+    <h1>{frontmatter.title}</h1>
+    <PostDate date={frontmatter.pubDate} />
+    <TableOfContents headings={headings} />
+    <p>{frontmatter.intro}</p>
+    <slot />
+  </article>
+</Base>
