@@ -1,5 +1,18 @@
+---
+import Clock from './Clock.astro'
+---
+
 <header class="header">
   <a href="/">
     <h1>as</h1>
   </a>
+  <Clock />
 </header>
+
+<style>
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+</style>

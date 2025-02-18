@@ -25,12 +25,12 @@ picture {
   display: block;
 }
 
-input,
-button,
-textarea,
-select {
+button {
+  background: none;
+  border: 0;
   font-family: inherit;
   font-size: inherit;
+  padding: 0;
 }
 
 :target {
