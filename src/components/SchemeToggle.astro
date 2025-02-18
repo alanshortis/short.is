@@ -1,0 +1,67 @@
+---
+const schemes = ['light', 'auto', 'dark'];
+---
+
+<fieldset class="toggle">
+  <legend class="toggle__legend">Colour scheme</legend>
+  {schemes.map(thiSscheme => (
+    <input
+      class="toggle__radio"
+      type="radio"
+      id={thiSscheme}
+      name="scheme"
+    />
+    <label for={thiSscheme}>{thiSscheme}</label>
+  ))}
+</fieldset>
+
+<script>
+  const schemeData = document.documentElement.dataset;
+  const radios = document.querySelectorAll('.toggle__radio');
+  const SCHEME_MQ = window.matchMedia('(prefers-color-scheme: dark)');
+
+  const setChecked = (scheme: string) => {
+    radios.forEach(radio => {
+      if (radio.id === scheme) {
+        (radio as HTMLInputElement).checked = true;
+      }
+    });
+  }
+
+  const setScheme = (scheme: string) => {
+    setChecked(scheme);
+    if (scheme === 'auto') {
+      SCHEME_MQ.matches ? (schemeData.scheme = 'dark') : (schemeData.scheme = 'light');
+      localStorage.removeItem('scheme');
+    } else {
+      schemeData.scheme = scheme;
+      localStorage.setItem('scheme', scheme);
+      (document.getElementById(scheme) as HTMLInputElement).checked = true;
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    setScheme(localStorage.getItem('scheme') || 'auto');
+
+    radios.forEach(radio => {
+      radio.addEventListener('change', () => setScheme((radio.id)));
+    });
+  });
+
+  SCHEME_MQ.addEventListener('change', () => {
+    if(!localStorage.getItem('scheme'))
+      setScheme('auto');
+  });
+</script>
+
+<style lang="scss">
+  @use '../styles/mixins' as *;
+
+  .toggle {
+    border: 0;
+    display: flex;
+    &__legend {
+      @include visually-hidden;
+    }
+  }
+</style>

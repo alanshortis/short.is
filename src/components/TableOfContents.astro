@@ -10,11 +10,13 @@ const { headings } = Astro.props;
 
 <nav>
   <ul class="contents">
-    {headings.map((heading) => (
-      <li class={`item heading-${heading.depth}`}>
-        <a href={`#${heading.slug}`}>{heading.text}</a>
-      </li>
-    ))}
+    {
+      headings.map(heading => (
+        <li class={`contents__item contents__item--level${heading.depth}`}>
+          <a href={`#${heading.slug}`}>{heading.text}</a>
+        </li>
+      ))
+    }
   </ul>
 </nav>
 
@@ -24,12 +26,12 @@ const { headings } = Astro.props;
   .contents {
     margin: 0;
     padding: 0;
-  }
-  .item {
-    list-style: none;
-    @include label;
-  }
-  .heading-3 {
-    margin-left: 1rem;
+    &__item {
+      list-style: none;
+      @include label;
+    }
+    &__item--level3 {
+      margin-left: 1rem;
+    }
   }
 </style>

@@ -10,3 +10,9 @@ export type PostFrontMatter = {
   description?: string;
   featured?: boolean;
 };
+
+export type Post = {
+  frontmatter: PostFrontMatter;
+  file: string;
+  url: string;
+};

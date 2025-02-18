@@ -1,3 +1,17 @@
 :root {
-  --accent: orange;
+  color-scheme: light dark;
+
+  &[data-scheme='light'] {
+    color-scheme: light;
+  }
+
+  &[data-scheme='dark'] {
+    color-scheme: dark;
+  }
+
+  --light: hsl(0, 0%, 95%);
+  --dark: hsl(0, 0%, 2.5%);
+
+  --background: light-dark(var(--light), var(--dark));
+  --foreground: light-dark(var(--dark), var(--light));
 }

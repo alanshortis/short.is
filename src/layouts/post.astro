@@ -1,8 +1,8 @@
 ---
-import Base from './base.astro'
-import TableOfContents from '../components/TableOfContents.astro'
-import PostDate from '../components/PostDate.astro'
-import type { Headings, PostFrontMatter } from '../types'
+import Base from './base.astro';
+import TableOfContents from '../components/TableOfContents.astro';
+import PostDate from '../components/PostDate.astro';
+import type { Headings, PostFrontMatter } from '../types';
 
 interface Props {
   frontmatter: PostFrontMatter;
@@ -17,7 +17,7 @@ const { frontmatter, headings } = Astro.props;
     <h1>{frontmatter.title}</h1>
     <PostDate date={frontmatter.pubDate} />
     <TableOfContents headings={headings} />
-    <p>{frontmatter.intro}</p>
+    <p>{frontmatter.description}</p>
     <slot />
   </article>
 </Base>
