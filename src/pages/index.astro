@@ -4,15 +4,15 @@ import Base from '../layouts/base.astro';
 import { PostDate } from '../components';
 import { readingList } from './reading/readingList.ts';
 
-const allPosts = await getCollection('posts');
+const collection = await getCollection('posts');
+const sortedPosts = collection.sort((a, b) => b.data.pubDate.localeCompare(a.data.pubDate));
 ---
 
 <Base pageTitle="Alan Shortis">
   <h1>Alan Shortis</h1>
-
   <div>
     {
-      allPosts.map(post => (
+      sortedPosts.map(post => (
         <article>
           <a href={`/writing/${post.slug}`}>
             <h1>{post.data.title}</h1>
