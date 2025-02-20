@@ -2,18 +2,18 @@
 
 <script>
   const time = document.getElementById('time');
-  
+
   const setTime = () => {
     const now = new Date();
 
-    time.innerHTML = now.toLocaleTimeString('en-GB');
-    time.setAttribute('datetime', now.toISOString());
+    time!.innerHTML = now.toLocaleTimeString('en-GB');
+    time!.setAttribute('datetime', now.toISOString());
   };
-  
+
   setInterval(() => {
-    setTime()
+    setTime();
   }, 1000);
-  
+
   setTime();
 </script>
 

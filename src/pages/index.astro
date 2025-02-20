@@ -1,12 +1,10 @@
 ---
-import type { Post } from '../types';
+import { getCollection } from 'astro:content';
 import Base from '../layouts/base.astro';
-import PostDate from '../components/PostDate.astro';
+import { PostDate } from '../components';
 import { readingList } from './reading/readingList.ts';
 
-const allPosts = Object.values(import.meta.glob<Post>('./writing/*.md', { eager: true })).sort((a, b) =>
-  b.frontmatter.pubDate.localeCompare(a.frontmatter.pubDate)
-);
+const allPosts = await getCollection('posts');
 ---
 
 <Base pageTitle="Alan Shortis">
@@ -16,9 +14,9 @@ const allPosts = Object.values(import.meta.glob<Post>('./writing/*.md', { eager:
     {
       allPosts.map(post => (
         <article>
-          <a href={post.url}>
-            <h1>{post.frontmatter.title}</h1>
-            <PostDate date={post.frontmatter.pubDate} />
+          <a href={`/writing/${post.slug}`}>
+            <h1>{post.data.title}</h1>
+            <PostDate date={post.data.pubDate} />
           </a>
         </article>
       ))

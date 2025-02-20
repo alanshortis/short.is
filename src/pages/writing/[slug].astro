@@ -1,0 +1,30 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import Base from '../../layouts/base.astro';
+import { CodeBlock, PostDate, TableOfContents } from '../../components';
+
+interface Props {
+  post: CollectionEntry<'posts'>;
+}
+
+export const getStaticPaths = async () => {
+  const blogPosts = await getCollection('posts');
+  return blogPosts.map(post => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+};
+const { post } = Astro.props;
+const { Content, headings } = await post.render();
+---
+
+<Base pageTitle={`Alan Shortis | ${post.data.title}`}>
+  <article>
+    <PostDate date={post.data.pubDate} />
+    <h1>{post.data.title}</h1>
+    {!!headings && <TableOfContents headings={headings} />}
+    <div>
+      <Content components={{ pre: CodeBlock }} />
+    </div>
+  </article>
+</Base>

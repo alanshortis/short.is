@@ -1,8 +1,8 @@
 ---
-import type { Headings } from '../types';
+import type { RenderResult } from 'astro:content';
 
 interface Props {
-  headings: Headings;
+  headings: RenderResult['headings'];
 }
 
 const { headings } = Astro.props;
