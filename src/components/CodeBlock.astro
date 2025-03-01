@@ -1,8 +1,29 @@
-<div>
-  <button type="button" onclick="alert('copy')">Copy</button>
-  <pre>
-    <code>
-      <slot />
-    </code>
+---
+const id = Math.random().toString(36).slice(2);
+---
+
+<div class="code-block">
+  <button type="button" data-code={id}>Copy</button>
+  <pre id={id}>
+    <slot />
   </pre>
 </div>
+
+<script>
+  const copyButtons = document.querySelectorAll('button[data-code]');
+  copyButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const codeId = button.getAttribute('data-code');
+      const codeBlock = document.querySelector(`pre[id="${codeId}"]`);
+      navigator.clipboard.writeText((codeBlock as HTMLElement).innerText);
+    });
+  });
+</script>
+
+<style lang="scss">
+  @use '../styles/mixins' as *;
+
+  button {
+    @include label;
+  }
+</style>
