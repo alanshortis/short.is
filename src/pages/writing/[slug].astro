@@ -1,7 +1,7 @@
 ---
 import { render, getCollection, type CollectionEntry } from 'astro:content';
 import Base from '../../layouts/base.astro';
-import { CodeBlock, PostDate, TableOfContents } from '../../components';
+import { AgeWarning, CodeBlock, PostDate, TableOfContents } from '../../components';
 
 interface Props {
   post: CollectionEntry<'posts'>;
@@ -27,6 +27,7 @@ const { Content, headings } = await render(post);
     </div>
     <div class="post__content formatting">
       {!!post.data.description && <p class="post__intro">{post.data.description}</p>}
+      <AgeWarning pubDate={post.data.pubDate} showAgeWarning={Boolean(post.data.showAgeWarning)} />
       <Content components={{ pre: CodeBlock }} />
     </div>
   </article>
@@ -44,6 +45,7 @@ const { Content, headings } = await render(post);
       font-size: var(--step-5);
       font-weight: bold;
       grid-column: 1 / -1;
+      line-height: 1;
       text-wrap: balance;
     }
     &__intro {
@@ -96,18 +98,17 @@ const { Content, headings } = await render(post);
     font-weight: bold;
   }
   .formatting a {
-    font-weight: bold;
+    color: var(--code);
     text-decoration: underline;
-    transition: text-decoration-color 250ms;
+    transition: color 0.2s;
   }
   .formatting a:hover {
-    text-decoration-color: var(--divider);
+    color: var(--foreground);
   }
   .formatting p code {
     background-color: var(--code-background);
-    border: 1px solid var(--divider);
+    border: 1px solid var(--code-border);
     border-radius: var(--radius);
-    color: var(--code);
     font-family: monospace;
     font-size: var(--step--1);
     padding: calc(var(--step--2) / 4) calc(var(--step--2) / 2);
@@ -124,8 +125,9 @@ const { Content, headings } = await render(post);
     list-style: disc;
   }
   .formatting blockquote {
-    background-color: var(--code-background);
-    border-left: 2px solid currentColor;
+    background-image: linear-gradient(90deg, var(--code-border), transparent);
+    border-left: var(--radius) solid currentColor;
+    border-radius: var(--radius);
     display: block;
     font-style: italic;
     margin-left: var(--step-1);

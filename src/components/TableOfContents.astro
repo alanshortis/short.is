@@ -16,12 +16,16 @@ const { headings, hasIntro } = Astro.props;
       <ul class="contents__list">
         {hasIntro && (
           <li class="contents__item">
-            <a href="#">Introduction</a>
+            <a href="#" class="contents__link">
+              Introduction
+            </a>
           </li>
         )}
         {headings.map(heading => (
           <li class={`contents__item contents__item--level${heading.depth}`}>
-            <a href={`#${heading.slug}`}>{heading.text}</a>
+            <a href={`#${heading.slug}`} class="contents__link">
+              {heading.text}
+            </a>
           </li>
         ))}
       </ul>
@@ -46,6 +50,14 @@ const { headings, hasIntro } = Astro.props;
       list-style: none;
       font-size: var(--step--1);
       line-height: var(--step-1);
+    }
+    &__link {
+      color: var(--foreground);
+      text-decoration: underline;
+      transition: color 0.2s;
+      &:hover {
+        color: var(--code);
+      }
     }
     &__item--level3 {
       margin-left: 1rem;

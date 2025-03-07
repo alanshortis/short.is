@@ -8,6 +8,7 @@ const posts = defineCollection({
       pubDate: z.string(),
       description: z.string().optional(),
       featured: z.boolean().optional(),
+      showAgeWarning: z.boolean().optional(),
     }),
 });
 

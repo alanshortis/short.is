@@ -1,0 +1,42 @@
+---
+interface Props {
+  pubDate: string;
+  showAgeWarning: boolean;
+}
+
+const { pubDate, showAgeWarning } = Astro.props;
+
+const postAgeYears = Math.ceil(
+  (new Date(pubDate).getTime() - new Date().getTime()) / (365 * 24 * 60 * 60 * 1000)
+);
+
+const shouldShowWarning = showAgeWarning && postAgeYears <= -2;
+---
+
+{
+  shouldShowWarning && (
+    <aside>
+      <p>
+        This post is more than {Math.abs(postAgeYears)} years old and may contain outdated ideas and examples
+      </p>
+    </aside>
+  )
+}
+
+<style lang="scss">
+  @use '../styles/mixins' as *;
+
+  aside {
+    background-color: var(--foreground);
+    color: var(--background);
+    margin: var(--step-5) 0;
+    font-size: var(--step--1);
+    padding: var(--step--2);
+    border-radius: var(--radius);
+    @include hatching(var(--divider), var(--step-5));
+    & p::selection {
+      background-color: var(--background);
+      color: var(--foreground);
+    }
+  }
+</style>

@@ -2,6 +2,7 @@
 title: 'Handling z-index with SASS'
 pubDate: '2016-06-05'
 description: 'Use SASS to make your z-index values easier to manage, or so complex that no one will ever touch them again.'
+showAgeWarning: true
 ---
 
 `z-index` is not a particularly interesting CSS property, but it is one of the most misunderstood. What seems to be a very simple concept on the surface can be maddeningly frustrating at times. This article is not about the intricacies of `z-index`; Philip Walton explains the quirks better than I can in [this excellent and detailed post](https://philipwalton.com/articles/what-no-one-told-you-about-z-index/).
@@ -13,13 +14,11 @@ While SASS cannot alter the behaviour of `z-index`, it can be used to make it ea
 ## Solution 1
 
 ```scss
-// Apply values to variables.
 $z-menu: 10;
 $z-header: 20;
 $z-footer: $z-header;
 $z-modal: 30;
 
-// Use.
 .header {
   z-index: $z-header; // 20
 }
@@ -32,19 +31,16 @@ I like to set the values in multiples of 10 as this allows you to set a new vari
 ## Solution 2
 
 ```scss
-// Create a map to contain elements and values.
 $z: (
   'modal': 30,
   'header': 20,
   'menu': 10,
 );
 
-// Create a function that gets the values from the map.
 @function z($value) {
   @if map-has-key($z, $value) {
     @return map-get($z, $value);
   }
-  // Use @warn instead of @error to get a more detailed backtrace.
   @warn '#{$value} is not included in the $z map.';
 }
 
@@ -63,10 +59,8 @@ While trying to use an non-existent variable will always show an error, passing 
 ## Solution 3
 
 ```scss
-// Create a list of elements that need a z-index value.
 $z: ('menu', 'header', 'modal');
 
-// Create a function that gets the values from the list.
 @function z($value) {
   @if index($z, $value) {
     @return index($z, $value);
@@ -74,7 +68,6 @@ $z: ('menu', 'header', 'modal');
   @warn '#{$value} is not included in the $z list.';
 }
 
-// Use.
 .header {
   z-index: z(header); // 2
 }
@@ -89,7 +82,6 @@ An issue you may face is that the values returned are going to be small numbers,
 ```scss
 @function z($value) {
   @if index($z, $value) {
-    // Return a larger number by multiplying the index.
     @return (index($z, $value) * 10);
   }
   @warn '#{$value} is not included in the \$z list.';

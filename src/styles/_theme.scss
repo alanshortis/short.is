@@ -22,13 +22,29 @@
 
   --radius: 3px;
 
-  --light: hsl(27, 30%, 95%);
+  --light: hsl(27, 30%, 90%);
   --dark: hsl(27, 30%, 5%);
 
-  --code: hsl(27, 30%, 50%);
+  --code: light-dark(hsl(27, 30%, 40%), hsl(27, 30%, 50%));
   --code-background: hsla(27, 30%, 54%, 0.025);
-  --divider: hsla(27, 30%, 54%, 0.125);
+  --code-border: hsla(27, 30%, 54%, 0.125);
 
+  --divider: light-dark(hsl(27, 30%, 25%), hsl(27, 30%, 75%));
   --background: light-dark(var(--light), var(--dark));
   --foreground: light-dark(var(--dark), var(--light));
+
+  // Safari versions that don't support this are a bit too recent to risk it
+  @supports not (color: light-dark(var(--light), var(--dark))) {
+    --background: var(--dark);
+    --foreground: var(--light);
+    --code: hsl(27, 30%, 50%);
+    --divider: hsl(27, 30%, 75%);
+
+    &[data-scheme='light'] {
+      --background: var(--light);
+      --foreground: var(--dark);
+      --code: hsl(27, 30%, 40%);
+      --divider: hsl(27, 30%, 25%);
+    }
+  }
 }
