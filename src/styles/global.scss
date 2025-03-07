@@ -1,17 +1,33 @@
+@use './fonts';
 @use './theme';
 @use './reset';
+@use './mixins' as *;
 
 html {
   height: 100%;
-  overscroll-behavior: none;
+  @include should-animate {
+    scroll-behavior: smooth;
+  }
 }
 
 body {
   background-color: var(--background);
   color: var(--foreground);
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
+  font-family: var(--font-family);
+  font-size: var(--step-0);
+  line-height: 1.2;
+  margin: 0 auto;
+  max-width: 77rem;
+  min-height: 100vh;
+  padding: 0 var(--step-0);
+  width: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  @include small {
+    padding: 0 var(--step-5);
+  }
 }
 
 main {

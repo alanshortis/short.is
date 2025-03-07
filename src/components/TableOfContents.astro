@@ -3,32 +3,49 @@ import type { RenderResult } from 'astro:content';
 
 interface Props {
   headings: RenderResult['headings'];
+  hasIntro: boolean;
 }
 
-const { headings } = Astro.props;
+const { headings, hasIntro } = Astro.props;
 ---
 
-<nav>
-  <ul class="contents">
-    {
-      headings.map(heading => (
-        <li class={`contents__item contents__item--level${heading.depth}`}>
-          <a href={`#${heading.slug}`}>{heading.text}</a>
-        </li>
-      ))
-    }
-  </ul>
-</nav>
+{
+  headings.length > 0 && (
+    <nav class="contents">
+      <h2 class="contents__title">Contents</h2>
+      <ul class="contents__list">
+        {hasIntro && (
+          <li class="contents__item">
+            <a href="#">Introduction</a>
+          </li>
+        )}
+        {headings.map(heading => (
+          <li class={`contents__item contents__item--level${heading.depth}`}>
+            <a href={`#${heading.slug}`}>{heading.text}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  )
+}
 
 <style lang="scss">
   @use '../styles/mixins' as *;
 
   .contents {
-    margin: 0;
-    padding: 0;
+    position: sticky;
+    top: var(--step-1);
+    &__title {
+      @include visually-hidden;
+    }
+    &__list {
+      margin: 0;
+      padding: 0;
+    }
     &__item {
       list-style: none;
-      @include label;
+      font-size: var(--step--1);
+      line-height: var(--step-1);
     }
     &__item--level3 {
       margin-left: 1rem;

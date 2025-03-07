@@ -1,6 +1,44 @@
+@mixin active-indicator {
+  background-color: currentColor;
+  border-radius: 50%;
+  content: '';
+  height: 0.33em;
+  left: calc(50% - 0.175em);
+  opacity: 1;
+  position: absolute;
+  top: 1.66em;
+  width: 0.33em;
+}
+
+@mixin medium {
+  @media (min-width: 900px) {
+    @content;
+  }
+}
+
+@mixin small {
+  @media (min-width: 500px) {
+    @content;
+  }
+}
+
+@mixin focus-outline {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+
 @mixin label {
-  font-size: 0.9rem;
+  font-feature-settings: 'tnum';
+  font-size: var(--step--1);
+  letter-spacing: 3px;
+  line-height: var(--step-1);
   text-transform: uppercase;
+}
+
+@mixin should-animate {
+  @media (prefers-reduced-motion: no-preference) {
+    @content;
+  }
 }
 
 @mixin visually-hidden {

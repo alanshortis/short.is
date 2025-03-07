@@ -3,16 +3,20 @@ import { Clock } from './';
 ---
 
 <header class="header">
-  <a href="/">
-    <h1>as</h1>
-  </a>
+  <a href="/" class="header__title">Alan Shortis</a>
   <Clock />
 </header>
 
-<style>
-  header {
-    display: flex;
-    justify-content: space-between;
+<style lang="scss">
+  .header {
     align-items: center;
+    display: flex;
+    grid-column: 1 / -1;
+    justify-content: space-between;
+    padding: var(--step-5) 0;
+    &__title {
+      font-style: italic;
+      font-weight: bold;
+    }
   }
 </style>

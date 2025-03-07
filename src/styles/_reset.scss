@@ -30,6 +30,14 @@ picture {
 button {
   background: none;
   border: 0;
+  cursor: pointer;
   font-family: inherit;
   font-size: inherit;
+}
+
+a {
+  text-decoration: none;
+  &:visited {
+    color: inherit;
+  }
 }

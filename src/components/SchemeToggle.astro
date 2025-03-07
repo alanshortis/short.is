@@ -11,7 +11,7 @@ const schemes = ['light', 'auto', 'dark'];
       id={thiSscheme}
       name="scheme"
     />
-    <label for={thiSscheme}>{thiSscheme}</label>
+    <label class="toggle__label" for={thiSscheme}>{thiSscheme}</label>
   ))}
 </fieldset>
 
@@ -58,10 +58,25 @@ const schemes = ['light', 'auto', 'dark'];
   @use '../styles/mixins' as *;
 
   .toggle {
-    border: 0;
-    display: flex;
-    &__legend {
-      @include visually-hidden;
+  border: 0;
+  display: flex;
+  gap: var(--step--1);
+  &__legend {
+    @include visually-hidden;
+  }
+  &__label {
+    @include label;
+    cursor: pointer;
+    position: relative;
+  }
+  &__radio {
+    @include visually-hidden;
+    &:checked + label::after {
+      @include active-indicator;
+    }
+    &:focus-visible + label {
+      @include focus-outline;
     }
   }
+}
 </style>

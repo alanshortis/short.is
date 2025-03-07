@@ -4,10 +4,14 @@ interface Props {
 }
 
 const { date } = Astro.props;
-const formattedDate = new Date(date).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })
+const formattedDate = new Date(date).toLocaleDateString('en-GB', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
 ---
 
-<time datetime={date}>{formattedDate}</time>
+<time datetime={date} class="date">{formattedDate}</time>
 
 <style lang="scss">
   @use '../styles/mixins' as *;
