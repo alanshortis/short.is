@@ -26,7 +26,6 @@ const { Content, headings } = await render(post);
       <TableOfContents headings={headings} hasIntro={!!post.data.description} />
     </div>
     <div class="post__content formatting">
-      {!!post.data.description && <p class="post__intro">{post.data.description}</p>}
       <AgeWarning pubDate={post.data.pubDate} showAgeWarning={Boolean(post.data.showAgeWarning)} />
       <Content components={{ pre: CodeBlock }} />
     </div>
@@ -47,9 +46,6 @@ const { Content, headings } = await render(post);
       grid-column: 1 / -1;
       line-height: 1;
       text-wrap: balance;
-    }
-    &__intro {
-      font-size: var(--step-1);
     }
     &__meta {
       display: flex;
@@ -79,6 +75,7 @@ const { Content, headings } = await render(post);
   .formatting h2,
   .formatting h3 {
     font-size: var(--step-3);
+    font-style: italic;
     font-weight: bold;
     padding-top: var(--step-1);
     line-height: 1.25em;

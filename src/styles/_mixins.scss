@@ -10,6 +10,24 @@
   width: 0.33em;
 }
 
+@mixin depth {
+  --offset: calc(var(--step--2) / 2);
+  background-color: var(--background);
+  border-radius: var(--radius);
+  position: relative;
+  &::after {
+    border: 1px solid var(--divider);
+    border-radius: var(--radius);
+    content: '';
+    height: 100%;
+    left: var(--offset);
+    position: absolute;
+    top: var(--offset);
+    width: 100%;
+    z-index: -1;
+  }
+}
+
 @mixin medium {
   @media (min-width: 900px) {
     @content;

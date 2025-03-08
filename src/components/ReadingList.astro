@@ -1,0 +1,84 @@
+---
+import { readingList } from '../content/readingList.ts';
+---
+
+<div class="container">
+  <h2>Recent reading</h2>
+  <p>Things of note I have recently seen</p>
+  <div class="list">
+    {
+      readingList.map(post => (
+        <article>
+          <a class="list__item" href={post.url} target="_blank" rel="noopener noreferrer">
+            <p class="list__type">{post.type}</p>
+            <h1 class="list__title">{post.title}</h1>
+            <p class="list__author">
+              <span>by</span> {post.author}
+            </p>
+          </a>
+        </article>
+      ))
+    }
+  </div>
+</div>
+
+<style lang="scss">
+  @use '../styles/mixins' as *;
+
+  .container {
+    position: relative;
+    overflow: hidden;
+    &::after {
+      background-image: linear-gradient(to right, transparent, var(--background));
+      bottom: 0;
+      content: '';
+      pointer-events: none;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: var(--step-5);
+      z-index: 1;
+    }
+  }
+
+  .list {
+    display: flex;
+    gap: var(--step-2);
+    overflow-x: auto;
+    overscroll-behavior: contain;
+    padding-bottom: calc(var(--step--2) / 2);
+    padding-right: var(--step-5);
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      -webkit-appearance: none;
+    }
+    &__title {
+      font-size: var(--step-1);
+      font-weight: bold;
+    }
+    &__item {
+      border: 1px solid var(--divider);
+      color: var(--foreground);
+      display: flex;
+      flex-direction: column;
+      gap: var(--step--2);
+      height: 100%;
+      padding: var(--step--2);
+      scroll-snap-align: start;
+      width: 18rem;
+      @include depth;
+    }
+    &__author {
+      font-size: var(--step--1);
+      margin-top: auto;
+      text-align: right;
+      span {
+        font-style: italic;
+      }
+    }
+    &__type {
+      @include label;
+    }
+  }
+</style>

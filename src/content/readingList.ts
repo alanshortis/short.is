@@ -13,7 +13,13 @@ type Reading = {
   type: Type;
 };
 
-export const readingList: Reading[] = [
+export const readingList: Array<Reading> = [
+  {
+    url: 'https://ethanmarcotte.com/wrote/leaving-18f/',
+    title: 'Moving on from 18F',
+    author: 'Ethan Marcotte',
+    type: Type.BLOG,
+  },
   {
     url: 'https://www.miriamsuzanne.com/2025/02/12/tech-ai-wtf/',
     title: 'Tech continues to be political',
