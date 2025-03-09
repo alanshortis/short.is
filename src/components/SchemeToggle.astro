@@ -2,56 +2,74 @@
 const schemes = ['light', 'auto', 'dark'];
 ---
 
-<fieldset class="toggle">
-  <legend class="toggle__legend">Colour scheme</legend>
-  {schemes.map(thiSscheme => (
-    <input
-      class="toggle__radio"
-      type="radio"
-      id={thiSscheme}
-      name="scheme"
-    />
-    <label class="toggle__label" for={thiSscheme}>{thiSscheme}</label>
-  ))}
-</fieldset>
+<scheme-toggle>
+  <fieldset class="toggle">
+    <legend class="toggle__legend">Colour scheme</legend>
+    {schemes.map(thiSscheme => (
+      <input
+        class="toggle__radio"
+        type="radio"
+        id={thiSscheme}
+        name="scheme"
+      />
+      <label class="toggle__label" for={thiSscheme}>{thiSscheme}</label>
+    ))}
+  </fieldset>
+</scheme-toggle>
 
 <script>
-  const schemeData = document.documentElement.dataset;
-  const radios = document.querySelectorAll('.toggle__radio');
-  const SCHEME_MQ = window.matchMedia('(prefers-color-scheme: dark)');
+  class SchemeToggle extends HTMLElement {
+    private abortController: AbortController;
+    private schemeData: DOMStringMap;
+    private radios: NodeListOf<HTMLInputElement>;
+    private SCHEME_MQ: MediaQueryList;
 
-  const setChecked = (scheme: string) => {
-    radios.forEach(radio => {
-      if (radio.id === scheme) {
-        (radio as HTMLInputElement).checked = true;
+    constructor() {
+      super();
+      this.abortController = new AbortController();
+      this.schemeData = document.documentElement.dataset;
+      this.radios = this.querySelectorAll('input')!;
+      this.SCHEME_MQ = window.matchMedia('(prefers-color-scheme: dark)');
+    }
+
+    connectedCallback() {
+      this.setScheme(localStorage.getItem('scheme') || 'auto');
+
+      this.radios.forEach(radio => {
+        radio.addEventListener('change', () => this.setScheme(radio.id), { signal: this.abortController.signal });
+      });
+
+      this.SCHEME_MQ.addEventListener('change', () => {
+        if (!localStorage.getItem('scheme')) this.setScheme('auto');
+      }, { signal: this.abortController.signal });
+    }
+
+    disconnectedCallback() {
+      this.abortController.abort();
+    }
+
+    setChecked(scheme: string) {
+      this.radios.forEach(radio => {
+        if (radio.id === scheme) {
+          radio.checked = true;
+        }
+      });
+    }
+
+    setScheme(scheme: string) {
+      this.setChecked(scheme);
+      if (scheme === 'auto') {
+        this.SCHEME_MQ.matches ? (this.schemeData.scheme = 'dark') : (this.schemeData.scheme = 'light');
+        localStorage.removeItem('scheme');
+      } else {
+        this.schemeData.scheme = scheme;
+        localStorage.setItem('scheme', scheme);
+        (document.getElementById(scheme) as HTMLInputElement).checked = true;
       }
-    });
-  }
-
-  const setScheme = (scheme: string) => {
-    setChecked(scheme);
-    if (scheme === 'auto') {
-      SCHEME_MQ.matches ? (schemeData.scheme = 'dark') : (schemeData.scheme = 'light');
-      localStorage.removeItem('scheme');
-    } else {
-      schemeData.scheme = scheme;
-      localStorage.setItem('scheme', scheme);
-      (document.getElementById(scheme) as HTMLInputElement).checked = true;
     }
   }
 
-  document.addEventListener('DOMContentLoaded', () => {
-    setScheme(localStorage.getItem('scheme') || 'auto');
-
-    radios.forEach(radio => {
-      radio.addEventListener('change', () => setScheme((radio.id)));
-    });
-  });
-
-  SCHEME_MQ.addEventListener('change', () => {
-    if(!localStorage.getItem('scheme'))
-      setScheme('auto');
-  });
+  customElements.define('scheme-toggle', SchemeToggle);
 </script>
 
 <style lang="scss">

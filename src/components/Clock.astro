@@ -1,20 +1,36 @@
-<time id="time" datetime=""></time>
+<the-time>
+  <time datetime=""></time>
+</the-time>
 
 <script>
-  const time = document.getElementById('time');
+  class TheTime extends HTMLElement {
+    private time: HTMLTimeElement;
+    private intervalId?: number;
 
-  const setTime = () => {
-    const now = new Date();
+    constructor() {
+      super();
+      this.time = this.querySelector('time')!;
+    }
 
-    time!.innerHTML = now.toLocaleTimeString('en-GB');
-    time!.setAttribute('datetime', now.toISOString());
-  };
+    connectedCallback() {
+      this.setTime();
+      this.intervalId = window.setInterval(() => {
+        this.setTime();
+      }, 1000);
+    }
 
-  setInterval(() => {
-    setTime();
-  }, 1000);
+    disconnectedCallback() {
+      clearInterval(this.intervalId);
+    }
 
-  setTime();
+    setTime() {
+      const now = new Date();
+      this.time.innerHTML = now.toLocaleTimeString('en-GB');
+      this.time.setAttribute('datetime', now.toISOString());
+    }
+  }
+
+  customElements.define('the-time', TheTime);
 </script>
 
 <style lang="scss">
