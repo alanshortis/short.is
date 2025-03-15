@@ -12,7 +12,6 @@ export async function GET(context: APIContext) {
       .map(post => ({
         title: post.data.title,
         pubDate: new Date(post.data.pubDate),
-        description: post.data.description,
         link: `/writing/${post.slug}/`,
       }))
       .sort((a, b) => b.pubDate.getTime() - a.pubDate.getTime()),

@@ -2,9 +2,9 @@
 import { readingList } from '../content/readingList.ts';
 ---
 
-<div class="container">
-  <h2>Recent reading</h2>
-  <p>Things of note I have recently seen</p>
+<div class="reading">
+  <h2 class="reading__title">Recent reading</h2>
+  <p class="reading__description">Things of note I have recently read, watched, or listened to</p>
   <div class="list">
     {
       readingList.map(post => (
@@ -25,9 +25,10 @@ import { readingList } from '../content/readingList.ts';
 <style lang="scss">
   @use '../styles/mixins' as *;
 
-  .container {
-    position: relative;
+  .reading {
+    margin-top: var(--step-5);
     overflow: hidden;
+    position: relative;
     &::after {
       background-image: linear-gradient(to right, transparent, var(--background));
       bottom: 0;
@@ -38,6 +39,13 @@ import { readingList } from '../content/readingList.ts';
       top: 0;
       width: var(--step-5);
       z-index: 1;
+    }
+    &__title {
+      @include visually-hidden;
+    }
+    &__description {
+      margin-bottom: var(--step-2);
+      text-wrap: balance;
     }
   }
 
@@ -54,7 +62,6 @@ import { readingList } from '../content/readingList.ts';
       -webkit-appearance: none;
     }
     &__title {
-      font-size: var(--step-1);
       font-weight: bold;
     }
     &__item {
@@ -65,7 +72,7 @@ import { readingList } from '../content/readingList.ts';
       height: 100%;
       padding: var(--step--2);
       scroll-snap-align: start;
-      width: 18rem;
+      width: 15rem;
       @include depth;
     }
     &__author {

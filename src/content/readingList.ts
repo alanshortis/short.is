@@ -21,6 +21,12 @@ export const readingList: Array<Reading> = [
     type: Type.BLOG,
   },
   {
+    url: 'https://aresluna.org/the-hardest-working-font-in-manhattan',
+    title: 'The hardest working font in Manhattan',
+    author: 'Marcin Wichary',
+    type: Type.BLOG,
+  },
+  {
     url: 'https://www.miriamsuzanne.com/2025/02/12/tech-ai-wtf/',
     title: 'Tech continues to be political',
     author: 'Miriam Suzanne',

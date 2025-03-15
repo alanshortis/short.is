@@ -3,10 +3,9 @@ import type { RenderResult } from 'astro:content';
 
 interface Props {
   headings: RenderResult['headings'];
-  hasIntro: boolean;
 }
 
-const { headings, hasIntro } = Astro.props;
+const { headings } = Astro.props;
 ---
 
 {
@@ -14,13 +13,6 @@ const { headings, hasIntro } = Astro.props;
     <nav class="contents">
       <h2 class="contents__title">Contents</h2>
       <ul class="contents__list">
-        {hasIntro && (
-          <li class="contents__item">
-            <a href="#" class="contents__link">
-              Introduction
-            </a>
-          </li>
-        )}
         {headings.map(heading => (
           <li class={`contents__item contents__item--level${heading.depth}`}>
             <a href={`#${heading.slug}`} class="contents__link">

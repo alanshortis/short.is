@@ -1,13 +1,17 @@
 ---
-import { Clock } from './';
+import { Clock, Logo } from './';
 ---
 
 <header class="header">
-  <a href="/" class="header__title">Alan Shortis</a>
+  <a href="/">
+    <Logo />
+    <span class="header__title">Alan Shortis</span>
+  </a>
   <Clock />
 </header>
 
 <style lang="scss">
+  @use '../styles/mixins' as *;
   .header {
     align-items: center;
     display: flex;
@@ -15,8 +19,7 @@ import { Clock } from './';
     justify-content: space-between;
     padding: var(--step-5) 0;
     &__title {
-      font-style: italic;
-      font-weight: bold;
+      @include visually-hidden;
     }
   }
 </style>

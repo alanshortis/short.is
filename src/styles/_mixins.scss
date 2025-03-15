@@ -13,7 +13,7 @@
 @mixin depth {
   --offset: calc(var(--step--2) / 2);
   background-color: var(--background);
-  border: 1px solid var(--divider);
+  border: 1px solid var(--foreground);
   border-radius: var(--radius);
   position: relative;
   &::after {
@@ -42,11 +42,11 @@
 }
 
 @mixin focus-outline {
-  outline: 2px solid currentColor;
+  outline: 2px solid var(--focus-ring);
   outline-offset: 4px;
 }
 
-@mixin hatching($color: currentColor, $bottomMargin: 0) {
+@mixin hatching($color: currentColor, $bottomMargin: 0px) {
   --offset: var(--step--2);
   margin-bottom: calc(var(--offset) + #{$bottomMargin});
   margin-right: var(--offset);
