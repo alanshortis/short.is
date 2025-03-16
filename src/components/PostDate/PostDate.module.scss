@@ -1,7 +1,0 @@
-@use '~/src/styles/mixins' as *;
-
-.date {
-  @include label;
-  display: block;
-  line-height: 1.5rem;
-}

@@ -1,0 +1,100 @@
+---
+const schemes = ['light', 'auto', 'dark'];
+---
+
+<scheme-toggle>
+  <fieldset class="toggle">
+    <legend class="toggle__legend">Colour scheme</legend>
+    {schemes.map(thiSscheme => (
+      <input
+        class="toggle__radio"
+        type="radio"
+        id={thiSscheme}
+        name="scheme"
+      />
+      <label class="toggle__label" for={thiSscheme}>{thiSscheme}</label>
+    ))}
+  </fieldset>
+</scheme-toggle>
+
+<script>
+  class SchemeToggle extends HTMLElement {
+    private abortController: AbortController;
+    private schemeData: DOMStringMap;
+    private radios: NodeListOf<HTMLInputElement>;
+    private SCHEME_MQ: MediaQueryList;
+
+    constructor() {
+      super();
+      this.abortController = new AbortController();
+      this.schemeData = document.documentElement.dataset;
+      this.radios = this.querySelectorAll('input')!;
+      this.SCHEME_MQ = window.matchMedia('(prefers-color-scheme: dark)');
+    }
+
+    connectedCallback() {
+      this.setScheme(localStorage.getItem('scheme') || 'auto');
+
+      this.radios.forEach(radio => {
+        radio.addEventListener('change', () => this.setScheme(radio.id), { signal: this.abortController.signal });
+      });
+
+      this.SCHEME_MQ.addEventListener('change', () => {
+        if (!localStorage.getItem('scheme')) this.setScheme('auto');
+      }, { signal: this.abortController.signal });
+    }
+
+    disconnectedCallback() {
+      this.abortController.abort();
+    }
+
+    setChecked(scheme: string) {
+      this.radios.forEach(radio => {
+        if (radio.id === scheme) {
+          radio.checked = true;
+        }
+      });
+    }
+
+    setScheme(scheme: string) {
+      this.setChecked(scheme);
+      if (scheme === 'auto') {
+        this.SCHEME_MQ.matches ? (this.schemeData.scheme = 'dark') : (this.schemeData.scheme = 'light');
+        localStorage.removeItem('scheme');
+      } else {
+        this.schemeData.scheme = scheme;
+        localStorage.setItem('scheme', scheme);
+        (document.getElementById(scheme) as HTMLInputElement).checked = true;
+      }
+    }
+  }
+
+  customElements.define('scheme-toggle', SchemeToggle);
+</script>
+
+<style lang="scss">
+  @use '../styles/mixins' as *;
+
+  .toggle {
+  border: 0;
+  display: flex;
+  gap: var(--step--1);
+  &__legend {
+    @include visually-hidden;
+  }
+  &__label {
+    @include label;
+    cursor: pointer;
+    position: relative;
+  }
+  &__radio {
+    @include visually-hidden;
+    &:checked + label::after {
+      @include active-indicator;
+    }
+    &:focus-visible + label {
+      @include focus-outline;
+    }
+  }
+}
+</style>

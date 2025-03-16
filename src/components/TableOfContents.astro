@@ -1,0 +1,57 @@
+---
+import type { RenderResult } from 'astro:content';
+
+interface Props {
+  headings: RenderResult['headings'];
+}
+
+const { headings } = Astro.props;
+---
+
+{
+  headings.length > 0 && (
+    <nav class="contents">
+      <h2 class="contents__title">Contents</h2>
+      <ul class="contents__list">
+        {headings.map(heading => (
+          <li class={`contents__item contents__item--level${heading.depth}`}>
+            <a href={`#${heading.slug}`} class="contents__link">
+              {heading.text}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  )
+}
+
+<style lang="scss">
+  @use '../styles/mixins' as *;
+
+  .contents {
+    position: sticky;
+    top: var(--step-1);
+    &__title {
+      @include visually-hidden;
+    }
+    &__list {
+      margin: 0;
+      padding: 0;
+    }
+    &__item {
+      list-style: none;
+      font-size: var(--step--1);
+      line-height: var(--step-1);
+    }
+    &__link {
+      color: var(--foreground);
+      transition: color 0.2s;
+      &:hover {
+        color: var(--code);
+      }
+    }
+    &__item--level3 {
+      margin-left: 1rem;
+    }
+  }
+</style>

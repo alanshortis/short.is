@@ -21,28 +21,15 @@
 
   --font-family: 'Safiro', 'Helvetica Neue', Helvetica, sans-serif;
 
-  --radius: 2px;
+  --radius: 3px;
 
   --light: hsl(0, 0%, 95%);
-  --dark: hsl(0, 0%, 2.5%);
+  --dark: hsl(0, 0%, 5%);
 
   --background: light-dark(var(--light), var(--dark));
   --foreground: light-dark(var(--dark), var(--light));
-  --code-background: light-dark(hsla(0, 0%, 46%, 0.0625), hsla(0, 0%, 46%, 0.125));
-  --divider: light-dark(hsla(0, 0%, 46%, 0.125), hsla(0, 0%, 46%, 0.5));
-
-  // Safari versions that don't support this are a bit too recent to risk it
-  @supports not (color: light-dark(white, black)) {
-    --background: var(--dark);
-    --foreground: var(--light);
-    --code-background: hsla(0, 0%, 46%, 0.125);
-    --divider: hsla(0, 0%, 46%, 0.5);
-
-    &[data-scheme='light'] {
-      --background: var(--light);
-      --foreground: var(--dark);
-      --code-background: hsla(0, 0%, 46%, 0.0625);
-      --divider: hsla(0, 0%, 46%, 0.125);
-    }
-  }
+  --outline: light-dark(hsl(0, 0%, 90%), hsl(0, 0%, 10%));
+  --code-background: light-dark(hsl(0, 0%, 96%), hsl(0, 0%, 4%));
+  --code: light-dark(hsl(0, 0%, 25%), hsl(0, 0%, 75%));
+  --focus-ring: hsl(21, 88%, 49%);
 }

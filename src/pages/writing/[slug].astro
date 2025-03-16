@@ -1,0 +1,144 @@
+---
+import { render, getCollection, type CollectionEntry } from 'astro:content';
+import Base from '../../layouts/base.astro';
+import { AgeWarning, CodeBlock, PostDate, TableOfContents } from '../../components';
+
+interface Props {
+  post: CollectionEntry<'posts'>;
+}
+
+export const getStaticPaths = async () => {
+  const blogPosts = await getCollection('posts');
+  return blogPosts.map(post => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+};
+const { post } = Astro.props;
+const { Content, headings } = await render(post);
+---
+
+<Base pageTitle={`Alan Shortis | ${post.data.title}`}>
+  <article class="post">
+    <h1 class="post__title">{post.data.title}</h1>
+    <div class="post__meta">
+      <PostDate date={post.data.pubDate} />
+      <TableOfContents headings={headings} />
+    </div>
+    <div class="post__content formatting">
+      <AgeWarning pubDate={post.data.pubDate} showAgeWarning={Boolean(post.data.showAgeWarning)} />
+      <Content components={{ pre: CodeBlock }} />
+    </div>
+  </article>
+</Base>
+
+<style lang="scss">
+  @use '../../styles/mixins' as *;
+
+  .post {
+    display: grid;
+    gap: var(--step-5) var(--step-1);
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    &__title {
+      font-style: italic;
+      font-size: var(--step-5);
+      font-weight: bold;
+      grid-column: 1 / -1;
+      line-height: 1;
+      text-wrap: balance;
+    }
+    &__meta {
+      display: flex;
+      gap: var(--step-5);
+      flex-direction: column;
+      grid-column: 1 / -1;
+      @include medium {
+        grid-column: 1 / 6;
+      }
+    }
+    &__content {
+      grid-column: 1 / -1;
+      @include medium {
+        grid-column: 6 / -1;
+      }
+    }
+  }
+</style>
+
+<style is:inline>
+  .formatting {
+    line-height: 1.5;
+  }
+  .formatting * + :where(p, ol, ul, blockquote, h2, h3) {
+    margin-top: var(--step-1);
+  }
+  .formatting h2,
+  .formatting h3 {
+    font-size: var(--step-3);
+    font-weight: bold;
+    padding-top: var(--step-1);
+    line-height: 1.25em;
+    margin-bottom: var(--step-1);
+  }
+  .formatting h3 {
+    font-size: var(--step-2);
+  }
+  .formatting h2 + h3 {
+    padding-top: 0;
+  }
+  .formatting em {
+    font-style: italic;
+  }
+  .formatting strong,
+  .formatting b {
+    font-weight: bold;
+  }
+  .formatting a {
+    color: var(--code);
+    text-decoration: underline;
+    transition: color 0.2s;
+  }
+  .formatting a:hover {
+    color: var(--foreground);
+  }
+
+  .formatting a[target='_blank']::after {
+    content: '↗' / 'Opens in a new tab';
+  }
+  .formatting p code {
+    background-color: var(--code-background);
+    border: 1px solid var(--outline);
+    border-radius: var(--radius);
+    color: var(--code);
+    font-family: monospace;
+    font-size: var(--step--1);
+    padding: calc(var(--step--2) / 4) calc(var(--step--2) / 2);
+  }
+  .formatting ul,
+  .formatting ol {
+    padding-left: var(--step-1);
+  }
+  .formatting li {
+    list-style: decimal;
+    margin-bottom: calc(var(--step--2) / 2);
+  }
+  .formatting ul li {
+    list-style: disc;
+  }
+  .formatting blockquote {
+    background-image: linear-gradient(90deg, var(--outline), transparent);
+    border-left: var(--radius) solid currentColor;
+    border-radius: var(--radius);
+    display: block;
+    font-style: italic;
+    margin-left: var(--step-1);
+    margin-right: var(--step-1);
+    padding: var(--step--1);
+  }
+  .formatting img {
+    display: block;
+    margin: var(--step-5) auto;
+    width: 100%;
+    max-width: 350px;
+  }
+</style>
