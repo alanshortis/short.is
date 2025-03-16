@@ -101,6 +101,10 @@ const { Content, headings } = await render(post);
   .formatting a:hover {
     color: var(--foreground);
   }
+
+  .formatting a[target='_blank']::after {
+    content: '↗' / 'Opens in a new tab';
+  }
   .formatting p code {
     background-color: var(--code-background);
     border: 1px solid var(--outline);
@@ -108,7 +112,6 @@ const { Content, headings } = await render(post);
     color: var(--code);
     font-family: monospace;
     font-size: var(--step--1);
-    font-weight: bold;
     padding: calc(var(--step--2) / 4) calc(var(--step--2) / 2);
   }
   .formatting ul,

@@ -1,6 +1,13 @@
 <code-block class="code-block">
   <div class="code-block__header">
-    <svg width="32" height="8" viewBox="0 0 40 8" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      width="32"
+      height="8"
+      viewBox="0 0 40 8"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden
+    >
       <circle cx="4" cy="4" r="4"></circle>
       <circle cx="20" cy="4" r="4"></circle>
       <circle cx="36" cy="4" r="4"></circle>
@@ -49,6 +56,9 @@
     border-radius: 0.5em 0.5em var(--radius) var(--radius);
     display: block;
     margin-top: var(--step-1);
+    @include medium {
+      margin: var(--step-1);
+    }
     &__copy {
       @include label;
       font-size: var(--step--2);
@@ -65,7 +75,6 @@
     &__content {
       color: var(--code);
       font-size: var(--step--1);
-      font-weight: bold;
       line-height: 1;
       overflow-x: auto;
       padding: var(--step--2);
