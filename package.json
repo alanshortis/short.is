@@ -17,5 +17,6 @@
   },
   "devDependencies": {
     "prettier-plugin-astro": "^0.14.1"
-  }
+  },
+  "packageManager": "yarn@1.22.19"
 }
