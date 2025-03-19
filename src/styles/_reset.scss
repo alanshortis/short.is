@@ -41,10 +41,12 @@ button {
 
 a {
   text-decoration: none;
+  color: inherit;
   &:focus-visible {
     @include focus-outline;
   }
-  &:visited {
+  &:visited,
+  &:active {
     color: inherit;
   }
 }

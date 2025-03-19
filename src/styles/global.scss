@@ -36,6 +36,6 @@ main {
 }
 
 ::selection {
-  background: var(--foreground);
-  color: var(--background);
+  background: var(--focus-ring);
+  color: var(--light);
 }
