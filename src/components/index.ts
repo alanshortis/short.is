@@ -1,4 +1,5 @@
 export { default as AgeWarning } from './AgeWarning.astro';
+export { default as Circles } from './Circles.astro';
 export { default as Clock } from './Clock.astro';
 export { default as CodeBlock } from './CodeBlock.astro';
 export { default as Footer } from './Footer.astro';

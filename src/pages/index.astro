@@ -1,13 +1,14 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../layouts/base.astro';
-import { PostDate, ReadingList } from '../components';
+import { Circles, PostDate, ReadingList } from '../components';
 
 const collection = await getCollection('posts');
 const sortedPosts = collection.sort((a, b) => b.data.pubDate.localeCompare(a.data.pubDate));
 ---
 
 <Base pageTitle="Alan Shortis">
+  <Circles />
   <hgroup class="title">
     <h1 class="title__name">Alan Shortis</h1>
     <p class="title__description">
