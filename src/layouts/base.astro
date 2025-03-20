@@ -4,9 +4,10 @@ import { Header, Footer } from '../components';
 
 interface Props {
   pageTitle: string;
+  description: string;
 }
 
-const { pageTitle } = Astro.props;
+const { pageTitle, description } = Astro.props;
 const url = Astro.url;
 ---
 
@@ -16,9 +17,9 @@ const url = Astro.url;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <title>{pageTitle}</title>
-    <meta name="description" content="My name is Alan Shortis and I am a web engineer" />
+    <meta name="description" content={description} />
     <meta property="og:title" content={pageTitle} />
-    <meta property="og:description" content="My name is Alan Shortis and I am a web engineer" />
+    <meta property="og:description" content={description} />
     <meta property="og:image" content="https://short.is/og.png" />
     <meta property="og:url" content={url} />
     <link rel="preload" href="/fonts/safiro-bold.woff2" as="font" type="font/woff2" crossorigin />

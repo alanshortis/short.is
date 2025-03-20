@@ -5,6 +5,7 @@ const posts = defineCollection({
   schema: () =>
     z.object({
       title: z.string(),
+      description: z.string(),
       pubDate: z.string(),
       featured: z.boolean().optional(),
       showAgeWarning: z.boolean().optional(),
