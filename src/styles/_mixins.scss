@@ -13,11 +13,16 @@
 @mixin depth {
   --offset: calc(var(--step--2) / 2);
   background-color: var(--background);
-  border: 1px solid var(--foreground);
+  border: 1px solid var(--outline);
   border-radius: var(--radius);
   position: relative;
+  transition: border-color 0.2s;
+  &:hover {
+    border-color: currentColor;
+  }
   &::after {
     border: inherit;
+    border-color: currentColor;
     border-radius: var(--radius);
     content: '';
     height: 100%;
@@ -48,6 +53,7 @@
 
 @mixin hatching($color: currentColor, $bottomMargin: 0px) {
   --offset: calc(var(--step--2) / 2);
+
   margin-bottom: calc(var(--offset) + #{$bottomMargin});
   margin-right: var(--offset);
   position: relative;
