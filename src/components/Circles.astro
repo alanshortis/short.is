@@ -7,10 +7,10 @@
   .circle {
     display: flex;
     justify-content: center;
-    margin-bottom: var(--step-5);
+    margin-bottom: calc(var(--step-5) * 2);
     &__inner {
       aspect-ratio: 1 / 1;
-      background-image: linear-gradient(45deg, var(--foreground), var(--background));
+      background-image: linear-gradient(45deg, var(--light), var(--dark));
       border-radius: 50%;
       border-top-right-radius: 0;
       max-width: 500px;
@@ -18,16 +18,7 @@
       transform: translate(25%);
       width: 50vw;
       &:nth-child(2) {
-        background-image: linear-gradient(45deg, var(--background), var(--foreground));
-        border-radius: 50%;
-        border-bottom-left-radius: 0;
-        transform: translate(-25%);
-      }
-      html[data-scheme='light'] & {
-        background-image: linear-gradient(45deg, var(--background), var(--foreground));
-        &:nth-child(2) {
-          background-image: linear-gradient(45deg, var(--foreground), var(--background));
-        }
+        transform: translate(-25%) rotate(180deg);
       }
     }
   }

@@ -1,0 +1,55 @@
+---
+import Base from '../layouts/base.astro';
+---
+
+<Base pageTitle="Alan Shortis | 404">
+  <article class="post">
+    <h1 class="post__title">There isn't anything here</h1>
+    <div class="post__content formatting">
+      <p>
+        This domain used to point to a link shortener, so maybe you were hoping for something more exciting
+        than this. I also have a tendancy to delete things I don't like anymore.
+      </p>
+      <p>
+        There are some things I wrote and some (better) things I read on the <a href="/">home page</a> that you
+        might enjoy.
+      </p>
+    </div>
+  </article>
+</Base>
+
+<style lang="scss">
+  @use '../styles/mixins' as *;
+
+  .post {
+    display: grid;
+    gap: var(--step-5) var(--step-1);
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    &__title {
+      font-style: italic;
+      font-size: var(--step-5);
+      font-weight: bold;
+      grid-column: 1 / -1;
+      line-height: 1;
+      text-wrap: balance;
+    }
+    &__content {
+      grid-column: 1 / -1;
+      line-height: 1.5;
+      p + p {
+        margin-top: var(--step-1);
+      }
+      a {
+        color: var(--code);
+        text-decoration: underline;
+        transition: color 0.2s;
+        &:hover {
+          color: var(--foreground);
+        }
+      }
+      @include medium {
+        grid-column: 6 / -1;
+      }
+    }
+  }
+</style>

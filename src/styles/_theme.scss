@@ -28,7 +28,7 @@
 
   --background: light-dark(var(--light), var(--dark));
   --foreground: light-dark(var(--dark), var(--light));
-  --outline: light-dark(hsl(0, 0%, 90%), hsl(0, 0%, 10%));
+  --outline: light-dark(hsl(0, 0%, 80%), hsl(0, 0%, 20%));
   --code-background: light-dark(hsl(0, 0%, 96%), hsl(0, 0%, 4%));
   --code: light-dark(hsl(0, 0%, 25%), hsl(0, 0%, 75%));
   --focus-ring: hsl(21, 88%, 49%);
