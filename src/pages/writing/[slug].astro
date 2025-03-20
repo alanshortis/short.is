@@ -18,7 +18,7 @@ const { post } = Astro.props;
 const { Content, headings } = await render(post);
 ---
 
-<Base pageTitle={`Alan Shortis | ${post.data.title}`}>
+<Base pageTitle={`Alan Shortis | ${post.data.title}`} description={post.data.description}>
   <article class="post">
     <h1 class="post__title">{post.data.title}</h1>
     <div class="post__meta">
