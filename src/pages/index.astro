@@ -7,7 +7,7 @@ const collection = await getCollection('posts');
 const sortedPosts = collection.sort((a, b) => b.data.pubDate.localeCompare(a.data.pubDate));
 ---
 
-<Base pageTitle="Alan Shortis">
+<Base pageTitle="Alan Shortis" description="My name is Alan Shortis and I am a web engineer">
   <Circles />
   <hgroup class="title">
     <h1 class="title__name">Alan Shortis</h1>
@@ -17,14 +17,17 @@ const sortedPosts = collection.sort((a, b) => b.data.pubDate.localeCompare(a.dat
   </hgroup>
   <div class="posts">
     {
-      sortedPosts.map(post => (
-        <article class={`posts__article ${post.data.featured ? 'featured' : ''}`}>
-          <a class="posts__item" href={`/writing/${post.slug}`}>
-            <PostDate date={post.data.pubDate} />
-            <h1 class="posts__title">{post.data.title}</h1>
-          </a>
-        </article>
-      ))
+      sortedPosts.map((post, idx) => {
+        const isFirst = idx === 0;
+        return (
+          <article class={`posts__article ${post.data.featured || isFirst ? 'featured' : ''}`}>
+            <a class="posts__item" href={`/writing/${post.slug}`}>
+              <PostDate date={post.data.pubDate} />
+              <h1 class="posts__title">{post.data.title}</h1>
+            </a>
+          </article>
+        );
+      })
     }
   </div>
   <ReadingList />
