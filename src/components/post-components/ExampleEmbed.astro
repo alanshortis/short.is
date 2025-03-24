@@ -1,0 +1,38 @@
+---
+interface Props {
+  title: string;
+  url: string;
+}
+
+const { title, url } = Astro.props;
+---
+
+<div class="embed">
+  <iframe class="embed__iframe" src={url} title={title}></iframe>
+  <a class="embed__link" href={url} target="_blank" rel="noopener noreferrer">short.is{url}</a>
+</div>
+
+<style lang="scss">
+  .embed {
+    display: flex;
+    flex-direction: column;
+    gap: var(--step--2);
+    border: 1px solid var(--outline);
+    border-radius: var(--radius);
+    height: 20rem;
+    margin: var(--step-1) 0;
+    padding: var(--step--2);
+    &__iframe {
+      border: 0;
+      width: 100%;
+      flex: 1;
+    }
+    &__link {
+      display: block;
+      font-size: var(--step--1);
+      line-height: 1em;
+      text-decoration: none;
+      text-align: right;
+    }
+  }
+</style>
