@@ -1,0 +1,34 @@
+---
+interface Props {
+  href: string;
+}
+
+const { href } = Astro.props;
+const thisDomain = import.meta.env.SITE;
+---
+
+{
+  href.startsWith('http') && !href.startsWith(thisDomain) ? (
+    <a href={href} target="_blank" rel="noopener noreferrer">
+      <slot />
+      <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+        <title>Opens in a new tab</title>
+        <path d="M11.11 16H3.95c-1.16 0-1.81 0-2.41-.31-.53-.27-.96-.7-1.23-1.23C0 13.86 0 13.21 0 12.05V4.9c0-1.17 0-1.81.31-2.41.27-.53.7-.96 1.23-1.23.6-.31 1.25-.31 2.41-.31h1.69a.939.939 0 1 1 0 1.88H3.95c-.82 0-1.36 0-1.56.1-.18.09-.32.23-.41.41-.1.2-.1.74-.1 1.56v7.15c0 .82 0 1.36.1 1.56.09.18.23.32.41.41.2.1.74.1 1.55.1h7.16c.81 0 1.35 0 1.55-.1.18-.09.32-.24.41-.41.1-.2.1-.74.1-1.55v-1.7a.939.939 0 1 1 1.88 0v1.7c0 1.16 0 1.8-.31 2.41-.27.53-.7.96-1.23 1.23-.6.31-1.24.31-2.41.31ZM8.47 8.47a.94.94 0 0 1-.67-.28.936.936 0 0 1 0-1.33l4.99-4.98h-2.43a.939.939 0 1 1 0-1.88h4.71c.13 0 .25.03.37.07.1.04.2.11.29.19.09.09.16.2.21.32.03.09.06.18.06.28V5.63a.939.939 0 1 1-1.88 0V3.2L9.14 8.18c-.18.18-.42.28-.67.28Z" />
+      </svg>
+    </a>
+  ) : (
+    <a href={href}>
+      <slot />
+    </a>
+  )
+}
+
+<style lang="scss">
+  .icon {
+    display: inline-block;
+    fill: currentColor;
+    height: 0.75em;
+    width: 0.75em;
+    margin-left: 0.5ch;
+  }
+</style>
