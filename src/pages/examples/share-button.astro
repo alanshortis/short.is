@@ -45,7 +45,11 @@ import Example from '../../layouts/example.astro';
             url: this.shareUrl,
           });
         } catch (e) {
-          console.error(e);
+          if (e instanceof Error && e.name === 'AbortError') {
+            console.log('Share cancelled');
+          } else {
+            console.error(e);
+          }
         }
       });
     }
