@@ -1,7 +1,7 @@
 ---
 import { render, getCollection, type CollectionEntry } from 'astro:content';
 import Base from '../../layouts/base.astro';
-import { AgeWarning, CodeBlock, PostDate, TableOfContents } from '../../components';
+import { AgeWarning, CodeBlock, PostDate, TableOfContents, PostBodyLink } from '../../components';
 
 interface Props {
   post: CollectionEntry<'posts'>;
@@ -27,7 +27,7 @@ const { Content, headings } = await render(post);
     </div>
     <div class="post__content formatting">
       <AgeWarning pubDate={post.data.pubDate} showAgeWarning={Boolean(post.data.showAgeWarning)} />
-      <Content components={{ pre: CodeBlock }} />
+      <Content components={{ pre: CodeBlock, a: PostBodyLink }} />
     </div>
   </article>
 </Base>
@@ -69,8 +69,12 @@ const { Content, headings } = await render(post);
   .formatting {
     line-height: 1.5;
   }
-  .formatting * + :where(p, ol, ul, blockquote, h2, h3) {
+  .formatting * + :where(p, ol, ul, h2, h3) {
     margin-top: var(--step-1);
+  }
+
+  .formatting blockquote {
+    margin: var(--step-5) 0;
   }
   .formatting h2,
   .formatting h3 {
@@ -102,10 +106,7 @@ const { Content, headings } = await render(post);
     color: var(--foreground);
   }
 
-  .formatting a[target='_blank']::after {
-    content: '↗' / 'Opens in a new tab';
-  }
-  .formatting p code {
+  :where(p, li, blockquote) code {
     background-color: var(--code-background);
     border: 1px solid var(--outline);
     border-radius: var(--radius);

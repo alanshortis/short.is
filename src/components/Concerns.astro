@@ -1,0 +1,82 @@
+---
+interface Props {
+  asComponent?: boolean;
+}
+
+const { asComponent } = Astro.props;
+---
+
+<div class="concerns">
+  {
+    asComponent ? (
+      <p class="concerns__explain">Each component contains its HTML, CSS, and JavaScript</p>
+      <div class="concerns__component" aria-hidden>
+        <span class="concerns__label">HTML<br />CSS<br />JS</span>
+      </div>
+      <div class="concerns__component" aria-hidden>
+        <span class="concerns__label">HTML<br />CSS<br />JS</span>
+      </div>
+    ) : (
+      <p class="concerns__explain">HTML, CSS, and JavaScript are kept separated</p>
+      <div class="concerns__language" aria-hidden>
+        <span class="concerns__label">HTML</span>
+      </div>
+      <div class="concerns__language" aria-hidden>
+        <span class="concerns__label">CSS</span>
+      </div>
+      <div class="concerns__language" aria-hidden>
+        <span class="concerns__label">JS</span>
+      </div>
+    )
+  }
+</div>
+
+<style lang="scss">
+  @use '../styles/mixins' as *;
+
+  @mixin concern {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    align-items: center;
+    justify-content: center;
+    width: 7em;
+    height: 7em;
+    border: 1px dashed currentColor;
+    border-radius: 50%;
+    @include should-animate {
+      animation: rotate 10s linear infinite;
+    }
+  }
+
+  @keyframes rotate {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  .concerns {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--step-1);
+    margin: var(--step-5) 0;
+    &__component {
+      @include concern;
+    }
+    &__language {
+      @include concern;
+      width: 5em;
+      height: 5em;
+    }
+    &__explain {
+      @include visually-hidden;
+    }
+    &__label {
+      text-align: center;
+      @include label;
+      @include should-animate {
+        animation: rotate 10s linear infinite reverse;
+      }
+    }
+  }
+</style>
