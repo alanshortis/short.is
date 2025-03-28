@@ -55,7 +55,9 @@ import Example from '../../layouts/example.astro';
     }
   }
 
-  customElements.define('share-button', ShareButton);
+  if ('customElements' in window && 'share' in navigator) {
+    customElements.define('share-button', ShareButton);
+  }
 </script>
 
 <style lang="scss">
