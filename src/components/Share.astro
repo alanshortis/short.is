@@ -1,0 +1,49 @@
+<share-button></share-button>
+
+<script>
+  class ShareButton extends HTMLElement {
+    private shareUrl: string;
+    private shareTitle: string;
+
+    constructor() {
+      super();
+
+      this.shareUrl = window.location.href;
+      this.shareTitle = document.title;
+    }
+
+    connectedCallback() {
+      this.innerHTML = `
+      <style>
+        .share {
+          font-feature-settings: 'tnum';
+          font-size: var(--step--1);
+          letter-spacing: 3px;
+          line-height: var(--step-1);
+          text-transform: uppercase;
+        }
+      </style>
+
+      <span class="share"> &middot; <button class="share" type="button">Share</button></span>
+      `;
+
+      this.querySelector('button')!.addEventListener('click', async () => {
+        try {
+          await navigator.share({
+            title: this.shareTitle,
+            url: this.shareUrl,
+          });
+        } catch (e) {
+          if (e instanceof Error && e.name === 'AbortError') {
+            console.log('Share cancelled');
+          } else {
+            console.error(e);
+          }
+        }
+      });
+    }
+  }
+  if ('share' in navigator) {
+    customElements.define('share-button', ShareButton);
+  }
+</script>
