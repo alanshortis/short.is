@@ -11,4 +11,5 @@ export { default as PostBodyLink } from './PostBodyLink.astro';
 export { default as PostDate } from './PostDate.astro';
 export { default as ReadingList } from './ReadingList.astro';
 export { default as SchemeToggle } from './SchemeToggle.astro';
+export { default as Share } from './Share.astro';
 export { default as TableOfContents } from './TableOfContents.astro';

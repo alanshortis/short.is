@@ -1,12 +1,4 @@
----
-import Example from '../../layouts/example.astro';
----
-
-<Example pageTitle="Share button example" description="An example of a share button web component">
-  <div class="container">
-    <share-button></share-button>
-  </div>
-</Example>
+<share-button></share-button>
 
 <script>
   class ShareButton extends HTMLElement {
@@ -24,19 +16,16 @@ import Example from '../../layouts/example.astro';
       this.innerHTML = `
       <style>
         .share {
-          background-color: #eb5c0f;
-          border-radius: 1.9em;
-          color: white;
-          cursor: pointer;
-          display: block;
-          font-size: .9em;
-          font-weight: bold;
-          padding: .5em 1em;
+          font-feature-settings: 'tnum';
+          font-size: var(--step--1);
+          letter-spacing: 3px;
+          line-height: var(--step-1);
+          text-transform: uppercase;
         }
       </style>
 
-      <button class="share" type="button">Share</button>
-    `;
+      <span class="share"> &middot; <button class="share" type="button">Share</button></span>
+      `;
 
       this.querySelector('button')!.addEventListener('click', async () => {
         try {
@@ -54,17 +43,7 @@ import Example from '../../layouts/example.astro';
       });
     }
   }
-
-  if ('customElements' in window && 'share' in navigator) {
+  if ('share' in navigator) {
     customElements.define('share-button', ShareButton);
   }
 </script>
-
-<style lang="scss">
-  .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-  }
-</style>
