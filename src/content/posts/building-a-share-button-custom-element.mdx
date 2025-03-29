@@ -160,3 +160,13 @@ This example barely scratches the surface of what custom elements and the wider 
 While it's hard to see how React will ever fall out of favour, web components have been adopted by Adobe, Sales Force, YouTube, and many others in high traffic production apps. React makes it really easy to get going quickly, but that convenience quickly catches up with you and limits you to a specific set of tools, features, and dependency headaches.
 
 If I were lucky enough to be at the beginning of a project to build a design system for a large team of web engineers, I would give web components some serious consideration at the very least. There will be scenarios where React is not the best option.
+
+## Future
+
+All of this could become unnecessary at some time on the future, and that's a good thing. [Open UI are looking at invoker commands](https://open-ui.org/components/future-invokers.explainer/) which would make additional features declarative via a new `command` attribute. It could look something like this:
+
+```html
+<button command="share" value="https://butt.holdings">Share</button>
+```
+
+It's not yet clear how every share value (url, title, text, files) would be represented.
