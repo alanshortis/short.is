@@ -39,6 +39,13 @@ const { Content, headings } = await render(post);
     display: grid;
     gap: var(--step-5) var(--step-1);
     grid-template-columns: repeat(12, minmax(0, 1fr));
+    width: 100%;
+    max-width: 85rem;
+    margin: 0 auto;
+    padding: 0 var(--step-0);
+    @include small {
+      padding: 0 var(--step-5);
+    }
     &__title {
       font-style: italic;
       font-size: var(--step-5);

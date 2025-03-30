@@ -35,8 +35,10 @@ button {
   background: none;
   border: 0;
   cursor: pointer;
-  font-family: inherit;
-  font-size: inherit;
+  font: inherit;
+  &:focus-visible {
+    @include focus-outline;
+  }
 }
 
 a {
