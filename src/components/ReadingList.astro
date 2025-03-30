@@ -46,6 +46,10 @@ import { readingList } from '../content/readingList.ts';
     &__description {
       margin-bottom: var(--step-2);
       text-wrap: balance;
+      padding: 0 var(--step-0);
+      @include small {
+        padding: 0 var(--step-5);
+      }
     }
   }
 
@@ -53,11 +57,13 @@ import { readingList } from '../content/readingList.ts';
     display: flex;
     gap: var(--step-2);
     overflow-x: auto;
-    overscroll-behavior: contain;
     padding-bottom: calc(var(--step--2) / 2);
+    padding-left: var(--step-0);
     padding-right: var(--step-5);
-    scroll-snap-type: x mandatory;
     scrollbar-width: none;
+    @include small {
+      padding-left: var(--step-5);
+    }
     &::-webkit-scrollbar {
       -webkit-appearance: none;
     }
@@ -71,7 +77,6 @@ import { readingList } from '../content/readingList.ts';
       gap: var(--step--2);
       height: 100%;
       padding: var(--step--2);
-      scroll-snap-align: start;
       width: 15rem;
       @include depth;
     }

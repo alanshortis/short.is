@@ -18,16 +18,9 @@ body {
   font-family: var(--font-family);
   font-size: var(--step-0);
   line-height: 1.2;
-  margin: 0 auto;
-  max-width: 80rem;
   min-height: 100vh;
-  padding: 0 var(--step-0);
-  width: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  @include small {
-    padding: 0 var(--step-5);
-  }
 }
 
 main {

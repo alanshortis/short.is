@@ -3,25 +3,35 @@ import { SchemeToggle } from './';
 ---
 
 <footer class="footer">
-  <div class="footer__links">
-    <a href="/writing.xml">RSS</a> &middot; <a href="#">TOP</a>
+  <div class="footer__inner">
+    <div class="footer__links">
+      <a href="/writing.xml">RSS</a> &middot; <a href="#">TOP</a>
+    </div>
+    <SchemeToggle />
   </div>
-  <SchemeToggle />
 </footer>
 
 <style lang="scss">
   @use '../styles/mixins' as *;
   .footer {
-    --safe-area-inset-bottom: env(safe-area-inset-bottom);
+    background-image: var(--oil);
+    margin-top: var(--step-5);
+    &__inner {
+      --safe-area-inset-bottom: env(safe-area-inset-bottom);
 
-    align-items: center;
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--step-1);
-    justify-content: space-between;
-    padding: var(--step-5) 0;
-    @supports (padding-bottom: env(safe-area-inset-bottom)) {
-      padding-bottom: calc(var(--safe-area-inset-bottom) + var(--step-5));
+      align-items: center;
+      background-image: linear-gradient(0deg, transparent 0%, var(--background) 100%);
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--step-1);
+      justify-content: space-between;
+      padding: var(--step-5) var(--step-0);
+      @include small {
+        padding: var(--step-5);
+      }
+      @supports (padding-bottom: env(safe-area-inset-bottom)) {
+        padding-bottom: calc(var(--safe-area-inset-bottom) + var(--step-5));
+      }
     }
     &__links {
       @include label;

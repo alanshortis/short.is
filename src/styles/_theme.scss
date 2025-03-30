@@ -31,5 +31,27 @@
   --outline: light-dark(hsl(0, 0%, 80%), hsl(0, 0%, 20%));
   --code-background: light-dark(hsl(0, 0%, 96%), hsl(0, 0%, 4%));
   --code: light-dark(hsl(0, 0%, 25%), hsl(0, 0%, 75%));
-  --focus-ring: hsl(21, 88%, 49%);
+  --focus-ring: rgba(91, 136, 142, 1);
+  --oil: linear-gradient(
+    45deg,
+    rgba(91, 136, 142, 1) 0%,
+    rgba(116, 114, 89, 1) 50%,
+    rgba(148, 106, 142, 1) 100%
+  );
+
+  // Safari support is a bit too recent to risk it
+  @supports not (color-scheme: light dark) {
+    --background: var(--dark);
+    --foreground: var(--light);
+    --outline: hsl(0, 0%, 20%);
+    --code-background: hsl(0, 0%, 4%);
+    --code: hsl(0, 0%, 75%);
+    &[data-scheme='light'] {
+      --background: var(--light);
+      --foreground: var(--dark);
+      --outline: hsl(0, 0%, 80%);
+      --code-background: hsl(0, 0%, 96%);
+      --code: hsl(0, 0%, 25%);
+    }
+  }
 }
