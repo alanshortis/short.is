@@ -34,6 +34,7 @@ picture {
 button {
   background: none;
   border: 0;
+  color: inherit;
   cursor: pointer;
   font: inherit;
   &:focus-visible {
