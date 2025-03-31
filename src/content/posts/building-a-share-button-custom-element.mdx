@@ -56,9 +56,9 @@ HTML should be separate from CSS should be separate from JavaScript. This makes 
 
 <Concerns asComponent />
 
-### The simplest possible custom element
+### The simplest custom element
 
-The simplest possible custom element looks like this:
+The simplest custom element looks like this:
 
 ```JS
 class MyElement extends HTMLElement {
@@ -140,6 +140,21 @@ Here is our working share button component:
 <ExampleEmbed title="Share button example" url="/examples/share-button" />
 
 If you can't see the share button, it's probably because your browser doesn't support the API. You may need to come back in a [browser that is supported](https://caniuse.com/web-share).
+
+### Passing data to the custom element
+
+Rather than getting the URL and title from the current page it might make more sense to pass them into the custom element via attributes, much like how props are passed into React components:
+
+```html
+<share-button url="https://butt.holdings" title="Hold on to your butts"></share-button>
+```
+
+Because custom elements lean heavily on the existing DOM API, attributes are accessed via `getAttribute`:
+
+```js
+this.shareUrl = this.getAttribute('url');
+this.shareTitle = this.getAttribute('title');
+```
 
 ### Testing for support
 
