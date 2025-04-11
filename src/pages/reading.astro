@@ -1,0 +1,81 @@
+---
+import Base from '../layouts/base.astro';
+import { readingList } from '../content/readingList.ts';
+---
+
+<Base
+  pageTitle="Alan Shortis | Reading"
+  description="Things of note I have recently read, watched, or listened to"
+>
+  <article class="post">
+    <h1 class="post__title">Reading</h1>
+    <div class="list">
+      {
+        readingList.map((post, idx, arr) => (
+          <article>
+            <a
+              class={`list__item ${idx === 0 ? 'list__item--first' : ''}`}
+              href={post.url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <h1>{post.title}</h1>
+              <p class="list__author">
+                <span>by</span> {post.author}
+              </p>
+            </a>
+          </article>
+        ))
+      }
+    </div>
+  </article>
+</Base>
+
+<style lang="scss">
+  @use '../styles/mixins' as *;
+
+  .post {
+    display: flex;
+    flex-direction: column;
+    gap: var(--step-5);
+    width: 100%;
+    max-width: 85rem;
+    margin: 0 auto;
+    padding: 0 var(--step-0);
+    @include small {
+      padding: 0 var(--step-5);
+    }
+    &__title {
+      display: block;
+      font-style: italic;
+      font-size: var(--step-5);
+      font-weight: bold;
+      line-height: 1;
+    }
+  }
+
+  .list {
+    display: flex;
+    flex-direction: column;
+    &__item {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: var(--step-1);
+      padding: var(--step--1) 0;
+      border-top: 1px solid var(--outline);
+      &--first {
+        border-top: none;
+        padding-top: 0;
+      }
+    }
+    &__author {
+      font-size: var(--step--1);
+      text-align: right;
+      white-space: nowrap;
+      span {
+        font-style: italic;
+      }
+    }
+  }
+</style>
