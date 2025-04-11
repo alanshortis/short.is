@@ -1,5 +1,5 @@
 ---
-import { readingList } from '../content/readingList.ts';
+import { recentReadingList } from '../content/readingList.ts';
 ---
 
 <div class="reading">
@@ -7,10 +7,9 @@ import { readingList } from '../content/readingList.ts';
   <p class="reading__description">Things of note I have recently read, watched, or listened to</p>
   <div class="list">
     {
-      readingList.map(post => (
+      recentReadingList.map(post => (
         <article>
           <a class="list__item" href={post.url} target="_blank" rel="noopener noreferrer">
-            <p class="list__type">{post.type}</p>
             <h1 class="list__title">{post.title}</h1>
             <p class="list__author">
               <span>by</span> {post.author}
@@ -19,6 +18,7 @@ import { readingList } from '../content/readingList.ts';
         </article>
       ))
     }
+    <a href="/reading" class="list__item--more">More &rarr;</a>
   </div>
 </div>
 
@@ -79,6 +79,11 @@ import { readingList } from '../content/readingList.ts';
       padding: var(--step--2);
       width: 15rem;
       @include depth;
+      &--more {
+        display: flex;
+        text-wrap: nowrap;
+        align-items: center;
+      }
     }
     &__author {
       font-size: var(--step--1);
@@ -87,9 +92,6 @@ import { readingList } from '../content/readingList.ts';
       span {
         font-style: italic;
       }
-    }
-    &__type {
-      @include label;
     }
   }
 </style>
