@@ -6,6 +6,11 @@ type Reading = {
 
 export const readingList: Array<Reading> = [
   {
+    url: 'https://hidde.blog/ethical-ai/',
+    title: 'Is “ethical AI” an oxymoron?',
+    author: 'Hidde de Vries',
+  },
+  {
     url: 'https://brilliantcrank.com/eject-disk/',
     title: 'Eject Disk.',
     author: 'Greg Storey',
