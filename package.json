@@ -16,7 +16,7 @@
     "sass": "^1.85.0"
   },
   "devDependencies": {
-    "@astrojs/cloudflare": "^12.2.4",
+    "@astrojs/cloudflare": "^12.5.0",
     "prettier-plugin-astro": "^0.14.1"
   }
 }
