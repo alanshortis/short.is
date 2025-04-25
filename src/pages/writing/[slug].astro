@@ -129,6 +129,11 @@ const { Content, headings } = await render(post);
     position: relative;
     bottom: 1px;
   }
+
+  :where(p, li, blockquote) kbd {
+    color: var(--code);
+    font-family: monospace;
+  }
   .formatting ul,
   .formatting ol {
     padding-left: var(--step-1);
