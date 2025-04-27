@@ -1,0 +1,56 @@
+[
+  {
+    "id": 9,
+    "url": "https://hurlde.blog/ethical-ai/",
+    "title": "Is \"ethical AI\" an oxymoron?",
+    "author": "Hurlde de Vries"
+  },
+  {
+    "id": 8,
+    "url": "https://brilliantcrank.com/eject-disk/",
+    "title": "Eject Disk.",
+    "author": "Greg Storey"
+  },
+  {
+    "id": 7,
+    "url": "https://ethanmarcotte.com/wrote/leaving-18f/",
+    "title": "Moving on from 18F",
+    "author": "Ethan Marcotte"
+  },
+  {
+    "id": 6,
+    "url": "https://aresluna.org/the-hardest-working-font-in-manhattan",
+    "title": "The hardest working font in Manhattan",
+    "author": "Marcin Wichary"
+  },
+  {
+    "id": 5,
+    "url": "https://www.miriamsuzanne.com/2025/02/12/tech-ai-wtf/",
+    "title": "Tech continues to be political",
+    "author": "Miriam Suzanne"
+  },
+  {
+    "id": 4,
+    "url": "https://99percentinvisible.org/episode/children-of-the-magenta-automation-paradox-pt-1/",
+    "title": "Children of the Magenta: Automation Paradox, Pt. 1",
+    "author": "99% Invisible"
+  },
+  {
+    "id": 3,
+    "url": "https://whitep4nth3r.com/blog/how-to-build-a-copy-code-snippet-button/",
+    "title": "How to build a copy code snippet button and why it matters",
+    "author": "Salma Alam-Naylor"
+  },
+  {
+    "id": 2,
+    "url": "https://www.w3.org/TR/ethical-web-principles/",
+    "title": "Ethical Web Principles",
+    "author": "W3C"
+  },
+  {
+    "id": 1,
+    "url": "https://world.org/blog/engineering/humanness-in-the-age-of-ai",
+    "title": "Humanness in the Age of AI",
+    "author": "World"
+  }
+]
