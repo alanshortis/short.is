@@ -1,6 +1,8 @@
 ---
 import Base from '../layouts/base.astro';
-import { readingList } from '../content/readingList.ts';
+import { getCollection } from 'astro:content';
+
+const collection = await getCollection('reading');
 ---
 
 <Base
@@ -11,17 +13,17 @@ import { readingList } from '../content/readingList.ts';
     <h1 class="post__title">Reading</h1>
     <div class="list">
       {
-        readingList.map((post, idx, arr) => (
+        collection.map((post, idx, arr) => (
           <article>
             <a
               class={`list__item ${idx === 0 ? 'list__item--first' : ''}`}
-              href={post.url}
+              href={post.data.url}
               target="_blank"
               rel="noopener noreferrer"
             >
-              <h1>{post.title}</h1>
+              <h1>{post.data.title}</h1>
               <p class="list__author">
-                <span>by</span> {post.author}
+                <span>by</span> {post.data.author}
               </p>
             </a>
           </article>

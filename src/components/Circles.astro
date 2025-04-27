@@ -10,7 +10,7 @@
     margin-bottom: calc(var(--step-5) * 2);
     &__inner {
       aspect-ratio: 1 / 1;
-      background-image: linear-gradient(45deg, var(--light), var(--dark));
+      background-image: linear-gradient(45deg, var(--foreground), var(--background));
       border-radius: 50%;
       border-top-right-radius: 0;
       max-width: 500px;
@@ -19,6 +19,9 @@
       width: 50vw;
       &:nth-child(2) {
         transform: translate(-25%) rotate(180deg);
+      }
+      html[data-scheme='light'] & {
+        mix-blend-mode: darken;
       }
     }
   }

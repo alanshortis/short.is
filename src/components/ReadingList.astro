@@ -1,5 +1,8 @@
 ---
-import { recentReadingList } from '../content/readingList.ts';
+import { getCollection } from 'astro:content';
+
+const collection = await getCollection('reading');
+const recentReading = collection.slice(0, 7);
 ---
 
 <div class="reading">
@@ -7,12 +10,12 @@ import { recentReadingList } from '../content/readingList.ts';
   <p class="reading__description">Things of note I have recently read, watched, or listened to</p>
   <div class="list">
     {
-      recentReadingList.map(post => (
+      recentReading.map(post => (
         <article>
-          <a class="list__item" href={post.url} target="_blank" rel="noopener noreferrer">
-            <h1 class="list__title">{post.title}</h1>
+          <a class="list__item" href={post.data.url} target="_blank" rel="noopener noreferrer">
+            <h1 class="list__title">{post.data.title}</h1>
             <p class="list__author">
-              <span>by</span> {post.author}
+              <span>by</span> {post.data.author}
             </p>
           </a>
         </article>

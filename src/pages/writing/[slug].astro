@@ -1,7 +1,7 @@
 ---
 import { render, getCollection, type CollectionEntry } from 'astro:content';
 import Base from '../../layouts/base.astro';
-import { AgeWarning, CodeBlock, PostDate, TableOfContents, PostBodyLink, Share } from '../../components';
+import { AgeWarning, CodeBlock, PostDate, Share } from '../../components';
 
 interface Props {
   post: CollectionEntry<'posts'>;
@@ -15,7 +15,7 @@ export const getStaticPaths = async () => {
   }));
 };
 const { post } = Astro.props;
-const { Content, headings } = await render(post);
+const { Content } = await render(post);
 ---
 
 <Base pageTitle={`Alan Shortis | ${post.data.title}`} description={post.data.description}>
@@ -23,11 +23,10 @@ const { Content, headings } = await render(post);
     <h1 class="post__title">{post.data.title}</h1>
     <div class="post__meta">
       <div class="post__date"><PostDate date={post.data.pubDate} /><Share /></div>
-      <TableOfContents headings={headings} />
     </div>
     <div class="post__content formatting">
       <AgeWarning pubDate={post.data.pubDate} showAgeWarning={Boolean(post.data.showAgeWarning)} />
-      <Content components={{ pre: CodeBlock, a: PostBodyLink }} />
+      <Content components={{ pre: CodeBlock }} />
     </div>
   </article>
 </Base>
