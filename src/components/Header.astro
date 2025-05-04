@@ -15,12 +15,8 @@ import { Clock, Logo } from './';
   .header {
     align-items: center;
     display: flex;
-    grid-column: 1 / -1;
     justify-content: space-between;
-    padding: var(--step-5) var(--step-0);
-    @include small {
-      padding: var(--step-5);
-    }
+    padding: var(--space--large);
     &__title {
       @include visually-hidden;
     }
