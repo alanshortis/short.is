@@ -20,14 +20,14 @@ const { post } = Astro.props;
   @use '../styles/mixins' as *;
 
   .article {
-    @include hatching;
+    @include hatching(0em);
     &__item {
       background-color: var(--background);
       border: 1px solid var(--divider);
       border-radius: var(--radius);
       display: flex;
       flex-direction: column;
-      gap: 1lh;
+      gap: var(--space);
       height: 100%;
       padding: var(--space);
       transition: border-color 0.2s;
