@@ -13,7 +13,7 @@ const collection = await getCollection('reading');
     <h1 class="post__title">Reading</h1>
     <div class="list">
       {
-        collection.map((post, idx, arr) => (
+        collection.map((post, idx) => (
           <article>
             <a
               class={`list__item ${idx === 0 ? 'list__item--first' : ''}`}
@@ -22,9 +22,7 @@ const collection = await getCollection('reading');
               rel="noopener noreferrer"
             >
               <h1>{post.data.title}</h1>
-              <p class="list__author">
-                <span>by</span> {post.data.author}
-              </p>
+              <p class="list__author">{post.data.author}</p>
             </a>
           </article>
         ))
@@ -40,19 +38,10 @@ const collection = await getCollection('reading');
     display: flex;
     flex-direction: column;
     gap: var(--step-5);
-    width: 100%;
-    max-width: 85rem;
-    margin: 0 auto;
-    padding: 0 var(--step-0);
-    @include small {
-      padding: 0 var(--step-5);
-    }
     &__title {
-      display: block;
       font-style: italic;
       font-size: var(--step-5);
       font-weight: bold;
-      line-height: 1;
     }
   }
 
@@ -60,24 +49,21 @@ const collection = await getCollection('reading');
     display: flex;
     flex-direction: column;
     &__item {
-      display: flex;
-      justify-content: space-between;
       align-items: flex-end;
-      gap: var(--step-1);
-      padding: var(--step--1) 0;
-      border-top: 1px solid var(--outline);
+      border-block-start: 1px solid var(--divider);
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space);
+      padding-block: 1lh;
+      text-wrap: pretty;
       &--first {
-        border-top: none;
-        padding-top: 0;
+        border-block-start: none;
       }
     }
     &__author {
       font-size: var(--step--1);
-      text-align: right;
-      white-space: nowrap;
-      span {
-        font-style: italic;
-      }
+      font-style: italic;
+      margin-inline-start: auto;
     }
   }
 </style>
