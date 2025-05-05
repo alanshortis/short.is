@@ -1,7 +1,7 @@
 ---
 import { render, getCollection, type CollectionEntry } from 'astro:content';
 import Base from '../../layouts/base.astro';
-import { AgeWarning, CodeBlock, PostDate, Share } from '../../components';
+import { AgeWarning, PostDate } from '../../components';
 
 interface Props {
   post: CollectionEntry<'posts'>;
@@ -22,11 +22,11 @@ const { Content } = await render(post);
   <article class="post">
     <h1 class="post__title">{post.data.title}</h1>
     <div class="post__meta">
-      <div class="post__date"><PostDate date={post.data.pubDate} /><Share /></div>
+      <PostDate date={post.data.pubDate} />
     </div>
     <div class="post__content formatting">
       <AgeWarning pubDate={post.data.pubDate} showAgeWarning={Boolean(post.data.showAgeWarning)} />
-      <Content components={{ pre: CodeBlock }} />
+      <Content />
     </div>
   </article>
 </Base>
@@ -38,34 +38,17 @@ const { Content } = await render(post);
     display: grid;
     gap: var(--step-5) var(--step-1);
     grid-template-columns: repeat(12, minmax(0, 1fr));
-    width: 100%;
-    max-width: 85rem;
-    margin: 0 auto;
-    padding: 0 var(--step-0);
-    @include small {
-      padding: 0 var(--step-5);
-    }
     &__title {
       font-style: italic;
       font-size: var(--step-5);
       font-weight: bold;
       grid-column: 1 / -1;
-      line-height: 1;
-      text-wrap: balance;
     }
     &__meta {
-      display: flex;
-      gap: var(--step-5);
-      flex-direction: column;
       grid-column: 1 / -1;
       @include medium {
         grid-column: 1 / 6;
       }
-    }
-    &__date {
-      display: inline-flex;
-      gap: 0.75ch;
-      align-items: center;
     }
     &__content {
       grid-column: 1 / -1;
@@ -78,86 +61,69 @@ const { Content } = await render(post);
 
 <style is:inline>
   .formatting {
-    line-height: 1.5;
+    line-height: 1.618;
+    text-wrap: pretty;
   }
-  .formatting * + :where(p, ol, ul, h2, h3) {
-    margin-top: var(--step-1);
+  .formatting * + :where(p, ol, ul, h2, blockquote) {
+    margin-top: 1lh;
   }
 
-  .formatting blockquote {
-    margin: var(--step-5) 0;
+  .formatting a {
+    text-decoration: underline;
   }
-  .formatting h2,
-  .formatting h3 {
-    font-size: var(--step-3);
-    font-weight: bold;
-    padding-top: var(--step-1);
-    line-height: 1.25em;
-    margin-bottom: var(--step-1);
-  }
-  .formatting h3 {
-    font-size: var(--step-2);
-  }
-  .formatting h2 + h3 {
-    padding-top: 0;
-  }
+
   .formatting em {
     font-style: italic;
   }
-  .formatting strong,
-  .formatting b {
-    font-weight: bold;
-  }
-  .formatting a {
-    color: var(--code);
-    text-decoration: underline;
-    transition: color 0.2s;
-  }
-  .formatting a:hover {
-    color: var(--foreground);
+
+  .formatting h2 {
+    font-size: var(--step-2);
   }
 
-  :where(p, li, blockquote) code {
+  .formatting kbd {
+    font: inherit;
+  }
+
+  .formatting code {
     background-color: var(--code-background);
-    border: 1px solid var(--outline);
+    border: 1px solid var(--divider);
     border-radius: var(--radius);
-    color: var(--code);
     font-family: monospace;
     font-size: var(--step--1);
-    padding: calc(var(--step--2) / 4) calc(var(--step--2) / 2);
+    inset-block-end: 1px;
+    margin-inline: 0.125em;
+    padding-block: 0.125em;
+    padding-inline: 0.25em;
     position: relative;
-    bottom: 1px;
   }
 
-  :where(p, li, blockquote) kbd {
-    color: var(--code);
-    font-family: monospace;
-  }
   .formatting ul,
   .formatting ol {
-    padding-left: var(--step-1);
+    padding-inline-start: var(--space);
   }
+
   .formatting li {
     list-style: decimal;
-    margin-bottom: calc(var(--step--2) / 2);
+    margin-bottom: 0.25lh;
   }
+
   .formatting ul li {
     list-style: disc;
   }
+
   .formatting blockquote {
-    background-image: linear-gradient(90deg, var(--outline), transparent);
-    border-left: var(--radius) solid currentColor;
-    border-radius: var(--radius);
+    border-inline-start: 1px solid currentColor;
     display: block;
     font-style: italic;
-    margin-left: var(--step-1);
-    margin-right: var(--step-1);
-    padding: var(--step--1);
+    padding-inline-start: var(--space);
   }
-  .formatting img {
-    display: block;
-    margin: var(--step-5) auto;
-    width: 100%;
-    max-width: 350px;
+
+  .formatting del {
+    text-decoration: double line-through;
+    opacity: 0.618;
+  }
+
+  .formatting ins {
+    text-decoration: none;
   }
 </style>
