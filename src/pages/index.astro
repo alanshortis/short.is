@@ -1,90 +1,41 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../layouts/base.astro';
-import { Circles, PostDate, ReadingList } from '../components';
+import { Circles, PostBox, ReadingList } from '../components';
 
 const collection = await getCollection('posts');
 const sortedPosts = collection.sort((a, b) => b.data.pubDate.localeCompare(a.data.pubDate));
 ---
 
 <Base pageTitle="Alan Shortis" description="My name is Alan Shortis and I am a web engineer">
-  <Circles />
-  <hgroup class="title">
-    <h1 class="title__name">Alan Shortis</h1>
-    <p class="title__description">
-      My name is <b>Alan Shortis</b> and I am a web engineer
-    </p>
-  </hgroup>
-  <div class="posts">
-    {
-      sortedPosts.map((post, idx) => {
-        const isFirst = idx === 0;
-        return (
-          <article class={`posts__article ${post.data.featured || isFirst ? 'featured' : ''}`}>
-            <a class="posts__item" href={`/writing/${post.slug}`}>
-              <PostDate date={post.data.pubDate} />
-              <h1 class="posts__title">{post.data.title}</h1>
-            </a>
-          </article>
-        );
-      })
-    }
+  <div class="home">
+    <Circles />
+    <div>
+      <h1 class="home__title">
+        My name is <b>Alan Shortis</b> and I am a web engineer
+      </h1>
+      <div class="home__posts">
+        {sortedPosts.map(post => <PostBox post={post} />)}
+      </div>
+    </div>
+    <ReadingList />
   </div>
-  <ReadingList />
 </Base>
 
 <style lang="scss">
-  @use '../styles/mixins' as *;
-
-  .title {
-    margin-bottom: var(--step-2);
-    padding: 0 var(--step-0);
-    @include small {
-      padding: 0 var(--step-5);
-    }
-    &__name {
-      @include visually-hidden;
-    }
-    &__description {
-      text-wrap: balance;
-    }
-  }
-  .posts {
-    display: grid;
-    gap: var(--step-2);
-    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
-    grid-auto-rows: 1fr;
-    padding: 0 var(--step-0);
-    @include small {
-      padding: 0 var(--step-5);
-    }
+  .home {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--step-5) * 2);
     &__title {
-      font-size: var(--step-1);
-      font-weight: bold;
+      text-wrap: balance;
+      margin-block-end: var(--step-5);
     }
-    &__item {
-      background-color: var(--background);
-      border: 1px solid var(--outline);
-      border-radius: var(--radius);
-      grid-column: 1 / -1;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: var(--step--2);
-      padding: var(--step-0);
-      transition: border-color 0.2s;
-      &:hover {
-        border-color: currentColor;
-      }
-    }
-    &__article {
-      @include hatching(currentColor);
-    }
-  }
-
-  .featured {
-    @include medium {
-      grid-column: span 2;
+    &__posts {
+      display: grid;
+      gap: var(--space);
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+      grid-auto-rows: 1fr;
     }
   }
 </style>

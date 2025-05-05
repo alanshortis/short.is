@@ -1,0 +1,45 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { PostDate } from './';
+
+interface Props {
+  post: CollectionEntry<'posts'>;
+}
+
+const { post } = Astro.props;
+---
+
+<article class="article">
+  <a class="article__item" href={`/writing/${post.slug}`}>
+    <PostDate date={post.data.pubDate} />
+    <h1 class="article__title">{post.data.title}</h1>
+  </a>
+</article>
+
+<style lang="scss">
+  @use '../styles/mixins' as *;
+
+  .article {
+    @include hatching;
+    &__item {
+      background-color: var(--background);
+      border: 1px solid var(--divider);
+      border-radius: var(--radius);
+      display: flex;
+      flex-direction: column;
+      gap: 1lh;
+      height: 100%;
+      padding: var(--space);
+      transition: border-color 0.2s;
+      &:hover {
+        border-color: currentColor;
+      }
+    }
+    &__title {
+      font-weight: bold;
+      font-size: var(--step-1);
+      text-wrap: balance;
+      line-height: 1.305;
+    }
+  }
+</style>
