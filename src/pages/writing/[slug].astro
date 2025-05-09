@@ -40,21 +40,20 @@ const { Content } = await render(post);
     grid-template-columns: repeat(12, minmax(0, 1fr));
     &__title {
       font-size: var(--step-5);
-      font-weight: bold;
       grid-column: 1 / -1;
       letter-spacing: -1px;
       text-wrap: balance;
     }
     &__meta {
-      grid-column: 1 / -1;
+      grid-column: 1 / 6;
       @include medium {
-        grid-column: 1 / 6;
+        grid-column: 1 / -1;
       }
     }
     &__content {
-      grid-column: 1 / -1;
+      grid-column: 6 / -1;
       @include medium {
-        grid-column: 6 / -1;
+        grid-column: 1 / -1;
       }
     }
   }

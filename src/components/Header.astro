@@ -17,6 +17,10 @@ import { Clock, Logo } from './';
     display: flex;
     justify-content: space-between;
     padding: var(--space--large);
+    @include small {
+      padding-block: var(--space--large);
+      padding-inline: var(--space);
+    }
     &__title {
       @include visually-hidden;
     }

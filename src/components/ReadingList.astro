@@ -26,14 +26,21 @@ const recentReading = collection.slice(0, 7);
   @use '../styles/mixins' as *;
 
   .reading {
-    display: flex;
     border: 1px solid var(--divider);
     border-radius: var(--radius--large);
+    display: flex;
     flex-direction: column;
     gap: var(--step-5);
+    margin-left: 0;
     overflow: hidden;
     padding-block: var(--space);
     position: relative;
+    width: 100%;
+    @include small {
+      border: 0;
+      margin-left: calc(50% - 50vw);
+      width: 100vw;
+    }
     &::after {
       background-image: linear-gradient(to right, transparent, var(--background));
       content: '';
@@ -45,7 +52,9 @@ const recentReading = collection.slice(0, 7);
       width: 10%;
     }
     &__title {
-      font-weight: bold;
+      font-size: var(--step-2);
+      line-height: 1.305;
+      text-wrap: balance;
       margin-inline-start: var(--space);
     }
   }
@@ -79,7 +88,6 @@ const recentReading = collection.slice(0, 7);
       }
     }
     &__title {
-      font-weight: bold;
       line-height: 1.304;
       text-wrap: balance;
     }

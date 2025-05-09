@@ -77,7 +77,13 @@
 }
 
 @mixin medium {
-  @media (min-width: 55rem) {
+  @media (max-width: 55rem) {
+    @content;
+  }
+}
+
+@mixin small {
+  @media (max-width: 35rem) {
     @content;
   }
 }
