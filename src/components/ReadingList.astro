@@ -7,21 +7,18 @@ const recentReading = collection.slice(0, 7);
 
 <div class="reading">
   <h2 class="reading__title">Recent reading</h2>
-  <p class="reading__description">Things of note I have recently read, watched, or listened to</p>
   <div class="list">
     {
       recentReading.map(post => (
-        <article>
-          <a class="list__item" href={post.data.url} target="_blank" rel="noopener noreferrer">
-            <h1 class="list__title">{post.data.title}</h1>
-            <p class="list__author">
-              <span>by</span> {post.data.author}
-            </p>
+        <article class="article">
+          <a class="article__item" href={post.data.url} target="_blank" rel="noopener noreferrer">
+            <h1 class="article__title">{post.data.title}</h1>
+            <p class="article__author">{post.data.author}</p>
           </a>
         </article>
       ))
     }
-    <a href="/reading" class="list__item--more">More &rarr;</a>
+    <a href="/reading" class="article__item article__item--more">More &rarr;</a>
   </div>
 </div>
 
@@ -29,72 +26,68 @@ const recentReading = collection.slice(0, 7);
   @use '../styles/mixins' as *;
 
   .reading {
-    margin-top: var(--step-5);
+    display: flex;
+    border: 1px solid var(--divider);
+    border-radius: var(--radius--large);
+    flex-direction: column;
+    gap: var(--step-5);
     overflow: hidden;
+    padding-block: var(--space);
     position: relative;
     &::after {
       background-image: linear-gradient(to right, transparent, var(--background));
-      bottom: 0;
       content: '';
+      height: 100%;
+      inset-block-start: 0;
+      inset-inline-end: 0;
       pointer-events: none;
       position: absolute;
-      right: 0;
-      top: 0;
-      width: var(--step-5);
-      z-index: 1;
+      width: 10%;
     }
     &__title {
-      @include visually-hidden;
-    }
-    &__description {
-      margin-bottom: var(--step-2);
-      text-wrap: balance;
-      padding: 0 var(--step-0);
-      @include small {
-        padding: 0 var(--step-5);
-      }
+      font-weight: bold;
+      margin-inline-start: var(--space);
     }
   }
 
   .list {
     display: flex;
-    gap: var(--step-2);
+    gap: calc(var(--space) + 0.5em);
     overflow-x: auto;
-    padding-bottom: calc(var(--step--2) / 2);
-    padding-left: var(--step-0);
-    padding-right: var(--step-5);
+    padding-bottom: 0.5em;
     scrollbar-width: none;
-    @include small {
-      padding-left: var(--step-5);
-    }
     &::-webkit-scrollbar {
       -webkit-appearance: none;
     }
-    &__title {
-      font-weight: bold;
+  }
+  .article {
+    &:first-child {
+      margin-inline-start: var(--space);
     }
+    @include depth(0.5em);
     &__item {
-      color: var(--foreground);
       display: flex;
       flex-direction: column;
-      gap: var(--step--2);
+      gap: var(--space);
       height: 100%;
-      padding: var(--step--2);
+      padding: var(--space--small);
       width: 15rem;
-      @include depth;
       &--more {
-        display: flex;
+        align-self: center;
+        margin-inline-end: var(--space--large);
         text-wrap: nowrap;
-        align-items: center;
       }
+    }
+    &__title {
+      font-weight: bold;
+      line-height: 1.304;
+      text-wrap: balance;
     }
     &__author {
       font-size: var(--step--1);
-      margin-top: auto;
-      text-align: right;
-      span {
-        font-style: italic;
-      }
+      margin-block-start: auto;
+      margin-inline-start: auto;
+      text-align: inline-end;
     }
   }
 </style>

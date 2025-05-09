@@ -29,9 +29,18 @@ const url = Astro.url;
   </head>
   <body>
     <Header />
-    <main>
+    <main class="main">
       <slot />
     </main>
     <Footer />
   </body>
 </html>
+
+<style>
+  .main {
+    margin-block: var(--step-5);
+    margin-inline: auto;
+    inline-size: clamp(0%, 100%, 85rem);
+    padding-inline: var(--step-5);
+  }
+</style>

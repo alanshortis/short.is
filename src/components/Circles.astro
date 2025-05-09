@@ -1,28 +1,25 @@
-<div class="circle">
-  <div class="circle__inner"></div>
-  <div class="circle__inner"></div>
-</div>
+<div class="circle"></div>
 
 <style lang="scss">
   .circle {
     display: flex;
     justify-content: center;
-    margin-bottom: calc(var(--step-5) * 2);
-    &__inner {
+    &::before,
+    &::after {
       aspect-ratio: 1 / 1;
       background-image: linear-gradient(45deg, var(--foreground), var(--background));
       border-radius: 50%;
       border-top-right-radius: 0;
-      max-width: 500px;
+      content: '';
+      inline-size: clamp(0%, 100%, 28.33rem);
       mix-blend-mode: lighten;
       transform: translate(25%);
-      width: 50vw;
-      &:nth-child(2) {
-        transform: translate(-25%) rotate(180deg);
-      }
       html[data-scheme='light'] & {
         mix-blend-mode: darken;
       }
+    }
+    &::after {
+      transform: translate(-25%) rotate(180deg);
     }
   }
 </style>
