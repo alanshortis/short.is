@@ -39,10 +39,10 @@ const { Content } = await render(post);
     gap: var(--step-5) var(--step-1);
     grid-template-columns: repeat(12, minmax(0, 1fr));
     &__title {
-      font-style: italic;
       font-size: var(--step-5);
       font-weight: bold;
       grid-column: 1 / -1;
+      letter-spacing: -1px;
       text-wrap: balance;
     }
     &__meta {
@@ -74,7 +74,7 @@ const { Content } = await render(post);
   }
 
   .formatting em {
-    font-style: italic;
+    font-style: normal;
   }
 
   .formatting h2 {
@@ -89,7 +89,7 @@ const { Content } = await render(post);
     background-color: var(--code-background);
     border: 1px solid var(--divider);
     border-radius: var(--radius);
-    font-family: monospace;
+    font-family: 'Sohne Mono', monospace;
     font-size: var(--step--1);
     inset-block-end: 1px;
     margin-inline: 0.125em;
@@ -115,7 +115,6 @@ const { Content } = await render(post);
   .formatting blockquote {
     border-inline-start: 1px solid currentColor;
     display: block;
-    font-style: italic;
     padding-inline-start: var(--space);
   }
 
