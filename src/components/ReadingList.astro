@@ -6,7 +6,7 @@ const recentReading = collection.slice(0, 7);
 ---
 
 <div class="reading">
-  <h2 class="reading__title">Things of note I have recently read, watched, or listened to</h2>
+  <h2 class="reading__title">Recent reading</h2>
   <div class="list">
     {
       recentReading.map(post => (
@@ -24,10 +24,11 @@ const recentReading = collection.slice(0, 7);
 
 <style lang="scss">
   @use '../styles/mixins' as *;
+
   .reading {
     display: flex;
     border: 1px solid var(--divider);
-    border-radius: calc(var(--radius) * 2);
+    border-radius: var(--radius--large);
     flex-direction: column;
     gap: var(--step-5);
     overflow: hidden;
@@ -44,13 +45,14 @@ const recentReading = collection.slice(0, 7);
       width: 10%;
     }
     &__title {
+      font-weight: bold;
       margin-inline-start: var(--space);
     }
   }
 
   .list {
     display: flex;
-    gap: var(--space);
+    gap: calc(var(--space) + 0.5em);
     overflow-x: auto;
     padding-bottom: 0.5em;
     scrollbar-width: none;
@@ -68,7 +70,7 @@ const recentReading = collection.slice(0, 7);
       flex-direction: column;
       gap: var(--space);
       height: 100%;
-      padding: var(--space);
+      padding: var(--space--small);
       width: 15rem;
       &--more {
         align-self: center;
@@ -78,6 +80,8 @@ const recentReading = collection.slice(0, 7);
     }
     &__title {
       font-weight: bold;
+      line-height: 1.304;
+      text-wrap: balance;
     }
     &__author {
       font-size: var(--step--1);
