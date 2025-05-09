@@ -21,7 +21,7 @@ const collection = await getCollection('reading');
               target="_blank"
               rel="noopener noreferrer"
             >
-              <h1>{post.data.title}</h1>
+              <h1 class="list__title">{post.data.title}</h1>
               <p class="list__author">{post.data.author}</p>
             </a>
           </article>
@@ -62,6 +62,10 @@ const collection = await getCollection('reading');
     &__author {
       font-size: var(--step--1);
       margin-inline-start: auto;
+    }
+    &__title {
+      text-wrap: balance;
+      line-height: 1.305;
     }
   }
 </style>
