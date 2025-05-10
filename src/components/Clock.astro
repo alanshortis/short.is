@@ -1,4 +1,5 @@
-<the-time>
+<the-time class="time">
+  <span class="time__label">Current time</span>
   <time datetime=""></time>
 </the-time>
 
@@ -36,7 +37,10 @@
 <style lang="scss">
   @use '../styles/mixins' as *;
 
-  time {
+  .time {
     @include label;
+    &__label {
+      @include visually-hidden;
+    }
   }
 </style>
