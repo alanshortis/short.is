@@ -1,0 +1,23 @@
+---
+import Base from '../layouts/base.astro';
+---
+
+<Base pageTitle="Alan Shortis | Sketches" description="Things with no purpose expcet that they exist">
+  <article class="post">
+    <h1 class="post__title">Sketches</h1>
+  </article>
+</Base>
+
+<style lang="scss">
+  @use '../styles/mixins' as *;
+
+  .post {
+    display: flex;
+    flex-direction: column;
+    gap: var(--step-5);
+    &__title {
+      font-size: var(--step-5);
+      font-weight: bold;
+    }
+  }
+</style>
