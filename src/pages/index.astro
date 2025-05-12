@@ -1,7 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../layouts/base.astro';
-import { Circles, PostBox, ReadingList } from '../components';
+import { PostBox, ReadingList } from '../components';
+import { Circles } from '../components/sketches';
 
 const collection = await getCollection('posts');
 const sortedPosts = collection.sort((a, b) => b.data.pubDate.localeCompare(a.data.pubDate));
@@ -11,9 +12,7 @@ const sortedPosts = collection.sort((a, b) => b.data.pubDate.localeCompare(a.dat
   <div class="home">
     <Circles />
     <div>
-      <h1 class="home__title">
-        My name is <b>Alan Shortis</b> and I am a web engineer
-      </h1>
+      <h1 class="home__title">My name is Alan Shortis and I am a web engineer</h1>
       <div class="home__posts">
         {sortedPosts.map(post => <PostBox post={post} />)}
       </div>
@@ -29,6 +28,7 @@ const sortedPosts = collection.sort((a, b) => b.data.pubDate.localeCompare(a.dat
     gap: calc(var(--step-5) * 2);
     &__title {
       font-size: var(--step-2);
+      font-weight: bold;
       line-height: 1.305;
       margin-block-end: var(--step-5);
       text-wrap: balance;

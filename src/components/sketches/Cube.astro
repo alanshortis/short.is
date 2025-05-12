@@ -1,0 +1,72 @@
+<div class="container">
+  <span class="container__alt">
+    An image made using code. Minimal graphic design style. A white cube on a black background. The cube
+    appears to be illuminated from the inside, like a light box, with darker edges and corners. The cube is
+    rotating on all axes, as if it is suspended in space.</span
+  >
+  <div class="cube">
+    <div class="cube__face"></div>
+    <div class="cube__face"></div>
+    <div class="cube__face"></div>
+    <div class="cube__face"></div>
+    <div class="cube__face"></div>
+    <div class="cube__face"></div>
+  </div>
+</div>
+
+<style lang="scss">
+  @use '../../styles/mixins' as *;
+
+  $offset: 75px;
+
+  @keyframes spin {
+    100% {
+      transform: rotate3d(1, 2, 0, 1turn);
+    }
+  }
+
+  .container {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    perspective: 750px;
+    width: 100%;
+    &__alt {
+      @include visually-hidden;
+    }
+  }
+
+  .cube {
+    animation: spin 5s linear infinite;
+    aspect-ratio: 1 / 1;
+    position: relative;
+    transform-style: preserve-3d;
+    width: $offset * 2;
+    &__face {
+      aspect-ratio: 1 / 1;
+      background-color: var(--light);
+      box-shadow: inset 0 0 50px 0 var(--dark);
+      height: 100%;
+      position: absolute;
+      &:nth-child(1) {
+        transform: translateZ($offset);
+      }
+      &:nth-child(2) {
+        transform: translateZ(-$offset) rotateY(180deg);
+      }
+      &:nth-child(3) {
+        transform: translateX(-$offset) rotateY(-90deg);
+      }
+      &:nth-child(4) {
+        transform: translateX($offset) rotateY(90deg);
+      }
+      &:nth-child(5) {
+        transform: translateY(-$offset) rotateX(90deg);
+      }
+      &:nth-child(6) {
+        transform: translateY($offset) rotateX(-90deg);
+      }
+    }
+  }
+</style>

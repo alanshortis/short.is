@@ -35,7 +35,12 @@
 
 @mixin focus-outline {
   outline: 2px solid var(--focus-ring);
-  outline-offset: 4px;
+  outline-offset: 2px;
+}
+
+@mixin full-bleed {
+  margin-left: calc(50% - 50vw);
+  width: 100vw;
 }
 
 @mixin hatching($bottomMargin: 0.5em) {

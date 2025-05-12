@@ -40,6 +40,7 @@ const { Content } = await render(post);
     grid-template-columns: repeat(12, minmax(0, 1fr));
     &__title {
       font-size: var(--step-5);
+      font-weight: bold;
       grid-column: 1 / -1;
       letter-spacing: -1px;
       text-wrap: balance;
@@ -78,6 +79,7 @@ const { Content } = await render(post);
 
   .formatting h2 {
     font-size: var(--step-2);
+    font-weight: bold;
   }
 
   .formatting kbd {

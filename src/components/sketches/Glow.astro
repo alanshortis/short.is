@@ -1,0 +1,37 @@
+<div class="box">
+  <span class="box__alt">
+    An image made using code. Minimal graphic design style. A dark circle that appears black and matches the
+    background is surrounded by a light circle that is almost glowing, similar to the sun beng blocked by the
+    moon during an eclipse. There is a subtle animation that shifts the glow behind the empty circle very
+    slightly and slowly.</span
+  >
+</div>
+
+<style lang="scss">
+  @use '../../styles/mixins' as *;
+
+  @mixin shadow($x) {
+    box-shadow: $x 0 4.5em -1em var(--light);
+  }
+
+  @keyframes shadow {
+    50% {
+      @include shadow(3em);
+      transform: translateX(-1em);
+    }
+  }
+
+  .box {
+    aspect-ratio: 1 / 1;
+    transform: translateX(1em);
+    position: relative;
+    background-color: transparent;
+    inline-size: clamp(0%, 100%, 25rem);
+    border-radius: 50%;
+    animation: shadow 30s infinite ease;
+    @include shadow(-3em);
+    &__alt {
+      @include visually-hidden;
+    }
+  }
+</style>

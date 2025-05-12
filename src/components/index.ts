@@ -1,5 +1,4 @@
 export { default as AgeWarning } from './AgeWarning.astro';
-export { default as Circles } from './Circles.astro';
 export { default as Clock } from './Clock.astro';
 export { default as Concerns } from './Concerns.astro';
 export { default as ExampleEmbed } from './ExampleEmbed.astro';

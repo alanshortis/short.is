@@ -1,0 +1,29 @@
+<div class="circle">
+  <span class="circle__alt">
+    An image made using code. Minimal graphic design style. White ring against a black background, with two
+    gradients (one blue, one read) appearing as shadows both inside and outside the ring. Like an old style 3D
+    anaglyph, the red gradients appear on the right and the blue only on the left.</span
+  >
+</div>
+
+<style lang="scss">
+  @use '../../styles/mixins' as *;
+
+  .circle {
+    --accent: hsl(0, 75%, 64%);
+    --complement: hsl(180, 75%, 64%);
+
+    aspect-ratio: 1 / 1;
+    border: 1px solid var(--light);
+    border-radius: 50%;
+    box-shadow:
+      0.25em 0 1em 0 var(--accent),
+      -0.25em 0 1em 0 var(--complement),
+      inset 0.25em 0 1em 0 var(--accent),
+      inset -0.25em 0 1em 0 var(--complement);
+    inline-size: clamp(0%, 100%, 25rem);
+    &__alt {
+      @include visually-hidden;
+    }
+  }
+</style>

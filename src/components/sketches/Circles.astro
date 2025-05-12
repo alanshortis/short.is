@@ -1,9 +1,19 @@
-<div class="circle"></div>
+<div class="circle">
+  <span class="circle__alt">
+    An image made using code. Minimal graphic design style. Two circles, both with a gradient from white to
+    black, intersect and appear to merge together into one shape.</span
+  >
+</div>
 
 <style lang="scss">
+  @use '../../styles/mixins' as *;
+
   .circle {
     display: flex;
+    height: 100%;
+    width: 100%;
     justify-content: center;
+    align-items: center;
     &::before,
     &::after {
       aspect-ratio: 1 / 1;
@@ -20,6 +30,9 @@
     }
     &::after {
       transform: translate(-25%) rotate(180deg);
+    }
+    &__alt {
+      @include visually-hidden;
     }
   }
 </style>
