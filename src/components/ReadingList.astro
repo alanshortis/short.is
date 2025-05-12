@@ -18,7 +18,9 @@ const recentReading = collection.slice(0, 7);
         </article>
       ))
     }
-    <a href="/reading" class="article__item article__item--more">More &rarr;</a>
+    <div>
+      <a href="/reading" class="article__item article__item--more">More &rarr;</a>
+    </div>
   </div>
 </div>
 
@@ -82,9 +84,11 @@ const recentReading = collection.slice(0, 7);
       padding: var(--space--small);
       width: 15rem;
       &--more {
-        align-self: center;
+        align-items: center;
+        border: 0;
+        justify-content: center;
         margin-inline-end: var(--space--large);
-        text-wrap: nowrap;
+        width: 7.5rem;
       }
     }
     &__title {
