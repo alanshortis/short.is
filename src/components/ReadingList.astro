@@ -38,8 +38,7 @@ const recentReading = collection.slice(0, 7);
     width: 100%;
     @include small {
       border: 0;
-      margin-left: calc(50% - 50vw);
-      width: 100vw;
+      @include full-bleed;
     }
     &::after {
       background-image: linear-gradient(to right, transparent, var(--background));

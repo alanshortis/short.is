@@ -1,10 +1,29 @@
 ---
 import Base from '../layouts/base.astro';
+import { Glow, Circles, Shaft, Cube, Anaglyph, Perspective, OverlapCircles } from '../components/sketches';
 ---
 
 <Base pageTitle="Alan Shortis | Sketches" description="Things with no purpose expcet that they exist">
   <article class="post">
     <h1 class="post__title">Sketches</h1>
+    <div class="post__sketch post__sketch--dark">
+      <Perspective />
+    </div>
+    <div class="post__sketch post__sketch--dark">
+      <Cube />
+    </div>
+    <div class="post__sketch post__sketch--dark">
+      <Glow />
+    </div>
+    <div class="post__sketch post__sketch--dark">
+      <Shaft />
+    </div>
+    <div class="post__sketch post__sketch--dark">
+      <Anaglyph />
+    </div>
+    <div class="post__sketch">
+      <Circles />
+    </div>
   </article>
 </Base>
 
@@ -14,10 +33,25 @@ import Base from '../layouts/base.astro';
   .post {
     display: flex;
     flex-direction: column;
-    gap: var(--step-5);
     &__title {
       font-size: var(--step-5);
       font-weight: bold;
+      margin-block-end: var(--step-5);
+    }
+    &__sketch {
+      background-color: var(--background);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space--large);
+      min-height: 100vh;
+      @include full-bleed;
+      &:not(:last-child) {
+        border-block-end: 1px solid var(--divider);
+      }
+      &--dark {
+        color-scheme: dark;
+      }
     }
   }
 </style>

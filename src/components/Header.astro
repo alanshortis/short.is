@@ -29,7 +29,7 @@ const menuItems = [
               class="header__menuitem"
               href={href}
               role="menuitem"
-              aria-current={pathname === href ? 'page' : null}
+              aria-current={pathname.startsWith(href) ? 'page' : null}
             >
               {label}
             </a>
