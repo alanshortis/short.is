@@ -67,11 +67,16 @@ const recentReading = collection.slice(0, 7);
     overflow-x: auto;
     padding-bottom: 0.5em;
     scrollbar-width: none;
+    scroll-snap-type: x mandatory;
+    scroll-padding-left: var(--space);
+    scrollbar-width: none;
     &::-webkit-scrollbar {
       -webkit-appearance: none;
     }
   }
   .article {
+    scroll-snap-align: start;
+    scroll-snap-stop: normal;
     &:first-child {
       margin-inline-start: var(--space);
     }
