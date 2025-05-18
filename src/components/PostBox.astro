@@ -1,18 +1,22 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import { PostDate } from './';
+import { PostDate, ContentIcon } from './';
 
 interface Props {
   post: CollectionEntry<'posts'>;
+  isFeatured?: boolean;
 }
 
-const { post } = Astro.props;
+const { post, isFeatured } = Astro.props;
 ---
 
-<article class="article">
+<article class={`article ${isFeatured ? 'article--featured' : ''}`}>
   <a class="article__item" href={`/writing/${post.slug}`}>
     <PostDate date={post.data.pubDate} />
     <h1 class="article__title">{post.data.title}</h1>
+    <div class="article__icon">
+      <ContentIcon icon={post.data.icon} />
+    </div>
   </a>
 </article>
 
@@ -21,6 +25,13 @@ const { post } = Astro.props;
 
   .article {
     @include hatching(0em);
+    &__featured {
+      @include small-min {
+        &:first-child {
+          grid-column: span 2;
+        }
+      }
+    }
     &__item {
       background-color: var(--background);
       border: 1px solid var(--divider);
@@ -40,6 +51,10 @@ const { post } = Astro.props;
       font-weight: bold;
       text-wrap: balance;
       line-height: 1.305;
+    }
+    &__icon {
+      margin-block-start: auto;
+      margin-inline-start: auto;
     }
   }
 </style>

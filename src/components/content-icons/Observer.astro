@@ -1,0 +1,47 @@
+<div class="observer">
+  <div class="observer__eye"></div>
+  <div class="observer__observables">
+    <div class="observer__observables__elem"></div>
+    <div class="observer__observables__elem"></div>
+    <div class="observer__observables__elem"></div>
+    <div class="observer__observables__elem"></div>
+    <div class="observer__observables__elem"></div>
+    <div class="observer__observables__elem"></div>
+    <div class="observer__observables__elem"></div>
+  </div>
+</div>
+
+<style lang="scss">
+  .observer {
+    aspect-ratio: 1 / 1;
+    display: grid;
+    gap: 20%;
+    grid-template-rows: repeat(2, 1fr);
+    width: var(--step-5);
+    &__eye {
+      border: 1px solid var(--foreground);
+      border-radius: 100%;
+      position: relative;
+      &::before {
+        content: '';
+        border: 1px solid var(--foreground);
+        border-radius: 100%;
+        position: absolute;
+        top: calc(50% - 3px);
+        left: calc(50% - 3px);
+        width: 6px;
+        height: 6px;
+      }
+    }
+    &__observables {
+      display: flex;
+      justify-content: space-between;
+      &__elem {
+        border: 1px solid var(--foreground);
+        border-radius: 100%;
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
+</style>

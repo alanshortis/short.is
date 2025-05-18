@@ -1,0 +1,34 @@
+<div class="ai">
+  <div class="ai__elem"></div>
+  <div class="ai__elem"></div>
+  <div class="ai__elem"></div>
+  <div class="ai__elem"></div>
+</div>
+
+<style lang="scss">
+  .ai {
+    aspect-ratio: 1 / 1;
+    position: relative;
+    overflow: hidden;
+    width: var(--step-5);
+    &__elem {
+      aspect-ratio: 1 / 1;
+      border: 1px solid var(--foreground);
+      border-radius: 50%;
+      position: absolute;
+      width: 100%;
+      &:nth-child(1) {
+        transform: translate(-50%, -50%);
+      }
+      &:nth-child(2) {
+        transform: translate(50%, -50%);
+      }
+      &:nth-child(3) {
+        transform: translate(-50%, 50%);
+      }
+      &:nth-child(4) {
+        transform: translate(50%, 50%);
+      }
+    }
+  }
+</style>

@@ -1,0 +1,41 @@
+<div class="ethics">
+  <div class="ethics__elem"></div>
+  <div class="ethics__elem"></div>
+  <div class="ethics__elem"></div>
+  <div class="ethics__elem"></div>
+</div>
+
+<style lang="scss">
+  .ethics {
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    position: relative;
+    width: var(--step-5);
+    &__elem {
+      aspect-ratio: 1 / 1;
+      border: 1px solid var(--foreground);
+      border-radius: 50%;
+      height: 75%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      &:nth-child(2) {
+        top: 0;
+        left: initial;
+        right: 0;
+      }
+      &:nth-child(3) {
+        bottom: 0;
+        left: 0;
+        right: initial;
+        top: initial;
+      }
+      &:nth-child(4) {
+        bottom: 0;
+        left: initial;
+        right: 0;
+        top: initial;
+      }
+    }
+  }
+</style>

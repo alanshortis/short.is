@@ -1,0 +1,40 @@
+<div class="website">
+  <div class="website__bracket"></div>
+  <div class="website__bracket"></div>
+</div>
+
+<style lang="scss">
+  .website {
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    position: relative;
+    width: var(--step-5);
+    &:after {
+      content: '';
+      width: 1px;
+      height: 141%;
+      background-color: var(--foreground);
+      position: absolute;
+      top: 0;
+      right: 0;
+      transform: rotate(45deg);
+      transform-origin: 1px 1px;
+    }
+    &__bracket {
+      aspect-ratio: 1 / 1;
+      border-inline-start: 1px solid var(--foreground);
+      border-block-end: 1px solid var(--foreground);
+      position: absolute;
+      width: 40%;
+      transform: rotate(45deg) translate(calc(25% + 1px));
+      &:nth-child(2) {
+        border: 0;
+        border-inline-end: 1px solid var(--foreground);
+        border-block-start: 1px solid var(--foreground);
+        transform: rotate(45deg) translate(calc(-25% - 1px));
+        inset-block-end: 0;
+        inset-inline-end: 0;
+      }
+    }
+  }
+</style>

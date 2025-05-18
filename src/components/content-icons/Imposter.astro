@@ -1,0 +1,23 @@
+<div class="imposter">
+  <div class="imposter__elem"></div>
+  <div class="imposter__elem"></div>
+  <div class="imposter__elem"></div>
+  <div class="imposter__elem imposter__elem--circle"></div>
+</div>
+
+<style lang="scss">
+  .imposter {
+    aspect-ratio: 1 / 1;
+    display: grid;
+    gap: 10%;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    width: var(--step-5);
+    &__elem {
+      border: 1px solid var(--foreground);
+      &--circle {
+        border-radius: 50%;
+      }
+    }
+  }
+</style>

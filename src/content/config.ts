@@ -8,6 +8,7 @@ const posts = defineCollection({
       title: z.string(),
       description: z.string(),
       pubDate: z.string(),
+      icon: z.enum(['ai', 'website', 'observer', 'hopper', 'ethics', 'new-york', 'imposter']),
       showAgeWarning: z.boolean().optional(),
     }),
 });
