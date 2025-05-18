@@ -1,7 +1,7 @@
 ---
 import { render, getCollection, type CollectionEntry } from 'astro:content';
 import Base from '../../layouts/base.astro';
-import { AgeWarning, PostDate } from '../../components';
+import { AgeWarning, PostDate, ContentIcon } from '../../components';
 
 interface Props {
   post: CollectionEntry<'posts'>;
@@ -23,6 +23,7 @@ const { Content } = await render(post);
     <h1 class="post__title">{post.data.title}</h1>
     <div class="post__meta">
       <PostDate date={post.data.pubDate} />
+      <ContentIcon icon={post.data.icon} />
     </div>
     <div class="post__content formatting">
       <AgeWarning pubDate={post.data.pubDate} showAgeWarning={Boolean(post.data.showAgeWarning)} />
@@ -46,6 +47,9 @@ const { Content } = await render(post);
       text-wrap: balance;
     }
     &__meta {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space--large);
       grid-column: 1 / 6;
       @include medium {
         grid-column: 1 / -1;

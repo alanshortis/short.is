@@ -3,7 +3,6 @@ import { getCollection } from 'astro:content';
 import Base from '../layouts/base.astro';
 import { PostBox, ReadingList } from '../components';
 import { Circles } from '../components/sketches';
-
 const collection = await getCollection('posts');
 const sortedPosts = collection.sort((a, b) => b.data.pubDate.localeCompare(a.data.pubDate));
 ---
@@ -14,7 +13,7 @@ const sortedPosts = collection.sort((a, b) => b.data.pubDate.localeCompare(a.dat
     <div>
       <h1 class="home__title">My name is Alan Shortis and I am a web engineer</h1>
       <div class="home__posts">
-        {sortedPosts.map(post => <PostBox post={post} />)}
+        {sortedPosts.map((post, idx) => <PostBox post={post} isFeatured={idx === 0} />)}
       </div>
     </div>
     <ReadingList />

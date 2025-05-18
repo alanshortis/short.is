@@ -93,6 +93,12 @@
   }
 }
 
+@mixin small-min {
+  @media (min-width: 35rem) {
+    @content;
+  }
+}
+
 @mixin should-animate {
   @media (prefers-reduced-motion: no-preference) {
     @content;
