@@ -1,0 +1,41 @@
+<div class="hopper">
+  <div class="hopper__elem"></div>
+  <div class="hopper__elem"></div>
+  <div class="hopper__elem"></div>
+  <div class="hopper__elem"></div>
+  <div class="hopper__elem"></div>
+  <div class="hopper__elem"></div>
+</div>
+
+<style lang="scss">
+  .hopper {
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    position: relative;
+    width: var(--step-5);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    &__elem {
+      border: 1px solid var(--foreground);
+      border-radius: 100%;
+      height: 100%;
+      width: 100%;
+      &:nth-child(2) {
+        transform: translateY(-4px);
+      }
+      &:nth-child(3) {
+        transform: translateY(-8px);
+      }
+      &:nth-child(4) {
+        transform: translateY(-12px);
+      }
+      &:nth-child(5) {
+        transform: translateY(-16px);
+      }
+      &:last-child {
+        align-self: flex-end;
+      }
+    }
+  }
+</style>

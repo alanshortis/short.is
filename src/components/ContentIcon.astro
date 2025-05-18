@@ -1,0 +1,20 @@
+---
+const { icon } = Astro.props;
+import {
+  AiIcon,
+  EthicsIcon,
+  HopperIcon,
+  ImposterIcon,
+  NewYorkIcon,
+  ObserverIcon,
+  WebsiteIcon,
+} from './content-icons';
+---
+
+{icon === 'ai' && <AiIcon />}
+{icon === 'ethics' && <EthicsIcon />}
+{icon === 'hopper' && <HopperIcon />}
+{icon === 'imposter' && <ImposterIcon />}
+{icon === 'new-york' && <NewYorkIcon />}
+{icon === 'observer' && <ObserverIcon />}
+{icon === 'website' && <WebsiteIcon />}
