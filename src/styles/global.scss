@@ -3,6 +3,10 @@
 @use './reset';
 @use './mixins' as *;
 
+@view-transition {
+  navigation: auto;
+}
+
 html {
   height: 100%;
   @include should-animate {

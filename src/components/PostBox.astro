@@ -25,7 +25,7 @@ const { post, isFeatured } = Astro.props;
 
   .article {
     @include hatching(0em);
-    &__featured {
+    &--featured {
       @include small-min {
         &:first-child {
           grid-column: span 2;
