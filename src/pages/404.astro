@@ -1,0 +1,44 @@
+---
+import Base from '../layouts/base.astro';
+---
+
+<Base pageTitle="Alan Shortis | 404" description="404: not found">
+  <article class="post">
+    <h1 class="post__title">404</h1>
+    <div class="post__content">
+      <p>Whatever you're looking for is not here.</p>
+      <p>
+        This doman once belonged to a URL shortening service, so if you were hoping for something interesting
+        I can only apologise for the crushing disappointment.
+      </p>
+    </div>
+  </article>
+</Base>
+
+<style lang="scss">
+  @use '../styles/mixins' as *;
+
+  .post {
+    display: grid;
+    gap: var(--step-5) var(--step-1);
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    &__title {
+      font-size: var(--step-5);
+      font-weight: bold;
+      grid-column: 1 / -1;
+      letter-spacing: -1px;
+      text-wrap: balance;
+    }
+    &__content {
+      grid-column: 6 / -1;
+      line-height: 1.618;
+      text-wrap: pretty;
+      @include medium {
+        grid-column: 1 / -1;
+      }
+      & * + * {
+        margin-top: 1lh;
+      }
+    }
+  }
+</style>
