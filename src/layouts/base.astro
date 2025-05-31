@@ -24,7 +24,6 @@ const url = Astro.url;
     <meta property="og:url" content={url} />
     <link rel="preload" href="/fonts/soehne-halbfett.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/soehne-buch.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href="/fonts/soehne-mono-buch.woff2" as="font" type="font/woff2" crossorigin />
   </head>
   <body>
     <Header />
@@ -40,9 +39,8 @@ const url = Astro.url;
 
   .main {
     margin-block: var(--space--large);
-    margin-inline: auto;
-    inline-size: clamp(0%, 100%, 85rem);
     padding-inline: var(--space--large);
+    @include fixed-width;
     @include small {
       padding-inline: var(--space);
     }

@@ -6,13 +6,9 @@ const year = new Date().getFullYear();
 
 <footer class="footer">
   <div class="footer__links">
-    <p class="footer__title">Elsewhere</p>
-    <p>
-      <a href="/writing.xml">RSS</a>
-      <a href="https://bsky.app/profile/short.is" target="_blank" rel="noopener noreferrer">Bluesky</a>
-      <a href="https://www.cosmos.so/short.is" target="_blank" rel="noopener noreferrer">Cosmos</a>
-    </p>
-    <p>&copy; 2009&mdash;{year} Alan Shortis</p>
+    <a href="/writing.xml">RSS</a>
+    <a href="https://bsky.app/profile/short.is" target="_blank" rel="noopener noreferrer">Bluesky</a>
+    <a href="https://www.cosmos.so/short.is" target="_blank" rel="noopener noreferrer">Cosmos</a>
   </div>
   <SchemeToggle />
 </footer>
@@ -26,14 +22,14 @@ const year = new Date().getFullYear();
     gap: var(--space--large);
     justify-content: space-between;
     padding: var(--space--large);
+    @include fixed-width;
     @include small {
       padding-block: var(--space--large);
       padding-inline: var(--space);
     }
     &__links {
       display: flex;
-      flex-direction: column;
-      gap: var(--space);
+      gap: 2ch;
       @include label;
     }
     &__title {

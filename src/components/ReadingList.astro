@@ -18,10 +18,8 @@ const recentReading = collection.slice(0, 7);
         </article>
       ))
     }
-    <div>
-      <a href="/reading" class="article__item article__item--more">More &rarr;</a>
-    </div>
   </div>
+  <a href="/reading" class="reading__more">More reading &rarr;</a>
 </div>
 
 <style lang="scss">
@@ -32,7 +30,7 @@ const recentReading = collection.slice(0, 7);
     border-radius: var(--radius--large);
     display: flex;
     flex-direction: column;
-    gap: var(--step-5);
+    gap: var(--space--large);
     margin-left: 0;
     overflow: hidden;
     padding-block: var(--space);
@@ -50,14 +48,19 @@ const recentReading = collection.slice(0, 7);
       inset-inline-end: 0;
       pointer-events: none;
       position: absolute;
-      width: 10%;
+      width: var(--space--large);
     }
     &__title {
       font-size: var(--step-2);
       font-weight: bold;
       line-height: 1.305;
-      text-wrap: balance;
       margin-inline-start: var(--space);
+      text-wrap: balance;
+    }
+    &__more {
+      display: inline-block;
+      margin-inline-start: var(--space);
+      @include label;
     }
   }
 
@@ -80,6 +83,9 @@ const recentReading = collection.slice(0, 7);
     &:first-child {
       margin-inline-start: var(--space);
     }
+    &:last-child {
+      margin-inline-end: var(--space--large);
+    }
     @include depth(0.5em);
     &__item {
       display: flex;
@@ -88,13 +94,6 @@ const recentReading = collection.slice(0, 7);
       height: 100%;
       padding: var(--space--small);
       width: 15rem;
-      &--more {
-        align-items: center;
-        border: 0;
-        justify-content: center;
-        margin-inline-end: var(--space--large);
-        width: 7.5rem;
-      }
     }
     &__title {
       font-weight: bold;

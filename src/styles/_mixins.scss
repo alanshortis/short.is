@@ -38,6 +38,11 @@
   outline-offset: 2px;
 }
 
+@mixin fixed-width {
+  inline-size: clamp(0%, 100%, 85rem);
+  margin-inline: auto;
+}
+
 @mixin full-bleed {
   margin-left: calc(50% - 50vw);
   width: 100vw;
@@ -74,10 +79,9 @@
 }
 
 @mixin label {
-  font-family: 'Sohne Mono', monospace;
   font-feature-settings: 'tnum';
   font-size: var(--step--1);
-  letter-spacing: 3px;
+  letter-spacing: 2px;
   text-transform: uppercase;
 }
 
