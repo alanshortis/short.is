@@ -12,6 +12,10 @@ const menuItems = [
     label: 'Reading',
     href: '/reading',
   },
+  {
+    label: 'Writing',
+    href: '/writing',
+  },
 ];
 ---
 
@@ -49,9 +53,13 @@ const menuItems = [
     gap: var(--space);
     justify-content: flex-end;
     padding: var(--space--large);
+    @include fixed-width;
     @include small {
       padding-block: var(--space--large);
       padding-inline: var(--space);
+    }
+    @include small {
+      align-items: flex-start;
     }
     &__logo {
       margin-inline-end: auto;
@@ -62,6 +70,9 @@ const menuItems = [
     &__menubar {
       display: flex;
       gap: var(--space);
+      @include small {
+        flex-direction: column;
+      }
     }
     &__menuitem {
       display: block;
@@ -70,6 +81,10 @@ const menuItems = [
       @include label;
       &[aria-current='page']::after {
         @include active-indicator;
+        @include small {
+          left: calc(-1.618em + 0.5lh);
+          top: calc(50% - 0.1725em);
+        }
       }
     }
   }
