@@ -69,7 +69,7 @@ const { Content } = await render(post);
     line-height: 1.618;
     text-wrap: pretty;
   }
-  .formatting * + :where(p, ol, ul, h2, blockquote) {
+  .formatting * + :where(p, ol, ul, h2, figure) {
     margin-top: 1lh;
   }
 
@@ -101,7 +101,7 @@ const { Content } = await render(post);
     padding-block: 0.125em;
     padding-inline: 0.25em;
     position: relative;
-    inset-block-start: -1px;
+    inset-block-start: -2px;
   }
 
   .formatting ul,
@@ -118,10 +118,45 @@ const { Content } = await render(post);
     list-style: disc;
   }
 
-  .formatting blockquote {
+  .formatting figure {
     border-inline-start: 1px solid currentColor;
     display: block;
     padding-inline-start: var(--space);
+  }
+
+  .formatting figure blockquote {
+    quotes: '“' '”';
+  }
+
+  .formatting figure figcaption {
+    display: flex;
+    font-size: var(--step--1);
+  }
+
+  .formatting figure figcaption::before {
+    content: '—';
+  }
+
+  .formatting figure cite {
+    font-style: normal;
+  }
+
+  .formatting figure blockquote {
+    text-indent: -0.4em;
+  }
+
+  @supports (hanging-punctuation: first) {
+    .formatting figure blockquote {
+      text-indent: 0;
+      hanging-punctuation: first;
+    }
+  }
+  .formatting figure blockquote::before {
+    content: open-quote;
+  }
+
+  .formatting figure blockquote::after {
+    content: close-quote;
   }
 
   .formatting del {
