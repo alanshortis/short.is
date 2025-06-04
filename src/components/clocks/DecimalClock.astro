@@ -1,0 +1,88 @@
+---
+interface Props {
+  isLarge?: boolean;
+}
+
+const { isLarge } = Astro.props;
+---
+
+<decimal-clock class=`time ${isLarge ? 'time--large' : ''}`>
+  <span class="js-time"></span>
+</decimal-clock>
+
+<script>
+  interface DecimalTime {
+    hours: string;
+    minutes: string;
+    seconds: string;
+  }
+
+  class DecimalClock extends HTMLElement {
+    private time: HTMLTimeElement;
+    private animationFrameId?: number;
+    private TOTAL_SECONDS_IN_DAY = 24 * 60 * 60;
+
+    constructor() {
+      super();
+      this.time = this.querySelector('.js-time')!;
+    }
+
+    connectedCallback() {
+      this.updateTime();
+    }
+
+    disconnectedCallback() {
+      if (this.animationFrameId) {
+        cancelAnimationFrame(this.animationFrameId);
+        this.animationFrameId = undefined;
+      }
+    }
+
+    private updateTime(): void {
+      this.setDecimalTime();
+      this.animationFrameId = requestAnimationFrame(() => this.updateTime());
+    }
+
+    private formatNumber(num: number, leadingZero: boolean = true): string {
+      return String(Math.floor(num)).padStart(leadingZero ? 2 : 1, '0');
+    }
+
+    private setDecimalTime(): void {
+      const now = new Date();
+      const secondsSinceMidnight =
+        now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds() + now.getMilliseconds() / 1000;
+
+      // Calculate the fraction of the day that has passed
+      const fractionOfDay = secondsSinceMidnight / this.TOTAL_SECONDS_IN_DAY;
+
+      // Convert the fraction of the day into metric time
+      const totalMetricSecondsInDay = 10 * 100 * 100; // Total metric seconds in a day
+      const metricSecondsElapsed = fractionOfDay * totalMetricSecondsInDay;
+
+      // Break down metric time into hours, minutes, and seconds
+      const decimalTime: DecimalTime = {
+        hours: this.formatNumber(metricSecondsElapsed / (100 * 100), false),
+        minutes: this.formatNumber((metricSecondsElapsed % (100 * 100)) / 100),
+        seconds: this.formatNumber(metricSecondsElapsed % 100),
+      };
+
+      this.time.innerHTML = `${decimalTime.hours}:${decimalTime.minutes}:${decimalTime.seconds}`;
+    }
+  }
+
+  customElements.define('decimal-clock', DecimalClock);
+</script>
+
+<style lang="scss">
+  @use '../../styles/mixins' as *;
+
+  .time {
+    @include label;
+    &--large {
+      font-size: var(--step-2);
+    }
+    &__label {
+      @include visually-hidden;
+    }
+  }
+</style>
