@@ -1,0 +1,65 @@
+<regular-clock class="time">
+  <span class="time__label">Current time</span>
+  <time datetime=""></time>
+</regular-clock>
+
+<script>
+  class RegularClock extends HTMLElement {
+    private time: HTMLTimeElement;
+    private animationFrameId?: number;
+    private lastUpdate: number;
+
+    constructor() {
+      super();
+      this.time = this.querySelector('time')!;
+      this.lastUpdate = performance.now();
+    }
+
+    connectedCallback() {
+      this.setTime();
+      this.updateTime();
+    }
+
+    disconnectedCallback() {
+      if (this.animationFrameId) {
+        cancelAnimationFrame(this.animationFrameId);
+        this.animationFrameId = undefined;
+      }
+    }
+
+    private updateTime(): void {
+      const now = performance.now();
+      const elapsed = now - this.lastUpdate;
+
+      if (elapsed >= 1000) {
+        this.setTime();
+        this.lastUpdate = now;
+      }
+
+      this.animationFrameId = requestAnimationFrame(() => this.updateTime());
+    }
+
+    private setTime(): void {
+      const now = new Date();
+      const timeString = now.toLocaleTimeString('en-GB');
+      const isoString = now.toISOString();
+
+      this.time.innerHTML = timeString;
+      this.time.setAttribute('datetime', isoString);
+    }
+  }
+
+  customElements.define('regular-clock', RegularClock);
+</script>
+
+<style lang="scss">
+  @use '../../styles/mixins' as *;
+
+  .time {
+    @include label;
+    font-size: var(--step-2);
+    &__label {
+      @include visually-hidden;
+    }
+  }
+</style>
