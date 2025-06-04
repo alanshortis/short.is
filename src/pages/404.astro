@@ -5,7 +5,7 @@ import Base from '../layouts/base.astro';
 <Base pageTitle="Alan Shortis | 404" description="404: not found">
   <article class="post">
     <h1 class="post__title">404</h1>
-    <div class="post__content">
+    <div class="post__content formatting">
       <p>Whatever you're looking for is not here.</p>
       <p>
         This doman once belonged to a URL shortening service, so if you were hoping for something interesting
@@ -31,13 +31,8 @@ import Base from '../layouts/base.astro';
     }
     &__content {
       grid-column: 6 / -1;
-      line-height: 1.618;
-      text-wrap: pretty;
       @include medium {
         grid-column: 1 / -1;
-      }
-      & * + * {
-        margin-top: 1lh;
       }
     }
   }
