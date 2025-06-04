@@ -1,0 +1,99 @@
+<div class="progress">
+  <decimal-progress>
+    <div
+      id="progress"
+      class="progress__outer"
+      role="progressbar"
+      aria-valuemin="0"
+      aria-valuemax="100"
+      aria-valuenow="0"
+    >
+      <div class="progress__inner" style="width: 20%"></div>
+    </div>
+    <label class="progress__label" for="progress"></label>
+  </decimal-progress>
+</div>
+
+<script>
+  interface DecimalTime {
+    hours: string;
+    minutes: string;
+    seconds: string;
+  }
+
+  class DecimalProgress extends HTMLElement {
+    private progressOuter: HTMLDivElement;
+    private progressInner: HTMLDivElement;
+    private progressLabel: HTMLDivElement;
+    private animationFrameId?: number;
+    private TOTAL_SECONDS_IN_DAY = 24 * 60 * 60;
+
+    constructor() {
+      super();
+      this.progressOuter = this.querySelector('[role="progressbar"]')!;
+      this.progressInner = this.querySelector('[role="progressbar"] div')!;
+      this.progressLabel = this.querySelector('[for="progress"]')!;
+    }
+
+    connectedCallback() {
+      this.updateTime();
+    }
+
+    disconnectedCallback() {
+      if (this.animationFrameId) {
+        cancelAnimationFrame(this.animationFrameId);
+        this.animationFrameId = undefined;
+      }
+    }
+
+    private updateTime(): void {
+      this.setDecimalTime();
+      this.animationFrameId = requestAnimationFrame(() => this.updateTime());
+    }
+
+    private setDecimalTime(): void {
+      const now = new Date();
+      const secondsSinceMidnight =
+        now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds() + now.getMilliseconds() / 1000;
+
+      // Calculate the fraction of the day that has passed
+      const fractionOfDay = secondsSinceMidnight / this.TOTAL_SECONDS_IN_DAY;
+
+      // Convert the fraction of the day into metric time
+      const totalMetricSecondsInDay = 10 * 100 * 100; // Total metric seconds in a day
+      const metricSecondsElapsed = fractionOfDay * totalMetricSecondsInDay;
+      const elapsedPercentage = ((metricSecondsElapsed / totalMetricSecondsInDay) * 100).toFixed(3);
+
+      this.progressOuter.ariaValueNow = elapsedPercentage;
+      this.progressInner.style.width = `${elapsedPercentage}%`;
+      this.progressLabel.innerHTML = `${elapsedPercentage}%`;
+    }
+  }
+
+  customElements.define('decimal-progress', DecimalProgress);
+</script>
+
+<style lang="scss">
+  @use '../../styles/mixins' as *;
+
+  .progress {
+    margin-block: var(--space--large);
+    margin-inline: auto;
+    width: 70%;
+    @include small {
+      width: 90%;
+    }
+    &__outer {
+      background-color: var(--divider);
+      height: var(--step-1);
+      overflow: hidden;
+    }
+    &__inner {
+      background-color: var(--foreground);
+      height: 100%;
+    }
+    &__label {
+      @include label;
+    }
+  }
+</style>
