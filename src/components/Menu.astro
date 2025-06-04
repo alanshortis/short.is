@@ -1,0 +1,68 @@
+---
+import { Clock } from './';
+
+const { pathname } = Astro.url;
+
+const menuItems = [
+  {
+    label: 'Writing',
+    href: '/writing',
+  },
+  {
+    label: 'Reading',
+    href: '/reading',
+  },
+  {
+    label: 'Sketches',
+    href: '/sketches',
+  },
+  {
+    label: 'Clock',
+    href: '/decimal-time',
+  },
+];
+---
+
+<nav>
+  <ul class="menu" role="menubar">
+    {
+      menuItems.map(({ label, href }) => (
+        <li role="none">
+          <a
+            class="menu__item"
+            href={href}
+            role="menuitem"
+            aria-current={pathname.startsWith(href) ? 'page' : null}
+          >
+            {label === 'Clock' ? <Clock /> : label}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
+
+<style lang="scss">
+  @use '../styles/mixins' as *;
+
+  .menu {
+    display: flex;
+    gap: var(--space);
+    @include small {
+      flex-direction: column;
+    }
+    &__item {
+      display: block;
+      line-height: 1;
+      position: relative;
+      @include label;
+      &[aria-current='page']::after {
+        @include active-indicator;
+        @include small {
+          left: calc(-1.618em + 0.5lh);
+          top: calc(50% - 0.1725em);
+        }
+      }
+    }
+  }
+</style>

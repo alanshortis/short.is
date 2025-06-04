@@ -6,6 +6,7 @@ export { default as ExampleEmbed } from './ExampleEmbed.astro';
 export { default as Footer } from './Footer.astro';
 export { default as Header } from './Header.astro';
 export { default as Logo } from './Logo.astro';
+export { default as Menu } from './Menu.astro';
 export { default as PostBox } from './PostBox.astro';
 export { default as PostDate } from './PostDate.astro';
 export { default as ReadingList } from './ReadingList.astro';

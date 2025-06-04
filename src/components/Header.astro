@@ -1,22 +1,5 @@
 ---
-import { Clock, Logo } from './';
-
-const { pathname } = Astro.url;
-
-const menuItems = [
-  {
-    label: 'Writing',
-    href: '/writing',
-  },
-  {
-    label: 'Reading',
-    href: '/reading',
-  },
-  {
-    label: 'Sketches',
-    href: '/sketches',
-  },
-];
+import { Logo, Menu } from './';
 ---
 
 <header class="header">
@@ -24,25 +7,7 @@ const menuItems = [
     <Logo />
     <span class="header__title">Home page</span>
   </a>
-  <nav>
-    <ul class="header__menubar" role="menubar">
-      {
-        menuItems.map(({ label, href }) => (
-          <li role="none">
-            <a
-              class="header__menuitem"
-              href={href}
-              role="menuitem"
-              aria-current={pathname.startsWith(href) ? 'page' : null}
-            >
-              {label}
-            </a>
-          </li>
-        ))
-      }
-    </ul>
-  </nav>
-  <Clock />
+  <Menu />
 </header>
 
 <style lang="scss">
@@ -66,26 +31,6 @@ const menuItems = [
     }
     &__title {
       @include visually-hidden;
-    }
-    &__menubar {
-      display: flex;
-      gap: var(--space);
-      @include small {
-        flex-direction: column;
-      }
-    }
-    &__menuitem {
-      display: block;
-      line-height: 1;
-      position: relative;
-      @include label;
-      &[aria-current='page']::after {
-        @include active-indicator;
-        @include small {
-          left: calc(-1.618em + 0.5lh);
-          top: calc(50% - 0.1725em);
-        }
-      }
     }
   }
 </style>

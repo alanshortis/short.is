@@ -1,0 +1,35 @@
+---
+import Base from '../layouts/base.astro';
+---
+
+<Base pageTitle="Alan Shortis | Decimal time" description="">
+  <article class="post">
+    <h1 class="post__title">Decimal time</h1>
+    <div class="post__content formatting">
+      <p>Whatever m8</p>
+    </div>
+  </article>
+</Base>
+
+<style lang="scss">
+  @use '../styles/mixins' as *;
+
+  .post {
+    display: grid;
+    gap: var(--step-5) var(--step-1);
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    &__title {
+      font-size: var(--step-5);
+      font-weight: bold;
+      grid-column: 1 / -1;
+      letter-spacing: -1px;
+      text-wrap: balance;
+    }
+    &__content {
+      grid-column: 6 / -1;
+      @include medium {
+        grid-column: 1 / -1;
+      }
+    }
+  }
+</style>
