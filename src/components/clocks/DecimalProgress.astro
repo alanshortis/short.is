@@ -26,6 +26,7 @@
     private progressInner: HTMLDivElement;
     private progressLabel: HTMLDivElement;
     private animationFrameId?: number;
+    private lastUpdate: number;
     private TOTAL_SECONDS_IN_DAY = 24 * 60 * 60;
 
     constructor() {
@@ -33,6 +34,7 @@
       this.progressOuter = this.querySelector('[role="progressbar"]')!;
       this.progressInner = this.querySelector('[role="progressbar"] div')!;
       this.progressLabel = this.querySelector('[for="progress"]')!;
+      this.lastUpdate = performance.now();
     }
 
     connectedCallback() {
@@ -47,7 +49,14 @@
     }
 
     private updateTime(): void {
-      this.setDecimalTime();
+      const now = performance.now();
+      const elapsed = now - this.lastUpdate;
+
+      if (elapsed >= 157.407407407) {
+        this.setDecimalTime();
+        this.lastUpdate = now;
+      }
+
       this.animationFrameId = requestAnimationFrame(() => this.updateTime());
     }
 
@@ -62,11 +71,12 @@
       // Convert the fraction of the day into metric time
       const totalMetricSecondsInDay = 10 * 100 * 100; // Total metric seconds in a day
       const metricSecondsElapsed = fractionOfDay * totalMetricSecondsInDay;
-      const elapsedPercentage = ((metricSecondsElapsed / totalMetricSecondsInDay) * 100).toFixed(3);
+      const elapsedPercentage = ((metricSecondsElapsed / totalMetricSecondsInDay) * 100).toFixed(1);
 
       this.progressOuter.ariaValueNow = elapsedPercentage;
       this.progressInner.style.width = `${elapsedPercentage}%`;
       this.progressLabel.innerHTML = `${elapsedPercentage}%`;
+      this.progressLabel.style.left = `${elapsedPercentage}%`;
     }
   }
 
@@ -80,20 +90,32 @@
     margin-block: var(--space--large);
     margin-inline: auto;
     width: 70%;
-    @include small {
-      width: 90%;
-    }
     &__outer {
-      background-color: var(--divider);
-      height: var(--step-1);
-      overflow: hidden;
+      background:
+        linear-gradient(90deg, var(--background) calc(4px - 1px), transparent 1%) center / 4px 4px,
+        linear-gradient(var(--background) calc(4px - 1px), transparent 1%) center / 4px 4px,
+        var(--foreground);
+      height: 22px;
+      background-position: center right;
     }
     &__inner {
       background-color: var(--foreground);
       height: 100%;
     }
     &__label {
+      position: relative;
+      margin-inline-start: -2.5ch;
+      top: 0.5ch;
       @include label;
+      &::before {
+        content: '';
+        position: absolute;
+        height: 60%;
+        width: 1px;
+        left: calc(2.5ch - 1px);
+        top: -1.5ch;
+        background-color: currentColor;
+      }
     }
   }
 </style>

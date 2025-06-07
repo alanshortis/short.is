@@ -11,23 +11,22 @@ const { isLarge } = Astro.props;
 </decimal-clock>
 
 <script>
-  interface DecimalTime {
-    hours: string;
-    minutes: string;
-    seconds: string;
-  }
-
   class DecimalClock extends HTMLElement {
     private time: HTMLTimeElement;
     private animationFrameId?: number;
+    private lastUpdate: number;
     private TOTAL_SECONDS_IN_DAY = 24 * 60 * 60;
+    private TOTAL_METRIC_SECONDS_IN_DAY = 10 * 100 * 100;
+    private DECIMAL_SECOND_MS = 864; // 100,000 decimal seconds per day = 864ms per decimal second
 
     constructor() {
       super();
       this.time = this.querySelector('.js-time')!;
+      this.lastUpdate = performance.now();
     }
 
     connectedCallback() {
+      this.setDecimalTime();
       this.updateTime();
     }
 
@@ -39,7 +38,18 @@ const { isLarge } = Astro.props;
     }
 
     private updateTime(): void {
-      this.setDecimalTime();
+      const now = new Date();
+      const totalMs =
+        now.getHours() * 3600000 + now.getMinutes() * 60000 + now.getSeconds() * 1000 + now.getMilliseconds();
+
+      // Calculate how far we are into the current decimal second
+      const msIntoDecimalSecond = totalMs % this.DECIMAL_SECOND_MS;
+
+      // Update if we're within 16ms of the next decimal second
+      if (msIntoDecimalSecond > this.DECIMAL_SECOND_MS - 16) {
+        this.setDecimalTime();
+      }
+
       this.animationFrameId = requestAnimationFrame(() => this.updateTime());
     }
 
@@ -56,13 +66,12 @@ const { isLarge } = Astro.props;
       const fractionOfDay = secondsSinceMidnight / this.TOTAL_SECONDS_IN_DAY;
 
       // Convert the fraction of the day into metric time
-      const totalMetricSecondsInDay = 10 * 100 * 100; // Total metric seconds in a day
-      const metricSecondsElapsed = fractionOfDay * totalMetricSecondsInDay;
+      const metricSecondsElapsed = fractionOfDay * this.TOTAL_METRIC_SECONDS_IN_DAY;
 
       // Break down metric time into hours, minutes, and seconds
-      const decimalTime: DecimalTime = {
-        hours: this.formatNumber(metricSecondsElapsed / (100 * 100), false),
-        minutes: this.formatNumber((metricSecondsElapsed % (100 * 100)) / 100),
+      const decimalTime = {
+        hours: this.formatNumber(metricSecondsElapsed / 10_000, false),
+        minutes: this.formatNumber((metricSecondsElapsed % 10_000) / 100),
         seconds: this.formatNumber(metricSecondsElapsed % 100),
       };
 
