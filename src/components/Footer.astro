@@ -21,12 +21,8 @@ const year = new Date().getFullYear();
     flex-wrap: wrap;
     gap: var(--space--large);
     justify-content: space-between;
-    padding: var(--space--large);
+    padding-block: var(--space--large);
     @include fixed-width;
-    @include small {
-      padding-block: var(--space--large);
-      padding-inline: var(--space);
-    }
     &__links {
       display: flex;
       gap: 2ch;

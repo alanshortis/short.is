@@ -41,6 +41,7 @@
 @mixin fixed-width {
   inline-size: clamp(0%, 100%, 85rem);
   margin-inline: auto;
+  padding-inline: var(--space);
 }
 
 @mixin full-bleed {
