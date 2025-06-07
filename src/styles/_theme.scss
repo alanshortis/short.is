@@ -26,8 +26,8 @@
   --space: var(--step-1);
   --space--large: var(--step-5);
 
-  --light: hsl(0, 0%, 95%);
-  --dark: hsl(0, 0%, 5%);
+  --light: hsl(0, 0%, 90%);
+  --dark: hsl(0, 0%, 10%);
 
   --background: light-dark(var(--light), var(--dark));
   --foreground: light-dark(var(--dark), var(--light));
