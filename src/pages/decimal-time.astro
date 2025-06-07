@@ -1,12 +1,45 @@
 ---
 import Base from '../layouts/base.astro';
+import { Disclaimer } from '../components';
+import { RegularClock, DecimalClock, DecimalProgress } from '../components/clocks';
 ---
 
 <Base pageTitle="Alan Shortis | Decimal time" description="">
   <article class="post">
     <h1 class="post__title">Decimal time</h1>
     <div class="post__content formatting">
-      <p>Whatever m8</p>
+      <noscript>
+        <Disclaimer>
+          This page requires JavaScript to render some clocks. It won't make much sense without it
+        </Disclaimer>
+      </noscript>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. Lorem ipsum dolor sit amet
+        consectetur adipisicing elit. Quisquam, quos.
+      </p>
+      <dl class="post__clocks">
+        <div>
+          <dt>The time you know</dt>
+          <dd><RegularClock isLarge /></dd>
+        </div>
+        <div>
+          <dt>Decimal time</dt>
+          <dd><DecimalClock isLarge /></dd>
+        </div>
+      </dl>
+      <p>
+        Decimal time (where a second is 1.157407407... regular seconds) The browser's animation frame timing
+        (which typically runs at 60fps, or every ~16.67ms) This creates a few problems: The animation frame
+        timing isn't perfectly regular We can't perfectly divide 1157.407407407ms into whole animation frames
+        The browser's event loop and other processes can cause slight variations in timing
+      </p>
+      <DecimalProgress />
+      <p>
+        Decimal time (where a second is 1.157407407... regular seconds) The browser's animation frame timing
+        (which typically runs at 60fps, or every ~16.67ms) This creates a few problems: The animation frame
+        timing isn't perfectly regular We can't perfectly divide 1157.407407407ms into whole animation frames
+        The browser's event loop and other processes can cause slight variations in timing
+      </p>
     </div>
   </article>
 </Base>
@@ -26,10 +59,14 @@ import Base from '../layouts/base.astro';
       text-wrap: balance;
     }
     &__content {
-      grid-column: 6 / -1;
+      grid-column: 3 / -3;
       @include medium {
         grid-column: 1 / -1;
       }
+    }
+    &__clocks {
+      display: flex;
+      justify-content: space-around;
     }
   }
 </style>
