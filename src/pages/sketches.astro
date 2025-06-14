@@ -1,11 +1,14 @@
 ---
 import Base from '../layouts/base.astro';
-import { Glow, Circles, Shaft, Cube, Anaglyph, Perspective, Ball } from '../components/sketches';
+import { Glow, Circles, Shaft, Cube, Anaglyph, Perspective, Ball, Moire } from '../components/sketches';
 ---
 
 <Base pageTitle="Alan Shortis | Sketches" description="Things with no purpose expcet that they exist">
   <article class="post">
     <h1 class="post__title">Sketches</h1>
+    <div class="post__sketch">
+      <Moire />
+    </div>
     <div class="post__sketch">
       <Anaglyph />
     </div>

@@ -1,0 +1,53 @@
+<div class="moire">
+  <div class="moire__item"></div>
+  <div class="moire__item"></div>
+  <div class="moire__item"></div>
+</div>
+
+<style lang="scss">
+  @use '../../styles/mixins' as *;
+
+  @keyframes moire {
+    100% {
+      rotate: 360deg;
+    }
+  }
+
+  .moire {
+    display: grid;
+    place-content: center;
+    &__item {
+      --moire-color: var(--foreground);
+      @include should-animate {
+        animation: moire 60s linear infinite;
+      }
+      grid-area: 1 / 1;
+      width: 300px;
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      background: linear-gradient(
+        -45deg,
+        var(--moire-color) 1%,
+        transparent 1%,
+        transparent 49%,
+        var(--moire-color) 49%,
+        var(--moire-color) 55%,
+        transparent 55%,
+        transparent 99%,
+        var(--moire-color) 99%
+      );
+      background-position: center center;
+      background-size: 0.5em 0.5em;
+      &:nth-child(2) {
+        --moire-color: red;
+        animation-duration: 10s;
+        rotate: 3deg;
+      }
+      &:nth-child(3) {
+        --moire-color: blue;
+        animation-duration: 15s;
+        rotate: 6deg;
+      }
+    }
+  }
+</style>
