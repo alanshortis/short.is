@@ -46,10 +46,12 @@ const { isLarge } = Astro.props;
       const msIntoDecimalSecond = totalMs % this.DECIMAL_SECOND_MS;
 
       // Update if we're within 16ms of the next decimal second
+      // 16ms is approximately one frame at 60fps
       if (msIntoDecimalSecond > this.DECIMAL_SECOND_MS - 16) {
         this.setDecimalTime();
       }
 
+      // Wow, recursion
       this.animationFrameId = requestAnimationFrame(() => this.updateTime());
     }
 

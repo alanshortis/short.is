@@ -1,7 +1,7 @@
 ---
 import Base from '../layouts/base.astro';
 import { Disclaimer } from '../components';
-import { RegularClock, DecimalClock, DecimalProgress } from '../components/clocks';
+import { RegularClock, DecimalClock, DecimalProgress, DecimalAnalog } from '../components/clocks';
 ---
 
 <Base pageTitle="Alan Shortis | Decimal time" description="">
@@ -10,16 +10,13 @@ import { RegularClock, DecimalClock, DecimalProgress } from '../components/clock
     <div class="post__content formatting">
       <noscript>
         <Disclaimer>
-          This page requires JavaScript to render some clocks. It won't make much sense without it
+          This page requires JavaScript to render clocks. This page will make less sense without it
         </Disclaimer>
       </noscript>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. Lorem ipsum dolor sit amet
-        consectetur adipisicing elit. Quisquam, quos.
-      </p>
+      <p>The clock in the header isn't wrong, it's just different.</p>
       <dl class="post__clocks">
         <div>
-          <dt>The time you know</dt>
+          <dt>The time</dt>
           <dd><RegularClock isLarge /></dd>
         </div>
         <div>
@@ -27,18 +24,41 @@ import { RegularClock, DecimalClock, DecimalProgress } from '../components/clock
           <dd><DecimalClock isLarge /></dd>
         </div>
       </dl>
+
       <p>
-        Decimal time (where a second is 1.157407407... regular seconds) The browser's animation frame timing
-        (which typically runs at 60fps, or every ~16.67ms) This creates a few problems: The animation frame
-        timing isn't perfectly regular We can't perfectly divide 1157.407407407ms into whole animation frames
-        The browser's event loop and other processes can cause slight variations in timing
+        Decimal time (or metric time) emerged during the French Revolution and the broader push toward
+        decimalisation of measurement systems. Each day is divided into 10 hours, each hour into 100 minutes,
+        and each minute into 100 seconds.
+      </p>
+      <p>
+        By using a base-10 structure you can reduce the time to one number and make calculations and
+        conversions simpler. Where we consider the middle of the day to be 12 o'clock in regular time, in
+        decimal time it is 5, or 50% of the day elapsed. This makes it possible represent time as progression
+        while still being in context to what the time actually is:
       </p>
       <DecimalProgress />
       <p>
-        Decimal time (where a second is 1.157407407... regular seconds) The browser's animation frame timing
-        (which typically runs at 60fps, or every ~16.67ms) This creates a few problems: The animation frame
-        timing isn't perfectly regular We can't perfectly divide 1157.407407407ms into whole animation frames
-        The browser's event loop and other processes can cause slight variations in timing
+        You may notice that each decimal clock on this page suffers from occasional skipped seconds or
+        rounding issues. At 60<abbr title="Frames per Second">fps</abbr> we can't evenly divide a decimal second
+        (864ms) into whole frames so we are never consistently inside one increment and at some point we miss the
+        tick. The conventional clock never misses a beat, since seconds are seconds and frames are frames on the
+        same timescale.
+      </p>
+      <p>
+        Time may be a social construct, but it's so deeply ingrained into our culture and technology that a
+        change would be entirely impractical. Existing time pieces become obsolete, with both the scale of the
+        dial and the velocity of the hands being totally incompatible between systems, so it's not even
+        possible to run both at the same time (like two sides of a tape measure).
+      </p>
+      <DecimalAnalog />
+      <p>
+        I half an idea to build a physical clock made up of 50,000 LEDs that would start at 0 with everything
+        illuminated, extinguish one LED per second up to 5 o'clock (midday), and then illuminate again to 0,
+        opposing the changes in sunlight (assuming midday was actually half way between sunrise and sunset).
+      </p>
+      <p>
+        So, I might start work at 3:75 and go to lunch at 5:41 but no one else is going to know What any of
+        that means. It should remain a novelty.
       </p>
     </div>
   </article>

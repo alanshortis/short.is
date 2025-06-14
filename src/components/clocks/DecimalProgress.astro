@@ -1,16 +1,9 @@
 <div class="progress">
   <decimal-progress>
-    <div
-      id="progress"
-      class="progress__outer"
-      role="progressbar"
-      aria-valuemin="0"
-      aria-valuemax="100"
-      aria-valuenow="0"
-    >
+    <div class="progress__outer" role="progressbar" aria-valuemin="0" aria-valuemax="99.99" aria-valuenow="0">
       <div class="progress__inner" style="width: 20%"></div>
     </div>
-    <label class="progress__label" for="progress"></label>
+    <span class="progress__label"></span>
   </decimal-progress>
 </div>
 
@@ -28,16 +21,19 @@
     private animationFrameId?: number;
     private lastUpdate: number;
     private TOTAL_SECONDS_IN_DAY = 24 * 60 * 60;
+    private TOTAL_METRIC_SECONDS_IN_DAY = 10 * 100 * 100;
+    private DECIMAL_SECOND_MS = 864; // 100,000 decimal seconds per day = 864ms per decimal second
 
     constructor() {
       super();
-      this.progressOuter = this.querySelector('[role="progressbar"]')!;
-      this.progressInner = this.querySelector('[role="progressbar"] div')!;
-      this.progressLabel = this.querySelector('[for="progress"]')!;
+      this.progressOuter = this.querySelector('.progress__outer')!;
+      this.progressInner = this.progressOuter.querySelector('.progress__inner')!;
+      this.progressLabel = this.querySelector('.progress__label')!;
       this.lastUpdate = performance.now();
     }
 
     connectedCallback() {
+      this.setDecimalTime();
       this.updateTime();
     }
 
@@ -49,12 +45,17 @@
     }
 
     private updateTime(): void {
-      const now = performance.now();
-      const elapsed = now - this.lastUpdate;
+      const now = new Date();
+      const totalMs =
+        now.getHours() * 3600000 + now.getMinutes() * 60000 + now.getSeconds() * 1000 + now.getMilliseconds();
 
-      if (elapsed >= 157.407407407) {
+      // Calculate how far we are into the current decimal second
+      const msIntoDecimalSecond = totalMs % this.DECIMAL_SECOND_MS;
+
+      // Update if we're within 16ms of the next decimal second
+      // 16ms is approximately one frame at 60fps
+      if (msIntoDecimalSecond > this.DECIMAL_SECOND_MS - 16) {
         this.setDecimalTime();
-        this.lastUpdate = now;
       }
 
       this.animationFrameId = requestAnimationFrame(() => this.updateTime());
@@ -69,9 +70,8 @@
       const fractionOfDay = secondsSinceMidnight / this.TOTAL_SECONDS_IN_DAY;
 
       // Convert the fraction of the day into metric time
-      const totalMetricSecondsInDay = 10 * 100 * 100; // Total metric seconds in a day
-      const metricSecondsElapsed = fractionOfDay * totalMetricSecondsInDay;
-      const elapsedPercentage = ((metricSecondsElapsed / totalMetricSecondsInDay) * 100).toFixed(1);
+      const metricSecondsElapsed = fractionOfDay * this.TOTAL_METRIC_SECONDS_IN_DAY;
+      const elapsedPercentage = ((metricSecondsElapsed / this.TOTAL_METRIC_SECONDS_IN_DAY) * 100).toFixed(3);
 
       this.progressOuter.ariaValueNow = elapsedPercentage;
       this.progressInner.style.width = `${elapsedPercentage}%`;
@@ -104,7 +104,7 @@
     }
     &__label {
       position: relative;
-      margin-inline-start: -2.5ch;
+      margin-inline-start: -3ch;
       top: 0.5ch;
       @include label;
       &::before {
@@ -112,7 +112,7 @@
         position: absolute;
         height: 60%;
         width: 1px;
-        left: calc(2.5ch - 1px);
+        left: calc(3ch - 1px);
         top: -1.5ch;
         background-color: currentColor;
       }

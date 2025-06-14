@@ -1,0 +1,79 @@
+<div class="clock">
+  <div class="clock__face">
+    <div class="clock__segment"></div>
+    <div class="clock__segment"></div>
+    <div class="clock__segment"></div>
+    <div class="clock__segment"></div>
+    <div class="clock__segment"></div>
+    <div class="clock__seconds"></div>
+  </div>
+</div>
+
+<style lang="scss">
+  .clock {
+    margin-block: var(--space--large);
+    display: flex;
+    justify-content: center;
+    &__face {
+      aspect-ratio: 1 / 1;
+      width: 15rem;
+      background-color: var(--foreground);
+      border-radius: 50%;
+      display: grid;
+      place-content: center;
+      position: relative;
+    }
+    &__segment {
+      grid-area: 1 / 1;
+      height: 15rem;
+      width: 1px;
+      background: linear-gradient(
+        to bottom,
+        var(--foreground) 0%,
+        var(--foreground) 2px,
+        var(--background) 2px,
+        var(--background) 17px,
+        var(--foreground) 17px,
+        var(--foreground) calc(100% - 17px),
+        var(--background) calc(100% - 17px),
+        var(--background) calc(100% - 2px),
+        var(--foreground) calc(100% - 2px),
+        var(--foreground) 100%
+      );
+
+      &:nth-child(2) {
+        rotate: 0.1turn;
+      }
+      &:nth-child(3) {
+        rotate: 0.2turn;
+      }
+      &:nth-child(4) {
+        rotate: 0.3turn;
+      }
+      &:nth-child(5) {
+        rotate: 0.4turn;
+      }
+    }
+    &__seconds {
+      width: 2px;
+      height: calc(50% - 20px);
+      background-color: var(--seconds);
+      position: absolute;
+      left: calc(50% - 1px);
+      bottom: 50%;
+      // transform: rotate(0.1turn);
+      transform-origin: bottom;
+      &::after {
+        content: '';
+        display: block;
+        width: 7px;
+        height: 7px;
+        background-color: var(--seconds);
+        border-radius: 50%;
+        position: absolute;
+        left: calc(50% - 3.5px);
+        bottom: -3.5px;
+      }
+    }
+  }
+</style>
