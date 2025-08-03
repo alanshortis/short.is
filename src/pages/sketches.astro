@@ -1,12 +1,18 @@
 ---
 import Base from '../layouts/base.astro';
-import { Glow, Circles, Shaft, Cube, Anaglyph, Perspective } from '../components/sketches';
+import { Glow, Cube, Anaglyph, Perspective, Ball, Moire, Shaft } from '../components/sketches';
 ---
 
 <Base pageTitle="Alan Shortis | Sketches" description="Things with no purpose expcet that they exist">
   <article class="post">
     <h1 class="post__title">Sketches</h1>
-    <div class="post__sketch post__sketch--dark">
+    <div class="post__sketch">
+      <Anaglyph />
+    </div>
+    <div class="post__sketch">
+      <Ball />
+    </div>
+    <div class="post__sketch">
       <Perspective />
     </div>
     <div class="post__sketch post__sketch--dark">
@@ -18,11 +24,8 @@ import { Glow, Circles, Shaft, Cube, Anaglyph, Perspective } from '../components
     <div class="post__sketch post__sketch--dark">
       <Shaft />
     </div>
-    <div class="post__sketch post__sketch--dark">
-      <Anaglyph />
-    </div>
     <div class="post__sketch">
-      <Circles />
+      <Moire />
     </div>
   </article>
 </Base>
@@ -43,7 +46,8 @@ import { Glow, Circles, Shaft, Cube, Anaglyph, Perspective } from '../components
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: var(--space--large);
+      padding-inline: var(--space--large);
+      padding-block: calc(var(--space--large) * 2);
       min-height: 75vh;
       @include full-bleed;
       &:not(:last-child) {
