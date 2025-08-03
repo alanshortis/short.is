@@ -52,12 +52,9 @@ const menuItems = [
     display: flex;
     gap: var(--space);
     justify-content: flex-end;
-    padding: var(--space--large);
+    padding-block: var(--space--large);
+    padding-inline: var(--space);
     @include fixed-width;
-    @include small {
-      padding-block: var(--space--large);
-      padding-inline: var(--space);
-    }
     @include small {
       align-items: flex-start;
     }
