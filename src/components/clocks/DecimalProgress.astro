@@ -1,0 +1,100 @@
+<div class="progress">
+  <decimal-progress>
+    <div class="progress__outer" role="progressbar" aria-valuemin="0" aria-valuemax="99.99" aria-valuenow="0">
+      <div class="progress__inner"></div>
+    </div>
+    <span class="progress__label"></span>
+  </decimal-progress>
+</div>
+
+<script>
+  import { shouldUpdateTime, getElapsedPercentage } from './utils.js';
+
+  class DecimalProgress extends HTMLElement {
+    private progressOuter: HTMLDivElement;
+    private progressInner: HTMLDivElement;
+    private progressLabel: HTMLDivElement;
+    private animationFrameId?: number;
+
+    constructor() {
+      super();
+      this.progressOuter = this.querySelector('.progress__outer')!;
+      this.progressInner = this.progressOuter.querySelector('.progress__inner')!;
+      this.progressLabel = this.querySelector('.progress__label')!;
+    }
+
+    connectedCallback() {
+      // Set initial CSS custom properties
+      this.style.setProperty('--progress-width', '0%');
+      this.style.setProperty('--progress-label-left', '0%');
+
+      this.setDecimalTime();
+      this.updateTime();
+    }
+
+    disconnectedCallback() {
+      if (this.animationFrameId) {
+        cancelAnimationFrame(this.animationFrameId);
+        this.animationFrameId = undefined;
+      }
+    }
+
+    private updateTime(): void {
+      if (shouldUpdateTime()) {
+        this.setDecimalTime();
+      }
+
+      this.animationFrameId = requestAnimationFrame(() => this.updateTime());
+    }
+
+    private setDecimalTime(): void {
+      const elapsedPercentage = getElapsedPercentage();
+
+      this.progressOuter.ariaValueNow = elapsedPercentage;
+      this.style.setProperty('--progress-width', `${elapsedPercentage}%`);
+      this.style.setProperty('--progress-label-left', `${elapsedPercentage}%`);
+      this.progressLabel.innerHTML = `${elapsedPercentage}%`;
+    }
+  }
+
+  customElements.define('decimal-progress', DecimalProgress);
+</script>
+
+<style lang="scss">
+  @use '../../styles/mixins' as *;
+
+  .progress {
+    margin-block: var(--space--large);
+    margin-inline: auto;
+    width: 70%;
+    &__outer {
+      background:
+        linear-gradient(90deg, var(--background) calc(4px - 1px), transparent 1%) center / 4px 4px,
+        linear-gradient(var(--background) calc(4px - 1px), transparent 1%) center / 4px 4px,
+        var(--foreground);
+      height: 22px;
+      background-position: center right;
+    }
+    &__inner {
+      background-color: var(--foreground);
+      height: 100%;
+      width: var(--progress-width, 0%);
+    }
+    &__label {
+      position: relative;
+      margin-inline-start: -3ch;
+      top: 0.5ch;
+      left: var(--progress-label-left, 0%);
+      @include label;
+      &::before {
+        content: '';
+        position: absolute;
+        height: 60%;
+        width: 1px;
+        left: calc(3ch - 1px);
+        top: -1.5ch;
+        background-color: currentColor;
+      }
+    }
+  }
+</style>

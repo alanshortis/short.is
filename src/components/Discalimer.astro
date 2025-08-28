@@ -1,25 +1,6 @@
----
-interface Props {
-  pubDate: string;
-  showAgeWarning: boolean;
-}
-
-const { pubDate, showAgeWarning } = Astro.props;
-
-const postAgeYears = Math.ceil(
-  (new Date(pubDate).getTime() - new Date().getTime()) / (365 * 24 * 60 * 60 * 1000)
-);
-
-const shouldShowWarning = showAgeWarning && postAgeYears <= -2;
----
-
-{
-  shouldShowWarning && (
-    <aside>
-      <p>This post is more than {Math.abs(postAgeYears)} years old</p>
-    </aside>
-  )
-}
+<aside>
+  <p><slot /></p>
+</aside>
 
 <style lang="scss">
   @use '../styles/mixins' as *;

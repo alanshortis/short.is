@@ -1,0 +1,156 @@
+<analog-decimal-clock class="clock">
+  <span class="js-time clock__literal"></span>
+  <div class="clock__face">
+    <div class="clock__segment"></div>
+    <div class="clock__segment"></div>
+    <div class="clock__segment"></div>
+    <div class="clock__segment"></div>
+    <div class="clock__segment"></div>
+    <div class="clock__hand clock__hand--hours"></div>
+    <div class="clock__hand clock__hand--minutes"></div>
+    <div class="clock__hand clock__hand--seconds"></div>
+  </div>
+</analog-decimal-clock>
+
+<script>
+  import { calculateDecimalTime, shouldUpdateTime } from './utils.js';
+
+  class AnalogDecimalClock extends HTMLElement {
+    private time: HTMLTimeElement;
+    private animationFrameId?: number;
+
+    constructor() {
+      super();
+      this.time = this.querySelector('.js-time')!;
+    }
+
+    connectedCallback() {
+      // Set initial CSS custom properties
+      this.style.setProperty('--seconds-transform', 'rotate(0turn)');
+      this.style.setProperty('--minutes-transform', 'rotate(0turn)');
+      this.style.setProperty('--hours-transform', 'rotate(0turn)');
+
+      this.setDecimalTime();
+      this.updateTime();
+    }
+
+    disconnectedCallback() {
+      if (this.animationFrameId) {
+        cancelAnimationFrame(this.animationFrameId);
+        this.animationFrameId = undefined;
+      }
+    }
+
+    private updateTime(): void {
+      if (shouldUpdateTime()) {
+        this.setDecimalTime();
+      }
+
+      // Wow, recursion
+      this.animationFrameId = requestAnimationFrame(() => this.updateTime());
+    }
+
+    private setDecimalTime(): void {
+      const decimalTime = calculateDecimalTime();
+
+      this.time.innerHTML = `${decimalTime.hours}:${decimalTime.minutes}:${decimalTime.seconds}`;
+      this.style.setProperty('--seconds-transform', `rotate(0.${decimalTime.seconds}turn)`);
+      this.style.setProperty('--minutes-transform', `rotate(0.${decimalTime.minutes}turn)`);
+      this.style.setProperty('--hours-transform', `rotate(0.${decimalTime.hours}turn)`);
+    }
+  }
+
+  customElements.define('analog-decimal-clock', AnalogDecimalClock);
+</script>
+
+<style lang="scss">
+  @use '../../styles/mixins' as *;
+  .clock {
+    margin-block: var(--space--large);
+    display: flex;
+    justify-content: center;
+    &__literal {
+      @include visually-hidden;
+    }
+    &__face {
+      aspect-ratio: 1 / 1;
+      width: 15rem;
+      background-color: var(--foreground);
+      border-radius: 50%;
+      display: grid;
+      place-content: center;
+      position: relative;
+    }
+    &__segment {
+      grid-area: 1 / 1;
+      height: 15rem;
+      width: 2px;
+      background: linear-gradient(
+        to bottom,
+        var(--foreground) 0%,
+        var(--foreground) 2px,
+        var(--background) 2px,
+        var(--background) 17px,
+        var(--foreground) 17px,
+        var(--foreground) calc(100% - 17px),
+        var(--background) calc(100% - 17px),
+        var(--background) calc(100% - 2px),
+        var(--foreground) calc(100% - 2px),
+        var(--foreground) 100%
+      );
+
+      &:nth-child(2) {
+        rotate: 0.1turn;
+      }
+      &:nth-child(3) {
+        rotate: 0.2turn;
+      }
+      &:nth-child(4) {
+        rotate: 0.3turn;
+      }
+      &:nth-child(5) {
+        rotate: 0.4turn;
+      }
+    }
+    &__hand {
+      height: calc(50% - 20px);
+      background-color: var(--background);
+      position: absolute;
+      left: calc(50% - 1px);
+      bottom: 50%;
+      transform-origin: bottom;
+      &--seconds {
+        width: 2px;
+        border-radius: 2px;
+        background-color: var(--seconds);
+        transform: var(--seconds-transform);
+        &::after {
+          content: '';
+          display: block;
+          width: 14px;
+          height: 14px;
+          background-color: var(--seconds);
+          border-radius: 50%;
+          position: absolute;
+          left: calc(50% - 7px);
+          bottom: -7px;
+        }
+      }
+      &--minutes {
+        width: 4px;
+        border-radius: 4px;
+        background-color: var(--background);
+        transform: var(--minutes-transform);
+        transform-origin: bottom;
+      }
+      &--hours {
+        width: 5px;
+        height: calc(50% - 40px);
+        border-radius: 6px;
+        background-color: var(--background);
+        transform: var(--hours-transform);
+        transform-origin: bottom;
+      }
+    }
+  }
+</style>

@@ -2,6 +2,7 @@
 @use './theme';
 @use './reset';
 @use './mixins' as *;
+@use './post-formatting';
 
 @view-transition {
   navigation: auto;
