@@ -13,23 +13,23 @@
 </analog-decimal-clock>
 
 <script>
+  import { calculateDecimalTime, shouldUpdateTime } from './utils.js';
+
   class AnalogDecimalClock extends HTMLElement {
     private time: HTMLTimeElement;
-    private seconds: HTMLDivElement;
     private animationFrameId?: number;
-    private lastUpdate: number;
-    private TOTAL_SECONDS_IN_DAY = 24 * 60 * 60;
-    private TOTAL_METRIC_SECONDS_IN_DAY = 10 * 100 * 100;
-    private DECIMAL_SECOND_MS = 864; // 100,000 decimal seconds per day = 864ms per decimal second
 
     constructor() {
       super();
       this.time = this.querySelector('.js-time')!;
-      this.seconds = this.querySelector('.js-seconds')!;
-      this.lastUpdate = performance.now();
     }
 
     connectedCallback() {
+      // Set initial CSS custom properties
+      this.style.setProperty('--seconds-transform', 'rotate(0turn)');
+      this.style.setProperty('--minutes-transform', 'rotate(0turn)');
+      this.style.setProperty('--hours-transform', 'rotate(0turn)');
+
       this.setDecimalTime();
       this.updateTime();
     }
@@ -42,16 +42,7 @@
     }
 
     private updateTime(): void {
-      const now = new Date();
-      const totalMs =
-        now.getHours() * 3600000 + now.getMinutes() * 60000 + now.getSeconds() * 1000 + now.getMilliseconds();
-
-      // Calculate how far we are into the current decimal second
-      const msIntoDecimalSecond = totalMs % this.DECIMAL_SECOND_MS;
-
-      // Update if we're within 16ms of the next decimal second
-      // 16ms is approximately one frame at 60fps
-      if (msIntoDecimalSecond > this.DECIMAL_SECOND_MS - 16) {
+      if (shouldUpdateTime()) {
         this.setDecimalTime();
       }
 
@@ -59,27 +50,8 @@
       this.animationFrameId = requestAnimationFrame(() => this.updateTime());
     }
 
-    private formatNumber(num: number, leadingZero: boolean = true): string {
-      return String(Math.floor(num)).padStart(leadingZero ? 2 : 1, '0');
-    }
-
     private setDecimalTime(): void {
-      const now = new Date();
-      const secondsSinceMidnight =
-        now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds() + now.getMilliseconds() / 1000;
-
-      // Calculate the fraction of the day that has passed
-      const fractionOfDay = secondsSinceMidnight / this.TOTAL_SECONDS_IN_DAY;
-
-      // Convert the fraction of the day into metric time
-      const metricSecondsElapsed = fractionOfDay * this.TOTAL_METRIC_SECONDS_IN_DAY;
-
-      // Break down metric time into hours, minutes, and seconds
-      const decimalTime = {
-        hours: this.formatNumber(metricSecondsElapsed / 10_000, false),
-        minutes: this.formatNumber((metricSecondsElapsed % 10_000) / 100),
-        seconds: this.formatNumber(metricSecondsElapsed % 100),
-      };
+      const decimalTime = calculateDecimalTime();
 
       this.time.innerHTML = `${decimalTime.hours}:${decimalTime.minutes}:${decimalTime.seconds}`;
       this.style.setProperty('--seconds-transform', `rotate(0.${decimalTime.seconds}turn)`);
