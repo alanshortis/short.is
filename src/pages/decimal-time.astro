@@ -10,13 +10,13 @@ import { RegularClock, DecimalClock, DecimalProgress, DecimalAnalog } from '../c
     <div class="post__content formatting">
       <noscript>
         <Disclaimer>
-          This page requires JavaScript to render clocks. This page will make less sense without it
+          This page requires JavaScript to render clocks and will make less sense without it
         </Disclaimer>
       </noscript>
-      <p>The clock in the header isn't wrong, it's just different.</p>
+      <p>The clock in the header isn't wrong, it's different.</p>
       <dl class="post__clocks">
         <div>
-          <dt>The time</dt>
+          <dt>Time</dt>
           <dd><RegularClock isLarge /></dd>
         </div>
         <div>
@@ -34,31 +34,23 @@ import { RegularClock, DecimalClock, DecimalProgress, DecimalAnalog } from '../c
         By using a base-10 structure you can reduce the time to one number and make calculations and
         conversions simpler. Where we consider the middle of the day to be 12 o'clock in regular time, in
         decimal time it is 5, or 50% of the day elapsed. This makes it possible represent time as progression
-        while still being in context to what the time actually is:
+        while still representing the time.
       </p>
       <DecimalProgress />
       <p>
         You may notice that each decimal clock on this page suffers from occasional skipped seconds or
         rounding issues. At 60<abbr title="Frames per Second">fps</abbr> we can't evenly divide a decimal second
-        (864ms) into whole frames so we are never consistently inside one increment and at some point we miss the
-        tick. The conventional clock never misses a beat, since seconds are seconds and frames are frames on the
-        same timescale.
-      </p>
-      <p>
-        Time may be a social construct, but it's so deeply ingrained into our culture and technology that a
-        change would be entirely impractical. Existing time pieces become obsolete, with both the scale of the
-        dial and the velocity of the hands being totally incompatible between systems, so it's not even
-        possible to run both at the same time (like two sides of a tape measure).
+        (864ms) into whole frames so we are never consistently inside one increment. At some point we miss the
+        tick. The conventional clock never misses, since seconds are seconds and frames are frames on the same
+        grid.
       </p>
       <DecimalAnalog />
       <p>
-        I half an idea to build a physical clock made up of 50,000 LEDs that would start at 0 with everything
-        illuminated, extinguish one LED per second up to 5 o'clock (midday), and then illuminate again to 0,
-        opposing the changes in sunlight (assuming midday was actually half way between sunrise and sunset).
-      </p>
-      <p>
-        So, I might start work at 3:75 and go to lunch at 5:41 but no one else is going to know What any of
-        that means. It should remain a novelty.
+        Time may be a social construct, but it's so deeply ingrained into society and technology that adoption
+        of decimal time is entirely impractical. Existing time pieces become obsolete; both the scale of the
+        dial and the velocity of the hands is totally incompatible between systems and it's not possible to
+        run both at the same time on the same clock, like two sides of a tape measure comparing inches and
+        centimetres.
       </p>
     </div>
   </article>
