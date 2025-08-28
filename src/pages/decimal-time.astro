@@ -1,0 +1,84 @@
+---
+import Base from '../layouts/base.astro';
+import { Disclaimer } from '../components';
+import { RegularClock, DecimalClock, DecimalProgress, DecimalAnalog } from '../components/clocks';
+---
+
+<Base pageTitle="Alan Shortis | Decimal time" description="">
+  <article class="post">
+    <h1 class="post__title">Decimal time</h1>
+    <div class="post__content formatting">
+      <noscript>
+        <Disclaimer>
+          This page requires JavaScript to render clocks and will make less sense without it
+        </Disclaimer>
+      </noscript>
+      <p>The clock in the header isn't wrong, it's different.</p>
+      <dl class="post__clocks">
+        <div>
+          <dt>Time</dt>
+          <dd><RegularClock isLarge /></dd>
+        </div>
+        <div>
+          <dt>Decimal time</dt>
+          <dd><DecimalClock isLarge /></dd>
+        </div>
+      </dl>
+
+      <p>
+        Decimal time (or metric time) emerged during the French Revolution and the broader push toward
+        decimalisation of measurement systems. Each day is divided into 10 hours, each hour into 100 minutes,
+        and each minute into 100 seconds.
+      </p>
+      <p>
+        By using a base-10 structure you can reduce the time to one number and make calculations and
+        conversions simpler. Where we consider the middle of the day to be 12 o'clock in regular time, in
+        decimal time it is 5, or 50% of the day elapsed. This makes it possible represent time as progression
+        while still representing the time.
+      </p>
+      <DecimalProgress />
+      <p>
+        You may notice that each decimal clock on this page suffers from occasional skipped seconds or
+        rounding issues. At 60<abbr title="Frames per Second">fps</abbr> we can't evenly divide a decimal second
+        (864ms) into whole frames so we are never consistently inside one increment. At some point we miss the
+        tick. The conventional clock never misses, since seconds are seconds and frames are frames on the same
+        grid.
+      </p>
+      <DecimalAnalog />
+      <p>
+        Time may be a social construct, but it's so deeply ingrained into society and technology that adoption
+        of decimal time is entirely impractical. Existing time pieces become obsolete; both the scale of the
+        dial and the velocity of the hands is totally incompatible between systems and it's not possible to
+        run both at the same time on the same clock, like two sides of a tape measure comparing inches and
+        centimetres.
+      </p>
+    </div>
+  </article>
+</Base>
+
+<style lang="scss">
+  @use '../styles/mixins' as *;
+
+  .post {
+    display: grid;
+    gap: var(--step-5) var(--step-1);
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    &__title {
+      font-size: var(--step-5);
+      font-weight: bold;
+      grid-column: 1 / -1;
+      letter-spacing: -1px;
+      text-wrap: balance;
+    }
+    &__content {
+      grid-column: 3 / -3;
+      @include medium {
+        grid-column: 1 / -1;
+      }
+    }
+    &__clocks {
+      display: flex;
+      justify-content: space-around;
+    }
+  }
+</style>

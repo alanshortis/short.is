@@ -17,6 +17,7 @@ const posts = collection.sort((a, b) => b.data.pubDate.localeCompare(a.data.pubD
 </Base>
 
 <style lang="scss">
+  @use '../../styles/mixins' as *;
   .home {
     display: flex;
     flex-direction: column;
@@ -28,8 +29,11 @@ const posts = collection.sort((a, b) => b.data.pubDate.localeCompare(a.data.pubD
     &__posts {
       display: grid;
       gap: var(--space);
-      grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+      grid-template-columns: repeat(2, 1fr);
       grid-auto-rows: 1fr;
+      @include small {
+        grid-template-columns: 1fr;
+      }
     }
   }
 </style>

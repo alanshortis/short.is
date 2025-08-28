@@ -1,0 +1,67 @@
+---
+interface Props {
+  isLarge?: boolean;
+}
+
+const { isLarge } = Astro.props;
+---
+
+<decimal-clock class={`time ${isLarge ? 'time--large' : ''}`}>
+  <span class="js-time"></span>
+</decimal-clock>
+
+<script>
+  import { calculateDecimalTime, shouldUpdateTime } from './utils.js';
+
+  class DecimalClock extends HTMLElement {
+    private time: HTMLTimeElement;
+    private animationFrameId?: number;
+
+    constructor() {
+      super();
+      this.time = this.querySelector('.js-time')!;
+    }
+
+    connectedCallback() {
+      this.setDecimalTime();
+      this.updateTime();
+    }
+
+    disconnectedCallback() {
+      if (this.animationFrameId) {
+        cancelAnimationFrame(this.animationFrameId);
+        this.animationFrameId = undefined;
+      }
+    }
+
+    private updateTime(): void {
+      if (shouldUpdateTime()) {
+        this.setDecimalTime();
+      }
+
+      // Wow, recursion
+      this.animationFrameId = requestAnimationFrame(() => this.updateTime());
+    }
+
+    private setDecimalTime(): void {
+      const decimalTime = calculateDecimalTime();
+      this.time.innerHTML = `${decimalTime.hours}:${decimalTime.minutes}:${decimalTime.seconds}`;
+    }
+  }
+
+  customElements.define('decimal-clock', DecimalClock);
+</script>
+
+<style lang="scss">
+  @use '../../styles/mixins' as *;
+
+  .time {
+    @include label;
+    &--large {
+      font-size: var(--step-2);
+    }
+    &__label {
+      @include visually-hidden;
+    }
+  }
+</style>

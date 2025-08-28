@@ -1,7 +1,7 @@
 ---
 import { render, getCollection, type CollectionEntry } from 'astro:content';
 import Base from '../../layouts/base.astro';
-import { AgeWarning, PostDate, ContentIcon } from '../../components';
+import { Disclaimer, PostDate, ContentIcon } from '../../components';
 
 interface Props {
   post: CollectionEntry<'posts'>;
@@ -16,6 +16,12 @@ export const getStaticPaths = async () => {
 };
 const { post } = Astro.props;
 const { Content } = await render(post);
+
+const postAgeYears = Math.ceil(
+  (new Date(post.data.pubDate).getTime() - new Date().getTime()) / (365 * 24 * 60 * 60 * 1000)
+);
+
+const shouldShowWarning = postAgeYears <= -2;
 ---
 
 <Base pageTitle={`Alan Shortis | ${post.data.title}`} description={post.data.description}>
@@ -26,7 +32,11 @@ const { Content } = await render(post);
       <ContentIcon icon={post.data.icon} />
     </div>
     <div class="post__content formatting">
-      <AgeWarning pubDate={post.data.pubDate} showAgeWarning={Boolean(post.data.showAgeWarning)} />
+      {
+        shouldShowWarning && (
+          <Disclaimer>This post is more than {Math.abs(postAgeYears)} years old</Disclaimer>
+        )
+      }
       <Content />
     </div>
   </article>
@@ -61,110 +71,5 @@ const { Content } = await render(post);
         grid-column: 1 / -1;
       }
     }
-  }
-</style>
-
-<style is:inline>
-  .formatting {
-    line-height: 1.618;
-    text-wrap: pretty;
-  }
-  .formatting * + :where(p, ol, ul, h2, figure) {
-    margin-top: 1lh;
-  }
-
-  .formatting a {
-    text-decoration: underline;
-  }
-
-  .formatting em {
-    font-style: normal;
-  }
-
-  .formatting h2 {
-    font-size: var(--step-2);
-    font-weight: bold;
-  }
-
-  .formatting kbd {
-    font: inherit;
-  }
-
-  .formatting code {
-    background-color: var(--code-background);
-    border: 1px solid var(--divider);
-    border-radius: var(--radius);
-    font-family: monospace;
-    font-size: var(--step--1);
-    inset-block-end: 1px;
-    margin-inline: 0.125em;
-    padding-block: 0.125em;
-    padding-inline: 0.25em;
-    position: relative;
-    inset-block-start: -2px;
-  }
-
-  .formatting ul,
-  .formatting ol {
-    padding-inline-start: var(--space);
-  }
-
-  .formatting li {
-    list-style: decimal;
-    margin-bottom: 0.25lh;
-  }
-
-  .formatting ul li {
-    list-style: disc;
-  }
-
-  .formatting figure {
-    border-inline-start: 1px solid currentColor;
-    display: block;
-    padding-inline-start: var(--space);
-  }
-
-  .formatting figure blockquote {
-    quotes: '“' '”';
-  }
-
-  .formatting figure figcaption {
-    display: flex;
-    font-size: var(--step--1);
-  }
-
-  .formatting figure figcaption::before {
-    content: '—';
-  }
-
-  .formatting figure cite {
-    font-style: normal;
-  }
-
-  .formatting figure blockquote {
-    text-indent: -0.3em;
-  }
-
-  @supports (hanging-punctuation: first) {
-    .formatting figure blockquote {
-      text-indent: 0;
-      hanging-punctuation: first;
-    }
-  }
-  .formatting figure blockquote::before {
-    content: open-quote;
-  }
-
-  .formatting figure blockquote::after {
-    content: close-quote;
-  }
-
-  .formatting del {
-    text-decoration: double line-through;
-    opacity: 0.618;
-  }
-
-  .formatting ins {
-    text-decoration: none;
   }
 </style>

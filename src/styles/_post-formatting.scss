@@ -1,0 +1,76 @@
+.formatting {
+  line-height: 1.618;
+  text-wrap: pretty;
+  & * + :where(p, ol, ul, h2, figure, dl) {
+    margin-top: 1lh;
+  }
+  a {
+    text-decoration: underline;
+  }
+  h2 {
+    font-size: var(--step-2);
+    font-weight: bold;
+  }
+  em {
+    font-style: normal;
+  }
+  kbd {
+    font: inherit;
+  }
+  del {
+    text-decoration: double line-through;
+    opacity: 0.618;
+  }
+  ins {
+    text-decoration: none;
+  }
+  code {
+    background-color: var(--code-background);
+    border: 1px solid var(--divider);
+    border-radius: var(--radius);
+    font-family: monospace;
+    font-size: var(--step--1);
+    inset-block-end: 1px;
+    margin-inline: 0.125em;
+    padding-block: 0.125em;
+    padding-inline: 0.25em;
+    position: relative;
+    inset-block-start: -2px;
+  }
+  ol,
+  ul {
+    padding-inline-start: var(--space);
+  }
+  li {
+    list-style: decimal;
+    margin-bottom: 0.25lh;
+  }
+  ul li {
+    list-style: disc;
+  }
+  figure:has(blockquote) {
+    border-inline-start: 1px solid currentColor;
+    display: block;
+    padding-inline-start: var(--space);
+    blockquote {
+      quotes: '“' '”';
+      text-indent: -0.3em;
+      &::before {
+        content: open-quote;
+      }
+      &::after {
+        content: close-quote;
+      }
+    }
+    figcaption {
+      display: flex;
+      font-size: var(--step--1);
+      &::before {
+        content: '—';
+      }
+    }
+    cite {
+      font-style: normal;
+    }
+  }
+}
