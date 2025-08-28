@@ -1,19 +1,105 @@
-<div class="clock">
+<analog-decimal-clock class="clock">
+  <span class="js-time clock__literal"></span>
   <div class="clock__face">
     <div class="clock__segment"></div>
     <div class="clock__segment"></div>
     <div class="clock__segment"></div>
     <div class="clock__segment"></div>
     <div class="clock__segment"></div>
-    <div class="clock__seconds"></div>
+    <div class="clock__hand clock__hand--hours"></div>
+    <div class="clock__hand clock__hand--minutes"></div>
+    <div class="clock__hand clock__hand--seconds"></div>
   </div>
-</div>
+</analog-decimal-clock>
+
+<script>
+  class AnalogDecimalClock extends HTMLElement {
+    private time: HTMLTimeElement;
+    private seconds: HTMLDivElement;
+    private animationFrameId?: number;
+    private lastUpdate: number;
+    private TOTAL_SECONDS_IN_DAY = 24 * 60 * 60;
+    private TOTAL_METRIC_SECONDS_IN_DAY = 10 * 100 * 100;
+    private DECIMAL_SECOND_MS = 864; // 100,000 decimal seconds per day = 864ms per decimal second
+
+    constructor() {
+      super();
+      this.time = this.querySelector('.js-time')!;
+      this.seconds = this.querySelector('.js-seconds')!;
+      this.lastUpdate = performance.now();
+    }
+
+    connectedCallback() {
+      this.setDecimalTime();
+      this.updateTime();
+    }
+
+    disconnectedCallback() {
+      if (this.animationFrameId) {
+        cancelAnimationFrame(this.animationFrameId);
+        this.animationFrameId = undefined;
+      }
+    }
+
+    private updateTime(): void {
+      const now = new Date();
+      const totalMs =
+        now.getHours() * 3600000 + now.getMinutes() * 60000 + now.getSeconds() * 1000 + now.getMilliseconds();
+
+      // Calculate how far we are into the current decimal second
+      const msIntoDecimalSecond = totalMs % this.DECIMAL_SECOND_MS;
+
+      // Update if we're within 16ms of the next decimal second
+      // 16ms is approximately one frame at 60fps
+      if (msIntoDecimalSecond > this.DECIMAL_SECOND_MS - 16) {
+        this.setDecimalTime();
+      }
+
+      // Wow, recursion
+      this.animationFrameId = requestAnimationFrame(() => this.updateTime());
+    }
+
+    private formatNumber(num: number, leadingZero: boolean = true): string {
+      return String(Math.floor(num)).padStart(leadingZero ? 2 : 1, '0');
+    }
+
+    private setDecimalTime(): void {
+      const now = new Date();
+      const secondsSinceMidnight =
+        now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds() + now.getMilliseconds() / 1000;
+
+      // Calculate the fraction of the day that has passed
+      const fractionOfDay = secondsSinceMidnight / this.TOTAL_SECONDS_IN_DAY;
+
+      // Convert the fraction of the day into metric time
+      const metricSecondsElapsed = fractionOfDay * this.TOTAL_METRIC_SECONDS_IN_DAY;
+
+      // Break down metric time into hours, minutes, and seconds
+      const decimalTime = {
+        hours: this.formatNumber(metricSecondsElapsed / 10_000, false),
+        minutes: this.formatNumber((metricSecondsElapsed % 10_000) / 100),
+        seconds: this.formatNumber(metricSecondsElapsed % 100),
+      };
+
+      this.time.innerHTML = `${decimalTime.hours}:${decimalTime.minutes}:${decimalTime.seconds}`;
+      this.style.setProperty('--seconds-transform', `rotate(0.${decimalTime.seconds}turn)`);
+      this.style.setProperty('--minutes-transform', `rotate(0.${decimalTime.minutes}turn)`);
+      this.style.setProperty('--hours-transform', `rotate(0.${decimalTime.hours}turn)`);
+    }
+  }
+
+  customElements.define('analog-decimal-clock', AnalogDecimalClock);
+</script>
 
 <style lang="scss">
+  @use '../../styles/mixins' as *;
   .clock {
     margin-block: var(--space--large);
     display: flex;
     justify-content: center;
+    &__literal {
+      @include visually-hidden;
+    }
     &__face {
       aspect-ratio: 1 / 1;
       width: 15rem;
@@ -26,7 +112,7 @@
     &__segment {
       grid-area: 1 / 1;
       height: 15rem;
-      width: 1px;
+      width: 2px;
       background: linear-gradient(
         to bottom,
         var(--foreground) 0%,
@@ -54,25 +140,44 @@
         rotate: 0.4turn;
       }
     }
-    &__seconds {
-      width: 2px;
+    &__hand {
       height: calc(50% - 20px);
-      background-color: var(--seconds);
+      background-color: var(--background);
       position: absolute;
       left: calc(50% - 1px);
       bottom: 50%;
-      // transform: rotate(0.1turn);
       transform-origin: bottom;
-      &::after {
-        content: '';
-        display: block;
-        width: 14px;
-        height: 14px;
+      &--seconds {
+        width: 2px;
+        border-radius: 2px;
         background-color: var(--seconds);
-        border-radius: 50%;
-        position: absolute;
-        left: calc(50% - 7px);
-        bottom: -7px;
+        transform: var(--seconds-transform);
+        &::after {
+          content: '';
+          display: block;
+          width: 14px;
+          height: 14px;
+          background-color: var(--seconds);
+          border-radius: 50%;
+          position: absolute;
+          left: calc(50% - 7px);
+          bottom: -7px;
+        }
+      }
+      &--minutes {
+        width: 4px;
+        border-radius: 4px;
+        background-color: var(--background);
+        transform: var(--minutes-transform);
+        transform-origin: bottom;
+      }
+      &--hours {
+        width: 5px;
+        height: calc(50% - 40px);
+        border-radius: 6px;
+        background-color: var(--background);
+        transform: var(--hours-transform);
+        transform-origin: bottom;
       }
     }
   }
