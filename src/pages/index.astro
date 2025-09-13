@@ -1,8 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../layouts/base.astro';
-import { PostBox, ReadingList } from '../components';
-import { Circles } from '../components/sketches';
+import { Circles, PostBox, ReadingList } from '../components';
 
 const RECENT_WRITING_COUNT = 4;
 const collection = await getCollection('posts');
