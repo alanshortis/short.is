@@ -11,41 +11,27 @@ const { isLarge } = Astro.props;
 </decimal-clock>
 
 <script>
-  import { calculateDecimalTime, shouldUpdateTime } from './utils.js';
+  import type { DecimalTime } from '../../shared-types';
 
   class DecimalClock extends HTMLElement {
-    private time: HTMLTimeElement;
-    private animationFrameId?: number;
+    private worker: Worker;
+    private timeSpan: HTMLSpanElement;
+    private pad: (num: number) => string;
 
     constructor() {
       super();
-      this.time = this.querySelector('.js-time')!;
-    }
+      this.worker = new Worker(new URL('/src/workers/decimal-clock.ts', import.meta.url));
+      this.timeSpan = this.querySelector('.js-time') as HTMLSpanElement;
 
-    connectedCallback() {
-      this.setDecimalTime();
-      this.updateTime();
+      this.pad = (num: number) => num.toString().padStart(2, '0');
+
+      this.worker.onmessage = (event: MessageEvent<DecimalTime>) => {
+        this.timeSpan.textContent = `${event.data.hours}:${this.pad(event.data.minutes)}:${this.pad(event.data.seconds)}`;
+      };
     }
 
     disconnectedCallback() {
-      if (this.animationFrameId) {
-        cancelAnimationFrame(this.animationFrameId);
-        this.animationFrameId = undefined;
-      }
-    }
-
-    private updateTime(): void {
-      if (shouldUpdateTime()) {
-        this.setDecimalTime();
-      }
-
-      // Wow, recursion
-      this.animationFrameId = requestAnimationFrame(() => this.updateTime());
-    }
-
-    private setDecimalTime(): void {
-      const decimalTime = calculateDecimalTime();
-      this.time.innerHTML = `${decimalTime.hours}:${decimalTime.minutes}:${decimalTime.seconds}`;
+      this.worker.terminate();
     }
   }
 
