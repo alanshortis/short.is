@@ -1,7 +1,7 @@
 ---
 import Base from '../layouts/base.astro';
 import { Disclaimer } from '../components';
-import { RegularClock, DecimalClock, DecimalProgress, DecimalAnalog } from '../components/clocks';
+import { DecimalClock, DecimalProgress, DecimalAnalog, RegularClock } from '../components/clocks';
 ---
 
 <Base pageTitle="Alan Shortis | Decimal time" description="">
@@ -10,7 +10,7 @@ import { RegularClock, DecimalClock, DecimalProgress, DecimalAnalog } from '../c
     <div class="post__content formatting">
       <noscript>
         <Disclaimer>
-          This page requires JavaScript to render clocks and will make less sense without it
+          This page uses JavaScript to render clocks. It will make less sense without it
         </Disclaimer>
       </noscript>
       <p>The clock in the header isn't wrong, it's different.</p>
@@ -32,15 +32,15 @@ import { RegularClock, DecimalClock, DecimalProgress, DecimalAnalog } from '../c
       </p>
       <p>
         By using a base-10 structure you can reduce the time to one number and make calculations and
-        conversions simpler. Where we consider the middle of the day to be 12 o'clock in regular time, in
-        decimal time it is 5, or 50% of the day elapsed. This makes it possible represent time as progression
-        while still representing the time.
+        conversions simpler. Where regular time considers the middle of the day to be 12 o'clock, in decimal
+        time it is 5, or 50% of the day elapsed. This makes it possible to represent time as progression since
+        it's the same base as the rest of the decimal system.
       </p>
       <DecimalProgress />
       <p>
         You may notice that each decimal clock on this page suffers from occasional skipped seconds or
-        rounding issues. At 60<abbr title="Frames per Second">fps</abbr> we can't evenly divide a decimal second
-        (864ms) into whole frames so we are never consistently inside one increment. At some point we miss the
+        rounding issues. At 60<abbr title="Frames per Second">fps</abbr> you can't evenly divide a decimal second
+        (864ms) into whole frames so you're never consistently inside one increment. At some point you miss the
         tick. The conventional clock never misses, since seconds are seconds and frames are frames on the same
         grid.
       </p>
@@ -48,8 +48,8 @@ import { RegularClock, DecimalClock, DecimalProgress, DecimalAnalog } from '../c
       <p>
         Time may be a social construct, but it's so deeply ingrained into society and technology that adoption
         of decimal time is entirely impractical. Existing time pieces become obsolete; both the scale of the
-        dial and the velocity of the hands is totally incompatible between systems and it's not possible to
-        run both at the same time on the same clock, like two sides of a tape measure comparing inches and
+        dial and the velocity of the hands are totally incompatible between systems and it's not possible to
+        run both at the same time on the same clock. Like two sides of a tape measure comparing inches and
         centimetres.
       </p>
     </div>
