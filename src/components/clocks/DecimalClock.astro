@@ -7,7 +7,7 @@ const { isLarge } = Astro.props;
 ---
 
 <decimal-clock class={`time ${isLarge ? 'time--large' : ''}`}>
-  <span class="js-time"></span>
+  <span class="js-time">0:00:00</span>
 </decimal-clock>
 
 <script>
