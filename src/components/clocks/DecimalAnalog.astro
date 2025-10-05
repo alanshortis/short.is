@@ -25,6 +25,10 @@
     private worker: Worker;
     private time: HTMLTimeElement;
     private pad: (num: number) => string;
+    private previousSeconds: number = 0;
+    private previousMinutes: number = 0;
+    private previousHours: number = 0;
+    private baseRotations = { seconds: 0, minutes: 0, hours: 0 };
 
     constructor() {
       super();
@@ -50,11 +54,27 @@
       const { hours, minutes, seconds } = decimalTime;
       const formattedTime = `${hours}:${this.pad(minutes)}:${this.pad(seconds)}`;
 
+      // Detect wrap-arounds and increment base rotations
+      // We have to do a little more work here to avoid the transition from 99 to 0 going all the way around
+      if (seconds < this.previousSeconds) this.baseRotations.seconds++;
+      if (minutes < this.previousMinutes) this.baseRotations.minutes++;
+      if (hours < this.previousHours) this.baseRotations.hours++;
+
+      // Append current fractional values to base rotations
+      const secondsRotation = this.baseRotations.seconds + seconds / 100;
+      const minutesRotation = this.baseRotations.minutes + minutes / 100;
+      const hoursRotation = this.baseRotations.hours + hours / 10;
+
       this.time.innerHTML = formattedTime;
       this.time.setAttribute('datetime', formattedTime);
-      this.style.setProperty('--seconds-transform', `rotate(0.${this.pad(seconds)}turn)`);
-      this.style.setProperty('--minutes-transform', `rotate(0.${this.pad(minutes)}turn)`);
-      this.style.setProperty('--hours-transform', `rotate(0.${hours}turn)`);
+      this.style.setProperty('--seconds-transform', `rotate(${secondsRotation}turn)`);
+      this.style.setProperty('--minutes-transform', `rotate(${minutesRotation}turn)`);
+      this.style.setProperty('--hours-transform', `rotate(${hoursRotation}turn)`);
+
+      // Store current values for next comparison
+      this.previousSeconds = seconds;
+      this.previousMinutes = minutes;
+      this.previousHours = hours;
     }
   }
 
@@ -127,6 +147,7 @@
       bottom: 50%;
       transform-origin: bottom;
       z-index: 1;
+      transition: transform 0.1s;
       &--seconds {
         width: 2px;
         border-radius: 2px;
