@@ -17,7 +17,7 @@ const collection = await getCollection('reading');
           <article>
             <a
               class={`list__item ${idx === 0 ? 'list__item--first' : ''}`}
-              href={post.data.url}
+              href={post.data.slug}
               target="_blank"
               rel="noopener noreferrer"
             >
