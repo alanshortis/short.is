@@ -11,7 +11,7 @@ const recentReading = collection.slice(0, 7);
     {
       recentReading.map(post => (
         <article class="article">
-          <a class="article__item" href={post.data.url} target="_blank" rel="noopener noreferrer">
+          <a class="article__item" href={post.data.slug} target="_blank" rel="noopener noreferrer">
             <h1 class="article__title">{post.data.title}</h1>
             <p class="article__author">{post.data.author}</p>
           </a>
