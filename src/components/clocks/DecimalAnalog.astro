@@ -1,4 +1,4 @@
-<analog-decimal-clock class="clock">
+<decimal-analog class="clock">
   <span class="js-time clock__literal"></span>
   <div class="clock__face">
     <div class="clock__segment"></div>
@@ -10,57 +10,49 @@
     <div class="clock__hand clock__hand--minutes"></div>
     <div class="clock__hand clock__hand--seconds"></div>
   </div>
-</analog-decimal-clock>
+</decimal-analog>
 
 <script>
-  import { calculateDecimalTime, shouldUpdateTime } from './utils.js';
+  import type { DecimalTime } from '../../shared-types';
 
   class AnalogDecimalClock extends HTMLElement {
+    private worker: Worker;
     private time: HTMLTimeElement;
-    private animationFrameId?: number;
+    private pad: (num: number) => string;
 
     constructor() {
       super();
+      this.worker = new Worker(new URL('/src/workers/decimal-clock.ts', import.meta.url));
       this.time = this.querySelector('.js-time')!;
-    }
 
-    connectedCallback() {
-      // Set initial CSS custom properties
+      this.pad = (num: number) => num.toString().padStart(2, '0');
+
       this.style.setProperty('--seconds-transform', 'rotate(0turn)');
       this.style.setProperty('--minutes-transform', 'rotate(0turn)');
       this.style.setProperty('--hours-transform', 'rotate(0turn)');
 
-      this.setDecimalTime();
-      this.updateTime();
+      this.worker.onmessage = (event: MessageEvent<DecimalTime>) => {
+        this.setDecimalTime(event.data);
+      };
     }
 
     disconnectedCallback() {
-      if (this.animationFrameId) {
-        cancelAnimationFrame(this.animationFrameId);
-        this.animationFrameId = undefined;
-      }
+      this.worker.terminate();
     }
 
-    private updateTime(): void {
-      if (shouldUpdateTime()) {
-        this.setDecimalTime();
-      }
+    private setDecimalTime(decimalTime: DecimalTime): void {
+      const { hours, minutes, seconds } = decimalTime;
+      const formattedTime = `${hours}:${this.pad(minutes)}:${this.pad(seconds)}`;
 
-      // Wow, recursion
-      this.animationFrameId = requestAnimationFrame(() => this.updateTime());
-    }
-
-    private setDecimalTime(): void {
-      const decimalTime = calculateDecimalTime();
-
-      this.time.innerHTML = `${decimalTime.hours}:${decimalTime.minutes}:${decimalTime.seconds}`;
-      this.style.setProperty('--seconds-transform', `rotate(0.${decimalTime.seconds}turn)`);
-      this.style.setProperty('--minutes-transform', `rotate(0.${decimalTime.minutes}turn)`);
-      this.style.setProperty('--hours-transform', `rotate(0.${decimalTime.hours}turn)`);
+      this.time.innerHTML = formattedTime;
+      this.time.setAttribute('datetime', formattedTime);
+      this.style.setProperty('--seconds-transform', `rotate(0.${this.pad(seconds)}turn)`);
+      this.style.setProperty('--minutes-transform', `rotate(0.${this.pad(minutes)}turn)`);
+      this.style.setProperty('--hours-transform', `rotate(0.${hours}turn)`);
     }
   }
 
-  customElements.define('analog-decimal-clock', AnalogDecimalClock);
+  customElements.define('decimal-analog', AnalogDecimalClock);
 </script>
 
 <style lang="scss">
@@ -84,6 +76,7 @@
     &__segment {
       grid-area: 1 / 1;
       height: 15rem;
+      opacity: 0.75;
       width: 2px;
       background: linear-gradient(
         to bottom,
@@ -127,29 +120,31 @@
         &::after {
           content: '';
           display: block;
-          width: 14px;
-          height: 14px;
+          width: 18px;
+          height: 18px;
           background-color: var(--seconds);
           border-radius: 50%;
           position: absolute;
-          left: calc(50% - 7px);
-          bottom: -7px;
+          left: calc(50% - 9px);
+          bottom: -9px;
         }
       }
       &--minutes {
-        width: 4px;
-        border-radius: 4px;
+        width: 5px;
+        border-radius: 5px;
         background-color: var(--background);
         transform: var(--minutes-transform);
         transform-origin: bottom;
+        left: calc(50% - 2.5px);
       }
       &--hours {
-        width: 5px;
+        width: 7px;
         height: calc(50% - 40px);
-        border-radius: 6px;
+        border-radius: 7px;
         background-color: var(--background);
         transform: var(--hours-transform);
         transform-origin: bottom;
+        left: calc(50% - 3.5px);
       }
     }
   }
