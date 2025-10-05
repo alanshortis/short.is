@@ -30,17 +30,21 @@
       this.progressLabel = this.querySelector('.progress__label')!;
 
       this.worker.onmessage = (event: MessageEvent<DecimalTime>) => {
-        const elapsedPercentage = (event.data.hours * 10 + event.data.minutes / 10).toFixed(1);
-
-        this.progressOuter.ariaValueNow = elapsedPercentage;
-        this.style.setProperty('--progress-width', `${elapsedPercentage}%`);
-        this.style.setProperty('--progress-label-left', `${elapsedPercentage}%`);
-        this.progressLabel.innerHTML = `${elapsedPercentage}%`;
+        this.setProgress(event.data);
       };
     }
 
     disconnectedCallback() {
       this.worker.terminate();
+    }
+
+    private setProgress(decimalTime: DecimalTime): void {
+      const elapsedPercentage = (decimalTime.hours * 10 + decimalTime.minutes / 10).toFixed(1);
+
+      this.progressOuter.ariaValueNow = elapsedPercentage;
+      this.style.setProperty('--progress-width', `${elapsedPercentage}%`);
+      this.style.setProperty('--progress-label-left', `${elapsedPercentage}%`);
+      this.progressLabel.innerHTML = `${elapsedPercentage}%`;
     }
   }
 

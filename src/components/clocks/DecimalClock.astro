@@ -26,12 +26,18 @@ const { isLarge } = Astro.props;
       this.pad = (num: number) => num.toString().padStart(2, '0');
 
       this.worker.onmessage = (event: MessageEvent<DecimalTime>) => {
-        this.timeSpan.textContent = `${event.data.hours}:${this.pad(event.data.minutes)}:${this.pad(event.data.seconds)}`;
+        this.setDecimalTime(event.data);
       };
     }
 
     disconnectedCallback() {
       this.worker.terminate();
+    }
+
+    private setDecimalTime(decimalTime: DecimalTime): void {
+      const { hours, minutes, seconds } = decimalTime;
+      const formattedTime = `${hours}:${this.pad(minutes)}:${this.pad(seconds)}`;
+      this.timeSpan.textContent = formattedTime;
     }
   }
 

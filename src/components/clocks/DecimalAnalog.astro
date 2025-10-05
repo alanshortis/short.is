@@ -1,5 +1,5 @@
-<analog-decimal-clock class="clock">
-  <time datetime="" class="js-time clock__literal"></time>
+<decimal-analog class="clock">
+  <span class="js-time clock__literal"></span>
   <div class="clock__face">
     <div class="clock__segment"></div>
     <div class="clock__segment"></div>
@@ -10,7 +10,7 @@
     <div class="clock__hand clock__hand--minutes"></div>
     <div class="clock__hand clock__hand--seconds"></div>
   </div>
-</analog-decimal-clock>
+</decimal-analog>
 
 <script>
   import type { DecimalTime } from '../../shared-types';
@@ -23,7 +23,7 @@
     constructor() {
       super();
       this.worker = new Worker(new URL('/src/workers/decimal-clock.ts', import.meta.url));
-      this.time = this.querySelector('time')!;
+      this.time = this.querySelector('.js-time')!;
 
       this.pad = (num: number) => num.toString().padStart(2, '0');
 
@@ -52,7 +52,7 @@
     }
   }
 
-  customElements.define('analog-decimal-clock', AnalogDecimalClock);
+  customElements.define('decimal-analog', AnalogDecimalClock);
 </script>
 
 <style lang="scss">
