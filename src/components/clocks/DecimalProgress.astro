@@ -1,6 +1,12 @@
 <div class="progress">
   <decimal-progress>
-    <div class="progress__outer" role="progressbar" aria-valuemin="0" aria-valuemax="99.99" aria-valuenow="0">
+    <div
+      class="progress__outer"
+      role="progressbar"
+      aria-valuemin="0.0%"
+      aria-valuemax="99.9%"
+      aria-valuenow=""
+    >
       <div class="progress__inner"></div>
     </div>
     <span class="progress__label"></span>
@@ -8,52 +14,33 @@
 </div>
 
 <script>
-  import { shouldUpdateTime, getElapsedPercentage } from './utils.js';
+  import type { DecimalTime } from '../../shared-types';
 
   class DecimalProgress extends HTMLElement {
+    private worker: Worker;
     private progressOuter: HTMLDivElement;
     private progressInner: HTMLDivElement;
-    private progressLabel: HTMLDivElement;
-    private animationFrameId?: number;
+    private progressLabel: HTMLSpanElement;
 
     constructor() {
       super();
+      this.worker = new Worker(new URL('/src/workers/decimal-clock.ts', import.meta.url));
       this.progressOuter = this.querySelector('.progress__outer')!;
       this.progressInner = this.progressOuter.querySelector('.progress__inner')!;
       this.progressLabel = this.querySelector('.progress__label')!;
-    }
 
-    connectedCallback() {
-      // Set initial CSS custom properties
-      this.style.setProperty('--progress-width', '0%');
-      this.style.setProperty('--progress-label-left', '0%');
+      this.worker.onmessage = (event: MessageEvent<DecimalTime>) => {
+        const elapsedPercentage = (event.data.hours * 10 + event.data.minutes / 10).toFixed(1);
 
-      this.setDecimalTime();
-      this.updateTime();
+        this.progressOuter.ariaValueNow = elapsedPercentage;
+        this.style.setProperty('--progress-width', `${elapsedPercentage}%`);
+        this.style.setProperty('--progress-label-left', `${elapsedPercentage}%`);
+        this.progressLabel.innerHTML = `${elapsedPercentage}%`;
+      };
     }
 
     disconnectedCallback() {
-      if (this.animationFrameId) {
-        cancelAnimationFrame(this.animationFrameId);
-        this.animationFrameId = undefined;
-      }
-    }
-
-    private updateTime(): void {
-      if (shouldUpdateTime()) {
-        this.setDecimalTime();
-      }
-
-      this.animationFrameId = requestAnimationFrame(() => this.updateTime());
-    }
-
-    private setDecimalTime(): void {
-      const elapsedPercentage = getElapsedPercentage();
-
-      this.progressOuter.ariaValueNow = elapsedPercentage;
-      this.style.setProperty('--progress-width', `${elapsedPercentage}%`);
-      this.style.setProperty('--progress-label-left', `${elapsedPercentage}%`);
-      this.progressLabel.innerHTML = `${elapsedPercentage}%`;
+      this.worker.terminate();
     }
   }
 
@@ -81,17 +68,17 @@
       width: var(--progress-width, 0%);
     }
     &__label {
-      position: relative;
-      margin-inline-start: -3ch;
-      top: 0.5ch;
       left: var(--progress-label-left, 0%);
+      margin-inline-start: -2.5ch;
+      position: relative;
+      top: 0.5ch;
       @include label;
       &::before {
         content: '';
         position: absolute;
         height: 60%;
         width: 1px;
-        left: calc(3ch - 1px);
+        left: calc(2.5ch - 1px);
         top: -1.5ch;
         background-color: currentColor;
       }
