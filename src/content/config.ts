@@ -17,7 +17,7 @@ const reading = defineCollection({
   loader: file('src/content/reading.json'),
   schema: () =>
     z.object({
-      url: z.string().url(),
+      slug: z.string().url(),
       title: z.string(),
       author: z.string(),
     }),

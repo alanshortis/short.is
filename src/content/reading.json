@@ -1,85 +1,76 @@
 [
   {
-    "id": 14,
-    "url": "https://www.wheresyoured.at/the-haters-gui/",
+    "slug": "https://theoutline.com/post/7267/living-with-passive-suicidal-ideation",
+    "title": "I am not always very attached to being alive",
+    "author": "Anna Borges"
+  },
+  {
+    "slug": "https://hbr.org/2025/09/ai-generated-workslop-is-destroying-productivity",
+    "title": "AI-Generated “Workslop” Is Destroying Productivity",
+    "author": "Harvard Business Review"
+  },
+  {
+    "slug": "https://www.wheresyoured.at/the-haters-gui/",
     "title": "The Hater's Guide To The AI Bubble",
     "author": "Edward Zitron"
   },
   {
-    "id": 13,
-    "url": "https://newsletter.activevoicehq.com/p/it-s-not-just-burnout",
+    "slug": "https://newsletter.activevoicehq.com/p/it-s-not-just-burnout",
     "title": "It's not just burnout",
     "author": "Sara Wachter-Boettcher"
   },
   {
-    "id": 12,
-    "url": "https://futurism.com/neoscope/young-people-wish-internet-never-invented",
+    "slug": "https://futurism.com/neoscope/young-people-wish-internet-never-invented",
     "title": "Nearly half of young people wish the internet had never been invented",
     "author": "Futurism"
   },
   {
-    "id": 11,
-    "url": "https://www.theverge.com/policy/665685/ai-therapy-meta-chatbot-surveillance-risks-trump",
+    "slug": "https://www.theverge.com/policy/665685/ai-therapy-meta-chatbot-surveillance-risks-trump",
     "title": "AI therapy is a surveillance machine in a police state",
     "author": "The Verge"
   },
   {
-    "id": 10,
-    "url": "https://adactio.com/journal/21831",
+    "slug": "https://adactio.com/journal/21831",
     "title": "Denial",
     "author": "Jeremy Keith"
   },
   {
-    "id": 9,
-    "url": "https://hurlde.blog/ethical-ai/",
-    "title": "Is \"ethical AI\" an oxymoron?",
+    "slug": "https://hurlde.blog/ethical-ai/",
+    "title": "Is “ethical AI” an oxymoron?",
     "author": "Hurlde de Vries"
   },
   {
-    "id": 8,
-    "url": "https://brilliantcrank.com/eject-disk/",
+    "slug": "https://brilliantcrank.com/eject-disk/",
     "title": "Eject Disk.",
     "author": "Greg Storey"
   },
   {
-    "id": 7,
-    "url": "https://ethanmarcotte.com/wrote/leaving-18f/",
+    "slug": "https://ethanmarcotte.com/wrote/leaving-18f/",
     "title": "Moving on from 18F",
     "author": "Ethan Marcotte"
   },
   {
-    "id": 6,
-    "url": "https://aresluna.org/the-hardest-working-font-in-manhattan",
+    "slug": "https://aresluna.org/the-hardest-working-font-in-manhattan",
     "title": "The hardest working font in Manhattan",
     "author": "Marcin Wichary"
   },
   {
-    "id": 5,
-    "url": "https://www.miriamsuzanne.com/2025/02/12/tech-ai-wtf/",
+    "slug": "https://www.miriamsuzanne.com/2025/02/12/tech-ai-wtf/",
     "title": "Tech continues to be political",
     "author": "Miriam Suzanne"
   },
   {
-    "id": 4,
-    "url": "https://99percentinvisible.org/episode/children-of-the-magenta-automation-paradox-pt-1/",
+    "slug": "https://99percentinvisible.org/episode/children-of-the-magenta-automation-paradox-pt-1/",
     "title": "Children of the Magenta: Automation Paradox, Pt. 1",
     "author": "99% Invisible"
   },
   {
-    "id": 3,
-    "url": "https://whitep4nth3r.com/blog/how-to-build-a-copy-code-snippet-button/",
-    "title": "How to build a copy code snippet button and why it matters",
-    "author": "Salma Alam-Naylor"
-  },
-  {
-    "id": 2,
-    "url": "https://www.w3.org/TR/ethical-web-principles/",
+    "slug": "https://www.w3.org/TR/ethical-web-principles/",
     "title": "Ethical Web Principles",
     "author": "W3C"
   },
   {
-    "id": 1,
-    "url": "https://world.org/blog/engineering/humanness-in-the-age-of-ai",
+    "slug": "https://world.org/blog/engineering/humanness-in-the-age-of-ai",
     "title": "Humanness in the Age of AI",
     "author": "World"
   }
