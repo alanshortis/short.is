@@ -20,19 +20,21 @@
 
 <script>
   import type { DecimalTime } from '../../shared-types';
+  import SharedDecimalClockManager from '../../workers/decimal-clock';
 
   class AnalogDecimalClock extends HTMLElement {
-    private worker: Worker;
+    private sharedManager: SharedDecimalClockManager;
     private time: HTMLTimeElement;
     private pad: (num: number) => string;
     private previousSeconds: number = 0;
     private previousMinutes: number = 0;
     private previousHours: number = 0;
     private baseRotations = { seconds: 0, minutes: 0, hours: 0 };
+    private timeUpdateCallback: (decimalTime: DecimalTime) => void;
 
     constructor() {
       super();
-      this.worker = new Worker(new URL('/src/workers/decimal-clock.ts', import.meta.url));
+      this.sharedManager = SharedDecimalClockManager.getInstance();
       this.time = this.querySelector('.js-time')!;
 
       this.pad = (num: number) => num.toString().padStart(2, '0');
@@ -41,13 +43,15 @@
       this.style.setProperty('--minutes-transform', 'rotate(0turn)');
       this.style.setProperty('--hours-transform', 'rotate(0turn)');
 
-      this.worker.onmessage = (event: MessageEvent<DecimalTime>) => {
-        this.setDecimalTime(event.data);
+      this.timeUpdateCallback = (decimalTime: DecimalTime) => {
+        this.setDecimalTime(decimalTime);
       };
+
+      this.sharedManager.subscribe(this.timeUpdateCallback);
     }
 
     disconnectedCallback() {
-      this.worker.terminate();
+      this.sharedManager.unsubscribe(this.timeUpdateCallback);
     }
 
     private setDecimalTime(decimalTime: DecimalTime): void {

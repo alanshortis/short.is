@@ -15,27 +15,31 @@
 
 <script>
   import type { DecimalTime } from '../../shared-types';
+  import SharedDecimalClockManager from '../../workers/decimal-clock';
 
   class DecimalProgress extends HTMLElement {
-    private worker: Worker;
+    private sharedManager: SharedDecimalClockManager;
     private progressOuter: HTMLDivElement;
     private progressInner: HTMLDivElement;
     private progressLabel: HTMLSpanElement;
+    private timeUpdateCallback: (decimalTime: DecimalTime) => void;
 
     constructor() {
       super();
-      this.worker = new Worker(new URL('/src/workers/decimal-clock.ts', import.meta.url));
+      this.sharedManager = SharedDecimalClockManager.getInstance();
       this.progressOuter = this.querySelector('.progress__outer')!;
       this.progressInner = this.progressOuter.querySelector('.progress__inner')!;
       this.progressLabel = this.querySelector('.progress__label')!;
 
-      this.worker.onmessage = (event: MessageEvent<DecimalTime>) => {
-        this.setProgress(event.data);
+      this.timeUpdateCallback = (decimalTime: DecimalTime) => {
+        this.setProgress(decimalTime);
       };
+
+      this.sharedManager.subscribe(this.timeUpdateCallback);
     }
 
     disconnectedCallback() {
-      this.worker.terminate();
+      this.sharedManager.unsubscribe(this.timeUpdateCallback);
     }
 
     private setProgress(decimalTime: DecimalTime): void {

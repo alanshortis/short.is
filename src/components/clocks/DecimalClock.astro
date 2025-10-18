@@ -12,26 +12,30 @@ const { isLarge } = Astro.props;
 
 <script>
   import type { DecimalTime } from '../../shared-types';
+  import SharedDecimalClockManager from '../../workers/decimal-clock';
 
   class DecimalClock extends HTMLElement {
-    private worker: Worker;
+    private sharedManager: SharedDecimalClockManager;
     private timeSpan: HTMLSpanElement;
     private pad: (num: number) => string;
+    private timeUpdateCallback: (decimalTime: DecimalTime) => void;
 
     constructor() {
       super();
-      this.worker = new Worker(new URL('/src/workers/decimal-clock.ts', import.meta.url));
+      this.sharedManager = SharedDecimalClockManager.getInstance();
       this.timeSpan = this.querySelector('.js-time') as HTMLSpanElement;
 
       this.pad = (num: number) => num.toString().padStart(2, '0');
 
-      this.worker.onmessage = (event: MessageEvent<DecimalTime>) => {
-        this.setDecimalTime(event.data);
+      this.timeUpdateCallback = (decimalTime: DecimalTime) => {
+        this.setDecimalTime(decimalTime);
       };
+
+      this.sharedManager.subscribe(this.timeUpdateCallback);
     }
 
     disconnectedCallback() {
-      this.worker.terminate();
+      this.sharedManager.unsubscribe(this.timeUpdateCallback);
     }
 
     private setDecimalTime(decimalTime: DecimalTime): void {
