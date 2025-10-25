@@ -1,0 +1,40 @@
+<div class="internet">
+  <div class="internet__elem"></div>
+  <div class="internet__elem"></div>
+  <div class="internet__elem"></div>
+  <div class="internet__elem"></div>
+  <div class="internet__elem"></div>
+</div>
+
+<style lang="scss">
+  .internet {
+    aspect-ratio: 1 / 1;
+    display: grid;
+    overflow: hidden;
+    width: var(--step-5);
+    &__elem {
+      aspect-ratio: 1 / 1;
+      border: 1px solid var(--foreground);
+      grid-area: 1 / 1;
+      place-self: center;
+      width: 89%;
+      transform: rotate(-7deg);
+      &:nth-child(2) {
+        width: 74%;
+        transform: rotate(0deg);
+      }
+      &:nth-child(3) {
+        width: 59%;
+        transform: rotate(7deg);
+      }
+      &:nth-child(4) {
+        width: 44%;
+        transform: rotate(14deg);
+      }
+      &:nth-child(5) {
+        width: 29%;
+        transform: rotate(21deg);
+      }
+    }
+  }
+</style>

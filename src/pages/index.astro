@@ -6,6 +6,7 @@ import { Circles, PostBox, ReadingList } from '../components';
 const RECENT_WRITING_COUNT = 4;
 const collection = await getCollection('posts');
 const latestPosts = collection
+  .filter(post => post.data.published ?? true)
   .sort((a, b) => b.data.pubDate.localeCompare(a.data.pubDate))
   .slice(0, RECENT_WRITING_COUNT);
 ---

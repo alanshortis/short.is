@@ -99,7 +99,7 @@
 }
 
 @mixin small-min {
-  @media (min-width: 35rem) {
+  @media (min-width: calc(35rem + 1px)) {
     @content;
   }
 }
