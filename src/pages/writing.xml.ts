@@ -4,11 +4,12 @@ import { getCollection } from 'astro:content';
 
 export async function GET(context: APIContext) {
   const blog = await getCollection('posts');
+  const publishedPosts = blog.filter(post => post.data.published ?? true);
   return rss({
     title: 'Alan Shortis',
     description: 'Recent writing from short.is',
     site: context.site || '',
-    items: blog
+    items: publishedPosts
       .map(post => ({
         title: post.data.title,
         pubDate: new Date(post.data.pubDate),

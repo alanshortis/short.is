@@ -9,10 +9,12 @@ interface Props {
 
 export const getStaticPaths = async () => {
   const blogPosts = await getCollection('posts');
-  return blogPosts.map(post => ({
-    params: { slug: post.slug },
-    props: { post },
-  }));
+  return blogPosts
+    .filter(post => post.data.published ?? true)
+    .map(post => ({
+      params: { slug: post.slug },
+      props: { post },
+    }));
 };
 const { post } = Astro.props;
 const { Content } = await render(post);

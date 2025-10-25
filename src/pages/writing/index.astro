@@ -4,7 +4,9 @@ import Base from '../../layouts/base.astro';
 import { PostBox } from '../../components';
 
 const collection = await getCollection('posts');
-const posts = collection.sort((a, b) => b.data.pubDate.localeCompare(a.data.pubDate));
+const posts = collection
+  .filter(post => post.data.published ?? true)
+  .sort((a, b) => b.data.pubDate.localeCompare(a.data.pubDate));
 ---
 
 <Base pageTitle="Alan Shortis" description="My name is Alan Shortis and I am a web engineer">

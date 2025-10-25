@@ -10,6 +10,7 @@ const posts = defineCollection({
       pubDate: z.string(),
       icon: z.enum(['ai', 'website', 'observer', 'hopper', 'ethics', 'new-york', 'imposter', 'internet']),
       showAgeWarning: z.boolean().optional(),
+      published: z.boolean().optional(),
     }),
 });
 
