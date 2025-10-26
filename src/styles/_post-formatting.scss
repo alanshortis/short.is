@@ -1,7 +1,7 @@
 .formatting {
   line-height: 1.618;
   text-wrap: pretty;
-  & * + :where(p, ol, ul, h2, figure, dl, blockquote) {
+  & * + :where(p, ol, ul, h2, figure, dl) {
     margin-top: 1lh;
   }
   a {
@@ -48,25 +48,11 @@
   ul li {
     list-style: disc;
   }
-  blockquote {
-    margin-inline-start: var(--space);
-    padding-inline-start: var(--space);
-    border-inline-start: 1px solid currentColor;
-  }
   figure:has(blockquote) {
     border-inline-start: 1px solid currentColor;
     display: block;
     padding-inline-start: var(--space);
-    blockquote {
-      quotes: '“' '”';
-      text-indent: -0.3em;
-      &::before {
-        content: open-quote;
-      }
-      &::after {
-        content: close-quote;
-      }
-    }
+    margin-inline-start: var(--space);
     figcaption {
       display: flex;
       font-size: var(--step--1);
