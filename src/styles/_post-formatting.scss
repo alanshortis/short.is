@@ -1,6 +1,5 @@
 .formatting {
   line-height: 1.618;
-  text-wrap: pretty;
   & * + :where(p, ol, ul, h2, figure, dl) {
     margin-top: 1lh;
   }
