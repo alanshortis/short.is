@@ -10,7 +10,7 @@ const collection = await getCollection('reading');
   description="Things of note I have recently read, watched, or listened to"
 >
   <article class="post">
-    <h1 class="post__title">Reading</h1>
+    <h1 class="visually-hidden">Reading</h1>
     <div class="list">
       {
         collection.map((post, idx) => (
@@ -38,10 +38,6 @@ const collection = await getCollection('reading');
     display: flex;
     flex-direction: column;
     gap: var(--step-5);
-    &__title {
-      font-size: var(--step-5);
-      font-weight: bold;
-    }
   }
 
   .list {
