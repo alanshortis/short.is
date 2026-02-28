@@ -1,5 +1,5 @@
 <decimal-analog class="clock">
-  <span class="js-time clock__literal"></span>
+  <span class="vh js-time"></span>
   <div class="clock__face">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 399.458 169.221" class="clock__logo">
       <title>Braun logo</title>
@@ -87,9 +87,6 @@
     margin-block: var(--space--large);
     display: flex;
     justify-content: center;
-    &__literal {
-      @include visually-hidden;
-    }
     &__logo {
       position: absolute;
       top: 25%;

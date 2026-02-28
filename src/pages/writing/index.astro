@@ -11,7 +11,7 @@ const posts = collection
 
 <Base pageTitle="Alan Shortis" description="My name is Alan Shortis and I am a web engineer">
   <div class="home">
-    <h1 class="home__title">Writing</h1>
+    <h1 id="writing" class="vh">Writing</h1>
     <div class="home__posts">
       {posts.map((post, idx) => <PostBox post={post} isFeatured={idx === 0} />)}
     </div>
@@ -24,10 +24,6 @@ const posts = collection
     display: flex;
     flex-direction: column;
     gap: var(--space--large);
-    &__title {
-      font-size: var(--step-5);
-      font-weight: bold;
-    }
     &__posts {
       display: grid;
       gap: var(--space);

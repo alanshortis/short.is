@@ -1,5 +1,5 @@
 <regular-clock class="time">
-  <span class="time__label">Current time</span>
+  <span class="vh">Current time</span>
   <time datetime=""></time>
 </regular-clock>
 
@@ -58,8 +58,5 @@
   .time {
     @include label;
     font-size: var(--step-2);
-    &__label {
-      @include visually-hidden;
-    }
   }
 </style>

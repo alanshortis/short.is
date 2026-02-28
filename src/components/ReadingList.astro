@@ -5,8 +5,8 @@ const collection = await getCollection('reading');
 const recentReading = collection.slice(0, 7);
 ---
 
-<div class="reading">
-  <h2 class="reading__title">Recent reading</h2>
+<section class="reading" aria-labelledby="recent-reading">
+  <h2 id="recent-reading" class="reading__title">Recent reading</h2>
   <div class="list">
     {
       recentReading.map(post => (
@@ -20,7 +20,7 @@ const recentReading = collection.slice(0, 7);
     }
   </div>
   <a href="/reading" class="reading__more">More reading &rarr;</a>
-</div>
+</section>
 
 <style lang="scss">
   @use '../styles/mixins' as *;
