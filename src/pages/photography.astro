@@ -8,12 +8,12 @@ const collection = await getCollection('photography').then(c =>
 ---
 
 <Base pageTitle="Alan Shortis | Photography" description="Photographs over the last 20 years">
-  <article class="page">
-    <h1 class="visually-hidden">Photography</h1>
-    {
-      collection.map(photoYear => (
-        <ol class="year">
-          <li>
+  <section class="page" aria-labelledby="photography">
+    <h1 id="photography" class="visually-hidden">Photography</h1>
+    <ol>
+      {
+        collection.map(photoYear => (
+          <li class="year">
             <h2 class="year__title">{photoYear.id}</h2>
             <ul>
               {photoYear.data.map(photo => (
@@ -23,10 +23,10 @@ const collection = await getCollection('photography').then(c =>
               ))}
             </ul>
           </li>
-        </ol>
-      ))
-    }
-  </article>
+        ))
+      }
+    </ol>
+  </section>
 </Base>
 
 <style lang="scss">
