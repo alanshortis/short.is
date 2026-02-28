@@ -1,10 +1,14 @@
 ---
 import Base from '../layouts/base.astro';
+import { getCollection } from 'astro:content';
+
+const collection = await getCollection('photography');
 ---
 
 <Base pageTitle="Alan Shortis | Photography" description="Photographs over the last 20 years">
   <article class="post">
     <h1 class="post__title">Photography</h1>
+    <pre>{JSON.stringify(collection, null, 2)}</pre>
   </article>
 </Base>
 
