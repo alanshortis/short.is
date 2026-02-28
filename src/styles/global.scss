@@ -38,8 +38,7 @@ main {
   color: var(--light);
 }
 
-.visually-hidden {
-  clip: rect(0 0 0 0);
+.vh {
   clip-path: inset(50%);
   height: 1px;
   overflow: hidden;
