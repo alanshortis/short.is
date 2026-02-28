@@ -2,13 +2,30 @@
 import Base from '../layouts/base.astro';
 import { getCollection } from 'astro:content';
 
-const collection = await getCollection('photography');
+const collection = await getCollection('photography').then(c =>
+  c.sort((a, b) => Number(b.id) - Number(a.id))
+);
 ---
 
 <Base pageTitle="Alan Shortis | Photography" description="Photographs over the last 20 years">
   <article class="post">
     <h1 class="post__title">Photography</h1>
-    <pre>{JSON.stringify(collection, null, 2)}</pre>
+    {
+      collection.map(photoYear => (
+        <ol>
+          <li>
+            <h2>{photoYear.id}</h2>
+            <ul>
+              {photoYear.data.map(photo => (
+                <li>
+                  {photo.name}, {photo.location}, {photo.camera}, {photo.lens}, {photo.film}
+                </li>
+              ))}
+            </ul>
+          </li>
+        </ol>
+      ))
+    }
   </article>
 </Base>
 
