@@ -27,8 +27,8 @@ const shouldShowWarning = postAgeYears <= -2;
 ---
 
 <Base pageTitle={`Alan Shortis | ${post.data.title}`} description={post.data.description}>
-  <article class="post">
-    <h1 class="post__title">{post.data.title}</h1>
+  <article class="post" aria-labelledby="writing">
+    <h1 id="post-title" class="post__title">{post.data.title}</h1>
     <div class="post__meta">
       <PostDate date={post.data.pubDate} />
       <ContentIcon icon={post.data.icon} />

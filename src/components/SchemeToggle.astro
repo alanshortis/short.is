@@ -4,10 +4,10 @@ const schemes = ['light', 'auto', 'dark'];
 
 <scheme-toggle>
   <fieldset class="toggle">
-    <legend class="toggle__legend">Colour scheme</legend>
+    <legend class="vh">Colour scheme</legend>
     {schemes.map(thiSscheme => (
       <input
-        class="toggle__radio"
+        class="vh"
         type="radio"
         id={thiSscheme}
         name="scheme"
@@ -79,16 +79,12 @@ const schemes = ['light', 'auto', 'dark'];
   border: 0;
   display: flex;
   gap: 1ch;
-  &__legend {
-    @include visually-hidden;
-  }
   &__label {
     @include label;
     cursor: pointer;
     position: relative;
   }
   &__radio {
-    @include visually-hidden;
     &:checked + label::after {
       @include active-indicator;
     }

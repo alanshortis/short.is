@@ -37,3 +37,12 @@ main {
   background: var(--focus-ring);
   color: var(--light);
 }
+
+.vh {
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}

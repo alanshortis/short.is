@@ -14,13 +14,13 @@ const latestPosts = collection
 <Base pageTitle="Alan Shortis" description="My name is Alan Shortis and I am a web engineer">
   <div class="home">
     <Circles />
-    <div>
+    <section>
       <h1 class="home__title">My name is Alan Shortis and I am a web engineer</h1>
       <div class="home__posts">
         {latestPosts.map((post, idx) => <PostBox post={post} />)}
       </div>
       <a href="/writing" class="home__link">More writing &rarr;</a>
-    </div>
+    </section>
     <ReadingList />
   </div>
 </Base>

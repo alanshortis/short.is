@@ -9,8 +9,8 @@ const collection = await getCollection('reading');
   pageTitle="Alan Shortis | Reading"
   description="Things of note I have recently read, watched, or listened to"
 >
-  <article class="post">
-    <h1 class="post__title">Reading</h1>
+  <section class="post" aria-labelledby="reading">
+    <h1 id="reading" class="vh">Reading</h1>
     <div class="list">
       {
         collection.map((post, idx) => (
@@ -28,7 +28,7 @@ const collection = await getCollection('reading');
         ))
       }
     </div>
-  </article>
+  </section>
 </Base>
 
 <style lang="scss">
@@ -38,10 +38,6 @@ const collection = await getCollection('reading');
     display: flex;
     flex-direction: column;
     gap: var(--step-5);
-    &__title {
-      font-size: var(--step-5);
-      font-weight: bold;
-    }
   }
 
   .list {

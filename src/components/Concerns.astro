@@ -9,7 +9,7 @@ const { asComponent } = Astro.props;
 <div class="concerns">
   {
     asComponent ? (
-      <p class="concerns__explain">Each component contains its HTML, CSS, and JavaScript</p>
+      <p class="vh">Each component contains its HTML, CSS, and JavaScript</p>
       <div class="concerns__component" aria-hidden>
         <span class="concerns__label">HTML<br />CSS<br />JS</span>
       </div>
@@ -17,7 +17,7 @@ const { asComponent } = Astro.props;
         <span class="concerns__label">HTML<br />CSS<br />JS</span>
       </div>
     ) : (
-      <p class="concerns__explain">HTML, CSS, and JavaScript are kept separated</p>
+      <p class="vh">HTML, CSS, and JavaScript are kept separated</p>
       <div class="concerns__language" aria-hidden>
         <span class="concerns__label">HTML</span>
       </div>
@@ -67,9 +67,6 @@ const { asComponent } = Astro.props;
       width: 5em;
       height: 5em;
       @include concern;
-    }
-    &__explain {
-      @include visually-hidden;
     }
     &__label {
       text-align: center;
