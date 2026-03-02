@@ -5,4 +5,5 @@ export { default as ImposterIcon } from './Imposter.astro';
 export { default as InternetIcon } from './Internet.astro';
 export { default as NewYorkIcon } from './NewYork.astro';
 export { default as ObserverIcon } from './Observer.astro';
+export { default as ShareIcon } from './Share.astro';
 export { default as WebsiteIcon } from './Website.astro';

@@ -14,7 +14,7 @@ const { title, url } = Astro.props;
 
 <style lang="scss">
   .embed {
-    border: 1px solid var(--outline);
+    border: 1px solid var(--extreme);
     border-radius: var(--radius);
     display: flex;
     flex-direction: column;
@@ -35,6 +35,11 @@ const { title, url } = Astro.props;
       line-height: 1em;
       text-align: right;
       text-decoration: none;
+      &::after {
+        content: '↗';
+        font-size: var(--step--2);
+        margin-inline-start: calc(var(--step--2) / 2);
+      }
     }
   }
 </style>
