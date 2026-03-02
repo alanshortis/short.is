@@ -29,6 +29,7 @@
   --light: hsl(0, 0%, 95%);
   --dark: hsl(0, 0%, 5%);
 
+  --extreme: light-dark(hsl(0, 0%, 100%), hsl(0, 0%, 0%));
   --background: light-dark(var(--light), var(--dark));
   --foreground: light-dark(var(--dark), var(--light));
   --code-background: light-dark(hsla(0, 0%, 5%, 0.05), hsla(0, 0%, 95%, 0.125));

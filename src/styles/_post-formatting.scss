@@ -1,6 +1,6 @@
 .formatting {
   line-height: 1.618;
-  & * + :where(p, ol, ul, h2, figure, dl) {
+  & * + :where(p, ol, ul, h2, h3, figure, dl) {
     margin-top: 1lh;
   }
   a {
@@ -35,6 +35,13 @@
     padding-inline: 0.25em;
     position: relative;
     inset-block-start: -2px;
+  }
+  pre {
+    code,
+    span {
+      background-color: transparent;
+      border: 0;
+    }
   }
   ol,
   ul {

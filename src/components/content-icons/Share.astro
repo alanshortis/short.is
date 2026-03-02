@@ -1,0 +1,29 @@
+<div class="share">
+  <div class="share__edge"></div>
+  <div class="share__edge"></div>
+  <div class="share__edge"></div>
+</div>
+
+<style lang="scss">
+  .share {
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    position: relative;
+    width: var(--step-5);
+    display: flex;
+    gap: 0;
+    align-items: center;
+    justify-content: center;
+    &__edge {
+      border: 1px solid var(--foreground);
+      flex: 1 1 0;
+      height: 70%;
+      // transform: rotateX(45deg) rotateY(45deg);
+      transform: skewY(45deg);
+      &:nth-child(2) {
+        transform: skewY(-45deg);
+        border-inline: 0;
+      }
+    }
+  }
+</style>

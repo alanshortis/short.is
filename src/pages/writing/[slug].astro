@@ -1,7 +1,7 @@
 ---
 import { render, getCollection, type CollectionEntry } from 'astro:content';
 import Base from '../../layouts/base.astro';
-import { Disclaimer, PostDate, ContentIcon } from '../../components';
+import { Disclaimer, PostDate, ContentIcon, CodeBlock } from '../../components';
 
 interface Props {
   post: CollectionEntry<'posts'>;
@@ -39,7 +39,7 @@ const shouldShowWarning = postAgeYears <= -2;
           <Disclaimer>This post is more than {Math.abs(postAgeYears)} years old</Disclaimer>
         )
       }
-      <Content />
+      <Content components={{ pre: CodeBlock }} />
     </div>
   </article>
 </Base>

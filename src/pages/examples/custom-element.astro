@@ -1,0 +1,28 @@
+---
+import Example from '../../layouts/example.astro';
+---
+
+<Example pageTitle="Share button example" description="An example of a share button web component">
+  <div class="container">
+    <my-element></my-element>
+  </div>
+</Example>
+
+<script>
+  class MyElement extends HTMLElement {
+    connectedCallback() {
+      this.innerHTML = 'This is a <em>custom element</em>.';
+    }
+  }
+
+  customElements.define('my-element', MyElement);
+</script>
+
+<style lang="scss">
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+</style>
