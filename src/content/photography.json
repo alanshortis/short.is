@@ -6,7 +6,8 @@
       "camera": "Leica M10-P",
       "lens": "Leica Summicron 50mm f/2.0",
       "film": "Ilford Delta 3200",
-      "altText": "Alt Text 2"
+      "altText": "Alt Text 2",
+      "ratio": "1 / 1"
     }
   ],
   "2025": [
@@ -16,7 +17,8 @@
       "camera": "Leica M6",
       "lens": "Leica Summicron-M 35mm f/2.0 ASPH",
       "film": "Kodak Portra 400",
-      "altText": "Alt Text 1"
+      "altText": "Alt Text 1",
+      "ratio": "3 / 2"
     }
   ],
   "2026": [
@@ -26,7 +28,8 @@
       "camera": "Leica M6",
       "lens": "Leica Summicron-M 35mm f/2.0 ASPH",
       "film": "Kodak Portra 400",
-      "altText": "Alt Text 1"
+      "altText": "Alt Text 1",
+      "ratio": "2 / 3"
     },
     {
       "name": "2",
@@ -34,7 +37,8 @@
       "camera": "Leica M10-P",
       "lens": "Leica Summicron 50mm f/2.0",
       "film": "Ilford Delta 3200",
-      "altText": "Alt Text 2"
+      "altText": "Alt Text 2",
+      "ratio": "7 / 6"
     }
   ]
 }

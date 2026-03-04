@@ -15,6 +15,7 @@ const photographySchema = z.array(
     lens: lenses.optional(),
     film: film.optional(),
     altText: z.string(),
+    ratio: z.enum(['1 / 1', '3 / 2', '2 / 3', '7 / 6', '6 / 7']),
   })
 );
 
