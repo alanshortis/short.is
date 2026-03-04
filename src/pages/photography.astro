@@ -16,7 +16,7 @@ const collection = await getCollection('photography').then(c =>
           <li class="year">
             <h2 class="year__title">{photoYear.id}</h2>
             <ul>
-              {photoYear.data.map(photo => (
+              {photoYear.data.photos.map(photo => (
                 <li>
                   {photo.name}, {photo.location}, {photo.camera}, {photo.lens}, {photo.film}
                 </li>

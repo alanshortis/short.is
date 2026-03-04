@@ -1,28 +1,6 @@
 import { defineCollection, z } from 'astro:content';
 import { file } from 'astro/loaders';
-
-const cameras = z.enum(['Leica M6', 'Leica M10 Monochrom', 'Leica M10-P', 'Leica M-D', 'Fujifilm GW670ii']);
-
-const lenses = z.enum(['Leica Summicron-M 35mm f/2.0 ASPH', 'Leica Summicron 50mm f/2.0']);
-
-const film = z.enum(['Kodak Portra 400', 'Ilford Delta 3200']);
-
-const photographySchema = z.array(
-  z.object({
-    name: z.string(),
-    location: z.string(),
-    camera: cameras,
-    lens: lenses.optional(),
-    film: film.optional(),
-    altText: z.string(),
-    ratio: z.enum(['1 / 1', '3 / 2', '2 / 3', '7 / 6', '6 / 7']),
-  })
-);
-
-const photography = defineCollection({
-  loader: file('src/content/photography.json'),
-  schema: () => photographySchema,
-});
+import { Camera, Lens, Film, Ratio, photographyData } from './photography';
 
 const posts = defineCollection({
   type: 'content',
@@ -54,6 +32,24 @@ const reading = defineCollection({
       slug: z.string().url(),
       title: z.string(),
       author: z.string(),
+    }),
+});
+
+const photography = defineCollection({
+  loader: async () => photographyData,
+  schema: () =>
+    z.object({
+      photos: z.array(
+        z.object({
+          name: z.string(),
+          location: z.string(),
+          camera: z.nativeEnum(Camera),
+          lens: z.nativeEnum(Lens).optional(),
+          film: z.nativeEnum(Film).optional(),
+          altText: z.string(),
+          ratio: z.nativeEnum(Ratio),
+        })
+      ),
     }),
 });
 
