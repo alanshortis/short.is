@@ -1,7 +1,6 @@
 ---
 import Base from '../layouts/base.astro';
 import { getCollection } from 'astro:content';
-
 const collection = await getCollection('photography').then(c =>
   c.sort((a, b) => Number(b.id) - Number(a.id))
 );
@@ -15,13 +14,22 @@ const collection = await getCollection('photography').then(c =>
         collection.map(photoYear => (
           <li class="year">
             <h2 class="year__title">{photoYear.id}</h2>
-            <ul>
-              {photoYear.data.photos.map(photo => (
-                <li>
-                  {photo.name}, {photo.location}, {photo.camera}, {photo.lens}, {photo.film}
-                </li>
-              ))}
-            </ul>
+            <div class="photos">
+              <div class="photos__col">
+                {photoYear.data.photos
+                  .filter((_, i) => i % 2 === 0)
+                  .map(photo => (
+                    <div class="photos__photo" style={`--ratio: ${photo.ratio}`} />
+                  ))}
+              </div>
+              <div class="photos__col">
+                {photoYear.data.photos
+                  .filter((_, i) => i % 2 === 1)
+                  .map(photo => (
+                    <div class="photos__photo" style={`--ratio: ${photo.ratio}`} />
+                  ))}
+              </div>
+            </div>
           </li>
         ))
       }
@@ -39,11 +47,41 @@ const collection = await getCollection('photography').then(c =>
   }
 
   .year {
-    block-size: 100%;
     min-block-size: 100vh;
     &__title {
       font-size: var(--step-5);
       font-weight: bold;
+    }
+  }
+
+  .photos {
+    display: flex;
+    gap: var(--space);
+    @include medium {
+      flex-direction: column;
+    }
+    &__col {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      justify-content: center;
+      gap: var(--space);
+      &:first-child {
+        align-items: end;
+      }
+    }
+    &__photo {
+      aspect-ratio: var(--ratio);
+      background-color: var(--divider);
+      border-radius: var(--radius);
+      max-inline-size: 100%;
+      inline-size: 60%;
+      // 3 / 2 is the widest photo ratio
+      // 70% is the widest we want to render an image
+      inline-size: calc(sqrt(var(--ratio)) / sqrt(3 / 2) * 70%);
+      @include medium {
+        inline-size: 100%;
+      }
     }
   }
 </style>
