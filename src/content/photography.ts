@@ -1,4 +1,5 @@
 export const Camera = {
+  NIKON: 'Nikon D70',
   M6: 'Leica M6',
   M10M: 'Leica M10 Monochrom',
   M10P: 'Leica M10-P',
@@ -9,6 +10,7 @@ export const Camera = {
 export const Lens = {
   Summicron35: 'Leica Summicron-M 35mm f/2.0 ASPH',
   Summicron50: 'Leica Summicron 50mm f/2.0',
+  Sigma1870: 'Sigma 18-70mm f/3.5-4.5',
 } as const;
 
 export const Film = {
@@ -199,6 +201,65 @@ export const photographyData: PhotoYear[] = [
         camera: Camera.M10P,
         altText: 'Alt Text 6',
         ratio: Ratio.L35,
+      },
+    ],
+  },
+  {
+    id: '2007',
+    photos: [
+      {
+        name: '2',
+        location: 'London',
+        camera: Camera.NIKON,
+        lens: Lens.Sigma1870,
+        film: Film.Portra400,
+        altText: 'Alt Text 1',
+        ratio: Ratio.P35,
+      },
+      {
+        name: '1',
+        location: 'London',
+        camera: Camera.NIKON,
+        lens: Lens.Sigma1870,
+        film: Film.Portra400,
+        altText: 'Alt Text 1',
+        ratio: Ratio.L35,
+      },
+      {
+        name: '3',
+        location: 'London',
+        camera: Camera.NIKON,
+        lens: Lens.Sigma1870,
+        film: Film.Portra400,
+        altText: 'Alt Text 1',
+        ratio: Ratio.L35,
+      },
+      {
+        name: '4',
+        location: 'London',
+        camera: Camera.NIKON,
+        lens: Lens.Sigma1870,
+        film: Film.Portra400,
+        altText: 'Alt Text 1',
+        ratio: Ratio.P35,
+      },
+      {
+        name: '5',
+        location: 'London',
+        camera: Camera.NIKON,
+        lens: Lens.Sigma1870,
+        film: Film.Portra400,
+        altText: 'Alt Text 1',
+        ratio: Ratio.P35,
+      },
+      {
+        name: '6',
+        location: 'London',
+        camera: Camera.NIKON,
+        lens: Lens.Sigma1870,
+        film: Film.Portra400,
+        altText: 'Alt Text 1',
+        ratio: Ratio.P35,
       },
     ],
   },
