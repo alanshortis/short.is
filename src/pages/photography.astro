@@ -4,6 +4,8 @@ import { getCollection } from 'astro:content';
 const collection = await getCollection('photography').then(c =>
   c.sort((a, b) => Number(b.id) - Number(a.id))
 );
+
+const S3 = import.meta.env.S3;
 ---
 
 <Base pageTitle="Alan Shortis | Photography" description="Photographs over the last 20 years">
@@ -19,14 +21,14 @@ const collection = await getCollection('photography').then(c =>
                 {photoYear.data.photos
                   .filter((_, i) => i % 2 === 0)
                   .map(photo => (
-                    <div class="photos__photo" style={`--ratio: ${photo.ratio}`} />
+                    <img src={`${S3}${photo.name}`} class="photos__photo" style={`--ratio: ${photo.ratio}`} />
                   ))}
               </div>
               <div class="photos__col">
                 {photoYear.data.photos
                   .filter((_, i) => i % 2 === 1)
                   .map(photo => (
-                    <div class="photos__photo" style={`--ratio: ${photo.ratio}`} />
+                    <img src={`${S3}${photo.name}`} class="photos__photo" style={`--ratio: ${photo.ratio}`} />
                   ))}
               </div>
             </div>
