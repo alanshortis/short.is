@@ -3,8 +3,6 @@ set -euo pipefail
 
 # awscli, imagemagick
 
-WIDTH=1600
-
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 SOURCE="$ROOT/photos"
@@ -29,18 +27,29 @@ echo ""
 CONVERTED=0
 SKIPPED=0
 
+VARIANTS=("820:" "1640:-2x")
+
 while read -r file; do
-  output="${file%.*}.avif"
+  base="${file%.*}"
+  skipped_this=true
 
-  if [ -f "$output" ] && [ "$output" -nt "$file" ]; then
+  for variant in "${VARIANTS[@]}"; do
+    width="${variant%%:*}"
+    suffix="${variant#*:}"
+    output="${base}${suffix}.avif"
+
+    if [ ! -f "$output" ] || [ "$file" -nt "$output" ]; then
+      magick "$file" -resize "${width}x${width}>" -quality "75" -strip "$output"
+      echo "  📷 $(basename "$output")"
+      skipped_this=false
+    fi
+  done
+
+  if [ "$skipped_this" = true ]; then
     SKIPPED=$((SKIPPED + 1))
-    continue
+  else
+    CONVERTED=$((CONVERTED + 1))
   fi
-
-  magick "$file" -resize "${WIDTH}x${WIDTH}>" -quality "75" -strip "$output"
-  size=$(stat -f%z "$output")
-  echo "  📷  $(basename "$output")"
-  CONVERTED=$((CONVERTED + 1))
 done < <(find "$SOURCE" "${FIND_PATTERN[@]}")
 
 echo ""
