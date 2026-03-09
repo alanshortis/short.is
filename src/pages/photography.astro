@@ -17,20 +17,22 @@ const S3 = import.meta.env.S3;
           <li class="year">
             <h2 class="year__title">{photoYear.id}</h2>
             <div class="photos">
-              <div class="photos__col">
-                {photoYear.data.photos
-                  .filter((_, i) => i % 2 === 0)
-                  .map(photo => (
-                    <img src={`${S3}${photo.name}`} class="photos__photo" style={`--ratio: ${photo.ratio}`} />
-                  ))}
-              </div>
-              <div class="photos__col">
-                {photoYear.data.photos
-                  .filter((_, i) => i % 2 === 1)
-                  .map(photo => (
-                    <img src={`${S3}${photo.name}`} class="photos__photo" style={`--ratio: ${photo.ratio}`} />
-                  ))}
-              </div>
+              {[0, 1].map(col => (
+                <div class="photos__col">
+                  {photoYear.data.photos
+                    .filter((_, i) => i % 2 === col)
+                    .map(photo => (
+                      <img
+                        src={`${S3}${photo.name}.avif`}
+                        srcset={`${S3}${photo.name}-2x.avif 2x, ${S3}${photo.name}.avif 1x`}
+                        class="photos__photo"
+                        alt={photo.altText}
+                        style={`--ratio: ${photo.ratio}`}
+                        loading="lazy"
+                      />
+                    ))}
+                </div>
+              ))}
             </div>
           </li>
         ))
@@ -72,13 +74,12 @@ const S3 = import.meta.env.S3;
     }
     &__photo {
       aspect-ratio: var(--ratio);
-      background-color: var(--divider);
       border-radius: var(--radius);
       max-inline-size: 100%;
       inline-size: 60%;
       // 3 / 2 is the widest photo ratio
       // 70% is the widest we want to render an image
-      inline-size: calc(sqrt(var(--ratio)) / sqrt(3 / 2) * 70%);
+      inline-size: calc(sqrt(var(--ratio)) / sqrt(3 / 2) * 80%);
       @include medium {
         inline-size: 100%;
       }
