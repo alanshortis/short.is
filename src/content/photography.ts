@@ -49,24 +49,7 @@ export const photographyData: PhotoYear[] = [
     id: '2007',
     photos: [
       {
-        name: '20070414-221739',
-        location: 'London',
-        camera: Camera.NIKON,
-        lens: Lens.Sigma1870,
-        altText: '',
-        ratio: Ratio.P35,
-      },
-      {
         name: '20070414-221349',
-        location: 'London',
-        camera: Camera.NIKON,
-        lens: Lens.Sigma1870,
-        altText: '',
-        ratio: Ratio.L35,
-      },
-
-      {
-        name: '20070125-221414',
         location: 'London',
         camera: Camera.NIKON,
         lens: Lens.Sigma1870,
@@ -90,6 +73,14 @@ export const photographyData: PhotoYear[] = [
         ratio: Ratio.P35,
       },
       {
+        name: '20070125-221414',
+        location: 'London',
+        camera: Camera.NIKON,
+        lens: Lens.Sigma1870,
+        altText: '',
+        ratio: Ratio.L35,
+      },
+      {
         name: '20070125-221032',
         location: 'London',
         camera: Camera.NIKON,
@@ -106,14 +97,6 @@ export const photographyData: PhotoYear[] = [
         ratio: Ratio.P35,
       },
       {
-        name: '20070414-223407',
-        location: 'London',
-        camera: Camera.NIKON,
-        lens: Lens.Sigma1870,
-        altText: '',
-        ratio: Ratio.L35,
-      },
-      {
         name: '20070922-231735',
         location: 'London',
         camera: Camera.NIKON,
@@ -128,6 +111,14 @@ export const photographyData: PhotoYear[] = [
         lens: Lens.Sigma1870,
         altText: '',
         ratio: Ratio.P35,
+      },
+      {
+        name: '20070414-223407',
+        location: 'London',
+        camera: Camera.NIKON,
+        lens: Lens.Sigma1870,
+        altText: '',
+        ratio: Ratio.L35,
       },
     ],
   },
