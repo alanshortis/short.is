@@ -17,29 +17,29 @@ export AWS_SECRET_ACCESS_KEY
 FILE_COUNT=$(find "$SOURCE" "${FIND_PATTERN[@]}" | wc -l | tr -d ' ')
 
 if [ "$FILE_COUNT" -eq 0 ]; then
-  echo "No source images to convert."
+  echo "😨 Nothing to convert"
   exit 0
 fi
 
-echo "🏗️  Converting $FILE_COUNT image(s) to avif..."
+echo "ℹ️  Converting $FILE_COUNT image(s) to avif..."
 echo ""
 
 CONVERTED=0
 SKIPPED=0
 
-VARIANTS=("820:" "1640:-2x")
+VARIANTS=("700:" "1400:-2x" "2800:-4x")
 
 while read -r file; do
   base="${file%.*}"
   skipped_this=true
 
   for variant in "${VARIANTS[@]}"; do
-    width="${variant%%:*}"
+    size="${variant%%:*}"
     suffix="${variant#*:}"
     output="${base}${suffix}.avif"
 
     if [ ! -f "$output" ] || [ "$file" -nt "$output" ]; then
-      magick "$file" -resize "${width}x${width}>" -quality "75" -strip "$output"
+      magick "$file" -auto-orient -resize "${size}x${size}>" -quality "75" -strip "$output"
       echo "  📷 $(basename "$output")"
       skipped_this=false
     fi
@@ -62,44 +62,21 @@ while read -r f; do
 done < <(find "$SOURCE" -type f -iname "*.avif")
 
 if [ ${#AVIF_FILES[@]} -eq 0 ]; then
-  echo "No AVIF files to upload."
+  echo "😨 Nothing to upload"
   exit 0
 fi
 
-echo "🔍 Checking ${#AVIF_FILES[@]} AVIF file(s) against S3..."
+echo "📤 Uploading ${#AVIF_FILES[@]} AVIF file(s) to S3..."
 echo ""
 
-EXISTING_KEYS=$(aws s3api list-objects-v2 \
-  --bucket "$BUCKET" \
-  --region "$REGION" \
-  --query "Contents[].Key" \
-  --output text 2>/dev/null || true)
-
 UPLOADED=0
-EXISTED=0
-EXISTED_NAMES=()
 
 for file in "${AVIF_FILES[@]}"; do
   key="${file#$SOURCE/}"
-
-  if echo "$EXISTING_KEYS" | tr '\t' '\n' | grep -qxF "$key"; then
-    EXISTED=$((EXISTED + 1))
-    EXISTED_NAMES+=("$key")
-  else
-    aws s3 cp "$file" "s3://$BUCKET/$key" --region "$REGION" > /dev/null
-    echo "  ✅ Uploaded $key"
-    UPLOADED=$((UPLOADED + 1))
-  fi
+  aws s3 cp "$file" "s3://$BUCKET/$key" --region "$REGION" > /dev/null
+  echo "  ✅ Uploaded $key"
+  UPLOADED=$((UPLOADED + 1))
 done
 
-if [ ${#EXISTED_NAMES[@]} -gt 0 ]; then
-  echo "😨 ${#EXISTED_NAMES[@]} file(s) already exist in S3 (not overwritten):"
-  for name in "${EXISTED_NAMES[@]}"; do
-    echo "   📷 $name"
-  done
-  echo ""
-fi
-
 echo ""
-echo "🎉 $UPLOADED new photo(s) synced"
-echo "🤔 $EXISTED files already in S3"
+echo "🎉 $UPLOADED photo(s) synced"
