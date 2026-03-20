@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/base.astro';
+import { PhotoLightbox } from '../components';
 import { getCollection } from 'astro:content';
 const collection = await getCollection('photography').then(c =>
   c.sort((a, b) => Number(b.id) - Number(a.id))
@@ -16,24 +17,34 @@ const S3 = import.meta.env.S3;
         collection.map(photoYear => (
           <li class="year">
             <h2 class="year__title">{photoYear.id}</h2>
-            <div class="photos">
-              {[0, 1].map(col => (
-                <div class="photos__col">
-                  {photoYear.data.photos
-                    .filter((_, i) => i % 2 === col)
-                    .map(photo => (
-                      <img
-                        src={`${S3}${photo.name}.avif`}
-                        srcset={`${S3}${photo.name}-2x.avif 2x, ${S3}${photo.name}.avif 1x`}
-                        class="photos__photo"
-                        alt={photo.altText}
-                        style={`--ratio: ${photo.ratio}`}
-                        loading="lazy"
-                      />
-                    ))}
-                </div>
-              ))}
-            </div>
+            <PhotoLightbox>
+              <div class="photos">
+                {[0, 1].map(col => (
+                  <div class="photos__col">
+                    {photoYear.data.photos
+                      .filter((_, i) => i % 2 === col)
+                      .map(photo => (
+                        <a
+                          href={`#${photo.name}`}
+                          data-photo-name={photo.name}
+                          data-photo-ratio={photo.ratio}
+                          data-photo-alt={photo.altText}
+                          class="photos__photo-link"
+                          style={`--ratio: ${photo.ratio}`}
+                        >
+                          <img
+                            src={`${S3}${photo.name}.avif`}
+                            srcset={`${S3}${photo.name}-2x.avif 2x, ${S3}${photo.name}.avif 1x`}
+                            class="photos__photo"
+                            alt={photo.altText}
+                            loading="lazy"
+                          />
+                        </a>
+                      ))}
+                  </div>
+                ))}
+              </div>
+            </PhotoLightbox>
           </li>
         ))
       }
@@ -72,17 +83,22 @@ const S3 = import.meta.env.S3;
         align-items: end;
       }
     }
+    &__photo-link {
+      // 3 / 2 is the widest photo ratio
+      // 80% is the widest we want to render an image
+      inline-size: calc(sqrt(var(--ratio)) / sqrt(3 / 2) * 80%);
+      &:focus-visible {
+        @include focus-outline;
+      }
+      @include medium {
+        align-self: center;
+        inline-size: calc(sqrt(var(--ratio)) / sqrt(3 / 2) * 100%);
+      }
+    }
     &__photo {
       aspect-ratio: var(--ratio);
       border-radius: var(--radius);
-      max-inline-size: 100%;
-      inline-size: 60%;
-      // 3 / 2 is the widest photo ratio
-      // 70% is the widest we want to render an image
-      inline-size: calc(sqrt(var(--ratio)) / sqrt(3 / 2) * 80%);
-      @include medium {
-        inline-size: 100%;
-      }
+      inline-size: 100%;
     }
   }
 </style>

@@ -11,4 +11,5 @@ export { default as Menu } from './Menu.astro';
 export { default as PostBox } from './PostBox.astro';
 export { default as PostDate } from './PostDate.astro';
 export { default as ReadingList } from './ReadingList.astro';
+export { default as PhotoLightbox } from './PhotoLightbox.astro';
 export { default as SchemeToggle } from './SchemeToggle.astro';
