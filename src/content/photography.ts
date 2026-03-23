@@ -11,6 +11,7 @@ export const Camera = {
 export const Lens = {
   Summicron35: 'Leica Summicron-M 35mm f/2.0 ASPH',
   Summicron50: 'Leica Summicron 50mm f/2.0',
+  Elmarit90: 'Leica Elmarit-M 90mm f/2.8',
   Sigma1870: 'Sigma 18-70mm f/3.5-4.5',
 } as const;
 
@@ -102,14 +103,6 @@ export const photographyData: PhotoYear[] = [
         ratio: Ratio.P35,
       },
       {
-        name: '20250904-142429',
-        location: 'Hoh Rainforest',
-        camera: Camera.M10P,
-        lens: Lens.Summicron35,
-        altText: '',
-        ratio: Ratio.P35,
-      },
-      {
         name: '20250903-163444',
         location: 'Cannon Beach',
         camera: Camera.M10P,
@@ -124,6 +117,22 @@ export const photographyData: PhotoYear[] = [
         lens: Lens.Summicron35,
         altText: '',
         ratio: Ratio.L35,
+      },
+      {
+        name: '20250904-142429',
+        location: 'Hoh Rainforest',
+        camera: Camera.M10P,
+        lens: Lens.Summicron35,
+        altText: '',
+        ratio: Ratio.P35,
+      },
+      {
+        name: '20250524-002519',
+        location: 'New York',
+        camera: Camera.M10P,
+        lens: Lens.Summicron35,
+        altText: '',
+        ratio: Ratio.P35,
       },
       {
         name: '20250902-130538',
@@ -158,7 +167,7 @@ export const photographyData: PhotoYear[] = [
         ratio: Ratio.L35,
       },
       {
-        name: '20250524-002519',
+        name: '20250330-011631',
         location: 'New York',
         camera: Camera.M10P,
         lens: Lens.Summicron35,
@@ -198,6 +207,22 @@ export const photographyData: PhotoYear[] = [
         ratio: Ratio.P35,
       },
       {
+        name: '20250905-195841',
+        location: 'Seattle',
+        camera: Camera.M10P,
+        lens: Lens.Summicron35,
+        altText: '',
+        ratio: Ratio.L35,
+      },
+      {
+        name: '20250903-013800',
+        location: 'New York',
+        camera: Camera.M10P,
+        lens: Lens.Summicron35,
+        altText: '',
+        ratio: Ratio.P35,
+      },
+      {
         name: '20250331-181501',
         location: 'New York',
         camera: Camera.M10P,
@@ -208,6 +233,14 @@ export const photographyData: PhotoYear[] = [
       {
         name: '20250326-001633',
         location: 'New York',
+        camera: Camera.M10P,
+        lens: Lens.Summicron35,
+        altText: '',
+        ratio: Ratio.L35,
+      },
+      {
+        name: '20250904-201705',
+        location: 'Hurricane Ridge',
         camera: Camera.M10P,
         lens: Lens.Summicron35,
         altText: '',
@@ -239,7 +272,6 @@ export const photographyData: PhotoYear[] = [
       },
     ],
   },
-
   {
     id: '2024',
     photos: [
@@ -308,20 +340,20 @@ export const photographyData: PhotoYear[] = [
         ratio: Ratio.L35,
       },
       {
-        name: '20241117-233816',
-        location: 'Atlanta',
-        camera: Camera.MD,
-        lens: Lens.Summicron50,
-        altText: '',
-        ratio: Ratio.P35,
-      },
-      {
         name: '20240621-193850',
         location: 'New York',
         camera: Camera.MD,
         lens: Lens.Summicron50,
         altText: '',
         ratio: Ratio.L35,
+      },
+      {
+        name: '20241117-233816',
+        location: 'Atlanta',
+        camera: Camera.MD,
+        lens: Lens.Summicron50,
+        altText: '',
+        ratio: Ratio.P35,
       },
       {
         name: '20241116-000914',
@@ -341,7 +373,83 @@ export const photographyData: PhotoYear[] = [
       },
     ],
   },
-
+  {
+    id: '2023',
+    photos: [
+      {
+        name: '20260311-202827',
+        location: 'Chicago',
+        camera: Camera.M6,
+        lens: Lens.Summicron50,
+        altText: '',
+        ratio: Ratio.P35,
+        film: Film.Delta3200,
+      },
+      {
+        name: '20260311-202842',
+        location: 'Chicago',
+        camera: Camera.M6,
+        lens: Lens.Summicron50,
+        altText: '',
+        ratio: Ratio.L35,
+        film: Film.Delta3200,
+      },
+      {
+        name: '20260311-204328',
+        location: 'Chicago',
+        camera: Camera.M6,
+        lens: Lens.Summicron50,
+        altText: '',
+        ratio: Ratio.L35,
+        film: Film.Delta3200,
+      },
+      {
+        name: '20260311-203022',
+        location: 'Chicago',
+        camera: Camera.M6,
+        lens: Lens.Summicron50,
+        altText: '',
+        ratio: Ratio.P35,
+        film: Film.Delta3200,
+      },
+      {
+        name: '20260311-203323',
+        location: 'Chicago',
+        camera: Camera.M6,
+        lens: Lens.Summicron50,
+        altText: '',
+        ratio: Ratio.P35,
+        film: Film.Delta3200,
+      },
+      {
+        name: '20260311-204028',
+        location: 'Chicago',
+        camera: Camera.M6,
+        lens: Lens.Summicron50,
+        altText: '',
+        ratio: Ratio.P35,
+        film: Film.Delta3200,
+      },
+      {
+        name: '20260311-204202',
+        location: 'Chicago',
+        camera: Camera.M6,
+        lens: Lens.Summicron50,
+        altText: '',
+        ratio: Ratio.P35,
+        film: Film.Delta3200,
+      },
+      {
+        name: '20260311-204238',
+        location: 'Chicago',
+        camera: Camera.M6,
+        lens: Lens.Summicron50,
+        altText: '',
+        ratio: Ratio.L35,
+        film: Film.Delta3200,
+      },
+    ],
+  },
   {
     id: '2007',
     photos: [
