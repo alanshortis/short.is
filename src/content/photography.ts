@@ -50,7 +50,7 @@ export const photographyData: PhotoYear[] = [
     id: '2026',
     photos: [
       {
-        name: '20260321-120507',
+        name: '20260321-141757',
         location: 'London',
         camera: Camera.M10P,
         lens: Lens.Summicron35,
@@ -64,6 +64,22 @@ export const photographyData: PhotoYear[] = [
         lens: Lens.Summicron35,
         altText: '',
         ratio: Ratio.P35,
+      },
+      {
+        name: '20260321-120507',
+        location: 'London',
+        camera: Camera.M10P,
+        lens: Lens.Summicron35,
+        altText: '',
+        ratio: Ratio.L35,
+      },
+      {
+        name: '20260104-201700',
+        location: 'New York',
+        camera: Camera.M10M,
+        lens: Lens.Summicron35,
+        altText: '',
+        ratio: Ratio.L35,
       },
       {
         name: '20260107-153946',
@@ -80,14 +96,6 @@ export const photographyData: PhotoYear[] = [
         lens: Lens.Summicron35,
         altText: '',
         ratio: Ratio.P35,
-      },
-      {
-        name: '20260104-201700',
-        location: 'New York',
-        camera: Camera.M10M,
-        lens: Lens.Summicron35,
-        altText: '',
-        ratio: Ratio.L35,
       },
     ],
   },
