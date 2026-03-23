@@ -31,15 +31,10 @@ const S3 = import.meta.env.S3;
       this.currentIndex = index;
       const photo = this.photos[index];
 
-      const [w, h] = photo.ratio.split('/').map(Number);
-      const isLandscape = w >= h;
-
       this.img.src = `${this.s3}${photo.name}-2x.avif`;
       this.img.srcset = `${this.s3}${photo.name}-4x.avif 2x`;
       this.img.alt = photo.alt;
       this.img.style.aspectRatio = photo.ratio;
-      this.img.style.width = isLandscape ? '1440px' : 'auto';
-      this.img.style.height = isLandscape ? 'auto' : '1440px';
 
       history.replaceState(null, '', `#${photo.name}`);
 
@@ -60,16 +55,37 @@ const S3 = import.meta.env.S3;
     }
 
     close() {
-      document.documentElement.style.overflow = '';
-      this.dialog.close();
-      this.img.src = '';
-      this.img.srcset = '';
-      this.img.alt = '';
-      this.img.style.aspectRatio = '';
-      this.img.style.width = '';
-      this.img.style.height = '';
-      history.replaceState(null, '', location.pathname);
-      this.currentIndex = -1;
+      this.dialog.classList.add('closing');
+      this.dialog.addEventListener(
+        'transitionend',
+        () => {
+          this.dialog.classList.remove('closing');
+          document.documentElement.style.overflow = '';
+          this.dialog.close();
+          this.img.src = '';
+          this.img.srcset = '';
+          this.img.alt = '';
+          this.img.style.aspectRatio = '';
+          history.replaceState(null, '', location.pathname);
+          this.currentIndex = -1;
+        },
+        { once: true }
+      );
+    }
+
+    preload(index: number) {
+      const photo = this.photos[index];
+      const id = `preload-${photo.name}`;
+      if (document.getElementById(id)) return;
+
+      const link = document.createElement('link');
+      link.id = id;
+      link.rel = 'preload';
+      link.as = 'image';
+      link.type = 'image/avif';
+      link.href = `${this.s3}${photo.name}-2x.avif`;
+      link.imageSrcset = `${this.s3}${photo.name}-4x.avif 2x`;
+      document.head.appendChild(link);
     }
 
     connectedCallback() {
@@ -90,6 +106,11 @@ const S3 = import.meta.env.S3;
             this.open(i);
           },
           { signal }
+        );
+        a.addEventListener(
+          'pointerenter',
+          () => this.preload(i),
+          { signal, once: true }
         );
       });
 
@@ -128,40 +149,55 @@ const S3 = import.meta.env.S3;
   @use '../styles/mixins' as *;
 
   .lightbox {
-    position: relative;
+    backdrop-filter: blur(10px);
+    background: var(--backdrop);
     border: 0;
+    height: 100vh;
+    inset: 0;
+    margin: 0;
+    max-height: none;
+    max-width: none;
     outline: none;
     padding: 0;
+    opacity: 0;
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: calc(var(--radius) * 2);
-    background-color: transparent;
-    overflow: hidden;
+    transition: opacity 200ms ease;
+    width: 100vw;
+    &[open] {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      opacity: 1;
+      @starting-style {
+        opacity: 0;
+      }
+    }
+    &.closing {
+      opacity: 0;
+    }
     &::backdrop {
-      background: var(--backdrop);
-      backdrop-filter: blur(10px);
+      display: none;
     }
     &__img {
+      border-radius: calc(var(--radius) * 2);
       display: block;
-      max-width: calc(100vw - var(--space) * 4);
-      max-height: calc(100vh - var(--space) * 4);
-      object-fit: contain;
+      max-width: min(1440px, calc(100vw - var(--space) * 4));
+      max-height: min(1440px, calc(100vh - var(--space) * 4));
       @include medium {
+        border-radius: 0;
         max-width: 100vw;
         max-height: 100vh;
       }
     }
     &__close {
-      position: absolute;
-      top: calc(var(--space) / 2);
-      right: calc(var(--space) / 2);
-      color: var(--foreground);
-      background: var(--backdrop);
       backdrop-filter: blur(10px);
-      padding: calc(var(--space) / 4);
+      background: var(--backdrop);
       border-radius: var(--radius);
+      color: var(--foreground);
+      padding: calc(var(--space) / 4);
+      position: absolute;
+      right: calc(var(--space) / 2);
+      top: calc(var(--space) / 2);
       @include label;
     }
   }
