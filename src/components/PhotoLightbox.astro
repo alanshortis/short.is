@@ -5,7 +5,7 @@ const S3 = import.meta.env.S3;
 <photo-lightbox data-s3={S3}>
   <slot />
   <dialog class="lightbox">
-    <button class="lightbox__close" aria-label="Close">Close</button>
+    <button class="lightbox__close">Close</button>
     <img class="lightbox__img" alt="" />
   </dialog>
 </photo-lightbox>
@@ -83,8 +83,7 @@ const S3 = import.meta.env.S3;
       link.rel = 'preload';
       link.as = 'image';
       link.type = 'image/avif';
-      link.href = `${this.s3}${photo.name}-2x.avif`;
-      link.imageSrcset = `${this.s3}${photo.name}-4x.avif 2x`;
+      link.href = `${this.s3}${photo.name}-4x.avif`;
       document.head.appendChild(link);
     }
 
@@ -107,11 +106,7 @@ const S3 = import.meta.env.S3;
           },
           { signal }
         );
-        a.addEventListener(
-          'pointerenter',
-          () => this.preload(i),
-          { signal, once: true }
-        );
+        a.addEventListener('pointerenter', () => this.preload(i), { signal, once: true });
       });
 
       this.dialog.addEventListener(
@@ -180,6 +175,7 @@ const S3 = import.meta.env.S3;
     }
     &__img {
       border-radius: calc(var(--radius) * 2);
+      box-shadow: 0 0 var(--space--large) 0 var(--background);
       display: block;
       max-width: min(1440px, calc(100vw - var(--space) * 4));
       max-height: min(1440px, calc(100vh - var(--space) * 4));
