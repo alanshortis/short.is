@@ -21,7 +21,7 @@ if [ "$FILE_COUNT" -eq 0 ]; then
   exit 0
 fi
 
-echo "ℹ️  Converting $FILE_COUNT image(s) to avif..."
+echo "ℹ️  Converting to avif..."
 echo ""
 
 CONVERTED=0
@@ -33,10 +33,19 @@ while read -r file; do
   base="${file%.*}"
   skipped_this=true
 
+  dims=$(magick identify -format "%wx%h" "$file")
+  w="${dims%x*}"
+  h="${dims#*x}"
+
   for variant in "${VARIANTS[@]}"; do
     size="${variant%%:*}"
     suffix="${variant#*:}"
     output="${base}${suffix}.avif"
+
+    # Square images are 20% smaller
+    if [ "$w" -eq "$h" ]; then
+      size=$(( size * 80 / 100 ))
+    fi
 
     if [ ! -f "$output" ] || [ "$file" -nt "$output" ]; then
       magick "$file" -auto-orient -resize "${size}x${size}>" -quality "75" -strip "$output"
@@ -66,7 +75,7 @@ if [ ${#AVIF_FILES[@]} -eq 0 ]; then
   exit 0
 fi
 
-echo "📤 Uploading ${#AVIF_FILES[@]} AVIF file(s) to S3..."
+echo "📤 Uploading ${#AVIF_FILES[@]} AVIFs to S3..."
 echo ""
 
 UPLOADED=0
