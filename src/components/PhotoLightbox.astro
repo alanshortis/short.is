@@ -144,8 +144,7 @@ const S3 = import.meta.env.S3;
   @use '../styles/mixins' as *;
 
   .lightbox {
-    backdrop-filter: blur(10px);
-    background: var(--backdrop);
+    @include backdrop;
     border: 0;
     height: 100vh;
     inset: 0;
