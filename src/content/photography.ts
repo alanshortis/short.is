@@ -6,6 +6,8 @@ export const Camera = {
   M10P: 'Leica M10-P',
   MD: 'Leica M-D',
   GW670: 'Fujifilm GW670ii',
+  HolgaSF: 'Holga 120SF',
+  HolgaTLR: 'Holga 120TLR',
 } as const;
 
 export const Lens = {
@@ -455,6 +457,72 @@ export const photographyData: PhotoYear[] = [
         altText: '',
         ratio: Ratio.L35,
         film: Film.Delta3200,
+      },
+    ],
+  },
+  {
+    id: '2022',
+    photos: [
+      {
+        name: '20260326-152755',
+        location: 'New York',
+        camera: Camera.GW670,
+        altText: '',
+        ratio: Ratio.L67,
+      },
+      {
+        name: '20260326-152858',
+        location: 'New York',
+        camera: Camera.GW670,
+        altText: '',
+        ratio: Ratio.P67,
+      },
+      {
+        name: '20260326-153144',
+        location: 'Washington DC',
+        camera: Camera.GW670,
+        altText: '',
+        ratio: Ratio.P67,
+      },
+    ],
+  },
+  {
+    id: '2008',
+    photos: [
+      {
+        name: '20260326-105645',
+        location: 'Paris',
+        camera: Camera.HolgaSF,
+        altText: '',
+        ratio: Ratio.Square,
+      },
+      {
+        name: '20260326-105737',
+        location: 'Paris',
+        camera: Camera.HolgaSF,
+        altText: '',
+        ratio: Ratio.Square,
+      },
+      {
+        name: '20260326-105323',
+        location: 'Paris',
+        camera: Camera.HolgaSF,
+        altText: '',
+        ratio: Ratio.Square,
+      },
+      {
+        name: '20260326-110157',
+        location: 'Paris',
+        camera: Camera.HolgaSF,
+        altText: '',
+        ratio: Ratio.Square,
+      },
+      {
+        name: '20260326-105412',
+        location: 'Paris',
+        camera: Camera.HolgaSF,
+        altText: '',
+        ratio: Ratio.Square,
       },
     ],
   },
