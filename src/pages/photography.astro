@@ -1,6 +1,6 @@
 ---
 import Base from '../layouts/base.astro';
-import { PhotoLightbox } from '../components';
+import { PhotoLightbox, YearNav } from '../components';
 import { getCollection } from 'astro:content';
 const collection = await getCollection('photography').then(c =>
   c.sort((a, b) => Number(b.id) - Number(a.id))
@@ -12,22 +12,12 @@ const S3 = import.meta.env.S3;
 <Base pageTitle="Alan Shortis | Photography" description="Photographs over the last 20 years">
   <section class="page" aria-labelledby="photography">
     <h1 id="photography" class="vh">Photography</h1>
-    <ol class="year-list" aria-label="Years">
-      {
-        collection.map(year => (
-          <li class="year-list__item">
-            <a href={`#${year.id}`}>{year.id}</a>
-          </li>
-        ))
-      }
-    </ol>
+    <YearNav years={collection.map(year => year.id)} />
     <ol>
       {
         collection.map(photoYear => (
-          <li class="year">
-            <h2 class="year__title" id={photoYear.id}>
-              {photoYear.id}
-            </h2>
+          <li class="year" id={photoYear.id} data-year={photoYear.id}>
+            <h2 class="vh">{photoYear.id}</h2>
             <PhotoLightbox>
               <div class="photos">
                 {[0, 1].map(col => (
@@ -72,30 +62,14 @@ const S3 = import.meta.env.S3;
   }
 
   .year {
+    margin-block-start: calc(var(--space--large) * 2);
+    scroll-margin-block-start: calc(var(--space--large) * 2);
+    &:first-child {
+      margin-block-start: var(--space--large);
+    }
     &__title {
       font-size: var(--step-5);
       font-weight: bold;
-    }
-  }
-
-  .year-list {
-    @include backdrop;
-    align-items: center;
-    align-self: center;
-    block-size: var(--space--large);
-    border-radius: var(--space--large);
-    display: inline-flex;
-    gap: var(--space);
-    justify-content: center;
-    margin-block-end: var(--space--large);
-    padding-inline: var(--space);
-    position: sticky;
-    top: var(--space);
-    @include small {
-      display: none;
-    }
-    &__item {
-      @include label;
     }
   }
 

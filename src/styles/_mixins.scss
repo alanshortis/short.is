@@ -8,6 +8,19 @@
   opacity: 1;
   position: absolute;
   top: 1.618em;
+  @include should-animate {
+    animation: fade-indicator 300ms ease both;
+  }
+  @at-root {
+    @keyframes fade-indicator {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  }
 }
 
 @mixin depth($offset: 0.5em) {
@@ -36,6 +49,9 @@
 @mixin backdrop {
   backdrop-filter: blur(var(--space));
   background-color: var(--backdrop);
+  @media (prefers-reduced-transparency: reduce) {
+    background-color: var(--background);
+  }
 }
 
 @mixin focus-outline {

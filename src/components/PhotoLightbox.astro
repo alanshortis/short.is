@@ -12,13 +12,12 @@ const S3 = import.meta.env.S3;
 
 <script>
   class PhotoLightbox extends HTMLElement {
-    abortController = new AbortController();
-    dialog: HTMLDialogElement;
-    img: HTMLImageElement;
-    closeBtn: HTMLButtonElement;
-    photos: Array<{ name: string; ratio: string; alt: string }> = [];
-    currentIndex = -1;
-    s3 = this.dataset.s3;
+    private abortController = new AbortController();
+    private dialog: HTMLDialogElement;
+    private img: HTMLImageElement;
+    private closeBtn: HTMLButtonElement;
+    private photos: Array<{ name: string; ratio: string; alt: string }> = [];
+    private s3 = this.dataset.s3;
 
     constructor() {
       super();
@@ -27,8 +26,7 @@ const S3 = import.meta.env.S3;
       this.closeBtn = this.dialog.querySelector('.lightbox__close')!;
     }
 
-    open(index: number) {
-      this.currentIndex = index;
+    private open(index: number) {
       const photo = this.photos[index];
 
       this.img.src = `${this.s3}${photo.name}-2x.avif`;
@@ -44,7 +42,7 @@ const S3 = import.meta.env.S3;
       }
     }
 
-    openFromHash() {
+    private openFromHash() {
       const hash = location.hash.slice(1);
       if (!hash) {
         if (this.dialog.open) this.close();
@@ -54,7 +52,7 @@ const S3 = import.meta.env.S3;
       if (index !== -1) this.open(index);
     }
 
-    close() {
+    private close() {
       this.dialog.classList.add('closing');
       this.dialog.addEventListener(
         'transitionend',
@@ -67,13 +65,12 @@ const S3 = import.meta.env.S3;
           this.img.alt = '';
           this.img.style.aspectRatio = '';
           history.replaceState(null, '', location.pathname);
-          this.currentIndex = -1;
         },
         { once: true }
       );
     }
 
-    preload(index: number) {
+    private preload(index: number) {
       const photo = this.photos[index];
       const id = `preload-${photo.name}`;
       if (document.getElementById(id)) return;
