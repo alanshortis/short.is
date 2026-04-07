@@ -1,4 +1,12 @@
-<div class="circle">
+---
+interface Props {
+  className?: string;
+}
+
+const { className } = Astro.props;
+---
+
+<div class={`circle ${className}`}>
   <span class="vh">
     An image made using code. Minimal graphic design style. Two circles, both with a gradient from white to
     black, intersect and appear to merge together into one shape.</span
@@ -15,7 +23,7 @@
     &::before,
     &::after {
       aspect-ratio: 1 / 1;
-      background-image: url(/noise.svg), linear-gradient(45deg, var(--foreground), var(--background));
+      background-image: linear-gradient(45deg, var(--accent), var(--background));
       border-radius: 50%;
       border-top-right-radius: 0;
       content: '';

@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import Base from '../layouts/base.astro';
 import { Circles, PostBox, ReadingList } from '../components';
 
+const S3 = import.meta.env.S3;
 const RECENT_WRITING_COUNT = 4;
 const collection = await getCollection('posts');
 const latestPosts = collection
@@ -11,11 +12,20 @@ const latestPosts = collection
   .slice(0, RECENT_WRITING_COUNT);
 ---
 
-<Base pageTitle="Alan Shortis" description="My name is Alan Shortis and I am a web engineer">
+<Base pageTitle="Alan Shortis" description="Alan Shortis. Web Engineer and occasional photo taker">
   <div class="home">
-    <Circles />
+    <div class="home__header">
+      <h1 class="home__title">Alan Shortis&mdash;reading, writing, and photography</h1>
+      <img
+        src={`${S3}20250331-013150-2x.avif`}
+        srcset={`${S3}20250331-013150-2x.avif 4x, ${S3}20250331-013150-2x.avif 1x`}
+        class="home__photo"
+        alt=""
+        loading="lazy"
+      />
+      <Circles className="home__circles" />
+    </div>
     <section>
-      <h1 class="home__title">My name is Alan Shortis and I am a web engineer</h1>
       <div class="home__posts">
         {latestPosts.map((post, idx) => <PostBox post={post} />)}
       </div>
@@ -29,10 +39,31 @@ const latestPosts = collection
   @use '../styles/mixins' as *;
 
   .home {
+    &__header {
+      position: relative;
+      display: flex;
+      gap: var(--space);
+      @include medium {
+        flex-direction: column;
+      }
+    }
+    &__photo {
+      aspect-ratio: 2 / 3;
+      flex: 1;
+      @include medium {
+        @include full-bleed;
+        max-width: none;
+      }
+    }
+    :global(.home__circles) {
+      position: absolute;
+      inset: 0;
+    }
     display: flex;
     flex-direction: column;
     gap: calc(var(--step-5) * 2);
     &__title {
+      flex: 1;
       font-size: var(--step-2);
       font-weight: bold;
       line-height: 1.305;
