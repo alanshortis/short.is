@@ -13,17 +13,17 @@ const latestPosts = collection
 ---
 
 <Base pageTitle="Alan Shortis" description="Alan Shortis. Web Engineer and occasional photo taker">
+  <Circles slot="fixed" className="home__circles" />
   <div class="home">
     <div class="home__header">
       <h1 class="home__title">Alan Shortis&mdash;reading, writing, and photography</h1>
       <img
-        src={`${S3}20250331-013150-2x.avif`}
-        srcset={`${S3}20250331-013150-2x.avif 4x, ${S3}20250331-013150-2x.avif 1x`}
+        src={`${S3}20250524-090210-2x.avif`}
+        srcset={`${S3}20250524-090210-2x.avif 4x, ${S3}20250524-090210-2x.avif 1x`}
         class="home__photo"
         alt=""
         loading="lazy"
       />
-      <Circles className="home__circles" />
     </div>
     <section>
       <div class="home__posts">
@@ -49,15 +49,12 @@ const latestPosts = collection
     }
     &__photo {
       aspect-ratio: 2 / 3;
+      border-radius: var(--radius);
       flex: 1;
       @include medium {
         @include full-bleed;
         max-width: none;
       }
-    }
-    :global(.home__circles) {
-      position: absolute;
-      inset: 0;
     }
     display: flex;
     flex-direction: column;
@@ -83,6 +80,16 @@ const latestPosts = collection
       display: inline-block;
       margin-block-start: var(--space--large);
       @include label;
+    }
+  }
+  :global(.home__circles) {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    mix-blend-mode: lighten;
+    html[data-scheme='light'] & {
+      mix-blend-mode: darken;
     }
   }
 </style>

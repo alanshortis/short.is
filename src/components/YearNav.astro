@@ -5,74 +5,50 @@ interface Props {
 const { years } = Astro.props;
 ---
 
-<year-nav>
+<nav>
   <ol class="year-list" role="menubar" aria-label="Years">
     {
       years.map(year => (
-        <li class="year-list__item" role="none">
-          <a href={`#${year}`} data-year-link={year} role="menuitem" aria-current="false">
+        <li role="none">
+          <a
+            class="year-list__item"
+            href={`#${year}`}
+            role="menuitem"
+            style={`animation-timeline: --year-${year}`}
+          >
             {year}
           </a>
         </li>
       ))
     }
   </ol>
-</year-nav>
-
-<script>
-  class YearNav extends HTMLElement {
-    private links: NodeListOf<HTMLAnchorElement>;
-    private sections: HTMLElement[] = [];
-    private observer: IntersectionObserver;
-
-    constructor() {
-      super();
-      this.links = this.querySelectorAll<HTMLAnchorElement>('[data-year-link]');
-      const steps = 20;
-      const thresholds = Array.from({ length: steps + 1 }, (_, i) => i / steps);
-      this.observer = new IntersectionObserver(() => this.updateActiveLink(), { threshold: thresholds });
-    }
-
-    private updateActiveLink() {
-      const viewportHeight = window.innerHeight;
-      let activeYear: string | null = null;
-      let maxCoverage = 0;
-
-      for (const section of this.sections) {
-        const rect = section.getBoundingClientRect();
-        const visible = Math.min(rect.bottom, viewportHeight) - Math.max(rect.top, 0);
-        const coverage = Math.max(0, visible) / viewportHeight;
-        if (coverage > maxCoverage) {
-          maxCoverage = coverage;
-          activeYear = section.dataset.year!;
-        }
-      }
-
-      if (activeYear) {
-        this.links.forEach(link => link.setAttribute('aria-current', 'false'));
-        this.querySelector(`[data-year-link="${activeYear}"]`)?.setAttribute('aria-current', 'date');
-      }
-    }
-
-    connectedCallback() {
-      this.sections = [...document.querySelectorAll<HTMLElement>('[data-year]')];
-      this.sections.forEach(section => this.observer.observe(section));
-      this.links.forEach(link => link.addEventListener('click', this.handleClick));
-    }
-
-    disconnectedCallback() {
-      this.observer.disconnect();
-      this.links.forEach(link => link.removeEventListener('click', this.handleClick));
-    }
-  }
-
-  customElements.define('year-nav', YearNav);
-</script>
+</nav>
 
 <style lang="scss">
   @use '../styles/mixins' as *;
 
-  year-nav {
+  @property --indicator-active {
+    syntax: '<number>';
+    inherits: true;
+    initial-value: 0;
+  }
+
+  @keyframes activate {
+    2% {
+      --indicator-active: 0;
+    }
+    20% {
+      --indicator-active: 1;
+    }
+    80% {
+      --indicator-active: 1;
+    }
+    98% {
+      --indicator-active: 0;
+    }
+  }
+
+  nav {
     align-self: center;
     position: sticky;
     top: var(--space);
@@ -91,12 +67,15 @@ const { years } = Astro.props;
     justify-content: center;
     margin-block-end: var(--space--large);
     padding-inline: var(--space);
-    &__item a {
+    &__item {
       @include label;
       position: relative;
       inset-block-end: 1px;
-      &[aria-current='date']::after {
-        @include active-indicator;
+      animation: activate linear both;
+      animation-range: cover;
+      &::after {
+        @include active-indicator($animate: false);
+        opacity: var(--indicator-active);
       }
     }
   }
