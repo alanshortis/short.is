@@ -18,6 +18,7 @@ const posts = defineCollection({
         'new-york',
         'imposter',
         'internet',
+        'scanning',
         'share',
       ]),
       showAgeWarning: z.boolean().optional(),

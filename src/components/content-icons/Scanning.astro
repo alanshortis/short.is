@@ -1,0 +1,44 @@
+<div class="scanning">
+  <div class="scanning__elem"></div>
+  <div class="scanning__elem"></div>
+</div>
+
+<style lang="scss">
+  .scanning {
+    position: relative;
+    perspective: 200px;
+    height: var(--step-5);
+    width: var(--step-5);
+    &__elem {
+      position: absolute;
+      inset-inline-start: 2px;
+      border: 1px solid var(--foreground);
+      width: calc(100% - 4px);
+      height: 50%;
+      &::before,
+      &::after {
+        position: absolute;
+        inset: 5px;
+        content: '';
+        border: inherit;
+        width: 10px;
+        height: 10px;
+      }
+      &::after {
+        inset: calc(100% - 15px);
+      }
+
+      &:first-child {
+        inset-block-start: -7px;
+        transform-origin: center bottom;
+        transform: rotateX(-50deg);
+      }
+
+      &:last-child {
+        inset-block-end: -7px;
+        transform-origin: center top;
+        transform: rotateX(50deg) rotateY(180deg);
+      }
+    }
+  }
+</style>
