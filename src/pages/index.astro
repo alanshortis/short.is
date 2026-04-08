@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import Base from '../layouts/base.astro';
 import { Circles, PostBox, ReadingList } from '../components';
+import { photographyData, Ratio } from '../content/photography';
 
 const S3 = import.meta.env.S3;
 const RECENT_WRITING_COUNT = 4;
@@ -10,20 +11,29 @@ const latestPosts = collection
   .filter(post => post.data.published ?? true)
   .sort((a, b) => b.data.pubDate.localeCompare(a.data.pubDate))
   .slice(0, RECENT_WRITING_COUNT);
+
+const [featuredPhoto] = photographyData
+  .flatMap(year => year.photos)
+  .filter(photo => photo.name === '20250904-142429');
 ---
 
 <Base pageTitle="Alan Shortis" description="Alan Shortis. Web Engineer and occasional photo taker">
-  <Circles slot="fixed" className="home__circles" />
+  <Circles slot="circles" className="home__circles" />
   <div class="home">
     <div class="home__header">
-      <h1 class="home__title">Alan Shortis&mdash;reading, writing, and photography</h1>
-      <img
-        src={`${S3}20250524-090210-2x.avif`}
-        srcset={`${S3}20250524-090210-2x.avif 4x, ${S3}20250524-090210-2x.avif 1x`}
-        class="home__photo"
-        alt=""
-        loading="lazy"
-      />
+      <h1 class="home__title">
+        Alan Shortis&mdash;web engineer, occasional photographer, aspiring creative coder
+      </h1>
+      <div class="home__photo-col">
+        <img
+          src={`${S3}${featuredPhoto.name}-2x.avif`}
+          srcset={`${S3}${featuredPhoto.name}-2x.avif 2x, ${S3}${featuredPhoto.name}.avif 1x`}
+          class="home__photo"
+          alt={featuredPhoto.altText}
+          loading="eager"
+        />
+        <a href="/photography" class="home__link">More photography &rarr;</a>
+      </div>
     </div>
     <section>
       <div class="home__posts">
@@ -47,10 +57,13 @@ const latestPosts = collection
         flex-direction: column;
       }
     }
+    &__photo-col {
+      flex: 1;
+    }
     &__photo {
       aspect-ratio: 2 / 3;
       border-radius: var(--radius);
-      flex: 1;
+      inline-size: 100%;
       @include medium {
         @include full-bleed;
         max-width: none;
@@ -61,7 +74,7 @@ const latestPosts = collection
     gap: calc(var(--step-5) * 2);
     &__title {
       flex: 1;
-      font-size: var(--step-2);
+      font-size: var(--step-4);
       font-weight: bold;
       line-height: 1.305;
       margin-block-end: var(--step-5);

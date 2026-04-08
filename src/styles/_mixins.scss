@@ -1,6 +1,6 @@
 @mixin active-indicator($animate: true) {
   aspect-ratio: 1 / 1;
-  background-color: var(--accent);
+  background-color: var(--foreground);
   border-radius: 50%;
   content: '';
   height: 0.345em;
