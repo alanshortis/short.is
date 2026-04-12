@@ -25,13 +25,15 @@ const [featuredPhoto] = photographyData
         Alan Shortis&mdash;web engineer, occasional photographer, aspiring creative coder
       </h1>
       <div class="home__photo-col">
-        <img
-          src={`${S3}${featuredPhoto.name}-2x.avif`}
-          srcset={`${S3}${featuredPhoto.name}-2x.avif 2x, ${S3}${featuredPhoto.name}.avif 1x`}
-          class="home__photo"
-          alt={featuredPhoto.altText}
-          loading="eager"
-        />
+        <a href=`/photography#${featuredPhoto.name}`>
+          <img
+            src={`${S3}${featuredPhoto.name}-2x.avif`}
+            srcset={`${S3}${featuredPhoto.name}-2x.avif 2x, ${S3}${featuredPhoto.name}.avif 1x`}
+            class="home__photo"
+            alt={featuredPhoto.altText}
+            loading="eager"
+          />
+        </a>
         <a href="/photography" class="home__link">More photography &rarr;</a>
       </div>
     </div>
@@ -66,6 +68,7 @@ const [featuredPhoto] = photographyData
       inline-size: 100%;
       @include medium {
         @include full-bleed;
+        border-radius: 0;
         max-width: none;
       }
     }

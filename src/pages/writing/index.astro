@@ -13,7 +13,11 @@ const posts = collection
   <div class="home">
     <h1 class="vh">Writing</h1>
     <div class="home__posts">
-      {posts.map((post, idx) => <PostBox post={post} isFeatured={idx === 0} />)}
+      {
+        posts.map((post, idx, postsArray) => (
+          <PostBox post={post} isFeatured={idx === 0 && postsArray.length % 2 !== 0} />
+        ))
+      }
     </div>
   </div>
 </Base>
