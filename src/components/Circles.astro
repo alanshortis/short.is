@@ -1,33 +1,41 @@
-<div class="circle" aria-hidden="true"></div>
+<div class="circles"></div>
 
 <style lang="scss">
-  .circle {
-    align-items: center;
-    display: flex;
-    height: 100%;
+  @use '../styles/mixins' as *;
+  .circles {
+    position: absolute;
     inset: 0;
-    justify-content: center;
-    mix-blend-mode: lighten;
+    margin: auto;
     pointer-events: none;
-    position: fixed;
-    width: 100%;
+    width: 40vw;
+    max-width: 760px;
+    aspect-ratio: 1 / 1;
+    mix-blend-mode: difference;
     z-index: 1;
-    html[data-scheme='light'] & {
-      mix-blend-mode: darken;
+    @include medium {
+      transform: rotate(90deg);
+      width: 75vw;
     }
-    &::before,
-    &::after {
-      aspect-ratio: 1 / 1;
-      background-image: url(/noise.svg), linear-gradient(45deg, var(--accent), var(--background));
+    &::after,
+    &::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
       border-radius: 50%;
       border-top-right-radius: 0;
-      content: '';
-      inline-size: clamp(0%, 100%, 28.33rem);
-      mix-blend-mode: inherit;
-      transform: translate(25%);
+      background-image: url(/noise.svg), linear-gradient(45deg, var(--foreground), var(--background));
+      mix-blend-mode: lighten;
+      html[data-scheme='light'] & {
+        mix-blend-mode: darken;
+      }
     }
     &::after {
-      transform: translate(-25%) rotate(180deg);
+      margin-inline-start: -25%;
+    }
+    &::before {
+      margin-inline-start: 25%;
+      transform: rotate(180deg);
     }
   }
 </style>

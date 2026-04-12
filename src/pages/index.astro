@@ -18,9 +18,9 @@ const [featuredPhoto] = photographyData
 ---
 
 <Base pageTitle="Alan Shortis" description="Alan Shortis. Web Engineer and occasional photo taker">
-  <Circles slot="circles" className="home__circles" />
   <div class="home">
     <div class="home__header">
+      <Circles aria-hidden="true" />
       <h1 class="home__title">
         Alan Shortis&mdash;web engineer, occasional photographer, aspiring creative coder
       </h1>
@@ -81,18 +81,19 @@ const [featuredPhoto] = photographyData
       text-wrap: balance;
     }
     &__posts {
+      @include small {
+        grid-template-columns: 1fr;
+      }
       display: grid;
       gap: var(--space);
       grid-template-columns: repeat(2, 1fr);
       grid-auto-rows: 1fr;
-      @include small {
-        grid-template-columns: 1fr;
-      }
+      z-index: 2;
     }
     &__link {
+      @include label;
       display: inline-block;
       margin-block-start: var(--space--large);
-      @include label;
     }
   }
 </style>
