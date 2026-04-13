@@ -7,7 +7,7 @@
   .scanning {
     position: relative;
     perspective: 200px;
-    height: var(--step-5);
+    aspect-ratio: 1 / 1;
     width: var(--step-5);
     &__elem {
       position: absolute;
@@ -15,18 +15,6 @@
       border: 1px solid var(--foreground);
       width: calc(100% - 4px);
       height: 50%;
-      &::before,
-      &::after {
-        position: absolute;
-        inset: 5px;
-        content: '';
-        border: inherit;
-        width: 10px;
-        height: 10px;
-      }
-      &::after {
-        inset: calc(100% - 15px);
-      }
 
       &:first-child {
         inset-block-start: -7px;
@@ -37,7 +25,22 @@
       &:last-child {
         inset-block-end: -7px;
         transform-origin: center top;
-        transform: rotateX(50deg) rotateY(180deg);
+        transform: rotateX(50deg);
+      }
+
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        border-radius: 50%;
+        inset-block-start: calc(50% - var(--step--2) / 2);
+        inset-inline-start: calc(50% - var(--step--2) + 5%);
+        border: inherit;
+        width: var(--step--2);
+        height: var(--step--2);
+      }
+      &::after {
+        inset-inline-start: calc(50% - var(--step--2) + 20%);
       }
     }
   }

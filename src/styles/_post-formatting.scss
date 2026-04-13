@@ -14,7 +14,13 @@
     font-style: normal;
   }
   kbd {
-    font: inherit;
+    font-family: monospace;
+    font-size: var(--step--1);
+    padding: 0.25em;
+    border: 1px solid var(--divider);
+    border-radius: var(--radius);
+    inset-block-start: -1px;
+    position: relative;
   }
   del {
     text-decoration: double line-through;
@@ -34,7 +40,7 @@
     padding-block: 0.125em;
     padding-inline: 0.25em;
     position: relative;
-    inset-block-start: -2px;
+    inset-block-start: -1px;
   }
   pre {
     code,
@@ -45,11 +51,12 @@
   }
   ol,
   ul {
-    padding-inline-start: var(--space);
+    padding-inline-start: var(--space--large);
   }
   li {
     list-style: decimal;
     margin-bottom: 0.25lh;
+    padding-inline-start: var(--space);
   }
   ul li {
     list-style: disc;
