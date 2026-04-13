@@ -42,9 +42,16 @@ while read -r file; do
     suffix="${variant#*:}"
     output="${base}${suffix}.avif"
 
-    # Square images are 20% smaller
+    # Reduce near-square ratios to keep intrinsic area more consistent
     if [ "$w" -eq "$h" ]; then
+      # 6x6 (1:1)
       size=$(( size * 80 / 100 ))
+    elif [ $(( w * 6 )) -eq $(( h * 7 )) ] || [ $(( w * 7 )) -eq $(( h * 6 )) ]; then
+      # 6x7 (7:6 / 6:7)
+      size=$(( size * 85 / 100 ))
+    elif [ $(( w * 3 )) -eq $(( h * 4 )) ] || [ $(( w * 4 )) -eq $(( h * 3 )) ]; then
+      # 4:3 / 3:4
+      size=$(( size * 90 / 100 ))
     fi
 
     if [ ! -f "$output" ] || [ "$file" -nt "$output" ]; then
