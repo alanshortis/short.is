@@ -9,10 +9,10 @@
 }
 
 html {
+  height: 100%;
   @include should-animate {
     scroll-behavior: smooth;
   }
-  height: 100%;
 }
 
 body {

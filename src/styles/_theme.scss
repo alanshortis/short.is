@@ -1,14 +1,6 @@
 :root {
   color-scheme: light dark;
 
-  &[data-scheme='light'] {
-    color-scheme: light;
-  }
-
-  &[data-scheme='dark'] {
-    color-scheme: dark;
-  }
-
   --step--2: clamp(0.6076rem, 0.5686rem + 0.1954vw, 0.72rem);
   --step--1: clamp(0.7292rem, 0.6697rem + 0.2971vw, 0.9rem);
   --step-0: clamp(0.875rem, 0.788rem + 0.4348vw, 1.125rem);
@@ -38,4 +30,12 @@
   --seconds: hsl(21, 88%, 49%);
   --accent: hsl(21, 88%, 49%);
   --backdrop: light-dark(hsla(0, 0%, 95%, 0.5), hsla(0, 0%, 5%, 0.5));
+
+  &[data-scheme='light'] {
+    color-scheme: light;
+  }
+
+  &[data-scheme='dark'] {
+    color-scheme: dark;
+  }
 }

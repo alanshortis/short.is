@@ -46,9 +46,6 @@ const { years } = Astro.props;
 
   .year-list {
     @include backdrop;
-    @include small {
-      display: none;
-    }
     align-items: center;
     align-self: center;
     block-size: var(--space--large);
@@ -60,6 +57,9 @@ const { years } = Astro.props;
     padding-inline: var(--space);
     position: sticky;
     top: var(--space);
+    @include small {
+      display: none;
+    }
     &__item {
       @include label;
       position: relative;

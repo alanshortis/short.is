@@ -51,6 +51,9 @@ const [featuredPhoto] = photographyData
   @use '../styles/mixins' as *;
 
   .home {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--step-5) * 2);
     &__header {
       position: relative;
       display: flex;
@@ -72,9 +75,6 @@ const [featuredPhoto] = photographyData
         max-width: none;
       }
     }
-    display: flex;
-    flex-direction: column;
-    gap: calc(var(--step-5) * 2);
     &__title {
       flex: 1;
       font-size: var(--step-4);
@@ -84,14 +84,14 @@ const [featuredPhoto] = photographyData
       text-wrap: balance;
     }
     &__posts {
-      @include small {
-        grid-template-columns: 1fr;
-      }
       display: grid;
       gap: var(--space);
       grid-template-columns: repeat(2, 1fr);
       grid-auto-rows: 1fr;
       z-index: 2;
+      @include small {
+        grid-template-columns: 1fr;
+      }
     }
     &__link {
       @include label;
