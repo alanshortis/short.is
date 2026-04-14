@@ -1,7 +1,7 @@
 .formatting {
   line-height: 1.618;
-  & * + :where(p, ol, ul, h2, h3, figure, dl) {
-    margin-top: 1lh;
+  & * + :where(p, ol, ul, h2, h3, figure, dl, aside) {
+    margin-block-start: 1lh;
   }
   a {
     text-decoration: underline;
@@ -75,6 +75,25 @@
     }
     cite {
       font-style: normal;
+    }
+  }
+  aside {
+    background-color: var(--background);
+    margin-inline: var(--space);
+    padding: var(--space);
+    border: 1px solid var(--divider);
+    border-radius: var(--radius);
+    position: relative;
+    &::after {
+      border: inherit;
+      border-radius: inherit;
+      content: '';
+      height: 100%;
+      inset-block-end: var(--step--2);
+      inset-inline-end: var(--step--2);
+      position: absolute;
+      width: 100%;
+      z-index: -1;
     }
   }
 }

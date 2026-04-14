@@ -6,57 +6,61 @@ icon: 'scanning'
 showAgeWarning: true
 ---
 
-Getting film photographs into a digital format can be as complex as you want to make it. There are scanners, there is hardware to shoot the film with a digital camera, and (for the most sane among us) labs that will do it immediately after processing. I have tried all three, and I have landed firmly on camera scanning for the best results.
+I have finally, after many years, digitised all of my film photographs and added some to this website. Getting film photos into a digital format can be as complex as you want to make it. The most sane among us have the lab do it immediately after scanning, but given how expensive that is for bulk scanning an archive of film, and the particular intricacies of some of my work, I finally got it done with a camera.
+
+It might seem absurd to go to the trouble of shooting with film, developing, and then ultimately taking a photo of the film with a digital camera, but done right it can get to much better results much more quickly than using a scanner.
 
 ## The right tools for the job
 
-If you don't have the right tool for the job, the next best tool is the one you already have. I recently sold my Leica M10 Monochrom and replaced it with an M10-P. I did not want to sell the Monochrom, but as I can't really justify even one high-end camera I had to switch to one camera that I can shoot and scan with.
+If you don't have the right tool for the job, the next best tool is the one you already have. I reluctantly sold my Leica M10 Monochrom and replaced it with an M10-P. I did not want to sell the Monochrom, but as I can't really justify even one high-end camera I had to switch to one camera that I can shoot and scan with.
 
-If you know anything about a Leica M, you're probably questioning my choices right now. You'll know that they're deliberately manual and deliberately slow to use, but none of this is a particular drawback for scanning. I need to remove it from the copy stand every time I want to get to the latest batch of scans, as the SD card is under the removable base plate and it is not possible to tether. The app connection is so spotty that I can't really control it remotely. The screen has no articulation. It's all a little bit awkward, but all liveable for the few hundred frames I have to scan.
+If you know anything about the Leica M system you're probably questioning my choices right now. You'll know that they're deliberately manual and deliberately slow to use, but none of this is a particular drawback for scanning. It's not perfect; I need to remove it from the copy stand every time I want to get the latest batch of scans, as the SD card is under the removable base plate. It is not possible to tether to my computer. The app connection is so spotty that I can't reliably control it remotely. The screen has no articulation. It's all a little bit awkward, but all liveable for the few hundred frames I have to scan.
 
-After researching the small number of viable lens options I found a Leica Macro Elmarit-R 60mm f2.8, added an URTH adapter, and a macro extension tube. This stack of parts enables true 1:1 reproduction for 35mm film on the full-frame sensor through Leica glass for just a few hundred pounds.
-
-The camera is mounted to a Negative Supply copy stand, looking down on their 'enthusiast' film carrier and light source. These are 3D printed, pretty fiddly to use, and not particularly well made relative to the higher-end options.
+After researching the small number of viable lens options I found a Leica Macro Elmarit-R 60mm f2.8, added an URTH adapter, and a macro extension tube. This stack of parts enables 1:1 reproduction for 35mm film on the full-frame sensor through Leica glass for just a few hundred pounds. Of course, none of this works with the rangefinder but this is a lens with a dedicated purpose; it's never going outside.
 
 [hand drawn image of camera and lens]
 
+The camera is mounted to a Negative Supply copy stand, looking down on their 'enthusiast' film carrier and light source. These are 3D printed, pretty fiddly to use, and not particularly well made relative to the higher-end options. The main enemy is dust and dog hair, so a lot of rocket blaster and cotton gloves are required. The light and the carrier are also not attached to the base of the copy stand, so it's easy to move them slightly out of position and not really notice until after dozens of frames.
+
+35mm film strips are really easy to push though the carrier, but given the vast majority of my film is medium format it's a faff that requires plastic tweezers and colourful language. Future rolls of film will not be cut until after scanning, which, if I can ensure the strip doesn't get too dusty or scratched, will make it all much easier.
+
 ## Camera settings
 
-The M10 is easy to set up for scanning. I switch off what little automation there is, set 100 ISO (the M10's minimum), set the lens to f/8, switch off exposure compensation, and set exposure to cater for either the whole roll or the individual frame.
+The M10-P is easy to set up for scanning. I switch off what little automation there is, set 100 ISO, set the lens to f/8, switch off exposure compensation, and set exposure to cater for either the whole roll or the individual frame.
 
 There is a reason for the variety of approaches to shutter speed. For a full roll of well-exposed film, I use the histogram to set exposure just under the point of blowing out the highlights on the most dense frame.
 
-Probably my best work was captured using a Holga 120SF. Some of the details of these photos are barely visible on the negative, but they're in there. In these cases, I still use the histogram but I do it for every frame, and even then it's still hard to see anything until it's been converted to a positive image. I still struggle with everything being the opposite of what's expected when scanning; blown highlights are lost shadows.
+Probably my best work was captured using a Holga 120SF. Some of the details of these photos are barely visible on the negative against a light source, but they're in there. In these cases, I still use the histogram but I do it for every frame. Often the most empty looking photos are hiding something that my old scanner could never reach.
+
+[image with scanner]
+
+[image with camera]
 
 ## Conversion
 
-Unlike a scanner, a camera has no option to invert a negative image automatically. I am not smart enough to understand the various algorithms used to do this, but I do know that a simple inversion in Lightroom or Photoshop isn't likely to get the best results. I use [Negative Lab Pro](https://www.negativelabpro.com/) in exactly the way they suggest:
+Unlike a scanner, a camera has no option to invert a negative image automatically. I am not smart enough to understand the various algorithms used to do this, but I do know that a simple inversion in Lightroom or Photoshop isn't likely to get the best results. I use [Negative Lab Pro](https://www.negativelabpro.com/) and follow their suggested approach pretty closely:
 
 1. If it's a colour image, set white balance from the mask around the film
 2. <kbd>Ctrl</kbd> + <kbd>n</kbd> to open NLP
 3. I like the 'Frontier' colour model, or 'B+W'. Hit 'convert'
 4. Adjust the image as necessary
 
-I don't do a lot of post-processing; it's usually limited to balancing contrast, highlights, and shadows. A little dust removal, walk away for a while, come back to it and make sure it looks right.
+I don't do a lot of post-processing; it's usually limited to balancing contrast, highlights, and shadows. A little dust removal, walk away for a while, come back to it and make sure it looks right., then add metadata (camera, film, lens, year, location) which files it away into various smart collections in Lightroom. If it's portfolio quality, it gets added to a special collection ready for export.
 
-## From Lightroom to the website
+## Publishing
 
-To put as few barriers as possible between a scan and publication, I have a bash script that uses ImageMagick to create three avif variants of each export from Lightroom (natural size, 2x, and 4x to cover high pixel densities) before uploading them to an S3 bucket. Sizing is slightly adjusted to the aspect ratio of the image so the many square photos aren't too large. I use a bucket to get the benefits of a CDN and to keep images out of my repository and hosting.
+After exporting a large image, I feed it into a hand-rolled bash script that uses [ImageMagick](https://imagemagick.org/) to create three `avif` variants (natural size, 2x, and 4x to cover high pixel densities) before uploading them to an S3 bucket. Sizing is slightly adjusted for the aspect ratio of the image so square photos aren't too large, `7:6` is balanced against `4:3`, etc. One image takes less than 5 seconds from Lightroom to S3, and I have converted and uploaded hundreds of images in one hit, only needing to wait for a few minutes.
 
-Once uploaded, I manually add an entry to a [collection in Astro](https://docs.astro.build/en/guides/content-collections/) so it knows where to look. While I probably could automate this step, I prefer to keep it manual so I can write `alt` text and ensure the images are ordered in a way that looks right on the page.
+This script is far from perfect. It assumes I have the correct dependencies installed globally, it'll skip over any existing images silently, and it could almost certainly be made faster by someone with the right skills. This is a case of 'good enough'; I know how to use it, and it fits my process.
 
-Despite the manual step, the level of automation is high enough to get a photograph scanned and published in just a few minutes.
+Once uploaded, I manually add an entry to a [collection in Astro](https://docs.astro.build/en/guides/content-collections/) and ship the changes. While I probably could automate this step, I prefer to keep it manual so I can write `alt` text and ensure the images are ordered in a way that looks right on the page.
 
-## Camera vs scanner
-
-I digitised everything a few years ago using the cheapest Epson photo scanner available. It could handle 35mm (badly), medium format (better), and do it all very slowly. There was very little control over exposure, and the feedback loop was extremely long, making me very unlikely to do multiple passes.
-
-There are a few photos I believed had no detail at all until I scanned them with a camera. While the aesthetic of a lot of my work with Holga deliberately leans into grain, darkness, and imperfections, the scanner hid details that made some photos worth another look.
-
-[image with scanner]
-
-[image with camera]
+<aside>
+  Writing the `alt` text for every photo I have scanned has been a real slog, but it'll be worthwhile. Not
+  only does it help any visitors who benefit from a description of an image, it helps me know which photo is
+  which in my Astro collection. Accessibility should not be an afterthought.
+</aside>
 
 ## Future scans
 
-This whole process has been a means to digitise film from the last 20 years or so in a way that means it's very unlikely I'll do it again. I don't really shoot film anymore, but never saying never means I'll keep the equipment as it is. A roll of film from time to time does not warrant improvement though I am one lottery win away from a [100MP Hasselblad](https://www.hasselblad.com/x-system/x2d-ii-100c/).
+This process has come about as a means to digitise film from the last 20 years or so in a way that means it's very unlikely I'll need to do it again. I don't nedd massive resolution and I don't really shoot film anymore, but never saying never means I'll keep the equipment as it is. A roll of film from time to time does not warrant improvement, though I am one lottery win away from a [100MP Hasselblad](https://www.hasselblad.com/x-system/x2d-ii-100c/).
