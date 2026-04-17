@@ -6,11 +6,13 @@ icon: 'scanning'
 showAgeWarning: true
 ---
 
-import { CameraIllustration } from '../../components';
+import { CameraIllustration, PhotoComparison } from '../../components';
 
 I have finally, after many years, digitised all of my film photographs and added some to this website. Getting film photos into a digital format can be as complex as you want to make it. The most sane among us have the lab do it immediately after scanning, but given how expensive that is for bulk scanning an archive of film, and the particular intricacies of some of my work, I finally got it done with a camera.
 
 It might seem absurd to go to the trouble of shooting with film, developing, and then ultimately taking a photo of the film with a digital camera, but done right it can get to much better results much more quickly than using a scanner.
+
+<PhotoComparison />
 
 ## The right tools for the job
 
@@ -22,7 +24,9 @@ After researching the small number of viable lens options I found a Leica Macro 
 
 <CameraIllustration />
 
-The camera is mounted to a Negative Supply copy stand, looking down on their 'enthusiast' film carrier and light source. These are 3D printed, pretty fiddly to use, and not particularly well made relative to the higher-end options. The main enemy is dust and dog hair, so a lot of rocket blaster and cotton gloves are required. The light and the carrier are also not attached to the base of the copy stand, so it's easy to move them slightly out of position and not really notice until after dozens of frames.
+The camera is mounted to a Negative Supply copy stand, looking down on their [enthusiast](https://www.negative.supply/shop-all/enthusiast-plus-kit-for-35mm-120-and-4x5-film-scanning) film carrier and light source. These are 3D printed, pretty fiddly to use, and not particularly well made relative to the higher-end options. The main enemy is dust and dog hair, so a lot of rocket blaster and cotton gloves are required. The light and the carrier are also not attached to the base of the copy stand, so it's easy to move them slightly out of position and not really notice until after dozens of frames.
+
+The copy stand itself is heavy and solid, and really well made. However, the bolt that holds the camera is hard to get to and requires a ball-end allen key though a gap in the side of the camera mount. It never really got as tight as I wanted before the key would slip in the bolt, so I added a quick-release tripod mount so I could torque it up once and leave alone. This bolt being secure is essential to keep the camera level.
 
 35mm film strips are really easy to push though the carrier, but given the vast majority of my film is medium format it's a faff that requires plastic tweezers and colourful language. Future rolls of film will not be cut until after scanning, which, if I can ensure the strip doesn't get too dusty or scratched, will make it all much easier.
 
@@ -33,10 +37,6 @@ The M10-P is easy to set up for scanning. I switch off what little automation th
 There is a reason for the variety of approaches to shutter speed. For a full roll of well-exposed film, I use the histogram to set exposure just under the point of blowing out the highlights on the most dense frame.
 
 Probably my best work was captured using a Holga 120SF. Some of the details of these photos are barely visible on the negative against a light source, but they're in there. In these cases, I still use the histogram but I do it for every frame. Often the most empty looking photos are hiding something that my old scanner could never reach.
-
-[image with scanner]
-
-[image with camera]
 
 ## Conversion
 
@@ -58,7 +58,7 @@ This script is far from perfect. It assumes I have the correct dependencies inst
 Once uploaded, I manually add an entry to a [collection in Astro](https://docs.astro.build/en/guides/content-collections/) and ship the changes. While I probably could automate this step, I prefer to keep it manual so I can write `alt` text and ensure the images are ordered in a way that looks right on the page.
 
 <aside>
-  Writing the `alt` text for every photo I have scanned has been a real slog, but it'll be worthwhile. Not
+  Writing the `alt` text for every photo I have uploaded has been a real slog, but it'll be worthwhile. Not
   only does it help any visitors who benefit from a description of an image, it helps me know which photo is
   which in my Astro collection. Accessibility should not be an afterthought.
 </aside>

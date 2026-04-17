@@ -29,6 +29,9 @@ SKIPPED=0
 
 VARIANTS=("700:" "1400:-2x" "2800:-4x")
 
+# Photos in posts, maybe
+# VARIANTS=("700:" "1400:-2x")
+
 while read -r file; do
   base="${file%.*}"
   skipped_this=true

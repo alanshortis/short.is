@@ -10,13 +10,22 @@ const S3 = import.meta.env.S3;
 ---
 
 <Base pageTitle="Alan Shortis | Photography" description="Photographs over the last 20 years">
-  <section class="page" aria-labelledby="photography" style={`timeline-scope: ${collection.map(y => `--year-${y.id}`).join(', ')}`}>
+  <section
+    class="page"
+    aria-labelledby="photography"
+    style={`timeline-scope: ${collection.map(y => `--year-${y.id}`).join(', ')}`}
+  >
     <h1 id="photography" class="vh">Photography</h1>
     <YearNav years={collection.map(year => year.id)} />
     <ol>
       {
         collection.map(photoYear => (
-          <li class="year" id={photoYear.id} data-year={photoYear.id} style={`view-timeline: --year-${photoYear.id} block`}>
+          <li
+            class="year"
+            id={photoYear.id}
+            data-year={photoYear.id}
+            style={`view-timeline: --year-${photoYear.id} block`}
+          >
             <h2 class="vh">{photoYear.id}</h2>
             <PhotoLightbox>
               <div class="photos">
@@ -39,6 +48,7 @@ const S3 = import.meta.env.S3;
                             class="photos__photo"
                             alt={photo.altText}
                             loading="lazy"
+                            draggable="false"
                           />
                         </a>
                       ))}

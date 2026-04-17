@@ -638,6 +638,48 @@ export const photographyData: PhotoYear[] = [
     ],
   },
   {
+    id: '2010',
+    photos: [
+      {
+        name: '20260326-152755',
+        location: 'New York',
+        camera: Camera.GW670,
+        film: Film.Portra400,
+        ratio: Ratio.L67,
+        altText:
+          'Colour photograph. A brown Oldsmobile parked against a yellow curb beside a street light. The driver door is open',
+      },
+    ],
+  },
+  {
+    id: '2009',
+    photos: [
+      {
+        name: '20260326-152755',
+        location: 'New York',
+        camera: Camera.GW670,
+        film: Film.Portra400,
+        ratio: Ratio.L67,
+        altText:
+          'Colour photograph. A brown Oldsmobile parked against a yellow curb beside a street light. The driver door is open',
+      },
+    ],
+  },
+  {
+    id: '2008',
+    photos: [
+      {
+        name: '20260326-152755',
+        location: 'New York',
+        camera: Camera.GW670,
+        film: Film.Portra400,
+        ratio: Ratio.L67,
+        altText:
+          'Colour photograph. A brown Oldsmobile parked against a yellow curb beside a street light. The driver door is open',
+      },
+    ],
+  },
+  {
     id: '2007',
     photos: [
       {
