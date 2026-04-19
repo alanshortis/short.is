@@ -1,6 +1,6 @@
 .formatting {
   line-height: 1.618;
-  & * + :where(p, ol, ul, h2, h3, figure, dl, aside) {
+  & * + :where(p, ol, ul, h2, h3, figure, dl) {
     margin-block-start: 1lh;
   }
   a {
@@ -79,11 +79,11 @@
   }
   figure:has(svg, img) {
     margin-block: var(--space--large);
-  }
-  figcaption {
-    font-size: var(--step--1);
-    color: var(--type-secondary);
-    margin-top: var(--space);
+    > figcaption {
+      font-size: var(--step--1);
+      color: var(--type-secondary);
+      margin-top: var(--space);
+    }
   }
   aside {
     background-color: var(--background);
@@ -92,6 +92,9 @@
     border: 1px solid var(--divider);
     border-radius: var(--radius);
     position: relative;
+    font-size: var(--step--1);
+    color: var(--type-secondary);
+    margin-block-start: calc(1rem + var(--step-2));
     &::after {
       border: inherit;
       border-radius: inherit;
