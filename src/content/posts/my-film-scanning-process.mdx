@@ -10,17 +10,15 @@ import { CameraIllustration, PhotoComparison } from '../../components';
 
 I have finally, after many years, digitised all of my film photographs and added some to this website. Getting film photos into a digital format can be as complex as you want to make it. The sanest among us have the lab do it immediately after developing, but given how expensive that is for bulk scanning an archive of film, and the intricacies of some of my work, I got it done with a camera.
 
-It might seem absurd to go to the trouble of shooting with film, developing, and then ultimately taking a photo of the film with a digital camera, but done right it can get to significantly better results, much more quickly than using a scanner.
-
-<PhotoComparison />
+It might seem absurd to go to the trouble of shooting with film, developing, and then taking a photo of the film with a digital camera, but done right it can get to significantly better results, much more quickly than using a scanner.
 
 ## The right tools for the job
 
 If you don't have the right tool for the job, the next best tool is the one you already have. I reluctantly sold my Leica M10 Monochrom and replaced it with an M10-P. I did not want to sell the Monochrom, but as I couldn't really justify even one high-end camera I had to switch to one camera that has the ergonomics I like for shooting and can handle scanning well enough.
 
-If you know anything about the Leica M system you're probably questioning my choices right now. You'll know that they're deliberately manual and deliberately slow to use, but none of this is a particular drawback for scanning. It's not perfect; I need to remove it from the copy stand every time I want to get the latest batch of scans, as the SD card is under the removable base plate. It is not possible to tether to my computer. The app connection is so spotty that I can't reliably control it remotely. The screen has no articulation. The lens options are few and expensive. It's just a little bit weird and awkward.
+If you know anything about the Leica M system you're probably questioning my choices right now. You'll know that they're deliberately manual and deliberately slow to use, but none of this is a particular drawback for scanning. It's not perfect: I need to remove it from the copy stand every time I want to get the latest batch of scans, as the SD card is under the removable base plate. It is not possible to tether to my computer. The app connection is so spotty that I can't reliably control it remotely. The screen has no articulation. The lens options are few and expensive. It's just a little bit weird and awkward.
 
-After researching the small number of viable lens options I found a Leica R-mount macro lens, an URTH adapter, and a macro extension tube. This stack of parts enables 1:1 reproduction for 35mm film on the full-frame sensor through Leica glass for just a few hundred pounds. Of course, none of this works with the rangefinder but this is a lens with a dedicated purpose; it's never going outside.
+After researching the small number of viable lens options I found a Leica R-mount macro lens, an URTH adapter, and a macro extension tube. This stack of parts enables 1:1 reproduction for 35mm film on the full-frame sensor through Leica glass for just a few hundred pounds. Of course, none of this works with the rangefinder but this is a lens with a dedicated purpose — it's never going outside.
 
 <CameraIllustration />
 
@@ -38,6 +36,8 @@ There is a reason for the variety of approaches to shutter speed. For a full rol
 
 Probably my best work was captured using a Holga 120SF. Some of the details of these photos are barely visible on the negative against a light source, but they're in there. In these cases, I still use the histogram but I do it for every frame. Often the emptiest-looking photos are hiding something that my old scanner could never reach.
 
+<PhotoComparison />
+
 ## Conversion
 
 Unlike a scanner, a camera has no option to invert a negative image automatically. I am not smart enough to understand the various algorithms used to do this, but I do know that a simple inversion in Lightroom or Photoshop isn't likely to get the best results. I use [Negative Lab Pro](https://www.negativelabpro.com/) and follow their suggested approach pretty closely:
@@ -47,7 +47,7 @@ Unlike a scanner, a camera has no option to invert a negative image automaticall
 3. I like the 'Frontier' colour model, or 'B+W'. Hit 'convert'
 4. Adjust the image as necessary
 
-I don't do a lot of post-processing; it's usually limited to balancing contrast, highlights, and shadows. A little dust removal, I walk away for a while, come back to it and make sure it looks right, then add metadata (camera, film, lens, year, location) that Lightroom uses to file it into various smart collections. If it's portfolio quality, it gets added to a special collection ready for export.
+I don't do a lot of post-processing: it's usually limited to balancing contrast, highlights, and shadows. A little dust removal, I walk away for a while, come back to it and make sure it looks right, then add metadata (camera, film, lens, year, location) that Lightroom uses to file it into various smart collections. If it's portfolio quality, it gets added to a special collection ready for export.
 
 ## Publishing
 
@@ -59,7 +59,7 @@ After exporting a large image, I feed it into a hand-rolled script that uses [Im
   itself and to control access to them.
 </aside>
 
-This script is far from perfect. It makes assumptions, it'll skip over any existing images without explaining that this even happened, and it could almost certainly be made faster by someone with the right skills. This is a case of 'good enough'; I know how to use it, and it fits my process.
+This script is far from perfect. It makes assumptions, it'll skip over any existing images without explaining that this even happened, and it could almost certainly be made faster by someone with the right skills. This is a case of 'good enough'. I know how to use it, and it fits my process.
 
 Once uploaded, I manually add an entry to a [collection in Astro](https://docs.astro.build/en/guides/content-collections/) and ship the changes. While I probably could automate this step, I prefer to keep it manual so I can write `alt` text and ensure the images are ordered in a way that looks right on the page.
 
@@ -67,7 +67,8 @@ Once uploaded, I manually add an entry to a [collection in Astro](https://docs.a
   `alt` text is short for 'alternative text'. Well-made websites have text accompanying images for people who
   benefit from a description of an image, such as blind or partially sighted people.
 
-  It has the added benefit of helping me know which photo is which in my Astro collection.
+It has the added benefit of helping me know which photo is which in my Astro collection.
+
 </aside>
 
 ## Future scans
