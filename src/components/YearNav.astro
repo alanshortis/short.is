@@ -7,9 +7,9 @@ const { years } = Astro.props;
 
 <nav class="year-list" role="menubar" aria-label="Years">
   {
-    years.map(year => (
+    years.map((year, i) => (
       <a
-        class="year-list__item"
+        class:list={['year-list__item', { 'year-list__item--latest': i === 0 }]}
         href={`#${year}`}
         role="menuitem"
         style={`animation-timeline: --year-${year}`}
@@ -44,6 +44,19 @@ const { years } = Astro.props;
     }
   }
 
+  // Ensure the latest photo is marked active from the top of the page
+  @keyframes activate-latest {
+    0% {
+      --indicator-active: 1;
+    }
+    80% {
+      --indicator-active: 1;
+    }
+    98% {
+      --indicator-active: 0;
+    }
+  }
+
   .year-list {
     @include backdrop;
     align-items: center;
@@ -66,6 +79,9 @@ const { years } = Astro.props;
       inset-block-end: 1px;
       animation: activate linear both;
       animation-range: cover;
+      &--latest {
+        animation-name: activate-latest;
+      }
       &::after {
         @include active-indicator($animate: false);
         opacity: var(--indicator-active);

@@ -1,20 +1,42 @@
 ---
+import PhotoLightbox from './PhotoLightbox.astro';
 const S3 = import.meta.env.S3;
+const scanAlt =
+  "Black and white photo. A person leaning into a ticket or information booth at a busy railway station. It's dark, and their white shirt is contrasted against the background. This image was captured with a scanner, and lacks any visible grain. Dark areas are too dark, with no detail to recover";
+const cameraAlt =
+  "Black and white photo. A person leaning into a ticket or information booth at a busy railway station. It's dark, and their white shirt is contrasted against the background. This image was captured with a camera, and shows visible grain. Dark areas are dark, but there is detail to recover.";
+const ratio = '1 / 1';
 ---
 
 <figure>
-  <div class="photos">
-    <img
-      src={`${S3}scan-example.avif`}
-      srcset={`${S3}scan-example-2x.avif 2x, ${S3}scan-example.avif 1x`}
-      alt="Black and white photo. A person leaning into a ticket or information booth at a busy railway station. It's dark, and their white shirt is contrasted against the background. This image was captured with a scanner, and lacks any visible grain. Dark areas are too dark, with no detail to recover"
-    />
-    <img
-      src={`${S3}camera-example.avif`}
-      srcset={`${S3}camera-example-2x.avif 2x, ${S3}camera-example.avif 1x`}
-      alt="Black and white photo. A person leaning into a ticket or information booth at a busy railway station. It's dark, and their white shirt is contrasted against the background. This image was captured with a camera, and shows visible grain. Dark areas are dark, but there is detail to recover."
-    />
-  </div>
+  <PhotoLightbox>
+    <div class="photos">
+      <a
+        href="#scan-example"
+        data-photo-name="scan-example"
+        data-photo-ratio={ratio}
+        data-photo-alt={scanAlt}
+      >
+        <img
+          src={`${S3}scan-example.avif`}
+          srcset={`${S3}scan-example-2x.avif 2x, ${S3}scan-example.avif 1x`}
+          alt={scanAlt}
+        />
+      </a>
+      <a
+        href="#camera-example"
+        data-photo-name="camera-example"
+        data-photo-ratio={ratio}
+        data-photo-alt={cameraAlt}
+      >
+        <img
+          src={`${S3}camera-example.avif`}
+          srcset={`${S3}camera-example-2x.avif 2x, ${S3}camera-example.avif 1x`}
+          alt={cameraAlt}
+        />
+      </a>
+    </div>
+  </PhotoLightbox>
   <figcaption>
     We can put aside the quality of the photograph for now (it's supposed to be dark), but as a comparision
     between the scanner and the camera there is a clear difference. The scanner smooths grain and adds
@@ -31,9 +53,12 @@ const S3 = import.meta.env.S3;
   .photos {
     display: flex;
     gap: var(--space);
-    img {
+    a {
       flex: 1;
       min-width: 0;
+      img {
+        inline-size: 100%;
+      }
     }
     @container (max-width: 35rem) {
       flex-direction: column;

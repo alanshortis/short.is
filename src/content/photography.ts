@@ -389,16 +389,6 @@ export const photographyData: PhotoYear[] = [
     id: '2023',
     photos: [
       {
-        name: '20260311-202827',
-        location: 'Chicago',
-        camera: Camera.M6,
-        lens: Lens.Summicron50,
-        film: Film.Delta3200,
-        ratio: Ratio.P35,
-        altText:
-          'Black and white photograph. A minimal bench on a marble floor, with no one sitting at it. It sits in front of very tall net curtains covering a large window',
-      },
-      {
         name: '20260311-202842',
         location: 'Chicago',
         camera: Camera.M6,
@@ -409,14 +399,14 @@ export const photographyData: PhotoYear[] = [
           'Black and white photograph. Lower Wacker Drive in Chicago, looking across a the street to see three entrances. A track is leaving from the left, the middle appears empty with lights inside and has a sign above that reads "DO NOT ENTER", and the third is mostly out of frame',
       },
       {
-        name: '20260311-204328',
+        name: '20260311-202827',
         location: 'Chicago',
         camera: Camera.M6,
         lens: Lens.Summicron50,
         film: Film.Delta3200,
-        ratio: Ratio.L35,
+        ratio: Ratio.P35,
         altText:
-          'Black and white photograph. From an enclosed parking area, we can see out into Chicago. A sign that reads "WENDELL BOAT RIDE" hangs in the opening',
+          'Black and white photograph. A minimal bench on a marble floor, with no one sitting at it. It sits in front of very tall net curtains covering a large window',
       },
       {
         name: '20260311-203022',
@@ -429,16 +419,6 @@ export const photographyData: PhotoYear[] = [
           'Black and white photograph. A workman on a scissor lift, looking down at something. He\'s wearing light coloured overalls and a baseball cap. The scissor lift is under chicago, and we see the address "E. North Water Street" painted on the wall in the background',
       },
       {
-        name: '20260311-203323',
-        location: 'Chicago',
-        camera: Camera.M6,
-        lens: Lens.Summicron50,
-        film: Film.Delta3200,
-        ratio: Ratio.P35,
-        altText:
-          "Black and white photograph. In a back street, looking at some steps into a building. The inside of the alcove is painted white, and we can't quite see around to the door. There is a no smoking sign, and some other words painted on the wall that look official but are mostly obstructed",
-      },
-      {
         name: '20260311-204238',
         location: 'Chicago',
         camera: Camera.M6,
@@ -447,6 +427,26 @@ export const photographyData: PhotoYear[] = [
         ratio: Ratio.L35,
         altText:
           'Black and white photograph. Inside the L in Chicago, with the very wide angle lens used we can see a lot of the inside and outside of the train as it traverses a bend in The Loop',
+      },
+      {
+        name: '20260311-204328',
+        location: 'Chicago',
+        camera: Camera.M6,
+        lens: Lens.Summicron50,
+        film: Film.Delta3200,
+        ratio: Ratio.L35,
+        altText:
+          'Black and white photograph. From an enclosed parking area, we can see out into Chicago. A sign that reads "WENDELL BOAT RIDE" hangs in the opening',
+      },
+      {
+        name: '20260311-203323',
+        location: 'Chicago',
+        camera: Camera.M6,
+        lens: Lens.Summicron50,
+        film: Film.Delta3200,
+        ratio: Ratio.P35,
+        altText:
+          "Black and white photograph. In a back street, looking at some steps into a building. The inside of the alcove is painted white, and we can't quite see around to the door. There is a no smoking sign, and some other words painted on the wall that look official but are mostly obstructed",
       },
       {
         name: '20260311-204028',
@@ -474,6 +474,15 @@ export const photographyData: PhotoYear[] = [
     id: '2022',
     photos: [
       {
+        name: '20260329-102924',
+        location: 'New York',
+        camera: Camera.GW670,
+        film: Film.Portra400,
+        ratio: Ratio.P67,
+        altText:
+          'Colour photograph. A delapidated house clad in red panels sits behind a fence and is surrounded by trees and bushes. A red BMW 3 series compact sits on the driveway in front of a garage whos door is obstracted by more trees and bushes',
+      },
+      {
         name: '20260326-152755',
         location: 'New York',
         camera: Camera.GW670,
@@ -492,15 +501,6 @@ export const photographyData: PhotoYear[] = [
           'Colour photograph. The back of a white Tesla, parked outside a shuttered storefont named "CHUANG YE ELECTRICAL SUPPLIES LTD"',
       },
       {
-        name: '20260327-174015',
-        location: 'Stockholm',
-        camera: Camera.GW670,
-        film: Film.Portra400,
-        ratio: Ratio.P67,
-        altText:
-          'Colour photograph. Ten empty chairs inside a marble church beside some candles, with ligh coming through a large window',
-      },
-      {
         name: '20260327-174400',
         location: 'Stockholm',
         camera: Camera.GW670,
@@ -510,11 +510,20 @@ export const photographyData: PhotoYear[] = [
           'Colour photograph. Looking across a railway platform in the winter, a person has their back to us as they stand in the sun',
       },
       {
+        name: '20260327-174015',
+        location: 'Stockholm',
+        camera: Camera.GW670,
+        film: Film.Portra400,
+        ratio: Ratio.P67,
+        altText:
+          'Colour photograph. Ten empty chairs inside a marble church beside some candles, with ligh coming through a large window',
+      },
+      {
         name: '20260326-153025',
         location: 'New York',
         camera: Camera.GW670,
         film: Film.Portra400,
-        ratio: Ratio.L67,
+        ratio: Ratio.P67,
         altText:
           'Colour photograph. An orange plastic chimney spewing steam from the sewers, with a bisy street behind',
       },
@@ -564,15 +573,6 @@ export const photographyData: PhotoYear[] = [
           'Colour photograph. Looking directly on to a wood door, with the number "228" appearing on the glass and on an awning above in very different font styles. We can see someone reflected in the glass',
       },
       {
-        name: '20260329-102924',
-        location: 'New York',
-        camera: Camera.GW670,
-        film: Film.Portra400,
-        ratio: Ratio.P67,
-        altText:
-          'Colour photograph. A delapidated house clad in red panels sits behind a fence and is surrounded by trees and bushes. A red BMW 3 series compact sits on the driveway in front of a garage whos door is obstracted by more trees and bushes',
-      },
-      {
         name: '20260327-175842',
         location: 'Stockholm',
         camera: Camera.GW670,
@@ -595,7 +595,7 @@ export const photographyData: PhotoYear[] = [
         location: 'New York',
         camera: Camera.GW670,
         film: Film.Portra400,
-        ratio: Ratio.L67,
+        ratio: Ratio.P67,
         altText:
           'Colour photograph. A street corner with mailboxes and roadworks. Someone in a wheelchair is copped by the left of the image, and a flock of pigeons fly up and towards us while others keep eating whatever is on the floor',
       },
