@@ -62,6 +62,7 @@
     figcaption {
       display: flex;
       font-size: var(--step--1);
+      margin-block-start: 1lh;
       &::before {
         content: '—';
       }
