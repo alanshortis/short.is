@@ -71,4 +71,12 @@
       font-style: normal;
     }
   }
+  figure:has(svg, img) {
+    margin-block: var(--space--large);
+    > figcaption {
+      font-size: var(--step--1);
+      color: var(--type-secondary);
+      margin-top: var(--space);
+    }
+  }
 }
