@@ -1,0 +1,24 @@
+<div class="favicon"></div>
+
+<style lang="scss">
+  .favicon {
+    aspect-ratio: 1 / 1;
+    position: relative;
+    width: var(--step-5);
+    border: 1px solid var(--foreground);
+    border-block-end: 0;
+    border-inline-end: 0;
+    border-top-left-radius: 25%;
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      margin: auto;
+      width: var(--space);
+      height: var(--space);
+      background-color: var(--background);
+      border: 1px solid var(--foreground);
+      border-radius: 50%;
+    }
+  }
+</style>

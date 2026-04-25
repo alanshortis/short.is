@@ -2,7 +2,7 @@
 title: 'Figma sites and killing the craft'
 description: 'For most, convenience and speed will trump craft and ethics every time'
 pubDate: '2025-05-10'
-icon: 'new-york'
+icon: 'figma'
 showAgeWarning: true
 ---
 
@@ -15,11 +15,10 @@ Many years later, with mature methods for building layouts that are more than ju
 Some strange things about the code that Figma generates:
 
 - The last character for every string of text is wrapped in a `span` for some reason
-- Headings do not use `h*` tags at all, and instead us `div` with an `aria-label` of the same value. Screen readers will announce this twice
+- Headings do not use `h*` tags at all, and instead use `div` with an `aria-label` of the same value
 - Inline links are `a` elements, so that good
 - Links that appear like buttons, or block elements that are links are `div` with a role of `link`, a `tab-index` of `0` to allow it to be focussed, and an `href` attribute that is then actioned using JavaScript
 - Hover states are handled with JavaScript, not CSS
-- Headings are just `div` elements
 
 Some of these choices are so, so weird to me:
 

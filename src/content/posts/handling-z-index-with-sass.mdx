@@ -2,7 +2,7 @@
 title: 'Handling z-index with SASS'
 description: 'Use SASS to manage z-index across a codebase'
 pubDate: '2016-06-05'
-icon: 'new-york'
+icon: 'z-index'
 showAgeWarning: true
 ---
 
@@ -14,14 +14,15 @@ While SASS cannot alter the behaviour of `z-index`, it can be used to make it ea
 
 ## Solution 1
 
-```scss
+```css
 $z-menu: 10;
 $z-header: 20;
 $z-footer: $z-header;
 $z-modal: 30;
 
 .header {
-  z-index: $z-header; // 20
+  /* 20 */
+  z-index: $z-header;
 }
 ```
 
@@ -31,12 +32,8 @@ I like to set the values in multiples of 10 as this allows you to set a new vari
 
 ## Solution 2
 
-```scss
-$z: (
-  'modal': 30,
-  'header': 20,
-  'menu': 10,
-);
+```css
+$z: ('modal': 30, 'header': 20, 'menu': 10);
 
 @function z($value) {
   @if map-has-key($z, $value) {
@@ -47,7 +44,8 @@ $z: (
 
 // Use.
 .header {
-  z-index: z(header); // 20
+  /* 20 */
+  z-index: z(header);
 }
 ```
 
@@ -59,7 +57,7 @@ While trying to use an non-existent variable will always show an error, passing 
 
 ## Solution 3
 
-```scss
+```css
 $z: ('menu', 'header', 'modal');
 
 @function z($value) {
@@ -70,7 +68,8 @@ $z: ('menu', 'header', 'modal');
 }
 
 .header {
-  z-index: z(header); // 2
+  /* 2 */
+  z-index: z(header);
 }
 ```
 
@@ -80,7 +79,7 @@ For a developer working alone or someone who has a high level of understanding o
 
 An issue you may face is that the values returned are going to be small numbers, so if you're fighting against some vendor CSS with typically massive `z-index` values you'll need to add to your function:
 
-```scss
+```css
 @function z($value) {
   @if index($z, $value) {
     @return (index($z, $value) * 10);

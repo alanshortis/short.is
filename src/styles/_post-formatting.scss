@@ -35,6 +35,10 @@
     padding-inline: 0.25em;
     position: relative;
     inset-block-start: -2px;
+    .comment {
+      color: var(--type-secondary);
+      font-style: italic;
+    }
   }
   pre {
     code,
