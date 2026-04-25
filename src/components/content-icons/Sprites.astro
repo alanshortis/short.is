@@ -1,0 +1,34 @@
+<div class="sprites">
+  <div class="sprites__elem"></div>
+  <div class="sprites__elem"></div>
+  <div class="sprites__elem"></div>
+  <div class="sprites__elem"></div>
+</div>
+
+<style lang="scss">
+  .sprites {
+    aspect-ratio: 1 / 1;
+    display: grid;
+    overflow: hidden;
+    width: var(--step-5);
+    &__elem {
+      aspect-ratio: 1 / 1;
+      border: 1px solid var(--foreground);
+      grid-area: 1 / 1;
+      place-self: center;
+      width: 100%;
+      &:nth-child(2) {
+        width: 80%;
+        border-radius: var(--radius);
+      }
+      &:nth-child(3) {
+        width: 60%;
+        border-radius: calc(var(--radius) * 2);
+      }
+      &:nth-child(4) {
+        width: 40%;
+        border-radius: calc(var(--radius) * 3);
+      }
+    }
+  }
+</style>

@@ -35,6 +35,10 @@
     padding-inline: 0.25em;
     position: relative;
     inset-block-start: -2px;
+    .comment {
+      color: var(--type-secondary);
+      font-style: italic;
+    }
   }
   pre {
     code,
@@ -62,12 +66,21 @@
     figcaption {
       display: flex;
       font-size: var(--step--1);
+      margin-block-start: 1lh;
       &::before {
         content: '—';
       }
     }
     cite {
       font-style: normal;
+    }
+  }
+  figure:has(svg, img) {
+    margin-block: var(--space--large);
+    > figcaption {
+      font-size: var(--step--1);
+      color: var(--type-secondary);
+      margin-top: var(--space);
     }
   }
 }
