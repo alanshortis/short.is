@@ -1,10 +1,17 @@
 export { default as AiIcon } from './Ai.astro';
+export { default as CssEnvIcon } from './CssEnv.astro';
+export { default as DarkModeIcon } from './DarkMode.astro';
+export { default as FaviconIcon } from './Favicon.astro';
+export { default as FigmaIcon } from './Figma.astro';
 export { default as EthicsIcon } from './Ethics.astro';
 export { default as HopperIcon } from './Hopper.astro';
 export { default as ImposterIcon } from './Imposter.astro';
 export { default as InternetIcon } from './Internet.astro';
 export { default as NewYorkIcon } from './NewYork.astro';
 export { default as ObserverIcon } from './Observer.astro';
+export { default as ResponsiveIcon } from './Responsive.astro';
 export { default as ScanningIcon } from './Scanning.astro';
 export { default as ShareIcon } from './Share.astro';
+export { default as SpritesIcon } from './Sprites.astro';
 export { default as WebsiteIcon } from './Website.astro';
+export { default as ZindexIcon } from './Zindex.astro';

@@ -9,4 +9,10 @@ export default defineConfig({
   markdown: {
     syntaxHighlight: false,
   },
+  redirects: {
+    '/writing/ai-ambivalence/': {
+      destination: '/writing/ai-inevitability/',
+      status: 301,
+    },
+  },
 });

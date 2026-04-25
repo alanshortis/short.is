@@ -40,7 +40,11 @@
     padding-block: 0.125em;
     padding-inline: 0.25em;
     position: relative;
-    inset-block-start: -1px;
+    inset-block-start: -2px;
+    .comment {
+      color: var(--type-secondary);
+      font-style: italic;
+    }
   }
   pre {
     code,
@@ -69,6 +73,7 @@
     figcaption {
       display: flex;
       font-size: var(--step--1);
+      margin-block-start: 1lh;
       &::before {
         content: '—';
       }
@@ -83,28 +88,6 @@
       font-size: var(--step--1);
       color: var(--type-secondary);
       margin-top: var(--space);
-    }
-  }
-  aside {
-    background-color: var(--background);
-    margin-inline: var(--space);
-    padding: var(--space);
-    border: 1px solid var(--divider);
-    border-radius: var(--radius);
-    position: relative;
-    font-size: var(--step--1);
-    color: var(--type-secondary);
-    margin-block-start: calc(1rem + var(--step-2));
-    &::after {
-      border: inherit;
-      border-radius: inherit;
-      content: '';
-      height: 100%;
-      inset-block-end: var(--step--2);
-      inset-inline-end: var(--step--2);
-      position: absolute;
-      width: 100%;
-      z-index: -1;
     }
   }
 }

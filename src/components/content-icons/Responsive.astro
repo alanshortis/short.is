@@ -1,0 +1,31 @@
+<div class="responsive">
+  <div class="responsive__elem"></div>
+  <div class="responsive__elem"></div>
+  <div class="responsive__elem"></div>
+</div>
+
+<style lang="scss">
+  @use '../../styles/mixins' as *;
+
+  .responsive {
+    aspect-ratio: 1 / 1;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 1fr 3fr;
+    gap: calc(var(--step--2) / 2);
+    width: var(--step-5);
+    @include medium {
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(3, 1fr);
+    }
+    &__elem {
+      border: 1px solid var(--foreground);
+      &:first-child {
+        grid-row: 1 / -1;
+        @include medium {
+          grid-row: auto;
+        }
+      }
+    }
+  }
+</style>

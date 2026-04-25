@@ -24,6 +24,7 @@
   --extreme: light-dark(hsl(0, 0%, 100%), hsl(0, 0%, 0%));
   --background: light-dark(var(--light), var(--dark));
   --foreground: light-dark(var(--dark), var(--light));
+  --type-secondary: light-dark(hsl(0, 0%, 30%), hsl(0, 0%, 70%));
   --code-background: light-dark(hsla(0, 0%, 5%, 0.05), hsla(0, 0%, 95%, 0.125));
   --type-secondary: light-dark(hsl(0, 0%, 30%), hsl(0, 0%, 70%));
   --divider: light-dark(hsla(0, 0%, 0%, 0.25), hsla(0, 0%, 100%, 0.25));
