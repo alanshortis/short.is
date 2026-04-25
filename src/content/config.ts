@@ -1,6 +1,7 @@
 import { defineCollection, z } from 'astro:content';
 import { file } from 'astro/loaders';
 import { Camera, Lens, Film, Ratio, photographyData } from './photography';
+import { iconNames } from '../components/content-icons';
 
 const posts = defineCollection({
   type: 'content',
@@ -9,25 +10,7 @@ const posts = defineCollection({
       title: z.string(),
       description: z.string(),
       pubDate: z.string(),
-      icon: z.enum([
-        'ai',
-        'css-env',
-        'dark-mode',
-        'favicon',
-        'figma',
-        'website',
-        'observer',
-        'hopper',
-        'ethics',
-        'new-york',
-        'imposter',
-        'internet',
-        'responsive',
-        'scanning',
-        'share',
-        'z-index',
-        'sprites',
-      ]),
+      icon: z.enum(iconNames),
       showAgeWarning: z.boolean().optional(),
       published: z.boolean().optional(),
     }),

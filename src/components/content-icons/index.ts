@@ -1,17 +1,40 @@
-export { default as AiIcon } from './Ai.astro';
-export { default as CssEnvIcon } from './CssEnv.astro';
-export { default as DarkModeIcon } from './DarkMode.astro';
-export { default as FaviconIcon } from './Favicon.astro';
-export { default as FigmaIcon } from './Figma.astro';
-export { default as EthicsIcon } from './Ethics.astro';
-export { default as HopperIcon } from './Hopper.astro';
-export { default as ImposterIcon } from './Imposter.astro';
-export { default as InternetIcon } from './Internet.astro';
-export { default as NewYorkIcon } from './NewYork.astro';
-export { default as ObserverIcon } from './Observer.astro';
-export { default as ResponsiveIcon } from './Responsive.astro';
-export { default as ScanningIcon } from './Scanning.astro';
-export { default as ShareIcon } from './Share.astro';
-export { default as SpritesIcon } from './Sprites.astro';
-export { default as WebsiteIcon } from './Website.astro';
-export { default as ZindexIcon } from './Zindex.astro';
+import Ai from './Ai.astro';
+import CssEnv from './CssEnv.astro';
+import DarkMode from './DarkMode.astro';
+import Ethics from './Ethics.astro';
+import Favicon from './Favicon.astro';
+import Figma from './Figma.astro';
+import Hopper from './Hopper.astro';
+import Imposter from './Imposter.astro';
+import Internet from './Internet.astro';
+import NewYork from './NewYork.astro';
+import Observer from './Observer.astro';
+import Responsive from './Responsive.astro';
+import Scanning from './Scanning.astro';
+import Share from './Share.astro';
+import Sprites from './Sprites.astro';
+import Website from './Website.astro';
+import Zindex from './Zindex.astro';
+
+export const icons = {
+  'ai': Ai,
+  'css-env': CssEnv,
+  'dark-mode': DarkMode,
+  'ethics': Ethics,
+  'favicon': Favicon,
+  'figma': Figma,
+  'hopper': Hopper,
+  'imposter': Imposter,
+  'internet': Internet,
+  'new-york': NewYork,
+  'observer': Observer,
+  'responsive': Responsive,
+  'scanning': Scanning,
+  'share': Share,
+  'sprites': Sprites,
+  'website': Website,
+  'z-index': Zindex,
+} as const;
+
+export type IconName = keyof typeof icons;
+export const iconNames = Object.keys(icons) as [IconName, ...IconName[]];
