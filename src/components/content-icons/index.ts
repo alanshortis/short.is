@@ -15,7 +15,6 @@ import Share from './Share.astro';
 import Sprites from './Sprites.astro';
 import Website from './Website.astro';
 import Zindex from './Zindex.astro';
-
 export const icons = {
   'ai': Ai,
   'css-env': CssEnv,
@@ -34,7 +33,4 @@ export const icons = {
   'sprites': Sprites,
   'website': Website,
   'z-index': Zindex,
-} as const;
-
-export type IconName = keyof typeof icons;
-export const iconNames = Object.keys(icons) as [IconName, ...IconName[]];
+};

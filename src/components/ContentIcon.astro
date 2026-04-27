@@ -1,8 +1,8 @@
 ---
-import { icons, type IconName } from './content-icons';
+import { icons } from './content-icons';
 
 interface Props {
-  icon: IconName;
+  icon: keyof typeof icons;
 }
 
 const { icon } = Astro.props;

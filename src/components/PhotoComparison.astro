@@ -2,9 +2,9 @@
 import PhotoLightbox from './PhotoLightbox.astro';
 const S3 = import.meta.env.S3;
 const scanAlt =
-  "Black and white photo. A person leaning into a ticket or information booth at a busy railway station. It's dark, and their white shirt is contrasted against the background. This image was captured with a scanner, and lacks any visible grain. Dark areas are too dark, with no detail to recover";
+  'Black and white photo. Looking along a metro platform, with light reflecting in the tunnel and advertising along the walls. This image was captured with a scanner, and lacks any visible grain. Dark areas are too dark, with no detail to recover';
 const cameraAlt =
-  "Black and white photo. A person leaning into a ticket or information booth at a busy railway station. It's dark, and their white shirt is contrasted against the background. This image was captured with a camera, and shows visible grain. Dark areas are dark, but there is detail to recover.";
+  'Black and white photo. Looking along a metro platform, with light reflecting in the tunnel and advertising along the walls. This image was captured with a camera, and shows visible grain. Dark areas are dark, but there is detail to recover.';
 const ratio = '1 / 1';
 ---
 
@@ -12,14 +12,14 @@ const ratio = '1 / 1';
   <PhotoLightbox>
     <div class="photos">
       <a
-        href="#scan-example"
-        data-photo-name="scan-example"
+        href="#scanner-example"
+        data-photo-name="scanner-example"
         data-photo-ratio={ratio}
         data-photo-alt={scanAlt}
       >
         <img
-          src={`${S3}scan-example.avif`}
-          srcset={`${S3}scan-example-2x.avif 2x, ${S3}scan-example.avif 1x`}
+          src={`${S3}scanner-example.avif`}
+          srcset={`${S3}scanner-example-2x.avif 2x, ${S3}scanner-example.avif 1x`}
           alt={scanAlt}
         />
       </a>
