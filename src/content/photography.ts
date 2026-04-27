@@ -127,13 +127,13 @@ export const photographyData: PhotoYear[] = [
           'Black and white photograph. A slightly long exposure of a passing subway train, with only the elongated stripes of the USA flag discernable',
       },
       {
-        name: '20250331-181500',
+        name: '20250331-181501',
         location: 'New York',
         camera: Camera.M10M,
         lens: Lens.Summicron35,
         ratio: Ratio.L35,
         altText:
-          'Black and white photograph. Looking from one subway platform across to another, we see a person waiting for their train. A train passed on our side, framing the person in the gap between the cars',
+          'Black and white photograph. Looking from one subway platform across to another, we see a person waiting for their train. A train passed on our side, framing the person in the window of a car',
       },
       {
         name: '20250331-220813',
@@ -251,6 +251,60 @@ export const photographyData: PhotoYear[] = [
         ratio: Ratio.P35,
         altText:
           'Black and white photograph. Looking down on a New York street from some height, very early morning. Street markings run across the image at an angle and we can see into an illuminated building which forms part of the United Nations',
+      },
+      {
+        name: '20250909-004341',
+        location: 'New York',
+        camera: Camera.M10M,
+        lens: Lens.Elmarit90,
+        ratio: Ratio.P35,
+        altText:
+          'Black and white photograph. Looking through large windows of a restaurant, a person sits alone at a table with their back to us. There is an exist sign above them ',
+      },
+      {
+        name: '20250111-142631',
+        location: 'Seewiesen',
+        camera: Camera.M10M,
+        lens: Lens.Summicron35,
+        ratio: Ratio.L35,
+        altText:
+          'Black and white photograph. Looking across a valley to ragged mountains in the Alps. The mountainside is contrasted with snow and pine trees',
+      },
+      {
+        name: '20250903-161936',
+        location: 'Cannon Beach',
+        camera: Camera.M10M,
+        lens: Lens.Summicron35,
+        ratio: Ratio.L35,
+        altText:
+          'Black and white photograph. The texture created by sand on a beach where the tide is going out',
+      },
+      {
+        name: '20250903-014007',
+        location: 'Portland',
+        camera: Camera.M10M,
+        lens: Lens.Summicron35,
+        ratio: Ratio.P35,
+        altText:
+          'Black and white photograph. A neon lights that read "TELEPHONES" and "BAGGAGE DEPT" reflect in the polished marble walls of a railway stattion. Three illuminated vending machines are in the background',
+      },
+      {
+        name: '20250904-153528',
+        location: 'Hoh Rainforest',
+        camera: Camera.M10M,
+        lens: Lens.Summicron35,
+        ratio: Ratio.L35,
+        altText:
+          'Black and white photograph. Looking into the distance in a very dense forsest, the path ahead leads to a large tree. Ferns in the foreground are out of focus',
+      },
+      {
+        name: '20250830-235143',
+        location: 'Seattle',
+        camera: Camera.M10M,
+        lens: Lens.Summicron35,
+        ratio: Ratio.L35,
+        altText:
+          'Black and white photograph. In a hotel room, looking across a well-made bed towards a window covered with a blind. Through the blind we can see old building that make up the city outside',
       },
     ],
   },
