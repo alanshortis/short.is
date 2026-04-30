@@ -2,20 +2,42 @@
 import { getCollection } from 'astro:content';
 import Base from '../layouts/base.astro';
 import { Circles, PostBox, ReadingList } from '../components';
+import { photographyData, Ratio } from '../content/photography';
 
+const S3 = import.meta.env.S3;
 const RECENT_WRITING_COUNT = 4;
 const collection = await getCollection('posts');
 const latestPosts = collection
   .filter(post => post.data.published ?? true)
   .sort((a, b) => b.data.pubDate.localeCompare(a.data.pubDate))
   .slice(0, RECENT_WRITING_COUNT);
+
+const [featuredPhoto] = photographyData
+  .flatMap(year => year.photos)
+  .filter(photo => photo.name === '20260311-203022');
 ---
 
-<Base pageTitle="Alan Shortis" description="My name is Alan Shortis and I am a web engineer">
+<Base pageTitle="Alan Shortis" description="Alan Shortis. Web Engineer and occasional photo taker">
   <div class="home">
-    <Circles />
+    <div class="home__header">
+      <Circles />
+      <h1 class="home__title">
+        Alan Shortis&mdash;web engineer, occasional photographer, aspiring creative coder
+      </h1>
+      <div class="home__photo-col">
+        <a href=`/photography#${featuredPhoto.name}`>
+          <img
+            src={`${S3}${featuredPhoto.name}-2x.avif`}
+            srcset={`${S3}${featuredPhoto.name}-2x.avif 2x, ${S3}${featuredPhoto.name}.avif 1x`}
+            class="home__photo"
+            alt={featuredPhoto.altText}
+            loading="eager"
+          />
+        </a>
+        <a href="/photography" class="home__link">More photography &rarr;</a>
+      </div>
+    </div>
     <section>
-      <h1 class="home__title">My name is Alan Shortis and I am a web engineer</h1>
       <div class="home__posts">
         {latestPosts.map((post, idx) => <PostBox post={post} />)}
       </div>
@@ -32,8 +54,30 @@ const latestPosts = collection
     display: flex;
     flex-direction: column;
     gap: calc(var(--step-5) * 2);
+    &__header {
+      position: relative;
+      display: flex;
+      gap: var(--space);
+      @include medium {
+        flex-direction: column;
+      }
+    }
+    &__photo-col {
+      flex: 1;
+    }
+    &__photo {
+      aspect-ratio: 2 / 3;
+      border-radius: var(--radius);
+      inline-size: 100%;
+      @include medium {
+        @include full-bleed;
+        border-radius: 0;
+        max-width: none;
+      }
+    }
     &__title {
-      font-size: var(--step-2);
+      flex: 1;
+      font-size: var(--step-4);
       font-weight: bold;
       line-height: 1.305;
       margin-block-end: var(--step-5);
@@ -44,14 +88,15 @@ const latestPosts = collection
       gap: var(--space);
       grid-template-columns: repeat(2, 1fr);
       grid-auto-rows: 1fr;
+      z-index: 2;
       @include small {
         grid-template-columns: 1fr;
       }
     }
     &__link {
+      @include label;
       display: inline-block;
       margin-block-start: var(--space--large);
-      @include label;
     }
   }
 </style>

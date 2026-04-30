@@ -1,5 +1,6 @@
 import { defineCollection, z } from 'astro:content';
 import { file } from 'astro/loaders';
+import { Camera, Lens, Film, Ratio, photographyData } from './photography';
 
 const posts = defineCollection({
   type: 'content',
@@ -12,19 +13,20 @@ const posts = defineCollection({
         'ai',
         'css-env',
         'dark-mode',
+        'ethics',
         'favicon',
         'figma',
-        'website',
-        'observer',
         'hopper',
-        'ethics',
-        'new-york',
         'imposter',
         'internet',
+        'new-york',
+        'observer',
         'responsive',
+        'scanning',
         'share',
-        'z-index',
         'sprites',
+        'website',
+        'z-index',
       ]),
       showAgeWarning: z.boolean().optional(),
       published: z.boolean().optional(),
@@ -41,7 +43,26 @@ const reading = defineCollection({
     }),
 });
 
+const photography = defineCollection({
+  loader: async () => photographyData,
+  schema: () =>
+    z.object({
+      photos: z.array(
+        z.object({
+          name: z.string(),
+          location: z.string(),
+          camera: z.nativeEnum(Camera),
+          lens: z.nativeEnum(Lens).optional(),
+          film: z.nativeEnum(Film).optional(),
+          altText: z.string(),
+          ratio: z.nativeEnum(Ratio),
+        })
+      ),
+    }),
+});
+
 export const collections = {
   posts,
   reading,
+  photography,
 };

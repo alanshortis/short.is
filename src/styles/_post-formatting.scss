@@ -1,7 +1,7 @@
 .formatting {
   line-height: 1.618;
   & * + :where(p, ol, ul, h2, h3, figure, dl) {
-    margin-top: 1lh;
+    margin-block-start: 1lh;
   }
   a {
     text-decoration: underline;
@@ -14,7 +14,13 @@
     font-style: normal;
   }
   kbd {
-    font: inherit;
+    font-family: monospace;
+    font-size: var(--step--1);
+    padding: 0.25em;
+    border: 1px solid var(--divider);
+    border-radius: var(--radius);
+    inset-block-start: -1px;
+    position: relative;
   }
   del {
     text-decoration: double line-through;
@@ -49,11 +55,12 @@
   }
   ol,
   ul {
-    padding-inline-start: var(--space);
+    padding-inline-start: var(--space--large);
   }
   li {
     list-style: decimal;
     margin-bottom: 0.25lh;
+    padding-inline-start: var(--space);
   }
   ul li {
     list-style: disc;
@@ -81,6 +88,31 @@
       font-size: var(--step--1);
       color: var(--type-secondary);
       margin-top: var(--space);
+    }
+  }
+  aside {
+    background-color: var(--background);
+    margin-inline: var(--space);
+    padding: var(--space);
+    border: 1px solid var(--divider);
+    border-radius: var(--radius);
+    position: relative;
+    font-size: var(--step--1);
+    color: var(--type-secondary);
+    margin-block-start: calc(1rem + var(--step-2));
+    code {
+      font-size: var(--step--2);
+    }
+    &::after {
+      border: inherit;
+      border-radius: inherit;
+      content: '';
+      height: 100%;
+      inset-block-end: var(--step--2);
+      inset-inline-end: var(--step--2);
+      position: absolute;
+      width: 100%;
+      z-index: -1;
     }
   }
 }

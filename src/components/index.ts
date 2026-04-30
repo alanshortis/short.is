@@ -1,8 +1,10 @@
 export { default as Disclaimer } from './Discalimer.astro';
+export { default as CameraIllustration } from './CameraIllustration.astro';
 export { default as Circles } from './Circles.astro';
 export { default as CodeBlock } from './CodeBlock.astro';
 export { default as Concerns } from './Concerns.astro';
 export { default as ContentIcon } from './ContentIcon.astro';
+export { default as EsbIllustration } from './EsbIllustration.astro';
 export { default as ExampleEmbed } from './ExampleEmbed.astro';
 export { default as Footer } from './Footer.astro';
 export { default as Header } from './Header.astro';
@@ -11,4 +13,7 @@ export { default as Menu } from './Menu.astro';
 export { default as PostBox } from './PostBox.astro';
 export { default as PostDate } from './PostDate.astro';
 export { default as ReadingList } from './ReadingList.astro';
+export { default as PhotoComparison } from './PhotoComparison.astro';
+export { default as PhotoLightbox } from './PhotoLightbox.astro';
 export { default as SchemeToggle } from './SchemeToggle.astro';
+export { default as YearNav } from './YearNav.astro';

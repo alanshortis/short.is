@@ -1,0 +1,91 @@
+---
+interface Props {
+  years: string[];
+}
+const { years } = Astro.props;
+---
+
+<nav class="year-list" role="menubar" aria-label="Years">
+  {
+    years.map((year, i) => (
+      <a
+        class:list={['year-list__item', { 'year-list__item--latest': i === 0 }]}
+        href={`#${year}`}
+        role="menuitem"
+        style={`animation-timeline: --year-${year}`}
+      >
+        {year}
+      </a>
+    ))
+  }
+</nav>
+
+<style lang="scss">
+  @use '../styles/mixins' as *;
+
+  @property --indicator-active {
+    syntax: '<number>';
+    inherits: true;
+    initial-value: 0;
+  }
+
+  @keyframes activate {
+    2% {
+      --indicator-active: 0;
+    }
+    20% {
+      --indicator-active: 1;
+    }
+    80% {
+      --indicator-active: 1;
+    }
+    98% {
+      --indicator-active: 0;
+    }
+  }
+
+  // Ensure the latest photo is marked active from the top of the page
+  @keyframes activate-latest {
+    0% {
+      --indicator-active: 1;
+    }
+    80% {
+      --indicator-active: 1;
+    }
+    98% {
+      --indicator-active: 0;
+    }
+  }
+
+  .year-list {
+    @include backdrop;
+    align-items: center;
+    align-self: center;
+    block-size: var(--space--large);
+    border-radius: var(--space--large);
+    display: inline-flex;
+    gap: var(--space);
+    justify-content: center;
+    margin-block-end: var(--space--large);
+    padding-inline: var(--space);
+    position: sticky;
+    top: var(--space);
+    @include small {
+      display: none;
+    }
+    &__item {
+      @include label;
+      position: relative;
+      inset-block-end: 1px;
+      animation: activate linear both;
+      animation-range: cover;
+      &--latest {
+        animation-name: activate-latest;
+      }
+      &::after {
+        @include active-indicator($animate: false);
+        opacity: var(--indicator-active);
+      }
+    }
+  }
+</style>

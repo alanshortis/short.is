@@ -1,38 +1,12 @@
 ---
+import { icons } from './content-icons';
+
+interface Props {
+  icon: keyof typeof icons;
+}
+
 const { icon } = Astro.props;
-import {
-  AiIcon,
-  CssEnvIcon,
-  DarkModeIcon,
-  FaviconIcon,
-  FigmaIcon,
-  EthicsIcon,
-  HopperIcon,
-  ImposterIcon,
-  InternetIcon,
-  NewYorkIcon,
-  ObserverIcon,
-  ResponsiveIcon,
-  ShareIcon,
-  SpritesIcon,
-  WebsiteIcon,
-  ZindexIcon,
-} from './content-icons';
+const Icon = icons[icon];
 ---
 
-{icon === 'ai' && <AiIcon />}
-{icon === 'css-env' && <CssEnvIcon />}
-{icon === 'dark-mode' && <DarkModeIcon />}
-{icon === 'favicon' && <FaviconIcon />}
-{icon === 'ethics' && <EthicsIcon />}
-{icon === 'figma' && <FigmaIcon />}
-{icon === 'hopper' && <HopperIcon />}
-{icon === 'imposter' && <ImposterIcon />}
-{icon === 'internet' && <InternetIcon />}
-{icon === 'new-york' && <NewYorkIcon />}
-{icon === 'observer' && <ObserverIcon />}
-{icon === 'responsive' && <ResponsiveIcon />}
-{icon === 'share' && <ShareIcon />}
-{icon === 'sprites' && <SpritesIcon />}
-{icon === 'website' && <WebsiteIcon />}
-{icon === 'z-index' && <ZindexIcon />}
+<Icon />

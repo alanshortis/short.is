@@ -1,13 +1,28 @@
-@mixin active-indicator {
+@mixin active-indicator($animate: true) {
   aspect-ratio: 1 / 1;
-  background-color: currentColor;
+  background-color: var(--foreground);
   border-radius: 50%;
   content: '';
   height: 0.345em;
   left: calc(50% - 0.1725em);
-  opacity: 1;
   position: absolute;
   top: 1.618em;
+  @if $animate {
+    opacity: 1;
+    @include should-animate {
+      animation: fade-indicator 300ms ease both;
+    }
+    @at-root {
+      @keyframes fade-indicator {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+    }
+  }
 }
 
 @mixin depth($offset: 0.5em) {
@@ -30,6 +45,14 @@
     position: absolute;
     width: 100%;
     z-index: -1;
+  }
+}
+
+@mixin backdrop {
+  backdrop-filter: blur(var(--space));
+  background-color: var(--backdrop);
+  @media (prefers-reduced-transparency: reduce) {
+    background-color: var(--background);
   }
 }
 

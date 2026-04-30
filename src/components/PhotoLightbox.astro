@@ -1,0 +1,196 @@
+---
+const S3 = import.meta.env.S3;
+---
+
+<photo-lightbox data-s3={S3}>
+  <slot />
+  <dialog class="lightbox">
+    <button class="lightbox__close">Close</button>
+    <img class="lightbox__img" alt="" />
+  </dialog>
+</photo-lightbox>
+
+<script>
+  class PhotoLightbox extends HTMLElement {
+    private abortController = new AbortController();
+    private dialog: HTMLDialogElement;
+    private img: HTMLImageElement;
+    private closeBtn: HTMLButtonElement;
+    private photos: Array<{ name: string; ratio: string; alt: string }> = [];
+    private s3 = this.dataset.s3;
+
+    constructor() {
+      super();
+      this.dialog = this.querySelector('dialog')!;
+      this.img = this.dialog.querySelector('img')!;
+      this.closeBtn = this.dialog.querySelector('.lightbox__close')!;
+    }
+
+    private open(index: number) {
+      const photo = this.photos[index];
+
+      this.img.src = `${this.s3}${photo.name}-2x.avif`;
+      this.img.srcset = `${this.s3}${photo.name}-4x.avif 2x`;
+      this.img.alt = photo.alt;
+      this.img.style.aspectRatio = photo.ratio;
+
+      history.replaceState(null, '', `#${photo.name}`);
+
+      if (!this.dialog.open) {
+        document.documentElement.style.overflow = 'hidden';
+        this.dialog.showModal();
+      }
+    }
+
+    private openFromHash() {
+      const hash = location.hash.slice(1);
+      if (!hash) {
+        if (this.dialog.open) this.close();
+        return;
+      }
+      const index = this.photos.findIndex(p => p.name === hash);
+      if (index !== -1) this.open(index);
+    }
+
+    private close() {
+      this.dialog.classList.add('closing');
+      this.dialog.addEventListener(
+        'transitionend',
+        () => {
+          this.dialog.classList.remove('closing');
+          document.documentElement.style.overflow = '';
+          this.dialog.close();
+          this.img.src = '';
+          this.img.srcset = '';
+          this.img.alt = '';
+          this.img.style.aspectRatio = '';
+          history.replaceState(null, '', location.pathname);
+        },
+        { once: true }
+      );
+    }
+
+    private preload(index: number) {
+      const photo = this.photos[index];
+      const id = `preload-${photo.name}`;
+      if (document.getElementById(id)) return;
+
+      const link = document.createElement('link');
+      link.id = id;
+      link.rel = 'preload';
+      link.as = 'image';
+      link.type = 'image/avif';
+      link.href = `${this.s3}${photo.name}-4x.avif`;
+      document.head.appendChild(link);
+    }
+
+    connectedCallback() {
+      const anchors = Array.from(this.querySelectorAll<HTMLAnchorElement>('a[data-photo-name]'));
+      const { signal } = this.abortController;
+
+      this.photos = anchors.map(a => ({
+        name: a.dataset.photoName!,
+        ratio: a.dataset.photoRatio!,
+        alt: a.dataset.photoAlt!,
+      }));
+
+      anchors.forEach((a, i) => {
+        a.addEventListener(
+          'click',
+          (event: MouseEvent) => {
+            event.preventDefault();
+            this.open(i);
+          },
+          { signal }
+        );
+        a.addEventListener('pointerenter', () => this.preload(i), { signal, once: true });
+      });
+
+      this.dialog.addEventListener(
+        'cancel',
+        (event: Event) => {
+          event.preventDefault();
+          this.close();
+        },
+        { signal }
+      );
+
+      this.dialog.addEventListener(
+        'click',
+        (event: MouseEvent) => {
+          if (event.target === this.dialog) this.close();
+        },
+        { signal }
+      );
+
+      this.closeBtn.addEventListener('click', () => this.close(), { signal });
+
+      this.openFromHash();
+      window.addEventListener('hashchange', () => this.openFromHash(), { signal });
+    }
+
+    disconnectedCallback() {
+      this.abortController.abort();
+    }
+  }
+
+  customElements.define('photo-lightbox', PhotoLightbox);
+</script>
+
+<style lang="scss">
+  @use '../styles/mixins' as *;
+
+  .lightbox {
+    @include backdrop;
+    border: 0;
+    height: 100vh;
+    inset: 0;
+    margin: 0;
+    max-height: none;
+    max-width: none;
+    outline: none;
+    padding: 0;
+    opacity: 0;
+    position: fixed;
+    transition: opacity 200ms ease;
+    width: 100vw;
+    &[open] {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      opacity: 1;
+      @starting-style {
+        opacity: 0;
+      }
+    }
+    &.closing {
+      opacity: 0;
+    }
+    &::backdrop {
+      display: none;
+    }
+    &__img {
+      border-radius: calc(var(--radius) * 2);
+      box-shadow: 0 0 var(--space--large) 0 var(--background);
+      display: block;
+      max-width: min(1440px, calc(100vw - var(--space) * 4));
+      max-height: min(1440px, calc(100vh - var(--space) * 4));
+      @include medium {
+        border-radius: 0;
+        max-width: 100vw;
+        max-height: 100vh;
+      }
+    }
+    &__close {
+      backdrop-filter: blur(10px);
+      background: var(--backdrop);
+      border-radius: var(--radius);
+      color: var(--foreground);
+      padding: calc(var(--space) / 4);
+      position: absolute;
+      right: calc(var(--space) / 2);
+      top: calc(var(--space) / 2);
+      @include label;
+    }
+  }
+</style>

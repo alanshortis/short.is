@@ -1,0 +1,120 @@
+---
+import Base from '../layouts/base.astro';
+import { PhotoLightbox, YearNav } from '../components';
+import { getCollection } from 'astro:content';
+const collection = await getCollection('photography').then(c =>
+  c.sort((a, b) => Number(b.id) - Number(a.id))
+);
+
+const S3 = import.meta.env.S3;
+---
+
+<Base pageTitle="Alan Shortis | Photography" description="Photographs over the last 20 years">
+  <section
+    class="page"
+    aria-labelledby="photography"
+    style={`timeline-scope: ${collection.map(y => `--year-${y.id}`).join(', ')}`}
+  >
+    <h1 id="photography" class="vh">Photography</h1>
+    <YearNav years={collection.map(year => year.id)} />
+    <ol>
+      {
+        collection.map(photoYear => (
+          <li
+            class="year"
+            id={photoYear.id}
+            data-year={photoYear.id}
+            style={`view-timeline: --year-${photoYear.id} block`}
+          >
+            <h2 class="vh">{photoYear.id}</h2>
+            <PhotoLightbox>
+              <div class="photos">
+                {[0, 1].map(col => (
+                  <div class="photos__col">
+                    {photoYear.data.photos
+                      .filter((_, i) => i % 2 === col)
+                      .map(photo => (
+                        <a
+                          href={`#${photo.name}`}
+                          data-photo-name={photo.name}
+                          data-photo-ratio={photo.ratio}
+                          data-photo-alt={photo.altText}
+                          class="photos__photo-link"
+                          style={`--ratio: ${photo.ratio}`}
+                        >
+                          <img
+                            src={`${S3}${photo.name}.avif`}
+                            srcset={`${S3}${photo.name}-2x.avif 2x, ${S3}${photo.name}.avif 1x`}
+                            class="photos__photo"
+                            alt={photo.altText}
+                            loading="lazy"
+                            draggable="false"
+                          />
+                        </a>
+                      ))}
+                  </div>
+                ))}
+              </div>
+            </PhotoLightbox>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+</Base>
+
+<style lang="scss">
+  @use '../styles/mixins' as *;
+
+  .page {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .year {
+    margin-block-start: calc(var(--space--large) * 2);
+    scroll-margin-block-start: calc(var(--space--large) * 2);
+    &:first-child {
+      margin-block-start: var(--space--large);
+    }
+    &__title {
+      font-size: var(--step-5);
+      font-weight: bold;
+    }
+  }
+
+  .photos {
+    display: flex;
+    gap: var(--space);
+    @include medium {
+      flex-direction: column;
+    }
+    &__col {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      justify-content: center;
+      gap: var(--space);
+      &:first-child {
+        align-items: end;
+      }
+    }
+    &__photo-link {
+      // 3 / 2 is the widest photo ratio
+      // 80% is the widest we want to render an image
+      inline-size: calc(sqrt(var(--ratio)) / sqrt(3 / 2) * 80%);
+      &:focus-visible {
+        @include focus-outline;
+      }
+      @include medium {
+        align-self: center;
+        inline-size: calc(sqrt(var(--ratio)) / sqrt(3 / 2) * 100%);
+      }
+    }
+    &__photo {
+      aspect-ratio: var(--ratio);
+      border-radius: var(--radius);
+      inline-size: 100%;
+    }
+  }
+</style>
