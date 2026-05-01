@@ -5,7 +5,10 @@ const S3 = import.meta.env.S3;
 <photo-lightbox data-s3={S3}>
   <slot />
   <dialog class="lightbox">
-    <button class="lightbox__close">Close</button>
+    <nav class="lightbox__nav">
+      <button class="lightbox__control" data-action="prev" disabled>Previous</button>
+      <button class="lightbox__control" data-action="next" disabled>Next</button>
+    </nav>
     <img class="lightbox__img" alt="" />
   </dialog>
 </photo-lightbox>
@@ -15,31 +18,75 @@ const S3 = import.meta.env.S3;
     private abortController = new AbortController();
     private dialog: HTMLDialogElement;
     private img: HTMLImageElement;
-    private closeBtn: HTMLButtonElement;
+    private prevBtn: HTMLButtonElement;
+    private nextBtn: HTMLButtonElement;
     private photos: Array<{ name: string; ratio: string; alt: string }> = [];
+    private currentIndex = -1;
     private s3 = this.dataset.s3;
 
     constructor() {
       super();
       this.dialog = this.querySelector('dialog')!;
       this.img = this.dialog.querySelector('img')!;
-      this.closeBtn = this.dialog.querySelector('.lightbox__close')!;
+      this.prevBtn = this.dialog.querySelector('[data-action="prev"]')!;
+      this.nextBtn = this.dialog.querySelector('[data-action="next"]')!;
     }
 
     private open(index: number) {
       const photo = this.photos[index];
-
-      this.img.src = `${this.s3}${photo.name}-2x.avif`;
-      this.img.srcset = `${this.s3}${photo.name}-4x.avif 2x`;
-      this.img.alt = photo.alt;
-      this.img.style.aspectRatio = photo.ratio;
-
+      const isNavigating = this.dialog.open;
+      this.currentIndex = index;
+      this.updateNav();
       history.replaceState(null, '', `#${photo.name}`);
 
       if (!this.dialog.open) {
         document.documentElement.style.overflow = 'hidden';
         this.dialog.showModal();
       }
+
+      const applyImage = () => {
+        this.img.src = `${this.s3}${photo.name}-2x.avif`;
+        this.img.srcset = `${this.s3}${photo.name}-4x.avif 2x`;
+        this.img.alt = photo.alt;
+        this.img.style.aspectRatio = photo.ratio;
+      };
+
+      if (!isNavigating) {
+        applyImage();
+        return;
+      }
+
+      this.img.style.opacity = '0';
+      this.img.addEventListener(
+        'transitionend',
+        () => {
+          applyImage();
+          this.img.decode().then(() => {
+            this.img.style.opacity = '1';
+          });
+        },
+        { once: true }
+      );
+    }
+
+    private updateNav() {
+      this.prevBtn.disabled = this.currentIndex <= 0;
+      this.nextBtn.disabled = this.currentIndex >= this.photos.length - 1;
+
+      if (document.activeElement === this.prevBtn || document.activeElement === this.nextBtn) {
+        this.dialog.focus();
+      }
+
+      if (this.currentIndex > 0) this.preload(this.currentIndex - 1);
+      if (this.currentIndex < this.photos.length - 1) this.preload(this.currentIndex + 1);
+    }
+
+    private prev() {
+      if (this.currentIndex > 0) this.open(this.currentIndex - 1);
+    }
+
+    private next() {
+      if (this.currentIndex < this.photos.length - 1) this.open(this.currentIndex + 1);
     }
 
     private openFromHash() {
@@ -123,7 +170,20 @@ const S3 = import.meta.env.S3;
         { signal }
       );
 
-      this.closeBtn.addEventListener('click', () => this.close(), { signal });
+      this.prevBtn.addEventListener('click', () => this.prev(), { signal });
+      this.nextBtn.addEventListener('click', () => this.next(), { signal });
+
+      this.dialog.addEventListener(
+        'keydown',
+        (event: KeyboardEvent) => {
+          if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+            event.preventDefault();
+            if (event.key === 'ArrowLeft') this.prev();
+            else this.next();
+          }
+        },
+        { signal }
+      );
 
       this.openFromHash();
       window.addEventListener('hashchange', () => this.openFromHash(), { signal });
@@ -140,10 +200,20 @@ const S3 = import.meta.env.S3;
 <style lang="scss">
   @use '../styles/mixins' as *;
 
+  @keyframes pulse {
+    0%,
+    100% {
+      opacity: 0.2;
+    }
+    50% {
+      opacity: 0.6;
+    }
+  }
+
   .lightbox {
     @include backdrop;
     border: 0;
-    height: 100vh;
+    height: 100dvh;
     inset: 0;
     margin: 0;
     max-height: none;
@@ -153,7 +223,7 @@ const S3 = import.meta.env.S3;
     opacity: 0;
     position: fixed;
     transition: opacity 200ms ease;
-    width: 100vw;
+    width: 100dvw;
     &[open] {
       align-items: center;
       display: flex;
@@ -169,28 +239,55 @@ const S3 = import.meta.env.S3;
     &::backdrop {
       display: none;
     }
+    &::after {
+      aspect-ratio: 1;
+      background: var(--foreground);
+      border-radius: 50%;
+      content: '';
+      block-size: var(--step--2);
+      position: absolute;
+      inset-block-start: 50%;
+      inset-inline-start: 50%;
+      translate: -50% -50%;
+      animation: pulse 1s ease-in-out infinite;
+    }
     &__img {
       border-radius: calc(var(--radius) * 2);
       box-shadow: 0 0 var(--space--large) 0 var(--background);
       display: block;
-      max-width: min(1440px, calc(100vw - var(--space) * 4));
-      max-height: min(1440px, calc(100vh - var(--space) * 4));
+      max-width: min(1440px, calc(100dvw - var(--space) * 4));
+      max-height: min(1440px, calc(100dvh - var(--space) * 4));
+      position: relative;
+      transition: opacity 300ms ease;
+      z-index: 1;
       @include medium {
         border-radius: 0;
-        max-width: 100vw;
-        max-height: 100vh;
+        max-width: 100dvw;
+        max-height: 100dvh;
       }
     }
-    &__close {
-      backdrop-filter: blur(10px);
-      background: var(--backdrop);
-      border-radius: var(--radius);
-      color: var(--foreground);
-      padding: calc(var(--space) / 4);
+    &__nav {
+      @include backdrop;
+      align-items: center;
+      block-size: var(--space--large);
+      border-radius: var(--space--large);
+      display: flex;
+      gap: var(--space--large);
+      padding-inline: var(--space);
       position: absolute;
-      right: calc(var(--space) / 2);
-      top: calc(var(--space) / 2);
+      inset-block-end: var(--space);
+      inset-inline-start: 50%;
+      translate: -50% 0;
+      z-index: 2;
+    }
+    &__control {
       @include label;
+      background: none;
+      color: var(--foreground);
+      &:disabled {
+        opacity: 0.3;
+        pointer-events: none;
+      }
     }
   }
 </style>

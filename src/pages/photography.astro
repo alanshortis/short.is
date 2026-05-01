@@ -17,17 +17,17 @@ const S3 = import.meta.env.S3;
   >
     <h1 id="photography" class="vh">Photography</h1>
     <YearNav years={collection.map(year => year.id)} />
-    <ol>
-      {
-        collection.map(photoYear => (
-          <li
-            class="year"
-            id={photoYear.id}
-            data-year={photoYear.id}
-            style={`view-timeline: --year-${photoYear.id} block`}
-          >
-            <h2 class="vh">{photoYear.id}</h2>
-            <PhotoLightbox>
+    <PhotoLightbox>
+      <ol>
+        {
+          collection.map(photoYear => (
+            <li
+              class="year"
+              id={photoYear.id}
+              data-year={photoYear.id}
+              style={`view-timeline: --year-${photoYear.id} block`}
+            >
+              <h2 class="vh">{photoYear.id}</h2>
               <div class="photos">
                 {[0, 1].map(col => (
                   <div class="photos__col">
@@ -55,11 +55,11 @@ const S3 = import.meta.env.S3;
                   </div>
                 ))}
               </div>
-            </PhotoLightbox>
-          </li>
-        ))
-      }
-    </ol>
+            </li>
+          ))
+        }
+      </ol>
+    </PhotoLightbox>
   </section>
 </Base>
 
