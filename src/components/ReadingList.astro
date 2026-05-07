@@ -1,19 +1,19 @@
 ---
 import { getCollection } from 'astro:content';
 
-const collection = await getCollection('reading');
-const recentReading = collection.slice(0, 7);
+const [{ data }] = await getCollection('reading');
+const recentReading = data.items.slice(0, 7);
 ---
 
 <section class="reading" aria-labelledby="recent-reading">
   <h2 id="recent-reading" class="reading__title">Recent reading</h2>
   <div class="list">
     {
-      recentReading.map(post => (
+      recentReading.map(item => (
         <article class="article">
-          <a class="article__item" href={post.data.slug} target="_blank" rel="noopener noreferrer">
-            <h1 class="article__title">{post.data.title}</h1>
-            <p class="article__author">{post.data.author}</p>
+          <a class="article__item" href={item.slug} target="_blank" rel="noopener noreferrer">
+            <h1 class="article__title">{item.title}</h1>
+            <p class="article__author">{item.author}</p>
           </a>
         </article>
       ))
