@@ -11,7 +11,7 @@ const { post, isFeatured } = Astro.props;
 ---
 
 <article class={`article ${isFeatured ? 'article--featured' : ''}`}>
-  <a class="article__item" href={`/writing/${post.slug}`}>
+  <a class="article__item" href={`/writing/${post.id}`}>
     <PostDate date={post.data.pubDate} />
     <h1 class="article__title">{post.data.title}</h1>
     <div class="article__icon">

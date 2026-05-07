@@ -12,7 +12,7 @@ export const getStaticPaths = async () => {
   return blogPosts
     .filter(post => post.data.published ?? true)
     .map(post => ({
-      params: { slug: post.slug },
+      params: { slug: post.id },
       props: { post },
     }));
 };
