@@ -352,7 +352,6 @@ const lightboxImgCrossfadeMs = 300;
   }
 
   .lightbox {
-    @include backdrop;
     border: 0;
     height: 100dvh;
     inset: 0;
@@ -364,6 +363,7 @@ const lightboxImgCrossfadeMs = 300;
     opacity: 0;
     position: fixed;
     width: 100dvw;
+    @include backdrop;
     &[open] {
       align-items: center;
       display: flex;
@@ -419,7 +419,6 @@ const lightboxImgCrossfadeMs = 300;
       }
     }
     &__nav {
-      @include backdrop;
       align-items: center;
       block-size: var(--space--large);
       border-radius: var(--space--large);
@@ -431,6 +430,7 @@ const lightboxImgCrossfadeMs = 300;
       inset-inline-start: 50%;
       translate: -50% 0;
       z-index: 2;
+      @include backdrop;
     }
     &__control {
       @include label;
