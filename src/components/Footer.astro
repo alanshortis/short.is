@@ -1,13 +1,15 @@
 ---
 import { SchemeToggle } from './';
+import { earliestPhotographyYear } from '../content/photography';
 
-const year = new Date().getFullYear();
+const thisYear = new Date().getFullYear();
 ---
 
 <footer class="footer">
   <div class="footer__links">
-    <p>&copy; 2005-{year} Alan Shortis</p>
+    <p>&copy; {earliestPhotographyYear}-{thisYear}</p>
     <a href="/writing.xml">RSS</a>
+    <a href="https://bsky.app/profile/short.is" target="_blank" rel="noopener noreferrer">Bluesky</a>
   </div>
   <SchemeToggle />
 </footer>

@@ -1255,3 +1255,7 @@ export const photographyData: PhotoYear[] = [
     ],
   },
 ];
+
+export const earliestPhotographyYear = Math.min(
+  ...photographyData.map(year => Number(year.id))
+);

@@ -51,7 +51,7 @@ I don't do a lot of post-processing: it's usually limited to balancing contrast,
 
 ## Publishing
 
-After exporting a large image, I feed it into a hand-rolled script that uses [ImageMagick](https://imagemagick.org/) to create three `avif` variants (predefined dimensions, then 2x and 4x that size to cover high pixel densities) before uploading them to an S3 bucket. Sizing is slightly adjusted for the aspect ratio of the image so square photos aren't too large, `7:6` is balanced against `4:3`, etc. One image takes less than 5 seconds from Lightroom to S3, and I have converted and uploaded hundreds of images in one hit, only needing to wait for a few minutes.
+After exporting a large image, I feed it into a hand-rolled [script](https://github.com/alanshortis/short.is/blob/master/scripts/upload-photos.sh) that uses [ImageMagick](https://imagemagick.org/) to create three `avif` variants (predefined dimensions, then 2x and 4x that size to cover high pixel densities) before uploading them to an S3 bucket. Sizing is slightly adjusted for the aspect ratio of the image so square photos aren't too large, `7:6` is balanced against `4:3`, etc. One image takes less than 5 seconds from Lightroom to S3, and I have converted and uploaded hundreds of images in one hit, only needing to wait for a few minutes.
 
 <aside>
   An 'S3 bucket' is a storage space in Amazon's cloud. This is not an essential step for this process or for
