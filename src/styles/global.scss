@@ -30,7 +30,18 @@ body {
 
 main {
   flex: 1;
-  @include slide-in;
+  opacity: 1;
+  transform: translateY(0);
+  @include should-animate {
+    transition:
+      opacity 500ms ease 200ms,
+      transform 500ms ease 200ms;
+  }
+
+  @starting-style {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
 }
 
 ::selection {
