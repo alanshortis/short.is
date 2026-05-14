@@ -3,10 +3,20 @@ import { icons } from './content-icons';
 
 interface Props {
   icon: keyof typeof icons;
+  isSticky?: boolean;
 }
 
-const { icon } = Astro.props;
+const { icon, isSticky } = Astro.props;
 const Icon = icons[icon];
 ---
 
-<Icon />
+<div class:list={[{ stuck: isSticky }]}>
+  <Icon />
+</div>
+
+<style lang="scss">
+  .stuck {
+    position: sticky;
+    top: var(--step-2);
+  }
+</style>

@@ -31,14 +31,10 @@ const shouldShowWarning = postAgeYears <= -2;
     <h1 id="post-title" class="post__title">{post.data.title}</h1>
     <div class="post__meta">
       <PostDate date={post.data.pubDate} />
-      <ContentIcon icon={post.data.icon} />
+      <ContentIcon icon={post.data.icon} isSticky />
     </div>
     <div class="post__content formatting">
-      {
-        shouldShowWarning && (
-          <Disclaimer>This post is more than {Math.abs(postAgeYears)} years old</Disclaimer>
-        )
-      }
+      {shouldShowWarning && <aside>This post is more than {Math.abs(postAgeYears)} years old</aside>}
       <Content components={{ pre: CodeBlock }} />
     </div>
   </article>
