@@ -34,7 +34,13 @@ const shouldShowWarning = postAgeYears <= -2;
       <ContentIcon icon={post.data.icon} isSticky />
     </div>
     <div class="post__content formatting">
-      {shouldShowWarning && <aside>This post is more than {Math.abs(postAgeYears)} years old</aside>}
+      {
+        shouldShowWarning && (
+          <aside>
+            This post is more than <strong>{Math.abs(postAgeYears)}</strong> years old.
+          </aside>
+        )
+      }
       <Content components={{ pre: CodeBlock }} />
     </div>
   </article>
