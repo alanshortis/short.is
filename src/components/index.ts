@@ -1,4 +1,3 @@
-export { default as Disclaimer } from './Discalimer.astro';
 export { default as CameraIllustration } from './CameraIllustration.astro';
 export { default as Circles } from './Circles.astro';
 export { default as CodeBlock } from './CodeBlock.astro';

@@ -1,6 +1,5 @@
 ---
 import Base from '../layouts/base.astro';
-import { Disclaimer } from '../components';
 import { DecimalClock, DecimalProgress, DecimalAnalog, RegularClock } from '../components/clocks';
 ---
 
@@ -9,9 +8,7 @@ import { DecimalClock, DecimalProgress, DecimalAnalog, RegularClock } from '../c
     <h1 id="decimal-time" class="vh">Decimal time</h1>
     <div class="post__content formatting">
       <noscript>
-        <Disclaimer>
-          This page uses JavaScript to render clocks. It will make less sense without it
-        </Disclaimer>
+        <aside>This page uses JavaScript to render clocks, but you have JavaScript disabled.</aside>
       </noscript>
       <p>The clock in the header isn't wrong, it's different.</p>
       <dl class="post__clocks">
