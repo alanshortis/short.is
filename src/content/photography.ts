@@ -46,6 +46,7 @@ interface Photo {
   lens?: (typeof Lens)[keyof typeof Lens];
   film?: (typeof Film)[keyof typeof Film];
   ratio: (typeof Ratio)[keyof typeof Ratio];
+  note?: string;
 }
 
 interface PhotoYear {
@@ -877,7 +878,7 @@ export const photographyData: PhotoYear[] = [
       },
       {
         name: '20260404-185208',
-        location: 'New York',
+        location: 'Snowdonia',
         camera: Camera.HolgaSF,
         film: Film.Delta3200,
         ratio: Ratio.Square,
@@ -1135,6 +1136,7 @@ export const photographyData: PhotoYear[] = [
         altText:
           'Joshua Idehen on stage, holding his hand out towards us and domincating the frame. We can his eye between his fingers as he speaks into the microphone',
         ratio: Ratio.L35,
+        note: 'Joshua Idehen',
       },
       {
         name: '20070414-221929',
@@ -1180,6 +1182,7 @@ export const photographyData: PhotoYear[] = [
         altText:
           'Scroobius Pip on stage, holding up a poster of the periodoc table. The double exposure means we can see two of him, as he holds the mocrophone in his right hand',
         ratio: Ratio.L35,
+        note: 'Scroobius Pip and Scroobius Pip',
       },
       {
         name: '20070414-223407',
@@ -1256,6 +1259,4 @@ export const photographyData: PhotoYear[] = [
   },
 ];
 
-export const earliestPhotographyYear = Math.min(
-  ...photographyData.map(year => Number(year.id))
-);
+export const earliestPhotographyYear = Math.min(...photographyData.map(year => Number(year.id)));

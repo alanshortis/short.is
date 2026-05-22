@@ -1,12 +1,11 @@
-export { default as CameraIllustration } from './CameraIllustration.astro';
 export { default as Circles } from './Circles.astro';
 export { default as CodeBlock } from './CodeBlock.astro';
 export { default as Concerns } from './Concerns.astro';
 export { default as ContentIcon } from './ContentIcon.astro';
-export { default as EsbIllustration } from './EsbIllustration.astro';
 export { default as ExampleEmbed } from './ExampleEmbed.astro';
 export { default as Footer } from './Footer.astro';
 export { default as Header } from './Header.astro';
+export { default as InlinePhoto } from './InlinePhoto.astro';
 export { default as Logo } from './Logo.astro';
 export { default as Menu } from './Menu.astro';
 export { default as PostBox } from './PostBox.astro';
