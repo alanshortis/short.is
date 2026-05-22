@@ -1,0 +1,35 @@
+<div class="astro">
+  <div class="astro__elem"></div>
+  <div class="astro__elem"></div>
+  <div class="astro__elem"></div>
+</div>
+
+<style lang="scss">
+  .astro {
+    aspect-ratio: 1 / 1;
+    display: grid;
+    overflow: hidden;
+    width: var(--step-5);
+    isolation: isolate;
+    &__elem {
+      aspect-ratio: 1 / 1;
+      background-color: var(--background);
+      border: 1px dotted var(--foreground);
+      border-radius: 50%;
+      grid-area: 1 / 1;
+      place-self: center;
+      width: 50%;
+      z-index: 2;
+      &:nth-child(1) {
+        border-style: solid;
+        transform: translate(-50%, -50%);
+        z-index: 1;
+      }
+      &:nth-child(3) {
+        border-style: dashed;
+        transform: translate(50%, 50%);
+        z-index: 3;
+      }
+    }
+  }
+</style>
