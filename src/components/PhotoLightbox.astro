@@ -4,11 +4,7 @@ const lightboxShellMs = 200;
 const lightboxImgCrossfadeMs = 300;
 ---
 
-<photo-lightbox
-  data-s3={S3}
-  data-shell-ms={lightboxShellMs}
-  data-crossfade-ms={lightboxImgCrossfadeMs}
->
+<photo-lightbox data-s3={S3} data-shell-ms={lightboxShellMs} data-crossfade-ms={lightboxImgCrossfadeMs}>
   <slot />
   <dialog class="lightbox" aria-label="Photo viewer">
     <nav class="lightbox__nav">
@@ -262,7 +258,8 @@ const lightboxImgCrossfadeMs = 300;
       const { signal } = this.lifetimeAbort;
 
       if (!this.preloadScope) {
-        this.preloadScope = typeof crypto !== 'undefined' && 'randomUUID' in crypto ? crypto.randomUUID() : String(Date.now());
+        this.preloadScope =
+          typeof crypto !== 'undefined' && 'randomUUID' in crypto ? crypto.randomUUID() : String(Date.now());
       }
 
       const anchors = Array.from(this.querySelectorAll<HTMLAnchorElement>('a[data-photo-name]'));
