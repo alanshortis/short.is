@@ -1146,6 +1146,7 @@ export const photographyData: PhotoYear[] = [
         altText:
           'Scroobius Pip on stage, speaking into the microphone with his eyes closed. He is wearing two ties for some reason',
         ratio: Ratio.P35,
+        note: 'Scroobius Pip',
       },
       {
         name: '20070125-221032',
@@ -1155,6 +1156,7 @@ export const photographyData: PhotoYear[] = [
         altText:
           "Dan le Sac on stage, with the double exposure make it seem as if he has three arms and two heads. He's using his laptop and a midi interface while sitting in front of a blue wall with a piece of paper taped to it, with Myspace URLs hand written on it",
         ratio: Ratio.L35,
+        note: 'Dan le Sac',
       },
       {
         name: '20070922-225724',
@@ -1164,6 +1166,7 @@ export const photographyData: PhotoYear[] = [
         altText:
           'Joshua Idehen on stage, standing in front of the microphone by not appearing to say anything. He has a white towel over his head and is looking off to his right',
         ratio: Ratio.P35,
+        note: 'Joshua Idehen',
       },
       {
         name: '20070922-232806',
@@ -1173,6 +1176,7 @@ export const photographyData: PhotoYear[] = [
         altText:
           'Musa Okwonga on stage. He is holding a microphone in his left hand is looking to our right, while wearing a yellow tshirt. The long exposure means he has some red light trails circled around him',
         ratio: Ratio.P35,
+        note: 'Musa Okwonga',
       },
       {
         name: '20070125-221414',
@@ -1192,6 +1196,7 @@ export const photographyData: PhotoYear[] = [
         altText:
           "Scroobius Pip on stage, speaking into the microphone on a stand. He's gesturing with his right hand and holding a large book in his right",
         ratio: Ratio.L35,
+        note: 'Scroobius Pip',
       },
       {
         name: '20080225-215945',
@@ -1201,6 +1206,7 @@ export const photographyData: PhotoYear[] = [
         altText:
           'Dan le Sac on stage, working hard on his laptop. A microphone stand in the foreground covers his right eye, but we can still see his left',
         ratio: Ratio.P35,
+        note: 'Dan le Sac',
       },
     ],
   },
@@ -1214,6 +1220,7 @@ export const photographyData: PhotoYear[] = [
         altText:
           'Alison Goldfrapp on stage, against a background of pink and yellow. She is in a black outfit with large shoulders, sining into a microphone on a stand',
         ratio: Ratio.P43,
+        note: 'Alison Goldfrapp',
       },
       {
         name: '20050821-194414',
@@ -1222,6 +1229,7 @@ export const photographyData: PhotoYear[] = [
         altText:
           "Alex Kapranos of Franz Ferdinand on stage, in front of a backdrop of the band logo which is mostly out of shot. He's playing a black telecaster and wearing a red and black stired shirt under a black and white jacket",
         ratio: Ratio.L43,
+        note: 'Alex Kapranos of Franz Ferdinand',
       },
       {
         name: '20050821-201519',
@@ -1230,6 +1238,7 @@ export const photographyData: PhotoYear[] = [
         altText:
           'Christian Grahn of The Hives on stage, behind a white Premier kit. He looks surprised by the drums, while wearing a white suit with a black shirt',
         ratio: Ratio.L43,
+        note: 'Christian Grahn of The Hives',
       },
       {
         name: '20050821-191257',
@@ -1238,6 +1247,7 @@ export const photographyData: PhotoYear[] = [
         altText:
           'Dizzie Rascal on stage, against a backgroup of pink and blue. He holding the microphone and pointing with his left hand',
         ratio: Ratio.P43,
+        note: 'Dizzie Rascal',
       },
       {
         name: '20050821-202002',
@@ -1246,6 +1256,7 @@ export const photographyData: PhotoYear[] = [
         altText:
           "Niklas Almqvist of The Hives on stage. Dressed in a white suit jacket with black trousers, he's leaning to his right while playing guitar. we can see drums and the band's name in neon behind him",
         ratio: Ratio.P43,
+        note: 'Niklas Almqvist of The Hives',
       },
       {
         name: '20050821-202917',
@@ -1254,6 +1265,7 @@ export const photographyData: PhotoYear[] = [
         altText:
           "Black Thought of The Roots on stage, with the microphone in his right hand and holding the lead up in his left. He's wearing a blue addidas hoodie with a large gols chain over it, and a brown baseball cap",
         ratio: Ratio.L43,
+        note: 'Black Thought of The Roots',
       },
     ],
   },
