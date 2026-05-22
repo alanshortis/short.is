@@ -11,6 +11,7 @@ export const postSchema = z.object({
     'ethics',
     'favicon',
     'figma',
+    'holga',
     'hopper',
     'imposter',
     'internet',
