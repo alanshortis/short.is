@@ -41,6 +41,7 @@ const shouldShowWarning = postAgeYears <= -2;
           </aside>
         )
       }
+      <pre>{JSON.stringify(post.data, null, 2)}</pre>
       <Content components={{ pre: CodeBlock }} />
     </div>
   </article>
