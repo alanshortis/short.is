@@ -7,6 +7,7 @@ export { default as Footer } from './Footer.astro';
 export { default as Header } from './Header.astro';
 export { default as InlinePhoto } from './InlinePhoto.astro';
 export { default as Logo } from './Logo.astro';
+export { default as MaybeWrapper } from './MaybeWrapper.astro';
 export { default as Menu } from './Menu.astro';
 export { default as PostBox } from './PostBox.astro';
 export { default as PostDate } from './PostDate.astro';
