@@ -33,6 +33,7 @@ const S3 = import.meta.env.S3;
                   <div class="photos__col">
                     {photoYear.data.photos
                       .filter((_, i) => i % 2 === col)
+                      .filter(photo => !photo.isHidden)
                       .map(photo => (
                         <a
                           href={`#${photo.name}`}
