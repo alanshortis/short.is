@@ -37,6 +37,7 @@ const photography = defineCollection({
           film: z.enum(Film).optional(),
           altText: z.string(),
           ratio: z.enum(Ratio),
+          isHidden: z.boolean().optional(),
         })
       ),
     }),

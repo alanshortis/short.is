@@ -1,0 +1,20 @@
+---
+import type { AstroComponentFactory } from 'astro/runtime/server/index.js';
+
+interface Props {
+  isWrapped: boolean;
+  Wrapper: AstroComponentFactory;
+}
+
+const { isWrapped, Wrapper } = Astro.props;
+---
+
+{
+  isWrapped ? (
+    <Wrapper>
+      <slot />
+    </Wrapper>
+  ) : (
+    <slot />
+  )
+}

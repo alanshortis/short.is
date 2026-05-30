@@ -26,6 +26,7 @@ export const postSchema = z.object({
   ]),
   showAgeWarning: z.boolean().optional(),
   published: z.boolean().optional(),
+  hasPhotoGallery: z.boolean().optional(),
 });
 
 export type PostData = z.infer<typeof postSchema>;

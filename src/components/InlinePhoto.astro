@@ -1,46 +1,55 @@
 ---
-import { PhotoLightbox } from './';
 import { photographyData } from '../content/photography';
 
 interface Props {
   photoId: string;
+  hideDetails?: boolean;
+  extraCaption?: string;
 }
 
 const S3 = import.meta.env.S3;
-const { photoId } = Astro.props;
+const { photoId, hideDetails, extraCaption } = Astro.props;
 
 const year = photographyData.find(year => year.photos.some(photo => photo.name === photoId));
 const featuredPhoto = year?.photos.find(photo => photo.name === photoId)!;
 const featuredPhotoYear = year?.id;
 
 const { name, ratio, altText, location, camera, lens, film, note } = featuredPhoto;
+
+const renderCaption = !hideDetails || extraCaption;
 ---
 
+<!-- Must be a child of `PhotoLightbox` -->
 <figure class="photo">
-  <PhotoLightbox>
-    <a
-      href={`#${name}`}
-      data-photo-name={name}
-      data-photo-ratio={ratio}
-      data-photo-alt={altText}
-      class="photo__link"
-      style={`--ratio: ${ratio}`}
-    >
-      <img
-        src={`${S3}${name}.avif`}
-        srcset={`${S3}${name}-2x.avif 2x, ${S3}${name}.avif 1x`}
-        class="photo__photo"
-        alt={altText}
-        loading="lazy"
-        draggable="false"
-      />
-    </a>
-  </PhotoLightbox>
-  <figcaption>
-    {[note, location, featuredPhotoYear].filter(Boolean).join(', ')}. {
-      [camera, lens, film].filter(Boolean).join(', ')
-    }
-  </figcaption>
+  <a
+    href={`#${name}`}
+    data-photo-name={name}
+    data-photo-ratio={ratio}
+    data-photo-alt={altText}
+    class="photo__photo"
+    style={`--ratio: ${ratio}`}
+  >
+    <img
+      src={`${S3}${name}.avif`}
+      srcset={`${S3}${name}-2x.avif 2x, ${S3}${name}.avif 1x`}
+      alt={altText}
+      loading="lazy"
+      draggable="false"
+    />
+  </a>
+  {
+    renderCaption && (
+      <figcaption class="photo__caption">
+        {!hideDetails && (
+          <span>
+            {[note, location, featuredPhotoYear].filter(Boolean).join(', ')}.{' '}
+            {[camera, lens, film].filter(Boolean).join(', ')}
+          </span>
+        )}
+        {extraCaption && <span>{extraCaption}</span>}
+      </figcaption>
+    )
+  }
 </figure>
 
 <style lang="scss">
@@ -48,20 +57,29 @@ const { name, ratio, altText, location, camera, lens, film, note } = featuredPho
 
   .photo {
     margin-block: var(--step-5);
-    &__link {
-      &:focus-visible {
-        @include focus-outline;
-      }
-      @include medium {
-        align-self: center;
-        inline-size: calc(sqrt(var(--ratio)) / sqrt(3 / 2) * 100%);
-      }
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    &:focus-visible {
+      @include focus-outline;
     }
     &__photo {
       aspect-ratio: var(--ratio);
       border-radius: var(--radius);
       inline-size: calc(sqrt(var(--ratio)) / sqrt(3 / 2) * 80%);
       margin-inline: auto;
+      @include medium {
+        align-self: center;
+        inline-size: calc(sqrt(var(--ratio)) / sqrt(3 / 2) * 100%);
+      }
+    }
+    &__caption {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5lh;
+      span {
+        display: inline-block;
+      }
     }
   }
 </style>

@@ -1,7 +1,7 @@
 ---
 import { render, getCollection, type CollectionEntry } from 'astro:content';
 import Base from '../../layouts/base.astro';
-import { PostDate, ContentIcon, CodeBlock } from '../../components';
+import { PostDate, ContentIcon, CodeBlock, MaybeWrapper, PhotoLightbox } from '../../components';
 
 interface Props {
   post: CollectionEntry<'posts'>;
@@ -41,7 +41,9 @@ const shouldShowWarning = postAgeYears <= -2;
           </aside>
         )
       }
-      <Content components={{ pre: CodeBlock }} />
+      <MaybeWrapper isWrapped={post.data.hasPhotoGallery} Wrapper={PhotoLightbox}>
+        <Content components={{ pre: CodeBlock }} />
+      </MaybeWrapper>
     </div>
   </article>
 </Base>

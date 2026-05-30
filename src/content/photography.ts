@@ -47,6 +47,7 @@ interface Photo {
   film?: (typeof Film)[keyof typeof Film];
   ratio: (typeof Ratio)[keyof typeof Ratio];
   note?: string;
+  isHidden?: boolean;
 }
 
 interface PhotoYear {
@@ -1086,6 +1087,16 @@ export const photographyData: PhotoYear[] = [
         camera: Camera.HolgaSF,
         film: Film.Delta400,
         ratio: Ratio.Square,
+        altText:
+          'A Parisian Metro station platform. It\'s dark, and we can see a silhouette of a person on a bench under a sign that reads "Alarme"',
+      },
+      {
+        name: '20260326-110126-scan',
+        location: 'Paris',
+        camera: Camera.HolgaSF,
+        film: Film.Delta400,
+        ratio: Ratio.Square,
+        isHidden: true,
         altText:
           'A Parisian Metro station platform. It\'s dark, and we can see a silhouette of a person on a bench under a sign that reads "Alarme"',
       },
