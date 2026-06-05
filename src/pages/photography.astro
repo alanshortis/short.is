@@ -1,6 +1,6 @@
 ---
 import Base from '../layouts/base.astro';
-import { PhotoLightbox, YearNav } from '../components';
+import { PhotoLightboxProvider, YearNav } from '../components';
 import { getCollection } from 'astro:content';
 const collection = await getCollection('photography').then(c =>
   c.sort((a, b) => Number(b.id) - Number(a.id))
@@ -17,7 +17,7 @@ const S3 = import.meta.env.S3;
   >
     <h1 id="photography" class="vh">Photography</h1>
     <YearNav years={collection.map(year => year.id)} />
-    <PhotoLightbox>
+    <PhotoLightboxProvider>
       <ol>
         {
           collection.map(photoYear => (
@@ -60,7 +60,7 @@ const S3 = import.meta.env.S3;
           ))
         }
       </ol>
-    </PhotoLightbox>
+    </PhotoLightboxProvider>
   </section>
 </Base>
 

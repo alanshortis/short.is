@@ -1,0 +1,226 @@
+---
+const S3 = import.meta.env.S3;
+---
+
+<photo-lightbox data-s3={S3}>
+  <slot />
+  <dialog class="dialog">
+    <img class="dialog__image" />
+    <button type="button" class="dialog__action" data-action="close">Close</button>
+    <button type="button" class="dialog__action" data-action="previous">Previous</button>
+    <button type="button" class="dialog__action" data-action="next">Next</button>
+  </dialog>
+</photo-lightbox>
+
+<script>
+  namespace PhotoLightbox {
+    export interface Photo {
+      name: string;
+      ratio: string;
+      alt: string;
+    }
+  }
+
+  class PhotoLightbox extends HTMLElement {
+    private abort = new AbortController();
+    private dialog: HTMLDialogElement;
+    private s3: string;
+    private photos: Array<PhotoLightbox.Photo> = [];
+    private anchors: Array<HTMLElement>;
+    private image: HTMLImageElement;
+    private closeButton: HTMLButtonElement;
+    private previousButton: HTMLButtonElement;
+    private nextButton: HTMLButtonElement;
+    private currentPhotoIndex: number;
+
+    constructor() {
+      super();
+      this.dialog = this.querySelector('dialog')!;
+      this.s3 = this.dataset.s3!;
+      this.anchors = Array.from(this.querySelectorAll('a[data-photo-name]'));
+      this.closeButton = this.querySelector('[data-action="close"]')!;
+      this.previousButton = this.querySelector('[data-action="previous"]')!;
+      this.nextButton = this.querySelector('[data-action="next"]')!;
+      this.image = this.dialog.querySelector('img')!;
+      this.currentPhotoIndex = -1;
+    }
+
+    connectedCallback() {
+      const { signal } = this.abort;
+
+      this.photos = this.anchors.map(a => ({
+        name: a.dataset.photoName!,
+        ratio: a.dataset.photoRatio!,
+        alt: a.dataset.photoAlt!,
+      }));
+
+      this.anchors.forEach((anchor, i) => {
+        anchor.addEventListener('click', () => {
+          this.open(i);
+        });
+      });
+
+      this.dialog.addEventListener(
+        'click',
+        (e: MouseEvent) => {
+          if (e.target === this.dialog) this.close();
+        },
+        { signal }
+      );
+
+      this.closeButton.addEventListener('click', () => this.close(), { signal });
+      this.previousButton.addEventListener('click', () => this.previous(), { signal });
+      this.nextButton.addEventListener('click', () => this.next(), { signal });
+
+      this.dialog.addEventListener(
+        'keydown',
+        (e: KeyboardEvent) => {
+          if (['ArrowLeft', 'ArrowRight'].includes(e.key)) {
+            e.preventDefault();
+            e.key === 'ArrowLeft' ? this.previous() : this.next();
+          }
+        },
+        { signal }
+      );
+
+      this.openFromHash();
+    }
+
+    private open(i: number) {
+      const photo = this.photos[i];
+
+      this.dialog.showModal();
+      this.currentPhotoIndex = i;
+      this.syncUi();
+      this.applyPhoto(photo);
+      history.replaceState(null, '', `#${photo.name}`);
+    }
+
+    private openFromHash() {
+      const hash = location.hash.slice(1);
+      if (!hash) return;
+
+      const photoIndex = this.photos.findIndex(p => p.name === hash);
+
+      console.log(photoIndex);
+
+      if (photoIndex === -1) {
+        if (this.dialog.open) this.close();
+        history.replaceState(null, '', location.pathname);
+        return;
+      }
+      this.open(photoIndex);
+    }
+
+    private close() {
+      this.dialog.close();
+      this.clearPhoto();
+      history.replaceState(null, '', location.pathname);
+    }
+
+    private applyPhoto(thisPhoto: PhotoLightbox.Photo) {
+      this.clearPhoto();
+
+      this.image.src = `${this.s3}${thisPhoto.name}-2x.avif`;
+      this.image.srcset = `${this.s3}${thisPhoto.name}-4x.avif 2x`;
+      this.image.alt = thisPhoto.alt;
+      this.image.style.aspectRatio = thisPhoto.ratio;
+    }
+
+    private clearPhoto() {
+      this.image.src = '';
+      this.image.srcset = '';
+      this.image.alt = '';
+      this.image.style.aspectRatio = 'initial';
+    }
+
+    private previous() {
+      if (this.currentPhotoIndex > 0) this.open(this.currentPhotoIndex - 1);
+    }
+
+    private next() {
+      if (this.currentPhotoIndex < this.photos.length - 1) this.open(this.currentPhotoIndex + 1);
+    }
+
+    private syncUi() {
+      this.previousButton.disabled = this.currentPhotoIndex <= 0;
+      this.nextButton.disabled = this.currentPhotoIndex >= this.photos.length - 1;
+    }
+  }
+
+  customElements.define('photo-lightbox', PhotoLightbox);
+</script>
+
+<style lang="scss">
+  @use '../styles/mixins' as *;
+
+  .dialog {
+    border: 0;
+    height: 100dvh;
+    inset: 0;
+    margin: 0;
+    max-height: none;
+    max-width: none;
+    // outline: none;
+    padding: 0;
+    opacity: 0;
+    // position: fixed;
+    width: 100dvw;
+    @include should-animate {
+      transition: opacity 200ms ease;
+    }
+    @include backdrop;
+    &[open] {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      opacity: 1;
+      @starting-style {
+        opacity: 0;
+      }
+    }
+    &__image {
+      border-radius: calc(var(--radius) * 2);
+      display: block;
+      max-width: min(1440px, calc(100dvw - var(--space) * 4));
+      max-height: min(1440px, calc(100dvh - var(--space) * 4));
+      position: relative;
+      z-index: 1;
+      @include should-animate {
+        transition: opacity 1000ms ease;
+      }
+      @include medium {
+        border-radius: 0;
+        max-width: 100dvw;
+        max-height: 100dvh;
+      }
+    }
+    &__action {
+      background: none;
+      block-size: var(--space--large);
+      border-radius: var(--space--large);
+      color: var(--foreground);
+      padding-inline: var(--space);
+      position: absolute;
+      z-index: 2;
+      @include backdrop;
+      @include label;
+      &:disabled {
+        opacity: 0.3;
+        pointer-events: none;
+      }
+      &[data-action='close'] {
+        inset-block-start: var(--space--small);
+        inset-inline-end: var(--space--small);
+      }
+      &[data-action='previous'] {
+        inset-block-end: var(--space--small);
+        inset-inline-start: var(--space--small);
+      }
+      &[data-action='next'] {
+        inset-block-end: var(--space--small);
+        inset-inline-end: var(--space--small);
+      }
+    }
+  }
+</style>
