@@ -24,6 +24,7 @@ body {
   font-size: var(--step-0);
   line-height: 1;
   min-height: 100vh;
+  overscroll-behavior: contain;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

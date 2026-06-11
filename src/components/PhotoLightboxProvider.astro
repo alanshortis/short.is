@@ -32,6 +32,8 @@ const S3 = import.meta.env.S3;
     private previousButton: HTMLButtonElement;
     private nextButton: HTMLButtonElement;
     private currentPhotoIndex: number;
+    private signal: AbortSignal;
+    private isTransitioning = false;
 
     constructor() {
       super();
@@ -46,8 +48,6 @@ const S3 = import.meta.env.S3;
     }
 
     connectedCallback() {
-      const { signal } = this.abort;
-
       this.photos = this.anchors.map(a => ({
         name: a.dataset.photoName!,
         ratio: a.dataset.photoRatio!,
@@ -55,9 +55,13 @@ const S3 = import.meta.env.S3;
       }));
 
       this.anchors.forEach((anchor, i) => {
-        anchor.addEventListener('click', () => {
-          this.open(i);
-        });
+        anchor.addEventListener(
+          'click',
+          () => {
+            this.open(i);
+          },
+          { signal: this.abort.signal }
+        );
       });
 
       this.dialog.addEventListener(
@@ -65,35 +69,61 @@ const S3 = import.meta.env.S3;
         (e: MouseEvent) => {
           if (e.target === this.dialog) this.close();
         },
-        { signal }
+        { signal: this.abort.signal }
       );
 
-      this.closeButton.addEventListener('click', () => this.close(), { signal });
-      this.previousButton.addEventListener('click', () => this.previous(), { signal });
-      this.nextButton.addEventListener('click', () => this.next(), { signal });
+      this.closeButton.addEventListener('click', () => this.close(), { signal: this.abort.signal });
+      this.previousButton.addEventListener('click', () => this.previous(), { signal: this.abort.signal });
+      this.nextButton.addEventListener('click', () => this.next(), { signal: this.abort.signal });
 
       this.dialog.addEventListener(
         'keydown',
         (e: KeyboardEvent) => {
           if (['ArrowLeft', 'ArrowRight'].includes(e.key)) {
             e.preventDefault();
+            if (this.isTransitioning) return;
             e.key === 'ArrowLeft' ? this.previous() : this.next();
           }
         },
-        { signal }
+        { signal: this.abort.signal }
       );
 
       this.openFromHash();
     }
 
+    disconnectedCallback() {
+      this.abort.abort();
+    }
+
     private open(i: number) {
       const photo = this.photos[i];
+      const isNavigating = this.image.classList.contains('is-loaded');
 
       this.dialog.showModal();
       this.currentPhotoIndex = i;
       this.syncUi();
-      this.applyPhoto(photo);
       history.replaceState(null, '', `#${photo.name}`);
+
+      requestAnimationFrame(() => {
+        this.dialog.classList.add('is-open');
+      });
+
+      if (isNavigating) {
+        this.isTransitioning = true;
+        this.image.classList.remove('is-loaded');
+
+        const onFadeOut = (e: TransitionEvent) => {
+          if (e.target !== this.image) return;
+
+          this.image.removeEventListener('transitionend', onFadeOut);
+          this.clearPhoto();
+          this.applyPhoto(photo);
+        };
+
+        this.image.addEventListener('transitionend', onFadeOut, { signal: this.abort.signal });
+      } else {
+        this.applyPhoto(photo);
+      }
     }
 
     private openFromHash() {
@@ -101,8 +131,6 @@ const S3 = import.meta.env.S3;
       if (!hash) return;
 
       const photoIndex = this.photos.findIndex(p => p.name === hash);
-
-      console.log(photoIndex);
 
       if (photoIndex === -1) {
         if (this.dialog.open) this.close();
@@ -113,21 +141,37 @@ const S3 = import.meta.env.S3;
     }
 
     private close() {
-      this.dialog.close();
-      this.clearPhoto();
+      this.dialog.classList.remove('is-open');
+
+      const onTransitionEnd = (e: TransitionEvent) => {
+        if (e.target !== this.dialog) return;
+        this.dialog.removeEventListener('transitionend', onTransitionEnd);
+        this.dialog.close();
+        this.clearPhoto();
+      };
+
+      this.dialog.addEventListener('transitionend', onTransitionEnd, { signal: this.abort.signal });
       history.replaceState(null, '', location.pathname);
     }
 
     private applyPhoto(thisPhoto: PhotoLightbox.Photo) {
-      this.clearPhoto();
-
       this.image.src = `${this.s3}${thisPhoto.name}-2x.avif`;
       this.image.srcset = `${this.s3}${thisPhoto.name}-4x.avif 2x`;
       this.image.alt = thisPhoto.alt;
       this.image.style.aspectRatio = thisPhoto.ratio;
+
+      this.image.addEventListener(
+        'load',
+        () => {
+          this.image.classList.add('is-loaded');
+          this.isTransitioning = false;
+        },
+        { once: true, signal: this.abort.signal }
+      );
     }
 
     private clearPhoto() {
+      this.image.classList.remove('is-loaded');
       this.image.src = '';
       this.image.srcset = '';
       this.image.alt = '';
@@ -135,10 +179,12 @@ const S3 = import.meta.env.S3;
     }
 
     private previous() {
+      if (this.isTransitioning) return;
       if (this.currentPhotoIndex > 0) this.open(this.currentPhotoIndex - 1);
     }
 
     private next() {
+      if (this.isTransitioning) return;
       if (this.currentPhotoIndex < this.photos.length - 1) this.open(this.currentPhotoIndex + 1);
     }
 
@@ -154,6 +200,16 @@ const S3 = import.meta.env.S3;
 <style lang="scss">
   @use '../styles/mixins' as *;
 
+  @keyframes pulse {
+    0%,
+    100% {
+      opacity: 0.25;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+
   .dialog {
     border: 0;
     height: 100dvh;
@@ -161,38 +217,54 @@ const S3 = import.meta.env.S3;
     margin: 0;
     max-height: none;
     max-width: none;
-    // outline: none;
     padding: 0;
     opacity: 0;
-    // position: fixed;
+    overflow: hidden;
+    overscroll-behavior: contain;
     width: 100dvw;
     @include should-animate {
       transition: opacity 200ms ease;
     }
     @include backdrop;
+    &::after {
+      animation: pulse 1s ease-in-out infinite;
+      aspect-ratio: 1;
+      background: var(--foreground);
+      block-size: var(--step--2);
+      border-radius: 50%;
+      content: '';
+      inset-block-start: 50%;
+      inset-inline-start: 50%;
+      opacity: 0.25;
+      position: absolute;
+      translate: -50% -50%;
+    }
     &[open] {
       align-items: center;
       display: flex;
       justify-content: center;
+    }
+    &.is-open {
       opacity: 1;
-      @starting-style {
-        opacity: 0;
-      }
     }
     &__image {
       border-radius: calc(var(--radius) * 2);
       display: block;
       max-width: min(1440px, calc(100dvw - var(--space) * 4));
       max-height: min(1440px, calc(100dvh - var(--space) * 4));
+      opacity: 0;
       position: relative;
       z-index: 1;
       @include should-animate {
-        transition: opacity 1000ms ease;
+        transition: opacity 400ms ease;
       }
       @include medium {
         border-radius: 0;
         max-width: 100dvw;
         max-height: 100dvh;
+      }
+      &.is-loaded {
+        opacity: 1;
       }
     }
     &__action {
