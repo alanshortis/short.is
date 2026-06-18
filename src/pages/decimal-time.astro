@@ -30,8 +30,8 @@ import { DigitalClock, DecimalProgress, AnalogClock } from '../components/clocks
       <p>
         By using a base-10 structure you can reduce the time to one number and make calculations and
         conversions simpler. Where regular time considers the middle of the day to be 12 o'clock, in decimal
-        time it is 5, or 50% of the day elapsed. This makes it possible to represent time as progression since
-        it's the same base as the rest of the decimal system.
+        time it is 5, or 50% of the day elapsed. This makes it possible to represent time as progression in a
+        more familar format.
       </p>
       <DecimalProgress />
       <p>
@@ -41,13 +41,28 @@ import { DigitalClock, DecimalProgress, AnalogClock } from '../components/clocks
         tick. The conventional clock never misses, since seconds are seconds and frames are frames on the same
         grid.
       </p>
+      <p>
+        Where framerate is measured on a grid, analogue timepieces have a set scale. It's not possible to run
+        both at the same time on the same clock, like two sides of a tape measure comparing inches and
+        centimetres.
+      </p>
+      <p>
+        In the 1950s, Rolex and Pan Am collaborated on the GMT watch. An additional hand allowed for both GMT
+        and another timezone to be read from one watch. Because of the different hand velocity and scale, we
+        can't do this for a hybrid watch, but other brands have produced their own GMT watches with one
+        timezone confied to its own complication.
+      </p>
       <AnalogClock isDecimal />
       <p>
+        It's interesting to watch the hand positions diverge throughout the day, only to all align for a
+        single decimal second at the end of the day. I don't know enough about watch movements to know if the
+        differing frequencies could be built into one watch, but fortuntaly I don't have enough money to
+        convince Patek Phillipe to build me one.
+      </p>
+      <p>
         Time may be a social construct, but it's so deeply ingrained into society and technology that adoption
-        of decimal time is entirely impractical. Existing time pieces become obsolete; both the scale of the
-        dial and the velocity of the hands are totally incompatible between systems and it's not possible to
-        run both at the same time on the same clock. Like two sides of a tape measure comparing inches and
-        centimetres.
+        of decimal time is entirely impractical. It's an interesting problem, though, especially given the
+        difficulty of working with time in code.
       </p>
     </div>
   </article>

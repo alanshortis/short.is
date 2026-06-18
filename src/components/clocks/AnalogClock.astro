@@ -14,7 +14,7 @@ const segmentAngle = isDecimal ? '36deg' : '30deg';
   data-decimal={isDecimal.toString()}
 >
   <span class="vh js-time"></span>
-  <div class="clock__face">
+  <div class="clock__face" aria-hidden>
     <div class="clock__segment"></div>
     <div class="clock__segment"></div>
     <div class="clock__segment"></div>
@@ -23,7 +23,6 @@ const segmentAngle = isDecimal ? '36deg' : '30deg';
     {!isDecimal && <div class="clock__segment" />}
     {
       !isComplication && (
-        <div class="clock__number">{isDecimal ? '10' : '12'}</div>
         <div class="clock__complication">
           <Complication isComplication />
         </div>
@@ -113,16 +112,9 @@ const segmentAngle = isDecimal ? '36deg' : '30deg';
       place-content: center;
       position: relative;
     }
-    &__number {
-      position: absolute;
-      inset-block-start: 7%;
-      font-size: 32px;
-      width: var(--clockSize);
-      text-align: center;
-    }
     &__complication {
       position: absolute;
-      inset-block: 32%;
+      inset-block: 33%;
       inset-inline: 50%;
     }
     &__segment {
@@ -196,13 +188,25 @@ const segmentAngle = isDecimal ? '36deg' : '30deg';
       }
       &--hours {
         width: 7px;
-        height: calc(50% - 40px);
         border-radius: 7px;
         background-color: var(--background);
         transform: var(--hours-transform);
         transform-origin: bottom;
         left: calc(50% - 3.5px);
-        height: calc(50% - 12px);
+        height: calc(50% - 40px);
+      }
+    }
+    &--complication {
+      .clock__hand {
+        &--minutes {
+          width: 3px;
+          left: calc(50% - 1.5px);
+        }
+        &--hours {
+          width: 5px;
+          left: calc(50% - 2.5px);
+          height: calc(50% - 12px);
+        }
       }
     }
   }
