@@ -2,35 +2,33 @@
 interface Props {
   isComplication?: boolean;
   isDecimal?: boolean;
-  hasLogo?: boolean;
 }
 
-const { isDecimal = false, isComplication = false, hasLogo = false } = Astro.props;
+const { isDecimal = false, isComplication = false } = Astro.props;
 const Complication = Astro.self;
 const segmentAngle = isDecimal ? '36deg' : '30deg';
 ---
 
-<decimal-analog class="clock" data-decimal={isDecimal.toString()}>
+<decimal-analog
+  class={`clock ${isComplication ? 'clock--complication' : ''}`}
+  data-decimal={isDecimal.toString()}
+>
   <span class="vh js-time"></span>
   <div class="clock__face">
-    {
-      hasLogo && (
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 399.458 169.221" class="clock__logo">
-          <title>Braun logo</title>
-          <path
-            d="M-755.774 173.48h-25.61V94.615h25.61c17.55 0 25.677 13.085 25.677 36.502 0 32.155-9.752 42.361-25.677 42.361m-25.61-193.281h24.984c12.897 0 23.335 9.49 23.335 35.636 0 26.423-12.063 35.563-23.335 35.563h-24.984zm68.344 89.83v-.217c10.154-7.127 26.385-19.384 26.385-58.778 0-50.898-26.557-73.95-62.432-73.95h-78.348V216.57h77.938c44.172 0 65.683-32.745 65.683-81.532 0-45.516-17.856-58.084-29.226-65.011M-599.12-19.802h24.983c12.897 0 23.299 9.49 23.299 35.636 0 26.423-12.026 35.563-23.299 35.563h-24.984zm93.87 142.838c0-34.83-10.81-44.613-25.526-53.007v-.217c10.155-7.127 26.244-19.384 26.244-58.778 0-50.898-26.415-73.95-62.29-73.95h-78.35V216.57h46.02l.031-121.955h24.976c13.1 0 22.462 10.884 22.462 35.585v86.37h46.409zM-415.472-88.182c0-21.016 19.295-23.73 29.956-23.73 10.662 0 29.882 2.661 29.882 23.73l-.017 139.58h-59.852zm29.956-67.868c-19.466 0-75.941 4.414-75.941 60.926V216.61h46.043V94.639h59.785l-.016 121.918h46.082v-311.68c0-56.618-56.548-60.927-75.953-60.927M-171.645-62.976V157.04c0 11.197-9.258 18.677-23.013 18.677-13.816 0-22.903-7.493-22.903-18.677l-.036-220.016-46.03.059-.01 227.307c0 43.28 44.493 54.82 69.03 54.82 24.312 0 68.999-11.6 68.999-54.87V-62.977zM12.364 216.535l-.018-219.92c0-11.197-9.251-18.676-22.999-18.676-13.816 0-22.918 7.5-22.918 18.675l-.014 219.921-46.045.036V-10.736c0-43.279 44.502-54.82 69.037-54.82 24.313 0 68.984 11.6 68.984 54.871v227.219H12.364"
-            transform="translate(373.127 70.37)scale(.45094)"
-          />
-        </svg>
-      )
-    }
     <div class="clock__segment"></div>
     <div class="clock__segment"></div>
     <div class="clock__segment"></div>
     <div class="clock__segment"></div>
     <div class="clock__segment"></div>
     {!isDecimal && <div class="clock__segment" />}
-    <div class="clock__number">{isDecimal ? '10' : '12'}</div>
+    {
+      !isComplication && (
+        <div class="clock__number">{isDecimal ? '10' : '12'}</div>
+        <div class="clock__complication">
+          <Complication isComplication />
+        </div>
+      )
+    }
     <div class="clock__hand clock__hand--hours"></div>
     <div class="clock__hand clock__hand--minutes"></div>
     <div class="clock__hand clock__hand--seconds"></div>
@@ -44,9 +42,6 @@ const segmentAngle = isDecimal ? '36deg' : '30deg';
     private unsubscribe?: () => void;
     private time: HTMLTimeElement;
     private pad: (num: number) => string;
-    private secondsTurn = 0;
-    private minutesTurn = 0;
-    private hoursTurn = 0;
 
     constructor() {
       super();
@@ -67,11 +62,6 @@ const segmentAngle = isDecimal ? '36deg' : '30deg';
       this.unsubscribe?.();
     }
 
-    private accumulate(current: number, next: number): number {
-      const delta = (next - (current % 1) + 1) % 1;
-      return current + delta;
-    }
-
     private setTime(time: Time): void {
       const { hours, minutes, seconds } = time;
       const formattedTime = `${hours}:${this.pad(minutes)}:${this.pad(seconds)}`;
@@ -84,13 +74,13 @@ const segmentAngle = isDecimal ? '36deg' : '30deg';
       const minutesBase = isDecimal ? 100 : 60;
       const hoursBase = isDecimal ? 10 : 12;
 
-      this.secondsTurn = this.accumulate(this.secondsTurn, seconds / secondsBase);
-      this.minutesTurn = this.accumulate(this.minutesTurn, (minutes + seconds / secondsBase) / minutesBase);
-      this.hoursTurn = this.accumulate(this.hoursTurn, (hours + minutes / minutesBase) / hoursBase);
+      const secondsTurn = seconds / secondsBase;
+      const minutesTurn = (minutes + seconds / secondsBase) / minutesBase;
+      const hoursTurn = (hours + minutes / minutesBase) / hoursBase;
 
-      this.style.setProperty('--seconds-transform', `rotate(${this.secondsTurn}turn)`);
-      this.style.setProperty('--minutes-transform', `rotate(${this.minutesTurn}turn)`);
-      this.style.setProperty('--hours-transform', `rotate(${this.hoursTurn}turn)`);
+      this.style.setProperty('--seconds-transform', `rotate(${secondsTurn}turn)`);
+      this.style.setProperty('--minutes-transform', `rotate(${minutesTurn}turn)`);
+      this.style.setProperty('--hours-transform', `rotate(${hoursTurn}turn)`);
     }
   }
 
@@ -100,53 +90,58 @@ const segmentAngle = isDecimal ? '36deg' : '30deg';
 <style lang="scss" define:vars={{ segmentAngle }}>
   @use '../../styles/mixins' as *;
   .clock {
+    --clockSize: 15rem;
+    --dashSize: 17px;
+    --centerSize: 17px;
+    &--complication {
+      --clockSize: 5rem;
+      --dashSize: 7px;
+      --centerSize: 7px;
+    }
     margin-block: var(--space--large);
     display: flex;
     justify-content: center;
     position: relative;
     color: var(--background);
     font-family: Helvetica, Arial, sans-serif;
-    &__number {
-      position: absolute;
-      top: 7%;
-      font-size: var(--step-1);
-      width: 100%;
-      text-align: center;
-    }
-    &__logo {
-      position: absolute;
-      top: 30%;
-      left: calc(50% - 20px);
-      width: 40px;
-      z-index: 1;
-      fill: var(--background);
-    }
     &__face {
-      aspect-ratio: 1 / 1;
-      width: 15rem;
+      width: var(--clockSize);
+      height: var(--clockSize);
       background-color: var(--foreground);
       border-radius: 50%;
       display: grid;
       place-content: center;
       position: relative;
     }
+    &__number {
+      position: absolute;
+      inset-block-start: 7%;
+      font-size: 32px;
+      width: var(--clockSize);
+      text-align: center;
+    }
+    &__complication {
+      position: absolute;
+      inset-block: 32%;
+      inset-inline: 50%;
+    }
     &__segment {
       grid-area: 1 / 1;
-      height: 15rem;
+      height: var(--clockSize);
       opacity: 0.75;
       width: 2px;
       background: linear-gradient(
         to bottom,
-        var(--foreground) 0%,
-        var(--foreground) 2px,
+        transparent 0%,
+        transparent 2px,
         var(--background) 2px,
-        var(--background) 17px,
-        var(--foreground) 17px,
-        var(--foreground) calc(100% - 17px),
-        var(--background) calc(100% - 17px),
+        var(--background) var(--dashSize),
+        transparent var(--dashSize),
+        transparent calc(100% - var(--dashSize)),
+        var(--background) calc(100% - var(--dashSize)),
         var(--background) calc(100% - 2px),
-        var(--foreground) calc(100% - 2px),
-        var(--foreground) 100%
+        transparent calc(100% - 2px),
+        transparent 100%
       );
 
       &:nth-child(2) {
@@ -166,14 +161,13 @@ const segmentAngle = isDecimal ? '36deg' : '30deg';
       }
     }
     &__hand {
-      height: calc(50% - 18px);
+      height: calc(50% - var(--centerSize));
       background-color: var(--background);
       position: absolute;
       left: calc(50% - 1px);
       bottom: 50%;
       transform-origin: bottom;
       z-index: 1;
-      transition: transform 0.1s ease;
       &--seconds {
         width: 2px;
         border-radius: 2px;
@@ -182,13 +176,13 @@ const segmentAngle = isDecimal ? '36deg' : '30deg';
         &::after {
           content: '';
           display: block;
-          width: 18px;
-          height: 18px;
+          width: var(--centerSize);
+          height: var(--centerSize);
           background-color: var(--seconds);
           border-radius: 50%;
           position: absolute;
-          left: calc(50% - 9px);
-          bottom: -9px;
+          left: calc(50% - calc(var(--centerSize) / 2));
+          bottom: calc(calc(var(--centerSize) / 2) * -1);
         }
       }
       &--minutes {
@@ -198,6 +192,7 @@ const segmentAngle = isDecimal ? '36deg' : '30deg';
         transform: var(--minutes-transform);
         transform-origin: bottom;
         left: calc(50% - 2.5px);
+        height: calc(50% - var(--centerSize) / 2);
       }
       &--hours {
         width: 7px;
@@ -207,6 +202,7 @@ const segmentAngle = isDecimal ? '36deg' : '30deg';
         transform: var(--hours-transform);
         transform-origin: bottom;
         left: calc(50% - 3.5px);
+        height: calc(50% - 12px);
       }
     }
   }
