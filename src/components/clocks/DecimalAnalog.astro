@@ -19,7 +19,7 @@
 </decimal-analog>
 
 <script>
-  import type { DecimalTime } from '../../shared-types';
+  import type { Time } from '../../shared-types';
   import { subscribe } from '../../workers/decimal-time';
 
   class AnalogDecimalClock extends HTMLElement {
@@ -31,14 +31,14 @@
       super();
       this.time = this.querySelector('.js-time')!;
       this.pad = (num: number) => num.toString().padStart(2, '0');
-      this.unsubscribe = subscribe((time) => this.setDecimalTime(time));
+      this.unsubscribe = subscribe(time => this.setDecimalTime(time));
     }
 
     disconnectedCallback() {
       this.unsubscribe();
     }
 
-    private setDecimalTime(decimalTime: DecimalTime): void {
+    private setDecimalTime(decimalTime: Time): void {
       const { hours, minutes, seconds } = decimalTime;
       const formattedTime = `${hours}:${this.pad(minutes)}:${this.pad(seconds)}`;
 

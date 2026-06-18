@@ -2,13 +2,13 @@ import type { Time } from '../shared-types';
 
 type Subscriber = (time: Time) => void;
 
-let decimalTimeWorker: Worker | null = null;
+let timeWorker: Worker | null = null;
 const subscribers = new Set<Subscriber>();
 
 function ensureWorker(): void {
-  if (decimalTimeWorker) return;
-  decimalTimeWorker = new Worker(new URL('/src/workers/decimal-clock.ts', import.meta.url));
-  decimalTimeWorker.onmessage = (event: MessageEvent<Time>) => {
+  if (timeWorker) return;
+  timeWorker = new Worker(new URL('/src/workers/clock.ts', import.meta.url));
+  timeWorker.onmessage = (event: MessageEvent<Time>) => {
     for (const fn of subscribers) fn(event.data);
   };
 }
@@ -19,9 +19,9 @@ export function subscribe(fn: Subscriber): () => void {
 
   return () => {
     subscribers.delete(fn);
-    if (subscribers.size === 0 && decimalTimeWorker) {
-      decimalTimeWorker.terminate();
-      decimalTimeWorker = null;
+    if (subscribers.size === 0 && timeWorker) {
+      timeWorker.terminate();
+      timeWorker = null;
     }
   };
 }

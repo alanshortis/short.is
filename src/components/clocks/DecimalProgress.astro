@@ -14,7 +14,7 @@
 </div>
 
 <script>
-  import type { DecimalTime } from '../../shared-types';
+  import type { Time } from '../../shared-types';
   import { subscribe } from '../../workers/decimal-time';
 
   class DecimalProgress extends HTMLElement {
@@ -26,14 +26,14 @@
       super();
       this.progressOuter = this.querySelector('.progress__outer')!;
       this.progressLabel = this.querySelector('.progress__label')!;
-      this.unsubscribe = subscribe((time) => this.setProgress(time));
+      this.unsubscribe = subscribe(time => this.setProgress(time));
     }
 
     disconnectedCallback() {
       this.unsubscribe();
     }
 
-    private setProgress(decimalTime: DecimalTime): void {
+    private setProgress(decimalTime: Time): void {
       const elapsedPercentage = (decimalTime.hours * 10 + decimalTime.minutes / 10).toFixed(1);
 
       this.progressOuter.ariaValueNow = elapsedPercentage;

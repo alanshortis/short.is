@@ -1,0 +1,69 @@
+---
+interface Props {
+  isLarge?: boolean;
+  isDecimal?: boolean;
+}
+
+const { isLarge, isDecimal = false } = Astro.props;
+---
+
+<decimal-clock class={`time ${isLarge ? 'time--large' : ''}`} data-decimal={isDecimal.toString()}>
+  {
+    isDecimal ? (
+      <span>
+        <span class="vh">Decimal time: </span>
+        <span class="js-time">0:00:00</span>
+      </span>
+    ) : (
+      <time class="js-time">00:00:00</time>
+    )
+  }
+</decimal-clock>
+
+<script>
+  import type { Time } from '../../shared-types';
+
+  class DecimalClock extends HTMLElement {
+    private unsubscribe?: () => void;
+    private timeSpan: HTMLSpanElement;
+    private pad: (num: number) => string;
+
+    constructor() {
+      super();
+      this.timeSpan = this.querySelector('.js-time')!;
+      this.pad = (num: number) => num.toString().padStart(2, '0');
+    }
+
+    async connectedCallback() {
+      const isDecimal = this.dataset.decimal === 'true';
+      const module = isDecimal
+        ? await import('../../workers/decimal-time')
+        : await import('../../workers/time');
+
+      this.unsubscribe = module.subscribe(time => this.setTime(time));
+    }
+
+    disconnectedCallback() {
+      this.unsubscribe?.();
+    }
+
+    private setTime(time: Time): void {
+      const { hours, minutes, seconds } = time;
+      const timeString = `${hours}:${this.pad(minutes)}:${this.pad(seconds)}`;
+      this.timeSpan.textContent = timeString;
+    }
+  }
+
+  customElements.define('decimal-clock', DecimalClock);
+</script>
+
+<style lang="scss">
+  @use '../../styles/mixins' as *;
+
+  .time {
+    @include label;
+    &--large {
+      font-size: var(--step-2);
+    }
+  }
+</style>

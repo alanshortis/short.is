@@ -1,6 +1,6 @@
 ---
 import Base from '../layouts/base.astro';
-import { DecimalClock, DecimalProgress, DecimalAnalog, RegularClock } from '../components/clocks';
+import { DigitalClock, DecimalProgress, DecimalAnalog } from '../components/clocks';
 ---
 
 <Base pageTitle="Alan Shortis | Decimal time" description="">
@@ -14,11 +14,11 @@ import { DecimalClock, DecimalProgress, DecimalAnalog, RegularClock } from '../c
       <dl class="post__clocks">
         <div>
           <dt>Time</dt>
-          <dd><RegularClock isLarge /></dd>
+          <dd><DigitalClock isLarge /></dd>
         </div>
         <div>
           <dt>Decimal time</dt>
-          <dd><DecimalClock isLarge /></dd>
+          <dd><DigitalClock isLarge isDecimal /></dd>
         </div>
       </dl>
 

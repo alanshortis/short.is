@@ -1,5 +1,5 @@
 ---
-import { DecimalClock } from './clocks';
+import { DigitalClock } from './clocks';
 
 const { pathname } = Astro.url;
 
@@ -34,7 +34,7 @@ const menuItems = [
             role="menuitem"
             aria-current={pathname.startsWith(href) ? 'page' : null}
           >
-            {label === 'Clock' ? <DecimalClock /> : label}
+            {label === 'Clock' ? <DigitalClock isDecimal /> : label}
           </a>
         </li>
       ))
