@@ -1,0 +1,213 @@
+---
+interface Props {
+  isComplication?: boolean;
+  isDecimal?: boolean;
+}
+
+const { isDecimal = false, isComplication = false } = Astro.props;
+const Complication = Astro.self;
+const segmentAngle = isDecimal ? '36deg' : '30deg';
+---
+
+<decimal-analog
+  class={`clock ${isComplication ? 'clock--complication' : ''}`}
+  data-decimal={isDecimal.toString()}
+>
+  <span class="vh js-time"></span>
+  <div class="clock__face" aria-hidden>
+    <div class="clock__segment"></div>
+    <div class="clock__segment"></div>
+    <div class="clock__segment"></div>
+    <div class="clock__segment"></div>
+    <div class="clock__segment"></div>
+    {!isDecimal && <div class="clock__segment" />}
+    {
+      !isComplication && (
+        <div class="clock__complication">
+          <Complication isComplication />
+        </div>
+      )
+    }
+    <div class="clock__hand clock__hand--hours"></div>
+    <div class="clock__hand clock__hand--minutes"></div>
+    <div class="clock__hand clock__hand--seconds"></div>
+  </div>
+</decimal-analog>
+
+<script>
+  import type { Time } from '../../shared-types';
+
+  class AnalogDecimalClock extends HTMLElement {
+    private unsubscribe?: () => void;
+    private time: HTMLTimeElement;
+    private pad: (num: number) => string;
+
+    constructor() {
+      super();
+      this.time = this.querySelector('.js-time')!;
+      this.pad = (num: number) => num.toString().padStart(2, '0');
+    }
+
+    async connectedCallback() {
+      const isDecimal = this.dataset.decimal === 'true';
+      const module = isDecimal
+        ? await import('../../workers/decimal-time')
+        : await import('../../workers/time');
+
+      this.unsubscribe = module.subscribe(time => this.setTime(time));
+    }
+
+    disconnectedCallback() {
+      this.unsubscribe?.();
+    }
+
+    private setTime(time: Time): void {
+      const { hours, minutes, seconds } = time;
+      const formattedTime = `${hours}:${this.pad(minutes)}:${this.pad(seconds)}`;
+
+      this.time.innerHTML = formattedTime;
+      this.time.setAttribute('datetime', formattedTime);
+
+      const isDecimal = this.dataset.decimal === 'true';
+      const secondsBase = isDecimal ? 100 : 60;
+      const minutesBase = isDecimal ? 100 : 60;
+      const hoursBase = isDecimal ? 10 : 12;
+
+      const secondsTurn = seconds / secondsBase;
+      const minutesTurn = (minutes + seconds / secondsBase) / minutesBase;
+      const hoursTurn = (hours + minutes / minutesBase) / hoursBase;
+
+      this.style.setProperty('--seconds-transform', `rotate(${secondsTurn}turn)`);
+      this.style.setProperty('--minutes-transform', `rotate(${minutesTurn}turn)`);
+      this.style.setProperty('--hours-transform', `rotate(${hoursTurn}turn)`);
+    }
+  }
+
+  customElements.define('decimal-analog', AnalogDecimalClock);
+</script>
+
+<style lang="scss" define:vars={{ segmentAngle }}>
+  @use '../../styles/mixins' as *;
+  .clock {
+    --clockSize: 15rem;
+    --dashSize: 17px;
+    --centerSize: 17px;
+    &--complication {
+      --clockSize: 5rem;
+      --dashSize: 7px;
+      --centerSize: 7px;
+    }
+    margin-block: var(--space--large);
+    display: flex;
+    justify-content: center;
+    position: relative;
+    color: var(--background);
+    font-family: Helvetica, Arial, sans-serif;
+    &__face {
+      width: var(--clockSize);
+      height: var(--clockSize);
+      background-color: var(--foreground);
+      border-radius: 50%;
+      display: grid;
+      place-content: center;
+      position: relative;
+    }
+    &__complication {
+      position: absolute;
+      inset-block: 33%;
+      inset-inline: 50%;
+    }
+    &__segment {
+      grid-area: 1 / 1;
+      height: var(--clockSize);
+      opacity: 0.75;
+      width: 2px;
+      background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        transparent 2px,
+        var(--background) 2px,
+        var(--background) var(--dashSize),
+        transparent var(--dashSize),
+        transparent calc(100% - var(--dashSize)),
+        var(--background) calc(100% - var(--dashSize)),
+        var(--background) calc(100% - 2px),
+        transparent calc(100% - 2px),
+        transparent 100%
+      );
+
+      &:nth-child(2) {
+        rotate: var(--segmentAngle);
+      }
+      &:nth-child(3) {
+        rotate: calc(var(--segmentAngle) * 2);
+      }
+      &:nth-child(4) {
+        rotate: calc(var(--segmentAngle) * 3);
+      }
+      &:nth-child(5) {
+        rotate: calc(var(--segmentAngle) * 4);
+      }
+      &:nth-child(6) {
+        rotate: calc(var(--segmentAngle) * 5);
+      }
+    }
+    &__hand {
+      height: calc(50% - var(--centerSize));
+      background-color: var(--background);
+      position: absolute;
+      left: calc(50% - 1px);
+      bottom: 50%;
+      transform-origin: bottom;
+      z-index: 1;
+      &--seconds {
+        width: 2px;
+        border-radius: 2px;
+        background-color: var(--seconds);
+        transform: var(--seconds-transform);
+        &::after {
+          content: '';
+          display: block;
+          width: var(--centerSize);
+          height: var(--centerSize);
+          background-color: var(--seconds);
+          border-radius: 50%;
+          position: absolute;
+          left: calc(50% - calc(var(--centerSize) / 2));
+          bottom: calc(calc(var(--centerSize) / 2) * -1);
+        }
+      }
+      &--minutes {
+        width: 5px;
+        border-radius: 5px;
+        background-color: var(--background);
+        transform: var(--minutes-transform);
+        transform-origin: bottom;
+        left: calc(50% - 2.5px);
+        height: calc(50% - var(--centerSize) / 2);
+      }
+      &--hours {
+        width: 7px;
+        border-radius: 7px;
+        background-color: var(--background);
+        transform: var(--hours-transform);
+        transform-origin: bottom;
+        left: calc(50% - 3.5px);
+        height: calc(50% - 40px);
+      }
+    }
+    &--complication {
+      .clock__hand {
+        &--minutes {
+          width: 3px;
+          left: calc(50% - 1.5px);
+        }
+        &--hours {
+          width: 5px;
+          left: calc(50% - 2.5px);
+          height: calc(50% - 12px);
+        }
+      }
+    }
+  }
+</style>

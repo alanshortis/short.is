@@ -1,10 +1,10 @@
-import type { DecimalTime } from '../shared-types';
+import type { Time } from '../shared-types';
 
 const TOTAL_SECONDS_IN_DAY = 24 * 60 * 60;
 const TOTAL_METRIC_SECONDS_IN_DAY = 10 * 100 * 100;
 const DECIMAL_SECOND_MS = 864;
 
-function getDecimalTime(): DecimalTime {
+function getTime(): Time {
   const now = new Date();
   const secondsSinceMidnight =
     now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds() + now.getMilliseconds() / 1000;
@@ -23,8 +23,8 @@ function getDecimalTime(): DecimalTime {
   };
 }
 
-postMessage(getDecimalTime());
+postMessage(getTime());
 
 setInterval(() => {
-  postMessage(getDecimalTime());
+  postMessage(getTime());
 }, DECIMAL_SECOND_MS);
