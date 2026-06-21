@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../layouts/base.astro';
-import { Circles, PostBox, ReadingList } from '../components';
+import { Circles, PostBox } from '../components';
 import { photographyData } from '../content/photography';
 
 const S3 = import.meta.env.S3;
@@ -43,7 +43,6 @@ const [featuredPhoto] = photographyData
       </div>
       <a href="/writing" class="home__link">More writing &rarr;</a>
     </section>
-    <ReadingList />
   </div>
 </Base>
 

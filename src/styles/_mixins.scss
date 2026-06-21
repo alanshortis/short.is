@@ -25,29 +25,6 @@
   }
 }
 
-@mixin depth($offset: 0.5em) {
-  background-color: var(--background);
-  border: 1px solid var(--divider);
-  border-radius: var(--radius);
-  position: relative;
-  transition: border-color 0.2s;
-  &:hover {
-    border-color: currentColor;
-  }
-  &::after {
-    border: inherit;
-    border-color: currentColor;
-    border-radius: var(--radius);
-    content: '';
-    height: 100%;
-    inset-block-start: $offset;
-    inset-inline-start: $offset;
-    position: absolute;
-    width: 100%;
-    z-index: -1;
-  }
-}
-
 @mixin backdrop {
   backdrop-filter: blur(var(--space));
   background-color: var(--backdrop);
