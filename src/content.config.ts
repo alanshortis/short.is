@@ -1,27 +1,12 @@
 import { defineCollection } from 'astro:content';
 import { z } from 'astro/zod';
 import { glob } from 'astro/loaders';
-import readingItems from './content/reading.json';
 import { postSchema } from './content/post-schema';
 import { Camera, Lens, Film, Ratio, photographyData } from './content/photography';
 
 const posts = defineCollection({
   loader: glob({ pattern: '**/*.mdx', base: './src/content/posts' }),
   schema: () => postSchema,
-});
-
-const reading = defineCollection({
-  loader: async () => [{ id: 'reading', items: readingItems }],
-  schema: () =>
-    z.object({
-      items: z.array(
-        z.object({
-          slug: z.url(),
-          title: z.string(),
-          author: z.string(),
-        })
-      ),
-    }),
 });
 
 const photography = defineCollection({
@@ -45,6 +30,5 @@ const photography = defineCollection({
 
 export const collections = {
   posts,
-  reading,
   photography,
 };
