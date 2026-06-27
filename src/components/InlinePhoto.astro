@@ -68,6 +68,7 @@ const renderCaption = !hideDetails || extraCaption;
       border-radius: var(--radius);
       inline-size: calc(sqrt(var(--ratio)) / sqrt(3 / 2) * 80%);
       margin-inline: auto;
+      overflow: hidden;
       @include medium {
         align-self: center;
         inline-size: calc(sqrt(var(--ratio)) / sqrt(3 / 2) * 100%);
