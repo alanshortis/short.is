@@ -1,0 +1,45 @@
+<figure class="sketch">
+  <div class="orb-again" aria-hidden="true"></div>
+  <figcaption class="vh">
+    A small abstract image made in code. A circle, with another circle within that has a striped background.
+    The striped inner cicle is offset, which makes the outer circle look like it has a shadow cast over it
+  </figcaption>
+</figure>
+
+<style lang="scss">
+  @use '../../styles/mixins' as *;
+
+  .sketch {
+    background-color: var(--background);
+    @include sketch-container();
+  }
+
+  .orb-again {
+    aspect-ratio: 1 / 1;
+    background-color: var(--foreground);
+    border-radius: 50%;
+    height: 30vh;
+    position: relative;
+    overflow: hidden;
+    transform: rotate(-30deg);
+    &::after {
+      content: '';
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      inset: 0 33%;
+      background-image: linear-gradient(
+        0deg,
+        var(--foreground) 25%,
+        var(--background) 25%,
+        var(--background) 50%,
+        var(--foreground) 50%,
+        var(--foreground) 75%,
+        var(--background) 75%,
+        var(--background) 100%
+      );
+      background-size: 20px 20px;
+      border-radius: 50%;
+    }
+  }
+</style>

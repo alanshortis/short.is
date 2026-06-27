@@ -25,9 +25,9 @@
   }
 }
 
-@mixin backdrop {
+@mixin backdrop($background: var(--backdrop)) {
   backdrop-filter: blur(var(--space));
-  background-color: var(--backdrop);
+  background-color: $background;
   @media (prefers-reduced-transparency: reduce) {
     background-color: var(--background);
   }
@@ -84,6 +84,16 @@
   font-size: var(--step--1);
   letter-spacing: 2px;
   text-transform: uppercase;
+}
+
+@mixin sketch-container() {
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: var(--space--large);
+  @include full-bleed;
 }
 
 @mixin medium {

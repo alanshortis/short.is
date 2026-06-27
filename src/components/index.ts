@@ -1,4 +1,3 @@
-export { default as Circles } from './Circles.astro';
 export { default as CodeBlock } from './CodeBlock.astro';
 export { default as Concerns } from './Concerns.astro';
 export { default as ContentIcon } from './ContentIcon.astro';

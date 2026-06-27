@@ -1,0 +1,24 @@
+---
+import Base from '../layouts/base.astro';
+import { Cube, Eclipse, Frosted, GradientRow, Orb, OrbAgain, Shaft, Wave } from '../components/sketches';
+---
+
+<Base pageTitle="Alan Shortis | Sketches" description="">
+  <article aria-labelledby="sketches" class="sketches">
+    <h1 id="sketches" class="vh">Sketches</h1>
+    <p class="vh">
+      If you're using a screen reader for this page, you're not going to get the full experience. This is a
+      series of small, pointless little images and animations made in code. Despite using HTML and CSS, none
+      of it is really 'user interface'. I have placed each one in a 'figure' element with a caption, and I
+      have done by best to describe each one
+    </p>
+    <Wave />
+    <OrbAgain />
+    <Cube />
+    <Frosted />
+    <Shaft />
+    <Orb />
+    <Eclipse />
+    <GradientRow />
+  </article>
+</Base>

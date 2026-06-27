@@ -1,0 +1,28 @@
+<figure class="sketch">
+  <div class="orb" aria-hidden="true"></div>
+  <figcaption class="vh">
+    A small abstract illustration made in code. A dark circle, with enough shading and shadows to resemble a
+    ball, which casts a shadow on the background
+  </figcaption>
+</figure>
+
+<style lang="scss">
+  @use '../../styles/mixins' as *;
+
+  .sketch {
+    color-scheme: light;
+    background-color: var(--background);
+    @include sketch-container();
+  }
+
+  .orb {
+    aspect-ratio: 1 / 1;
+    background-image: linear-gradient(135deg, var(--foreground), var(--background) 18%, var(--foreground));
+    border-radius: 50%;
+    box-shadow:
+      inset 0 0 20vh 0 black,
+      5vw 5vh 7vh -3vh var(--dark);
+    content: '';
+    height: 30vh;
+  }
+</style>
