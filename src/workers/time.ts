@@ -7,7 +7,7 @@ const subscribers = new Set<Subscriber>();
 
 function ensureWorker(): void {
   if (timeWorker) return;
-  timeWorker = new Worker(new URL('/src/workers/clock.ts', import.meta.url));
+  timeWorker = new Worker(new URL('./clock.ts', import.meta.url), { type: 'module' });
   timeWorker.onmessage = (event: MessageEvent<Time>) => {
     for (const fn of subscribers) fn(event.data);
   };

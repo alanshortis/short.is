@@ -7,7 +7,7 @@ const subscribers = new Set<Subscriber>();
 
 function ensureWorker(): void {
   if (decimalTimeWorker) return;
-  decimalTimeWorker = new Worker(new URL('/src/workers/decimal-clock.ts', import.meta.url));
+  decimalTimeWorker = new Worker(new URL('./decimal-clock.ts', import.meta.url), { type: 'module' });
   decimalTimeWorker.onmessage = (event: MessageEvent<Time>) => {
     for (const fn of subscribers) fn(event.data);
   };
