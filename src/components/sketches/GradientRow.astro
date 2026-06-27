@@ -1,0 +1,73 @@
+<figure class="sketch">
+  <div class="gradient-row" aria-hidden="true">
+    <div class="gradient-row__element"></div>
+    <div class="gradient-row__element"></div>
+    <div class="gradient-row__element"></div>
+    <div class="gradient-row__element"></div>
+    <div class="gradient-row__element"></div>
+    <div class="gradient-row__element"></div>
+    <div class="gradient-row__element"></div>
+  </div>
+  <figcaption class="vh">
+    A small abstract animation made in code. Seven columns, with gradients that sift vetically in sequence,
+    making all culmns together appear to fluctuate with with verical bars that split the complete peice up
+  </figcaption>
+</figure>
+
+<style lang="scss">
+  @use '../../styles/mixins' as *;
+
+  .sketch {
+    @include sketch-container();
+    padding: 0;
+  }
+
+  @property --stop {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 0%;
+  }
+
+  @keyframes gradient-wave {
+    0%,
+    100% {
+      --stop: 0%;
+    }
+    50% {
+      --stop: 50%;
+    }
+  }
+
+  .gradient-row {
+    width: 100%;
+    display: flex;
+    align-self: stretch;
+    &__element {
+      flex: 1;
+      background: linear-gradient(0deg, var(--background) var(--stop, 0%), var(--foreground) 100%);
+      animation: gradient-wave 7s ease-in-out infinite;
+      animation-delay: calc(var(--i, 0) * 0.6s);
+      &:nth-child(1) {
+        --i: 0;
+      }
+      &:nth-child(2) {
+        --i: 1;
+      }
+      &:nth-child(3) {
+        --i: 2;
+      }
+      &:nth-child(4) {
+        --i: 3;
+      }
+      &:nth-child(5) {
+        --i: 4;
+      }
+      &:nth-child(6) {
+        --i: 5;
+      }
+      &:nth-child(7) {
+        --i: 6;
+      }
+    }
+  }
+</style>

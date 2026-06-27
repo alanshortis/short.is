@@ -1,0 +1,41 @@
+<figure class="sketch">
+  <div class="frosted" aria-hidden="true"></div>
+  <figcaption class="vh">
+    A small abstract illustration made in code. One dark cicle is partially overlapped by another circle that
+    is partially transparent. It have the appearance of fristed glass, so the dark circle behind is blurred
+  </figcaption>
+</figure>
+
+<style lang="scss">
+  @use '../../styles/mixins' as *;
+
+  .sketch {
+    color-scheme: light;
+    background-color: hsl(0, 0%, 80%);
+    @include sketch-container();
+  }
+
+  .frosted {
+    position: relative;
+    width: 42vw;
+    aspect-ratio: 42 / 30;
+    @include medium {
+      width: 75vw;
+    }
+    &::after,
+    &::before {
+      content: '';
+      background-color: hsl(0, 0%, 12.5%);
+      border-radius: 50%;
+      aspect-ratio: 1;
+      height: 100%;
+      position: absolute;
+    }
+    &::before {
+      box-shadow: inset 0 0 1rem 0 hsla(0, 0%, 75%, 25%);
+      inset-inline-end: 0;
+      z-index: 1;
+      @include backdrop(hsla(0, 0%, 50%, 12.5%));
+    }
+  }
+</style>

@@ -1,0 +1,136 @@
+<figure class="sketch">
+  <div class="wave" aria-hidden="true">
+    <div class="wave__element"></div>
+    <div class="wave__element"></div>
+    <div class="wave__element"></div>
+    <div class="wave__element"></div>
+    <div class="wave__element"></div>
+    <div class="wave__element"></div>
+    <div class="wave__element"></div>
+    <div class="wave__element"></div>
+    <div class="wave__element"></div>
+    <div class="wave__element"></div>
+    <div class="wave__element"></div>
+    <div class="wave__element"></div>
+    <div class="wave__element"></div>
+    <div class="wave__element"></div>
+    <div class="wave__element"></div>
+    <div class="wave__element"></div>
+    <div class="wave__element"></div>
+    <div class="wave__element"></div>
+    <div class="wave__element"></div>
+    <div class="wave__element"></div>
+    <div class="wave__element"></div>
+    <div class="wave__element"></div>
+    <div class="wave__element"></div>
+    <div class="wave__element"></div>
+    <div class="wave__element"></div>
+    <div class="wave__element"></div>
+    <div class="wave__element"></div>
+    <div class="wave__element"></div>
+    <div class="wave__element"></div>
+  </div>
+  <figcaption class="vh">
+    A small abstract animation made in code. A series of vertical lines, where every other line excluding the
+    first and the last is shorter and snimated to give the impression of a wave. The density of the lines
+    makes an area appear more dense, which makes the 'wave' visible
+  </figcaption>
+</figure>
+
+<style lang="scss">
+  @use '../../styles/mixins' as *;
+
+  .sketch {
+    @include sketch-container();
+  }
+
+  @property --wave-height {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 30%;
+  }
+
+  @property --wave-offset {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 0%;
+  }
+
+  @keyframes wave {
+    0%,
+    100% {
+      --wave-height: 25%;
+      --wave-offset: 0%;
+    }
+    50% {
+      --wave-height: 75%;
+      --wave-offset: 15%;
+    }
+  }
+
+  .wave {
+    width: 100%;
+    max-width: 25rem;
+    aspect-ratio: 16/9;
+    justify-content: space-between;
+    display: flex;
+    overflow: hidden;
+    &__element {
+      background-color: var(--foreground);
+      width: 3px;
+      &:nth-child(odd) {
+        height: 100%;
+      }
+      &:nth-child(even) {
+        height: var(--wave-height, 30%);
+        align-self: flex-start;
+        position: relative;
+        top: calc(var(--i, 0) * var(--i, 0) * 0.4% + var(--wave-offset, 0%));
+        animation: wave 7s ease-in-out infinite backwards;
+        animation-delay: calc(var(--i, 0) * 0.4s);
+      }
+      &:nth-child(2) {
+        --i: 0;
+      }
+      &:nth-child(4) {
+        --i: 1;
+      }
+      &:nth-child(6) {
+        --i: 2;
+      }
+      &:nth-child(8) {
+        --i: 3;
+      }
+      &:nth-child(10) {
+        --i: 4;
+      }
+      &:nth-child(12) {
+        --i: 5;
+      }
+      &:nth-child(14) {
+        --i: 6;
+      }
+      &:nth-child(16) {
+        --i: 7;
+      }
+      &:nth-child(18) {
+        --i: 8;
+      }
+      &:nth-child(20) {
+        --i: 9;
+      }
+      &:nth-child(22) {
+        --i: 10;
+      }
+      &:nth-child(24) {
+        --i: 11;
+      }
+      &:nth-child(26) {
+        --i: 12;
+      }
+      &:nth-child(28) {
+        --i: 13;
+      }
+    }
+  }
+</style>

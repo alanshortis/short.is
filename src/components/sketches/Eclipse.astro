@@ -1,0 +1,36 @@
+<figure class="sketch">
+  <div class="eclipse" aria-hidden="true"></div>
+  <figcaption class="vh">
+    A small abstract animation made in code. Resembles a solar eclipse, in a way, a dark circle on a
+    background of the same shade has light emitting around the edge. A slow animation shists the circle left
+    and right, making the light more apparent on either side
+  </figcaption>
+</figure>
+
+<style lang="scss">
+  @use '../../styles/mixins' as *;
+
+  @keyframes shadow {
+    50% {
+      box-shadow: 3em 0 4em -1em var(--light);
+      transform: translatex(-1em);
+    }
+  }
+
+  .sketch {
+    color-scheme: dark;
+    background-color: var(--background);
+    @include sketch-container();
+  }
+
+  .eclipse {
+    box-shadow: -3em 0 4em -1em var(--light);
+    transform: translatex(1em);
+    position: relative;
+    background-color: transparent;
+    height: 30vh;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    animation: shadow 20s infinite ease;
+  }
+</style>
