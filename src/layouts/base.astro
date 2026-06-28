@@ -1,6 +1,6 @@
 ---
 import '../styles/global.scss';
-import { Header, Footer } from '../components';
+import { Header, Footer, SchemeToggle } from '../components';
 
 interface Props {
   pageTitle: string;
@@ -16,6 +16,7 @@ const isDev = import.meta.env.DEV;
 <html lang="en-GB">
   <head>
     <meta charset="utf-8" />
+    <SchemeToggle init />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <title>{pageTitle}</title>

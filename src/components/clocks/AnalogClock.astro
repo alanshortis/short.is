@@ -36,6 +36,8 @@ const segmentAngle = isDecimal ? '36deg' : '30deg';
 
 <script>
   import type { Time } from '../../shared-types';
+  import { subscribe as subscribeTime } from '../../workers/time';
+  import { subscribe as subscribeDecimal } from '../../workers/decimal-time';
 
   class AnalogDecimalClock extends HTMLElement {
     private unsubscribe?: () => void;
@@ -48,13 +50,10 @@ const segmentAngle = isDecimal ? '36deg' : '30deg';
       this.pad = (num: number) => num.toString().padStart(2, '0');
     }
 
-    async connectedCallback() {
+    connectedCallback() {
       const isDecimal = this.dataset.decimal === 'true';
-      const module = isDecimal
-        ? await import('../../workers/decimal-time')
-        : await import('../../workers/time');
-
-      this.unsubscribe = module.subscribe(time => this.setTime(time));
+      const subscribe = isDecimal ? subscribeDecimal : subscribeTime;
+      this.unsubscribe = subscribe(time => this.setTime(time));
     }
 
     disconnectedCallback() {
