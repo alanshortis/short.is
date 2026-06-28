@@ -1,0 +1,49 @@
+<figure class="sketch">
+  <div class="iris" aria-hidden="true">
+    <div><div><div><div></div></div></div></div>
+  </div>
+  <figcaption class="vh">
+    A small abstract illustration made in code. A series of circles that appear to be holes in the screen,
+    with more layers below, all slight offset
+  </figcaption>
+</figure>
+
+<style lang="scss">
+  @use '../../styles/mixins' as *;
+
+  .sketch {
+    color-scheme: light;
+    background-color: var(--background);
+    @include sketch-container();
+  }
+
+  .iris {
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    max-width: 30rem;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    box-shadow: inset 0.5rem 0.5rem 1.5rem hsl(0, 0%, 25%);
+    flex-shrink: 0;
+    div {
+      all: inherit;
+      inset-inline: 5rem;
+      max-width: 50rem;
+      div {
+        inset-inline: -13rem;
+        inset-block: 1rem;
+        max-width: 40rem;
+        div {
+          inset-inline: 2rem;
+          inset-block: -7rem;
+          div {
+            max-width: 20rem;
+            inset-inline: 17rem;
+            inset-block: 9rem;
+          }
+        }
+      }
+    }
+  }
+</style>
