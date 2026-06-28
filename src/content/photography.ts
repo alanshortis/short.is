@@ -19,6 +19,13 @@ export const Lens = {
   Zenzanon80: 'Zenzanon 80mm f/2.8',
 } as const;
 
+export const Filter = {
+  ProMist: 'Tiffen Black Pro-mist',
+  Orange: 'Pig Iron YA3 Orange',
+  Polariser: 'URTH Circular Polariser',
+  Infrared: 'URTH R72 Infrared',
+} as const;
+
 export const Film = {
   Portra400: 'Kodak Portra 400',
   Delta3200: 'Ilford Delta 3200',
@@ -44,6 +51,7 @@ interface Photo {
   altText: string;
   camera: (typeof Camera)[keyof typeof Camera];
   lens?: (typeof Lens)[keyof typeof Lens];
+  filter?: (typeof Filter)[keyof typeof Filter];
   film?: (typeof Film)[keyof typeof Film];
   ratio: (typeof Ratio)[keyof typeof Ratio];
   note?: string;
@@ -64,6 +72,7 @@ export const photographyData: PhotoYear[] = [
         location: 'Portland',
         camera: Camera.M10M,
         lens: Lens.Summicron35,
+        filter: Filter.ProMist,
         ratio: Ratio.P35,
         altText:
           'A furniture store with a large neon sign out front that reads "RUGS". The light from the back of the sign lights up the white facade of the building',
@@ -82,6 +91,7 @@ export const photographyData: PhotoYear[] = [
         location: 'New York',
         camera: Camera.M10M,
         lens: Lens.Summicron35,
+        filter: Filter.Orange,
         ratio: Ratio.L35,
         altText:
           'A person in a shiny jacket walks along the sunlit side of a building, with the shadow making the other side of the building appear dark. The curb and a cross-walk are in the foreground',
@@ -145,6 +155,7 @@ export const photographyData: PhotoYear[] = [
         location: 'New York',
         camera: Camera.M10M,
         lens: Lens.Summicron35,
+        filter: Filter.Orange,
         ratio: Ratio.L35,
         altText:
           "In the blurred foreground, a father takes a photo of his son who is looking at the Statue of Liberty, in focus in the distance. The son's image can be made out on the father's phone screen",
@@ -154,6 +165,7 @@ export const photographyData: PhotoYear[] = [
         location: 'Seattle',
         camera: Camera.M10M,
         lens: Lens.Summicron35,
+        filter: Filter.Orange,
         ratio: Ratio.L35,
         altText:
           'The extrance to a parking garage shot straight across the street. Because of how steep the hill is and the road appearing flat on the horizon, it looks like the garage is leaning at a severe angle',
@@ -172,6 +184,7 @@ export const photographyData: PhotoYear[] = [
         location: 'Seattle',
         camera: Camera.M10M,
         lens: Lens.Summicron35,
+        filter: Filter.Orange,
         ratio: Ratio.L35,
         altText:
           'A blacked out building shot head on, with the remains of a backlit sign that shows only the four flourscent tubes',
@@ -181,6 +194,7 @@ export const photographyData: PhotoYear[] = [
         location: 'Portland',
         camera: Camera.M10M,
         lens: Lens.Summicron35,
+        filter: Filter.ProMist,
         ratio: Ratio.L35,
         altText:
           'A row of stools along a bar in an old diner. Each stool facing the same way, each with an indeintically placed coffe cup on the bar',
@@ -190,6 +204,7 @@ export const photographyData: PhotoYear[] = [
         location: 'Portland',
         camera: Camera.M10M,
         lens: Lens.Summicron35,
+        filter: Filter.Orange,
         ratio: Ratio.L35,
         altText:
           'Two Chevrolet trucks on a driveway, one beside a large garage and another on the grass emerging from the trees, behind a low rope divider',
@@ -199,6 +214,7 @@ export const photographyData: PhotoYear[] = [
         location: 'Cannon Beach',
         camera: Camera.M10M,
         lens: Lens.Summicron35,
+        filter: Filter.Orange,
         ratio: Ratio.L35,
         altText: "Looking across a misty beach, with the silhouette's of people walking in the distance",
       },
@@ -207,6 +223,7 @@ export const photographyData: PhotoYear[] = [
         location: 'Hoh Rainforest',
         camera: Camera.M10M,
         lens: Lens.Summicron35,
+        filter: Filter.ProMist,
         ratio: Ratio.P35,
         altText:
           'Trees covered in thick moss, against a forest floor covered in ferns. Light is bleeding through from the tops of the canopy',
@@ -216,6 +233,7 @@ export const photographyData: PhotoYear[] = [
         location: 'Seattle',
         camera: Camera.M10M,
         lens: Lens.Summicron35,
+        filter: Filter.ProMist,
         ratio: Ratio.P35,
         altText: 'A building with a neon sign that reads "Bread of Live Mission", two men sit inside',
       },
@@ -224,6 +242,7 @@ export const photographyData: PhotoYear[] = [
         location: 'New York',
         camera: Camera.M10M,
         lens: Lens.Summicron35,
+        filter: Filter.Orange,
         ratio: Ratio.L35,
         altText:
           'A large rock formation beyond a beach, emerging from from spray and mist. A person in the foreground is emerging from the sea',
@@ -233,6 +252,7 @@ export const photographyData: PhotoYear[] = [
         location: 'Hurricane Ridge',
         camera: Camera.M10M,
         lens: Lens.Summicron35,
+        filter: Filter.Orange,
         ratio: Ratio.L35,
         altText:
           'A view across some mountains that appear to intersect, with dense forests and haze seaprating each side',
@@ -278,6 +298,7 @@ export const photographyData: PhotoYear[] = [
         location: 'Cannon Beach',
         camera: Camera.M10M,
         lens: Lens.Summicron35,
+        filter: Filter.Orange,
         ratio: Ratio.L35,
         altText: 'The texture created by sand on a beach where the tide is going out',
       },
@@ -286,6 +307,7 @@ export const photographyData: PhotoYear[] = [
         location: 'Portland',
         camera: Camera.M10M,
         lens: Lens.Summicron35,
+        filter: Filter.ProMist,
         ratio: Ratio.P35,
         altText:
           'A neon lights that read "TELEPHONES" and "BAGGAGE DEPT" reflect in the polished marble walls of a railway stattion. Three illuminated vending machines are in the background',
@@ -295,6 +317,7 @@ export const photographyData: PhotoYear[] = [
         location: 'Hoh Rainforest',
         camera: Camera.M10M,
         lens: Lens.Summicron35,
+        filter: Filter.ProMist,
         ratio: Ratio.L35,
         altText:
           'Looking into the distance in a very dense forsest, the path ahead leads to a large tree. Ferns in the foreground are out of focus',

@@ -14,7 +14,7 @@ const year = photographyData.find(year => year.photos.some(photo => photo.name =
 const featuredPhoto = year?.photos.find(photo => photo.name === photoId)!;
 const featuredPhotoYear = year?.id;
 
-const { name, ratio, altText, location, camera, lens, film, note } = featuredPhoto;
+const { name, ratio, altText, location, camera, lens, filter, film, note } = featuredPhoto;
 
 const renderCaption = !hideDetails || extraCaption;
 ---
@@ -43,7 +43,7 @@ const renderCaption = !hideDetails || extraCaption;
         {!hideDetails && (
           <span>
             {[note, location, featuredPhotoYear].filter(Boolean).join(', ')}.{' '}
-            {[camera, lens, film].filter(Boolean).join(', ')}
+            {[camera, lens, filter, film].filter(Boolean).join(', ')}
           </span>
         )}
         {extraCaption && <span>{extraCaption}</span>}
