@@ -1,21 +1,38 @@
 ---
+interface Props {
+  init?: boolean;
+}
+
+const { init = false } = Astro.props;
 const schemes = ['light', 'auto', 'dark'];
 ---
 
-<scheme-toggle>
-  <fieldset class="toggle">
-    <legend class="vh">Colour scheme</legend>
-    {schemes.map(thiSscheme => (
-      <input
-        class="toggle__radio vh"
-        type="radio"
-        id={thiSscheme}
-        name="scheme"
-      />
-      <label class="toggle__label" for={thiSscheme}>{thiSscheme}</label>
-    ))}
-  </fieldset>
-</scheme-toggle>
+{
+  init ? (
+    <script is:inline>
+      (() => {
+        const scheme = localStorage.getItem('scheme');
+        if (scheme === 'light' || scheme === 'dark') {
+          document.documentElement.dataset.scheme = scheme;
+        }
+      })();
+    </script>
+  ) : (
+    <scheme-toggle>
+      <fieldset class="toggle">
+        <legend class="vh">Colour scheme</legend>
+        {schemes.map(thiSscheme => (
+          <Fragment>
+            <input class="toggle__radio vh" type="radio" id={thiSscheme} name="scheme" />
+            <label class="toggle__label" for={thiSscheme}>
+              {thiSscheme}
+            </label>
+          </Fragment>
+        ))}
+      </fieldset>
+    </scheme-toggle>
+  )
+}
 
 <script>
   class SchemeToggle extends HTMLElement {
@@ -36,12 +53,18 @@ const schemes = ['light', 'auto', 'dark'];
       this.setScheme(localStorage.getItem('scheme') || 'auto');
 
       this.radios.forEach(radio => {
-        radio.addEventListener('change', () => this.setScheme(radio.id), { signal: this.abortController.signal });
+        radio.addEventListener('change', () => this.setScheme(radio.id), {
+          signal: this.abortController.signal,
+        });
       });
 
-      this.SCHEME_MQ.addEventListener('change', () => {
-        if (!localStorage.getItem('scheme')) this.setScheme('auto');
-      }, { signal: this.abortController.signal });
+      this.SCHEME_MQ.addEventListener(
+        'change',
+        () => {
+          if (!localStorage.getItem('scheme')) this.setScheme('auto');
+        },
+        { signal: this.abortController.signal }
+      );
     }
 
     disconnectedCallback() {
@@ -76,21 +99,21 @@ const schemes = ['light', 'auto', 'dark'];
   @use '../styles/mixins' as *;
 
   .toggle {
-  border: 0;
-  display: flex;
-  gap: 1ch;
-  &__label {
-    @include label;
-    cursor: pointer;
-    position: relative;
-  }
-  &__radio {
-    &:checked + label::after {
-      @include active-indicator;
+    border: 0;
+    display: flex;
+    gap: 1ch;
+    &__label {
+      @include label;
+      cursor: pointer;
+      position: relative;
     }
-    &:focus-visible + label {
-      @include focus-outline;
+    &__radio {
+      &:checked + label::after {
+        @include active-indicator;
+      }
+      &:focus-visible + label {
+        @include focus-outline;
+      }
     }
   }
-}
 </style>
