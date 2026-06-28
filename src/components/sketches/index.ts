@@ -2,6 +2,7 @@ export { default as Cube } from './Cube.astro';
 export { default as Eclipse } from './Eclipse.astro';
 export { default as Frosted } from './Frosted.astro';
 export { default as GradientRow } from './GradientRow.astro';
+export { default as Iris } from './Iris.astro';
 export { default as Orb } from './Orb.astro';
 export { default as OrbAgain } from './OrbAgain.astro';
 export { default as Shaft } from './Shaft.astro';
