@@ -15,12 +15,6 @@ const segmentAngle = isDecimal ? '36deg' : '30deg';
 >
   <span class="vh js-time"></span>
   <div class="clock__face" aria-hidden>
-    <div class="clock__segment"></div>
-    <div class="clock__segment"></div>
-    <div class="clock__segment"></div>
-    <div class="clock__segment"></div>
-    <div class="clock__segment"></div>
-    {!isDecimal && <div class="clock__segment" />}
     {
       !isComplication && (
         <div class="clock__complication">
@@ -28,6 +22,12 @@ const segmentAngle = isDecimal ? '36deg' : '30deg';
         </div>
       )
     }
+    <div class="clock__segment"></div>
+    <div class="clock__segment"></div>
+    <div class="clock__segment"></div>
+    <div class="clock__segment"></div>
+    <div class="clock__segment"></div>
+    {!isDecimal && <div class="clock__segment" />}
     <div class="clock__hand clock__hand--hours"></div>
     <div class="clock__hand clock__hand--minutes"></div>
     <div class="clock__hand clock__hand--seconds"></div>
@@ -88,24 +88,28 @@ const segmentAngle = isDecimal ? '36deg' : '30deg';
 <style lang="scss" define:vars={{ segmentAngle }}>
   @use '../../styles/mixins' as *;
   .clock {
-    --clockSize: 15rem;
-    --dashSize: 17px;
-    --centerSize: 17px;
+    --clock-size: 250px;
+    --dash-size: 17px;
+    --center-size: 17px;
+    --margin-block: var(--space--large);
+    --indicator-color: light-dark(var(--light), hsl(175, 100, 49));
+    --seconds-color: light-dark(var(--accent), hsl(175, 0, 49));
     &--complication {
-      --clockSize: 5rem;
-      --dashSize: 7px;
-      --centerSize: 7px;
+      --clock-size: 70px;
+      --dash-size: 7px;
+      --center-size: 7px;
+      --margin-block: 0;
     }
-    margin-block: var(--space--large);
+    margin-block: var(--margin-block);
     display: flex;
     justify-content: center;
     position: relative;
-    color: var(--background);
+    color: var(--light);
     font-family: Helvetica, Arial, sans-serif;
     &__face {
-      width: var(--clockSize);
-      height: var(--clockSize);
-      background-color: var(--foreground);
+      width: var(--clock-size);
+      height: var(--clock-size);
+      background-color: var(--dark);
       border-radius: 50%;
       display: grid;
       place-content: center;
@@ -113,24 +117,24 @@ const segmentAngle = isDecimal ? '36deg' : '30deg';
     }
     &__complication {
       position: absolute;
-      inset-block: 33%;
+      inset-block: 150px;
       inset-inline: 50%;
     }
     &__segment {
       grid-area: 1 / 1;
-      height: var(--clockSize);
+      height: var(--clock-size);
       opacity: 0.75;
       width: 2px;
       background: linear-gradient(
         to bottom,
         transparent 0%,
         transparent 2px,
-        var(--background) 2px,
-        var(--background) var(--dashSize),
-        transparent var(--dashSize),
-        transparent calc(100% - var(--dashSize)),
-        var(--background) calc(100% - var(--dashSize)),
-        var(--background) calc(100% - 2px),
+        var(--indicator-color) 2px,
+        var(--indicator-color) var(--dash-size),
+        transparent var(--dash-size),
+        transparent calc(100% - var(--dash-size)),
+        var(--indicator-color) calc(100% - var(--dash-size)),
+        var(--indicator-color) calc(100% - 2px),
         transparent calc(100% - 2px),
         transparent 100%
       );
@@ -152,8 +156,8 @@ const segmentAngle = isDecimal ? '36deg' : '30deg';
       }
     }
     &__hand {
-      height: calc(50% - var(--centerSize));
-      background-color: var(--background);
+      height: calc(50% - var(--center-size));
+      background-color: var(--indicator-color);
       position: absolute;
       left: calc(50% - 1px);
       bottom: 50%;
@@ -162,33 +166,31 @@ const segmentAngle = isDecimal ? '36deg' : '30deg';
       &--seconds {
         width: 2px;
         border-radius: 2px;
-        background-color: var(--seconds);
+        background-color: var(--seconds-color);
         transform: var(--seconds-transform);
         &::after {
           content: '';
           display: block;
-          width: var(--centerSize);
-          height: var(--centerSize);
-          background-color: var(--seconds);
+          width: var(--center-size);
+          height: var(--center-size);
+          background-color: var(--seconds-color);
           border-radius: 50%;
           position: absolute;
-          left: calc(50% - calc(var(--centerSize) / 2));
-          bottom: calc(calc(var(--centerSize) / 2) * -1);
+          left: calc(50% - calc(var(--center-size) / 2));
+          bottom: calc(calc(var(--center-size) / 2) * -1);
         }
       }
       &--minutes {
         width: 5px;
         border-radius: 5px;
-        background-color: var(--background);
         transform: var(--minutes-transform);
         transform-origin: bottom;
         left: calc(50% - 2.5px);
-        height: calc(50% - var(--centerSize) / 2);
+        height: calc(50% - var(--center-size) / 2);
       }
       &--hours {
         width: 7px;
         border-radius: 7px;
-        background-color: var(--background);
         transform: var(--hours-transform);
         transform-origin: bottom;
         left: calc(50% - 3.5px);
