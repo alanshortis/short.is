@@ -14,26 +14,22 @@ const latestPosts = collection
 
 const [featuredPhoto] = photographyData
   .flatMap(year => year.photos)
-  .filter(photo => photo.name === '20260311-203022');
+  .filter(photo => photo.name === '20250904-142429');
 ---
 
-<Base pageTitle="Alan Shortis" description="Alan Shortis. Web Engineer and occasional photo taker">
+<Base pageTitle="Alan Shortis" description="Alan Shortis. Web Engineer and photographer">
   <div class="home">
     <div class="home__header">
       <div class="circles" aria-hidden="true"></div>
-      <h1 class="home__title">
-        Alan Shortis&mdash;web engineer, occasional photographer, aspiring creative coder
-      </h1>
+      <h1 class="home__title">Alan Shortis&mdash;<br />web engineer &amp; photographer</h1>
       <div class="home__photo-col">
-        <a href=`/photography#${featuredPhoto.name}`>
-          <img
-            src={`${S3}${featuredPhoto.name}-2x.avif`}
-            srcset={`${S3}${featuredPhoto.name}-2x.avif 2x, ${S3}${featuredPhoto.name}.avif 1x`}
-            class="home__photo"
-            alt={featuredPhoto.altText}
-            loading="eager"
-          />
-        </a>
+        <img
+          src={`${S3}${featuredPhoto.name}-2x.avif`}
+          srcset={`${S3}${featuredPhoto.name}-2x.avif 2x, ${S3}${featuredPhoto.name}.avif 1x`}
+          class="home__photo"
+          alt={featuredPhoto.altText}
+          loading="eager"
+        />
         <a href="/photography" class="home__link">More photography &rarr;</a>
       </div>
     </div>
@@ -120,7 +116,7 @@ const [featuredPhoto] = photographyData
       width: 100%;
       height: 100%;
       border-radius: 50%;
-      background-image: linear-gradient(-45deg, var(--accent), var(--background));
+      background-image: linear-gradient(-45deg, var(--foreground), var(--background));
       mix-blend-mode: lighten;
       margin-inline-start: 25%;
       html[data-scheme='light'] & {
