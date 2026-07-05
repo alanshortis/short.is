@@ -20,6 +20,7 @@ function getTime(): Time {
     hours,
     minutes,
     seconds,
+    dayOfMonth: String(now.getDate()).padStart(2, '0'),
   };
 }
 

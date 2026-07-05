@@ -7,6 +7,7 @@ function getTime(): Time {
     hours: now.getHours(),
     minutes: now.getMinutes(),
     seconds: now.getSeconds(),
+    dayOfMonth: String(now.getDate()).padStart(2, '0'),
   };
 }
 
