@@ -1,4 +1,5 @@
 ---
+import { Logo } from '../../components';
 interface Props {
   isComplication?: boolean;
   isDecimal?: boolean;
@@ -28,6 +29,8 @@ const segmentAngle = isDecimal ? '36deg' : '30deg';
     <div class="clock__segment"></div>
     <div class="clock__segment"></div>
     {!isDecimal && <div class="clock__segment" />}
+    {!isComplication && <div class="clock__day" id="js-day" />}
+    {!isComplication && <div class="clock__logo">DCML</div>}
     <div class="clock__hand clock__hand--hours"></div>
     <div class="clock__hand clock__hand--minutes"></div>
     <div class="clock__hand clock__hand--seconds"></div>
@@ -42,11 +45,13 @@ const segmentAngle = isDecimal ? '36deg' : '30deg';
   class AnalogDecimalClock extends HTMLElement {
     private unsubscribe?: () => void;
     private time: HTMLTimeElement;
+    private day: HTMLElement;
     private pad: (num: number) => string;
 
     constructor() {
       super();
       this.time = this.querySelector('.js-time')!;
+      this.day = this.querySelector('#js-day')!;
       this.pad = (num: number) => num.toString().padStart(2, '0');
     }
 
@@ -61,7 +66,7 @@ const segmentAngle = isDecimal ? '36deg' : '30deg';
     }
 
     private setTime(time: Time): void {
-      const { hours, minutes, seconds } = time;
+      const { hours, minutes, seconds, dayOfMonth } = time;
       const formattedTime = `${hours}:${this.pad(minutes)}:${this.pad(seconds)}`;
 
       this.time.innerHTML = formattedTime;
@@ -79,6 +84,7 @@ const segmentAngle = isDecimal ? '36deg' : '30deg';
       this.style.setProperty('--seconds-transform', `rotate(${secondsTurn}turn)`);
       this.style.setProperty('--minutes-transform', `rotate(${minutesTurn}turn)`);
       this.style.setProperty('--hours-transform', `rotate(${hoursTurn}turn)`);
+      this.day.textContent = dayOfMonth;
     }
   }
 
@@ -89,15 +95,18 @@ const segmentAngle = isDecimal ? '36deg' : '30deg';
   @use '../../styles/mixins' as *;
   .clock {
     --clock-size: 250px;
-    --dash-size: 17px;
+    --dash-size: 30px;
     --center-size: 17px;
+    --segment-width: 4px;
     --margin-block: var(--space--large);
     --indicator-color: light-dark(var(--light), hsl(175, 100, 49));
     --seconds-color: light-dark(var(--accent), hsl(175, 0, 49));
+    --day-color: light-dark(var(--light), hsl(175, 0, 49));
     &--complication {
       --clock-size: 70px;
       --dash-size: 7px;
       --center-size: 7px;
+      --segment-width: 2px;
       --margin-block: 0;
     }
     margin-block: var(--margin-block);
@@ -106,6 +115,22 @@ const segmentAngle = isDecimal ? '36deg' : '30deg';
     position: relative;
     color: var(--light);
     font-family: Helvetica, Arial, sans-serif;
+    &__day {
+      border: 2px solid var(--day-color);
+      color: var(--day-color);
+      font-feature-settings: 'tnum';
+      font-size: 16px;
+      inset-inline: calc(50% - 14px);
+      letter-spacing: 2px;
+      line-height: 1;
+      opacity: 0.75;
+      overflow: hidden;
+      padding: 0 2px;
+      position: absolute;
+      text-align: center;
+      top: 60px;
+      width: 28px;
+    }
     &__face {
       width: var(--clock-size);
       height: var(--clock-size);
@@ -117,14 +142,22 @@ const segmentAngle = isDecimal ? '36deg' : '30deg';
     }
     &__complication {
       position: absolute;
-      inset-block: 150px;
+      inset-block: 145px;
       inset-inline: 50%;
+    }
+    &__logo {
+      font-size: 14px;
+      letter-spacing: 1px;
+      position: absolute;
+      color: var(--seconds-color);
+      inset-block: 115px;
+      inset-inline-end: calc(var(--dash-size) + 2px);
     }
     &__segment {
       grid-area: 1 / 1;
       height: var(--clock-size);
       opacity: 0.75;
-      width: 2px;
+      width: var(--segment-width);
       background: linear-gradient(
         to bottom,
         transparent 0%,
@@ -168,6 +201,7 @@ const segmentAngle = isDecimal ? '36deg' : '30deg';
         border-radius: 2px;
         background-color: var(--seconds-color);
         transform: var(--seconds-transform);
+        height: calc(50% - 2px);
         &::after {
           content: '';
           display: block;
