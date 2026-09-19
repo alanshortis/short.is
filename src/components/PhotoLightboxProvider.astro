@@ -32,7 +32,6 @@ const S3 = import.meta.env.S3;
     private previousButton: HTMLButtonElement;
     private nextButton: HTMLButtonElement;
     private currentPhotoIndex: number;
-    private signal: AbortSignal;
     private isTransitioning = false;
 
     constructor() {
@@ -83,6 +82,10 @@ const S3 = import.meta.env.S3;
             e.preventDefault();
             if (this.isTransitioning) return;
             e.key === 'ArrowLeft' ? this.previous() : this.next();
+          }
+          if (e.key === 'Escape') {
+            e.preventDefault();
+            this.close();
           }
         },
         { signal: this.abort.signal }
