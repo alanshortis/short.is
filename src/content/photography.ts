@@ -4,6 +4,7 @@ export const Camera = {
   M6: 'Leica M6',
   M10M: 'Leica M10 Monochrom',
   M10P: 'Leica M10-P',
+  M10D: 'Leica M10-D',
   MD: 'Leica M-D',
   GW670: 'Fujifilm GW670ii',
   HolgaSF: 'Holga 120SF',
@@ -22,8 +23,6 @@ export const Lens = {
 export const Filter = {
   ProMist: 'Tiffen Black Pro-mist',
   Orange: 'Pig Iron YA3 Orange',
-  Polariser: 'URTH Circular Polariser',
-  Infrared: 'URTH R72 Infrared',
 } as const;
 
 export const Film = {
@@ -468,14 +467,14 @@ export const photographyData: PhotoYear[] = [
     id: '2023',
     photos: [
       {
-        name: '20260311-202842',
+        name: '20260311-204047',
         location: 'Chicago',
         camera: Camera.M6,
         lens: Lens.Summicron50,
         film: Film.Delta3200,
         ratio: Ratio.L35,
         altText:
-          'Lower Wacker Drive in Chicago, looking across a the street to see three entrances. A track is leaving from the left, the middle appears empty with lights inside and has a sign above that reads "DO NOT ENTER", and the third is mostly out of frame',
+          'Dense plants, trees, and leaves with a large angled glass roff in the background and large concerete columns standing amoung the leaves',
       },
       {
         name: '20260311-202827',
@@ -498,14 +497,14 @@ export const photographyData: PhotoYear[] = [
           'A workman on a scissor lift, looking down at something. He\'s wearing light coloured overalls and a baseball cap. The scissor lift is under chicago, and we see the address "E. North Water Street" painted on the wall in the background',
       },
       {
-        name: '20260311-204238',
+        name: '20260311-203407',
         location: 'Chicago',
         camera: Camera.M6,
         lens: Lens.Summicron50,
         film: Film.Delta3200,
         ratio: Ratio.L35,
         altText:
-          'Inside the L in Chicago, with the very wide angle lens used we can see a lot of the inside and outside of the train as it traverses a bend in The Loop',
+          'Looking through the corner of a glass office building towards concrete buildings with wide curves and arches',
       },
       {
         name: '20260311-204328',
@@ -546,6 +545,16 @@ export const photographyData: PhotoYear[] = [
         ratio: Ratio.P35,
         altText:
           'A doorway in a backstreet, closed and with a cage over it that carries a sign that reads "NO TRESSPASSING". A bright light is over the door, and there are rat traps on the floor',
+      },
+      {
+        name: '20260311-204238',
+        location: 'Chicago',
+        camera: Camera.M6,
+        lens: Lens.Summicron50,
+        film: Film.Delta3200,
+        ratio: Ratio.L35,
+        altText:
+          'Inside the L in Chicago, with the very wide angle lens used we can see a lot of the inside and outside of the train as it traverses a bend in The Loop',
       },
     ],
   },
