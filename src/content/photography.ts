@@ -105,6 +105,14 @@ export const photographyData: PhotoYear[] = [
           'A small cabin on stilts over a lake in the winter. The wind is blowing the snow, making the background of the image amoung the trees look like a pencil drawing',
       },
       {
+        name: '20250903-145102',
+        location: 'Portland',
+        camera: Camera.M10M,
+        lens: Lens.Summicron35,
+        ratio: Ratio.L35,
+        altText: 'A building with a bench at the corner, and stairs leading up to the entrance',
+      },
+      {
         name: '20250326-001633',
         location: 'New York',
         camera: Camera.M10M,
@@ -121,6 +129,15 @@ export const photographyData: PhotoYear[] = [
         ratio: Ratio.L35,
         altText:
           'Looking through a window of a restaurant all the way back into the kitchen where we can see a chef working. In the glass we can see reflections of exist signs and the 7-11 opposite',
+      },
+      {
+        name: '20250621-191611',
+        location: 'Nottingham',
+        camera: Camera.M10M,
+        lens: Lens.Summicron35,
+        ratio: Ratio.L35,
+        altText:
+          'A field of ripe crops being watered, with a thick forst in the background and water turning to mist',
       },
       {
         name: '20250330-011631',
@@ -335,6 +352,15 @@ export const photographyData: PhotoYear[] = [
   {
     id: '2024',
     photos: [
+      {
+        name: '20241223-062008',
+        location: 'London',
+        camera: Camera.M10M,
+        lens: Lens.Summicron50,
+        ratio: Ratio.P35,
+        altText:
+          'Looking down to jet bridge with two people walking through. A British Airways airbus is in the background, and the whole image is full of reflections of the terminal building in the huge windows',
+      },
       {
         name: '20240522-202629',
         location: 'London',
