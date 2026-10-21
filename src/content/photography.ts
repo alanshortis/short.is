@@ -13,11 +13,12 @@ export const Camera = {
 } as const;
 
 export const Lens = {
-  Summicron35: 'Leica Summicron-M 35mm f/2.0 ASPH',
-  Summicron50: 'Leica Summicron 50mm f/2.0',
-  Elmarit90: 'Leica Elmarit-M 90mm f/2.8',
-  Sigma1870: 'Sigma 18-70mm f/3.5-4.5',
-  Zenzanon80: 'Zenzanon 80mm f/2.8',
+  Summicron35: 'Leica Summicron-M 35mm f2.0 ASPH',
+  Summicron50: 'Leica Summicron 50mm f2.0',
+  Elmarit90: 'Leica Elmarit-M 90mm f2.8',
+  Zeiss50: 'Zeiss Planar T* 50mm f2',
+  Sigma1870: 'Sigma 18-70mm f3.5-4.5',
+  Zenzanon80: 'Zenzanon 80mm f2.8',
 } as const;
 
 export const Filter = {
