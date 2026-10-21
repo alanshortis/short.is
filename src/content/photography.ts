@@ -156,6 +156,22 @@ export const photographyData: PhotoYear[] = [
         altText: '',
       },
       {
+        name: '20261008-133111',
+        location: 'Portland',
+        camera: Camera.M10D,
+        lens: Lens.Zeiss50,
+        ratio: Ratio.P35,
+        altText: '',
+      },
+      {
+        name: '20261012-144813',
+        location: 'Seattle',
+        camera: Camera.M10D,
+        lens: Lens.Zeiss50,
+        ratio: Ratio.L35,
+        altText: '',
+      },
+      {
         name: '20261007-180329',
         location: 'Haceta Head',
         camera: Camera.M10D,
