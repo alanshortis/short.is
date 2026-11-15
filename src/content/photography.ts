@@ -73,7 +73,8 @@ export const photographyData: PhotoYear[] = [
         camera: Camera.M10D,
         lens: Lens.Zeiss50,
         ratio: Ratio.L35,
-        altText: '',
+        altText:
+          'A warehouse against a blue sky with a railway line crossing in the foreground. Painted on the ware house is "SUNDQUIST FRUIT & COLD STORAGE"',
       },
       {
         name: '20261011-153137',
@@ -81,7 +82,8 @@ export const photographyData: PhotoYear[] = [
         camera: Camera.M10D,
         lens: Lens.Zeiss50,
         ratio: Ratio.P35,
-        altText: '',
+        altText:
+          "The remains of many flyers that have been stapled to a telegraph pole. The flyers have been burnt, revealing some of the layers and the printed text once advertising someone's band",
       },
       {
         name: '20261005-114244',
@@ -89,7 +91,8 @@ export const photographyData: PhotoYear[] = [
         camera: Camera.M10D,
         lens: Lens.Zeiss50,
         ratio: Ratio.P35,
-        altText: '',
+        altText:
+          'Looking through a large doorway onto a balcony, with mountains on the horizon. Someone stands with their back to us, holding their suitcase while standing beside a table and chairs and a flag',
       },
       {
         name: '20260321-120507',
@@ -97,7 +100,8 @@ export const photographyData: PhotoYear[] = [
         camera: Camera.M10P,
         lens: Lens.Summicron35,
         ratio: Ratio.L35,
-        altText: '',
+        altText:
+          'A table with a blue and red cloth, with various collectibles. The seller is sat down behind the table, and a potential buyer is stending in front of it. The table is in a parking garage for some reason, and there is a car poking in on the left',
       },
       {
         name: '20261006-190832',
@@ -105,7 +109,8 @@ export const photographyData: PhotoYear[] = [
         camera: Camera.M10D,
         lens: Lens.Zeiss50,
         ratio: Ratio.L35,
-        altText: '',
+        altText:
+          'A grey warehouse with six small silos, beside a road and some well manicured grass. A street light illuminates the foreground',
       },
       {
         name: '20260107-221721',
@@ -113,23 +118,17 @@ export const photographyData: PhotoYear[] = [
         camera: Camera.M10M,
         lens: Lens.Summicron35,
         ratio: Ratio.L35,
-        altText: '',
+        altText:
+          'Looking down on a football pitch, floodlit at night between a busy road and a river. A city skyline is in the far distance',
       },
       {
-        name: '20261005-171331',
+        name: '20261005-171247',
         location: 'Union Creek',
         camera: Camera.M10D,
         lens: Lens.Zeiss50,
         ratio: Ratio.L35,
-        altText: '',
-      },
-      {
-        name: '20260916-193512',
-        location: 'London',
-        camera: Camera.M10D,
-        lens: Lens.Summicron35,
-        ratio: Ratio.P35,
-        altText: '',
+        altText:
+          'A small cabin with a very blue ice machine against the wall. Cables, pipes, and electricity meters are attached to the wall and a picnic bench sits in the foreground',
       },
       {
         name: '20261014-131616',
@@ -137,7 +136,8 @@ export const photographyData: PhotoYear[] = [
         camera: Camera.M10D,
         lens: Lens.Zeiss50,
         ratio: Ratio.P35,
-        altText: '',
+        altText:
+          'Beside a gravel road and some dead grass, a peice of fence has been repurposed into a sign with property numbers painted on it. The whote paint has mostly faded, showing the bare wood below',
       },
       {
         name: '20261008-071403',
@@ -145,7 +145,8 @@ export const photographyData: PhotoYear[] = [
         camera: Camera.M10D,
         lens: Lens.Zeiss50,
         ratio: Ratio.L35,
-        altText: '',
+        altText:
+          'A well lit coin laundry sits behind a car park. In the misty background there are cars and other buildings bareful visible',
       },
       {
         name: '20261007-175815',
@@ -153,7 +154,8 @@ export const photographyData: PhotoYear[] = [
         camera: Camera.M10D,
         lens: Lens.Zeiss50,
         ratio: Ratio.L35,
-        altText: '',
+        altText:
+          'A bridge appearing from a cliff edge, covered in trees, crossing a beach with standing water casting a relfection',
       },
       {
         name: '20261008-133111',
@@ -161,7 +163,17 @@ export const photographyData: PhotoYear[] = [
         camera: Camera.M10D,
         lens: Lens.Zeiss50,
         ratio: Ratio.P35,
-        altText: '',
+        altText:
+          'A sign for a road side convinience store that reads "HAMLEY QUICK STOP Cafe MARKET GAS" and a U-Haul sign below, beside a recently mowed lawn in the foreground with builds and gas storage in the background',
+      },
+      {
+        name: '20261015-080717',
+        location: 'Portland',
+        camera: Camera.M10D,
+        lens: Lens.Zeiss50,
+        ratio: Ratio.L35,
+        altText:
+          'A concerete parking garage with a green awning that reads "AUDITORIUM PARK" warm morning light casts a shadow across the building and the pavement in the foreground',
       },
       {
         name: '20261012-144813',
@@ -169,7 +181,8 @@ export const photographyData: PhotoYear[] = [
         camera: Camera.M10D,
         lens: Lens.Zeiss50,
         ratio: Ratio.L35,
-        altText: '',
+        altText:
+          'Two people in silhouette, one taking a photo of the other, stand before a large window with a large body of water beyond',
       },
       {
         name: '20261007-180329',
@@ -177,7 +190,8 @@ export const photographyData: PhotoYear[] = [
         camera: Camera.M10D,
         lens: Lens.Zeiss50,
         ratio: Ratio.L35,
-        altText: '',
+        altText:
+          'The beginning of sunset, with the sun visible through the clouds. The beach and a cliff edge is in silhouette in the foreground, with three people walking',
       },
       {
         name: '20261016-104546',
@@ -185,7 +199,8 @@ export const photographyData: PhotoYear[] = [
         camera: Camera.M10D,
         lens: Lens.Zeiss50,
         ratio: Ratio.P35,
-        altText: '',
+        altText:
+          'Thee floor-to-ceiling windows, their dividers casing shadows across the floor and the wall. A brick building is just about visible outside',
       },
       {
         name: '20260104-152442',
@@ -193,7 +208,8 @@ export const photographyData: PhotoYear[] = [
         camera: Camera.M10M,
         lens: Lens.Summicron35,
         ratio: Ratio.P35,
-        altText: '',
+        altText:
+          'A building with reflections of the windows from another building against an empty wall. A statue of a pigeon is in the foreground',
       },
       {
         name: '20261008-070848',
@@ -201,7 +217,8 @@ export const photographyData: PhotoYear[] = [
         camera: Camera.M10D,
         lens: Lens.Zeiss50,
         ratio: Ratio.L35,
-        altText: '',
+        altText:
+          'Looking through the door of a mechanic, with tools and a lift visible. There is a 90s Chevy Blazer inside, under a neon "BUD LIGHT" sight',
       },
       {
         name: '20261014-081500',
@@ -209,7 +226,8 @@ export const photographyData: PhotoYear[] = [
         camera: Camera.M10D,
         lens: Lens.Zeiss50,
         ratio: Ratio.L35,
-        altText: '',
+        altText:
+          'Three tree covered hills in the distance, seen through the windscreen of a moving car. The navifation, steering wheel, and hands of the driver are out of focus in the foreground',
       },
       {
         name: '20261013-164446',
@@ -217,7 +235,7 @@ export const photographyData: PhotoYear[] = [
         camera: Camera.M10D,
         lens: Lens.Zeiss50,
         ratio: Ratio.L35,
-        altText: '',
+        altText: 'Looking down a road across to some contoured mountains in the high desert',
       },
       {
         name: '20260104-200425',
@@ -225,15 +243,8 @@ export const photographyData: PhotoYear[] = [
         camera: Camera.M10M,
         lens: Lens.Summicron35,
         ratio: Ratio.P35,
-        altText: '',
-      },
-      {
-        name: '20261015-185623',
-        location: 'Portland',
-        camera: Camera.M10D,
-        lens: Lens.Zeiss50,
-        ratio: Ratio.P35,
-        altText: '',
+        altText:
+          'Looking up and out a window in a city, with a tall white building in the distance. The refraction from the window distorts the building',
       },
       {
         name: '20261014-103818',
@@ -241,7 +252,8 @@ export const photographyData: PhotoYear[] = [
         camera: Camera.M10D,
         lens: Lens.Zeiss50,
         ratio: Ratio.L35,
-        altText: '',
+        altText:
+          'Looking stright across a road a chromed diner with small bushes in front a powerlines in the background. A few cars are parked around the building, and a lampost casts a shadow over the road in the foreground',
       },
       {
         name: '20261008-071804',
@@ -249,7 +261,17 @@ export const photographyData: PhotoYear[] = [
         camera: Camera.M10D,
         lens: Lens.Zeiss50,
         ratio: Ratio.L35,
-        altText: '',
+        altText:
+          'A cheap motel in the mist, with small trees along the road in the background. The sign reads "Summer Wind Budget Motel" and "NO VACANCY" in neon, and is relfected in the window behind',
+      },
+      {
+        name: '20261015-185623',
+        location: 'Portland',
+        camera: Camera.M10D,
+        lens: Lens.Zeiss50,
+        ratio: Ratio.P35,
+        altText:
+          'Looking straight on at a cinema with a lot of neon, including two large "L" on either side. Some people wait neat the ticket window out front',
       },
       {
         name: '20260104-201700',
@@ -257,7 +279,8 @@ export const photographyData: PhotoYear[] = [
         camera: Camera.M10M,
         lens: Lens.Summicron35,
         ratio: Ratio.L35,
-        altText: '',
+        altText:
+          'A clean, empty hallway beside some stairs and elevators. A man is half way up a flight of stairs and woman sits alone, both are using their phones',
       },
       {
         name: '20261006-185432',
@@ -265,7 +288,8 @@ export const photographyData: PhotoYear[] = [
         camera: Camera.M10D,
         lens: Lens.Zeiss50,
         ratio: Ratio.L35,
-        altText: '',
+        altText:
+          'Looking across a bay at a building partially shrouded in rock. A tree covered hillside is in the background, mostly hidden by fog',
       },
     ],
   },
@@ -422,6 +446,16 @@ export const photographyData: PhotoYear[] = [
           'A row of stools along a bar in an old diner. Each stool facing the same way, each with an indeintically placed coffe cup on the bar',
       },
       {
+        name: '20250904-142429',
+        location: 'Hoh Rainforest',
+        camera: Camera.M10M,
+        lens: Lens.Summicron35,
+        filter: Filter.ProMist,
+        ratio: Ratio.P35,
+        altText:
+          'Trees covered in thick moss, against a forest floor covered in ferns. Light is bleeding through from the tops of the canopy',
+      },
+      {
         name: '20250902-185057',
         location: 'Portland',
         camera: Camera.M10M,
@@ -439,16 +473,6 @@ export const photographyData: PhotoYear[] = [
         filter: Filter.Orange,
         ratio: Ratio.L35,
         altText: "Looking across a misty beach, with the silhouette's of people walking in the distance",
-      },
-      {
-        name: '20250904-142429',
-        location: 'Hoh Rainforest',
-        camera: Camera.M10M,
-        lens: Lens.Summicron35,
-        filter: Filter.ProMist,
-        ratio: Ratio.P35,
-        altText:
-          'Trees covered in thick moss, against a forest floor covered in ferns. Light is bleeding through from the tops of the canopy',
       },
       {
         name: '20250905-132046',
@@ -545,20 +569,6 @@ export const photographyData: PhotoYear[] = [
           'Looking into the distance in a very dense forsest, the path ahead leads to a large tree. Ferns in the foreground are out of focus',
       },
       {
-        name: '20250830-235143',
-        location: 'Seattle',
-        camera: Camera.M10M,
-        lens: Lens.Summicron35,
-        ratio: Ratio.L35,
-        altText:
-          'In a hotel room, looking across a well-made bed towards a window covered with a blind. Through the blind we can see old building that make up the city outside',
-      },
-    ],
-  },
-  {
-    id: '2024',
-    photos: [
-      {
         name: '20241223-062008',
         location: 'London',
         camera: Camera.M10M,
@@ -567,6 +577,30 @@ export const photographyData: PhotoYear[] = [
         altText:
           'Looking down to jet bridge with two people walking through. A British Airways airbus is in the background, and the whole image is full of reflections of the terminal building in the huge windows',
       },
+      {
+        name: '20250830-235143',
+        location: 'Seattle',
+        camera: Camera.M10M,
+        lens: Lens.Summicron35,
+        ratio: Ratio.L35,
+        altText:
+          'In a hotel room, looking across a well-made bed towards a window covered with a blind. Through the blind we can see old building that make up the city outside',
+      },
+      {
+        name: '20250904-153428',
+        location: 'Hoh Rainforest',
+        camera: Camera.M10M,
+        lens: Lens.Summicron35,
+        filter: Filter.Orange,
+        ratio: Ratio.L35,
+        altText:
+          'A fern in focus against an out of focus forest background, and other ferns out of focus in the foreground',
+      },
+    ],
+  },
+  {
+    id: '2024',
+    photos: [
       {
         name: '20240522-202629',
         location: 'London',
@@ -586,13 +620,13 @@ export const photographyData: PhotoYear[] = [
           'Looking across a subway platform into the open door of a stopped subway train with faded seats that were probably once red ',
       },
       {
-        name: '20240316-160249',
+        name: '20240316-160939',
         location: 'New York',
         camera: Camera.MD,
         lens: Lens.Summicron50,
         ratio: Ratio.L35,
         altText:
-          'Looking across a street underneath elevated subway tracks, we see a person with their back to us using their phone. They are stanging outside a store with a sign that reads "DELI & GRILL"',
+          'A side view of a silver Ford Bronco with some rust, parked under some elevated subway tracks which are out of frame but casting a shadow. In the background we see a sign for "45 AV"',
       },
       {
         name: '20240620-171624',
@@ -604,13 +638,13 @@ export const photographyData: PhotoYear[] = [
           'A construction worker inside a skip, emptying a rubble sack. He wears day-glow green and orange, and is slightly obscured by platic netting that shrouds the scaffolding in the foreground',
       },
       {
-        name: '20240316-160939',
+        name: '20240316-160249',
         location: 'New York',
         camera: Camera.MD,
         lens: Lens.Summicron50,
         ratio: Ratio.L35,
         altText:
-          'A side view of a silver Ford Bronco with some rust, parked under some elevated subway tracks which are out of frame but casting a shadow. In the background we see a sign for "45 AV"',
+          'Looking across a street underneath elevated subway tracks, we see a person with their back to us using their phone. They are stanging outside a store with a sign that reads "DELI & GRILL"',
       },
       {
         name: '20240317-145734',
@@ -658,6 +692,15 @@ export const photographyData: PhotoYear[] = [
           'A step-through Raleigh bicycle locked to a pole topped with a sign that reads "NO STANDING Anytime" as a man walks behind, pushing a bicycle of his own that has a sack draped over the crossbar',
       },
       {
+        name: '20241119-015852',
+        location: 'New York',
+        camera: Camera.MD,
+        lens: Lens.Summicron50,
+        ratio: Ratio.L35,
+        altText:
+          'A woman at the top of the steps of a subway station at night. There are road works in the background, and in the foreground but out of focus we see a sign that reads "33 Street"',
+      },
+      {
         name: '20241116-215206',
         location: 'Birmingham',
         camera: Camera.MD,
@@ -685,13 +728,13 @@ export const photographyData: PhotoYear[] = [
           'On balcony looking towards a city, a lone woman sits in a chair looking away from us, surrounded by other chairs which are all empty',
       },
       {
-        name: '20241119-015852',
+        name: '20240317-152437',
         location: 'New York',
         camera: Camera.MD,
         lens: Lens.Summicron50,
         ratio: Ratio.L35,
         altText:
-          'A woman at the top of the steps of a subway station at night. There are road works in the background, and in the foreground but out of focus we see a sign that reads "33 Street"',
+          'The rear-left corner of a Cadillac, with shitw pinstrips running around the edge of the car beside some degredation of the paint. A silver emblem sits in the middle of the red tail light',
       },
     ],
   },
