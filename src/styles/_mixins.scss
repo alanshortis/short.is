@@ -103,13 +103,13 @@
 }
 
 @mixin small {
-  @media (max-width: 35rem) {
+  @media (max-width: 39rem) {
     @content;
   }
 }
 
 @mixin small-min {
-  @media (min-width: calc(35rem + 1px)) {
+  @media (min-width: calc(39rem + 1px)) {
     @content;
   }
 }
