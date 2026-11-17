@@ -113,6 +113,15 @@ export const photographyData: PhotoYear[] = [
           'A grey warehouse with six small silos, beside a road and some well manicured grass. A street light illuminates the foreground',
       },
       {
+        name: '20261029-111258',
+        location: 'New York',
+        camera: Camera.M10D,
+        lens: Lens.Zeiss50,
+        ratio: Ratio.P35,
+        altText:
+          'A grand, stone hallway with an intricate wood ceiling. A tall curtain is at the end of the hallway, relfected in the polished floor. A chandelier hangs from the ceiling',
+      },
+      {
         name: '20260107-221721',
         location: 'New York',
         camera: Camera.M10M,
@@ -185,24 +194,6 @@ export const photographyData: PhotoYear[] = [
           'Two people in silhouette, one taking a photo of the other, stand before a large window with a large body of water beyond',
       },
       {
-        name: '20261007-180329',
-        location: 'Haceta Head',
-        camera: Camera.M10D,
-        lens: Lens.Zeiss50,
-        ratio: Ratio.L35,
-        altText:
-          'The beginning of sunset, with the sun visible through the clouds. The beach and a cliff edge is in silhouette in the foreground, with three people walking',
-      },
-      {
-        name: '20261016-104546',
-        location: 'Portland',
-        camera: Camera.M10D,
-        lens: Lens.Zeiss50,
-        ratio: Ratio.P35,
-        altText:
-          'Thee floor-to-ceiling windows, their dividers casing shadows across the floor and the wall. A brick building is just about visible outside',
-      },
-      {
         name: '20260104-152442',
         location: 'New York',
         camera: Camera.M10M,
@@ -212,6 +203,15 @@ export const photographyData: PhotoYear[] = [
           'A building with reflections of the windows from another building against an empty wall. A statue of a pigeon is in the foreground',
       },
       {
+        name: '20261007-180329',
+        location: 'Haceta Head',
+        camera: Camera.M10D,
+        lens: Lens.Zeiss50,
+        ratio: Ratio.L35,
+        altText:
+          'The beginning of sunset, with the sun visible through the clouds. The beach and a cliff edge is in silhouette in the foreground, with three people walking',
+      },
+      {
         name: '20261008-070848',
         location: 'Newport',
         camera: Camera.M10D,
@@ -219,6 +219,15 @@ export const photographyData: PhotoYear[] = [
         ratio: Ratio.L35,
         altText:
           'Looking through the door of a mechanic, with tools and a lift visible. There is a 90s Chevy Blazer inside, under a neon "BUD LIGHT" sight',
+      },
+      {
+        name: '20261016-104546',
+        location: 'Portland',
+        camera: Camera.M10D,
+        lens: Lens.Zeiss50,
+        ratio: Ratio.P35,
+        altText:
+          'Thee floor-to-ceiling windows, their dividers casing shadows across the floor and the wall. A brick building is just about visible outside',
       },
       {
         name: '20261014-081500',
@@ -290,6 +299,15 @@ export const photographyData: PhotoYear[] = [
         ratio: Ratio.L35,
         altText:
           'Looking across a bay at a building partially shrouded in rock. A tree covered hillside is in the background, mostly hidden by fog',
+      },
+      {
+        name: '20261027-200952',
+        location: 'New York',
+        camera: Camera.M10D,
+        lens: Lens.Zeiss50,
+        ratio: Ratio.L35,
+        altText:
+          'A huge illiminated flag of the USA is reflected in a bus and a black SUV, in a particularly busy and tourist-prone part of New York City',
       },
     ],
   },
