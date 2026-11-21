@@ -4,6 +4,8 @@ export const postSchema = z.object({
   title: z.string(),
   description: z.string(),
   pubDate: z.string(),
+  published: z.boolean().optional(),
+  relatedPostSlug: z.string().optional(),
   icon: z.enum([
     'ai',
     'css-env',
@@ -24,7 +26,6 @@ export const postSchema = z.object({
     'z-index',
   ]),
   showAgeWarning: z.boolean().optional(),
-  published: z.boolean().optional(),
   hasPhotoGallery: z.boolean().optional(),
 });
 

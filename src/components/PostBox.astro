@@ -5,14 +5,15 @@ import { PostDate, ContentIcon } from './';
 interface Props {
   post: CollectionEntry<'posts'>;
   isFeatured?: boolean;
+  isRelated?: boolean;
 }
 
-const { post, isFeatured } = Astro.props;
+const { post, isFeatured, isRelated } = Astro.props;
 ---
 
-<article class={`article ${isFeatured ? 'article--featured' : ''}`}>
+<article class={`article ${isFeatured ? 'article--featured' : ''} ${isRelated ? 'article--related' : ''}`}>
   <a class="article__item" href={`/writing/${post.id}`}>
-    <PostDate date={post.data.pubDate} />
+    {isRelated ? <span>Related</span> : <PostDate date={post.data.pubDate} />}
     <h1 class="article__title">{post.data.title}</h1>
     <div class="article__icon">
       <ContentIcon icon={post.data.icon} />
@@ -32,6 +33,12 @@ const { post, isFeatured } = Astro.props;
         }
       }
     }
+    &--related {
+      margin-block-start: var(--space--large);
+      span {
+        @include label;
+      }
+    }
     &__item {
       background-color: var(--background);
       border: 1px solid var(--divider);
@@ -41,6 +48,7 @@ const { post, isFeatured } = Astro.props;
       gap: var(--space);
       height: 100%;
       padding: var(--space);
+      text-decoration: none;
       transition: border-color 0.2s;
       &:hover {
         border-color: currentColor;
