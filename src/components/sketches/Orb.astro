@@ -10,9 +10,9 @@
   @use '../../styles/mixins' as *;
 
   .sketch {
-    color-scheme: light;
-    background-color: var(--background);
     @include sketch-container();
+    color-scheme: light;
+    background-color: hsl(350, 100%, 10%);
   }
 
   .orb {
@@ -21,8 +21,8 @@
     border-radius: 50%;
     box-shadow:
       inset 0 0 20vh 0 black,
-      5vw 5vh 7vh -3vh var(--dark);
+      5vw 5vh 7vh -3vh black;
     content: '';
-    height: 30vh;
+    height: 20vh;
   }
 </style>

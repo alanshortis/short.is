@@ -2,8 +2,11 @@
 
 .formatting {
   line-height: 1.618;
-  & * + :where(p, ol, ul, h2, h3, figure, dl) {
+  & * + :where(p, ol, ul, h2, h3, dl) {
     margin-block-start: 1lh;
+  }
+  figure {
+    margin-block: var(--space--large);
   }
   a {
     text-decoration: underline;

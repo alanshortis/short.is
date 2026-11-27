@@ -25,8 +25,8 @@
   }
 }
 
-@mixin backdrop($background: var(--backdrop)) {
-  backdrop-filter: blur(var(--space));
+@mixin backdrop($background: var(--backdrop), $blur: var(--space)) {
+  backdrop-filter: blur($blur);
   background-color: $background;
   @media (prefers-reduced-transparency: reduce) {
     background-color: var(--background);
@@ -87,13 +87,16 @@
 }
 
 @mixin sketch-container() {
-  min-height: 100dvh;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0;
-  padding: var(--space--large);
-  @include full-bleed;
+  border-radius: var(--radius);
+  padding-inline: var(--space--large);
+  padding-block: calc(var(--space--large) * 2);
+  @include medium {
+    @include full-bleed();
+    border-radius: 0;
+  }
 }
 
 @mixin medium {
