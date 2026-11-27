@@ -12,6 +12,7 @@ import Observer from './Observer.astro';
 import Responsive from './Responsive.astro';
 import Scanning from './Scanning.astro';
 import Share from './Share.astro';
+import Sketch from './Sketch.astro';
 import Sprites from './Sprites.astro';
 import Website from './Website.astro';
 import Zindex from './Zindex.astro';
@@ -30,6 +31,7 @@ export const icons = {
   responsive: Responsive,
   scanning: Scanning,
   share: Share,
+  sketch: Sketch,
   sprites: Sprites,
   website: Website,
   'z-index': Zindex,

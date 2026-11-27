@@ -20,6 +20,7 @@ export const postSchema = z.object({
     'responsive',
     'scanning',
     'share',
+    'sketch',
     'sprites',
     'website',
     'z-index',
