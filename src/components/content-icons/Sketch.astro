@@ -1,0 +1,45 @@
+<div class="sketch">
+  <div class="sketch__elem"></div>
+  <div class="sketch__elem"></div>
+  <div class="sketch__elem"></div>
+  <div class="sketch__elem"></div>
+</div>
+
+<style lang="scss">
+  @mixin mask {
+    mask-image: conic-gradient(
+      from -45deg,
+      transparent 0deg 90deg,
+      var(--background) 90deg 180deg,
+      transparent 180deg 270deg,
+      var(--background) 270deg 360deg
+    );
+  }
+
+  .sketch {
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    display: grid;
+    overflow: hidden;
+    width: var(--step-5);
+    &__elem {
+      @include mask;
+      aspect-ratio: 1 / 1;
+      border: 1px solid var(--foreground);
+      border-radius: inherit;
+      grid-area: 1 / 1;
+      place-self: center;
+      width: 100%;
+      &:nth-child(2) {
+        width: 75%;
+      }
+      &:nth-child(3) {
+        width: 50%;
+      }
+      &:nth-child(4) {
+        mask-image: none;
+        width: 25%;
+      }
+    }
+  }
+</style>
