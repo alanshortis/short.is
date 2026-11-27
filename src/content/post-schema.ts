@@ -4,7 +4,6 @@ export const postSchema = z.object({
   title: z.string(),
   description: z.string(),
   pubDate: z.string(),
-  published: z.boolean().optional(),
   relatedPostSlug: z.string().optional(),
   icon: z.enum([
     'ai',
