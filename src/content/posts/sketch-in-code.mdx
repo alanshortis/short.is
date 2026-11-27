@@ -1,0 +1,38 @@
+---
+title: 'Sketch in code'
+description: 'Use your ability to code to sketch ideas'
+pubDate: '2026-11-27'
+icon: 'sketch'
+---
+
+import { Frosted, Orb, Cube, Wave } from '../../components/sketches';
+
+When I write something for this website I make an accompanying icon that in some way represents the content of the post. Sometimes this is so abstract it's unlikely anyone else will realise what it is, but that's ok. I'm not really making the icon to act as an avatar for the post or for anyone else. It's just an excuse to make something that is purely decorative.
+
+Each one is made with CSS, which is a terrible choice.
+
+It would be far easier and more sensible to make these icons in Figma or Illustrator and export as a vector, but in using CSS I learn something new every single time. If I can work out how to use CSS features together to realise an idea I have in my head, the day-to-day of making a layout or some variation of a `Card` comes much more easily.
+
+Sketching unlocks abilities and ideas in a low-stakes context before the stuff that actually matters comes along.
+
+The icons are limited to a uniform style and size. All of them sit in the same box, using the same `1px` strokes and a single colour. The limitation is great for creativity, but it limits the scope of the CSS features I can use.
+
+## Physical shapes
+
+When making standalone sketches I tend to try and imitate things that exist in the physical world: Frosted glass, lighting, or inanimate objects.
+
+<Frosted />
+
+The Cube was built via a lot of trial and error while waiting for a delayed plane. The lighting around me was formed from white cubes with a bulb inside, and the light was unable to spread evenly to each corner. The light didn't spin, I added that.
+
+<Cube />
+
+You'll probably notice some glitches in your browser around the cube. CSS simply is not designed for a combination of 3D perspective and animation like this, as it repaints it often makes a bit of a mess.
+
+Something two dimensional can look almost like something you can hold with a combination of common CSS: `border-radius` and `box-shadow`. It's all in how it's applied.
+
+<Orb />
+
+None of this has to mean anything. None of this is produced to acquire or retain a customer, to represent or comment on anything, or even flex technical ability. It's just an opportunity to do something increasingly rare: write code by hand for fun.
+
+<Wave />
