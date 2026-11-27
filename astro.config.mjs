@@ -14,8 +14,8 @@ export default defineConfig({
     }),
   },
   redirects: {
-    '/writing/ai-ambivalence/': {
-      destination: '/writing/ai-inevitability/',
+    '/sketches': {
+      destination: '/writing/sketch-in-code',
       status: 301,
     },
   },
