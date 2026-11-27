@@ -19,19 +19,17 @@ export const getStaticPaths = async () => {
   const blogPosts = await getCollection('posts');
   const postsById = new Map(blogPosts.map(entry => [entry.id, entry]));
 
-  return blogPosts
-    .filter(post => post.data.published ?? true)
-    .map(post => {
-      const relatedPost = post.data.relatedPostSlug ? postsById.get(post.data.relatedPostSlug) : undefined;
+  return blogPosts.map(post => {
+    const relatedPost = post.data.relatedPostSlug ? postsById.get(post.data.relatedPostSlug) : undefined;
 
-      return {
-        params: { slug: post.id },
-        props: {
-          post,
-          relatedPost,
-        },
-      };
-    });
+    return {
+      params: { slug: post.id },
+      props: {
+        post,
+        relatedPost,
+      },
+    };
+  });
 };
 
 const { post, relatedPost } = Astro.props;
